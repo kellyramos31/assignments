@@ -1,0 +1,348 @@
+body {
+    background-color: pink;
+}
+
+h3 {
+    color: black;
+    font-weight: bold;
+    position: relative;
+    top: 0;
+}
+
+.france-flag {
+    height: auto;
+    width: 33.3%;
+    background-color: #002495;
+    position: relative;
+    left: 0;
+}
+
+.france-flag:before {
+    content: "";
+    display: block;
+    padding-top: 150%;
+}
+
+ .france-vertical-white-stripe {
+    width: 33.3%;
+    height: auto;
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 55px;
+    left: 33.3%;
+ }
+
+.france-vertical-white-stripe:before {
+    content: "";
+    display: block;
+    padding-top: 150%;
+}
+
+.france-vertical-red-stripe {
+    width: 33.3%;
+    background-color: #ED2938;
+    position: absolute;
+    top: 55px;
+    right: 0;
+}
+
+.france-vertical-red-stripe:before {
+    content: "";
+    display: block;
+    padding-top: 150%;
+}
+
+.germany-flag {
+    width: 100%;
+    background-color: #000000;
+    position: relative;
+}
+
+.germany-flag:before {
+    content: "";
+    display: block;
+    padding-top: 20%;
+}
+
+.germany-horizontal-red-stripe {
+    width: 100%;
+    background-color: #DE0002;
+    position: relative;
+}
+
+.germany-horizontal-red-stripe:before {
+    content: "";
+    display: block;
+    padding-top: 20%;
+}
+
+.germany-horizontal-gold-stripe {
+    width: 100%;
+    background-color: #FFCE00;
+    position: relative;
+}
+
+.germany-horizontal-gold-stripe:before {
+    content: "";
+    display: block;
+    padding-top: 20%;
+}
+
+.madagascar-white-rectangle {
+    width: 20%;
+    background-color: #FFFFFF;
+    position: relative;
+}
+
+.madagascar-white-rectangle:before {
+    content: "";
+    display: block;
+    padding-top: 200%;
+}
+
+.madagascar-red-rectangle {
+    width: 80%;
+    background-color: #FC3E32;
+    position: relative;
+    left: 20%;
+    bottom: 255px;
+}
+
+.madagascar-red-rectangle:before {
+    content: "";
+    display: block;
+    padding-top: 25%;
+}
+
+.madagascar-green-rectangle {
+    width: 80%;
+    background-color: #007E39;
+    position: relative;
+    left: 20%;
+    bottom: 255px;
+}
+
+.madagascar-green-rectangle:before {
+    content: "";
+    display: block;
+    padding-top: 25%;
+}
+
+.switzerland-flag-red-square {
+    width: 100%;
+    background-color: #FF0002;
+}
+
+.switzerland-flag-red-square:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+.switzerland-white-square-top {
+    width: 20%;
+    background-color: #FFFFFF;
+    position: relative;
+    left: 40%;
+    bottom: 500px;
+}
+
+.switzerland-white-square-top:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+.switzerland-white-rectangle-middle {
+    width: 60%;
+    background-color: #FFFFFF;
+    position: relative;
+    left: 20%;
+    bottom: 500px;
+}
+    
+.switzerland-white-rectangle-middle:before {
+    content: "";
+    display: block;
+    padding-top: 30%;
+}
+    
+.switzerland-white-square-bottom {
+    width: 20%;
+    background-color: #FFFFFF;
+    position: relative;
+    left: 40%;
+    bottom: 500px; 
+}
+
+.switzerland-white-square-bottom:before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+
+.sweden-flag-blue-rectangle {
+    width: 100%;
+    background-color: #0269A6;
+    position: relative;
+    left: 0;
+}
+
+.sweden-flag-blue-rectangle:before {
+    content: "";
+    display: block;
+    padding-top: 62.5%;
+}
+
+.sweden-horizontal-stripe {
+    width: 100%;
+    background-color: #FECC00;
+    position: relative;
+    bottom: 250px;
+}
+
+.sweden-horizontal-stripe:before {
+    content: "";
+    display: block;
+    padding-top: 10%;
+}
+
+.sweden-vertical-stripe {
+    width: 10%;
+    background-color: #FECC00;
+    position: relative;
+    bottom: 468px;
+    left: 200px;
+}
+
+.sweden-vertical-stripe:before {
+    content: "";
+    display: block;
+    padding-top: 630%;
+}
+
+.gambia-flag-red-rectangle  {
+    width: 100%;
+    height: 120px;
+    background-color: #CE1127;
+    position: relative;
+    left: 0;
+    border-bottom: #FFFFFF solid 15px;
+}
+
+.gambia-flag-red-rectangle:before  {
+    content: "";
+    display: block;
+    padding-top: 67%;
+}
+
+.gambia-flag-blue-rectangle {   
+    width: 100%;
+    height: 80px;
+    background-color: #0D1D8B;
+    position: relative;
+    left: 0;
+    border-bottom: white solid 15px;
+}
+
+.gambia-flag-blue-rectangle:before {
+    content: "";
+    display: block;
+    padding-top: 67%;
+}
+
+.gambia-flag-green-rectangle {
+    width: 100%;
+    height: 120px;
+    background-color: #3B7827;
+    position: relative;
+    left: 0;
+}
+
+.gambia-flag-green-rectangle:before {
+    content: "";
+    display: block;
+    padding-top: 67%;
+}
+
+
+.japan-flag-white-rectangle {
+    width: 100%;
+    background-color: #FFFFFF;
+    position: relative;
+    left: 0;
+}
+    
+.japan-flag-white-rectangle:before {
+    content: "";
+    display: block;
+    padding-top: 67%;
+}
+
+
+.japan-flag-red-circle {
+    background-color: #BC022C;
+    border-radius: 50%;
+    width: 250px;
+    height: 250px;
+    position: relative;
+    left: 30%;
+    bottom: 330px;
+}
+
+ .niger-flag-orange-rectangle {
+    width: 100%;
+    background-color: #E15307;
+    height: 150px;
+    position: relative;
+    left: 0;
+ }
+
+ .niger-flag-orange-rectangle:before {
+    content: "";
+    display: block;
+    padding-top: 85.7%;
+ }
+
+.niger-flag-white-rectangle {
+    width: 100%;
+    background-color: #FFFFFF;
+    height: 150px;
+    position: relative;
+    left: 0;
+}
+
+
+.niger-flag-white-rectangle:before {
+    content: "";
+    display: block;
+    padding-top: 85.7%;
+}
+
+
+.niger-flag-green-rectangle {
+    width: 100%;
+    background-color: #10AF2A;
+    height: 150px;
+    position: relative;
+    left: 0;
+}
+
+.niger-flag-green-rectangle:before {
+    content: "";
+    display: block;
+    padding-top: 85.7%;
+}
+
+.niger-flag-orange-circle {
+    background-color: #E15307;
+    border-radius: 50%;
+    width: 130px;
+    height: 130px;
+    position: relative;
+    left: 38%;
+    bottom: 290px;
+}
+
+
