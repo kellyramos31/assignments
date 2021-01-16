@@ -1,0 +1,16 @@
+body {
+    background-color:  lightskyblue;    
+}
+
+#grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#square-box {
+    grid-column: 2 / 3;
+    width: 200px;
+    height: 200px;
+    background-color: white;
+    border: black solid 6px;
+}
