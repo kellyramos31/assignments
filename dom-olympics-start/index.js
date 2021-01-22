@@ -1,5 +1,5 @@
 const head = document.getElementById("header");
-head.innerText = "JavaScript Made This!!"
+head.textContent = "JavaScript Made This!!"
 head.style.fontWeight = "bold";
 head.style.fontSize = "30px";
 head.style.textAlign = "center";
@@ -14,12 +14,60 @@ myName.textContent = "Kelly";
 myName.classList.add("name");
 wroteThis.prepend(myName);
 
-
+//BRONZE
 //  Write some custom JS to automatically change the words of the conversation to something fun & good
-//var funAndGood = document.getElementsByClassName("message");
+
+//BRONZE
+//  Write some custom JS to automatically change the words of the conversation to something fun & good
+/*var leftMessage = document.getElementsByClassName("message left");
+var rightMessage = document.getElementsByClassName("message right");
+for (var i = 0; i <= leftMessage.length && rightMessage.length; i++) {
+    var newLeft = leftMessage[i].textContent = ["Howdy, friend", "I love sparkling conversation"];
+    var newRight = rightMessage[i].textContent = ["Hi, neighbor", "Then you're in the right place!"];
+}
+*/
+//var rightMessage = document.getElementsByClassName("message right");
+/*
+var allMessages = document.getElementsByClassName("message");
+
+for (var i = 0; i <= allMessages.length; i++) {
+    if (i % 2 === 0) {
+        var newMessagesLeft = ["Howdy, friend", "I love sparkling conversation"];
+        allMessages[i].textContent = newMessagesLeft[i];
+    } else
+        var newMessagesRight = ["Hi, neighbor", "Then you've come to the right place!"];
+        allMessages[i].textContent = newMessagesRight[i];
+}
+*/
+
+//THIS ONE WORKS!!!  YAY!! FINALLY!! :)
+/*
+var allMessages = document.getElementsByClassName("message");
+
+for (var i = 0; i < allMessages.length; i++) {
+    var newMessages = ["Howdy, friend", "Hi, neighbor", "I love sparkling conversation", "Then you've come to the right place!"];
+    allMessages[i].textContent = newMessages[i];
+}
+*/
+
+/*Slack from Isa:  Okay. I figured out the Bronze one. I like what you were trying to do, and it's really close to the correct solution. Instead of getting leftMessage and rightMessage individually from the DOM, I would grab all of them together: var messages = document.getElementsByClassName("message")
+That will return an array of messages. The messages on the left have even indexes, the ones on the right have odd indexes. You can loop through the array of messages, and then based on what index you're at, change the textContent to say something else.
+3:45
+See if that works, or gets you closer. I can send you my solution, just let me know*/
 
 
 
+//BRONZE
+//  Write some custom JS to automatically change the words of the conversation to something fun & good
+/*
+var leftMessage = document.getElementsByClassName("message left");
+var rightMessage = document.getElementsByClassName("message right");
+for (var i = 0; i <= leftMessage.length && rightMessage.length; i++) {
+    var newLeft = leftMessage[i].textContent = ["Howdy, friend", "I love sparkling conversation"];
+    var newRight = rightMessage[i].textContent = ["Hi, neighbor", "Then you're in the right place!"];
+}
+*/
+/*
 
 //  Wait until user clicks the "clear" button, then clears out all conversation:
 var clearAllConvo = document.getElementById('clear-button');
@@ -95,15 +143,47 @@ dropDownColor.addEventListener("input", function (event) {
         }
     }
 })
+*/
+/*
+GOLD
+var sendButton = document.getElementById("send-button");
+var userInputForm = document.getElementById("input");
+//console.log(userInputForm.value);  //returns "Thank you. Goodbye" which is what is in form now.
+sendButton.addEventListener("click", function () {
+    //if (userInputForm.value != "") {
+    var newMessageDiv = document.createElement("div");
+    newMessageDiv.textContent = userInputForm;
+    newMessageDiv.className.add("message");
+    console.log(newMessageDiv.textContent)
+    var messageChain = document.getElementsByClassName("messages");
+    messageChain[0].parentNode.append(newMessageDiv);
+})
+*/
 
 
 //GOLD
 //Be able to add more messages using the form at the bottom.
 
-
+const sendButton = document.getElementById("send-button");
+const userInputForm = document.getElementById("input");
+//console.log(userInputForm.value);  //returns "Thank you. Goodbye" which is what is in form now.
+sendButton.addEventListener("click", function (e) {
+    e.preventDefault()
+    //if (userInputForm.value != "") {  -- maybe don't need this; too complicated??
+    var newMessageDiv = document.createElement("div");
+    newMessageDiv.classList.add("message");
+    newMessageDiv.textContent = userInputForm.value;
+    console.log(newMessageDiv.textContent)
+    var messageChain = document.getElementsByClassName("message");
+    messageChain[0].parentNode.appendChild(newMessageDiv);
+})
 
 
 
 
  //EXTRA CREDIT
  //Every other message will be posted on the right in one color, and the next on the left the other color.
+
+
+
+
