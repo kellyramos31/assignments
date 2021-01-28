@@ -1,4 +1,4 @@
-//#1  Loop through the following array and count how many "computers" there are.  Log the final count:
+//DONE:  #1  Loop through the following array and count how many "computers" there are.  Log the final count:
 
 
 var officeItems = ["stapler", "monitor", "computer", "desk", "lamp", "computer", "lamp", "stapler", "computer", "computer"]
@@ -46,10 +46,20 @@ for (var i = 0; i <= peopleWhoWantToSeeMadMaxFuryRoad.length; i++) {
 }
 
 
+// DONE:  Optional Bonus challenge (see direction details below)
+
 var lightBulbArray = [2, 5, 435, 4, 3];
+var sumArray = 0;
 
 for (var i = 0; i < lightBulbArray.length; i++) {
-
+    sumArray += lightBulbArray[i];
+    if (i === (lightBulbArray.length - 1)) {
+        if (sumArray % 2 === 0) {
+            console.log("The light is off.")
+        } else {
+            console.log("The light is on!")
+        }
+    }
 }
 
 
