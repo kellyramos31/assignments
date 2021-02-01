@@ -21,6 +21,7 @@ var alphabet = "abcdefghijklmnopqrstuvwxyz"
 */
 
 //THIS CODE BELOW RE-CREATES THE OUTPUT ABOVE -- BUT IT IS ONLY 1 FOR LOOP (***NOT A FOR LOOP WITHIN A FOR LOOP)
+/*
 var people = ["Jon", "Jacob", "Jingle", "Heimer", "Schmidt"]
 var alphabet = "abcdefghijklmnopqrstuvwxyz"
 
@@ -38,5 +39,26 @@ function forception(people, alphabet) {
 }
 
 forception(people, alphabet);
+*/
+
+//CODE BELOW PRINTS CORRECT OUTPUT USING 2 LOOPS (A FOR LOOP WITHIN A FOR LOOP):
+
+var people = ["Jon", "Jacob", "Jingle", "Heimer", "Schmidt"]
+var alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+function forception(people, alphabet) {
+    var newCombinedArr = [];
+    var alphaCapitalize = alphabet.toUpperCase();
+    var newAlphabetArr = alphaCapitalize.split("");
+    for (var i = 0; i < people.length; i++) {
+        newCombinedArr.push(people[i]);
+        for (var j = 0; j < newAlphabetArr.length; j++)
+            newCombinedArr.push(newAlphabetArr[j]);
+    }
+    console.log(newCombinedArr)
+}
+
+forception(people, alphabet);
+
 
 
