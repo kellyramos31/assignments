@@ -1,4 +1,4 @@
-
+/*
 //INTRO TO PROGRAMMING
 const readline = require("readline-sync");
 
@@ -34,10 +34,22 @@ while (!gameOver) {
         console.log("Congratulations!  You found the key and opened the door!  You are free!")
         gameOver = true;
 
-        //Trying to Cancel out of game; sorry, can't cancel out!     
+        //Trying to Cancel out of game; sorry, can't cancel out!
     } else if (userAnswer === -1) {
         console.log("There is no way to cancel out of an escape room.  Please make another choice!");
     }
 }
+*/
 
+const ask = require('readline-sync')
+let gameIsRunning = true;
+let gameOver = false;
+const contender = {
+    name: "",
+    health: 100
+}
+console.log("Hi welcome to the Jungle")
+contender.name = ask.question("What is your name?:")
+console.log("Good Luck ${contender.name}")
+const results = ask.keyInSelect(["walk"], "What would you like to do?:")
 
