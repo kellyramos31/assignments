@@ -160,6 +160,7 @@ DONE -- 1.  Create an array that mimics a grid like the following using nested f
 //THIS CODE BELOW IS GIVING ME 3 ARRAYS (with var j going from 0 to 8), BUT WITH 9 zeroes each
 //Works now with both vars i & j going from 0 to 3
 //NOTE:  *** My answer to Gold #1 may not be same thing b/c they are 3 separate arrays *****
+//NOTE:  see other code below (w/ Isa's help) that creates the above grid correctly
 
 /*
 var newArray1 = [];
@@ -180,6 +181,38 @@ for (var i = 0; i <= 2; i++) {
 console.log(newArray1);
 console.log(newArray2);
 console.log(newArray3);
+*/
+
+/*
+//THIS CODE BELOW WORKS NOW!!! w/ Isa's help; right now it logs 3 arrays (0,1,2)
+var newArr = []
+
+for (var i = 0; i <= 2; i++) {
+    var newArr2 = [];
+    for (var j = 0; j <= 2; j++) {
+        newArr2.push(0);
+    }
+    newArr.push(newArr2)
+}
+console.log(newArr);
+*/
+
+
+
+
+
+//THIS CODE BELOW WORKS NOW!!! w/ Isa's help; right now it logs 3 arrays (0,1,2)
+/*
+var newArr = []
+
+for (var i = 0; i <= 2; i++) {
+    var newArr2 = [];
+    for (var j = 0; j <= 2; j++) {
+        newArr2.push(j);
+    }
+    newArr.push(newArr2)
+}
+console.log(newArr);
 */
 
 /*
@@ -220,10 +253,31 @@ console.log(originalArr)
 
 */
 
+//THIS CODE BELOW WORKS NOW!!! w/ Isa's help; right now it logs 3 arrays (0,1,2)
+//TRY TO ALTER THIS TO GET FOLLOWING GRID:
+/* [[0, 0, 0],
+    [1, 1, 1],
+    [2, 2, 2]]*/
+
+
+/*
+var newArr = []
+
+for (var i = 0; i <= 2; i++) {
+    var newArr2 = [];
+    for (var j = 0; j <= 2; j++) {
+        newArr2.push(i);
+    }
+    newArr.push(newArr2)
+}
+console.log(newArr);
+*/
+
+
 /*
 DONE -- 3.Create an array that mimics a grid like the following using nested for loops:
 
-NOTE:  ***My answer to Gold #3 may not be same thing b/c 3 separate arrays*****
+NOTE:  ***My answer to Gold #3 may not be same thing b/c 3 separate arrays***** SEE OTHER CODE BELOW w/ Isa's help
 
     [[0, 1, 2],
     [0, 1, 2],
@@ -250,6 +304,22 @@ console.log(newArray8);
 console.log(newArray9);
 */
 
+/* THIS CODE HERE WORKS (w/ Isa's help)
+//THIS CODE BELOW WORKS NOW!!! w/ Isa's help; right now it logs 3 arrays (0,1,2)
+var newArr = []
+
+for (var i = 0; i <= 2; i++) {
+    var newArr2 = [];
+    for (var j = 0; j <= 2; j++) {
+        newArr2.push(j);
+    }
+    newArr.push(newArr2)
+}
+console.log(newArr);
+*/
+
+
+
 
 /*
 DONE -- 4.Given a grid like the previous ones, write a nested for loop that would change every number to an x.
@@ -258,7 +328,7 @@ var grid = [["x", ...],
 ["x", ...], ...]
 */
 
-/*
+
 var grid = [
     [0, 1, 2],
     [0, 1, 2],
@@ -277,7 +347,7 @@ for (var i = 0; i < grid.length; i++) {
         console.log(grid);                           //check value of grid array
     }
 }
-*/
+
 
 
 
