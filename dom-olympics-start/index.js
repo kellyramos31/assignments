@@ -1,3 +1,4 @@
+/*
 const head = document.getElementById("header");
 head.textContent = "JavaScript Made This!!"
 head.style.fontWeight = "bold";
@@ -163,7 +164,7 @@ sendButton.addEventListener("click", function () {
 
 //GOLD
 //Be able to add more messages using the form at the bottom.
-
+/*
 const sendButton = document.getElementById("send-button");
 const userInputForm = document.getElementById("input");
 //console.log(userInputForm.value);  //returns "Thank you. Goodbye" which is what is in form now.
@@ -184,6 +185,14 @@ sendButton.addEventListener("click", function (e) {
  //EXTRA CREDIT
  //Every other message will be posted on the right in one color, and the next on the left the other color.
 
+*/
 
+const myHeader = document.getElementById("header");
 
-
+const userName = "James";
+myHeader.textContent = "JavaScript Made This!!"
+myHeader.append(newBreak)
+const newBreak = document.createElement("br")
+const secondLine = document.createElement("h2")
+secondLine.textContent = "James wrote the JavaScript";
+myHeader.append(secondLine);
