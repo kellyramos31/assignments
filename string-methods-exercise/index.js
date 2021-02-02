@@ -21,7 +21,7 @@ capitalizeAndLowercase();
 //  findMiddleIndex("Hello") // => 2
 //  findMiddleIndex("Hello World") // => 5
 
-var startingString = "Hello";
+var startingString = "Hello World";
 var halfIndex
 
 function returnNumberHalfRound() {
@@ -57,9 +57,23 @@ returnHalfString();
 //  capilizeAndLowercase("Hello World") // => "HELLO world"
 
 
+function halfStringUpHalfStringDown() {
+    returnNumberHalfRound();
+    var firstHalfWordStr = startingString.slice(0, halfIndex).toUpperCase();
+    var secondHalfWordStr = startingString.slice(halfIndex).toLowerCase();
+    var joinBack = firstHalfWordStr.concat(secondHalfWordStr);
+    console.log(joinBack);
+}
+
+halfStringUpHalfStringDown()
+
 
 
 //OPTIONAL CODE CHALLENGE:
 //    (This one is a step up in difficulty and utilizes the.split() string method and.join() array method):
 //    Write a function that takes a string as a parameter and capitalizes any character that follows a space.
 //    capitalize("hey friends! practice practice practice!") // -> "Hey Friends! Practice Practice Practice!"
+
+
+
+
