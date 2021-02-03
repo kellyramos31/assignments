@@ -1,4 +1,4 @@
-
+/*
 //DONE -- PART 1 -- BE ABLE TO ADD NEW ITEMS TO LIST - A user will be able to add list items to the pre-built ul using the pre-built form
 //New list items should have the same format as the li's that came with the git repo
 
@@ -12,10 +12,10 @@ The user can edit and "save" the input box's value
 On save, the input box will disappear, and the new value will appear
 */
 
-/*NOTE:  ADDED CODE FOR THIS, but not sure if correct 2nd EXTRA CREDIT:  
+/*NOTE:  ADDED CODE FOR THIS, but not sure if correct 2nd EXTRA CREDIT:
 Use localStorage or sessionStorage to save the list in case the page is refreshed.*/
 
-
+/*
 const myForm = document.addItem;
 
 myForm.addEventListener("submit", e => {
@@ -31,7 +31,7 @@ myForm.addEventListener("submit", e => {
     editButton.textContent = "edit";                        //add text content "edit" to button
     var deleteButton = document.createElement("button");     //create delete button element
     deleteButton.textContent = "X";                         //add text content "X" to button
-    listItem.appendChild(newDiv);                        //append the new div to the li 
+    listItem.appendChild(newDiv);                        //append the new div to the li
     shopList.appendChild(listItem);                     //append li to ul
     listItem.appendChild(editButton)                      //append delete button to li element
     listItem.appendChild(deleteButton)                      //append delete button to li element
@@ -62,9 +62,7 @@ myForm.addEventListener("submit", e => {
     localStorage.getItem("list");
     console.log(list.textContent);
 })
-
-
-
+*/
 //ASSIGNMENT -- INSTRUCTIONS:
 /*
 SETUP:
@@ -106,4 +104,51 @@ Passing off this project completes the Web Applications, Level 1 branch of the s
 
 EXTRA CREDIT:
 Use localStorage or sessionStorage to save the list in case the page is refreshed.
+*/
+
+/*
+const list = document.getElementById("list")
+const items = form.title.value
+// console.log(form.title.value)
+const myList = document.createElement("li")
+list.append(myList)
+const div = document.createElement("div")
+div.textContent = items
+list.prepend(div)
+const editButton = document.createElement("button")
+editButton.textContent = "edit"
+div.append(editButton)
+const xButton = document.createElement("button")
+xButton.textContent = "X"
+div.append(xButton)
+xButton.addEventListener("click", function () {
+    list.remove(items)
+})
+*/
+/* SHIRLEY'S CODE:
+(NOTE:  also worked by changing list.prepend(div) to myList.prepend(div) and then changing the
+xButton eventlistener code to list.removeChild(myList))
+
+
+const form = document.addItem
+form.addEventListener("submit", function (e) {
+    e.preventDefault()
+    const list = document.getElementById("list")
+    const items = form.title.value
+    // console.log(form.title.value)
+    const myList = document.createElement("li")
+    list.append(myList)
+    const div = document.createElement("div")
+    div.textContent = items
+    myList.prepend(div)
+    const editButton = document.createElement("button")
+    editButton.textContent = "edit"
+    div.append(editButton)
+    const xButton = document.createElement("button")
+    xButton.textContent = "X"
+    div.append(xButton)
+    xButton.addEventListener("click", function () {
+        list.removeChild(myList);                                                        //list.removeChild(myList) //myList.items.removeChild()
+    })
+})
 */
