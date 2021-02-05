@@ -1,4 +1,4 @@
-/*
+
 //DONE -- PART 1 -- BE ABLE TO ADD NEW ITEMS TO LIST - A user will be able to add list items to the pre-built ul using the pre-built form
 //New list items should have the same format as the li's that came with the git repo
 
@@ -15,7 +15,7 @@ On save, the input box will disappear, and the new value will appear
 /*NOTE:  ADDED CODE FOR THIS, but not sure if correct 2nd EXTRA CREDIT:
 Use localStorage or sessionStorage to save the list in case the page is refreshed.*/
 
-/*
+
 const myForm = document.addItem;
 
 myForm.addEventListener("submit", e => {
@@ -62,7 +62,9 @@ myForm.addEventListener("submit", e => {
     localStorage.getItem("list");
     console.log(list.textContent);
 })
-*/
+
+
+
 //ASSIGNMENT -- INSTRUCTIONS:
 /*
 SETUP:
@@ -152,3 +154,5 @@ form.addEventListener("submit", function (e) {
     })
 })
 */
+
+
