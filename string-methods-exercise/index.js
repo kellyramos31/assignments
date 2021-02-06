@@ -73,6 +73,7 @@ halfStringUpHalfStringDown()
 //    (This one is a step up in difficulty and utilizes the.split() string method and.join() array method):
 //    Write a function that takes a string as a parameter and capitalizes any character that follows a space.
 //    capitalize("hey friends! practice practice practice!") // -> "Hey Friends! Practice Practice Practice!"
+
 //CHECK THIS LINK FOR HINT ABOUT HOW TO INDEX: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt
 
 var startingString = "hey friends! practice practice practice!";
@@ -97,3 +98,4 @@ capsOnSpace()
 
 
 
+//let character = str.charAt(index)
