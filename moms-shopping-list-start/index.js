@@ -43,6 +43,7 @@ myForm.addEventListener("submit", e => {
         editButton.textContent = "save";                    //change "edit" text to "save"
         var editBox = document.createElement("input");      //have input box appear with list item in it
         editBox.type = "text";                              //give input box type of text
+        editBox.value = newDiv.textContent;                 //have the previously entered list item show up in edit input box
         listItem.appendChild(editBox);                      //append new input box to the list item.
         if (editBox.text !== "") {
             editBox.addEventListener("change", e => {
@@ -108,51 +109,5 @@ EXTRA CREDIT:
 Use localStorage or sessionStorage to save the list in case the page is refreshed.
 */
 
-/*
-const list = document.getElementById("list")
-const items = form.title.value
-// console.log(form.title.value)
-const myList = document.createElement("li")
-list.append(myList)
-const div = document.createElement("div")
-div.textContent = items
-list.prepend(div)
-const editButton = document.createElement("button")
-editButton.textContent = "edit"
-div.append(editButton)
-const xButton = document.createElement("button")
-xButton.textContent = "X"
-div.append(xButton)
-xButton.addEventListener("click", function () {
-    list.remove(items)
-})
-*/
-/* SHIRLEY'S CODE:
-(NOTE:  also worked by changing list.prepend(div) to myList.prepend(div) and then changing the
-xButton eventlistener code to list.removeChild(myList))
-
-
-const form = document.addItem
-form.addEventListener("submit", function (e) {
-    e.preventDefault()
-    const list = document.getElementById("list")
-    const items = form.title.value
-    // console.log(form.title.value)
-    const myList = document.createElement("li")
-    list.append(myList)
-    const div = document.createElement("div")
-    div.textContent = items
-    myList.prepend(div)
-    const editButton = document.createElement("button")
-    editButton.textContent = "edit"
-    div.append(editButton)
-    const xButton = document.createElement("button")
-    xButton.textContent = "X"
-    div.append(xButton)
-    xButton.addEventListener("click", function () {
-        list.removeChild(myList);                                                        //list.removeChild(myList) //myList.items.removeChild()
-    })
-})
-*/
 
 
