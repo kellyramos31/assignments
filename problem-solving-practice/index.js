@@ -48,7 +48,7 @@ function checkForCharacter() {
     }
 }
 
-checkForCharacter(wordsArr, char)
+checkForCharacter()
 
 
 //DONE -- #3:  Write a function that takes a num1 and num2 and returns whether num1 is divisible by num2.
