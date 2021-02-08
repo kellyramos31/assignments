@@ -53,7 +53,7 @@ printFizzBuzz()
 
 
 
-/*OPTIONAL:
+/* DONE -- OPTIONAL:
 Write a function that keeps a tally of how often the phrases "fizz", "buzz", and "fizzbuzz" occur in the array returned from the previous function.
 It should return an object that looks like this:
 {
