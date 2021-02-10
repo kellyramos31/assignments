@@ -37,7 +37,7 @@ let gameOver = false;
 
 const options = ["Walk"]
 
-const errorChoicesArr = ["infinite loop", "missing curly brace", "undefined", "NaN", "cannot read property of", "uncaught syntax error"]
+const errorChoicesArr = ["INFINITE LOOP", "MISSING CURLY BRACE", "UNDEFINED", "NaN", "CANNOT READ PROPERTY OF", "UNCAUGHT SYNTAX ERROR"]
 
 const enemyForYou = ["with a GOOGLE SEARCH", "by DELETING & STARTING OVER", "with a CONSOLE.LOG", "with a DEV TOOLS BREAKPOINT", "with the SOURCES TAB", "by sending a SLACK CHANNEL MESSAGE", "by calling a DEVELOPER FRIEND"]
 
@@ -77,7 +77,7 @@ function walk() {
         console.log(`Now we're stepping through the code, ${characterName}!`)
         maybeEnemy();
     } else if (walking === false) {
-        gameOver == true;
+        gameOver = true;
         console.log(`You have cancelled out of the game`)
     }
 }
@@ -91,7 +91,7 @@ function maybeEnemy() {                                 //random enemy -- random
         attackOrRun();
     } else {
         console.log(`All is WELL, ${characterName}`)
-        console.log(`GREAT JOB!  You're still causing havoc, YOU CRAZY BUG! `)
+        console.log(`GREAT JOB!  You're still wreaking havoc, YOU CRAZY BUG! `)
         console.log(`Let's keep WALKING through the program!`);
         walk();
     }
@@ -102,7 +102,6 @@ function uhOhEnemy() {
     console.log(uhOh)
     let heresTheEnemy = enemyForYou[uhOh];
     console.log(`And that sinister software engineer is going to ATTACK you ${heresTheEnemy}!`)
-    attackOrRun();
 }
 
 function attackOrRun() {                                          //user has choice to attack or run
@@ -114,7 +113,7 @@ function attackOrRun() {                                          //user has cho
         playerTotals.healthPoints -= damage;
         console.log(playerTotals.healthPoints);
         console.log(`Your buggy self survived, but you sustained some damage and lost ${damage} healthpoint(s) in that last battle:(`)
-        console.log(`Now your total healthpoints are at ${playerTotals.healthPoints}.  Be careful out there!`);
+        console.log(`Now your total healthpoints are at ${playerTotals.healthPoints}.  BE CAREFUL OUT THERE!`);
         enemyAttacksBack();
 
     } else if (attackRunAnswer === false) {                                     //false means RUN
@@ -139,20 +138,27 @@ function enemyAttacksBack() {                                         //After th
         console.log(`CONGRATS!! You're one NASTY BUG!  You are triumphant over and safe from the DASTARDLY PROGRAMMER (for now!)!`);
         let positiveHealthPoints = Math.floor(Math.random() * 10) + 1         //awards random number of health points for fighting off enemy
         playerTotals.healthPoints += positiveHealthPoints;
-        let inventoryItem = Math.floor(Math.random() * 7);              //randomly select inventory item from errors array
-        let newErrorReward = inventoryOfErrorsArr.push(errorChoicesArr[inventoryItem]);
-        playersTotal.inventoryOfErrorsArr += newErrorReward;
+        console.log(playerTotals.healthPoints)
+        //let inventoryItemIndex = Math.floor(Math.random() * 7);              //randomly select inventory item from errors array
+        //let newErrorReward = errorChoicesArr[inventoryItemIndex];
+        //inventoryOfErrorsArr.push(newErrorReward);
+        let randomReward = errorChoicesArr[Math.floor(Math.random() * errorChoicesArr.length)];
+        inventoryOfErrorsArr.push(randomReward);
+        console.log(inventoryOfErrorsArr);
         console.log(`Bravo, ${characterName}!`);
-        console.log(`Your reward is ${positiveHealthPoints} health point(s)`)
-        console.log(`AND a NEW ERROR has been added to your inventory: ${newErrorReward}! ROCK ON, BUG!`);
+        console.log(`Your reward is ${positiveHealthPoints} health point(s).  And now your total health points have moved up to ${playerTotals.healthPoints}!`)
+        console.log(`ROCK ON, BUG!  You deserve a REWARD after that vicious battle!`)
+        console.log(`And HERE IT IS...the following item has been added to your ERROR inventory: ${randomReward}! `);
+        console.log(`Now you have more tools to outwit that conniving developer!`)
 
     } else {
         playerTotals.healthPoints -= fightsBackDamage;
         console.log(playerTotals.healthPoints)
-        console.log(`HOLD ON!  That fierce developer is not going to give up!  WATCH OUT!!`)
+        console.log(`HOLD ON!  Now YOU are being ATTACKED!  That fierce developer is not going to give up!  WATCH OUT!!`)
         console.log(`Whew, ${characterName}, that was an intense battle!`)
         console.log(`You sustained ${fightsBackDamage} point(s) worth of damage in that brawl and are a little bit weaker.`)
-        console.log(`Your new health points total is ${playerTotals.healthPoints}.  STAY VIGILANT!`);
+        console.log(`Your new health points total is ${playerTotals.healthPoints}.`)
+        console.log(`STAY VIGILANT!`);
     }
 }
 
