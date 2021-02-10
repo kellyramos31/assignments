@@ -186,7 +186,7 @@ sendButton.addEventListener("click", function (e) {
  //Every other message will be posted on the right in one color, and the next on the left the other color.
 
 */
-
+/*
 const myHeader = document.getElementById("header");
 
 const userName = "James";
@@ -196,3 +196,5 @@ const newBreak = document.createElement("br")
 const secondLine = document.createElement("h2")
 secondLine.textContent = "James wrote the JavaScript";
 myHeader.append(secondLine);
+*/
+

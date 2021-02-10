@@ -1,6 +1,6 @@
 /*The year is 1985. Your job is to build a text - based(console) RPG game.
 
-The point of this exercise is to better master Javascript functions, loops, conditionals, and some data types.
+***The point of this exercise is to better master Javascript functions, loops, conditionals, and some data types.***
 
 Project Requirements:
 Console must greet player with a fun message
@@ -23,7 +23,7 @@ If the user enters 'Print' or 'p' in the console, the console will print the pla
 
 /* 
 
-possible inventory of errors:  infinite loop, missing curly brace, undefined, null, NaN, cannot read property, uncaught syntax error
+possible inventory of errors:  
 
 possible enemies:  Twitter, Slack channel, Stack OverFlow, w3schools, colleagues/developer friends
 */
@@ -33,47 +33,133 @@ const readline = require("readline-sync");
 
 const name = readline.question("What is your name? ");
 
-const characterName = readline.question("Welcome to My Buggy Adventure, ".concat(name).concat("! Now, you need a name for the game.  Type in your choice for your game character's name: "))
+let gameOver = false;
 
-const startGame = readline.question("Great, ".concat(characterName + "! Are you ready to play?  Type Y or N. "))
+const options = ["Walk"]
 
-if (startGame === "Y") {
-    console.log("Welcome to My Buggy Adventure, where you're the bug and you need to survive, so that you can keep messing with the program (and the programmer!)!!!")
-    walk();
-} else {
-    console.log("When you're ready to start, please type Y")
+const errorChoicesArr = ["infinite loop", "missing curly brace", "undefined", "NaN", "cannot read property of", "uncaught syntax error"]
+
+const enemyForYou = ["with a GOOGLE SEARCH", "by DELETING & STARTING OVER", "with a CONSOLE.LOG", "with a DEV TOOLS BREAKPOINT", "with the SOURCES TAB", "by sending a SLACK CHANNEL MESSAGE", "by calling a DEVELOPER FRIEND"]
+
+let inventoryOfErrorsArr = [];
+
+//PLAYER TOTALS OBJECT
+
+playerTotals = {
+    name: name,
+    healthPoints: 100,
+    inventory: inventoryOfErrorsArr
 }
 
 
-const gameOver = false;
-const options = ["Walk", "Attack", "Run", "End Game"]
-const enemies = ["Google search", "delete & start over", "console.log", "breakpoint", "sources tab", "Slack channel", "developer friend"]
+
+const characterName = readline.question(`Welcome to MY BUGGY ADVENTURE, ${name}! Now, you need a game name.  Type in your choice for your game character's name: `);
+
+const startGame = readline.question(`Great, ${characterName}! Let's Play!  Type Y if you're ready to go:  `);
+
+
+
+//const userAnswer = readline.keyIn('Enter W (to Walk) or X (to Cancel)', { limit: 'wx' }); `What would you like to do, ${characterName}?`;
+//example:  direction = readlineSync.keyIn('Left or Right? ', { limit: 'lr' }); // 'l' or 'r'
+
+
+if (startGame === "Y" || startGame === "y") {
+    console.log("Welcome to MY BUGGY ADVENTURE, where YOU are the BUG!  And you need to survive, so that you can keep messing with the program (and the programmer!)!!!")
+    while (!gameOver) {
+        walk();
+    }
+}
+
 
 function walk() {
-    const walking = readline.question("Please type W, to walk through the glitchy program. ");
-    if (walking === "W") {
-        console.log("now we're walking!")
+    const walking = readline.question(`Please enter W (to WALK) or X (to end game) `, { trueValue: ["w", "W"], falseValue: ["x", "X"] });
+    if (walking === true) {                                                      //when player selects "W"
+        console.log(`Now we're stepping through the code, ${characterName}!`)
+        maybeEnemy();
+    } else if (walking === false) {
+        gameOver == true;
+        console.log(`You have cancelled out of the game`)
+    }
+}
+
+
+function maybeEnemy() {                                 //random enemy -- random algorithm runs to determine IF an enemy appears
+    let enemy = Math.floor(Math.random() * 5)          //returns random number between 0 and 4 (right now 50% chance of attack; reduce to 33% or 25%)
+    if (enemy % 2 === 0) {
+        console.log(enemy + " UH OH!  You are under ATTACK from the evil programmer!")
+        uhOhEnemy();
+        attackOrRun();
+    } else {
+        console.log(`All is WELL, ${characterName}`)
+        console.log(`GREAT JOB!  You're still causing havoc, YOU CRAZY BUG! `)
+        console.log(`Let's keep WALKING through the program!`);
+        walk();
+    }
+}
+
+function uhOhEnemy() {
+    let uhOh = Math.floor(Math.random() * 7);                    //if enemy appears, which enemy appears is random
+    console.log(uhOh)
+    let heresTheEnemy = enemyForYou[uhOh];
+    console.log(`And that sinister software engineer is going to ATTACK you ${heresTheEnemy}!`)
+    attackOrRun();
+}
+
+function attackOrRun() {                                          //user has choice to attack or run
+    const attackRunAnswer = readline.question(`Now you have a choice.  Enter A (to ATTACK) or R (to RUN) `, { trueValue: ["a", "A"], falseValue: ["r", "R"] });
+    if (attackRunAnswer === true) {                                 //true means ATTACK
+        console.log("You are on the attack! Keep it BUGGY!");
+        let damage = Math.floor(Math.random() * 10) + 1;            //if attack: random amount of damage between a min(1) & max(10)
+        console.log(damage);
+        playerTotals.healthPoints -= damage;
+        console.log(playerTotals.healthPoints);
+        console.log(`Your buggy self survived, but you sustained some damage and lost ${damage} healthpoint(s) in that last battle:(`)
+        console.log(`Now your total healthpoints are at ${playerTotals.healthPoints}.  Be careful out there!`);
+        enemyAttacksBack();
+
+    } else if (attackRunAnswer === false) {                                     //false means RUN
+        console.log("You are on the run! But will you escape undetected?")
+        let runFastEnough = Math.floor(Math.random() * 2);                          //if run:  50% chance of escaping
+        if (runFastEnough === 0) {
+            console.log(`Good thing you are a fast runner, ${characterName}!  You are safe FOR NOW.`);
+            enemyAttacksBack();
+
+        } else if (runFastEnough === 1) {
+            console.log(`Well, ${characterName}, you can't outrun this wiley programmer!  YOU'VE BEEN SQUASHED!  Bye, bye!`);
+            gameOver = true;
+            console.log(gameOver)
+        }
+    }
+}
+
+function enemyAttacksBack() {                                         //After the player attacks or runs the enemy attacks back for a random damage amount
+    let fightsBackDamage = Math.floor(Math.random() * 10) + 1;
+    console.log(fightsBackDamage);
+    if (fightsBackDamage === 3 || fightsBackDamage === 9) {  //If the player kills the enemy -- give the Player some HP and a special item that is stored in the inventory.   
+        console.log(`CONGRATS!! You're one NASTY BUG!  You are triumphant over and safe from the DASTARDLY PROGRAMMER (for now!)!`);
+        let positiveHealthPoints = Math.floor(Math.random() * 10) + 1         //awards random number of health points for fighting off enemy
+        playerTotals.healthPoints += positiveHealthPoints;
+        let inventoryItem = Math.floor(Math.random() * 7);              //randomly select inventory item from errors array
+        let newErrorReward = inventoryOfErrorsArr.push(errorChoicesArr[inventoryItem]);
+        playersTotal.inventoryOfErrorsArr += newErrorReward;
+        console.log(`Bravo, ${characterName}!`);
+        console.log(`Your reward is ${positiveHealthPoints} health point(s)`)
+        console.log(`AND a NEW ERROR has been added to your inventory: ${newErrorReward}! ROCK ON, BUG!`);
+
+    } else {
+        playerTotals.healthPoints -= fightsBackDamage;
+        console.log(playerTotals.healthPoints)
+        console.log(`HOLD ON!  That fierce developer is not going to give up!  WATCH OUT!!`)
+        console.log(`Whew, ${characterName}, that was an intense battle!`)
+        console.log(`You sustained ${fightsBackDamage} point(s) worth of damage in that brawl and are a little bit weaker.`)
+        console.log(`Your new health points total is ${playerTotals.healthPoints}.  STAY VIGILANT!`);
     }
 }
 
 
 
-//when player selects "W"
-//random enemy -- random algorithm runs to determine IF an enemy appears
-//if enemy appears, which enemy is random
-//user has choice to attack or run
-//if attack: random amount of damage between a min & max
-//if run:  50% chance of escaping
-//then have 1/3 or 1/4 chance of being attacked
-//After the player attacks or runs the enemy attacks back for a random damage amount
-//If the player kills the enemy you can give the Player some HP and a special item 
-//that is stored in the inventory.After this, the player will continue walking.Use a while loop to control this flow.
+//After this, the player will continue walking.  Use a while loop to control this flow.
 //If the enemy kills the player the console prints a cool death message and the game ends     
-
-
-
-
-
 
 
 

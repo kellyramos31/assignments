@@ -12,10 +12,8 @@ The user can edit and "save" the input box's value
 On save, the input box will disappear, and the new value will appear
 */
 
-/*NOTE:  ADDED CODE FOR THIS, but not sure if correct 2nd EXTRA CREDIT:
-Use localStorage or sessionStorage to save the list in case the page is refreshed.*/
-
-
+/*NOTE:  ADDED CODE FOR THIS, but not sure if correct 2nd EXTRA CREDIT:*/
+/*
 const myForm = document.addItem;
 
 myForm.addEventListener("submit", e => {
@@ -63,8 +61,7 @@ myForm.addEventListener("submit", e => {
     localStorage.getItem("list");
     console.log(list.textContent);
 })
-
-
+*/
 
 //ASSIGNMENT -- INSTRUCTIONS:
 /*
@@ -110,4 +107,81 @@ Use localStorage or sessionStorage to save the list in case the page is refreshe
 */
 
 
+/*
+const form = document.addItem
+form.addEventListener("submit", function (e) {
+    e.preventDefault()
+    const list = document.getElementById("list")
+    const items = form.title.value
+    // console.log(form.title.value)
+    const myList = document.createElement("li")
+    list.appendChild(myList)
+    const div = document.createElement("div")
+    div.textContent = items
+    list.prepend(div)
+    const editButton = document.createElement("button")
+    editButton.textContent = "edit"
+    div.append(editButton)
+    const xButton = document.createElement("button")
+    xButton.textContent = "X"
+    div.append(xButton)
+    xButton.addEventListener("click", function () {
+        div.remove()
+    })
+    editButton.addEventListener("click", function () {
+        //     I need to create an input box and
+        //  edit button needs to change to save
+        // when I put items in the input box and then click save it will show up as the new item
+        // after save is clicked, it becomes edit again
+        // input box also goes away
+        const newInputBox = document.createElement("input")
+        div.append(newInputBox)
+        editButton.textContent = "save"
+    })
+    // const newItems = input.textContent
+    // const saveBtn =
+    // saveBtn.addEventListener ("click", function(){
+    //     list.
+})
+*/
 
+const form = document.addItem
+form.addEventListener("submit", function (e) {
+    e.preventDefault()
+    const list = document.getElementById("list")
+    const items = form.title.value
+    console.log(form.title.value)
+    const myList = document.createElement("li")
+    list.appendChild(myList)
+    const div = document.createElement("div")
+    div.textContent = items
+    list.prepend(div)
+    const editButton = document.createElement("button")
+    editButton.textContent = "edit"
+    div.append(editButton)
+    const xButton = document.createElement("button")
+    xButton.textContent = "X"
+    div.append(xButton)
+    xButton.addEventListener("click", function () {
+        e.preventDefault();
+        div.remove()
+    })
+
+    editButton.addEventListener("click", function () {
+        //     I need to create an input box and
+        //  edit button needs to change to save
+        // when I put items in the input box and then click save it will show up as the new item
+        // after save is clicked, it becomes edit again
+        // input box also goes away
+        e.preventDefault();
+        const newInputBox = document.createElement("input")
+        div.append(newInputBox)
+        editButton.textContent = "save"
+    })
+})
+
+    // const newItems = input.textContent
+    // const saveBtn =
+    // saveBtn.addEventListener ("click", function(){
+    //     saveBtn.textContext="edit"
+    //const newItems = items
