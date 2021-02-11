@@ -62,7 +62,7 @@ myForm.addEventListener("submit", e => {
     console.log(list.textContent);
 })
 */
-
+/*
 //ASSIGNMENT -- INSTRUCTIONS:
 /*
 SETUP:
@@ -144,7 +144,7 @@ form.addEventListener("submit", function (e) {
     //     list.
 })
 */
-
+/*
 const form = document.addItem
 form.addEventListener("submit", function (e) {
     e.preventDefault()
@@ -185,3 +185,46 @@ form.addEventListener("submit", function (e) {
     // saveBtn.addEventListener ("click", function(){
     //     saveBtn.textContext="edit"
     //const newItems = items
+*/
+
+const form = document.addItem
+form.addEventListener("submit", function (e) {
+    e.preventDefault()
+    const list = document.getElementById("list")
+    const items = form.title.value
+    // console.log(form.title.value)
+    const myList = document.createElement("li")
+    list.appendChild(myList)
+    const div = document.createElement("div")
+    div.textContent = items
+    myList.append(div)            //changed to myList from list //changed prepend to append here
+    const editButton = document.createElement("button")
+    editButton.textContent = "edit"
+    myList.append(editButton)              //changed back to myList
+    const xButton = document.createElement("button")
+    xButton.textContent = "X"
+    myList.append(xButton)                  //changed back to myList
+    xButton.addEventListener("click", function (e) {
+        myList.remove()
+    })
+    editButton.addEventListener("click", function () {
+        e.preventDefault()
+        editButton.textContent = "save"
+        const newInputBox = document.createElement("input")
+        newInputBox.type = "text";            //added this line
+        newInputBox.value = div.textContent
+        div.appendChild(newInputBox)            //made it appendChild instead of append
+        if (newInputBox.text !== "") {
+            newInputBox.addEventListener("change", function () {
+                e.preventDefault()
+                //const newItems = newInputBox.value
+                editButton.textContent = "edit"
+                div.textContent = newInputBox.value;  //took out the const newItems = newInputBox.value and just assigned it to the div.textContent
+                newInputBox.remove();
+            })
+        }
+    })
+})
+
+
+
