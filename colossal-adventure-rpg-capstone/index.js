@@ -47,7 +47,7 @@ const startGame = readline.question(`\nThanks, ${characterName}! Let's Play!  En
 
 playerTotals = {
     name: name,
-    healthPoints: 100,
+    healthPoints: 10,
     inventory: inventoryOfErrorsArr
 }
 
@@ -60,11 +60,11 @@ if (startGame === "Y" || startGame === "y") {
     console.log(`\nYou'll start with a total of 100 health points.`)
     console.log(`Each time you attack the developer OR the developer attacks you,`)
     console.log(`you will feel a little less buggy and your health points will DECREASE.`);
-    console.log(`\nBUT...if you can TAKE OUT the developer during a fierce battle,`)
-    console.log(`you will EARN health points, so you can feel EVEN BUGGIER!`);
-    console.log(`    PLUS...a developer's demise activates a BONUS REWARD:`)
-    console.log(`    a sparkling NEW WEAPON added to your inventory stash, so you can`)
-    console.log(`    throw it at the next crafty software developer who comes your way!`);
+    console.log(`\nBUT...if you can TAKE OUT the developer,`)
+    console.log(`you will EARN health points, so you can be EVEN BUGGIER!`);
+    console.log(`\nPLUS...the developer's demise also activates a BONUS REWARD:`)
+    console.log(`a sparkling NEW WEAPON will be added to your inventory stash,`)
+    console.log(`so you can throw it at the next crafty software developer who comes your way!`);
     console.log(`\nGOOD LUCK!`)
 
     while (!gameOver) {
@@ -75,15 +75,27 @@ if (startGame === "Y" || startGame === "y") {
             console.log(`But that last attack was just too much for you.`)
             console.log(`\nYour health points have been depleted,`)
             console.log(`which means you've been SQUASHED.`)
-            console.log(`HASTA LA VISTA, BUGGY!`)
-            console.log(`See you next time!`)
+            console.log(`\nHASTA LA VISTA, BUGGY!`)
+            console.log(`\nSee you next time!`)
             gameOver = true;
         }
     }
+} else if (startGame !== "Y" || startGame !== "y") {
+    console.log(`Sorry, that command is not recognized.  Please try again, ${characterName}.`)
 }
 
 
 //FUNCTIONS
+
+function startGAme() {
+
+
+}
+
+
+
+
+
 
 function walk() {
     const walking = readline.question(`\nKEEP IT BUGGY!  Please enter W (to WALK through the code) or X (to end game) `, { trueValue: ["w", "W"], falseValue: ["x", "X"] });  //ADD P for tallies to this menu??
@@ -94,7 +106,8 @@ function walk() {
     } else if (walking === false) {
         gameOver = true;
         console.log(`You have cancelled out of the game`)
-    }
+    } else
+        console.log(`Sorry, that command is not recognized.  Please try again, ${characterName}.`)      //if type the incorrect letter
 }
 
 function maybeEnemy() {                                 //random enemy -- random algorithm runs to determine IF an enemy appears
@@ -105,7 +118,7 @@ function maybeEnemy() {                                 //random enemy -- random
         attackOrRun();
     } else {
         console.log(`You're still wreaking havoc ${characterName}, YOU CRAZY BUG! `)
-        console.log(`Let's make the developer keep re-running that code!`);
+        console.log(`Let's make the developer keep re-running the code!`);
         walk();
     }
 }
@@ -114,15 +127,15 @@ function uhOhEnemy() {
     let uhOh = Math.floor(Math.random() * 8);                    //if enemy appears, which enemy appears is random
     //console.log(uhOh)
     let heresTheEnemy = enemyForYou[uhOh];
-    console.log(`And that sinister software engineer is going`)
-    console.log(`to ATTACK you ${heresTheEnemy}!`)
+    console.log(`And that sinister software engineer is`)
+    console.log(`ATTACKING you ${heresTheEnemy}!`)
 }
 
 function attackOrRun() {                                          //user has choice to attack or run
     const attackRunAnswer = readline.question(`\nSo you must make a quick decision:  Enter A (to ATTACK) or R (to RUN) `, { trueValue: ["a", "A"], falseValue: ["r", "R"] });
     if (attackRunAnswer === true) {                                 //true means ATTACK
         console.log("\nNow, YOU are on the ATTACK and throwing your most devious ERROR!");
-        let damage = Math.floor(Math.random() * 10) + 1;            //if attack: random amount of damage between a min(1) & max(10)
+        let damage = Math.floor(Math.random() * 20) + 1;            //if attack: random amount of damage between a min(1) & max(20)
         //console.log(damage);
         playerTotals.healthPoints -= damage;
         //console.log(playerTotals.healthPoints);
@@ -136,26 +149,27 @@ function attackOrRun() {                                          //user has cho
     } else if (attackRunAnswer === false) {                                     //false means RUN
         console.log("\nYou are ON THE RUN! But will you escape undetected?")
         let runFastEnough = Math.floor(Math.random() * 2);                          //if run:  50% chance of escaping
-        if (runFastEnough === 0) {                                                  //if returns 0, then ESCAPED BY RUNNING
+        if (runFastEnough === 0) {                                                  //if returns 0: then ESCAPED BY RUNNING
             console.log(`Good thing you're fast, ${characterName}!!  You are safe FOR NOW.`);
             enemyAttacksBack();
             viewPlayerTotals();
 
-        } else if (runFastEnough === 1) {                                           //if returns 1, then RAN, BUT NOT FAST ENOUGH.  
+        } else if (runFastEnough === 1) {                                           //if returns 1: then RAN, BUT NOT FAST ENOUGH.  
             console.log(`\nWell, ${characterName}, you CAN'T outrun this wiley programmer!`)
-            console.log(`YOU'VE BEEN SQUASHED!!`)
+            console.log(`\nYOU'VE BEEN SQUASHED!!`)
             console.log(`BYE, BYE, BUG!!`)
-            console.log(`SEE YOU NEXT TIME!!`);
+            console.log(`\nSEE YOU NEXT TIME!!`);
             gameOver = true;
             //console.log(gameOver)
         }
-    }
+    } else
+        console.log(`Sorry, that command is not recognized.  Please try again, ${characterName}.`)      //if type the incorrect letter
 }
 
-function enemyAttacksBack() {                                         //After the player attacks or runs the enemy attacks back for a random damage amount
-    let fightsBackDamage = Math.floor(Math.random() * 20) + 1;
+function enemyAttacksBack() {
+    let fightsBackDamage = Math.floor(Math.random() * 20) + 1;    //After player attacks/runs--enemy attacks back for a random amt. damage (1-20)
     console.log(`\nOH NO!  That crazy developer is not going to give up so easily!`)
-    console.log(`Here come's the COUNTER ATTACK!`)
+    console.log(`Here comes the COUNTER ATTACK!`)
     //console.log(fightsBackDamage);
     if (fightsBackDamage === 3 || fightsBackDamage === 9 || fightsBackDamage === 10) {   //If the player kills the enemy:give the Player some HP and a special item that is stored in the inventory.   
         console.log(`\nCONGRATS!! You're one NASTY BUG!`)
@@ -169,11 +183,12 @@ function enemyAttacksBack() {                                         //After th
         //console.log(inventoryOfErrorsArr);
         console.log(`\nBRAVO, ${characterName}!`);
         console.log(`Your REWARD is ${positiveHealthPoints} health point(s).  ROCK ON, BUG!`)
-        console.log(`\nYou deserve an extra REWARD after that EPIC battle!`)
-        console.log(`\nAnd HERE IT IS...to beef up your weapons inventory,`)
+        console.log(`You deserve an extra special REWARD after that EPIC battle!`)
+        console.log(`\nAnd HERE IT IS...`)
+        console.log(`To beef up your weapons inventory,`)
         console.log(`you have been gifted:  ${randomReward}! `);
-        console.log(`\nNow you have EVEN MORE TOOLS`)
-        console.log(`to outwit the NEXT conniving developer!`)
+        console.log(`\nNow you have even more tools`)
+        console.log(`to outwit the next conniving developer!`)
         //console.log(playerTotals)
 
     } else {
@@ -184,25 +199,34 @@ function enemyAttacksBack() {                                         //After th
         console.log(`You sustained ${fightsBackDamage} point(s) worth of damage during that brawl`)
         console.log(`and are feeling the pain.`)
         console.log(`\nSTAY VIGILANT!`)
-        console.log(`And throw those errors like confetti!`);
+        console.log(`And throw those errors like confetti!!`);
     }
 }
 
 function viewPlayerTotals() {                                            //check player's game tallies
     const checkTallies = readline.question(`\nIf you would like to check your game totals, enter "P".  Otherwise, enter "C" to continue `, { trueValue: ["p", "P"], falseValue: ["c", "C"] });  //ADD P for tallies to this menu??
-    if (checkTallies === true) {
+    if (checkTallies === true && playerTotals.healthPoints > 0) {
         console.log(`\nHere are your latest tallies:`)                                             //when player selects "P"
         console.log(playerTotals)
         walk()
-    } else if (checkTallies === false && playerTotals.healthPoints > 0) {
-        walk();
-    } else if (checkTallies === false && playerTotals.healthPoints <= 0) {
+    } else if (checkTallies === true && playerTotals.healthPoints <= 0) {
+        console.log(`OH NO! Your health points have been depleted,`)
+        console.log(`...which means you've been SQUASHED.`)
         console.log(`\nHere are your final player tallies, ${characterName}:`)
         console.log(playerTotals)
-        console.log(`\nYour health points have been depleted,`)
-        console.log(`...which means you've been SQUASHED.`)
-        console.log(`HASTA LA VISTA, BUGGY!`)
+        console.log(`\nHASTA LA VISTA, BUGGY!`)
         console.log(`See you next time!`)
         gameOver = true;
-    }
+    } else if (checkTallies === false && playerTotals.healthPoints > 0) {
+        walk();
+    } else if (checkTallies === false || playerTotals.healthPoints <= 0) {
+        console.log(`\nOH NO! Your health points have been depleted,`)
+        console.log(`...which means you've been SQUASHED.`)
+        console.log(`\nHere are your final player tallies, ${characterName}:`)
+        console.log(playerTotals)
+        console.log(`\nHASTA LA VISTA, BUGGY!`)
+        console.log(`See you next time!`)
+        gameOver = true;
+    } else
+        console.log(`Sorry, that command is not recognized.  Please try again, ${characterName}.`)
 }
