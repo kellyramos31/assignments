@@ -19,70 +19,58 @@ When the player kills enemies, they are awarded with items
 If the user enters 'Print' or 'p' in the console, the console will print the players name, HP, and each item in their inventory
 */
 
-
-//VARIABLES 
+//INITIALIZE READLINE-SYNC
 const readline = require("readline-sync");
 
+//VARIABLES 
 const name = readline.question("\nGreetings!  What is your name? ");
 
 let gameOver = false;
 
-const errorChoicesArr = ["INFINITE LOOP", "MISSING CURLY BRACE", "IMPOSTER SYNDROME", "UNDEFINED", "NOT A FUNCTION", "NaN", "REFERENCE ERROR", "TYPE ERROR", "SYNTAX ERROR"]
+const errorChoicesArr = ["INFINITE LOOP", "MISSING CURLY BRACE", "IMPOSTER SYNDROME", "UNDEFINED", "ERRANT SEMI-COLON", "NOT A FUNCTION", "NaN", "REFERENCE ERROR", "TYPE ERROR", "SYNTAX ERROR"]
 
-const enemyForYou = ["with a GOOGLE SEARCH", "with CAFFEINE", "by DELETING & STARTING OVER", "with a CONSOLE.LOG", "with a DEV TOOLS BREAKPOINT", "with the SOURCES TAB", "by sending a SLACK CHANNEL MESSAGE", "by calling a DEVELOPER FRIEND"]
+const enemyForYou = ["with a GOOGLE SEARCH", "with CAFFEINE", "by DELETING & STARTING OVER", "with a CONSOLE.LOG", "with a DEV TOOLS BREAKPOINT", "with the SOURCES TAB", "by sending a SLACK CHANNEL MESSAGE", "by Zooming with a DEVELOPER FRIEND"]
 
 let inventoryOfErrorsArr = [];
 
 
-//GREETINGS FOR START OF GAME
-
+//GET PLAYER NAMES
 const characterName = readline.question(`\nWelcome to our world, ${name}! Now, you need a game name.  Type in your choice for a game character name: `);
 
-//const startGame = readline.question(`\nThanks, ${characterName}! Let's Play!  Enter Y if you're ready to go:  `);
-
-
 //PLAYER TOTALS OBJECT
-
 playerTotals = {
     name: name,
     healthPoints: 75,
     inventory: inventoryOfErrorsArr
 }
 
+//WELCOME MESSAGE
+welcomeGreeting();
 
 //OVERALL GAME LOOP
-
-//if (startGame === "Y" || startGame === "y") {
-
-//WELCOME MESSAGE
-console.log(`\nWELCOME TO MY BUGGY ADVENTURE, ${characterName}...where YOU are the BUG in the JavaScript!`)
-console.log(`~~Your mission is to SURVIVE so that you can keep messing with the program...and the programmer!!!)~~`)
-console.log(`\nYou'll start with a total of 75 health points.`)
-console.log(`Each time you attack the developer OR the developer attacks you,`)
-console.log(`you will feel a little less buggy and your health points will DECREASE.`);
-console.log(`\nBUT...if you can TAKE OUT the developer,`)
-console.log(`you will EARN health points, so you can get EVEN BUGGIER!`);
-console.log(`\nPLUS...the developer's demise also activates a BONUS REWARD:`)
-console.log(`A sparkling NEW WEAPON will be added to your inventory stash,`)
-console.log(`so you can throw it at the next crafty software developer who comes your way!`);
-console.log(`\nGOOD LUCK!`)
-
 while (!gameOver) {
     if (playerTotals.healthPoints > 0) {                                   //game continues if still have HP left; if YES, then WALK
         walk();
     } else if (playerTotals.healthPoints <= 0) {                           //else, if HP is zero or negative, then game ends
-        console.log(`\nYou fought the BUGGY fight, ${characterName}.`)
-        console.log(`But that last attack was just too much for you.`)
-        console.log(`\nYour health points have been depleted,`)
-        console.log(`which means you've been SQUASHED.`)
-        console.log(`\nHASTA LA VISTA, BUGGY!`)
-        console.log(`\nSee you next time!`)
-        gameOver = true;
+        byeByePlayer()
     }
 }
 
-
 //FUNCTIONS
+function welcomeGreeting() {
+    console.log(`\nWELCOME TO MY BUGGY ADVENTURE, ${characterName}...where YOU are the BUG in the JavaScript!`)
+    console.log(`~~Your mission is to SURVIVE so that you can keep messing with the program...and the programmer!!!)~~`)
+    console.log(`\nYou'll start with a total of 75 health points.`)
+    console.log(`Each time you attack the developer OR the developer attacks you,`)
+    console.log(`you will feel a little less buggy and your health points will DECREASE.`);
+    console.log(`\nBUT...if you can TAKE OUT the developer,`)
+    console.log(`you will EARN health points, so you can get EVEN BUGGIER!`);
+    console.log(`\nPLUS...the developer's demise also activates a BONUS REWARD:`)
+    console.log(`A sparkling NEW WEAPON will be added to your inventory stash,`)
+    console.log(`so you can throw it at the next crafty software developer who comes your way!`);
+    console.log(`\nGOOD LUCK!`)
+}
+
 function walk() {
     const walking = readline.question(`\nKEEP IT BUGGY!  Please enter W (to WALK through the code) or X (to end game) `, { trueValue: ["w", "W"], falseValue: ["x", "X"] });  //ADD P for tallies to this menu??
     if (walking === true) {                                                      //when player selects "W" or "w"
@@ -217,7 +205,18 @@ function viewPlayerTotals() {                                            //check
         console.log(playerTotals)
         gameOver = true;
 
-    } else                                                                                //if player keys in wrong letter command
-        console.log(`Sorry, that command is not recognized.  Please try again, ${characterName}.`)
+        //} else                                                                                //if player keys in wrong letter command
+        //    console.log(`Sorry, that command is not recognized.  Please try again, ${characterName}.`)
+
+    }
 }
 
+function byeByePlayer() {
+    console.log(`\nYou fought the BUGGY fight, ${characterName}.`)
+    console.log(`But that last attack was just too much for you.`)
+    console.log(`\nYour health points have been depleted,`)
+    console.log(`which means you've been SQUASHED.`)
+    console.log(`\nHASTA LA VISTA, BUGGY!`)
+    console.log(`\nSee you next time!`)
+    gameOver = true;
+}
