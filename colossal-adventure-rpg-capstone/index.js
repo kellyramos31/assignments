@@ -33,9 +33,11 @@ const enemyForYou = ["with a GOOGLE SEARCH", "with CAFFEINE", "by DELETING & STA
 
 let inventoryOfErrorsArr = [];
 
+const options = ["Yes", "No"]
 
 //GET PLAYER NAMES
 const characterName = readline.question(`\nWelcome to our world, ${name}! Now, you need a game name.  Type in your choice for a game character name: `);
+const readyToGo = readline.keyInSelect(options, `Are you ready to play?`)
 
 //PLAYER TOTALS OBJECT
 playerTotals = {
@@ -48,12 +50,22 @@ playerTotals = {
 welcomeGreeting();
 
 //OVERALL GAME LOOP
-while (!gameOver) {
-    if (playerTotals.healthPoints > 0) {                                   //game continues if still have HP left; if YES, then WALK
-        walk();
-    } else if (playerTotals.healthPoints <= 0) {                           //else, if HP is zero or negative, then game ends
-        byeByePlayer()
+if (options[readyToGo] === "Yes" || options[readyToGo] === 0) {
+    while (!gameOver) {
+        if (playerTotals.healthPoints > 0) {                                   //game continues if still have HP left; if YES, then WALK
+            walk();
+        } else if (playerTotals.healthPoints <= 0) {                           //else, if HP is zero or negative, then game ends
+            byeByePlayer()
+        }
     }
+
+} else if (options[readyToGo] === "No" || options[readyToGo] === 1) {
+    console.log(`Please select "Y" when you are ready to play!`)
+
+} else if (options[readyToGo] === "Cancel" || options[readyToGo] === 2) {
+    console.log('You have cancelled out of the game');
+    console.log('Hope to see you back here soon!')
+    gameOver = true;
 }
 
 //FUNCTIONS
@@ -70,6 +82,7 @@ function welcomeGreeting() {
     console.log(`so you can throw it at the next crafty software developer who comes your way!`);
     console.log(`\nGOOD LUCK!`)
 }
+
 
 function walk() {
     const walking = readline.question(`\nKEEP IT BUGGY!  Please enter W (to WALK through the code) or X (to end game) `, { trueValue: ["w", "W"], falseValue: ["x", "X"] });  //ADD P for tallies to this menu??
