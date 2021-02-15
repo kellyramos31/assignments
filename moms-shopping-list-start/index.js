@@ -186,7 +186,7 @@ form.addEventListener("submit", function (e) {
     //     saveBtn.textContext="edit"
     //const newItems = items
 */
-
+/*
 const form = document.addItem
 form.addEventListener("submit", function (e) {
     e.preventDefault()
@@ -225,6 +225,41 @@ form.addEventListener("submit", function (e) {
         }
     })
 })
+*/
 
 
-
+const form = document.addItem
+form.addEventListener("submit", function (event) {
+    event.preventDefault()
+    //alert("It's working")
+    const item = document.createElement("li")
+    item.style.label
+    const newItem = document.createElement("div")
+    newItem.textContent = form.title.value
+    form.title.value = ""
+    const listItem = document.getElementById("list > li")
+    // console.log(form.title.value)
+    item.append(newItem)
+    item.append(editItem(newItem))
+    item.append(deleteItem(item))
+    listItem.append(item)
+})
+// Function for editing new items
+function editItem() {
+    const editButton = document.createElement('button')
+    editButton.textContent = 'edit'
+    editButton.addEventListener('click', function (e) {
+        form.title.value = textBox.textContent
+        deleteItem(textBox)
+    })
+    return editButton
+}
+// Function for deleting new items
+function deleteItem(child) {
+    const delButton = document.createElement('button')
+    delButton.textContent = 'X'
+    delButton.addEventListener('click', function (e) {
+        child.remove()
+    })
+    return delButton
+}

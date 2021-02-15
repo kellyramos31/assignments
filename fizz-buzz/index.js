@@ -62,11 +62,11 @@ It should return an object that looks like this:
     buzz: 14
 }
 */
-/*
+
 function FizzBuzz(fizzbuzz, fizz, buzz) {    //create new object to hold tallies w/ keys(?) fizzbuzz, fizz, buzz (= keys??)-- constructor function??
     this.fizzbuzz = fizzbuzz,
-    this.fizz = fizz,
-    this.buzz = buzz
+        this.fizz = fizz,
+        this.buzz = buzz
 }
 
 
@@ -74,6 +74,5 @@ function FizzBuzz(fizzbuzz, fizz, buzz) {    //create new object to hold tallies
 //increment/update tally of each key(?) in object as it gets printed to console
 //keep only ending total of the three words inside object:  fizzbuzz, fizz, buzz (= keys??)
 
-*/
 
 

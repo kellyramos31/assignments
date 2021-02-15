@@ -33,7 +33,7 @@ const enemyForYou = ["with a GOOGLE SEARCH", "with CAFFEINE", "by DELETING & STA
 
 let inventoryOfErrorsArr = [];
 
-const options = ["Yes", "No"]
+const options = ["Yes"]
 
 //GET PLAYER NAMES
 const characterName = readline.question(`\nWelcome to our world, ${name}! Now, you need a game name.  Type in your choice for a game character name: `);
@@ -46,11 +46,9 @@ playerTotals = {
     inventory: inventoryOfErrorsArr
 }
 
-//WELCOME MESSAGE
-welcomeGreeting();
-
 //OVERALL GAME LOOP
-if (options[readyToGo] === "Yes" || options[readyToGo] === 0) {
+if (options[readyToGo] === "Yes" || options[readyToGo] === 1) {
+    welcomeGreeting();                                                         //welcome message
     while (!gameOver) {
         if (playerTotals.healthPoints > 0) {                                   //game continues if still have HP left; if YES, then WALK
             walk();
@@ -59,14 +57,12 @@ if (options[readyToGo] === "Yes" || options[readyToGo] === 0) {
         }
     }
 
-} else if (options[readyToGo] === "No" || options[readyToGo] === 1) {
-    console.log(`Please select "Y" when you are ready to play!`)
-
-} else if (options[readyToGo] === "Cancel" || options[readyToGo] === 2) {
-    console.log('You have cancelled out of the game');
-    console.log('Hope to see you back here soon!')
+} else if (options[readyToGo] !== 1) {
+    console.log(`\nYou have cancelled out of the game, ${name}.`);
+    console.log(`Hope to see you back here soon!`)
     gameOver = true;
 }
+
 
 //FUNCTIONS
 function welcomeGreeting() {
@@ -83,7 +79,6 @@ function welcomeGreeting() {
     console.log(`\nGOOD LUCK!`)
 }
 
-
 function walk() {
     const walking = readline.question(`\nKEEP IT BUGGY!  Please enter W (to WALK through the code) or X (to end game) `, { trueValue: ["w", "W"], falseValue: ["x", "X"] });  //ADD P for tallies to this menu??
     if (walking === true) {                                                      //when player selects "W" or "w"
@@ -92,9 +87,8 @@ function walk() {
 
     } else if (walking === false) {                                            //when player selects "X" or "x"
         gameOver = true;
-        console.log(`You have cancelled out of the game, ${name}.  Hope to see again soon!`)
-    } else
-        console.log(`Sorry, that command is not recognized.  Please try again, ${characterName}.`)   //if player types incorrect letter
+        console.log(`\nYou have cancelled out of the game, ${name}.  Hope to see again soon!`)
+    }
 }
 
 function maybeEnemy() {                                 //random enemy -- random algorithm runs to determine IF an enemy appears
@@ -149,8 +143,7 @@ function attackOrRun() {                                          //user has cho
             gameOver = true;
             //console.log(gameOver)
         }
-    } else
-        console.log(`Sorry, that command is not recognized.  Please try again, ${characterName}.`)   //if type incorrect letter/command
+    }
 }
 
 function enemyAttacksBack() {
@@ -217,10 +210,6 @@ function viewPlayerTotals() {                                            //check
         console.log(`\nHere are your final player tallies, ${characterName}:`)
         console.log(playerTotals)
         gameOver = true;
-
-        //} else                                                                                //if player keys in wrong letter command
-        //    console.log(`Sorry, that command is not recognized.  Please try again, ${characterName}.`)
-
     }
 }
 

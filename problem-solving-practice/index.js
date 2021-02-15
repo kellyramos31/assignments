@@ -1,4 +1,4 @@
-//DONE -- with Mozilla help -- #1:  Write a function that takes an array of numbers and returns the largest (without using Math.max())
+//DONE (-- with Mozilla help -) #1:  Write a function that takes an array of numbers and returns the largest (without using Math.max())
 //largest([3, 5, 2, 8, 1]) // => 8
 
 //const numbersArr = [3, 1500, 90, 16000, 5, 3, 88, 62]  
