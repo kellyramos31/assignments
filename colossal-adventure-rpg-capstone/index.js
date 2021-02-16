@@ -37,6 +37,8 @@ const options = ["Yes"]
 
 const aOrR = ["Attack", "Run"]
 
+const pOrC = ["Print", "Continue"]
+
 //GET PLAYER NAMES
 const characterName = readline.question(`\nWelcome to our world, ${name}! Now, you need a game name.  Type in your choice for a game character name: `);
 const readyToGo = readline.keyInSelect(options, `Are you ready to play?`)
@@ -178,7 +180,7 @@ function enemyAttacksBack() {
         //console.log(playerTotals.healthPoints)
         console.log(`This fearless engineer is RUTHLESS!  WATCH YOUR BACK!!`)
         console.log(`\nWOW, ${characterName}! That was intense!`)
-        console.log(`You sustained ${fightsBackDamage} point(s) worth of damage during that second brawl`)
+        console.log(`You sustained ${fightsBackDamage} more point(s) worth of damage during that second brawl`)
         console.log(`and are feeling the pain.`)
         console.log(`\nSTAY VIGILANT!`)
         console.log(`And keep throwing those errors like confetti!`);
@@ -186,13 +188,13 @@ function enemyAttacksBack() {
 }
 
 function viewPlayerTotals() {                                            //check player's game tallies
-    const checkTallies = readline.question(`\nIf you would like to check your game totals, enter "P".  Otherwise, enter "C" to continue `, { trueValue: ["p", "P"], falseValue: ["c", "C"] });  //ADD P for tallies to this menu??
-    if (checkTallies === true && playerTotals.healthPoints > 0) {          //when player selects "P"; checks for positive HP total
+    const checkTallies = readline.keyInSelect(pOrC, `\nIf you would like to check your game totals, select "Print".  Otherwise, select "Continue" `);  //Option To Print Tallies OR Continue
+    if ((pOrC[checkTallies] === 0 || pOrC[checkTallies] === "Print") && playerTotals.healthPoints > 0) {          //when player selects "Print"; also, checks for positive HP total
         console.log(`\nHere are your latest tallies:`)
         console.log(playerTotals)
         walk()
 
-    } else if (checkTallies === true && playerTotals.healthPoints <= 0) {          //when player selects "P" & no HP left or negative HP
+    } else if ((pOrC[checkTallies] === 0 || pOrC[checkTallies] === "Print") && playerTotals.healthPoints <= 0) {    //when player selects "Print" & no HP left or negative HP
         console.log(`\nOH NO! Your health points have been fully depleted,`)
         console.log(`...which means you've been SQUASHED.`)
         console.log(`\nHASTA LA VISTA, BUGGY!`)
@@ -201,16 +203,19 @@ function viewPlayerTotals() {                                            //check
         console.log(playerTotals)
         gameOver = true;
 
-    } else if (checkTallies === false && playerTotals.healthPoints > 0) {           //when player selects "C"; checks for positive HP total
+    } else if ((pOrC[checkTallies] === 1 || pOrC[checkTallies] === "Continue") && playerTotals.healthPoints > 0) {   //when player selects "Continue"; checks for positive HP total
         walk();
 
-    } else if (checkTallies === false || playerTotals.healthPoints <= 0) {           //when player selects "C" & no HP left or negative HP
+    } else if ((pOrC[checkTallies] === 1 || pOrC[checkTallies] === "Continue") && playerTotals.healthPoints <= 0) {           //when player selects "Continue" & no HP left or negative HP
         console.log(`\nOH NO! Your health points are no longer sustaining you,`)
         console.log(`...which means you've been SQUASHED.`)
         console.log(`\nHASTA LA VISTA, BUGGY!`)
         console.log(`See you next time!`)
         console.log(`\nHere are your final player tallies, ${characterName}:`)
         console.log(playerTotals)
+        gameOver = true;
+    } else {
+        console.log(`\nSorry to see you go.  Hope you'll come play MY BUGGY ADVENTURE another time very soon!`)
         gameOver = true;
     }
 }
