@@ -35,6 +35,8 @@ let inventoryOfErrorsArr = [];
 
 const options = ["Yes"]
 
+const aOrR = ["Attack", "Run"]
+
 //GET PLAYER NAMES
 const characterName = readline.question(`\nWelcome to our world, ${name}! Now, you need a game name.  Type in your choice for a game character name: `);
 const readyToGo = readline.keyInSelect(options, `Are you ready to play?`)
@@ -113,8 +115,8 @@ function uhOhEnemy() {
 }
 
 function attackOrRun() {                                          //user has choice to attack or run
-    const attackRunAnswer = readline.question(`\nSo you must make a quick decision:  Enter A (to ATTACK) or R (to RUN) `, { trueValue: ["a", "A"], falseValue: ["r", "R"] });
-    if (attackRunAnswer === true) {                                 //true means ATTACK
+    const makeDecision = readline.keyInSelect(aOrR, `OK, ${characterName}, Are you going to ATTACK or RUN?`)
+    if (aOrR[makeDecision] === "Attack" || aOrR[makeDecision] === 0) {                                 //decided to ATTACK
         console.log("\nNow, YOU are on the ATTACK and throwing your most devious ERROR!");
         let damage = Math.floor(Math.random() * 20) + 1;            //if attack: random amount of damage between a min(1) & max(20)
         //console.log(damage);
@@ -127,7 +129,7 @@ function attackOrRun() {                                          //user has cho
         enemyAttacksBack();
         viewPlayerTotals();
 
-    } else if (attackRunAnswer === false) {                                  //false means RUN
+    } else if (aOrR[makeDecision] === "Run" || aOrR[makeDecision] === 1) {        //user decided to RUN
         console.log("\nYou are ON THE RUN! But will you escape undetected?")
         let runFastEnough = Math.floor(Math.random() * 2);                   //if run:  50% chance of escaping (randomly generates a 0 or 1 here)
         if (runFastEnough === 0) {                                           //if returns 0: then ESCAPED BY RUNNING
@@ -136,7 +138,7 @@ function attackOrRun() {                                          //user has cho
             viewPlayerTotals();
 
         } else if (runFastEnough === 1) {                          //if returns 1: then you ran, BUT NOT FAST ENOUGH & bug (player) is exterminated
-            console.log(`\nWell, ${characterName}, you CAN'T outrun this wiley programmer!`)
+            console.log(`\nWell, ${characterName}, you CANNOT outrun this wiley programmer!`)
             console.log(`\nYOU'VE BEEN SQUASHED!!`)
             console.log(`BYE, BYE, BUG!!`)
             console.log(`\nSee you next time!!`);
