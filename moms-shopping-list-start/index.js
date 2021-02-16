@@ -1,6 +1,45 @@
 
-//DONE -- PART 1 -- BE ABLE TO ADD NEW ITEMS TO LIST - A user will be able to add list items to the pre-built ul using the pre-built form
-//New list items should have the same format as the li's that came with the git repo
+//DONE -- PART 1 -- BE ABLE TO ADD NEW ITEMS TO LIST - A user will be able to add 
+//list items to the pre-built ul using the pre-built form
+//New list items should have the same format as the li's that 
+//came with the git repo
+
+/* ADDITIONAL PRACTICE
+const myForm = document.addItem
+
+myForm.addEventListener("submit", e => {
+    e.preventDefault();
+    const myList = document.getElementById("list");
+    const newListItem = document.createElement("li");
+    myList.append(newListItem);
+    const newDiv = document.createElement("div");
+    const userInput = document.getElementById("title")
+    newDiv.textContent = userInput.value;
+    newListItem.appendChild(newDiv)
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "X";
+    newListItem.append(deleteButton)
+    deleteButton.addEventListener("click", () => {
+        newDiv.remove();
+    })
+    const editButton = document.createElement("button")
+    editButton.textContent = "edit";
+    newListItem.append(editButton);
+    editButton.addEventListener("click", () => {
+        const editBox = document.createElement("input");
+        editBox.value = newDiv.textContent;
+        newListItem.appendChild(editBox);
+        editBox.addEventListener("change", () => {
+            editButton.textContent = "save";
+            newDiv.textContent = editBox.value
+            editBox.remove()
+        })
+    })
+})
+*/
+
+
+
 
 //DONE -- PART 2 -- A user will be able to delete items using an items delete button
 /*
@@ -107,159 +146,3 @@ Use localStorage or sessionStorage to save the list in case the page is refreshe
 */
 
 
-/*
-const form = document.addItem
-form.addEventListener("submit", function (e) {
-    e.preventDefault()
-    const list = document.getElementById("list")
-    const items = form.title.value
-    // console.log(form.title.value)
-    const myList = document.createElement("li")
-    list.appendChild(myList)
-    const div = document.createElement("div")
-    div.textContent = items
-    list.prepend(div)
-    const editButton = document.createElement("button")
-    editButton.textContent = "edit"
-    div.append(editButton)
-    const xButton = document.createElement("button")
-    xButton.textContent = "X"
-    div.append(xButton)
-    xButton.addEventListener("click", function () {
-        div.remove()
-    })
-    editButton.addEventListener("click", function () {
-        //     I need to create an input box and
-        //  edit button needs to change to save
-        // when I put items in the input box and then click save it will show up as the new item
-        // after save is clicked, it becomes edit again
-        // input box also goes away
-        const newInputBox = document.createElement("input")
-        div.append(newInputBox)
-        editButton.textContent = "save"
-    })
-    // const newItems = input.textContent
-    // const saveBtn =
-    // saveBtn.addEventListener ("click", function(){
-    //     list.
-})
-*/
-/*
-const form = document.addItem
-form.addEventListener("submit", function (e) {
-    e.preventDefault()
-    const list = document.getElementById("list")
-    const items = form.title.value
-    console.log(form.title.value)
-    const myList = document.createElement("li")
-    list.appendChild(myList)
-    const div = document.createElement("div")
-    div.textContent = items
-    list.prepend(div)
-    const editButton = document.createElement("button")
-    editButton.textContent = "edit"
-    div.append(editButton)
-    const xButton = document.createElement("button")
-    xButton.textContent = "X"
-    div.append(xButton)
-    xButton.addEventListener("click", function () {
-        e.preventDefault();
-        div.remove()
-    })
-
-    editButton.addEventListener("click", function () {
-        //     I need to create an input box and
-        //  edit button needs to change to save
-        // when I put items in the input box and then click save it will show up as the new item
-        // after save is clicked, it becomes edit again
-        // input box also goes away
-        e.preventDefault();
-        const newInputBox = document.createElement("input")
-        div.append(newInputBox)
-        editButton.textContent = "save"
-    })
-})
-
-    // const newItems = input.textContent
-    // const saveBtn =
-    // saveBtn.addEventListener ("click", function(){
-    //     saveBtn.textContext="edit"
-    //const newItems = items
-*/
-/*
-const form = document.addItem
-form.addEventListener("submit", function (e) {
-    e.preventDefault()
-    const list = document.getElementById("list")
-    const items = form.title.value
-    // console.log(form.title.value)
-    const myList = document.createElement("li")
-    list.appendChild(myList)
-    const div = document.createElement("div")
-    div.textContent = items
-    myList.append(div)            //changed to myList from list //changed prepend to append here
-    const editButton = document.createElement("button")
-    editButton.textContent = "edit"
-    myList.append(editButton)              //changed back to myList
-    const xButton = document.createElement("button")
-    xButton.textContent = "X"
-    myList.append(xButton)                  //changed back to myList
-    xButton.addEventListener("click", function (e) {
-        myList.remove()
-    })
-    editButton.addEventListener("click", function () {
-        e.preventDefault()
-        editButton.textContent = "save"
-        const newInputBox = document.createElement("input")
-        newInputBox.type = "text";            //added this line
-        newInputBox.value = div.textContent
-        div.appendChild(newInputBox)            //made it appendChild instead of append
-        if (newInputBox.text !== "") {
-            newInputBox.addEventListener("change", function () {
-                e.preventDefault()
-                //const newItems = newInputBox.value
-                editButton.textContent = "edit"
-                div.textContent = newInputBox.value;  //took out the const newItems = newInputBox.value and just assigned it to the div.textContent
-                newInputBox.remove();
-            })
-        }
-    })
-})
-*/
-
-
-const form = document.addItem
-form.addEventListener("submit", function (event) {
-    event.preventDefault()
-    //alert("It's working")
-    const item = document.createElement("li")
-    item.style.label
-    const newItem = document.createElement("div")
-    newItem.textContent = form.title.value
-    form.title.value = ""
-    const listItem = document.getElementById("list > li")
-    // console.log(form.title.value)
-    item.append(newItem)
-    item.append(editItem(newItem))
-    item.append(deleteItem(item))
-    listItem.append(item)
-})
-// Function for editing new items
-function editItem() {
-    const editButton = document.createElement('button')
-    editButton.textContent = 'edit'
-    editButton.addEventListener('click', function (e) {
-        form.title.value = textBox.textContent
-        deleteItem(textBox)
-    })
-    return editButton
-}
-// Function for deleting new items
-function deleteItem(child) {
-    const delButton = document.createElement('button')
-    delButton.textContent = 'X'
-    delButton.addEventListener('click', function (e) {
-        child.remove()
-    })
-    return delButton
-}

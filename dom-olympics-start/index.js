@@ -51,15 +51,8 @@ for (var i = 0; i < allMessages.length; i++) {
 }
 */
 
-/*Slack from Isa:  Okay. I figured out the Bronze one. I like what you were trying to do, and it's really close to the correct solution. Instead of getting leftMessage and rightMessage individually from the DOM, I would grab all of them together: var messages = document.getElementsByClassName("message")
-That will return an array of messages. The messages on the left have even indexes, the ones on the right have odd indexes. You can loop through the array of messages, and then based on what index you're at, change the textContent to say something else.
-3:45
-See if that works, or gets you closer. I can send you my solution, just let me know*/
-
-
-
 //BRONZE
-//  Write some custom JS to automatically change the words of the conversation to something fun & good
+//Write some custom JS to automatically change the words of the conversation to something fun & good
 /*
 var leftMessage = document.getElementsByClassName("message left");
 var rightMessage = document.getElementsByClassName("message right");
@@ -68,8 +61,8 @@ for (var i = 0; i <= leftMessage.length && rightMessage.length; i++) {
     var newRight = rightMessage[i].textContent = ["Hi, neighbor", "Then you're in the right place!"];
 }
 */
-/*
 
+/*
 //  Wait until user clicks the "clear" button, then clears out all conversation:
 var clearAllConvo = document.getElementById('clear-button');
 clearAllConvo.addEventListener("click", function () {
@@ -80,8 +73,9 @@ clearAllConvo.addEventListener("click", function () {
         newText.style.backgroundColor = "white";
     }
 })
+*/
 
-
+/*
 //SILVER
 //Use the drop down to write some JS that will notice when the drop down has changed and then changes the background colors of the messages accordingly.
 //Feel free to edit the HTML <select> tag to make it more usable or elaborate.  Mo themes, mo fun.
@@ -145,8 +139,9 @@ dropDownColor.addEventListener("input", function (event) {
     }
 })
 */
+
+//GOLD
 /*
-GOLD
 var sendButton = document.getElementById("send-button");
 var userInputForm = document.getElementById("input");
 //console.log(userInputForm.value);  //returns "Thank you. Goodbye" which is what is in form now.
@@ -178,23 +173,9 @@ sendButton.addEventListener("click", function (e) {
     var messageChain = document.getElementsByClassName("message");
     messageChain[0].parentNode.appendChild(newMessageDiv);
 })
-
-
-
-
- //EXTRA CREDIT
- //Every other message will be posted on the right in one color, and the next on the left the other color.
-
-*/
-/*
-const myHeader = document.getElementById("header");
-
-const userName = "James";
-myHeader.textContent = "JavaScript Made This!!"
-myHeader.append(newBreak)
-const newBreak = document.createElement("br")
-const secondLine = document.createElement("h2")
-secondLine.textContent = "James wrote the JavaScript";
-myHeader.append(secondLine);
 */
 
+
+
+//EXTRA CREDIT
+//Every other message will be posted on the right in one color, and the next on the left the other color.

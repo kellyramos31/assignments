@@ -21,8 +21,8 @@ capitalizeAndLowercase();
 //  findMiddleIndex("Hello") // => 2
 //  findMiddleIndex("Hello World") // => 5
 
-//var startingString = "hey friends! practice practice practice!";
-//var halfIndex
+var startingString = "hey friends! practice practice practice!";
+var halfIndex
 
 function returnNumberHalfRound() {
     var strLength = startingString.length;   //get length of string
