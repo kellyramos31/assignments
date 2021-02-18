@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Simple HTML Calculator</title>
+</head>
+
+<body>
+    <div id="grid-container">
+        <h1>SIMPLE HTML CALCULATOR</h1>
+
+        <div id="add">
+            <h3>ADD</h3>
+            <form name="addIt">
+                <input type="number" name="addFirst" />
+                <div class="operator">+</div>
+                <input type="number" name="addSecond" />
+                <button id="sum">=</button>
+                <div id="add-answer"></div>
+            </form>
+        </div>
+        <div id="subtract">
+            <h3>SUBTRACT</h3>
+            <form name="subtractIt">
+                <input type="number" name="subtractFirst" />
+                <div class="operator">-</div>
+                <input type="number" name="subtractSecond" />
+                <button id="difference">=</button>
+                <div id="sub-answer"></div>
+            </form>
+        </div>
+        <div id="multiply">
+            <h3>MULTIPLY</h3>
+            <form name=multiplyIt>
+                <input type="number" name="multiplyFirst" />
+                <div class="operator">x</div>
+                <input type="number" name="multiplySecond" />
+                <button id="product">=</button>
+                <div id="prod-answer"></div>
+            </form>
+        </div>
+
+        <script src="index.js"></script>
+
+</body>
+
+</html>

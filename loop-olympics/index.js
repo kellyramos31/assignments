@@ -4,7 +4,17 @@ DONE 1.  Write a for loop that prints to the console the numbers 0 through 9.
 DONE 2.  Write a for loop that prints to the console 9 through 0.
 DONE 3.  Write a for loop that prints these fruits to the console.
     var fruit = ["banana", "orange", "apple", "kiwi"]
-
+*/
+/*
+var fruit = ["banana", "orange", "apple", "kiwi", "pear", "peach"]
+var fruitArr = [];
+for (i = 0; i < fruit.length; i++) {
+    if (i % 2 === 0) {
+        fruitArr.push(fruit[i])
+    } console.log(fruitArr)
+}
+*/
+/*
 BRONZE:
 DONE 1.  Write a for loop that will push the numbers 0 through 9 to an array.
 DONE 2.  Write a for loop that prints to the console only even numbers 0 through 100.
@@ -84,6 +94,15 @@ for (var i = 0; i < fruit.length; i++) {
     if (i % 2 !== 0) {
         console.log(fruit[i]);
     }
+}
+
+
+var fruit = ["banana", "orange", "apple", "kiwi", "pear", "peach"]
+var fruitArr = [];
+for (i = 0; i < fruit.length; i++) {
+    if (i % 2 === 0) {
+        fruitArr.push(fruit[i])
+    } console.log(fruitArr)
 }
 */
 
@@ -183,9 +202,37 @@ console.log(newArray2);
 console.log(newArray3);
 */
 
+// Create an array that mimics a grid like the following using nested for loops:
+// [[0, 0, 0], 
+// [0, 0, 0], 
+// [0, 0, 0]]
+
 /*
+var grid = []
+for (var i = 0; i < 1; i++) {
+    let array = []
+    array.push(0, 0, 0)
+    for (var j = 0; j < 3; j++) {
+        grid.push(array)
+        console.log(grid)
+    }
+}
+*/
+// [[0, 0, 0], 
+// [0, 0, 0], 
+// [0, 0, 0]]
+var grid = []
+for (var i = 0; i < 1; i++) {
+    let array = []
+    array.push(0, 0, 0)
+    for (var j = 0; j < 3; j++) {
+        grid.push(array)
+        console.log(grid)
+    }
+}
+
 //THIS CODE BELOW WORKS NOW!!! w/ Isa's help; right now it logs 3 arrays (0,1,2)
-var newArr = []
+/*var newArr = []
 
 for (var i = 0; i <= 2; i++) {
     var newArr2 = [];
@@ -201,7 +248,7 @@ console.log(newArr);
 
 
 
-//THIS CODE BELOW WORKS NOW!!! w/ Isa's help; right now it logs 3 arrays (0,1,2)
+//THIS CODE BELOW WORKS NOW!!!w/ Isa's help; right now it logs 3 arrays (0,1,2)
 /*
 var newArr = []
 
@@ -216,8 +263,6 @@ console.log(newArr);
 */
 
 /*
-
-
 DONE -- 2.Create an array that mimics a grid like the following using nested for loops:
 
     [[0, 0, 0],
@@ -257,7 +302,8 @@ console.log(originalArr)
 //TRY TO ALTER THIS TO GET FOLLOWING GRID:
 /* [[0, 0, 0],
     [1, 1, 1],
-    [2, 2, 2]]*/
+    [2, 2, 2]]
+*/
 
 
 /*
@@ -282,7 +328,7 @@ NOTE:  ***My answer to Gold #3 may not be same thing b/c 3 separate arrays***** 
     [[0, 1, 2],
     [0, 1, 2],
     [0, 1, 2]]
-    */
+*/
 /*
 var newArray7 = [];
 var newArray8 = [];
@@ -328,27 +374,23 @@ var grid = [["x", ...],
 ["x", ...], ...]
 */
 
-
+/*
 var grid = [
     [0, 1, 2],
     [0, 1, 2],
     [0, 1, 2],
 ]
-
+*/
 
 //var grid = [0, 1, 2]
 //grid.splice(0, 3, "x", "x", "x");
 //console.log(grid)
 
-
+/*
 for (var i = 0; i < grid.length; i++) {
     for (var j = 0; j < grid[i].length; j++) {
         grid.splice(0, 3, "x", "x", "x");             //cuts the three items out of the array & replaces values with "x"
         console.log(grid);                           //check value of grid array
     }
 }
-
-
-
-
-
+*/
