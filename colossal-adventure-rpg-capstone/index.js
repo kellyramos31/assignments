@@ -54,10 +54,17 @@ playerTotals = {
 if (options[readyToGo] === "Yes" || options[readyToGo] === 1) {
     welcomeGreeting();                                                         //welcome message
     while (!gameOver) {
-        if (playerTotals.healthPoints > 0) {                                   //game continues if still have HP left; if YES, then WALK
+        if ((playerTotals.healthPoints > 0 && playerTotals.healthPoints < 100) && (inventoryOfErrorsArr.length < 3)) {                                   //game continues if still have HP left; if YES, then WALK
             walk();
         } else if (playerTotals.healthPoints <= 0) {                           //else, if HP is zero or negative, then game ends
             byeByePlayer()
+        } else if (playerTotals.healthPoints >= 100 || inventoryOfErrorsArr.length >= 3) {             //player(a.k.a. the bug) wins the game
+            console.log(`\nCONGRATULATIONS, ${characterName}!  You've WON!`);
+            console.log(`\nYou have worn out all of the developers...`)
+            console.log(`and been crowned the BUGGIEST BUG in town!`)
+            console.log(`\nHere are your final player tallies:`)
+            console.log(playerTotals)
+            gameOver = true;
         }
     }
 
@@ -80,6 +87,7 @@ function welcomeGreeting() {
     console.log(`\nPLUS...the developer's demise also activates a BONUS REWARD:`)
     console.log(`A sparkling NEW WEAPON will be added to your inventory stash,`)
     console.log(`so you can throw it at the next crafty software developer who comes your way!`);
+    console.log(`\nTO WIN:  increase your HP to 100 OR accumulate 3 rewards in your inventory.`)
     console.log(`\nGOOD LUCK!`)
 }
 
@@ -96,8 +104,8 @@ function walk() {
 }
 
 function maybeEnemy() {                                 //random enemy -- random algorithm runs to determine IF an enemy appears
-    let enemy = Math.floor(Math.random() * 3)          //returns random number between 0 and 2 (so 33% chance of being attacked when walking)
-    if (enemy === 0) {                                 //if 0 is randomly returned, then you are attacked.
+    let enemy = Math.floor(Math.random() * 4)          //upped this to 50% chance;returns random number between 0 and 2 (so 33% chance of being attacked when walking)
+    if (enemy === 0 || enemy === 2) {                  //if 0 or 2 is randomly returned, then you are attacked.
         console.log(`\nUH OH!  You are under ATTACK from the evil programmer!`)
         uhOhEnemy();
         attackOrRun();
@@ -151,11 +159,11 @@ function attackOrRun() {                                          //user has cho
 }
 
 function enemyAttacksBack() {
-    let fightsBackDamage = Math.floor(Math.random() * 20) + 1;    //After player attacks/runs--enemy attacks back for a random amt. damage (1-20)
+    let fightsBackDamage = Math.floor(Math.random() * 10) + 1;    //adjusted to 1-10 pts;After player attacks/runs--enemy attacks back for a random amt. damage (1-20)
     console.log(`\nLOOK OUT!  That crazy developer is not going to give up so easily!`)
     console.log(`Here comes the COUNTER ATTACK!`)
     //console.log(fightsBackDamage);
-    if (fightsBackDamage === 3 || fightsBackDamage === 9 || fightsBackDamage === 10) {   //If the player kills the enemy:give the Player some HP and a special item that is stored in the inventory.   
+    if (fightsBackDamage === 3 || fightsBackDamage === 9 || fightsBackDamage === 10 || fightsBackDamage === 12 || fightsBackDamage === 17) {   //If the player kills the enemy:give the Player some HP and a special item that is stored in the inventory.   
         console.log(`\nCONGRATS!! You're one NASTY BUG!`)
         console.log(`You have TRIUMPHED`)
         console.log(`...and TAKEN OUT the perfectionist programmer!`);
@@ -189,31 +197,48 @@ function enemyAttacksBack() {
 
 function viewPlayerTotals() {                                            //check player's game tallies
     const checkTallies = readline.keyInSelect(pOrC, `\nIf you would like to check your game totals, select "Print".  Otherwise, select "Continue" `);  //Option To Print Tallies OR Continue
-    if ((pOrC[checkTallies] === 0 || pOrC[checkTallies] === "Print") && playerTotals.healthPoints > 0) {          //when player selects "Print"; also, checks for positive HP total
+    if ((pOrC[checkTallies] === 0 || pOrC[checkTallies] === "Print") && ((playerTotals.healthPoints > 0) && (playerTotals.healthPoints < 100)) && (inventoryOfErrorsArr.length < 3)) {          //when player selects "Print"; also, checks for positive HP total
         console.log(`\nHere are your latest tallies:`)
         console.log(playerTotals)
         walk()
 
-    } else if ((pOrC[checkTallies] === 0 || pOrC[checkTallies] === "Print") && playerTotals.healthPoints <= 0) {    //when player selects "Print" & no HP left or negative HP
+    } else if ((pOrC[checkTallies] === 0 || pOrC[checkTallies] === "Print") && (playerTotals.healthPoints <= 0)) {    //when player selects "Print" & no HP left or negative HP
         console.log(`\nOH NO! Your health points have been fully depleted,`)
         console.log(`...which means you've been SQUASHED.`)
         console.log(`\nHASTA LA VISTA, BUGGY!`)
         console.log(`See you next time!`)
-        console.log(`\nHere are your final player tallies, ${characterName}:`)
+        console.log(`\nHere are your final player tallies:`)
         console.log(playerTotals)
         gameOver = true;
 
-    } else if ((pOrC[checkTallies] === 1 || pOrC[checkTallies] === "Continue") && playerTotals.healthPoints > 0) {   //when player selects "Continue"; checks for positive HP total
+    } else if ((pOrC[checkTallies] === 0 || pOrC[checkTallies] === "Print") && ((playerTotals.healthPoints >= 100)) || (inventoryOfErrorsArr.length >= 3)) {
+        console.log(`\nCONGRATULATIONS, ${characterName}!  You've WON!`);
+        console.log(`\nYou have worn out all of the developers...`)
+        console.log(`and been crowned the BUGGIEST BUG in town!`)
+        console.log(`\nHere are your final player tallies:`)
+        console.log(playerTotals)
+        gameOver = true;
+
+    } else if ((pOrC[checkTallies] === 1 || pOrC[checkTallies] === "Continue") && ((playerTotals.healthPoints > 0) && (playerTotals.healthPoints < 100)) && (inventoryOfErrorsArr.length < 3)) {  //when player selects "Continue"; checks for positive HP total
         walk();
 
-    } else if ((pOrC[checkTallies] === 1 || pOrC[checkTallies] === "Continue") && playerTotals.healthPoints <= 0) {           //when player selects "Continue" & no HP left or negative HP
+    } else if ((pOrC[checkTallies] === 1 || pOrC[checkTallies] === "Continue") && (playerTotals.healthPoints <= 0)) {           //when player selects "Continue" & no HP left or negative HP
         console.log(`\nOH NO! Your health points are no longer sustaining you,`)
         console.log(`...which means you've been SQUASHED.`)
         console.log(`\nHASTA LA VISTA, BUGGY!`)
         console.log(`See you next time!`)
-        console.log(`\nHere are your final player tallies, ${characterName}:`)
+        console.log(`\nHere are your final player tallies:`)
         console.log(playerTotals)
         gameOver = true;
+
+    } else if ((pOrC[checkTallies] === 1 || pOrC[checkTallies] === "Continue") && (inventoryOfErrorsArr.length >= 3 || playerTotals.healthPoints >= 100)) {
+        console.log(`\nCONGRATULATIONS, ${characterName}!  You've WON!`);
+        console.log(`\nYou have worn out all of the developers...`)
+        console.log(`and been crowned the BUGGIEST BUG in town!`)
+        console.log(`\nHere are your final player tallies:`)
+        console.log(playerTotals)
+        gameOver = true;
+
     } else {
         console.log(`\nSorry to see you go.  Hope you'll come play MY BUGGY ADVENTURE another time very soon!`)
         gameOver = true;
