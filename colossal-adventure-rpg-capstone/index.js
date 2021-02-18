@@ -45,7 +45,7 @@ const readyToGo = readline.keyInSelect(options, `Are you ready to play?`)
 
 //PLAYER TOTALS OBJECT
 playerTotals = {
-    name: name,
+    name: characterName,
     healthPoints: 75,
     inventory: inventoryOfErrorsArr
 }
@@ -97,6 +97,14 @@ function walk() {
         console.log(`\nHere we go!`)
         maybeEnemy();
 
+    } else if (walking === true && (aOrR[makeDecision] === "Attack" || aOrR[makeDecision] === 0)) {
+        enemyAttacksBack();
+        viewPlayerTotals();
+
+    } else if (walking === true && (aOrR[makeDecision] === "Run" || aOrR[makeDecision] === 1)) {
+        enemyAttacksBack();
+        viewPlayerTotals();
+
     } else if (walking === false) {                                            //when player selects "X" or "x"
         gameOver = true;
         console.log(`\nYou have cancelled out of the game, ${name}.  Hope to see again soon!`)
@@ -134,9 +142,9 @@ function attackOrRun() {                                          //user has cho
         //console.log(playerTotals.healthPoints);
         console.log(`\nThankfully, your buggy self survived this time,`)
         console.log(`but you've sustained some damage.`)
-        console.log(`You lost ${damage} healthpoint(s) in that last battle :(`)
+        console.log(`\nYou lost ${damage} healthpoint(s) in that last battle :(`)
         console.log(`BE CAREFUL OUT THERE!`);
-        enemyAttacksBack();
+        //enemyAttacksBack();
         viewPlayerTotals();
 
     } else if (aOrR[makeDecision] === "Run" || aOrR[makeDecision] === 1) {        //user decided to RUN
@@ -144,7 +152,7 @@ function attackOrRun() {                                          //user has cho
         let runFastEnough = Math.floor(Math.random() * 2);                   //if run:  50% chance of escaping (randomly generates a 0 or 1 here)
         if (runFastEnough === 0) {                                           //if returns 0: then ESCAPED BY RUNNING
             console.log(`Good thing you're fast, ${characterName}!!  You are safe FOR NOW.`);
-            enemyAttacksBack();
+            //enemyAttacksBack();
             viewPlayerTotals();
 
         } else if (runFastEnough === 1) {                          //if returns 1: then you ran, BUT NOT FAST ENOUGH & bug (player) is exterminated
@@ -188,7 +196,7 @@ function enemyAttacksBack() {
         //console.log(playerTotals.healthPoints)
         console.log(`This fearless engineer is RUTHLESS!  WATCH YOUR BACK!!`)
         console.log(`\nWOW, ${characterName}! That was intense!`)
-        console.log(`You sustained ${fightsBackDamage} more point(s) worth of damage during that second brawl`)
+        console.log(`\nYou sustained ${fightsBackDamage} more point(s) worth of damage during that second brawl`)
         console.log(`and are feeling the pain.`)
         console.log(`\nSTAY VIGILANT!`)
         console.log(`And keep throwing those errors like confetti!`);
@@ -200,7 +208,10 @@ function viewPlayerTotals() {                                            //check
     if ((pOrC[checkTallies] === 0 || pOrC[checkTallies] === "Print") && ((playerTotals.healthPoints > 0) && (playerTotals.healthPoints < 100)) && (inventoryOfErrorsArr.length < 3)) {          //when player selects "Print"; also, checks for positive HP total
         console.log(`\nHere are your latest tallies:`)
         console.log(playerTotals)
-        walk()
+        enemyAttacksBack()
+        console.log(`\nAfter that vicious counter-attack, here's where you stand:`)
+        console.log(playerTotals)
+        //walk()
 
     } else if ((pOrC[checkTallies] === 0 || pOrC[checkTallies] === "Print") && (playerTotals.healthPoints <= 0)) {    //when player selects "Print" & no HP left or negative HP
         console.log(`\nOH NO! Your health points have been fully depleted,`)
@@ -220,7 +231,10 @@ function viewPlayerTotals() {                                            //check
         gameOver = true;
 
     } else if ((pOrC[checkTallies] === 1 || pOrC[checkTallies] === "Continue") && ((playerTotals.healthPoints > 0) && (playerTotals.healthPoints < 100)) && (inventoryOfErrorsArr.length < 3)) {  //when player selects "Continue"; checks for positive HP total
-        walk();
+        enemyAttacksBack();
+        console.log(`\nAfter that ambush, here are your updated tallies:`)
+        console.log(playerTotals)
+        //walk();
 
     } else if ((pOrC[checkTallies] === 1 || pOrC[checkTallies] === "Continue") && (playerTotals.healthPoints <= 0)) {           //when player selects "Continue" & no HP left or negative HP
         console.log(`\nOH NO! Your health points are no longer sustaining you,`)
