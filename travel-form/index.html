@@ -10,36 +10,69 @@
 </head>
 
 <body>
-    <form name="passengerForm">
-        <input type="text" name="firstName" placeholder="First Name" />
-        <input type="text" name="lastName" placeholder="Last Name" />
-        <input type="number" name="age" placeholder="Age" />
-        Female:<input type="radio" name="gender" value="female" />
-        Male:<input type="radio" name="gender" value="male" />
-        Gender Diverse:<input type="radio" name="gender" value="gender diverse" />
-        Other:<input type="radio" name="gender" value="other" />
-        Prefer Not To Say:<input type="radio" name="gender" value="prefer not to say" />
-        Please Select Your Destination:
-        <select name="destination">
-            <option value="Auckland">Auckland</option>
-            <option value="Barcelona">Barcelona</option>
-            <option value="Bora Bora">Bora Bora</option>
-            <option value="Honolulu">Honolulu</option>
-            <option value="Paris">Paris</option>
-            <option value="Sydney">Sydney</option>
-        </select>
-        Please Indicate Any Dietary Restrictions:
-        Vegetarian<input type="checkbox" value="vegetarian" name="dietary-restrictions" />
-        Kosher<input type="checkbox" value="kosher" name="dietary-restrictions" />
-        Gluten-Free<input type="checkbox" value="gluten-free" name="dietary-restrictions" />
-        Lactose-Free<input type="checkbox" value="lactose-free" name="dietary-restrictions" />
-        Low Sodium<input type="checkbox" value="low-sodium" name="dietary-restrictions" />
-
-
-
-        <button id="submit-form">Submit</button>
-    </form>
-    <script src="index.js"></script>
+    <div id="grid-container">
+        <div id=style-form>
+            <h2>Get Me Outta Here Airlines</h2>
+            <h3>Passenger Booking Form</h3>
+            <form name="passengerForm">
+                <input type="text" name="firstName" placeholder="First Name" />
+                <input type="text" name="lastName" placeholder="Last Name" />
+                <input type="number" name="age" placeholder="Age" />
+                <div class="section-title">Gender:</div>
+                <p>
+                    <input type="radio" name="gender" value="Female" />
+                    <label for="Female">Female</label>
+                </p>
+                <p><input type="radio" name="gender" value="Male" />
+                    <label for="Male">Male</label>
+                </p>
+                <p>
+                    <input type="radio" name="gender" value="Non-Binary" />
+                    <label for="Non-Binary">Non-Binary</label>
+                </p>
+                <p>
+                    <input type="radio" name="gender" value="Other" />
+                    <label for="Other">Other</label>
+                </p>
+                <p>
+                    <input type="radio" name="gender" value="Prefer Not to Answer" />
+                    <label for="Prefer Not to Answer">Prefer No Answer</label>
+                </p>
+                <div class="section-title">Please Select Your Destination:</div>
+                <select name="destination">
+                    <option value="Auckland">Auckland</option>
+                    <option value="Barcelona">Barcelona</option>
+                    <option value="Bora Bora">Bora Bora</option>
+                    <option value="Honolulu">Honolulu</option>
+                    <option value="Paris">Paris</option>
+                    <option value="Sydney">Sydney</option>
+                </select>
+                <div class="section-title">Please Indicate Any Dietary Restrictions:</div>
+                <p>
+                    <input type="checkbox" value=" Vegetarian" name="diet" />
+                    <label for="Vegetarian">Vegetarian</label>
+                </p>
+                <p>
+                    <input type="checkbox" value=" Kosher" name="diet" />
+                    <label for="Kosher">Kosher</label>
+                </p>
+                <p>
+                    <input type="checkbox" value=" Gluten-Free" name="diet" />
+                    <label for="Gluten-Free">Gluten-Free</label>
+                </p>
+                <p>
+                    <input type="checkbox" value=" Lactose-Free" name="diet" />
+                    <label for="Lactose-Free">Lactose-Free</label>
+                </p>
+                <p>
+                    <input type="checkbox" value=" Low-Sodium" name="diet" />
+                    <label for="Low Sodium">Low Sodium</label>
+                </p>
+                <button id="submit-form">Submit</button>
+            </form>
+            <script src="index.js"></script>
+        </div>
+    </div>
 </body>
 
 </html>

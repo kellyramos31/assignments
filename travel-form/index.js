@@ -19,8 +19,28 @@ const travelForm = document.passengerForm;
 
 travelForm.addEventListener("submit", e => {
     e.preventDefault();
+    const first = travelForm.firstName.value;
+    const last = travelForm.lastName.value;
+    const age = travelForm.age.value;
+    const gender = travelForm.gender.value;
+    const destination = travelForm.destination.value;
+    const dietaryRestrictionsArr = [];
+    for (let i = 0; i < travelForm.diet.length; i++) {
+        if (travelForm.diet[i].checked) {
+            dietaryRestrictionsArr.push(travelForm.diet[i].value)
+        }
+    } console.log(dietaryRestrictionsArr)
 
+    passenger = {
+        first: first,
+        last: last,
+        age: age,
+        gender: gender,
+        destination: destination,
+        diet: dietaryRestrictionsArr
+    }
 
+    alert(`First Name: ${passenger.first}` + `\nLast Name: ${passenger.last}` + `\nAge:  ${passenger.age}` + `\nGender:  ${passenger.gender}` + `\nDestination:  ${passenger.destination}` + `\nDietary Restrictions:  ${passenger.diet}`)
 })
 
 
