@@ -1,0 +1,51 @@
+
+body {
+    background-image: url(./assets/super-mario-goomba.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: Arial;
+}
+
+header {
+    margin-right: 0;
+    background-color: red;
+    border: 10px solid black;
+    padding: 5px;
+    color: white;
+    margin-right: 0;
+    width: 25%;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+h4 {
+    padding-top: 10px;
+    color: white;
+}
+
+ul {
+  display: relative;
+  background-color: black;
+  width: 125px;
+}
+
+#goomba {
+  
+}
+
+input {
+  width: 75px;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+}
+
+label {
+    display: relative;
+    color: white;
+}
+
+.price {
+    color: white;
+}
+
+
