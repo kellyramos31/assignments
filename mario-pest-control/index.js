@@ -38,6 +38,23 @@ Fonts in CSS
 Using external CSS stylesheets and JavaScript files
 Deployment, Level 1
 Opening an HTML document in browser
-Extra Credit
-Build Mario Pest Control website to be responsive, meaning it looks great when shrunk down to the screen size of a smart phone.
+***Extra Credit
+***Build Mario Pest Control website to be responsive, meaning it looks great when shrunk down to the screen size of a smart phone.
 */
+
+
+const totalUpForm = document.total
+
+totalUpForm.addEventListener("submit", e => {
+    e.preventDefault();
+    const goomba = totalUpForm.goomba.value;
+    const bobomb = totalUpForm.bobombs.value;
+    const cheepCheep = totalUpForm.cheepcheep.value;
+    goombaPrice = goomba * 5;
+    bobombPrice = bobomb * 7;
+    cheepPrice = cheepCheep * 11;
+    const sumTotal = goombaPrice + bobombPrice + cheepPrice;
+    const yourTotal = document.getElementById("totaled")
+    yourTotal.textContent = `Total Coins:  ` + sumTotal;
+    totalUpForm.append(yourTotal)
+})

@@ -25,6 +25,10 @@ const readline = require("readline-sync");
 //VARIABLES 
 const name = readline.question("\nGreetings!  What is your name? ");
 
+//const chalk = require('chalk');
+
+//console.log(chalk.blue("Hello World"))
+
 let gameOver = false;
 
 const errorChoicesArr = ["INFINITE LOOP", "MISSING CURLY BRACE", "IMPOSTER SYNDROME", "UNDEFINED", "ERRANT SEMI-COLON", "NOT A FUNCTION", "NaN", "REFERENCE ERROR", "TYPE ERROR", "SYNTAX ERROR"]
@@ -77,7 +81,7 @@ if (options[readyToGo] === "Yes" || options[readyToGo] === 1) {
 
 //FUNCTIONS
 function welcomeGreeting() {
-    console.log(`\nWELCOME TO MY BUGGY ADVENTURE, ${characterName}...where YOU are the BUG in the JavaScript!`)
+    console.log(`\nchalk.green(WELCOME TO MY BUGGY ADVENTURE), ${characterName}...where YOU are the BUG in the JavaScript!`)
     console.log(`~~Your mission is to SURVIVE so that you can keep messing with the program...and the programmer!!!)~~`)
     console.log(`\nYou'll start with a total of 75 health points.`)
     console.log(`Each time you attack the developer OR the developer attacks you,`)

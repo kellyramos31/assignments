@@ -45,3 +45,10 @@ travelForm.addEventListener("submit", e => {
 
 
 
+
+//re-do the radio & checkbox inputs with this format:
+/*<label class="name-input">
+Name:
+<input />
+</label >
+*/
