@@ -136,27 +136,21 @@ var voters = [
 ];
 
 const result6 = voters.reduce(function voterResults(final, vote) {
-    if (voters.age >= 18 && voters.age <= 25 && voters.voted === true) {
-        final += vote.numYoungVotes
-    } else if (voters.age >= 18 && voters.age <= 25 && voters.voted === false) {
-        final += vote.numYoungPeople
-    } else if (voters.age >= 26 && voters.age <= 35 && voters.voted === true) {
-        final += vote.numMidVotes
-    } else if (voters.age >= 26 && voters.age <= 35 && voters.voted === false) {
-        final += vote.numMidPeople
-    } else if (voters.age >= 26 && voters.age <= 55 && voters.voted === true) {
-        final += vote.numOlderVotes
-    } else if (voters.age >= 26 && voters.age <= 55 && voters.voted === false) {
-        final += vote.numOlderPeople
+    if (vote.age >= 18 && vote.age <= 25) {
+        if (vote.voted === true) {
+            final.numYoungVotes++
+        } final.numYoungPeople++
+    } else if (vote.age >= 26 && vote.age <= 35) {
+        if (vote.voted === true) {
+            final.numMidVotes++
+        } final.numMidPeople++
+    } else if (vote.age >= 26 && vote.age <= 55) {
+        if (vote.voted === true) {
+            final.numOlderVotes++
+        } final.numOlderPeople++
     }
-    return final.numYoungVotes
-    return final.numYoungPeople
-    return final.numMidVotes
-    return final.numMidPeople
-    return final.numOlderVotes
-    return final.numOlderPeople
-}
-    , ({ numYoungVotes: 0, numYoungPeople: 0, numMidVotes: 0, numMidPeople: 0, numOlderVotes: 0, numOlderPeople: 0 }))
+    return final
+}, ({ numYoungVotes: 0, numYoungPeople: 0, numMidVotes: 0, numMidPeople: 0, numOlderVotes: 0, numOlderPeople: 0 }))
 
 console.log(result6)
 
@@ -175,7 +169,7 @@ console.log(result6)
 
 
 //Extra credit
-//??????
+//???????????????????
 
 const Http = new XMLHttpRequest();
 const url = "https://api.github.com/users/kellyramos31/repos"
@@ -184,10 +178,11 @@ Http.send();
 Http.onreadystatechange = (e) => {
     console.log(Http.responseText)
 }
-const result7 = Http.reduce(function watchers(final, current) {
+//????????????????
+//const result7 = Http.reduce(function watchers(final, current) {
 
-})
-console.log(result7)
+//})
+//console.log(result7)
 
 /*
 Using AJAX, do a GET request to your own Github repositories endpoint.
