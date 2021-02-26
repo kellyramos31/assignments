@@ -59,7 +59,7 @@ console.log(over18)
 
 //SORT BY LAST NAME
 //below sort code block from Dev Moz -- BUT WHY DOES THIS WORK & WHY HAVE TO DO IT THIS WAY?
-const alphaLastName = peopleArray.sort(function (a, b) {
+const alphaLastName = over18.sort(function (a, b) {
     var nameA = a.lastName.toUpperCase(); // ignore upper and lowercase
     var nameB = b.lastName.toUpperCase(); // ignore upper and lowercase
     if (nameA < nameB) {
@@ -73,17 +73,15 @@ const alphaLastName = peopleArray.sort(function (a, b) {
 });
 console.log(alphaLastName)
 
-//ADD <li></li> TAGS AROUND INFO AND MAKE A STRING
-//maybe use MAP for this??
+//ADD <li></li> TAGS AROUND INFO AND MAKE INTO STRINGS
 
-const makeString = peopleArray.map(function toString(person) {
+const makeString = alphaLastName.map(function toString(person) {
     return (`<li>`.concat(`${person.firstName} ${person.lastName} is ${person.age}</li>`))
 })
 console.log(makeString)
 
 
-
-/* MY CODE FROM MAP EXERCISES
+/*
 Output:
 [
     "<li>Kyle Mooney is 27</li>",
@@ -94,116 +92,11 @@ Output:
 ]
 */
 
+
 /*
 Extra Credit
 Create another array of one or more individuals and add it to the original array.
 Create a function that filters out all people who's last names end with "y" or "a" and save those people in another array.
 Remove the second individual from the array.
 Return the array in reverse order.
-*/
-
-
-/*
-//DONE --5) Make an array of strings of the names saying whether or not they can go to The Matrix
-
-const movieAge = [
-    {
-        name: "Angelina Jolie",
-        age: 80
-    },
-    {
-        name: "Eric Jones",
-        age: 2
-    },
-    {
-        name: "Paris Hilton",
-        age: 5
-    },
-    {
-        name: "Kayne West",
-        age: 16
-    },
-    {
-        name: "Bob Ziroll",
-        age: 100
-    }
-];
-
-//code for this exercise:
-
-const resultMovie = movieAge.map(function makeStrings(movieAge) {
-    if (movieAge.age > 18) {
-        return movieAge.name.concat(" can go to The Matrix!")
-    } else {
-        return movieAge.name.concat(" is underage!!")
-    }
-})
-console.log(resultMovie)
-
-//code rewritten with ES6 syntax:
-
-const resultMovie = movieAge.map(movieAge => {
-    if (movieAge.age > 18) {
-        return movieAge.name.concat(" can go to The Matrix!")
-    } else {
-        return movieAge.name.concat(" is underage!!")
-    }
-})
-console.log(resultMovie)
-
-
-//function makeStrings(arr) {
-// your code here
-//}
-
-// ["Angelina Jolie can go to The Matrix",
-// "Eric Jones is under age!!",
-// "Paris Hilton is under age!!",
-// "Kayne West is under age!!",
-// "Bob Ziroll can go to The Matrix"]
-
-
-
-//DONE -- 6) Make an array of the names in h1s, and the ages in h2s
-
-const readyToPutInTheDom = [
-    {
-        name: "Angelina Jolie",
-        age: 80
-    },
-    {
-        name: "Eric Jones",
-        age: 2
-    },
-    {
-        name: "Paris Hilton",
-        age: 5
-    },
-    {
-        name: "Kayne West",
-        age: 16
-    },
-    {
-        name: "Bob Ziroll",
-        age: 100
-    }
-]
-
-
-//code for this exercise:
-const domReady = readyToPutInTheDom.map(function readyForDom(readyToPutInTheDom) {
-    return "<h1>" + readyToPutInTheDom.name + "</h1>" + "<h2>" + readyToPutInTheDom.age + "</h2>";
-})
-console.log(domReady)
-
-
-//code rewritten with ES6 syntax:
-const domReady = readyToPutInTheDom.map(readyToPutInTheDom => "<h1>" + readyToPutInTheDom.name + "</h1>" + "<h2>" + readyToPutInTheDom.age + "</h2>")
-console.log(domReady)
-
-// ["<h1>Angelina Jolie</h1><h2>80</h2>",
-// "<h1>Eric Jones</h1><h2>2</h2>",
-// "<h1>Paris Hilton</h1><h2>5</h2>",
-// "<h1>Kayne West</h1><h2>16</h2>",
-// "<h1>Bob Ziroll</h1><h2>100</h2>"]
 */
