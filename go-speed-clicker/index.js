@@ -1,13 +1,13 @@
+const displayClicks = document.getElementById("number-clicks");
+
+const startButton = document.getElementById("start-time")
+const timer = document.getElementById("show-timer")
 
 let countClicks = 0;
 let timeTick = 10;
+timer.textContent = timeTick;
 let intervalId;
 
-
-const displayClicks = document.getElementById("number-clicks");
-const lastCountClicks = localStorage.getItem("clicks");
-const startButton = document.getElementById("start-time")
-const timer = document.getElementById("show-timer")
 
 function timeTicking() {
     timeTick--
@@ -23,17 +23,21 @@ startButton.addEventListener("click", () => {
     displayClicks.textContent = "0"
 })
 
+
 window.addEventListener("click", () => {
     if (timeTick > 0) {
         countClicks += 1;
         localStorage.setItem("clicks", countClicks)
         displayClicks.textContent = countClicks;
-
     } else if (timeTick === 0) {
+        displayClicks.textContent = countClicks;
+    } else if (timeTick < 0) {
         displayClicks.textContent = countClicks;
     }
 })
 
+
+const lastCountClicks = localStorage.getItem("clicks");
 if (lastCountClicks) {
     displayClicks.textContent = lastCountClicks;
 } else {
