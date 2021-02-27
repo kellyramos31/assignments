@@ -81,6 +81,12 @@ const makeString = alphaLastName.map(function toString(person) {
 console.log(makeString)
 
 
+//COMBINE IT ALL INTO ALL ONE FUNCTION:
+
+//not sure how to do this
+
+
+
 /*
 Output:
 [

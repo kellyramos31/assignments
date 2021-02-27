@@ -1,45 +1,45 @@
 
 let countClicks = 0;
-let time = 0;
-
-
-
-window.addEventListener("click", () => {
-    //setTimeout(function () {
-    //clearInterval(intervalId);
-    //localStorage.setItem("clicks", countClicks);
-    //countClicks += 1;
-    //displayClicks.textContent = countClicks;
-    //}, 10000)
-    setTimeout(function () {
-        countClicks += 1;
-        localStorage.setItem("clicks", countClicks);
-        displayClicks.textContent = countClicks
-    })
-    var intervalId = setInterval(function () {
-        const displayTime = document.getElementById("show-timer");
-        displayTime.textContent = time
-        time += 1;
-        //displayClicks.textContent = countClicks;
-        clearInterval(intervalId); alert('stop');
-    }, 10000)
-
-    //setTimeout(() => {
-
-})
-
-//let timerId = setInterval(() => alert('tick'), 2000);
-//setTimeout(() => { clearInterval(timerId); alert('stop'); }, 5000)
-//console.log(displayTime)
+let timeTick = 10;
+let intervalId;
 
 
 const displayClicks = document.getElementById("number-clicks");
 const lastCountClicks = localStorage.getItem("clicks");
+const startButton = document.getElementById("start-time")
+const timer = document.getElementById("show-timer")
+
+function timeTicking() {
+    timeTick--
+    timer.textContent = timeTick;
+    if (timeTick === 0) {
+        timer.textContent = "Time's Up!";
+        clearInterval(intervalId)
+    }
+}
+
+startButton.addEventListener("click", () => {
+    intervalId = setInterval(timeTicking, 1000)
+    displayClicks.textContent = "0"
+})
+
+window.addEventListener("click", () => {
+    if (timeTick > 0) {
+        countClicks += 1;
+        localStorage.setItem("clicks", countClicks)
+        displayClicks.textContent = countClicks;
+
+    } else if (timeTick === 0) {
+        displayClicks.textContent = countClicks;
+    }
+})
+
 if (lastCountClicks) {
     displayClicks.textContent = lastCountClicks;
 } else {
-    displayClicks.textContent = countClicks;
+    displayClicks.textContent = newClicks;
 }
+
 
 
 //Extra credit: Put a countdown timer(10 - 30 seconds) on the page that stops the user's clicks from counting towards the total after the timer ends.
@@ -73,5 +73,22 @@ if (lastCountClicks) {
 //setTimeout(function(){}, 1000)  1000 = 1 second b/c measures milliseconds
 
 
+/*COUNTER ONLY:
+let countClicks = 0;
 
+window.addEventListener("click", () => {
+    countClicks += 1;
+    localStorage.setItem("clicks", countClicks);
+    displayClicks.textContent = countClicks;
+    //console.log(displayClicks);
+})
+
+const displayClicks = document.getElementById("number-clicks");
+const lastCountClicks = localStorage.getItem("clicks");
+if (lastCountClicks) {
+    displayClicks.textContent = lastCountClicks;
+} else {
+    displayClicks.textContent = countClicks;
+}
+*/
 
