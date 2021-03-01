@@ -45,6 +45,8 @@ var peopleArray = [
 ]
 
 
+/*
+//ALL SEPARATE FUNCTIONS:
 
 //GET OVER 18
 const over18 = peopleArray.filter(function (person) {
@@ -79,11 +81,40 @@ const makeString = alphaLastName.map(function toString(person) {
     return (`<li>`.concat(`${person.firstName} ${person.lastName} is ${person.age}</li>`))
 })
 console.log(makeString)
+*/
 
+//COMBINED INTO ONE FUNCTION:
 
-//COMBINE IT ALL INTO ALL ONE FUNCTION:
+function ofAge(arr) {
+    const over18 = peopleArray.filter(function (person) {
+        if (person.age > 18) {
+            const ofAge = [];
+            ofAge.push(person)
+            return ofAge
+        }
+    })
+    console.log(over18)
+    over18.sort(function (a, b) {
+        var nameA = a.lastName.toUpperCase(); // ignore upper and lowercase
+        var nameB = b.lastName.toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+        // names must be equal
+        return 0;
+    });
 
-//not sure how to do this
+    const makeString = over18.map(function toString(person) {
+        return (`<li>`.concat(`${person.firstName} ${person.lastName} is ${person.age}</li>`))
+    })
+    console.log(makeString)
+
+}
+console.log(ofAge(peopleArray))
+
 
 
 
@@ -105,4 +136,30 @@ Create another array of one or more individuals and add it to the original array
 Create a function that filters out all people who's last names end with "y" or "a" and save those people in another array.
 Remove the second individual from the array.
 Return the array in reverse order.
+*/
+
+
+
+
+/*ALLY'S SUGGESTIONS
+//GET OVER 18:
+function sortedOfAge(arr) { //pass arr through instead of peopleArray so it will do any array
+const over18 = arr.filter(overAge => overAge.age >= 18); //simplified over18 code to run on one line-- deleted if statement
+over18.sort(function (a, b) { //deleted const alphaLastName
+    var nameA = a.lastName.toUpperCase();
+    var nameB = b.lastName.toUpperCase();
+    if (nameA < nameB) {
+        return -1;
+    }
+    if (nameA > nameB) {
+        return 1;
+    }
+    return 0;
+})
+const makeString = over18.map(function toString(person) {
+    return (`<li>`.concat(`${person.firstName} ${person.lastName} is ${person.age}</li>`))
+})
+    return makeString //returned makestring to show the array
+}
+console.log(sortedOfAge(peopleArray)) //ran the peopleArray here so you could run any array into the function
 */
