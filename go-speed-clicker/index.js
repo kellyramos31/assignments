@@ -15,6 +15,7 @@ function timeTicking() {
     if (timeTick === 0) {
         timer.textContent = "Time's Up!";
         clearInterval(intervalId)
+        timeTick = 10;
     }
 }
 
