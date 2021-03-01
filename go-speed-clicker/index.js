@@ -16,6 +16,7 @@ function timeTicking() {
         timer.textContent = "Time's Up!";
         clearInterval(intervalId)
         timeTick = 10;
+        countClicks = 0;
     }
 }
 

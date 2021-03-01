@@ -141,7 +141,7 @@ Return the array in reverse order.
 
 
 
-/*ALLY'S SUGGESTIONS
+/*ALLY'S SUGGESTIONS TO HELP COMBINE:
 //GET OVER 18:
 function sortedOfAge(arr) { //pass arr through instead of peopleArray so it will do any array
 const over18 = arr.filter(overAge => overAge.age >= 18); //simplified over18 code to run on one line-- deleted if statement
