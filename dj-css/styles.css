@@ -1,0 +1,72 @@
+#flex-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+#box-1 {
+    width: 150px;
+    height: 150px;
+    background-color: #EBE8E7;
+}
+
+#box-1:hover {
+    background-color: #14ffcb;
+}
+
+
+#box-2 {
+    width: 150px;
+    height: 150px;
+    background-color: #EA7186;
+}
+
+
+#box-2:hover {
+    background-color: #F40097;
+}
+
+#box-3 {
+    width: 150px;
+    height: 150px;
+    background-color: #F2C76E;
+}
+
+
+#box-3:hover {
+     background-color: #9615DB;
+}
+
+
+#box-4 {
+    width: 150px;
+    height: 150px;
+    background-color: #7A77B9;
+}
+
+
+#box-4:hover {
+    background-color: #223CCF;
+}
+
+
+#box-5 {
+    width: 150px;
+    height: 150px;
+    background-color: #BD9DEA;
+}
+
+
+#box-5:hover {
+     background-color: #161B7F;
+}
+
+#box-6 {
+    width: 150px;
+    height: 150px;
+    background-color: lavender;
+}
+
+
+#box-6:hover {
+     background-color: #0683D7;
+}
