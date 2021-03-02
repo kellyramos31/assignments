@@ -62,17 +62,19 @@ var user = { username: "sam", password: "123abc" };
 function login(username, password) {
     if (username === user.username && password === user.password) {         //check credentials
         console.log("yes, it worked. you are logged in")
+    } else {
+        throw new Error("there's a problem.  please try logging in again")
     }
 }
 
 try {
-    login();
+    login("sam", "456abc");
 }
 
 catch (err) {
     console.log(err)
-    console.log("there's a problem.  please try logging in again")
 }
 
 
-login("daisy", "65498Z")
+
+
