@@ -51,6 +51,7 @@ function checkForCharacter() {
 checkForCharacter()
 
 
+
 //DONE -- #3:  Write a function that takes a num1 and num2 and returns whether num1 is divisible by num2.
 //isDivisible(4, 2) // => true
 //isDivisible(9, 3) // => true
@@ -71,3 +72,5 @@ function isDivisible(num1, num2) {
 isDivisible(4, 2);
 isDivisible(9, 3);
 isDivisible(15, 4);
+
+
