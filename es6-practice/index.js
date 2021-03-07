@@ -29,26 +29,25 @@ runForLoop(["cat", "dog"])
 
 
 //ES6 Arrow Functions
+
+//TASK 1
+//Re - write this.map() using an arrow function:
+//Be aware that if JavaScript sees a {
+//directly after the => it will think it's starting a function, and not starting an object, so the : will be an unexpected symbol.
+
+const carrots = ["bright orange", "ripe", "rotten"]
+
+function mapVegetables(arr) {
+    return arr.map(function (carrot) {
+        return { type: "carrot", name: carrot }
+    })
+}
+
+
+
+//TASK 2
+//Re - write this.filter() using an arrow function:
 /*
-Task 1
-Re - write this.map() using an arrow function:
-
-    Be aware that if JavaScript sees a {
-    directly after the => it will think it's starting a function, and not starting an object, so the : will be an unexpected symbol.
-
-    const carrots = ["bright orange", "ripe", "rotten"]
-
-    function mapVegetables(arr) {
-        return arr.map(function (carrot) {
-            return { type: "carrot", name: carrot }
-        })
-    }
-    */
-
-/*
-Task 2
-Re - write this.filter() using an arrow function:
-
     const people = [
         {
             name: "Princess Peach",
