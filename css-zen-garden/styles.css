@@ -87,9 +87,16 @@ body {
     grid-column: 2 / 3;
     grid-row: 3 / 11;
     background-color: #edf4f0;
-    padding-top: 40px;
+    padding-top: 30px;
     padding-left: 30px;
     font-family: "Julius Sans One", sans-serif;
+    font-size: 20px;
+}
+
+.book-author {
+    font-family: "Libre Baskerville", sans-serif;
+    color: #616857;
+    font-size: 15px;
 }
 
 li {
@@ -99,6 +106,8 @@ li {
 
 #participation {
     background-color: rgba(138, 188, 159, 0.5);
+    background-image: url(./assets/bamboo.png);
+    background-size: cover;
     grid-column: 1 / 2;
     grid-row: 11 / 19;
     padding-top: 30px;
@@ -110,8 +119,12 @@ li {
 .links {
     grid-column: 2 / 3;
     grid-row: 11 / 19;
-     padding-left: 30px;
+    padding-left: 30px;
+    background-image: url(./assets/bamboo.png);
+    background-size: cover;
+    background-color:  #a0b9ad;
     font-family: "Julius Sans One", sans-serif;
+    font-size: 20px;
 }
 
 #requirements {
