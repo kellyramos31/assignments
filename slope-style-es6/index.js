@@ -85,7 +85,7 @@ console.log(returnFavorites(favoriteActivities))
 
 
 
-//#6:  Use the Rest and Spread Operator to help take any number of arrays, and return one array.
+//DONE -- #6:  Use the Rest and Spread Operator to help take any number of arrays, and return one array.
 //You will need to change how the arrays are passed in.You may write it assuming you will always recieve three arrays if you would like to.
 /*
 function combineAnimals() {
@@ -100,6 +100,19 @@ combineAnimals(realAnimals, magicalAnimals, mysteriousAnimals);
 
 // ["dog", "cat", "mouse", "jackolope", "platypus"]
 */
+const realAnimals = ["dog", "cat", "mouse"];
+const magicalAnimals = ["jackolope"];
+const mysteriousAnimals = ["platypus"];
+
+
+function combineAnimals(...arr) {
+    const allAnimals = [...realAnimals, ...magicalAnimals, ...mysteriousAnimals]
+    return allAnimals;
+}
+
+console.log(combineAnimals(realAnimals, magicalAnimals, mysteriousAnimals));
+
+// ["dog", "cat", "mouse", "jackolope", "platypus"]
 
 
 
@@ -114,19 +127,42 @@ function product(a, b, c, d, e) {
 }
 */
 
-//#8 Make the following function more ES6xy. Use at least both the rest and spread operators:
+const numbers = [1, 2, 3];
+function product(...num) {
+    numbers.reduce((acc, num) => {
+        acc * num;
+    }, 1)
+}
+console.log(product(numbers))
+
+
+
+
+//???--don't think unshift working --#8 Make the following function more ES6xy. Use at least both the rest and spread operators:
 /*
 function unshift(array, a, b, c, d, e) {
     return [a, b, c, d, e].concat(array);
 }
 */
 
-//#9 Write some destructuring code to help this function out. Use object literals to simplify it:
+const arr1 = ["a", "b", "c", "d", "e"]
+const arr2 = ["merry", "christmas"]
+
+function unshift(a, b, c, d, e, ...arr) {
+    const newArr = [...arr1, ...arr2];
+    return newArr;
+}
+console.log(unshift(arr1, arr2))
+
+
+
+
+//DONE -- #9 Write some destructuring code to help this function out. Use object literals to simplify it:
 /*
 function populatePeople(names) {
     return names.map(function (name) {
         name = name.split(" ");
-        // your code
+          // your code
         return {
             firstName: firstName,
             lastName: lastName
@@ -135,9 +171,20 @@ function populatePeople(names) {
 }
 
 populatePeople(["Frank Peterson", "Suzy Degual", "Liza Jones"])
+
 //[
 //  {firstName: "Frank", lastName: "Peterson"},
 //  {firstName: "Suzy", lastName: "Degual"},
 //  {firstName: "Liza", lastName: "Jones"},
 //]
 */
+
+function populatePeople(names) {
+    return names.map(function (name) {
+        name = name.split(" ");
+        const { firstName, lastName } = name;
+        return name
+    })
+}
+
+console.log(populatePeople(["Frank Peterson", "Suzy Degual", "Liza Jones"]))
