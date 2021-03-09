@@ -47,17 +47,22 @@ function parseSentence() {
 console.log(parseSentence(vacation))
 
 
-//#4:  Use destructuring to make this code ES6:
+//???DONE-- #4:  Use destructuring to make this code ES6:
+
 //function returnFirst(items) {
 //    const firstItem = items[0]; /*change this line to be es6*/
 //    return firstItem
 //}
 
+const firstItem = ["cat"]
 
+function returnFirst(items) {
+    const [item1] = firstItem;
+    return firstItem;
+}
+console.log(returnFirst(firstItem))
 
-
-
-//#5:  Write destructuring code to assign variables that will help us return the expected string.
+//DONE--#5:  Write destructuring code to assign variables that will help us return the expected string.
 //Also, change the string to be using Template literals:
 
 
@@ -68,6 +73,15 @@ console.log(parseSentence(vacation))
 //    return "My top three favorite activities are, " + firstFav + ", " + secondFav + ", and " + thirdFav"
 //}
 //returnFavorites(favoriteActivities)
+
+
+const favoriteActivities = ["magnets", "snowboarding", "philanthropy", "janitor work", "eating"];
+
+function returnFavorites(arr) {
+    const [firstFav, secondFav, thirdFav, fourthFav, fifthFav] = favoriteActivities;/*your code here*/
+    return `My top three favorite activities are ${firstFav}, ${secondFav}, and ${thirdFav}.`
+}
+console.log(returnFavorites(favoriteActivities))
 
 
 
