@@ -116,7 +116,7 @@ console.log(combineAnimals(realAnimals, magicalAnimals, mysteriousAnimals));
 
 
 
-//#7 Try to make the following function more ES6xy:
+//DONE --#7 Try to make the following function more ES6xy:
 /*
 function product(a, b, c, d, e) {
     var numbers = [a, b, c, d, e];
@@ -127,18 +127,13 @@ function product(a, b, c, d, e) {
 }
 */
 
-const numbers = [1, 2, 3];
-function product(...num) {
-    numbers.reduce((acc, num) => {
-        acc * num;
-    }, 1)
-}
-console.log(product(numbers))
+const numbers = [1, 2, 3, 4, 5];
+const giveProduct = numbers.reduce((acc, num) => acc * num);
+
+console.log(giveProduct)
 
 
-
-
-//???--don't think unshift working --#8 Make the following function more ES6xy. Use at least both the rest and spread operators:
+//DONE --(but not sure if correct or what intended) #8 Make the following function more ES6xy. Use at least both the rest and spread operators:
 /*
 function unshift(array, a, b, c, d, e) {
     return [a, b, c, d, e].concat(array);
@@ -148,13 +143,11 @@ function unshift(array, a, b, c, d, e) {
 const arr1 = ["a", "b", "c", "d", "e"]
 const arr2 = ["merry", "christmas"]
 
-function unshift(a, b, c, d, e, ...arr) {
-    const newArr = [...arr1, ...arr2];
-    return newArr;
+function unshift(...arr) {
+    const newArr = [...arr2, ...arr1]
+    return newArr
 }
 console.log(unshift(arr1, arr2))
-
-
 
 
 //DONE -- #9 Write some destructuring code to help this function out. Use object literals to simplify it:
@@ -171,13 +164,13 @@ function populatePeople(names) {
 }
 
 populatePeople(["Frank Peterson", "Suzy Degual", "Liza Jones"])
-
 //[
 //  {firstName: "Frank", lastName: "Peterson"},
 //  {firstName: "Suzy", lastName: "Degual"},
 //  {firstName: "Liza", lastName: "Jones"},
 //]
 */
+
 
 function populatePeople(names) {
     return names.map(function (name) {
