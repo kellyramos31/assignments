@@ -11,7 +11,6 @@
       /*border: solid black 2px;*/
 }
 
-
 #background-header  {
     background-image:  url(./assets/header-left-side.jpg);
     background-size: fill;
@@ -57,32 +56,38 @@
 }
 
 .container2 {
-   /*position: relative;*/
+   position: relative;
 }  
 
-button {
+#view-all-designs {
     background: rgba(202, 204, 203, 0.2);        /*from w3 Schools*/
     grid-column: 2 / 3;
     grid-row: 1 / 2;
     font-family: "Julius Sans One", sans-serif;
     color: white;
-    height: 50px;
+    height: 60px;
+    width:  55%;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
 
-
-button:hover {
+#view-all-designs:hover {
     background: rgba(203, 218, 203, 0.4);  
 }
 
-
 #greater-than-arrow {
-    font-family: "Julius Sans One", sans-serif;
+    background: rgba(202, 204, 203, 0.2);        /*from w3 Schools*/
+    font-family:  "Julius Sans One", sans-serif;              /*font here is supposed to be "verdemoderna", not available on google fonts;*/
     font-size:  30px;
     color: white;
+    height: 60px;
+    width:  60px;
+    position: absolute;
+    top: 50%;
+    left: 85%;
+    transform: translate(-50%,-50%);
 }
 
 h3 {
