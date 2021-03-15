@@ -8,7 +8,7 @@ addItUpForm.addEventListener("submit", e => {
     const addAnswer = Number(firstNum) + Number(secondNum);
     //console.log(addAnswer);
     const sumBox = document.getElementById("add-answer");
-    sumBox.textContent = addAnswer
+    sumBox.textContent = addAnswer;
 })
 
 

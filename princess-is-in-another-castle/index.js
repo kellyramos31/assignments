@@ -1,87 +1,98 @@
-
 class Player {
     constructor(name, totalCoins, status, hasStar, gameActive) {
         this.name = name;
-        this.totalCoins = 0;
-        this.status = " ";
-        this.hasStar = false;
-        this.gameActive = true;
+        this.totalCoins = totalCoins;
+        this.status = status;
+        this.hasStar = hasStar;
+        this.gameActive = gameActive;
     }
-    setName() {
 
-    }
     gotHit() {
         if (this.status === "Powered Up") {
-            this.status === "Big";
+            this.status = "Big";
+            return this.status
+
         } else if (this.status === "Big") {
-            this.status === "Small"
+            this.status = "Small"
+            return this.status
         } else if (this.status === "Small") {
-            this.status === "Dead"
+            this.status = "Dead"
+            this.gameActive = "false"
+            gameOver = true;
+            return this.status
         }
-        print();
     }
+
     gotPowerUp() {
         if (this.status === "Powered Up") {
             this.hasStar = true;
+            return this.hasStar;
         } else if (this.status === "Small") {
-            this.status === "Big"
+            this.status = "Big";
+            return this.status;
         } else if (this.status === "Big") {
-            this.status === "Powered Up"
+            this.status = "Powered Up"
+            return this.status;
         }
-        print()
+
     }
+
     addCoin() {
         this.totalCoins += 1;
-        print()
+        return this.totalCoins
     }
+
+    randomStatus() {
+        while (this.status != "Dead") {
+            const statusNumber = Math.floor(Math.random() * 3)
+            console.log(statusNumber)
+            if (statusNumber === 0) {
+                this.gotHit()
+                this.print()
+            } else if (statusNumber === 1) {
+                this.gotPowerUp()
+                this.print
+            } else if (statusNumber === 2) {
+                this.addCoin()
+                this.print()
+            }
+        }
+    }
+
+    startTimer() {
+        const intervalId = setInterval(this.randomStatus, 1000);
+        if (gameOver = true || this.status === "Dead") {
+            clearInterval(intervalId)
+        }
+    }
+
     print() {
-        console.log(this)
+        console.log(`Name:  ${this.name}`)
+        console.log(`Status: ${this.status}`)
+        console.log(`Total Coins:  ${this.totalCoins}`)
+        console.log(`Has Star:  ${this.hasStar}`)
     }
 
 }
 
 
-const intervalId = setInterval(randomNumGen, 1000)
-function stopGame() {
-    if (gameActive = false) {
-        clearInterval(intervalId)
-    }
-}
+let gameOver = false;
+whichName();
 
-//THIS GETS CALLED INSIDE SET INTERVAL FUNCTION
-function randomNumGen() {
-    const name = Math.floor(Math.random() * 2)   //Random number between 0 & 1 (so can be 0 or 1)
-    if (name === 0) {
+
+function whichName() {
+    const namePick = (Math.floor(Math.random() * 2));
+    console.log(namePick)
+    if (namePick === 0) {
         const namePicked = new Player("Mario", 0, "Powered Up", false, true);
         console.log(namePicked)
-        return namePicked;
-
-    } else if (name === 1) {
-        const namePicked = new Player("Luigi", 0, "Powered Up", false, true);
+        namePicked.startTimer()
+        namePicked.randomStatus()
+    } else if (namePick === 1) {
+        const namePicked = new Player("Luigi", 0, "Powered Up", false, true)
         console.log(namePicked)
-        return namePicked;
-    }
-
-    const statusNumber = Math.floor(Math.random() * 3)   //Random number between 0 & 2 (so can be 0, 1 or 2)
-    if (statusNumber === 0) {
-        gotHit()
-    } else if (statusNumber === 1) {
-        gotPowerUp()
-    } else if (statusNumber === 2) {
-        addCoin()
-    } else if (Player.status === "Dead") {
-        Player.gameActive = false
-        stopGame()
+        namePicked.startTimer()
+        namePicked.randomStatus()
     }
 }
-
-setInterval(randomNumGen, 1000)
-
-
-
-
-
-
-
-
 
