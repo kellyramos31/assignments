@@ -1,3 +1,5 @@
+let gameOver = false;
+
 class Player {
     constructor(name, totalCoins, status, hasStar, gameActive) {
         this.name = name;
@@ -43,25 +45,25 @@ class Player {
     }
 
     randomStatus() {
-        while (this.status != "Dead") {
-            const statusNumber = Math.floor(Math.random() * 3)
-            console.log(statusNumber)
-            if (statusNumber === 0) {
-                this.gotHit()
-                this.print()
-            } else if (statusNumber === 1) {
-                this.gotPowerUp()
-                this.print
-            } else if (statusNumber === 2) {
-                this.addCoin()
-                this.print()
-            }
+        //while (this.status != "Dead") {
+        const statusNumber = Math.floor(Math.random() * 3)
+        console.log(statusNumber)
+        if (statusNumber === 0) {
+            this.gotHit()
+            this.print()
+        } else if (statusNumber === 1) {
+            this.gotPowerUp()
+            this.print
+        } else if (statusNumber === 2) {
+            this.addCoin()
+            this.print()
         }
+        //       }
     }
 
     startTimer() {
-        const intervalId = setInterval(this.randomStatus, 1000);
-        if (gameOver = true || this.status === "Dead") {
+        const intervalId = setInterval(() => this.randomStatus(), 1000);
+        if (this.gameActive === false && this.status === "Dead") {
             clearInterval(intervalId)
         }
     }
@@ -75,10 +77,7 @@ class Player {
 
 }
 
-
-let gameOver = false;
 whichName();
-
 
 function whichName() {
     const namePick = (Math.floor(Math.random() * 2));
@@ -87,12 +86,12 @@ function whichName() {
         const namePicked = new Player("Mario", 0, "Powered Up", false, true);
         console.log(namePicked)
         namePicked.startTimer()
-        namePicked.randomStatus()
+        //namePicked.randomStatus()
     } else if (namePick === 1) {
         const namePicked = new Player("Luigi", 0, "Powered Up", false, true)
         console.log(namePicked)
         namePicked.startTimer()
-        namePicked.randomStatus()
+        //namePicked.randomStatus()
     }
 }
 
