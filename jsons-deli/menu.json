@@ -74,7 +74,45 @@
             ],
             "desserts": [
                 {
-                    "name": ""
+                    "name": "cupcake",
+                    "ingredients": [
+                        "flour",
+                        "chocolate",
+                        "eggs",
+                        "baking powder",
+                        "sugar"
+                    ],
+                    "description": "our grandma's recipe is sure to please!"
+                },
+                {
+                    "name": "chocolate chip cookies",
+                    "ingredients": [
+                        "chocolate chips",
+                        "butter",
+                        "eggs",
+                        "flour",
+                        "sugar"
+                    ],
+                    "description": "ask us to warm up these amazing cookies for you as a special treat"
+                }
+            ],
+            "drinks": [
+                {
+                    "name": "sparkling water",
+                    "ingredients": [
+                        "natural fruit flavors",
+                        "carbonated water"
+                    ],
+                    "description": "select from the tantalizing flavors of cran-raspberry, lemon/lime and tangerine"
+                },
+                {
+                    "name": "chocolate milk",
+                    "ingredients": [
+                        "milk",
+                        "chocolate",
+                        "sugar"
+                    ],
+                    "description": "straight from the cow and topped off with some yummy chocolate"
                 }
             ]
         }
