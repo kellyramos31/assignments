@@ -73,8 +73,8 @@ class Player {
         //}
     }
 
-    endTimer(intervalId) {
-        clearInterval(intervalId);
+    endTimer() {
+        clearInterval(this.intervalId);
         gameOver = true;
     }
 
@@ -108,4 +108,3 @@ function whichName() {
         //namePicked.randomStatus()
     }
 }
-
