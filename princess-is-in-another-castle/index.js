@@ -1,5 +1,3 @@
-let gameOver = false;
-
 class Player {
     constructor(name, totalCoins, status, hasStar, gameActive) {
         this.name = name;
@@ -9,19 +7,22 @@ class Player {
         this.gameActive = gameActive;
     }
 
+    setName(namePicked) {
+        this.startTimer()
+    }
+
     gotHit() {
         if (this.status === "Powered Up") {
             this.status = "Big";
             return this.status
-
         } else if (this.status === "Big") {
             this.status = "Small"
             return this.status
         } else if (this.status === "Small") {
             this.status = "Dead"
-            this.gameActive = "false"
-            gameOver = true;
-            return this.status
+            this.gameActive = false;
+            //gameOver = true;
+            return this.status;
         }
     }
 
@@ -33,7 +34,7 @@ class Player {
             this.status = "Big";
             return this.status;
         } else if (this.status === "Big") {
-            this.status = "Powered Up"
+            this.status = "Powered Up";
             return this.status;
         }
 
@@ -46,26 +47,35 @@ class Player {
 
     randomStatus() {
         //while (this.status != "Dead") {
-        const statusNumber = Math.floor(Math.random() * 3)
-        console.log(statusNumber)
-        if (statusNumber === 0) {
-            this.gotHit()
-            this.print()
-        } else if (statusNumber === 1) {
-            this.gotPowerUp()
-            this.print
-        } else if (statusNumber === 2) {
-            this.addCoin()
-            this.print()
+        if (this.status === "Dead" && this.gameActive === false) {
+            this.endTimer()
+        } else {
+            const statusNumber = Math.floor(Math.random() * 3)
+            console.log(statusNumber)
+            if (statusNumber === 0) {
+                this.gotHit()
+                this.print()
+            } else if (statusNumber === 1) {
+                this.gotPowerUp()
+                this.print()
+            } else if (statusNumber === 2) {
+                this.addCoin()
+                this.print()
+            }
         }
-        //       }
     }
+    //       }
 
     startTimer() {
         const intervalId = setInterval(() => this.randomStatus(), 1000);
-        if (this.gameActive === false && this.status === "Dead") {
-            clearInterval(intervalId)
-        }
+        //if (this.gameActive = false && this.status === "Dead") {
+        //    clearInterval(intervalId)
+        //}
+    }
+
+    endTimer(intervalId) {
+        clearInterval(intervalId);
+        gameOver = true;
     }
 
     print() {
@@ -77,6 +87,8 @@ class Player {
 
 }
 
+let gameOver = false;
+
 whichName();
 
 function whichName() {
@@ -85,12 +97,14 @@ function whichName() {
     if (namePick === 0) {
         const namePicked = new Player("Mario", 0, "Powered Up", false, true);
         console.log(namePicked)
-        namePicked.startTimer()
+        namePicked.setName()
+        //namePicked.startTimer()
         //namePicked.randomStatus()
     } else if (namePick === 1) {
         const namePicked = new Player("Luigi", 0, "Powered Up", false, true)
         console.log(namePicked)
-        namePicked.startTimer()
+        namePicked.setName()
+        //namePicked.startTimer()
         //namePicked.randomStatus()
     }
 }
