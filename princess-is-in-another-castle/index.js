@@ -9,8 +9,6 @@ class Player {
 
     setName(namePicked) {
         this.name
-        this.randomStatus()
-        //this.startTimer()
     }
 
     gotHit() {
@@ -25,7 +23,8 @@ class Player {
         } else if (this.status === "Small") {
             this.status = "Dead"
             this.gameActive = false;
-            //gameOver = true;
+            gameOver = true;
+            clearInterval(intervalId)
             return this.status;
         }
     }
@@ -51,24 +50,24 @@ class Player {
 
     randomStatus() {
         //while (this.status != "Dead") {
-        if (this.status === "Dead" && this.gameActive === false) {
-            clearInterval(intervalId)
-            gameOver = true;
-        } else {
-            const statusNumber = Math.floor(Math.random() * 3)
-            console.log(statusNumber)
-            if (statusNumber === 0) {
-                this.gotHit()
-                this.print()
-            } else if (statusNumber === 1) {
-                this.gotPowerUp()
-                this.print()
-            } else if (statusNumber === 2) {
-                this.addCoin()
-                this.print()
-            }
+        //if (this.status === "Dead" && this.gameActive === false) {
+        //    clearInterval(intervalId)
+        //    gameOver = true;
+        //} else {
+        const statusNumber = Math.floor(Math.random() * 3)
+        console.log(statusNumber)
+        if (statusNumber === 0) {
+            this.gotHit()
+            this.print()
+        } else if (statusNumber === 1) {
+            this.gotPowerUp()
+            this.print()
+        } else if (statusNumber === 2) {
+            this.addCoin()
+            this.print()
         }
     }
+    //}
     //       }
 
     //startTimer() {
@@ -94,23 +93,32 @@ class Player {
 
 let gameOver = false;
 
+
 //whichName();
 
-const namePick = (Math.floor(Math.random() * 2));
-console.log(namePick)
-if (namePick === 0) {
+const nameNumber = (Math.floor(Math.random() * 2));
+console.log(nameNumber)
+if (nameNumber === 0) {
     const namePicked = new Player("Mario", 0, "Powered Up", false, true);
-    console.log(namePicked)
     namePicked.setName()
+    console.log(namePicked)
     //namePicked.startTimer()
     //namePicked.randomStatus()
-} else if (namePick === 1) {
+} else if (nameNumber === 1) {
     const namePicked = new Player("Luigi", 0, "Powered Up", false, true)
+    namePicked.setName()
     console.log(namePicked)
-    startGame(namePicked)
+
     //namePicked.startTimer()
     //namePicked.randomStatus()
 }
+
+const intervalId = setInterval(() => namePicked.randomStatus(), 1000);
+
+
+
+
+
 
 
 
@@ -131,8 +139,6 @@ function startGame() {
     }
 }
 */
-
-const intervalId = setInterval(startGame, 1000);
 
 //}
 
