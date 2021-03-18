@@ -14,7 +14,7 @@ xhr.onreadystatechange = function () {
     }
 }
 
-
+//function to show all Pokemon names on web page
 function showOnPage(arr) {
     for (let i = 0; i < arr.length; i++) {
         const h3 = document.createElement('h3');
