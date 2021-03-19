@@ -23,6 +23,11 @@ function showOnPage(arr) {
     }
 }
 
+//function to show all Pokemon names on web page, but using .map() instead
+
+
+
+
 /*
 //function to show all Pokemon resource_uri info on web page -- not sure what other details are really here...
 function showOnPage(arr) {
