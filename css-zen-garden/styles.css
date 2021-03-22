@@ -1,3 +1,9 @@
+@font-face {
+    font-family: 'myZenFont';
+    src: url(./assets/verdemoderna.woff);
+}
+
+
 .container {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -79,7 +85,7 @@
 
 #greater-than-arrow {
     background: rgba(202, 204, 203, 0.2);        /*from w3 Schools*/
-    font-family: "verdemoderna";           /*font here is supposed to be "verdemoderna", not available on google fonts;*/
+    font-family: "myZenFont";           /*font here is supposed to be "verdemoderna", not available on google fonts;*/
     font-size:  30px;
     color: white;
     height: 60px;
@@ -213,6 +219,8 @@ li {
     display: flex;
     justify-content: space-around;
     margin-top:  20px;
+    font-size:  50px;
+    font-family: "myZenFont";
     /*height: 50px;*/
     /*width: 100%;*/
     /*margin: auto;*/
@@ -227,12 +235,10 @@ Used font awesome & inline styling in HTML as alternative*/
     width: 50px;
     color:  #a0b9ad;
     background-color: #134347;
-    border:  2px solid #a0b9ad;
     border-radius: 50%;
     text-align: center;
     vertical-align: bottom;
 }
-
 
 @media only screen and (max-width: 900px){
     .container {
