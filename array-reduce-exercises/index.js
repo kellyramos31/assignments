@@ -93,12 +93,13 @@ const result4 = wishlist.reduce((final, cost) => final += cost.price, 0)
 console.log(result4)
 
 //DONE -- 5) Given an array of arrays, flatten them into a single array
+/*
 var arrays = [
     ["1", "2", "3"],
     [true],
     [4, 5, 6]
 ]
-
+*/
 //code for this exercise:
 /*  
 const result5 = arrays.reduce(function flatten(final, array) {
@@ -107,19 +108,20 @@ const result5 = arrays.reduce(function flatten(final, array) {
 console.log(result5)
 */
 //re-written in shorter ES6 syntax:
+/*
 const result5 = arrays.reduce((final, array) => final.concat(array));
 console.log(result5)
-
+*/
 //console.log(flatten(arrays)); // ["1", "2", "3", true, 4, 5, 6];
 //Note: Take a look at Array.concat() to help with this one
 
 
-//6) Given an array of potential voters, return an object representing the results of the vote
+//DONE -- 6) Given an array of potential voters, return an object representing the results of the vote
 //Include how many of the potential voters were in the ages 18 - 25, how many from 26 - 35, how many from 36 - 55, 
 //and how many of each of those age ranges actually voted.The resulting object containing this data should have 6 properties.
 //See the example output at the bottom.
 
-//??????
+//
 var voters = [
     { name: 'Bob', age: 30, voted: true },
     { name: 'Jake', age: 32, voted: true },
@@ -167,31 +169,31 @@ console.log(result6)
 }
 */
 
+//EXTRA CREDIT - PART 1
 
-//Extra credit
-//???????????????????
+//DONE runs in browser -- Using AJAX, do a GET request to your own Github repositories endpoint.
+//The URL will be https://api.github.com/users/<YOUR GITHUB USERNAME HERE>/repos.
 
-const Http = new XMLHttpRequest();
-const url = "https://api.github.com/users/kellyramos31/repos"
-Http.open("GET", url);
-Http.send();
-Http.onreadystatechange = (e) => {
-    console.log(Http.responseText)
+const xhr = new XMLHttpRequest();
+
+xhr.open("GET", "https://api.github.com/users/kellyramos31/repos", true);
+xhr.send();
+xhr.onreadystatechange = function () {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+        const JSONdata = xhr.responseText;
+        const data = JSON.parse(JSONdata)
+        console.log(data)
+    }
 }
-//????????????????
-//const result7 = Http.reduce(function watchers(final, current) {
 
-//})
-//console.log(result7)
 
-/*
-Using AJAX, do a GET request to your own Github repositories endpoint.
-The URL will be https://api.github.com/users/<YOUR GITHUB USERNAME HERE>/repos.
 
-Once you get the data, use.reduce() to figure out how many watchers you have across all
-of your repositories.Don't be too disappointed if the number is 0. You're still new at this :)
 
-Note: If you've learned how to use the axios library, you can do this in node. Otherwise,
-you'll want to run this code in the browser's JavaScript context and either use XMLHttpRequest
-or jQuery's AJAX methods, meaning you'll need an HTML page and an associated script tag for your JavaScript.
-*/
+//EXTRA CREDIT - PART 2   -- NOT DONE YET
+
+//Once you get the data, use.reduce() to figure out how many watchers you have across all
+//of your repositories.Don't be too disappointed if the number is 0. You're still new at this :)
+
+//Note: If you've learned how to use the axios library, you can do this in node. Otherwise,
+//you'll want to run this code in the browser's JavaScript context and either use XMLHttpRequest
+//or jQuery's AJAX methods, meaning you'll need an HTML page and an associated script tag for your JavaScript.
