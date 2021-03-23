@@ -10,15 +10,23 @@
 </head>
 
 <body>
-    <form name="todoForm">
-        <input name="title" placeholder="title">
-        <input name="description" placeholder="description">
-        <input name="imgUrl" placeholder="image URL">
-        <button>Submit</button>
-    </form>
+    <div id="grid-container">
 
-    <div id="list">
+        <div id="style-form">
+            <h2>Add a New To Do Item:</h2>
+            <form name="todoForm">
+                <input name="title" placeholder="title">
+                <input name="description" placeholder="description">
+                <input name="imgUrl" placeholder="image URL">
+                <button id="add-button">Add a New To Do</button>
+            </form>
+        </div>
+        <div id="style-list">
+            <h2>My To Do List</h2>
+            <ul id="list">
 
+            </ul>
+        </div>
     </div>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="app.js"></script>
