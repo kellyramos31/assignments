@@ -4,17 +4,22 @@ axios.get("https://api.vschool.io/kellyr/todo")
     .then(response => {
         for (let i = 0; i < response.data.length; i++) {
             const subject = document.createElement("div");
-            const detail = document.createElement("li")
-            const imageInfo = document.createElement("img")
             subject.textContent = response.data[i].title;
+            const detail = document.createElement("li")
             detail.textContent = response.data[i].description;
+            const imageInfo = document.createElement("img")
             imageInfo.src = response.data[i].imgUrl;
-            imageInfo.height = 100;
-            imageInfo.width = 100;
+            imageInfo.height = 95;
+            imageInfo.width = 95;
+            if (response.data[i].completed === true) {
+                subject.style.textDecoration = "line-through";
+                detail.style.textDecoration = "line-through";
+            }
             const getList = document.getElementById("list");
             getList.appendChild(subject)
             getList.appendChild(detail)
-            detail.appendChild(imageInfo)
+            getList.appendChild(imageInfo)
+            console.log(response.data)
         }
     })
     .catch(error => console.log(error))

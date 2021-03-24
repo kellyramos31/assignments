@@ -4,9 +4,9 @@
 }
 
 #style-list {
-     grid-column:  2 / 4;
-     grid-row-start: 1;
-}
+    grid-column: 2 / 4;
+    grid-row-start: 1;
+} 
 
 #add-button {
 
@@ -18,19 +18,17 @@
     margin-top:  30px;
 }
 
-ul {
+#list {
     list-style-type: square;
     color:  purple;
-    grid-column: 2 / 4;
-   
+    
 }
 
 
-li > div {
-   
+li {
     
 }
 
 img {
-    
+    border-radius: 25%;
 }
