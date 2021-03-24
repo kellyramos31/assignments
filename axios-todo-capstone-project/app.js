@@ -15,6 +15,8 @@ axios.get("https://api.vschool.io/kellyr/todo")
                 subject.style.textDecoration = "line-through";
                 detail.style.textDecoration = "line-through";
             }
+            const checkBox= document.createElement("input");
+            checkBox.setAttribute("type", "checkbox");
             const deleteButton = document.createElement("button");      //DELETE BUTTON
             deleteButton.textContent = "Delete To Do";
             deleteButton.addEventListener("click", e => {
@@ -22,9 +24,10 @@ axios.get("https://api.vschool.io/kellyr/todo")
                     .then(response => console.log(response.data))
                     .catch(error => console.log(error))
             })
-                const getList = document.getElementById("list");
+                const getList = document.getElementById("list");    //before all appending to getList
                 getList.appendChild(subject)
                 getList.appendChild(detail)
+                getList.appendChild(checkBox)
                 getList.appendChild(imageInfo)
                 getList.appendChild(deleteButton)
                 //console.log(response.data)
@@ -77,18 +80,36 @@ todoForm.addEventListener("submit", e => {
 
 })
 
+/*
+//EDIT/UPDATE TODO WITH NEW INFO -- CREATE EDIT BUTTON
+const updateToDo = {
+    title:          
+    description:    
+    imageUrl:       
+    completed:
+}
 
-
+axios.put(`https://api.vschool.io/kellyr/todo/${updateToDo._id}`, updateToDo)    //Axios UPDATE request (UPDATES a TODO in database)
+    .then(response => console.log(response.data))
+    .catch(error => console.log(error))
+*/
 
 
     //function to create/POST a new todo and add it to the DOM
     /*
+
+    function clearData(){
+        
+    }
+    
     function createTodo() {
     }
     
-    function getTodos() {              //function to read/GET a todo and add it to the DOM
-    
-    }
+    function getTodos() {                                         //function to read/GET the todos list
+    axios.get("https://api.vschool.io/kellyr/todo")
+            .then(response => console.log(response.data))
+            .catch(error => console.log(error))
+    })
     
     function updateTodo() {               //function to update/PUT a todo that's on the DOM
     

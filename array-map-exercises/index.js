@@ -194,7 +194,7 @@ const domReady = readyToPutInTheDom.map(function readyForDom(readyToPutInTheDom)
 console.log(domReady)
 */
 
-//code rewritten with ES6 syntax:  
+//code rewritten with ES6 syntax:  //NOTE:  can re-write this to also include template literals instead
 const domReady = readyToPutInTheDom.map(readyToPutInTheDom => "<h1>" + readyToPutInTheDom.name + "</h1>" + "<h2>" + readyToPutInTheDom.age + "</h2>")
 console.log(domReady)
 
@@ -203,3 +203,10 @@ console.log(domReady)
 // "<h1>Paris Hilton</h1><h2>5</h2>",
 // "<h1>Kayne West</h1><h2>16</h2>",
 // "<h1>Bob Ziroll</h1><h2>100</h2>"]
+
+
+//From Maira's L2 video:  
+//const domStrings = arrayofPeople.map(function(person, index)=>{
+//    return {`<h1>${person.name}</h1><h2>${person.age}</h2>`}
+//})
+//console.log("final result:  ", domStrings)
