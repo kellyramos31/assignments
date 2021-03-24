@@ -15,17 +15,24 @@ axios.get("https://api.vschool.io/kellyr/todo")
                 subject.style.textDecoration = "line-through";
                 detail.style.textDecoration = "line-through";
             }
-            const getList = document.getElementById("list");
-            getList.appendChild(subject)
-            getList.appendChild(detail)
-            getList.appendChild(imageInfo)
-            console.log(response.data)
-        }
-    })
-    .catch(error => console.log(error))
+            const deleteButton = document.createElement("button");      //DELETE BUTTON
+            deleteButton.textContent = "Delete To Do";
+            deleteButton.addEventListener("click", e => {
+                axios.delete(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`)
+                    .then(response => console.log(response.data))
+                    .catch(error => console.log(error))
+            })
+                const getList = document.getElementById("list");
+                getList.appendChild(subject)
+                getList.appendChild(detail)
+                getList.appendChild(imageInfo)
+                getList.appendChild(deleteButton)
+                //console.log(response.data)
+    }})
+                .catch(error => console.log(error))
+        
 
-
-//const getMyList = response.data.map(arr => {
+//CHECKBOX to mark as complete or incomplete & checking it should update the database
 
 
 
@@ -37,26 +44,36 @@ todoForm.addEventListener("submit", e => {
     const newtodo = {
         title: todoForm.title.value,
         description: todoForm.description.value,
-        imgUrl: todoForm.imgUrl.value
+        imgUrl: todoForm.imgUrl.value,
+        completed: false
     }
 
     const addToDo = document.createElement("div");
     const addDescrip = document.createElement("li");
     const addImage = document.createElement("img");
+    const deleteButton = document.createElement("button");      //DELETE BUTTON
     addImage.src = "./assets/sydney-rae-geM5lzDj4Iw-unsplash.jpg";
     addToDo.textContent = todoForm.title.value;
     addDescrip.textContent = todoForm.description.value;
     addImage.textContent = todoForm.imgUrl.value;
     addImage.height = 100;
     addImage.width = 100;
+    deleteButton.textContent = "Delete To Do";
     const newForList = document.getElementById("list");
     newForList.appendChild(addToDo);
     newForList.appendChild(addDescrip);
     newForList.appendChild(addImage);
-
+    newForList.appendChild(deleteButton)
+    
     axios.post("https://api.vschool.io/kellyr/todo", newtodo)         //Axios POST request (ADDS new TODO to database)
         .then(response => console.log(response.data))
         .catch(error => console.log(error))
+
+    deleteButton.addEventListener("click", e => {
+        axios.delete(`https://api.vschool.io/kellyr/todo/${newtodo._id}`)
+            .then(response => console.log(response.data))
+            .catch(error => console.log(error))
+    })
 
 })
 
@@ -64,22 +81,23 @@ todoForm.addEventListener("submit", e => {
 
 
 
+    //function to create/POST a new todo and add it to the DOM
+    /*
+    function createTodo() {
+    }
+    
+    function getTodos() {              //function to read/GET a todo and add it to the DOM
+    
+    }
+    
+    function updateTodo() {               //function to update/PUT a todo that's on the DOM
+    
+    }
+    
+    
+    function deleteTodo() {               //function to destroy/DELETE a todo from the DOM
+    
+    }
+    */
 
-//function to create/POST a new todo and add it to the DOM
-/*
-function createTodo() {
-}
 
-function getTodos() {              //function to read/GET a todo and add it to the DOM
-
-}
-
-function updateTodo() {               //function to update/PUT a todo that's on the DOM
-
-}
-
-
-function deleteTodo() {               //function to destroy/DELETE a todo from the DOM
-
-}
-*/
