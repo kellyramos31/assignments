@@ -1,7 +1,9 @@
 //Axios GET request for Current To Do List
 
+
 axios.get("https://api.vschool.io/kellyr/todo")
     .then(response => {
+        console.log(response.data)
         for (let i = 0; i < response.data.length; i++) {
             const subject = document.createElement("div");
             subject.textContent = response.data[i].title;
@@ -21,19 +23,23 @@ axios.get("https://api.vschool.io/kellyr/todo")
             deleteButton.textContent = "Delete To Do";
             deleteButton.addEventListener("click", e => {
                 axios.delete(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`)
-                    .then(response => console.log(response.data))
-                    .catch(error => console.log(error))
-            })
-                const getList = document.getElementById("list");    //before all appending to getList
+                    .then(response => {
+                        console.log(response.data)
+                        //NEED FUNCTION HERE TO CLEAR OUT DATA
+                        axios.get("https://api.vschool.io/kellyr/todo")
+                            .then(response=>console.log(response.data))
+                            .catch(error=>console.log(error))
+            })})
+                const getList = document.getElementById("list");    
                 getList.appendChild(subject)
                 getList.appendChild(detail)
                 getList.appendChild(checkBox)
                 getList.appendChild(imageInfo)
                 getList.appendChild(deleteButton)
                 //console.log(response.data)
-    }})
-                .catch(error => console.log(error))
         
+        }})
+    .catch(error => console.log(error))
 
 //CHECKBOX to mark as complete or incomplete & checking it should update the database
 
@@ -77,8 +83,8 @@ todoForm.addEventListener("submit", e => {
             .then(response => console.log(response.data))
             .catch(error => console.log(error))
     })
-
 })
+
 
 /*
 //EDIT/UPDATE TODO WITH NEW INFO -- CREATE EDIT BUTTON
