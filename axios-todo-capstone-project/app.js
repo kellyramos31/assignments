@@ -37,8 +37,7 @@ todoForm.addEventListener("submit", e => {
         axios.delete(`https://api.vschool.io/kellyr/todo/${newtodo._id}`)
             .then(response => {
                 console.log(response.data)
-                clearData();                                         //Function to clear out web page data w/o refresh
-                getToDos();
+
             })
             .catch(error => console.log(error))
     })
@@ -46,6 +45,8 @@ todoForm.addEventListener("submit", e => {
     axios.post("https://api.vschool.io/kellyr/todo", newtodo)         //Axios POST request (ADDS new TODO to database)
         .then(response => {
             console.log(response.data)
+            clearData();                                         //Function to clear out web page data w/o refresh
+            getToDos();
         })
         .catch(error => console.log(error))
 
