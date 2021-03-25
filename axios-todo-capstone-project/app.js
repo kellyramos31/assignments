@@ -1,7 +1,6 @@
 //Axios GET request for Current To Do List
 getToDos();
 
-
 //Axios POST request (ADDS new TODO to database)
 const todoForm = document.todoForm
 
@@ -34,51 +33,23 @@ todoForm.addEventListener("submit", e => {
     newForList.appendChild(addCheckBox)
     newForList.appendChild(deleteButton)
 
-    axios.post("https://api.vschool.io/kellyr/todo", newtodo)         //Axios POST request (ADDS new TODO to database)
-        .then(response => console.log(response.data))
-        .catch(error => console.log(error))
-
     deleteButton.addEventListener("click", e => {
         axios.delete(`https://api.vschool.io/kellyr/todo/${newtodo._id}`)
-            .then(response => console.log(response.data))
+            .then(response => {
+                console.log(response.data)
+                clearData();                                         //Function to clear out web page data w/o refresh
+                getToDos();
+            })
             .catch(error => console.log(error))
     })
-})
 
-
-/*
-//EDIT/UPDATE TODO WITH NEW INFO -- CREATE EDIT BUTTON
-const updateToDo = {
-    title:          
-    description:    
-    imageUrl:       
-    completed:
-}
-
-axios.put(`https://api.vschool.io/kellyr/todo/${updateToDo._id}`, updateToDo)    //Axios UPDATE request (UPDATES a TODO in database)
-    .then(response => console.log(response.data))
-    .catch(error => console.log(error))
-*/
-
-
-/*
-axios.get("https://api.vschool.io/kellyr/todo")
-    .then(response => {
-        getToDos();
-        deleteButton.addEventListener("click", e => {
-            axios.delete(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`)
-                .then(response => {
-                    console.log(response.data)
-                    clearData();                                               //Function to clear out web page data w/o refresh
-                    getToDos();
-                })
-                .catch(error => console.log(error))
+    axios.post("https://api.vschool.io/kellyr/todo", newtodo)         //Axios POST request (ADDS new TODO to database)
+        .then(response => {
+            console.log(response.data)
         })
+        .catch(error => console.log(error))
 
-    })
-    .catch(error => console.log(error))
-*/
-
+})
 
 //GET TODOS FROM DATABASE & ADD TO DOM
 function getToDos() {
@@ -114,7 +85,7 @@ function getToDos() {
                         .then(response => {
                             console.log(response.data)
                             clearData();                                               //Function to clear out web page data w/o refresh
-                            getTodos();
+                            getToDos();
                         })
                         .catch(error => console.log(error))
                 })
@@ -142,9 +113,37 @@ function updateTodo() {               //function to update/PUT a todo that's on 
 
 }
 
-function deleteTodo() {               //function to destroy/DELETE a todo from the DOM
 
+/*
+//EDIT/UPDATE TODO WITH NEW INFO -- CREATE EDIT BUTTON
+const updateToDo = {
+    title:
+    description:
+    imageUrl:
+    completed:
 }
+
+axios.put(`https://api.vschool.io/kellyr/todo/${updateToDo._id}`, updateToDo)    //Axios UPDATE request (UPDATES a TODO in database)
+    .then(response => console.log(response.data))
+    .catch(error => console.log(error))
 */
 
+
+/*
+axios.get("https://api.vschool.io/kellyr/todo")
+    .then(response => {
+        getToDos();
+        deleteButton.addEventListener("click", e => {
+            axios.delete(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`)
+                .then(response => {
+                    console.log(response.data)
+                    clearData();                                               //Function to clear out web page data w/o refresh
+                    getToDos();
+                })
+                .catch(error => console.log(error))
+        })
+
+    })
+    .catch(error => console.log(error))
+*/
 
