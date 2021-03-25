@@ -1,48 +1,5 @@
 //Axios GET request for Current To Do List
-
-
-axios.get("https://api.vschool.io/kellyr/todo")
-    .then(response => {
-        console.log(response.data)
-        for (let i = 0; i < response.data.length; i++) {
-            const subject = document.createElement("div");
-            subject.textContent = response.data[i].title;
-            const detail = document.createElement("li")
-            detail.textContent = response.data[i].description;
-            const imageInfo = document.createElement("img")
-            imageInfo.src = response.data[i].imgUrl;
-            imageInfo.height = 95;
-            imageInfo.width = 95;
-            if (response.data[i].completed === true) {
-                subject.style.textDecoration = "line-through";
-                detail.style.textDecoration = "line-through";
-            }
-            const checkBox= document.createElement("input");
-            checkBox.setAttribute("type", "checkbox");
-            const deleteButton = document.createElement("button");      //DELETE BUTTON
-            deleteButton.textContent = "Delete To Do";
-            deleteButton.addEventListener("click", e => {
-                axios.delete(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`)
-                    .then(response => {
-                        console.log(response.data)
-                        //NEED FUNCTION HERE TO CLEAR OUT DATA
-                        axios.get("https://api.vschool.io/kellyr/todo")
-                            .then(response=>console.log(response.data))
-                            .catch(error=>console.log(error))
-            })})
-                const getList = document.getElementById("list");    
-                getList.appendChild(subject)
-                getList.appendChild(detail)
-                getList.appendChild(checkBox)
-                getList.appendChild(imageInfo)
-                getList.appendChild(deleteButton)
-                //console.log(response.data)
-        
-        }})
-    .catch(error => console.log(error))
-
-//CHECKBOX to mark as complete or incomplete & checking it should update the database
-
+getToDos();
 
 
 //Axios POST request (ADDS new TODO to database)
@@ -60,8 +17,10 @@ todoForm.addEventListener("submit", e => {
     const addToDo = document.createElement("div");
     const addDescrip = document.createElement("li");
     const addImage = document.createElement("img");
+    const addCheckBox = document.createElement("input");      //CHECKBOX to mark as complete or incomplete & checking it should update the database
     const deleteButton = document.createElement("button");      //DELETE BUTTON
     addImage.src = "./assets/sydney-rae-geM5lzDj4Iw-unsplash.jpg";
+    addCheckBox.setAttribute("type", "checkbox");
     addToDo.textContent = todoForm.title.value;
     addDescrip.textContent = todoForm.description.value;
     addImage.textContent = todoForm.imgUrl.value;
@@ -72,8 +31,9 @@ todoForm.addEventListener("submit", e => {
     newForList.appendChild(addToDo);
     newForList.appendChild(addDescrip);
     newForList.appendChild(addImage);
+    newForList.appendChild(addCheckBox)
     newForList.appendChild(deleteButton)
-    
+
     axios.post("https://api.vschool.io/kellyr/todo", newtodo)         //Axios POST request (ADDS new TODO to database)
         .then(response => console.log(response.data))
         .catch(error => console.log(error))
@@ -101,30 +61,90 @@ axios.put(`https://api.vschool.io/kellyr/todo/${updateToDo._id}`, updateToDo)   
 */
 
 
-    //function to create/POST a new todo and add it to the DOM
-    /*
+/*
+axios.get("https://api.vschool.io/kellyr/todo")
+    .then(response => {
+        getToDos();
+        deleteButton.addEventListener("click", e => {
+            axios.delete(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`)
+                .then(response => {
+                    console.log(response.data)
+                    clearData();                                               //Function to clear out web page data w/o refresh
+                    getToDos();
+                })
+                .catch(error => console.log(error))
+        })
 
-    function clearData(){
-        
-    }
-    
-    function createTodo() {
-    }
-    
-    function getTodos() {                                         //function to read/GET the todos list
-    axios.get("https://api.vschool.io/kellyr/todo")
-            .then(response => console.log(response.data))
-            .catch(error => console.log(error))
     })
-    
-    function updateTodo() {               //function to update/PUT a todo that's on the DOM
-    
+    .catch(error => console.log(error))
+*/
+
+
+//GET TODOS FROM DATABASE & ADD TO DOM
+function getToDos() {
+    axios.get("https://api.vschool.io/kellyr/todo")
+        .then(response => {
+            console.log(response.data)                                        //function to read/GET the todos list
+            for (let i = 0; i < response.data.length; i++) {
+                const subject = document.createElement("div");
+                subject.textContent = response.data[i].title;
+                const detail = document.createElement("li")
+                detail.textContent = response.data[i].description;
+                const imageInfo = document.createElement("img")
+                imageInfo.src = response.data[i].imgUrl;
+                imageInfo.height = 95;
+                imageInfo.width = 95;
+                if (response.data[i].completed === true) {
+                    subject.style.textDecoration = "line-through";
+                    detail.style.textDecoration = "line-through";
+                }
+                const checkBox = document.createElement("input");
+                checkBox.setAttribute("type", "checkbox");
+                const deleteButton = document.createElement("button");      //DELETE BUTTON
+                deleteButton.textContent = "Delete To Do";
+                const getList = document.getElementById("list");
+                getList.appendChild(subject)
+                getList.appendChild(detail)
+                getList.appendChild(imageInfo)
+                getList.appendChild(checkBox)
+                getList.appendChild(deleteButton)
+                //console.log(response.data)
+                deleteButton.addEventListener("click", e => {
+                    axios.delete(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`)
+                        .then(response => {
+                            console.log(response.data)
+                            clearData();                                               //Function to clear out web page data w/o refresh
+                            getTodos();
+                        })
+                        .catch(error => console.log(error))
+                })
+            }
+        })
+        .catch(error => console.log(error))
+
+}
+
+
+//CLEAR database info from DOM
+function clearData() {
+    const el = document.getElementById("list");
+    while (el.firstChild) {
+        el.removeChild(el.firstChild)
     }
-    
-    
-    function deleteTodo() {               //function to destroy/DELETE a todo from the DOM
-    
-    }
-    */
+}
+
+
+/*
+function createTodo() {
+}
+
+function updateTodo() {               //function to update/PUT a todo that's on the DOM
+
+}
+
+function deleteTodo() {               //function to destroy/DELETE a todo from the DOM
+
+}
+*/
 
 
