@@ -29,9 +29,9 @@ function getToDos() {
                     detail.style.textDecoration = "line-through";
                     checkBox.checked = "true"
                 }
-                const editButton = document.createElement("button")         //EDIT BUTTON
+                const editButton = document.createElement("button")         //CREATE EDIT BUTTON
                 editButton.textContent = "Edit";
-                const deleteButton = document.createElement("button");      //DELETE BUTTON
+                const deleteButton = document.createElement("button");      //CREATE DELETE BUTTON
                 deleteButton.textContent = "Delete";
                 const getList = document.getElementById("list");
                 getList.appendChild(subject)
@@ -81,21 +81,31 @@ function getToDos() {
                     }
                 })
 
-                /*
+
                 //EDIT/UPDATE TODO WITH NEW INFO -- CREATE EDIT BUTTON
-            
-                editButton.addEventListener("click", () => {
-                    
-                    todoForm.title.value = response.data[i].title;
-                    todoForm.description.value = response.data[i].description;
-                    todoForm.imgUrl.value = response.data[i].imgUrl
-            
+
+                editButton.addEventListener("click", e => {
+                    e.preventDefault();
+                    const makeChanges = document.editForm
+                    makeChanges.editTitle.value = response.data[i].title;
+                    makeChanges.editDescrip.value = response.data[i].description;
+                    makeChanges.editUrl.value = response.data[i].imgUrl;
+                    makeChanges.style.display = "block"
+                    getList.prepend(makeChanges)
+                    subject.style.display = "none"   //???HOW ACCESS JUST LAST LIST ITEM???
+                    detail.style.display = "none"
+                    imageInfo.style.display = "none"
+                    editButton.textContent = "Save"
+
+                    //SET CSS DISPLAY TO NONE FOR current LI ENTRY & FLIP WITH TABLE DISPLAY NONE (flip from none to display: block??)
+                    //w3schools:  document.getElementById("myDIV").style.display = "none";
+
                     const editToDo = {
-                        title: todoForm.title.value,
-                        description: todoForm.description.value,
-                        imgUrl: todoForm.imgUrl.value
+                        title: makeChanges.title.value,
+                        description: makeChanges.description.value,
+                        imgUrl: makeChanges.imgUrl.value,
                     }
-            
+
                     axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, editToDo)
                         .then(response => {
                             console.log(response.data)
@@ -104,7 +114,7 @@ function getToDos() {
                         })
                         .catch(error => console.log(error))
                 })
-                */
+
 
                 //console.log(response.data)
                 deleteButton.addEventListener("click", e => {
@@ -121,6 +131,7 @@ function getToDos() {
         })
         .catch(error => console.log(error))
 }
+
 
 //ADD A NEW TO DO
 function createToDo() {
@@ -156,27 +167,34 @@ function createToDo() {
     newForList.appendChild(deleteButton)
 
 
-    //EDIT/UPDATE TODO WITH NEW INFO -- CREATE EDIT BUTTON
-    /*
-        editButton.addEventListener("click", e => {
-            todoForm.title.textContent = response.data[i].title;
-            todoForm.description.textContent = response.data[i].description;
-            todoForm.imgUrl.textContent = response.data[i].imgUrl;
-            const editToDo = {
-                title: todoForm.title.value,
-                description: todoForm.description.value,
-                imgUrl: todoForm.imgUrl.value,
-            }
-    
-            axios.put(`https://api.vschool.io/kellyr/todo/${editToDo._id}`, editToDo)
-                .then(response => {
-                    console.log(response.data)
-                    clearData();
-                    getToDos();
-                })
-                .catch(error => console.log(error))
-        })
-    */
+    //EDIT/UPDATE TODO WITH NEW INFO -- CREATE EDIT BUTTON -- creates new form???
+    /*editButton.addEventListener("click", () => {
+        const makeChanges = document.editForm
+        makeChanges.style.display = "block"
+        newForList.style.display = "none"
+        editButton.textContent = "Save"
+        makeChanges.editTitle.textContent = response.data[i].title;
+        makeChanges.editDescrip.textContent = response.data[i].description;
+        makeChanges.editUrl.textContent = response.data[i].imgUrl;
+
+        //SET CSS DISPLAY TO NONE FOR current LI ENTRY & FLIP WITH TABLE DISPLAY NONE (flip from none to display: block??)
+        //w3schools:  document.getElementById("myDIV").style.display = "none";
+
+        const editToDo = {
+            title: todoForm.title.value,
+            description: todoForm.description.value,
+            imgUrl: todoForm.imgUrl.value,
+        }
+
+        axios.put(`https://api.vschool.io/kellyr/todo/${editToDo._id}`, editToDo)
+            .then(response => {
+                console.log(response.data)
+                clearData();
+                getToDos();
+            })
+            .catch(error => console.log(error))
+    })
+*/
 
     deleteButton.addEventListener("click", e => {
         axios.delete(`https://api.vschool.io/kellyr/todo/${newtodo._id}`)
@@ -209,30 +227,3 @@ function clearData() {
 
 //checkbox listener info => https://stackoverflow.com/questions/14544104/checkbox-check-event-listener
 
-/*
-function putRequestCheck() {
-    if (checkBox.checked === true) {
-        const updateToDo = {
-            completed: true
-        }
-
-        axios.put(`https://api.vschool.io/kellyr/todo/${response.data.completed[i]._id}`, updateToDo)    //Axios UPDATE request (UPDATES a TODO in database)
-            .then(response => {
-                console.log(response.data)
-
-            })
-            .catch(error => console.log(error))
-    } else if (checkBox.checked === false) {
-        const updateToDo = {
-            completed: false
-        }
-
-        axios.put(`https://api.vschool.io/kellyr/todo/${response.data.completed[i]._id}`, updateToDo)     //Axios UPDATE request (UPDATES a TODO in database)
-            .then(response => {
-                console.log(response.data)
-
-            })
-            .catch(error => console.log(error))
-    }
-}
-*/
