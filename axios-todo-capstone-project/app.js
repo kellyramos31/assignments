@@ -44,14 +44,39 @@ function getToDos() {
                     if (checkBox.checked === true) {
                         subject.style.textDecoration = "line-through";
                         detail.style.textDecoration = "line-through";
-                        response.data[i].completed = true;
-                        putRequestCheck();
+                        //response.data[i].completed = true;
+                        const updateToDo = {
+                            completed: true
+                        }
+
+                        axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, updateToDo)    //Axios UPDATE request (UPDATES a TODO in database)
+                            .then(response => {
+                                console.log(response.data)
+                                clearData();                                               //Function to clear out web page data w/o refresh
+                                getToDos();
+                                console.log(response.data)
+
+                            })
+                            .catch(error => console.log(error))
+
 
                     } else if (checkBox.checked === false) {
                         subject.style.textDecoration = "none";
                         detail.style.textDecoration = "none";
-                        response.data[i].completed = false;
-                        putRequestCheck();
+                        //response.data[i].completed = false;
+                        const updateToDo = {
+                            completed: false
+                        }
+
+                        axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, updateToDo)     //Axios UPDATE request (UPDATES a TODO in database)
+                            .then(response => {
+                                console.log(response.data)
+                                clearData();                                               //Function to clear out web page data w/o refresh
+                                getToDos();
+                                console.log(response.data)
+
+                            })
+                            .catch(error => console.log(error))
                     }
                 })
 
@@ -183,7 +208,7 @@ function clearData() {
 
 //checkbox listener info => https://stackoverflow.com/questions/14544104/checkbox-check-event-listener
 
-
+/*
 function putRequestCheck() {
     if (checkBox.checked === true) {
         const updateToDo = {
@@ -209,3 +234,4 @@ function putRequestCheck() {
             .catch(error => console.log(error))
     }
 }
+*/
