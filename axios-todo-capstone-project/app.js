@@ -45,14 +45,13 @@ function getToDos() {
                         subject.style.textDecoration = "line-through";
                         detail.style.textDecoration = "line-through";
                         response.data[i].completed = true;
-                        putRequest()
+                        putRequestCheck();
 
                     } else if (checkBox.checked === false) {
                         subject.style.textDecoration = "none";
                         detail.style.textDecoration = "none";
                         response.data[i].completed = false;
-                        putRequest()
-
+                        putRequestCheck();
                     }
                 })
 
@@ -132,26 +131,26 @@ function createToDo() {
 
 
     //EDIT/UPDATE TODO WITH NEW INFO -- CREATE EDIT BUTTON
-
-    editButton.addEventListener("click", e => {
-        todoForm.title.textContent = response.data[i].title;
-        todoForm.description.textContent = response.data[i].description;
-        todoForm.imgUrl.textContent = response.data[i].imgUrl;
-        const editToDo = {
-            title: todoForm.title.value,
-            description: todoForm.description.value,
-            imgUrl: todoForm.imgUrl.value,
-        }
-
-        axios.put(`https://api.vschool.io/kellyr/todo/${editToDo._id}`, editToDo)
-            .then(response => {
-                console.log(response.data)
-                clearData();
-                getToDos();
-            })
-            .catch(error => console.log(error))
-    })
-
+    /*
+        editButton.addEventListener("click", e => {
+            todoForm.title.textContent = response.data[i].title;
+            todoForm.description.textContent = response.data[i].description;
+            todoForm.imgUrl.textContent = response.data[i].imgUrl;
+            const editToDo = {
+                title: todoForm.title.value,
+                description: todoForm.description.value,
+                imgUrl: todoForm.imgUrl.value,
+            }
+    
+            axios.put(`https://api.vschool.io/kellyr/todo/${editToDo._id}`, editToDo)
+                .then(response => {
+                    console.log(response.data)
+                    clearData();
+                    getToDos();
+                })
+                .catch(error => console.log(error))
+        })
+    */
 
     deleteButton.addEventListener("click", e => {
         axios.delete(`https://api.vschool.io/kellyr/todo/${newtodo._id}`)
@@ -185,15 +184,28 @@ function clearData() {
 //checkbox listener info => https://stackoverflow.com/questions/14544104/checkbox-check-event-listener
 
 
-function putRequest() {
-    const updateToDo = {
-        title: todoForm.title.value,
-        description: todoForm.description.value,
-        imgUrl: todoForm.imgUrl.value
+function putRequestCheck() {
+    if (checkBox.checked === true) {
+        const updateToDo = {
+            completed: true
+        }
+
+        axios.put(`https://api.vschool.io/kellyr/todo/${response.data.completed[i]._id}`, updateToDo)    //Axios UPDATE request (UPDATES a TODO in database)
+            .then(response => {
+                console.log(response.data)
+
+            })
+            .catch(error => console.log(error))
+    } else if (checkBox.checked === false) {
+        const updateToDo = {
+            completed: false
+        }
+
+        axios.put(`https://api.vschool.io/kellyr/todo/${response.data.completed[i]._id}`, updateToDo)     //Axios UPDATE request (UPDATES a TODO in database)
+            .then(response => {
+                console.log(response.data)
+
+            })
+            .catch(error => console.log(error))
     }
-
-    axios.put(`https://api.vschool.io/kellyr/todo/${updateToDo._id}`, updateToDo)    //Axios UPDATE request (UPDATES a TODO in database)
-        .then(response => console.log(response.data))
-        .catch(error => console.log(error))
 }
-
