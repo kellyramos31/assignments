@@ -41,25 +41,45 @@ function getToDos() {
                 getList.appendChild(deleteButton)
 
                 checkBox.addEventListener("change", () => {  //monitor checkbox for change & then update full todo list so stays on refresh
-                    if (checkBox.checked) {
+                    if (checkBox.checked === true) {
                         subject.style.textDecoration = "line-through";
                         detail.style.textDecoration = "line-through";
+                        response.data[i].completed = true;
+                        putRequest()
 
-                        /*    const updateCheck = {
-                                completed = true
-                            }
-                            axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, updateCheck) //Axios UPDATE request (UPDATES a TODO in database)
-                                .then(response => {
-                                    console.log(response.data)
-                                    clearData();                                               //Function to clear out web page data w/o refresh
-                                    getToDos();
-                                })
-                        
-                                .catch(error => console.log(error)) 
-                        */
+                    } else if (checkBox.checked === false) {
+                        subject.style.textDecoration = "none";
+                        detail.style.textDecoration = "none";
+                        response.data[i].completed = false;
+                        putRequest()
 
                     }
                 })
+
+                /*
+                //EDIT/UPDATE TODO WITH NEW INFO -- CREATE EDIT BUTTON
+            
+                editButton.addEventListener("click", () => {
+                    
+                    todoForm.title.value = response.data[i].title;
+                    todoForm.description.value = response.data[i].description;
+                    todoForm.imgUrl.value = response.data[i].imgUrl
+            
+                    const editToDo = {
+                        title: todoForm.title.value,
+                        description: todoForm.description.value,
+                        imgUrl: todoForm.imgUrl.value
+                    }
+            
+                    axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, editToDo)
+                        .then(response => {
+                            console.log(response.data)
+                            clearData();
+                            getToDos();
+                        })
+                        .catch(error => console.log(error))
+                })
+                */
 
                 //console.log(response.data)
                 deleteButton.addEventListener("click", e => {
@@ -77,7 +97,6 @@ function getToDos() {
         .catch(error => console.log(error))
 }
 
-
 //ADD A NEW TO DO
 function createToDo() {
     const newtodo = {
@@ -86,7 +105,6 @@ function createToDo() {
         imgUrl: todoForm.imgUrl.value,
         completed: false
     }
-
     //FIGURE OUT BEST  HTML TAGS SO CAN MOVE THINGS WHERE WANT THEM IN GRID
 
     const addToDo = document.createElement("div");
@@ -113,13 +131,16 @@ function createToDo() {
     newForList.appendChild(deleteButton)
 
 
-    editButton.addEventListener("click", e => {
+    //EDIT/UPDATE TODO WITH NEW INFO -- CREATE EDIT BUTTON
 
+    editButton.addEventListener("click", e => {
+        todoForm.title.textContent = response.data[i].title;
+        todoForm.description.textContent = response.data[i].description;
+        todoForm.imgUrl.textContent = response.data[i].imgUrl;
         const editToDo = {
             title: todoForm.title.value,
             description: todoForm.description.value,
             imgUrl: todoForm.imgUrl.value,
-            completed: false
         }
 
         axios.put(`https://api.vschool.io/kellyr/todo/${editToDo._id}`, editToDo)
@@ -163,15 +184,7 @@ function clearData() {
 
 //checkbox listener info => https://stackoverflow.com/questions/14544104/checkbox-check-event-listener
 
-//EDIT/UPDATE TODO WITH NEW INFO -- CREATE EDIT BUTTON
-/*
-const updateToDo = {
-    title: todoForm.title.value,
-    description: todoForm.description.value,
-    imgUrl: todoForm.imgUrl.value
-}
-*/
-/*
+
 function putRequest() {
     const updateToDo = {
         title: todoForm.title.value,
@@ -183,4 +196,4 @@ function putRequest() {
         .then(response => console.log(response.data))
         .catch(error => console.log(error))
 }
-*/
+
