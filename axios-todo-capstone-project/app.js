@@ -22,12 +22,13 @@ function getToDos() {
                 imageInfo.src = response.data[i].imgUrl;
                 imageInfo.height = 95;
                 imageInfo.width = 95;
+                const checkBox = document.createElement("input");
+                checkBox.setAttribute("type", "checkbox");
                 if (response.data[i].completed === true) {
                     subject.style.textDecoration = "line-through";
                     detail.style.textDecoration = "line-through";
+                    checkBox.checked = "true"
                 }
-                const checkBox = document.createElement("input");
-                checkBox.setAttribute("type", "checkbox");
                 const editButton = document.createElement("button")         //EDIT BUTTON
                 editButton.textContent = "Edit";
                 const deleteButton = document.createElement("button");      //DELETE BUTTON
