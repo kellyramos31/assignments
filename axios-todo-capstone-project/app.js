@@ -73,7 +73,6 @@ function getToDos() {
 
                         axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, updateToDo)     //Axios UPDATE request (UPDATES a TODO in database)
                             .then(response => {
-                                console.log(response.data)
                                 clearData();                                               //Function to clear out web page data w/o refresh
                                 getToDos();
                                 console.log(response.data)
@@ -89,20 +88,35 @@ function getToDos() {
                 editButton.addEventListener("click", e => {
                     e.preventDefault();
                     const makeChanges = document.editForm
+                    makeChanges.style.display = "block"
                     makeChanges.editTitle.value = response.data[i].title;
                     makeChanges.editDescrip.value = response.data[i].description;
                     makeChanges.editUrl.value = response.data[i].imgUrl;
-                    makeChanges.style.display = "block"
-                    getList.appendChild(makeChanges)
-                    subject.style.display = "none"   //???HOW GET FORM TO SHOW UP WHERE LIST ITEM WAS/IN PLACE OF LIST ITEM
+                    getList.prepend(makeChanges)
+                    subject.style.display = "none"                               //???HOW GET FORM TO SHOW UP WHERE LIST ITEM WAS/IN PLACE OF LIST ITEM
                     detail.style.display = "none"
                     imageInfo.style.display = "none"
-                    editButton.textContent = "Save"
+                    const changeIt = document.getElementById("saveEditsButton")
+                    changeIt.addEventListener("click", e => {
+                        e.preventDefault()
+                        makeChanges.style.display = "none"
+                        const editToDo = {
+                            title: makeChanges.editTitle.value,
+                            description: makeChanges.editDescrip.value,
+                            imgUrl: makeChanges.editUrl.value
+                        }
 
-                    editButton.addEventListener("click", e => {
-                        e.preventDefault();
-                        editButton.textContent = "Edit"
+                        axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, editToDo)
+                            .then(response => {
+                                clearData();
+                                getToDos();
+                                console.log(response.data)
+                            })
+                            .catch(error => console.log(error))
+
                     })
+
+
 
                     //SET CSS DISPLAY TO NONE FOR current LI ENTRY & FLIP WITH TABLE DISPLAY NONE (flip from none to display: block??)
                     //w3schools:  document.getElementById("myDIV").style.display = "none";
@@ -110,19 +124,7 @@ function getToDos() {
                     // Replace the current node with the new node
                     //currentNode.parentNode.replaceChild(newNode, currentNode);
 
-                    const editToDo = {
-                        title: makeChanges.title.value,
-                        description: makeChanges.description.value,
-                        imgUrl: makeChanges.imgUrl.value,
-                    }
 
-                    axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, editToDo)
-                        .then(response => {
-                            console.log(response.data)
-                            clearData();
-                            getToDos();
-                        })
-                        .catch(error => console.log(error))
                 })
 
 
@@ -180,31 +182,35 @@ function createToDo() {
 
 
     //EDIT/UPDATE TODO WITH NEW INFO -- CREATE EDIT BUTTON -- creates new form???
-    editButton.addEventListener("click", () => {
+    editButton.addEventListener("click", e => {
+        const getEditFormDiv = document.getElementById("change-form");
+        getEditFormDiv.style.display = "block"
         const makeChanges = document.editForm
-        makeChanges.style.display = "block"
-        newForList.style.display = "none"
-        editButton.textContent = "Save"
-        makeChanges.editTitle.textContent = response.data[i].title;
-        makeChanges.editDescrip.textContent = response.data[i].description;
-        makeChanges.editUrl.textContent = response.data[i].imgUrl;
+        makeChanges.editTitle.value = response.data[i].title;
+        makeChanges.editDescrip.value = response.data[i].description;
+        makeChanges.editUrl.value = response.data[i].imgUrl;
+        getList.prepend(makeChanges)
+        //subject.style.display = "none"   //???HOW GET FORM TO SHOW UP WHERE LIST ITEM WAS/IN PLACE OF LIST ITEM
+        //detail.style.display = "none"
+        //imageInfo.style.display = "none"
+        const changeIt = document.getElementById("saveEditsButton")
+        changeIt.addEventListener("click", e => {
+            getEditFormDiv.style.display = "none"
+            const editToDo = {
+                title: makeChanges.editTitle.value,
+                description: makeChanges.editDescrip.value,
+                imgUrl: makeChanges.editUrl.value
+            }
 
-        //SET CSS DISPLAY TO NONE FOR current LI ENTRY & FLIP WITH TABLE DISPLAY NONE (flip from none to display: block??)
-        //w3schools:  document.getElementById("myDIV").style.display = "none";
+            axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, editToDo)
+                .then(response => {
+                    clearData();
+                    getToDos();
+                    console.log(response.data)
+                })
+                .catch(error => console.log(error))
 
-        const editToDo = {
-            title: todoForm.title.value,
-            description: todoForm.description.value,
-            imgUrl: todoForm.imgUrl.value,
-        }
-
-        axios.put(`https://api.vschool.io/kellyr/todo/${editToDo._id}`, editToDo)
-            .then(response => {
-                console.log(response.data)
-                clearData();
-                getToDos();
-            })
-            .catch(error => console.log(error))
+        })
     })
 
     deleteButton.addEventListener("click", e => {
@@ -232,7 +238,6 @@ function clearData() {
         el.removeChild(el.firstChild)
     }
 }
-
 
 
 

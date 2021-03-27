@@ -24,6 +24,9 @@ button {
     
 }
 
+#change-form {
+    display: none;
+}
 
 
 li {
