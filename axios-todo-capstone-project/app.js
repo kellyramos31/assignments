@@ -14,9 +14,10 @@ function getToDos() {
         .then(response => {
             console.log(response.data)                                        //function to read/GET the todos list
             for (let i = 0; i < response.data.length; i++) {
+                const listItem = document.createElement("li")
                 const subject = document.createElement("div");
                 subject.textContent = response.data[i].title;
-                const detail = document.createElement("li")
+                const detail = document.createElement("div")
                 detail.textContent = response.data[i].description;
                 const imageInfo = document.createElement("img")
                 imageInfo.src = response.data[i].imgUrl;
@@ -34,12 +35,13 @@ function getToDos() {
                 const deleteButton = document.createElement("button");      //CREATE DELETE BUTTON
                 deleteButton.textContent = "Delete";
                 const getList = document.getElementById("list");
-                getList.appendChild(subject)
-                getList.appendChild(detail)
-                getList.appendChild(imageInfo)
-                getList.appendChild(checkBox)
-                getList.appendChild(editButton)
-                getList.appendChild(deleteButton)
+                getList.appendChild(listItem)
+                listItem.appendChild(subject)
+                listItem.appendChild(detail)
+                listItem.appendChild(imageInfo)
+                listItem.appendChild(checkBox)
+                listItem.appendChild(editButton)
+                listItem.appendChild(deleteButton)
 
                 checkBox.addEventListener("change", () => {  //monitor checkbox for change & then update full todo list so stays on refresh
                     if (checkBox.checked === true) {
@@ -91,14 +93,22 @@ function getToDos() {
                     makeChanges.editDescrip.value = response.data[i].description;
                     makeChanges.editUrl.value = response.data[i].imgUrl;
                     makeChanges.style.display = "block"
-                    getList.prepend(makeChanges)
-                    subject.style.display = "none"   //???HOW ACCESS JUST LAST LIST ITEM???
+                    getList.appendChild(makeChanges)
+                    subject.style.display = "none"   //???HOW GET FORM TO SHOW UP WHERE LIST ITEM WAS/IN PLACE OF LIST ITEM
                     detail.style.display = "none"
                     imageInfo.style.display = "none"
                     editButton.textContent = "Save"
 
+                    editButton.addEventListener("click", e => {
+                        e.preventDefault();
+                        editButton.textContent = "Edit"
+                    })
+
                     //SET CSS DISPLAY TO NONE FOR current LI ENTRY & FLIP WITH TABLE DISPLAY NONE (flip from none to display: block??)
                     //w3schools:  document.getElementById("myDIV").style.display = "none";
+
+                    // Replace the current node with the new node
+                    //currentNode.parentNode.replaceChild(newNode, currentNode);
 
                     const editToDo = {
                         title: makeChanges.title.value,
@@ -143,15 +153,16 @@ function createToDo() {
     }
     //FIGURE OUT BEST  HTML TAGS SO CAN MOVE THINGS WHERE WANT THEM IN GRID
 
-    const addToDo = document.createElement("div");
-    const addDescrip = document.createElement("li");
+    const addToDo = document.createElement("li");
+    const addTitle = document.createElement("div");
+    const addDescrip = document.createElement("div");
     const addImage = document.createElement("img");
     const addCheckBox = document.createElement("input");
     const editButton = document.createElement("button")         //EDIT BUTTON
     const deleteButton = document.createElement("button");      //DELETE BUTTON
     addImage.src = "./assets/sydney-rae-geM5lzDj4Iw-unsplash.jpg";
     addCheckBox.setAttribute("type", "checkbox");
-    addToDo.textContent = todoForm.title.value;
+    addTitle.textContent = todoForm.title.value;
     addDescrip.textContent = todoForm.description.value;
     addImage.textContent = todoForm.imgUrl.value;
     addImage.height = 100;
@@ -160,15 +171,16 @@ function createToDo() {
     deleteButton.textContent = "Delete";
     const newForList = document.getElementById("list");
     newForList.appendChild(addToDo);
-    newForList.appendChild(addDescrip);
-    newForList.appendChild(addImage);
-    newForList.appendChild(addCheckBox)
-    newForList.appendChild(editButton)
-    newForList.appendChild(deleteButton)
+    addToDo.appendChild(addTitle)
+    addToDo.appendChild(addDescrip);
+    addToDo.appendChild(addImage);
+    addToDo.appendChild(addCheckBox)
+    addToDo.appendChild(editButton)
+    addToDo.appendChild(deleteButton)
 
 
     //EDIT/UPDATE TODO WITH NEW INFO -- CREATE EDIT BUTTON -- creates new form???
-    /*editButton.addEventListener("click", () => {
+    editButton.addEventListener("click", () => {
         const makeChanges = document.editForm
         makeChanges.style.display = "block"
         newForList.style.display = "none"
@@ -194,7 +206,6 @@ function createToDo() {
             })
             .catch(error => console.log(error))
     })
-*/
 
     deleteButton.addEventListener("click", e => {
         axios.delete(`https://api.vschool.io/kellyr/todo/${newtodo._id}`)
