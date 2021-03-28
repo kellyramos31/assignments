@@ -87,14 +87,12 @@ function getToDos() {
 
                 //EDIT/UPDATE TODO WITH NEW INFO -- CREATE EDIT BUTTON
                 const getFormDiv = document.getElementById("change-form")
-                const getEditForm = document.getElementById("display-form")
-
                 editButton.addEventListener("click", () => {
                     getFormDiv.style.display = "block"
-                    getEditForm.editTitle.placeholder = response.data[i].title;
-                    getEditForm.editDescrip.placeholder = response.data[i].description;
-                    getEditForm.editUrl.placeholder = response.data[i].imgUrl;
-                    getList.prepend(getEditForm)
+                    editForm.editTitle.placeholder = response.data[i].title;
+                    editForm.editDescrip.placeholder = response.data[i].description;
+                    editForm.editUrl.placeholder = response.data[i].imgUrl;
+                    getList.prepend(editForm)
                     editForm.addEventListener("submit", e => {
                         e.preventDefault()
                         const editToDo = {
@@ -116,7 +114,6 @@ function getToDos() {
                 })
 
 
-
                 deleteButton.addEventListener("click", e => {
                     axios.delete(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`)
                         .then(response => {
@@ -132,6 +129,7 @@ function getToDos() {
 
         .catch(error => console.log(error))
 }
+
 
 
 
@@ -177,7 +175,37 @@ function createToDo() {
             getToDos();                                          //Get full to do list again
         })
         .catch(error => console.log(error))
-
+    /*
+        const getFormDiv = document.getElementById("change-form")
+        const getEditForm = document.getElementById("display-form")
+    
+        
+        editButton.addEventListener("click", () => {
+            getFormDiv.style.display = "block"
+            getEditForm.editTitle.placeholder = response.data[i].title;
+            getEditForm.editDescrip.placeholder = response.data[i].description;
+            getEditForm.editUrl.placeholder = response.data[i].imgUrl;
+            getList.prepend(getEditForm)
+            editForm.addEventListener("submit", e => {
+                e.preventDefault()
+                const editToDo = {
+                    title: editForm.editTitle.value,
+                    description: editForm.editDescrip.value,
+                    imgUrl: editForm.editUrl.value,
+                    completed: false
+                }
+                axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, editToDo)
+                    .then(response => {
+                        console.log(response.data)
+                        clearData();
+                        getToDos();
+                        getFormDiv.style.display = "none";
+                    })
+                    .catch(error => console.log(error))
+            })
+    
+        })
+        */
 
     deleteButton.addEventListener("click", () => {
         axios.delete(`https://api.vschool.io/kellyr/todo/${newtodo._id}`)
@@ -199,80 +227,12 @@ function clearData() {
     }
 }
 
-/*
-function editToDos() {
-    const editToDo = {
-        title: editForm.editTitle.value,
-        description: editForm.editDescrip.value,
-        imgUrl: editForm.editUrl.value,
-        completed: false
-    }
-    axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, editToDo)
-        .then(response => {
-            console.log(response.data)
-            clearData();
-            getToDos();
-        })
-        .catch(error => console.log(error))
-
-    getFormDiv.style.display = "none"
-}
-*/
 
 
 
 
 
+//checkbox listener info => https://stackoverflow.com/questions/14544104/checkbox-check-event-listener
 
 
 
-/*checkbox listener info => https://stackoverflow.com/questions/14544104/checkbox-check-event-listener
-*/
-
-
-/*
-longer version EDTI TODO:
-    changeIt.addEventListener("click", () => {
-                    const editToDo = {
-                        title: getEditForm.editTitle.value,
-                        description: getEditForm.editDescrip.value,
-                        imgUrl: getEditForm.editUrl.value,
-                        completed: false
-                    }
-
-                    const editedToDo = document.createElement("li");
-                    const editedTitle = document.createElement("div");
-                    const editedDescrip = document.createElement("div");
-                    const editedImage = document.createElement("img");
-                    const editedCheckBox = document.createElement("input");
-                    const editButton = document.createElement("button")         //EDIT BUTTON
-                    const deleteButton = document.createElement("button");      //DELETE BUTTON
-                    editedImage.src = "./assets/stil-flRm0z3MEoA-unsplash.jpg";
-                    editedCheckBox.setAttribute("type", "checkbox");
-                    editedTitle.textContent = todoForm.title.value;
-                    editedDescrip.textContent = todoForm.description.value;
-                    editedImage.textContent = todoForm.imgUrl.value;
-                    editedImage.height = 100;
-                    editedImage.width = 100;
-                    editButton.textContent = "Edit";
-                    deleteButton.textContent = "Delete";
-                    const editedForList = document.getElementById("list");
-                    editedForList.appendChild(editedToDo);
-                    editedToDo.appendChild(editedTitle)
-                    editedToDo.appendChild(editedDescrip);
-                    editedToDo.appendChild(editedImage);
-                    editedToDo.appendChild(editedCheckBox)
-                    editedToDo.appendChild(editButton)
-                    editedToDo.appendChild(deleteButton)
-
-                    axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, editToDo)
-                        .then(response => {
-                            console.log(response.data)
-                            clearData();
-                            getToDos();
-                            getFormDiv.style.display = "none"
-                        })
-                        .catch(error => console.log(error))
-
-                })
-                */
