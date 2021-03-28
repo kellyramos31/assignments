@@ -3,22 +3,66 @@
     grid-template-columns:  1fr 2fr 1fr 1fr;
 }
 
-#style-list {
-    grid-column: 2 / 4;
-    grid-row-start: 1;
-} 
-
-button {
-
+h2 {
+    text-align: center;
+    font-family: "Raleway";
+    font-size:  30px;
 }
 
-#style-form {
-    grid-column:  3 / 4;
+#add-header {
+    color: white;
+    font-size: 18px;
+    text-align: left;
+    padding-left: 5px;
+    padding-top:  23px;
+}
+
+body {
+    
+}
+
+#todo-list {
+    grid-column: 2 / 3;
     grid-row-start: 1;
-    margin-top:  30px;
+    margin-top: 20px;
+    border-radius: 10%;
+    border:  20px solid violet;
+} 
+
+
+#add-form {
+    background-image: url(./assets/pink-flower-green-background-280.jpg);
+    background-repeat: no-repeat;
+    border-radius: 10%;
+    border:  20px solid violet;
+    grid-column:  3 / 4;
+    height:  185px;
+    width:  228px;
+    margin-top:  20px;
+    margin-left:  30px;
+    padding-top:  80px;
+    padding-left:  12px;
+    padding-right: 40px;
+}
+
+
+.add-boxes { 
+    color: violet;
+    font-size: 15px; 
+    height: 15px; 
+    width : 140px;
+}
+
+#add-button {
+    background-color:  violet;
+    color: black;
+    margin-top:  10px;
+    width:  150px;
+
 }
 
 #list {
+    grid-column: 2 / 3;
     list-style-type: square;
     color:  purple;
     
@@ -26,12 +70,18 @@ button {
 
 #change-form {
     display:  none;
-}
-
-li {
     
 }
 
+#saveEditsButton {
+
+}
+
+
+li {
+}
+
 img {
+    position: relative;
     border-radius: 25%;
 }
