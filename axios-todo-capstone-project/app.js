@@ -93,6 +93,7 @@ function getToDos() {
                     editForm.editDescrip.placeholder = response.data[i].description;
                     editForm.editUrl.placeholder = response.data[i].imgUrl;
                     getList.prepend(editForm)
+                    window.scrollTo(0, 0)
                     editForm.addEventListener("submit", e => {
                         e.preventDefault()
                         const editToDo = {
@@ -107,6 +108,9 @@ function getToDos() {
                                 clearData();
                                 getToDos();
                                 getFormDiv.style.display = "none";
+                                editForm.editTitle.value = "";
+                                editForm.editDescrip.value = "";
+                                editForm.editUrl.value = "";
                             })
                             .catch(error => console.log(error))
                     })
