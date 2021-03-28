@@ -179,37 +179,7 @@ function createToDo() {
             getToDos();                                          //Get full to do list again
         })
         .catch(error => console.log(error))
-    /*
-        const getFormDiv = document.getElementById("change-form")
-        const getEditForm = document.getElementById("display-form")
-    
-        
-        editButton.addEventListener("click", () => {
-            getFormDiv.style.display = "block"
-            getEditForm.editTitle.placeholder = response.data[i].title;
-            getEditForm.editDescrip.placeholder = response.data[i].description;
-            getEditForm.editUrl.placeholder = response.data[i].imgUrl;
-            getList.prepend(getEditForm)
-            editForm.addEventListener("submit", e => {
-                e.preventDefault()
-                const editToDo = {
-                    title: editForm.editTitle.value,
-                    description: editForm.editDescrip.value,
-                    imgUrl: editForm.editUrl.value,
-                    completed: false
-                }
-                axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, editToDo)
-                    .then(response => {
-                        console.log(response.data)
-                        clearData();
-                        getToDos();
-                        getFormDiv.style.display = "none";
-                    })
-                    .catch(error => console.log(error))
-            })
-    
-        })
-        */
+
 
     deleteButton.addEventListener("click", () => {
         axios.delete(`https://api.vschool.io/kellyr/todo/${newtodo._id}`)
@@ -222,7 +192,6 @@ function createToDo() {
 }
 
 
-
 //CLEAR database info from DOM
 function clearData() {
     const el = document.getElementById("list");
@@ -230,8 +199,6 @@ function clearData() {
         el.removeChild(el.firstChild)
     }
 }
-
-
 
 
 
