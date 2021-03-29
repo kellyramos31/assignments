@@ -40,17 +40,18 @@ body {
     margin-bottom: 20px;
     border-radius:  25px;
     border:  20px solid violet;
+    background: rgba(9, 51, 30, 0.9);  
     padding-bottom:  0px;
     /*background-image: url(./assets/dark-green-leaves.jpg);*/
 } 
 
 
 #add-form {
-    background-image: url(./assets/pink-flower-green-background-280.jpg);
-    background-repeat: cover;
     border-radius: 25px;
     border:  20px solid violet;
     grid-column:  3 / 4;
+    background-image: url(./assets/pink-flower-green-background-280.jpg);
+    background-repeat: cover;
     height:  185px;
     width:  228px;
     margin-top:  20px;
@@ -59,7 +60,6 @@ body {
     padding-left:  12px;
     padding-right: 40px;
 }
-
 
 .add-boxes { 
     color: violet;
@@ -79,45 +79,72 @@ body {
     border-radius: 5px;
     border:  3px solid white;
     font-family: "Raleway";
+    font-weight: bold;
 }
 
 #list {
     grid-column: 2 / 3;
     list-style-type: square;
     color:  purple;
-    /*background-image: url(./assets/dark-green-leaves.jpg);*/
-    object-fit: fill;
  }
  
 #edit-form-title {
-    font-size:  20px;
+    font-size:  18px;
+    width:  85%;
+    padding-left:  8px;
     color: white;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 2px;
 }
 
 #change-form {
-    display:  none;
+    display:  none; 
 }
 
 #display-form {
-    margin-left: 125px;
+    margin-right: auto;
+    background-color: black;
+    border-radius:  15px;
+    border: 5px solid white;
+    width: 89%;
 }
+
+
+#display-form img {
+    float: right;
+    border-radius:  15px;
+    margin-left: 0px;
+    margin-right: 8px;
+}
+
 
 .edit-boxes {
     display: flex;
     flex-direction: column;
     font-family: "Raleway";
-    margin:  10px;
+    font-size:  15px;
+    padding: 3px;
+    width:  60%;
+    margin:  8px;
 }
 
 #saveEditsButton {
-
+    background-color:  violet;
+    color: black;
+    margin-top:  5px;
+    margin-bottom:  10px;
+    margin-left:  8px;
+    padding: 2px;
+    width:  35%;
+    border-radius: 5px;
+    border:  3px solid white;
+    font-family: "Raleway";
+    font-weight: bold;
 }
 
 ul {
     display: flex;
     flex-direction: column;
+
 }
 
 li {
@@ -129,9 +156,9 @@ li {
     border-radius:  25px;
     margin-top:  25px;
     margin-bottom: 25px;
+    margin-left: 1px;
     margin-right: auto;
-    margin-left: 5px;
-    width:  85%;
+    width:  87%;
 }
 
 li input {

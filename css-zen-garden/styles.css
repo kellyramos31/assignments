@@ -85,7 +85,7 @@
 
 #greater-than-arrow {
     background: rgba(202, 204, 203, 0.2);        /*from w3 Schools*/
-    font-family: "myZenFont";           /*font here is supposed to be "verdemoderna", not available on google fonts;*/
+    font-family: "myZenFont";           /*font here is supposed to be "verdemoderna", not available on google fonts; TRY @font-face*/
     font-size:  30px;
     color: white;
     height: 60px;
