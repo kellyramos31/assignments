@@ -28,6 +28,8 @@
 
 body {
     font-family: "Raleway";
+    background-image: url(./assets/dark-green-leaves-wider.jpg);
+    background-repeat: repeat-y;
 }
 
 #todo-list {
@@ -35,10 +37,11 @@ body {
     grid-row-start: 1;
     width: 500px;
     margin-top: 20px;
+    margin-bottom: 20px;
     border-radius:  25px;
     border:  20px solid violet;
     padding-bottom:  0px;
-    background-image: url(./assets/dark-green-leaves.jpg);
+    /*background-image: url(./assets/dark-green-leaves.jpg);*/
 } 
 
 
@@ -61,6 +64,8 @@ body {
 .add-boxes { 
     color: violet;
     font-size: 15px; 
+    font-family: "Raleway";
+    margin-bottom:  2px;
     height: 15px; 
     width : 140px;
 }
@@ -68,7 +73,8 @@ body {
 #add-button {
     background-color:  violet;
     color: black;
-    margin-top:  10px;
+    margin-top:  8px;
+    padding: 2px;
     width:  150px;
     border-radius: 5px;
     border:  3px solid white;
@@ -79,13 +85,30 @@ body {
     grid-column: 2 / 3;
     list-style-type: square;
     color:  purple;
-    background-image: url(./assets/dark-green-leaves.jpg);
+    /*background-image: url(./assets/dark-green-leaves.jpg);*/
     object-fit: fill;
  }
  
+#edit-form-title {
+    font-size:  20px;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+}
 
 #change-form {
-    display:  none;  
+    display:  none;
+}
+
+#display-form {
+    margin-left: 125px;
+}
+
+.edit-boxes {
+    display: flex;
+    flex-direction: column;
+    font-family: "Raleway";
+    margin:  10px;
 }
 
 #saveEditsButton {
@@ -99,7 +122,8 @@ ul {
 }
 
 li {
-    column-count: 3;
+    position: relative;
+    column-count: 4;
     list-style-position: inside;
     background-color: white;
     border: 10px solid violet;
@@ -112,7 +136,7 @@ li {
 }
 
 li input {
-    position: relative;
+    display: inline-block;
 }
 
 li > div {
@@ -136,8 +160,3 @@ li > button {
     font-family: "Raleway";
 }
 
-/*
-img {
-    position: relative;
-    border-radius: 25%;
-}*/
