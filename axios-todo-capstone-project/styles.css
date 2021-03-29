@@ -8,11 +8,11 @@
     margin-top:  30px;
     margin-left:  auto;
     margin-right: auto;
-    background-color: white;
+    background-color: violet;
     padding:  10px;
     border-radius:  15px;
-    border: 10px solid violet;
-    width:  330px;
+    border: 8px solid white;
+    width:  80%;
     font-family: "Raleway";
     font-size:  30px;
 }
@@ -117,33 +117,32 @@ body {
 
 ul {
     display: flex;
-    flex-wrap: wrap;
     flex-direction: column;
 }
 
 li {
     position: relative;
     column-count: 4;
-    list-style-position: inside;
+    /*list-style-position: inside;*/
     background-color: white;
     border: 10px solid violet;
     border-radius:  25px;
     margin-top:  25px;
     margin-bottom: 25px;
-    margin-right: 25px;
-    margin-left: 25px;
-    width:  350px;
+    margin-right: auto;
+    margin-left: 5px;
+    width:  85%;
 }
 
 li input {
-    display: inline-block;
+    /*display: inline-block;*/
 }
 
 li > div {
     column-count: 2;
-    width:  200px;
-    margin-left:  20px;
-    margin-right: 20px;
+    width:  15%;
+    margin-left:  auto;
+    margin-right: auto;
 }
 
 li img {
