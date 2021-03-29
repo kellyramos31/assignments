@@ -41,8 +41,8 @@ function getToDos() {
                 getList.appendChild(listItem)
                 listItem.appendChild(subject)
                 listItem.appendChild(detail)
-                listItem.appendChild(imageInfo)
                 listItem.appendChild(checkBox)
+                listItem.appendChild(imageInfo)
                 listItem.appendChild(editButton)
                 listItem.appendChild(deleteButton)
 
@@ -167,8 +167,8 @@ function createToDo() {
     newForList.appendChild(addToDo);
     addToDo.appendChild(addTitle)
     addToDo.appendChild(addDescrip);
+    addToDo.appendChild(addCheckBox);
     addToDo.appendChild(addImage);
-    addToDo.appendChild(addCheckBox)
     addToDo.appendChild(editButton)
     addToDo.appendChild(deleteButton)
 
@@ -177,6 +177,9 @@ function createToDo() {
             console.log(response.data)
             clearData();                                         //Function to clear out web page data w/o refresh
             getToDos();                                          //Get full to do list again
+            todoForm.title.value = "";
+            todoForm.description.value = "";
+            todoForm.imgUrl.value = "";
         })
         .catch(error => console.log(error))
 

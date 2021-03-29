@@ -3,13 +3,22 @@
     grid-template-columns:  1fr 2fr 1fr 1fr;
 }
 
-h2 {
+#main-title {
     text-align: center;
+    margin-top:  30px;
+    margin-left:  auto;
+    margin-right: auto;
+    background-color: white;
+    padding:  10px;
+    border-radius:  15px;
+    border: 10px solid violet;
+    width:  330px;
     font-family: "Raleway";
     font-size:  30px;
 }
 
 #add-header {
+    font-family: "Raleway";
     color: white;
     font-size: 18px;
     text-align: left;
@@ -18,22 +27,25 @@ h2 {
 }
 
 body {
-    
+    font-family: "Raleway";
 }
 
 #todo-list {
     grid-column: 2 / 3;
     grid-row-start: 1;
+    width: 500px;
     margin-top: 20px;
-    border-radius: 10%;
+    border-radius:  25px;
     border:  20px solid violet;
+    padding-bottom:  0px;
+    background-image: url(./assets/dark-green-leaves.jpg);
 } 
 
 
 #add-form {
     background-image: url(./assets/pink-flower-green-background-280.jpg);
-    background-repeat: no-repeat;
-    border-radius: 10%;
+    background-repeat: cover;
+    border-radius: 25px;
     border:  20px solid violet;
     grid-column:  3 / 4;
     height:  185px;
@@ -58,30 +70,74 @@ body {
     color: black;
     margin-top:  10px;
     width:  150px;
-
+    border-radius: 5px;
+    border:  3px solid white;
+    font-family: "Raleway";
 }
 
 #list {
     grid-column: 2 / 3;
     list-style-type: square;
     color:  purple;
-    
-}
+    background-image: url(./assets/dark-green-leaves.jpg);
+    object-fit: fill;
+ }
+ 
 
 #change-form {
-    display:  none;
-    
+    display:  none;  
 }
 
 #saveEditsButton {
 
 }
 
-
-li {
+ul {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
 }
 
+li {
+    column-count: 3;
+    list-style-position: inside;
+    background-color: white;
+    border: 10px solid violet;
+    border-radius:  25px;
+    margin-top:  25px;
+    margin-bottom: 25px;
+    margin-right: 25px;
+    margin-left: 25px;
+    width:  350px;
+}
+
+li input {
+    position: relative;
+}
+
+li > div {
+    column-count: 2;
+    width:  200px;
+    margin-left:  20px;
+    margin-right: 20px;
+}
+
+li img {
+    margin-left:  10px;
+    margin-right: 10px;
+    border-radius: 20px;
+}
+
+li > button {
+    width:  75px;
+    height:  30px;
+    margin: 5px;
+    border-radius: 10px;
+    font-family: "Raleway";
+}
+
+/*
 img {
     position: relative;
     border-radius: 25%;
-}
+}*/
