@@ -94,8 +94,9 @@ function getToDos() {
                     editForm.editUrl.placeholder = response.data[i].imgUrl;
                     getList.prepend(editForm)
                     window.scrollTo(0, 0)
+                    //const getInputBoxes = document.getElementsByClassName("edit-boxes")
                     editForm.addEventListener("submit", e => {
-                        e.preventDefault()
+                        e.preventDefault();
                         const editToDo = {
                             title: editForm.editTitle.value,
                             description: editForm.editDescrip.value,
@@ -112,11 +113,13 @@ function getToDos() {
                                 editForm.editDescrip.value = "";
                                 editForm.editUrl.value = "";
                             })
+
+
                             .catch(error => console.log(error))
+
                     })
 
                 })
-
 
                 deleteButton.addEventListener("click", e => {
                     axios.delete(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`)
