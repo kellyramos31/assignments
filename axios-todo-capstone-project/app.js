@@ -89,9 +89,9 @@ function getToDos() {
                 const getFormDiv = document.getElementById("change-form")
                 editButton.addEventListener("click", () => {
                     getFormDiv.style.display = "block"
-                    editForm.editTitle.placeholder = response.data[i].title;
-                    editForm.editDescrip.placeholder = response.data[i].description;
-                    editForm.editUrl.placeholder = response.data[i].imgUrl;
+                    editForm.editTitle.value = response.data[i].title;
+                    editForm.editDescrip.value = response.data[i].description;
+                    editForm.editUrl.value = response.data[i].imgUrl;
                     getList.prepend(editForm)
                     window.scrollTo(0, 0)
                     //const getInputBoxes = document.getElementsByClassName("edit-boxes")
