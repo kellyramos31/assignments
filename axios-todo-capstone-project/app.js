@@ -19,10 +19,12 @@ function getToDos() {
             for (let i = 0; i < response.data.length; i++) {
                 const listItem = document.createElement("li")
                 const subject = document.createElement("div");
-                subject.classList.add("text-entries")
+                subject.style.fontWeight = "bold";
+                subject.style.textTransform = "uppercase";
+                subject.classList.add("title-entries")
                 subject.textContent = response.data[i].title;
                 const detail = document.createElement("div")
-                detail.classList.add("text-entries")
+                detail.classList.add("detail-entries")
                 detail.textContent = response.data[i].description;
                 const imageInfo = document.createElement("img")
                 imageInfo.src = response.data[i].imgUrl;
@@ -37,14 +39,16 @@ function getToDos() {
                 }
                 const editButton = document.createElement("button")         //CREATE EDIT BUTTON
                 editButton.textContent = "Edit";
+                editButton.classList.add("edit-this-button")
                 const deleteButton = document.createElement("button");      //CREATE DELETE BUTTON
                 deleteButton.textContent = "Delete";
-                const getList = document.getElementById("list");
-                getList.appendChild(listItem)
+                deleteButton.classList.add("delete-this-button")
+                const getList = document.getElementById("list");             //"list" is the <UL>
+                getList.appendChild(listItem)                                //list item is the <LI>
                 listItem.appendChild(checkBox)
+                listItem.appendChild(imageInfo)
                 listItem.appendChild(subject)
                 listItem.appendChild(detail)
-                listItem.appendChild(imageInfo)
                 listItem.appendChild(editButton)
                 listItem.appendChild(deleteButton)
 
@@ -52,7 +56,6 @@ function getToDos() {
                     if (checkBox.checked === true) {
                         subject.style.textDecoration = "line-through";
                         detail.style.textDecoration = "line-through";
-                        //response.data[i].completed = true;
                         const updateToDo = {
                             completed: true
                         }
@@ -96,8 +99,8 @@ function getToDos() {
                     editForm.editUrl.value = response.data[i].imgUrl;
                     getList.prepend(editForm)
                     window.scrollTo(0, 0)
-                    //const getInputBoxes = document.getElementsByClassName("edit-boxes")
-                    editForm.addEventListener("submit", e => {
+                    const getEditButton = editForm.saveEditsButton
+                    getEditButton.addEventListener("click", e => {
                         e.preventDefault();
                         const editToDo = {
                             title: editForm.editTitle.value,
@@ -105,14 +108,14 @@ function getToDos() {
                             imgUrl: editForm.editUrl.value,
                             completed: false
                         }
-                        getFormDiv.style.display = "none";
-                        editForm.editTitle.value = "";
-                        editForm.editDescrip.value = "";
-                        editForm.editUrl.value = "";
 
                         axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, editToDo)
                             .then(response => {
                                 console.log(response.data)
+                                getFormDiv.style.display = "none";            //Make form disappear
+                                editForm.editTitle.value = "";                //CLEAR out the edit form values
+                                editForm.editDescrip.value = "";
+                                editForm.editUrl.value = "";
                                 clearData();
                                 getToDos();
 
@@ -122,6 +125,8 @@ function getToDos() {
                     })
 
                 })
+
+
 
                 deleteButton.addEventListener("click", e => {
                     axios.delete(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`)
@@ -140,8 +145,6 @@ function getToDos() {
 }
 
 
-
-
 //ADD A NEW TO DO
 function createToDo() {
     const newtodo = {
@@ -150,56 +153,19 @@ function createToDo() {
         imgUrl: todoForm.imgUrl.value,
         completed: false
     }
-    todoForm.title.value = "";
-    todoForm.description.value = "";
-    todoForm.imgUrl.value = "";
-    /*
-    //FIGURE OUT BEST  HTML TAGS SO CAN MOVE THINGS WHERE WANT THEM IN GRID
-    const addToDo = document.createElement("li");
-    const addTitle = document.createElement("div");
-    const addDescrip = document.createElement("div");
-    const addImage = document.createElement("img");
-    const addCheckBox = document.createElement("input");
-    const editButton = document.createElement("button")         //EDIT BUTTON
-    const deleteButton = document.createElement("button");      //DELETE BUTTON
-    addImage.src = "./assets/sydney-rae-geM5lzDj4Iw-unsplash.jpg";
-    addCheckBox.setAttribute("type", "checkbox");
-    addTitle.textContent = todoForm.title.value;
-    addDescrip.textContent = todoForm.description.value;
-    addImage.textContent = todoForm.imgUrl.value;
-    addImage.height = 100;
-    addImage.width = 100;
-    editButton.textContent = "Edit";
-    deleteButton.textContent = "Delete";
-    const newForList = document.getElementById("list");
-    newForList.appendChild(addToDo);
-    addToDo.appendChild(addTitle)
-    addToDo.appendChild(addDescrip);
-    addToDo.appendChild(addCheckBox);
-    addToDo.appendChild(addImage);
-    addToDo.appendChild(editButton)
-    addToDo.appendChild(deleteButton)
-*/
+
+
     axios.post("https://api.vschool.io/kellyr/todo", newtodo)         //Axios POST request (ADDS new TODO to database)
         .then(response => {
             console.log(response.data)
+            todoForm.title.value = "";                              //Clear out Add form
+            todoForm.description.value = "";
+            todoForm.imgUrl.value = "";
             clearData();                                         //Function to clear out web page data w/o refresh
             getToDos();                                          //Get full to do list again
 
         })
         .catch(error => console.log(error))
-
-
-    deleteButton.addEventListener("click", () => {
-        axios.delete(`https://api.vschool.io/kellyr/todo/${newtodo._id}`)
-            .then(response => {
-                console.log(response.data)
-                clearData();
-                getToDos();
-            })
-            .catch(error => console.log(error))
-    })
-
 }
 
 
@@ -212,15 +178,5 @@ function clearData() {
     }
 }
 
-/*
-function deleteChild() {
-    var e = document.querySelector("ul");
 
-    //e.firstElementChild can be used.
-    var child = e.lastElementChild;
-    while (child) {
-        e.removeChild(child);
-        child = e.lastElementChild;
-    }
-*/
 //checkbox listener info => https://stackoverflow.com/questions/14544104/checkbox-check-event-listener
