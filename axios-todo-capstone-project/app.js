@@ -44,7 +44,7 @@ function getToDos() {
                 deleteButton.textContent = "Delete";
                 deleteButton.classList.add("delete-this-button")
                 const getList = document.getElementById("list");             //"list" is the <UL>
-                getList.appendChild(listItem)                                //list item is the <LI>
+                getList.appendChild(listItem)                                //listItem is the <LI>
                 listItem.appendChild(checkBox)
                 listItem.appendChild(imageInfo)
                 listItem.appendChild(subject)
@@ -65,7 +65,6 @@ function getToDos() {
                                 console.log(response.data)
                                 clearData();                                               //Function to clear out web page data w/o refresh
                                 getToDos();
-                                console.log(response.data)
 
                             })
                             .catch(error => console.log(error))
@@ -102,6 +101,7 @@ function getToDos() {
                     const getEditButton = editForm.saveEditsButton
                     getEditButton.addEventListener("click", e => {
                         e.preventDefault();
+
                         const editToDo = {
                             title: editForm.editTitle.value,
                             description: editForm.editDescrip.value,
