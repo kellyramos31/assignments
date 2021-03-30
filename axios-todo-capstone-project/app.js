@@ -19,8 +19,10 @@ function getToDos() {
             for (let i = 0; i < response.data.length; i++) {
                 const listItem = document.createElement("li")
                 const subject = document.createElement("div");
+                subject.classList.add("text-entries")
                 subject.textContent = response.data[i].title;
                 const detail = document.createElement("div")
+                detail.classList.add("text-entries")
                 detail.textContent = response.data[i].description;
                 const imageInfo = document.createElement("img")
                 imageInfo.src = response.data[i].imgUrl;
@@ -39,9 +41,9 @@ function getToDos() {
                 deleteButton.textContent = "Delete";
                 const getList = document.getElementById("list");
                 getList.appendChild(listItem)
+                listItem.appendChild(checkBox)
                 listItem.appendChild(subject)
                 listItem.appendChild(detail)
-                listItem.appendChild(checkBox)
                 listItem.appendChild(imageInfo)
                 listItem.appendChild(editButton)
                 listItem.appendChild(deleteButton)
@@ -103,18 +105,18 @@ function getToDos() {
                             imgUrl: editForm.editUrl.value,
                             completed: false
                         }
+                        getFormDiv.style.display = "none";
+                        editForm.editTitle.value = "";
+                        editForm.editDescrip.value = "";
+                        editForm.editUrl.value = "";
+
                         axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, editToDo)
                             .then(response => {
                                 console.log(response.data)
                                 clearData();
                                 getToDos();
-                                getFormDiv.style.display = "none";
-                                editForm.editTitle.value = "";
-                                editForm.editDescrip.value = "";
-                                editForm.editUrl.value = "";
+
                             })
-
-
                             .catch(error => console.log(error))
 
                     })
@@ -148,7 +150,10 @@ function createToDo() {
         imgUrl: todoForm.imgUrl.value,
         completed: false
     }
-
+    todoForm.title.value = "";
+    todoForm.description.value = "";
+    todoForm.imgUrl.value = "";
+    /*
     //FIGURE OUT BEST  HTML TAGS SO CAN MOVE THINGS WHERE WANT THEM IN GRID
     const addToDo = document.createElement("li");
     const addTitle = document.createElement("div");
@@ -174,15 +179,13 @@ function createToDo() {
     addToDo.appendChild(addImage);
     addToDo.appendChild(editButton)
     addToDo.appendChild(deleteButton)
-
+*/
     axios.post("https://api.vschool.io/kellyr/todo", newtodo)         //Axios POST request (ADDS new TODO to database)
         .then(response => {
             console.log(response.data)
             clearData();                                         //Function to clear out web page data w/o refresh
             getToDos();                                          //Get full to do list again
-            todoForm.title.value = "";
-            todoForm.description.value = "";
-            todoForm.imgUrl.value = "";
+
         })
         .catch(error => console.log(error))
 
@@ -191,6 +194,8 @@ function createToDo() {
         axios.delete(`https://api.vschool.io/kellyr/todo/${newtodo._id}`)
             .then(response => {
                 console.log(response.data)
+                clearData();
+                getToDos();
             })
             .catch(error => console.log(error))
     })
@@ -199,17 +204,23 @@ function createToDo() {
 
 
 //CLEAR database info from DOM
+
 function clearData() {
-    const el = document.getElementById("list");
+    const el = document.getElementById("list");                     //"list" equals = the <UL>
     while (el.firstChild) {
-        el.removeChild(el.firstChild)
+        el.removeChild(el.firstChild);
     }
 }
 
+/*
+function deleteChild() {
+    var e = document.querySelector("ul");
 
-
-
+    //e.firstElementChild can be used.
+    var child = e.lastElementChild;
+    while (child) {
+        e.removeChild(child);
+        child = e.lastElementChild;
+    }
+*/
 //checkbox listener info => https://stackoverflow.com/questions/14544104/checkbox-check-event-listener
-
-
-

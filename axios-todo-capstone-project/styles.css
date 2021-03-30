@@ -68,6 +68,7 @@ body {
     margin-bottom:  2px;
     height: 15px; 
     width : 140px;
+    border-radius: 5px;
 }
 
 #add-button {
@@ -84,7 +85,7 @@ body {
 
 #list {
     grid-column: 2 / 3;
-    list-style-type: square;
+    list-style-type:none;
     color:  purple;
  }
  
@@ -123,8 +124,10 @@ body {
     font-family: "Raleway";
     font-size:  15px;
     padding: 3px;
-    width:  60%;
+    height: 15px;
+    width:  58%;
     margin:  8px;
+    border-radius: 5px;
 }
 
 #saveEditsButton {
@@ -134,7 +137,7 @@ body {
     margin-bottom:  10px;
     margin-left:  8px;
     padding: 2px;
-    width:  35%;
+    width:  60%;
     border-radius: 5px;
     border:  3px solid white;
     font-family: "Raleway";
@@ -144,32 +147,34 @@ body {
 ul {
     display: flex;
     flex-direction: column;
-
+    flex-wrap: wrap;
 }
 
 li {
-    position: relative;
+    /*position: relative;*/
     column-count: 4;
     /*list-style-position: inside;*/
     background-color: white;
     border: 10px solid violet;
     border-radius:  25px;
-    margin-top:  25px;
-    margin-bottom: 25px;
+    margin-top:  15px;
+    margin-bottom: 15px;
     margin-left: 1px;
+    padding-left: 8px;
     margin-right: auto;
-    width:  87%;
+    width:  88%;
 }
 
 li input {
     /*display: inline-block;*/
 }
 
-li > div {
-    column-count: 2;
-    width:  15%;
-    margin-left:  auto;
-    margin-right: auto;
+.text-entries {
+    display: inline-block;
+    /*position: relative;*/
+    width:  25%;
+    margin-left:  8px;
+    margin-right: 8px;
 }
 
 li img {
