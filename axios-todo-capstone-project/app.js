@@ -89,7 +89,7 @@ function getToDos() {
                     }
                 })
 
-                //EDIT/UPDATE TODO WITH NEW INFO -- CREATE EDIT BUTTON
+                //EDIT/UPDATE TODO WITH NEW INFO FROM FORM
                 const getFormDiv = document.getElementById("change-form")
                 editButton.addEventListener("click", () => {
                     getFormDiv.style.display = "block"
@@ -101,7 +101,6 @@ function getToDos() {
                     const getEditButton = editForm.saveEditsButton
                     getEditButton.addEventListener("click", e => {
                         e.preventDefault();
-
                         const editToDo = {
                             title: editForm.editTitle.value,
                             description: editForm.editDescrip.value,
@@ -125,7 +124,6 @@ function getToDos() {
                     })
 
                 })
-
 
 
                 deleteButton.addEventListener("click", e => {
