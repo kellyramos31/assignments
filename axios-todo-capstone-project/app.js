@@ -34,6 +34,19 @@ takeAway.addEventListener("click", e => {
 })
 */
 
+/*
+//DELETE A TO DO
+function deleteToDo() {
+    axios.delete(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`)
+        .then(response => {
+            console.log(response.data)
+            clearData();                                                  //Function to clear out web page data w/o refresh
+            getAllToDos();
+        })
+        .catch(error => console.log(error))
+}
+*/
+
 //GET TODOS FROM DATABASE & FORMAT/ADD TO DOM
 const formatToDos = (todos) => {
     for (let i = 0; i < todos.length; i++) {
@@ -57,6 +70,20 @@ const formatToDos = (todos) => {
             detail.style.textDecoration = "line-through";
             checkBox.checked = "true"
         }
+        checkBox.addEventListener("change", e => {
+            if (checkBox.checked === true) {
+                subject.style.textDecoration = "line-through";
+                detail.style.textDecoration = "line-through";
+                checkBox.checked = "true"
+                updateCheckTrue();
+            } else if (checkBox.checked === false) {
+                subject.style.textDecoration = "none";
+                detail.style.textDecoration = "none";
+                checkBox.checked = "false"
+                updateCheckFalse();
+            }
+        })
+
         const editButton = document.createElement("button")         //CREATE EDIT BUTTON
         editButton.textContent = "Edit";
         editButton.classList.add("edit-this-button")
@@ -76,42 +103,6 @@ const formatToDos = (todos) => {
 
 
 
-/*
-//CHECKBOX EVENT LISTENER
-checkBox.addEventListener("change", () => {  //monitor checkbox for change & then update full todo list so stays on refresh
-    if (checkBox.checked === true) {
-        subject.style.textDecoration = "line-through";
-        detail.style.textDecoration = "line-through";
-        const updateToDo = {
-            completed: true
-        }
-
-        axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, updateToDo)      //Axios UPDATE request (UPDATES a TODO in database)
-            .then(response => {
-                console.log(response.data)
-                clearData();                                               //Function to clear out web page data w/o refresh
-                getToDos();
-            })
-            .catch(error => console.log(error))
-
-    } else if (checkBox.checked === false) {
-        subject.style.textDecoration = "none";
-        detail.style.textDecoration = "none";
-        const updateToDo = {
-            completed: false
-        }
-
-        axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, updateToDo)       //Axios UPDATE request (UPDATES a TODO in database)
-            .then(response => {
-                clearData();                                               //Function to clear out web page data w/o refresh
-                getToDos();
-                console.log(response.data)
-
-            })
-            .catch(error => console.log(error))
-    }
-})
-*/
 
 /*
 //EDIT BUTTON & EDIT FORM EVENT LISTENERS / UPDATE DATABASE
@@ -132,7 +123,7 @@ editButton.addEventListener("click", () => {
             imgUrl: editForm.editUrl.value,
             completed: false
         }
-
+ 
         axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, editToDo)
             .then(response => {
                 console.log(response.data)
@@ -145,9 +136,41 @@ editButton.addEventListener("click", () => {
                 formatToDos(databaseArr);
             })
             .catch(error => console.log(error))
-
+ 
     })
-    */
+*/
+
+//UPDATE CHECKBOX STATUS TO TRUE
+const updateCheckTrue = () => {
+    const updateToDo = {
+        completed: true
+    }
+
+    axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, updateToDo)      //Axios UPDATE request (UPDATES a TODO in database)
+        .then(response => {
+            console.log(response.data)
+            clearData();                                               //Function to clear out web page data w/o refresh
+            getAllToDos();
+        })
+        .catch(error => console.log(error))
+}
+
+//UPDATE CHECKBOX STATUS TO FALSE
+const updateCheckFalse = () => {
+    const updateToDo = {
+        completed: false
+    }
+
+    axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, updateToDo)       //Axios UPDATE request (UPDATES a TODO in database)
+        .then(response => {
+            clearData();                                               //Function to clear out web page data w/o refresh
+            getAllToDos();
+            console.log(response.data)
+
+        })
+        .catch(error => console.log(error))
+}
+
 
 //EVENT LISTENER TO ADD NEW TO DO
 const addToList = todoForm.addEventListener("submit", e => {
@@ -171,22 +194,6 @@ const addToList = todoForm.addEventListener("submit", e => {
         .catch(error => console.log(error))
 }
 )
-
-
-
-/*
-//DELETE A TO DO
-function deleteToDo() {
-    axios.delete(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`)
-        .then(response => {
-            console.log(response.data)
-            clearData();                                                  //Function to clear out web page data w/o refresh
-            getToDos();
-        })
-        .catch(error => console.log(error))
-}
-*/
-
 
 //CLEAR DATA FROM WEB PAGE
 function clearData() {
