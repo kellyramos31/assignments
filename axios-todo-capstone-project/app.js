@@ -1,4 +1,18 @@
 //GLOBAL DATA VARIABLE
+class Todos {
+    constructor(title, description, imgUrl, completed, _id) {
+        this.title = title;
+        this.description = description;
+        this.imgUrl = imgUrl;
+        this.completed = completed;
+        this.id = _id;
+    }
+
+
+
+}
+
+
 
 
 //Axios POST request (ADDS new TODO to database)
@@ -24,31 +38,9 @@ const getAllToDos = () => {
 //CALL/RETRIEVE LIST OF TODOS
 getAllToDos();
 
-/*
-//DELETE BUTTON EVENT LISTENER
-const takeAway = document.getElementsByClassName("delete-this-button")
-takeAway.addEventListener("click", e => {
-    for (let i = 0; i < dataArr.length; i++) {
-
-    }
-})
-*/
-
-/*
-//DELETE A TO DO
-function deleteToDo() {
-    axios.delete(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`)
-        .then(response => {
-            console.log(response.data)
-            clearData();                                                  //Function to clear out web page data w/o refresh
-            getAllToDos();
-        })
-        .catch(error => console.log(error))
-}
-*/
 
 //GET TODOS FROM DATABASE & FORMAT/ADD TO DOM
-const formatToDos = (todos) => {
+function formatToDos(todos) {
     for (let i = 0; i < todos.length; i++) {
         const listItem = document.createElement("li")
         const subject = document.createElement("div");
@@ -101,21 +93,60 @@ const formatToDos = (todos) => {
     }
 }
 
+/*
+document.querySelectorAll('.some-class').forEach(item => {
+    item.addEventListener('click', event => {
+        //Write your code hear
+    })
+})
+*/
 
 
+
+//DELETE BUTTONS -- ADD EVENT LISTENER
+//const takeAway = [];
+const getDeleteButtons = document.getElementsByClassName("delete-this-button")   //this works to get all the buttons into an array
+//takeAway.push(getDeleteButtons)
+
+getDeleteButtons.addEventListener("click", () => {
+
+    this.remove(todo)
+
+    /*for (let i = 0; i < takeAway.length; i++) {
+        let deleteIndex = i;
+        const deleteId = todos[deleteIndex]._id;
+        console.log(deleteId)
+        deleteToDo(deleteId)
+    }*/
+})
+
+/*
+//DELETE A TO DO
+function deleteToDo(id) {
+    axios.delete(`https://api.vschool.io/kellyr/todo/${id}`)
+        .then(response => {
+            console.log(response.data)
+            clearData();                                                  //Function to clear out web page data w/o refresh
+            getAllToDos();
+        })
+        .catch(error => console.log(error))
+}
+*/
 
 /*
 //EDIT BUTTON & EDIT FORM EVENT LISTENERS / UPDATE DATABASE
 const getFormDiv = document.getElementById("change-form")
-editButton.addEventListener("click", () => {
+const getAllEditButtons = document.getElementsByClassName(".edit-this-button");
+getAllEditButtons.addEventListener("click", () => {
     getFormDiv.style.display = "block"
-    editForm.editTitle.value = response.data[i].title;
-    editForm.editDescrip.value = response.data[i].description;
-    editForm.editUrl.value = response.data[i].imgUrl;
+    editForm.editTitle.value = todos[i].title;
+    editForm.editDescrip.value = todos[i].description;
+    editForm.editUrl.value = todos[i].imgUrl;
+    let editId = todos[i]._id
     getList.prepend(editForm)
     window.scrollTo(0, 0)
     const getEditButton = editForm.saveEditsButton
-    getEditButton.addEventListener("click", e => {
+    getEditButton.addEventListener("submit", e => {
         e.preventDefault();
         const editToDo = {
             title: editForm.editTitle.value,
@@ -123,8 +154,8 @@ editButton.addEventListener("click", () => {
             imgUrl: editForm.editUrl.value,
             completed: false
         }
- 
-        axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, editToDo)
+
+        axios.put(`https://api.vschool.io/kellyr/todo/${editId}`, editToDo)
             .then(response => {
                 console.log(response.data)
                 getFormDiv.style.display = "none";            //Make form disappear
@@ -136,8 +167,9 @@ editButton.addEventListener("click", () => {
                 formatToDos(databaseArr);
             })
             .catch(error => console.log(error))
- 
+
     })
+})
 */
 
 //UPDATE CHECKBOX STATUS TO TRUE
@@ -195,6 +227,7 @@ const addToList = todoForm.addEventListener("submit", e => {
 }
 )
 
+
 //CLEAR DATA FROM WEB PAGE
 function clearData() {
     const el = document.getElementById("list");
@@ -202,3 +235,106 @@ function clearData() {
         el.removeChild(el.firstChild);
     }
 }
+
+
+/*
+class Player {
+    constructor(name, totalCoins, status, hasStar, gameActive) {
+        this.name = name;
+        this.totalCoins = totalCoins;
+        this.status = status;
+        this.hasStar = hasStar;
+        this.gameActive = gameActive;
+    }
+
+    setName() {
+        this.name
+        this.randomStatus()
+    }
+
+    gotHit() {
+        if (this.status === "Powered Up") {
+            this.status = "Big";
+            this.gameActive = true;
+            return this.status
+        } else if (this.status === "Big") {
+            this.status = "Small";
+            this.gameActive = true;
+            return this.status
+        } else if (this.status === "Small") {
+            this.status = "Dead"
+            this.gameActive = false;
+            clearInterval(intervalId);
+            gameOver = true;
+            return this.status;
+        }
+    }
+
+    gotPowerUp() {
+        if (this.status === "Powered Up") {
+            this.hasStar = true;
+            return this.hasStar;
+        } else if (this.status === "Small") {
+            this.status = "Big";
+            return this.status;
+        } else if (this.status === "Big") {
+            this.status = "Powered Up";
+            return this.status;
+        }
+
+    }
+
+    addCoin() {
+        this.totalCoins += 1;
+        return this.totalCoins
+    }
+
+    randomStatus() {
+        const statusNumber = Math.floor(Math.random() * 3)
+        console.log(statusNumber)
+        if (statusNumber === 0) {
+            this.gotHit()
+            this.print()
+        } else if (statusNumber === 1) {
+            this.gotPowerUp()
+            this.print()
+        } else if (statusNumber === 2) {
+            this.addCoin()
+            this.print()
+        }
+    }
+
+    print() {
+        console.log(`Name:  ${this.name}`)
+        console.log(`Status: ${this.status}`)
+        console.log(`Total Coins:  ${this.totalCoins}`)
+        console.log(`Has Star:  ${this.hasStar}`)
+    }
+
+}
+
+let gameOver = false;
+
+const namePicked = whichName();
+
+function whichName() {
+    const nameNumber = (Math.floor(Math.random() * 2));
+    //console.log(nameNumber)
+    if (nameNumber === 0) {
+        const name = new Player("Mario", 0, "Powered Up", false, true);
+        name.setName()
+        //console.log(name)
+        return name
+
+    } else if (nameNumber === 1) {
+        const name = new Player("Luigi", 0, "Powered Up", false, true)
+        name.setName()
+        //console.log(name)
+        return name
+    }
+}
+
+//console.log(namePicked)
+
+const intervalId = setInterval(() => namePicked.randomStatus(), 1000);
+*/
