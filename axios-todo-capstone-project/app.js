@@ -75,12 +75,12 @@ const formatToDos = (todos) => {
                 subject.style.textDecoration = "line-through";
                 detail.style.textDecoration = "line-through";
                 checkBox.checked = "true"
-                updateCheckTrue();
+                updateCheckTrue(todos[i]._id);
             } else if (checkBox.checked === false) {
                 subject.style.textDecoration = "none";
                 detail.style.textDecoration = "none";
                 checkBox.checked = "false"
-                updateCheckFalse();
+                updateCheckFalse(todos[i]._id);
             }
         })
 
@@ -141,12 +141,12 @@ editButton.addEventListener("click", () => {
 */
 
 //UPDATE CHECKBOX STATUS TO TRUE
-const updateCheckTrue = () => {
+function updateCheckTrue(id) {
     const updateToDo = {
         completed: true
     }
 
-    axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, updateToDo)      //Axios UPDATE request (UPDATES a TODO in database)
+    axios.put(`https://api.vschool.io/kellyr/todo/${id}`, updateToDo)      //Axios UPDATE request (UPDATES a TODO in database)
         .then(response => {
             console.log(response.data)
             clearData();                                               //Function to clear out web page data w/o refresh
@@ -156,12 +156,12 @@ const updateCheckTrue = () => {
 }
 
 //UPDATE CHECKBOX STATUS TO FALSE
-const updateCheckFalse = () => {
+function updateCheckFalse(id) {
     const updateToDo = {
         completed: false
     }
 
-    axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, updateToDo)       //Axios UPDATE request (UPDATES a TODO in database)
+    axios.put(`https://api.vschool.io/kellyr/todo/${id}`, updateToDo)       //Axios UPDATE request (UPDATES a TODO in database)
         .then(response => {
             clearData();                                               //Function to clear out web page data w/o refresh
             getAllToDos();
