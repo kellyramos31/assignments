@@ -1,14 +1,30 @@
 //GLOBAL DATA VARIABLE
-let dataArr = [];
+
 
 //Axios POST request (ADDS new TODO to database)
 const todoForm = document.todoForm
 const editForm = document.editForm
 
+
 //Axios GET request for Current To Do List
-getToDos();
 
+//GET TODO's AXIOS request from DATABASE:
 
+const getAllToDos = () => {
+    axios.get("https://api.vschool.io/kellyr/todo")
+        .then(response => {
+            console.log(response.data)
+            const todos = response.data
+            console.log(`GET LIST`, todos)
+            formatToDos(todos)
+        })
+        .catch(error => console.log(error))
+}
+
+//CALL/RETRIEVE LIST OF TODOS
+getAllToDos();
+
+/*
 //DELETE BUTTON EVENT LISTENER
 const takeAway = document.getElementsByClassName("delete-this-button")
 takeAway.addEventListener("click", e => {
@@ -16,40 +32,27 @@ takeAway.addEventListener("click", e => {
 
     }
 })
-
-
-//GET TODO's AXIOS request from DATABASE:
-function getToDos() {
-    axios.get("https://api.vschool.io/kellyr/todo")
-        .then(response => {
-            console.log(response.data)
-            dataArr = response.data;
-            formatToDos(dataArr);
-            console.log(dataArr)
-            return dataArr
-        })
-        .catch(error => console.log(error))
-}
+*/
 
 //GET TODOS FROM DATABASE & FORMAT/ADD TO DOM
-function formatToDos() {
-    for (let i = 0; i < dataArr.length; i++) {
+const formatToDos = (todos) => {
+    for (let i = 0; i < todos.length; i++) {
         const listItem = document.createElement("li")
         const subject = document.createElement("div");
         subject.style.fontWeight = "bold";
         subject.style.textTransform = "uppercase";
         subject.classList.add("title-entries")
-        subject.textContent = dataArr[i].title;
+        subject.textContent = todos[i].title;
         const detail = document.createElement("div")
         detail.classList.add("detail-entries")
-        detail.textContent = dataArr[i].description;
+        detail.textContent = todos[i].description;
         const imageInfo = document.createElement("img")
-        imageInfo.src = dataArr[i].imgUrl;
+        imageInfo.src = todos[i].imgUrl;
         imageInfo.height = 95;
         imageInfo.width = 95;
         const checkBox = document.createElement("input");
         checkBox.setAttribute("type", "checkbox");
-        if (dataArr[i].completed === true) {
+        if (todos[i].completed === true) {
             subject.style.textDecoration = "line-through";
             detail.style.textDecoration = "line-through";
             checkBox.checked = "true"
@@ -146,33 +149,32 @@ editButton.addEventListener("click", () => {
     })
     */
 
-//EVENT LISTENER FOR ADDING A TODO
-todoForm.addEventListener("submit", e => {
+//EVENT LISTENER TO ADD NEW TO DO
+const addToList = todoForm.addEventListener("submit", e => {
     e.preventDefault();
-    createToDo();
-})
-
-//ADD A NEW TO DO
-function createToDo() {
     const newtodo = {
         title: todoForm.title.value,
         description: todoForm.description.value,
-        imgUrl: todoForm.imgUrl.value,
-        completed: false
+        imgUrl: todoForm.imgUrl.value
     }
 
     axios.post("https://api.vschool.io/kellyr/todo", newtodo)         //Axios POST request (ADDS new TODO to database)
         .then(response => {
-            console.log(response.data)
+            const newtodosAll = response.data;
+            console.log(`POST: new todo is added`, newtodosAll)
             todoForm.title.value = "";                              //Clear out Add form
             todoForm.description.value = "";
             todoForm.imgUrl.value = "";
-            clearData();                                         //Function to clear out web page data w/o refresh
-            getToDos();                                          //Get full to do list again
+            clearData();                                   //Function to clear out web page data w/o refresh
+            getAllToDos();                                         //Get full to do list again
         })
         .catch(error => console.log(error))
 }
+)
 
+
+
+/*
 //DELETE A TO DO
 function deleteToDo() {
     axios.delete(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`)
@@ -183,6 +185,8 @@ function deleteToDo() {
         })
         .catch(error => console.log(error))
 }
+*/
+
 
 //CLEAR DATA FROM WEB PAGE
 function clearData() {
