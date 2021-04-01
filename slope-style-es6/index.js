@@ -47,18 +47,18 @@ function parseSentence() {
 console.log(parseSentence(vacation))
 
 
-//???DONE-- #4:  Use destructuring to make this code ES6:
+//DONE-- #4:  Use destructuring to make this code ES6:
 
 //function returnFirst(items) {
 //    const firstItem = items[0]; /*change this line to be es6*/
 //    return firstItem
 //}
 
-const firstItem = ["cat"]
+const firstItem = ["zebra", "dog", "peach", "flowers"]
 
 function returnFirst(items) {
     const [item1] = firstItem;
-    return firstItem;
+    return item1;
 }
 console.log(returnFirst(firstItem))
 
@@ -133,7 +133,7 @@ const giveProduct = numbers.reduce((acc, num) => acc * num);
 console.log(giveProduct)
 
 
-//DONE --(but not sure if correct or what intended) #8 Make the following function more ES6xy. Use at least both the rest and spread operators:
+//DONE --(but not sure if correct???) #8 Make the following function more ES6xy. Use at least both the rest and spread operators:
 /*
 function unshift(array, a, b, c, d, e) {
     return [a, b, c, d, e].concat(array);
