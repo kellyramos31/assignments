@@ -6,6 +6,9 @@ let editId
 const todoForm = document.todoForm
 const editForm = document.editForm
 
+//CALL/RETRIEVE LIST OF TODOS
+
+getAllToDos();
 
 //GET TODO's AXIOS request from DATABASE:
 
@@ -20,11 +23,8 @@ function getAllToDos() {
         .catch(error => console.log(error))
 }
 
-//CALL/RETRIEVE LIST OF TODOS
-getAllToDos();
-
-
 //GET TODOS FROM DATABASE & FORMAT/ADD TO DOM
+
 function formatToDos(todos) {
     for (let i = 0; i < todos.length; i++) {
         const listItem = document.createElement("li")
@@ -101,6 +101,7 @@ function formatToDos(todos) {
 
 
 //DELETE A TO DO
+
 function deleteToDo(deleteId) {
     axios.delete(`https://api.vschool.io/kellyr/todo/${deleteId}`)
         .then(response => {
@@ -124,6 +125,7 @@ takeAway.addEventListener("click", () => {
 */
 
 //UPDATE CHECKBOX STATUS TO TRUE
+
 function updateCheckTrue(id) {
     const updateToDo = {
         completed: true
@@ -139,6 +141,7 @@ function updateCheckTrue(id) {
 }
 
 //UPDATE CHECKBOX STATUS TO FALSE
+
 function updateCheckFalse(id) {
     const updateToDo = {
         completed: false
@@ -156,6 +159,7 @@ function updateCheckFalse(id) {
 
 
 //EVENT LISTENER TO ADD NEW TO DO
+
 const addToList = todoForm.addEventListener("submit", e => {
     e.preventDefault();
     const newtodo = {
@@ -182,7 +186,6 @@ const addToList = todoForm.addEventListener("submit", e => {
 //EDIT FORM EVENT LISTENER
 
 const editTheList = editForm.addEventListener("submit", e => {
-
     e.preventDefault()
     console.log(editId)
 
