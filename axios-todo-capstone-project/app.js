@@ -1,6 +1,5 @@
 //GLOBAL DATA VARIABLE
 let todos
-let editId
 
 //Axios POST request (ADDS new TODO to database)
 const todoForm = document.todoForm
@@ -62,20 +61,28 @@ const formatToDos = (todos) => {
         })
 
         const editButton = document.createElement("button")         //CREATE EDIT BUTTON
-
         editButton.textContent = "Edit";
         editButton.classList.add("edit-this-button")
         editButton.addEventListener("click", () => {
             const getFormDiv = document.getElementById("change-form")
             getFormDiv.style.display = "block"
+            console.log(todos[i].title)
             editForm.editTitle.value = todos[i].title;
             editForm.editDescrip.value = todos[i].description;
             editForm.editUrl.value = todos[i].imgUrl;
             getList.prepend(editForm)
             window.scrollTo(0, 0)
-            editId = todos[i]._id;
-            console.log(editId)
-            editIt(editId)
+            console.log(todos[i]._id)
+        })
+
+
+        ///THIS EVENT LISTENER FOR FORM NOT FIRING
+
+        //EDIT FORM EVENT LISTENER
+        const getEditButton = editForm.saveEditsButton
+        getEditButton.addEventListener("submit", e => {
+            e.preventDefault()
+            editListItem(todos[i]._id)
         })
 
         const deleteButton = document.createElement("button");      //CREATE DELETE BUTTON
@@ -96,7 +103,6 @@ const formatToDos = (todos) => {
         listItem.appendChild(deleteButton)
     }
 }
-
 
 
 //DELETE A TO DO
@@ -122,38 +128,27 @@ takeAway.addEventListener("click", () => {
 })
 */
 
+//EDIT A TODO
+function editListItem(editId) {
+    const editToDo = {
+        title: editForm.editTitle.value,
+        description: editForm.editDescrip.value,
+        imgUrl: editForm.editUrl.value,
+        completed: false
+    }
 
-//DISPLAY FORM & FORM EVENT LISTENERS / UPDATE DATABASE
-
-
-
-
-function editIt(editId) {
-    const getEditButton = editForm.saveEditsButton
-    getEditButton.addEventListener("submit", e => {
-        e.preventDefault();
-        const editToDo = {
-            title: editForm.editTitle.value,
-            description: editForm.editDescrip.value,
-            imgUrl: editForm.editUrl.value,
-            completed: false
-        }
-
-        axios.put(`https://api.vschool.io/kellyr/todo/${editId}`, editToDo)
-            .then(response => {
-                console.log(response.data)
-                getFormDiv.style.display = "none";            //Make form disappear
-                editForm.editTitle.value = "";                //CLEAR out the edit form values
-                editForm.editDescrip.value = "";
-                editForm.editUrl.value = "";
-                clearData();
-                getToDos();
-            })
-            .catch(error => console.log(error))
-
-    })
+    axios.put(`https://api.vschool.io/kellyr/todo/${editId}`, editToDo)
+        .then(response => {
+            console.log(response.data)
+            getFormDiv.style.display = "none";            //Make form disappear
+            editForm.editTitle.value = "";                //CLEAR out the edit form values
+            editForm.editDescrip.value = "";
+            editForm.editUrl.value = "";
+            clearData();
+            getToDos();
+        })
+        .catch(error => console.log(error))
 }
-
 
 //UPDATE CHECKBOX STATUS TO TRUE
 function updateCheckTrue(id) {
