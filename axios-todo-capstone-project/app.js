@@ -84,10 +84,9 @@ function formatToDos(todos) {
         deleteButton.classList.add("delete-this-button")
         deleteButton.addEventListener("click", () => {
             let deleteId = todos[i]._id;
-            //console.log(deleteId)
+            console.log(deleteId)
             deleteToDo(deleteId)
         })
-
         const getList = document.getElementById("list");             //"list" is the <UL>
         getList.appendChild(listItem)                                //listItem is the <LI>
         listItem.appendChild(checkBox)
@@ -113,7 +112,8 @@ function deleteToDo(deleteId) {
 }
 
 /*
-//DELETE BUTTON EVENT LISTENER  -- have not been able to get this to work this way with the class/outside of for loop; ERROR:  "Uncaught TypeError: takeAway.addEventListener is not a function"
+//DELETE BUTTON EVENT LISTENER  -- have not been able to get this to work this way with the class/outside of for loop; 
+//ERROR:  "Uncaught TypeError: takeAway.addEventListener is not a function"
 const takeAway = document.getElementsByClassName("delete-this-button")
 takeAway.addEventListener("click", () => {
     for (let i = 0; i < todos.length; i++) {
@@ -125,7 +125,6 @@ takeAway.addEventListener("click", () => {
 */
 
 //UPDATE CHECKBOX STATUS TO TRUE
-
 function updateCheckTrue(id) {
     const updateToDo = {
         completed: true
