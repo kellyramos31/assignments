@@ -1,12 +1,11 @@
 //GLOBAL DATA VARIABLE
-
+let todos
+let editId
 
 //Axios POST request (ADDS new TODO to database)
 const todoForm = document.todoForm
 const editForm = document.editForm
 
-
-//Axios GET request for Current To Do List
 
 //GET TODO's AXIOS request from DATABASE:
 
@@ -24,27 +23,6 @@ const getAllToDos = () => {
 //CALL/RETRIEVE LIST OF TODOS
 getAllToDos();
 
-/*
-//DELETE BUTTON EVENT LISTENER
-const takeAway = document.getElementsByClassName("delete-this-button")
-takeAway.addEventListener("click", e => {
-    for (let i = 0; i < dataArr.length; i++) {
-    }
-})
-*/
-
-/*
-//DELETE A TO DO
-function deleteToDo() {
-    axios.delete(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`)
-        .then(response => {
-            console.log(response.data)
-            clearData();                                                  //Function to clear out web page data w/o refresh
-            getAllToDos();
-        })
-        .catch(error => console.log(error))
-}
-*/
 
 //GET TODOS FROM DATABASE & FORMAT/ADD TO DOM
 const formatToDos = (todos) => {
@@ -84,11 +62,30 @@ const formatToDos = (todos) => {
         })
 
         const editButton = document.createElement("button")         //CREATE EDIT BUTTON
+
         editButton.textContent = "Edit";
         editButton.classList.add("edit-this-button")
+        editButton.addEventListener("click", () => {
+            const getFormDiv = document.getElementById("change-form")
+            getFormDiv.style.display = "block"
+            editForm.editTitle.value = todos[i].title;
+            editForm.editDescrip.value = todos[i].description;
+            editForm.editUrl.value = todos[i].imgUrl;
+            getList.prepend(editForm)
+            window.scrollTo(0, 0)
+            editId = todos[i]._id;
+            console.log(editId)
+            editIt(editId)
+        })
+
         const deleteButton = document.createElement("button");      //CREATE DELETE BUTTON
         deleteButton.textContent = "Delete";
         deleteButton.classList.add("delete-this-button")
+        deleteButton.addEventListener("click", () => {
+            let deleteId = todos[i]._id;
+            console.log(deleteId)
+            deleteToDo(deleteId)
+        })
         const getList = document.getElementById("list");             //"list" is the <UL>
         getList.appendChild(listItem)                                //listItem is the <LI>
         listItem.appendChild(checkBox)
@@ -102,19 +99,38 @@ const formatToDos = (todos) => {
 
 
 
+//DELETE A TO DO
+function deleteToDo(deleteId) {
+    axios.delete(`https://api.vschool.io/kellyr/todo/${deleteId}`)
+        .then(response => {
+            console.log(response.data)
+            clearData();                                                  //Function to clear out web page data w/o refresh
+            getAllToDos();
+        })
+        .catch(error => console.log(error))
+}
 
 /*
-//EDIT BUTTON & EDIT FORM EVENT LISTENERS / UPDATE DATABASE
-const getFormDiv = document.getElementById("change-form")
-editButton.addEventListener("click", () => {
-    getFormDiv.style.display = "block"
-    editForm.editTitle.value = response.data[i].title;
-    editForm.editDescrip.value = response.data[i].description;
-    editForm.editUrl.value = response.data[i].imgUrl;
-    getList.prepend(editForm)
-    window.scrollTo(0, 0)
+//DELETE BUTTON EVENT LISTENER  -- have not been able to get this to work this way; ERROR:  "Uncaught TypeError: takeAway.addEventListener is not a function"
+const takeAway = document.getElementsByClassName("delete-this-button")
+takeAway.addEventListener("click", () => {
+    for (let i = 0; i < todos.length; i++) {
+        let deleteId = todos[i]._id
+        console.log(deleteId)
+        deleteToDo(deleteId)
+    }
+})
+*/
+
+
+//DISPLAY FORM & FORM EVENT LISTENERS / UPDATE DATABASE
+
+
+
+
+function editIt(editId) {
     const getEditButton = editForm.saveEditsButton
-    getEditButton.addEventListener("click", e => {
+    getEditButton.addEventListener("submit", e => {
         e.preventDefault();
         const editToDo = {
             title: editForm.editTitle.value,
@@ -122,8 +138,8 @@ editButton.addEventListener("click", () => {
             imgUrl: editForm.editUrl.value,
             completed: false
         }
- 
-        axios.put(`https://api.vschool.io/kellyr/todo/${response.data[i]._id}`, editToDo)
+
+        axios.put(`https://api.vschool.io/kellyr/todo/${editId}`, editToDo)
             .then(response => {
                 console.log(response.data)
                 getFormDiv.style.display = "none";            //Make form disappear
@@ -132,12 +148,12 @@ editButton.addEventListener("click", () => {
                 editForm.editUrl.value = "";
                 clearData();
                 getToDos();
-                formatToDos(databaseArr);
             })
             .catch(error => console.log(error))
- 
+
     })
-*/
+}
+
 
 //UPDATE CHECKBOX STATUS TO TRUE
 function updateCheckTrue(id) {
