@@ -85,7 +85,7 @@ console.log(yesIlluminati)
 */
 
 //re-written with shortened syntax:
-const yesIlluminati = people.filter(person => person.member == true)
+const yesIlluminati = people.filter(person => person.member === true)
 console.log(yesIlluminati)
 
 
