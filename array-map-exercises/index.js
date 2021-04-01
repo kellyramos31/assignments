@@ -52,12 +52,11 @@ const resultUpperCase = namesArr.map(function capitalizeNames(namesArr) {
 console.log(resultUpperCase)
 */
 
-//code rewritten with ES6 syntax:  
-const resultUpperCase = namesArr.map(namesArr => namesArr[0].toUpperCase() + namesArr.substring(1).toLowerCase())
+//code rewritten with more ES6-like syntax:  
+const resultUpperCase = namesArr.map(arr => arr[0].toUpperCase() + arr.substring(1).toLowerCase())
 console.log(resultUpperCase)
 
 //console.log(capitalizeNames(["john", "JACOB", "jinGleHeimer", "schmidt"])); // ["John", "Jacob", "Jingleheimer", "Schmidt"]
-
 
 
 //DONE -- 4) Make an array of strings of the names
@@ -94,7 +93,7 @@ console.log(result)
 */
 
 //code rewritten with ES6 syntax:  
-const result = namesOnly.map(namesOnly => namesOnly.name)
+const result = namesOnly.map(arr => arr.name)
 console.log(result)
 
 // ["Angelina Jolie", "Eric Jones", "Paris Hilton", "Kayne West", "Bob Ziroll"]
@@ -139,11 +138,11 @@ console.log(resultMovie)
 */
 //code rewritten with ES6 syntax:  
 
-const resultMovie = movieAge.map(movieAge => {
-    if (movieAge.age > 18) {
-        return movieAge.name.concat(" can go to The Matrix!")
+const resultMovie = movieAge.map(arr => {
+    if (arr.age > 18) {
+        return `${arr.name} can go to The Matrix!`
     } else {
-        return movieAge.name.concat(" is underage!!")
+        return `${arr.name} is underage!!`
     }
 })
 console.log(resultMovie)
@@ -195,7 +194,7 @@ console.log(domReady)
 */
 
 //code rewritten with ES6 syntax:  //NOTE:  can re-write this to also include template literals instead
-const domReady = readyToPutInTheDom.map(readyToPutInTheDom => "<h1>" + readyToPutInTheDom.name + "</h1>" + "<h2>" + readyToPutInTheDom.age + "</h2>")
+const domReady = readyToPutInTheDom.map(arr => `<h1>${arr.name}</h1><h2>${arr.age}</h2>`)
 console.log(domReady)
 
 // ["<h1>Angelina Jolie</h1><h2>80</h2>",
