@@ -18,16 +18,18 @@ sum(2, "3")
 //1b) Call the sum function inside a try block using "1" and "2" as arguments.
 //Use console.log within a catch block to inform the user of the error.
 /*
-function sumAgain(x, y) {
+function sum(x, y) {
+    if (typeof (x) !== "number" || typeof (y) !== "number") {
+        throw new Error("Your problem is that not all of these are numbers")
+    } else {
+        console.log("These numbers look good to me.")
+    }
     console.log(x + y)
     return x + y;
 }
 
 try {
-    sumAgain("1", "2")
-    if (typeof (x) !== "number" || typeof (y) !== "number") {
-        throw new Error("Your problem is that not all of these are numbers")
-    }
+    sum(1, 3)
 }
 catch (err) {
     console.log(err)
@@ -56,7 +58,7 @@ login("daisy", "65498Z")
 
 //2b) Call the login function within a try block.In one instance use the correct credentials, 
 //and in another use incorrect ones.   Make sure you see the appropriate message!
-
+/*
 var user = { username: "sam", password: "123abc" };
 
 function login(username, password) {
@@ -74,10 +76,11 @@ try {
 catch (err) {
     console.log(err)
 }
-
+*/
 
 
 //EXAMPLE FROM V SCHOOL ARTICLE:
+/*
 var input = "";
 
 try {
@@ -94,3 +97,4 @@ try {
     console.log("Runs no matter what");
     console.log("And the input was " + input);
 }
+*/
