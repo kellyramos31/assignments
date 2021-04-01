@@ -93,13 +93,13 @@ const result4 = wishlist.reduce((final, cost) => final += cost.price, 0)
 console.log(result4)
 
 //DONE -- 5) Given an array of arrays, flatten them into a single array
-/*
+
 var arrays = [
     ["1", "2", "3"],
     [true],
     [4, 5, 6]
 ]
-*/
+
 //code for this exercise:
 /*  
 const result5 = arrays.reduce(function flatten(final, array) {
@@ -108,10 +108,10 @@ const result5 = arrays.reduce(function flatten(final, array) {
 console.log(result5)
 */
 //re-written in shorter ES6 syntax:
-/*
+
 const result5 = arrays.reduce((final, array) => final.concat(array));
 console.log(result5)
-*/
+
 //console.log(flatten(arrays)); // ["1", "2", "3", true, 4, 5, 6];
 //Note: Take a look at Array.concat() to help with this one
 
@@ -169,8 +169,8 @@ console.log(result6)
 }
 */
 
-//EXTRA CREDIT - PART 1
-
+/*
+//DONE -- EXTRA CREDIT - PART 1
 //DONE runs in browser -- Using AJAX, do a GET request to your own Github repositories endpoint.
 //The URL will be https://api.github.com/users/<YOUR GITHUB USERNAME HERE>/repos.
 
@@ -183,17 +183,17 @@ xhr.onreadystatechange = function () {
         const JSONdata = xhr.responseText;
         const data = JSON.parse(JSONdata)
         console.log(data)
+        const allWatchersResult = data.reduce((final, count) => final += count.watchers_count, 0)
+        console.log(allWatchersResult)
     }
 }
 
 
-
-
-//EXTRA CREDIT - PART 2   -- NOT DONE YET
-
+//DONE -- EXTRA CREDIT - PART 2
 //Once you get the data, use.reduce() to figure out how many watchers you have across all
 //of your repositories.Don't be too disappointed if the number is 0. You're still new at this :)
 
 //Note: If you've learned how to use the axios library, you can do this in node. Otherwise,
 //you'll want to run this code in the browser's JavaScript context and either use XMLHttpRequest
 //or jQuery's AJAX methods, meaning you'll need an HTML page and an associated script tag for your JavaScript.
+*/
