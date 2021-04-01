@@ -108,12 +108,12 @@ function ofAge(arr) {
     });
 
     const makeString = over18.map(function toString(person) {
-        return (`<li>`.concat(`${person.firstName} ${person.lastName} is ${person.age}</li>`))
+        return (`<li> ${person.firstName} ${person.lastName} is ${person.age}</li>`)
     })
     console.log(makeString)
-
 }
-console.log(ofAge(peopleArray))
+
+ofAge(peopleArray)
 
 
 
@@ -137,6 +137,9 @@ Create a function that filters out all people who's last names end with "y" or "
 Remove the second individual from the array.
 Return the array in reverse order.
 */
+
+
+
 
 
 
