@@ -52,20 +52,9 @@ console.log(wordArr)
 //DONE -- 4) Sort an array alphabetically
 //note:  when Googled it, said to just use .sort() without passing in any arguments to alphabetize.
 sameWordArr = ["dog", "wolf", "by", "family", "eaten"]
-/*
+
 //code for this exercise:
 sameWordArr.sort()
-console.log(sameWordArr)
-*/
-
-//and this also works:
-sameWordArr.sort(function alphabetize(a, b) {
-    return a < b;
-})
-console.log(sameWordArr)
-
-//re-written in shorter ES6:
-sameWordArr.sort((a, b) => a < b);
 console.log(sameWordArr)
 
 //console.log(alphabetical()); // ["by", "dog", "eaten", "family", "wolf"]
