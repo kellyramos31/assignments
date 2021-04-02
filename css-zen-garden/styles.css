@@ -18,8 +18,8 @@
 /*}*/
 
 #background-header  {
-    background-image:  url(./assets/header-left-side.jpg);
-    background-size: fill;
+    background-image:  url(./assets/huntington-900.jpg);
+    background-size: cover;
     height: 200px;
     grid-column: 1 / 2;
     grid-row: 1 / 2;
@@ -81,7 +81,7 @@
     font-family: "Julius Sans One", sans-serif;
     color: white;
     height: 60px;
-    width:  55%;
+    width:  60%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -89,7 +89,9 @@
 }
 
 #view-all-designs:hover {
-    background: rgba(203, 218, 203, 0.4);  
+    background: rgba(203, 218, 203, 0.4);
+    width: 75%;
+    border: none;  
 }
 
 #greater-than-arrow {
@@ -98,11 +100,16 @@
     font-size:  30px;
     color: white;
     height: 60px;
-    width:  60px;
-    position: absolute;
+    width: 18%;
+    position: relative;
     top: 50%;
-    left: 85%;
+    left: 90%;
     transform: translate(-50%,-50%);
+}
+
+#greater-than-arrow:hover {
+    background: rgba(203, 218, 203, 0.4);
+    width: 15%;
 }
 
 h3 {
@@ -168,7 +175,7 @@ li {
     padding-left: 30px;
     background-image: url(./assets/bamboo.png);
     background-size: cover;
-    background-color:  #a0b9ad;
+     background-color: rgba(138, 188, 159, 0.5);
     font-family: "Julius Sans One", sans-serif;
     font-size: 16px;
 }
@@ -215,6 +222,10 @@ li {
     padding-right:  10px;
 }
 
+.foots:hover {
+    text-decoration: underline;
+}
+
 .footer {
     grid-column:  1 / 3;
     grid-row: 6 / 7;
@@ -227,8 +238,8 @@ li {
 .icons {
     display: flex;
     justify-content: space-around;
-    margin-top:  20px;
-    font-size:  50px;
+    margin-top:  15px;
+    font-size:  45px;
     font-family: "myZenFont";
     /*height: 50px;*/
     /*width: 100%;*/
@@ -242,11 +253,17 @@ Used font awesome & inline styling in HTML as alternative*/
 .icons > div {
     height: 50px;
     width: 50px;
-    color:  #a0b9ad;
+    color:   rgba(255, 255, 255, 0.5);
     background-color: #134347;
     border-radius: 50%;
     text-align: center;
     vertical-align: bottom;
+}
+
+.icons > div:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5);
+    color: #134347;
 }
 
 @media only screen and (max-width: 900px){
@@ -303,6 +320,7 @@ Used font awesome & inline styling in HTML as alternative*/
         height: 60px;
         width: 30%;
         margin-top:  190px;
+        border: none;
     }
     
    #enlightenment {
