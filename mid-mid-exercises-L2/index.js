@@ -71,3 +71,4 @@ const moreOrEqual = userData.reduce((final, friendCount) =>
 */
 
 // setInterval & setTimeout - Using a combination of arr.find or arr.filter & setInterval and setTimeout, find the user whose username is celebrityCrush, and console log that username every second for 5 seconds, then stop.
+
