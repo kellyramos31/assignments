@@ -9,32 +9,30 @@ timer.textContent = timeTick;
 let intervalId;
 
 
+
 function timeTicking() {
     timeTick--
     timer.textContent = timeTick;
     if (timeTick === 0) {
         timer.textContent = "Time's Up!";
-        clearInterval(intervalId)
+        displayClicks.textContent = countClicks;
         timeTick = 10;
         countClicks = 0;
+        clearInterval(intervalId)
     }
 }
 
 startButton.addEventListener("click", () => {
+    displayClicks.textContent = 0;
     intervalId = setInterval(timeTicking, 1000)
-    displayClicks.textContent = "0"
 })
 
 
 window.addEventListener("click", () => {
-    if (timeTick > 0) {
+    if (timeTick > 0 && timeTick < 10) {
         countClicks += 1;
+        displayClicks.textContent = countClicks;
         localStorage.setItem("clicks", countClicks)
-        displayClicks.textContent = countClicks;
-    } else if (timeTick === 0) {
-        displayClicks.textContent = countClicks;
-    } else if (timeTick < 0) {
-        displayClicks.textContent = countClicks;
     }
 })
 
@@ -42,10 +40,11 @@ window.addEventListener("click", () => {
 const lastCountClicks = localStorage.getItem("clicks");
 if (lastCountClicks) {
     displayClicks.textContent = lastCountClicks;
-} else {
-    displayClicks.textContent = newClicks;
 }
 
+
+
+//NOTE:  MAYBE NEED A SET TIMEOUT HERE TOO???  OR MAYBE EVENT LISTENER NEEDS TO GO INSIDE FUNCTION TIMETICKING??
 
 
 //Extra credit: Put a countdown timer(10 - 30 seconds) on the page that stops the user's clicks from counting towards the total after the timer ends.
@@ -89,12 +88,6 @@ window.addEventListener("click", () => {
     //console.log(displayClicks);
 })
 
-const displayClicks = document.getElementById("number-clicks");
-const lastCountClicks = localStorage.getItem("clicks");
-if (lastCountClicks) {
-    displayClicks.textContent = lastCountClicks;
-} else {
-    displayClicks.textContent = countClicks;
-}
+
 */
 
