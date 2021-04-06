@@ -197,3 +197,17 @@ xhr.onreadystatechange = function () {
 //you'll want to run this code in the browser's JavaScript context and either use XMLHttpRequest
 //or jQuery's AJAX methods, meaning you'll need an HTML page and an associated script tag for your JavaScript.
 */
+
+var wishlist = [
+    { title: "Tesla Model S", price: 90000 },
+    { title: "4 carat diamond ring", price: 45000 },
+    { title: "Fancy hacky Sack", price: 5 },
+    { title: "Gold fidgit spinner", price: 2000 },
+    { title: "A second Tesla Model S", price: 90000 }
+];
+const wishObj = wishlist.reduce(function totalItUp(final, total) {
+    final += total.price
+    return final
+}, {
+    title: "title", price: "final })
+console.log(wishObj)
