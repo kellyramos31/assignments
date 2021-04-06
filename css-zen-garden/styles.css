@@ -139,10 +139,11 @@ p {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     background-color: #edf4f0;
-    padding-top: 10px;
-    padding-left: 30px;
+    padding-top: 20px;
+    padding-left: 10%;
+    padding-right: 35%;
     font-family: "Julius Sans One", sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     color:  #607476;
 }
 
@@ -158,7 +159,7 @@ p {
 
 li {
     list-style-type: none;
-    padding-top: 20px;
+    padding-top: 30px;
 }
 
 #participation {
@@ -181,7 +182,6 @@ li {
     background-image: url(./assets/bamboo.png);
     background-size: cover;
     background-color:  rgba(138, 188, 159, 0.6);
-   
     font-family: "Julius Sans One", sans-serif;
     font-size: 16px;
 }
@@ -256,6 +256,11 @@ li {
     /*padding: 5px;*/
 }
 
+#git {
+    color: #134347;
+    background-color:  rgba(255, 255, 255, 0.5);
+}
+
 /*NOTE:  icon font = verdemoderna, but have not been able to get this to work
 Used font awesome & inline styling in HTML as alternative*/
 
@@ -273,6 +278,11 @@ Used font awesome & inline styling in HTML as alternative*/
     background-color: rgba(255, 255, 255, 0.5);
     color: rgba(255, 255, 255, 0.5);
     color: #134347;
+}
+
+#git:hover {
+    color:  rgba(255, 255, 255, 0.5);
+    background-color: #134347;
 }
 
 @media only screen and (max-width: 900px){
@@ -337,7 +347,7 @@ Used font awesome & inline styling in HTML as alternative*/
         border: none;
     }
     
-   #enlightenment {
+    #enlightenment {
         color: #2e484c;
         grid-column: 1 / 2;
         grid-row: 3 / 4;
@@ -360,8 +370,13 @@ Used font awesome & inline styling in HTML as alternative*/
 }
     
     .authors {
+        padding-top: 0px;
         grid-column: 1 / 2;
         grid-row: 8 / 9;
+    }
+
+    .book-author {
+        font-size: 12px;
     }
     
     ul {
