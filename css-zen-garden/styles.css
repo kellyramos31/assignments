@@ -151,10 +151,18 @@ p {
     color:  #607476;
 }
 
+.book-title:hover {
+     color: #0d8ba1;
+}
+
 .book-author {
     font-family: "Libre Baskerville", sans-serif;
     color: #616857;
     font-size: 15px;
+}
+
+.book-author:hover {
+    color: #0d8ba1;
 }
 
 li {
@@ -183,8 +191,15 @@ li {
     background-size: cover;
     background-color:  rgba(138, 188, 159, 0.6);
     font-family: "Julius Sans One", sans-serif;
-    font-size: 16px;
+    font-size: 18px;
+    padding-left: 10%;
+    padding-right: 35%;
 }
+
+.this-link:hover {
+     color: #0d8ba1;
+}
+
 
 #requirements {
     grid-column: 1 / 2;
