@@ -6,6 +6,13 @@
 */
 
 numArray = [2, 5, 100]
+
+//practice again
+const doubled = numArray.map(num => num * 2)
+console.log(doubled)
+
+
+
 /*
 //code for this exercise:
 const doubleIt = numArray.map(function doubleNumbers(arr) {
@@ -15,13 +22,19 @@ console.log(doubleIt)
 */
 
 //code rewritten with ES6 syntax:  
+/*
 const doubleIt = numArray.map(arr => arr * 2)
 console.log(doubleIt)
-
+*/
 //console.log(doubleNumbers([2, 5, 100])); // [4, 10, 200]
 
 
 //DONE -- 2) Take an array of numbers and make them strings
+
+//practice again
+const makeItString = numArray.map(num => num.toString())
+console.log(makeItString)
+
 //code for this exercise:
 /*
 const makeString = numArray.map(function stringItUp(arr) {
@@ -31,9 +44,10 @@ console.log(makeString)
 */
 
 //code rewritten with ES6 syntax:  
+/*
 const makeString = numArray.map(arr => arr.toString())
 console.log(makeString)
-
+*/
 //function stringItUp(arr) {
 //  // your code here
 //}
@@ -45,6 +59,12 @@ console.log(makeString)
 //code for this exercise:
 
 namesArr = ["john", "JACOB", "jinGleHeimer", "schmidt"]
+
+//practice again
+const makeUpperCase = namesArr.map(name => name[0].toUpperCase() + name.substring(1).toLowerCase())
+console.log(makeUpperCase)
+
+
 /*
 const resultUpperCase = namesArr.map(function capitalizeNames(namesArr) {
     return namesArr[0].toUpperCase() + namesArr.substring(1).toLowerCase();
@@ -53,9 +73,10 @@ console.log(resultUpperCase)
 */
 
 //code rewritten with more ES6-like syntax:  
+/*
 const resultUpperCase = namesArr.map(arr => arr[0].toUpperCase() + arr.substring(1).toLowerCase())
 console.log(resultUpperCase)
-
+*/
 //console.log(capitalizeNames(["john", "JACOB", "jinGleHeimer", "schmidt"])); // ["John", "Jacob", "Jingleheimer", "Schmidt"]
 
 
@@ -84,6 +105,11 @@ const namesOnly = [
     }
 ]
 
+//practice again
+const namesArray = namesOnly.map(person => person.name)
+console.log(namesArray)
+
+
 //code for this exercise:
 /*
 const result = namesOnly.map(function (namesOnly) {
@@ -93,9 +119,10 @@ console.log(result)
 */
 
 //code rewritten with ES6 syntax:  
+/*
 const result = namesOnly.map(arr => arr.name)
 console.log(result)
-
+*/
 // ["Angelina Jolie", "Eric Jones", "Paris Hilton", "Kayne West", "Bob Ziroll"]
 
 
@@ -125,6 +152,16 @@ const movieAge = [
     }
 ];
 
+//practice again
+const getToSeeMatrix = movieAge.map(person => {
+    if (person.age >= 18) {
+        return `${person.name} can see the Matrix`
+    } else {
+        return `${person.name} is too young to see the Matrix.`
+    }
+})
+console.log(getToSeeMatrix)
+
 //code for this exercise:
 /*
 const resultMovie = movieAge.map(function makeStrings(movieAge) {
@@ -137,7 +174,7 @@ const resultMovie = movieAge.map(function makeStrings(movieAge) {
 console.log(resultMovie)
 */
 //code rewritten with ES6 syntax:  
-
+/*
 const resultMovie = movieAge.map(arr => {
     if (arr.age > 18) {
         return `${arr.name} can go to The Matrix!`
@@ -146,7 +183,7 @@ const resultMovie = movieAge.map(arr => {
     }
 })
 console.log(resultMovie)
-
+*/
 
 //function makeStrings(arr) {
 // your code here
@@ -185,6 +222,12 @@ const readyToPutInTheDom = [
     }
 ]
 
+//practice again
+
+const formatForDom = readyToPutInTheDom.map(person => `<h1>${person.name}</h1><h2>${person.age}</h2>`)
+console.log(formatForDom)
+
+
 /*
 //code for this exercise:
 const domReady = readyToPutInTheDom.map(function readyForDom(readyToPutInTheDom) {
@@ -194,9 +237,10 @@ console.log(domReady)
 */
 
 //code rewritten with ES6 syntax:  //NOTE:  can re-write this to also include template literals instead
+/*
 const domReady = readyToPutInTheDom.map(arr => `<h1>${arr.name}</h1><h2>${arr.age}</h2>`)
 console.log(domReady)
-
+*/
 // ["<h1>Angelina Jolie</h1><h2>80</h2>",
 // "<h1>Eric Jones</h1><h2>2</h2>",
 // "<h1>Paris Hilton</h1><h2>5</h2>",
