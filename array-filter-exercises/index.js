@@ -3,6 +3,12 @@
 
 
 const numArray = [3, 6, 8, 2]
+
+//practice again
+const fiveOrMore = numArray.filter(num => num >= 5)
+console.log(fiveOrMore)
+
+
 /*
 //code for exercise:
 const result = numArray.filter(function fiveAndGreaterOnly(num) {
@@ -13,16 +19,21 @@ const result = numArray.filter(function fiveAndGreaterOnly(num) {
 
 console.log(result)
 */
-
+/*
 //re-written with shortened syntax:
 const result = numArray.filter(num => num > 5)
 console.log(result)
-
+*/
 // test
 //console.log(fiveAndGreaterOnly([3, 6, 8, 2])); /// [6, 8]
 
 
 //DONE -- 2) Given an array of numbers, return a new array that only includes the even numbers.
+
+//practice again
+const evensOnly = numArray.filter(num => num % 2 === 0)
+console.log(evensOnly)
+
 
 //code for exercise:
 /*
@@ -34,9 +45,10 @@ const resultEvens = numArray.filter(function evensOnly(num) {
 console.log(resultEvens)
 */
 //re-written with shortened syntax:
+/*
 const resultEvens = numArray.filter(num => num % 2 === 0)
 console.log(resultEvens)
-
+*/
 // test
 //console.log(evensOnly([3, 6, 8, 2])); /// [6, 8, 2]
 
@@ -44,6 +56,11 @@ console.log(resultEvens)
 
 //DONE -- 3) Given an array of strings, return a new array that only includes those that are 5 characters or fewer in length
 const stringsArr = ["dog", "wolf", "by", "family", "eaten", "camping"]
+
+//practice again
+const fiveCharsOrLess = stringsArr.filter(string => string.length <= 5)
+console.log(fiveCharsOrLess)
+
 
 //code for exercise:
 /*
@@ -56,8 +73,10 @@ console.log(fiveOrLess)
 */
 
 //re-written with shortened syntax:
+/*
 const fiveOrLess = stringsArr.filter(string => string.length <= 5)
 console.log(fiveOrLess)
+*/
 
 // test
 //console.log(fiveCharactersOrFewerOnly(["dog", "wolf", "by", "family", "eaten", "camping"])); // ["by", "dog", "wolf", "eaten"]
@@ -74,6 +93,12 @@ const people = [
     { name: "Bob Ziroll", member: true }
 ]
 
+//practice again
+
+const clubMembers = people.filter(person => person.member)
+console.log(clubMembers)
+
+
 //code for exercise:
 /*
 const yesIlluminati = people.filter(function peopleWhoBelongToTheIlluminati(person) {
@@ -85,9 +110,10 @@ console.log(yesIlluminati)
 */
 
 //re-written with shortened syntax:
+/*
 const yesIlluminati = people.filter(person => person.member === true)
 console.log(yesIlluminati)
-
+*/
 
 // test
 // =>
@@ -106,6 +132,11 @@ const nameAge = [
     { name: "Bob Ziroll", age: 100 }
 ]
 
+//practice again
+
+const oldEnough = nameAge.filter(person => person.age > 18)
+console.log(oldEnough)
+
 //code for exercise:
 /*
 const oldEnough = nameAge.filter(function ofAge(num) {
@@ -116,9 +147,10 @@ const oldEnough = nameAge.filter(function ofAge(num) {
 console.log(oldEnough)
 */
 //re-written with shortened syntax:
+/*
 const oldEnough = nameAge.filter(num => num.age > 17)
 console.log(oldEnough)
-
+*/
 // test
 // =>
 //[ { name: 'Angelina Jolie', age: 80 },
