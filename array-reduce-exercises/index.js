@@ -2,6 +2,7 @@
 const numArr = [1, 2, 3, 4, 5, 6]
 
 //code for this exercise:
+
 /*
 const result1 = numArr.reduce(function total(final, num) {
     return final += num
@@ -19,16 +20,12 @@ console.log(result1)
 //DONE --2) Turn an array of numbers into a long string of all those numbers.
 const numsArr = [1, 2, 3]
 
-//code for this exercise:
-/*
-const result2 = numsArr.reduce(function stringConcat(final, num) {
-    return numsArr.join("");
+const stringItNow = numsArr.reduce((final, num) => {
+    final += num.toString();
+    return final
 })
-console.log(result2)
-*/
-//re-written in shorter ES6 syntax:
-const result2 = numsArr.reduceRight((final, num) => numsArr.join(""))
-console.log(result2)
+console.log(stringItNow)
+
 
 //console.log(stringConcat([1, 2, 3])); // "123"
 
@@ -197,17 +194,3 @@ xhr.onreadystatechange = function () {
 //you'll want to run this code in the browser's JavaScript context and either use XMLHttpRequest
 //or jQuery's AJAX methods, meaning you'll need an HTML page and an associated script tag for your JavaScript.
 */
-
-var wishlist = [
-    { title: "Tesla Model S", price: 90000 },
-    { title: "4 carat diamond ring", price: 45000 },
-    { title: "Fancy hacky Sack", price: 5 },
-    { title: "Gold fidgit spinner", price: 2000 },
-    { title: "A second Tesla Model S", price: 90000 }
-];
-const wishObj = wishlist.reduce(function totalItUp(final, total) {
-    final += total.price
-    return final
-}, {
-    title: "title", price: "final })
-console.log(wishObj)
