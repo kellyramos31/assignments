@@ -48,6 +48,18 @@ var voters = [
     { name: 'Zack', age: 19, voted: false }
 ];
 
+
+const voted = voters.reduce((final, voter) => {
+    if (voter.voted) {
+        final.voted++
+    }
+    return final
+
+}, { voted: 0 })
+
+console.log(voted)
+
+
 //code for this exercise with reduce:
 /*
 const result3 = voters.reduce(function totalVotes(final, voter) {
@@ -77,8 +89,17 @@ var wishlist = [
     { title: "A second Tesla Model S", price: 90000 }
 ];
 
+
+const addItUp = wishlist.reduce((final, cost) => {
+    final.total += cost.price
+    return final
+}, { total: 0 })
+
+console.log(addItUp)
+
 //code for this exercise:
 /*
+
 const result4 = wishlist.reduce(function shoppingSpree(final, cost) {
     return final += cost.price
 }, 0)
@@ -134,6 +155,7 @@ var voters = [
     { name: 'Zack', age: 19, voted: false }
 ];
 
+
 const result6 = voters.reduce(function voterResults(final, vote) {
     if (vote.age >= 18 && vote.age <= 25) {
         if (vote.voted === true) {
@@ -166,7 +188,7 @@ console.log(result6)
 }
 */
 
-/*
+
 //DONE -- EXTRA CREDIT - PART 1
 //DONE runs in browser -- Using AJAX, do a GET request to your own Github repositories endpoint.
 //The URL will be https://api.github.com/users/<YOUR GITHUB USERNAME HERE>/repos.
@@ -193,4 +215,4 @@ xhr.onreadystatechange = function () {
 //Note: If you've learned how to use the axios library, you can do this in node. Otherwise,
 //you'll want to run this code in the browser's JavaScript context and either use XMLHttpRequest
 //or jQuery's AJAX methods, meaning you'll need an HTML page and an associated script tag for your JavaScript.
-*/
+
