@@ -140,7 +140,7 @@ p {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
     padding-top: 30px;
-    padding-bottom:  10px;
+    padding-bottom:  5px;
     padding-left: 60px;
     padding-right: 60px;
 }
@@ -149,7 +149,7 @@ p {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     background-color: #e5ede8;
-    padding-top: 20px;
+    padding-top: 5px;
     padding-left: 10%;
     padding-right: 35%;
     font-family: "Julius Sans One", sans-serif;
@@ -421,7 +421,7 @@ Used font awesome & inline styling in HTML as alternative*/
     
     ul {
         column-count: 2;
-        column-gap: 80px;
+        column-gap: 120px;
     }
 
    .links {
@@ -434,7 +434,6 @@ Used font awesome & inline styling in HTML as alternative*/
        display: none;
     }
 }
-
 
 @media only screen and (max-width: 500px){
       #logo {
@@ -468,15 +467,7 @@ Used font awesome & inline styling in HTML as alternative*/
          margin-top: 174px;
      }
 
-    ul {
-        grid-row-gap: 50px;
-        /*grid-column-gap: 100px;*/
-    }
-
-    .authors {
-        padding: unset;
-    }
-
+     
     .footer-acknowledge {
       padding-top: 15px;
     }
