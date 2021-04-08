@@ -100,7 +100,7 @@
 #greater-than-arrow {
     background: rgba(202, 204, 203, 0.2);        /*from w3 Schools*/
     font-family: "myZenFont";           /*font here is supposed to be "verdemoderna", not available on google fonts; TRY @font-face*/
-    font-size:  30px;
+    font-size:  26px;
     color: white;
     opacity: .6;
     height: 60px;
@@ -204,6 +204,11 @@ li {
     font-size: 18px;
     padding-left: 10%;
     padding-right: 35%;
+}
+
+hr {
+    color: lightgrey;
+    opacity: .2;
 }
 
 .this-link:hover {
@@ -374,7 +379,7 @@ Used font awesome & inline styling in HTML as alternative*/
     #greater-than-arrow {
         /*position: relative;*/
         height: 60px;
-        width: 10%;
+        width: 15%;
         margin-top:  170px;
         font-size: 40px;
         border: none;
@@ -406,10 +411,8 @@ Used font awesome & inline styling in HTML as alternative*/
 }
     
     .authors {
-        padding-top: 0px;
         grid-column: 1 / 2;
         grid-row: 8 / 9;
-        padding-left: 50px;
     }
 
     .book-author {
@@ -418,16 +421,13 @@ Used font awesome & inline styling in HTML as alternative*/
     
     ul {
         column-count: 2;
-        grid-column-gap: 100px;
+        column-gap: 80px;
     }
-    
 
-    .links {
+   .links {
        background-color:  rgba(138, 188, 159, 0.5);
        grid-column: 1 / 2;
        grid-row: 9 / 10;
-       grid-auto-flow: row;
-       padding-left: 50px;
     } 
 
     #green-empty-box {
@@ -437,7 +437,7 @@ Used font awesome & inline styling in HTML as alternative*/
 
 
 @media only screen and (max-width: 500px){
-    #logo {
+      #logo {
        float: unset;
        left: unset;
        padding-left: 20%;
@@ -470,9 +470,13 @@ Used font awesome & inline styling in HTML as alternative*/
 
     ul {
         grid-row-gap: 50px;
-        grid-column-gap: 100px;
+        /*grid-column-gap: 100px;*/
     }
-    
+
+    .authors {
+        padding: unset;
+    }
+
     .footer-acknowledge {
       padding-top: 15px;
     }
