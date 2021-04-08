@@ -1,6 +1,11 @@
 //DONE -- 1) Turn an array of numbers into a total of all the numbers
 const numArr = [1, 2, 3, 4, 5, 6]
 
+//practice again
+
+const sumItUp = numArr.reduce((final, num) => final += num)
+console.log(sumItUp)
+
 //code for this exercise:
 
 /*
@@ -19,6 +24,17 @@ console.log(result1)
 
 //DONE --2) Turn an array of numbers into a long string of all those numbers.
 const numsArr = [1, 2, 3]
+
+//practice again
+
+const turnToString = numsArr.reduce((final, num) => {
+    final += num.toString()
+    return final
+}
+)
+console.log(turnToString)
+
+
 
 const stringItNow = numsArr.reduce((final, num) => {
     final += num.toString();
@@ -47,6 +63,24 @@ var voters = [
     { name: 'Jeff', age: 30, voted: true },
     { name: 'Zack', age: 19, voted: false }
 ];
+
+
+//practice again
+const countWhoVoted = voters.reduce((final, num) => {
+    if (num.voted) {
+        final.votedcount++
+    }
+    return final
+}, { votedcount: 0 })
+console.log(countWhoVoted)
+
+//slightly diff syntax
+const countUpVoted = voters.reduce((final, num) => final += num.voted, 0)
+console.log(countUpVoted)
+
+//use diff method -- used filter() -- to get same result
+const countWhoVotedDiff = voters.filter(voter => voter.voted)
+console.log(countWhoVotedDiff)
 
 
 const voted = voters.reduce((final, voter) => {
@@ -89,6 +123,14 @@ var wishlist = [
     { title: "A second Tesla Model S", price: 90000 }
 ];
 
+//practice again
+const buyItAll = wishlist.reduce((final, item) => {
+    final.price += item.price
+    return final
+}, { price: 0 }
+)
+console.log(buyItAll)
+
 
 const addItUp = wishlist.reduce((final, cost) => {
     final.total += cost.price
@@ -117,6 +159,10 @@ var arrays = [
     [true],
     [4, 5, 6]
 ]
+
+//practice again
+const flattenIt = arrays.reduce((final, count) => final.concat(count))
+console.log(flattenIt)
 
 //code for this exercise:
 /*  
@@ -155,6 +201,29 @@ var voters = [
     { name: 'Zack', age: 19, voted: false }
 ];
 
+//practice again
+const voterBreakdown = voters.reduce((final, voter) => {
+    if (voter.age >= 18 && voter.age <= 25) {
+
+        if (voter.voted === true) {
+            final.count18To25Voted++
+        } final.count18To25Voters++
+    } else if (voter.age >= 26 && voter.age <= 35) {
+        if (voter.voted === true) {
+            final.count26To35Voted++
+        } final.count26To35Voters++
+    } else if (voter.age >= 36 && voter.age <= 55) {
+        if (voter.voted === true) {
+            final.count36To55Voted++
+        } final.count36To55Voters++
+    }
+    return final
+}, ({ count18To25Voters: 0, count18To25Voted: 0, count26To35Voters: 0, count26To35Voted: 0, count36To55Voters: 0, count36To55Voted: 0 }))
+
+console.log(voterBreakdown)
+
+
+
 
 const result6 = voters.reduce(function voterResults(final, vote) {
     if (vote.age >= 18 && vote.age <= 25) {
@@ -165,7 +234,7 @@ const result6 = voters.reduce(function voterResults(final, vote) {
         if (vote.voted === true) {
             final.numMidVotes++
         } final.numMidPeople++
-    } else if (vote.age >= 26 && vote.age <= 55) {
+    } else if (vote.age >= 36 && vote.age <= 55) {
         if (vote.voted === true) {
             final.numOlderVotes++
         } final.numOlderPeople++
