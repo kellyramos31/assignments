@@ -1,3 +1,4 @@
+
 @font-face {
     font-family: 'myZenFont';
     src: url(./assets/verdemoderna.woff);
@@ -24,7 +25,7 @@
     grid-column: 1 / 2;
     grid-row: 1 / 2;
     font-family: "Julius Sans One", sans-serif;
-    font-size:  40px;
+    font-size:  37px;
     color: white;
     text-align: center;
 }
@@ -38,12 +39,12 @@
 .container1 img {
     float: left;
     position: relative;
-    left: 15%;
+    left: 5%;
 }
 
 #logo {
-    width:  85px;
-    height: 85px;
+    width:  80px;
+    height: 80px;
     opacity: .6;
 }
 
@@ -103,7 +104,7 @@
     color: white;
     opacity: .6;
     height: 60px;
-    width: 10%;
+    width: 12%;
     position: relative;
     top: 50%;
     left: 85%;
@@ -209,7 +210,6 @@ li {
      color: #0d8ba1;
 }
 
-
 #requirements {
     grid-column: 1 / 2;
     grid-row: 4 / 5;
@@ -310,7 +310,6 @@ Used font awesome & inline styling in HTML as alternative*/
 }
 
 
-
 @media only screen and (max-width: 900px){
     .container {
         grid-template-columns: 1fr;
@@ -321,10 +320,14 @@ Used font awesome & inline styling in HTML as alternative*/
     }
     #main-title {
         font-size: 30px;
+        padding-top:  20px;
+        padding-right: 10%;
     }
     #sub-title {
         font-size:  16px;
+        padding-right: 10%;
     }
+    
     .container1 {
        top: 38%;
        left: -10%;
@@ -333,7 +336,7 @@ Used font awesome & inline styling in HTML as alternative*/
     .container1 img {
         position: relative;
         float: unset;
-        left: unset;
+        left: 8%;
         top: unset;
         transform: unset;
     }
@@ -349,18 +352,18 @@ Used font awesome & inline styling in HTML as alternative*/
     }
 
     #logo {
-        width:  65px;
-        height: 65px;
+        width:  60px;
+        height: 60px;
         margin-top: 2px;
         float: left;
-        padding-left: 25%;
+        padding-left: 23%;
         margin-right: 8px;
     }
 
     #view-all-designs {
         height: 60px;
         width: 100%;
-        margin-top:  45px;
+        margin-top:  72px;
         font-size: 15px;
     }
 
@@ -372,7 +375,7 @@ Used font awesome & inline styling in HTML as alternative*/
         /*position: relative;*/
         height: 60px;
         width: 10%;
-        margin-top:  120px;
+        margin-top:  170px;
         font-size: 40px;
         border: none;
         left: 95%;
@@ -393,7 +396,9 @@ Used font awesome & inline styling in HTML as alternative*/
     }
     .footer-acknowledge {
         grid-row: 6 / 7;
+        padding-top: 40px;
     }
+    
     .footer {
         grid-row: 7 / 8;
         padding-left:  5%;
@@ -413,7 +418,6 @@ Used font awesome & inline styling in HTML as alternative*/
     
     ul {
         column-count: 2;
-        grid-row-gap: 50px;
         grid-column-gap: 100px;
     }
     
@@ -447,23 +451,31 @@ Used font awesome & inline styling in HTML as alternative*/
     #main-title {
         padding-left:  20%;
         font-size: 29px;
+        padding-right: unset;
     }
     #sub-title {
         margin-top: 8px;
         padding-left: 20%;
+        padding-right: unset;
     }
      #view-all-designs {
         height: 55px;
-        margin-top:  49px;
+        margin-top:  75px;
      }
 
      #greater-than-arrow {
          height: 55px;
+         margin-top: 174px;
      }
 
     ul {
         grid-row-gap: 50px;
         grid-column-gap: 100px;
     }
+    
+    .footer-acknowledge {
+      padding-top: 15px;
+    }
+
 }
 
