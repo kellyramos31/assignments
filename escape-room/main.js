@@ -40,93 +40,46 @@ while (!gameOver) {
 }
 */
 
-var readlineSync = require('readline-sync')
-console.log('Welcome to the Colossal adventure, the 1st of the Jewels of Darkness. n/To win this game, you need to escape from here You will be facing alot of enemies and you need to decide to fight or to run. Are you ready to start? Here you go.You are standing at the end of a Road before 2 small brick building. Around you is a forest. Small Stream flows out of the building and down a gully.In the distance there is a tall gleaming white tower. What are you going to do next?')
-// variables
-const randomNumber = function (max, min) {
-    return Math.floor((Math.random() * max) + min)
+const start = require("readline-sync");
+var userName = start.question("What is your name? ");
+
+var player = {
+    name: userName,
+    obtainKey: false,
+    isAlive: true
 }
-// player object
-let playerInfo = {
-    name: readlineSync.question('what is your name?'),
-    hp: 100,
-    inventory: [],
-    maxAttack: randomNumber(9, 1),
-    minAttack: randomNumber(10, 2)
+
+let choice = ["Open the door.", "Reach into the wall.", "Search for the key."];
+
+function youDied() {
+    return player.isAlive = false
 }
-// enemy function
-let enemyInfo = function (number, name) {
-    return {
-        id: number,
-        name: name,
-        hp: 20,
-        inventory: [],
-        maxAttack: randomNumber(10, 1),
-        minAttack: randomNumber(8, 1)
+function hasKey() {
+    return player.obtainKey = true
+}
+
+//var decision = require("readline-sync"),
+
+//choice[0] = ;
+//choice[1] = ;
+//choice[2] = ;
+
+console.log("You awaken in a cold, dark cell, " + userName + ". There is a single door leading out of the cell, and a hole in the wall nearby.");
+
+const decision = readline.keyInSelect(choice, "What will you do?");
+while (player.isAlive === true) {
+    if (decision === 1) {
+        console.log("The door is locked.")
     }
-}
-let damage = randomNumber(playerInfo.maxAttack, playerInfo.minAttack)
-let enemyList = [enemyInfo(0, "dragon"), enemyInfo(1, "drawf"), enemyInfo(2, "snake")]
-
-let items = ["a gold coin", " an amazing feather", " a beautiful coat"]
-
-console.log(Math.floor(Math.random() * 100))
-// main while loop:
-while (enemyList.length > 0 && playerInfo.hp > 0) {
-    const playerChoice = readlineSync.keyIn('press w to walk , press p to see inventory', { limit: ['w', 'p'] })
-    if (playerChoice === "p") {
-        console.log(playerInfo)
-    } else if (playerChoice === "w") {
-        if (playerInfo.hp > 0) {
-            const yourEnemy = enemyList[randomNumber(enemyList.length, 0)]
-            // console.log(yourEnemy,'enemy')
-            if (Math.floor(Math.random() * 100 < 33)) {
-                // attack
-                const runOrAttack = readlineSync.keyIn("you have encountered" + " " + yourEnemy.name + "!" + " " + "run or attack [a/r]?", { limit: ['a', 'r'] })
-                console.log(runOrAttack)
-                if (runOrAttack === 'a')
-                // damage
-                {
-                    let damage = randomNumber(playerInfo.maxAttack, playerInfo.minAttack)
-                    yourEnemy.hp = yourEnemy.hp - damage
-                    playerInfo.hp = playerInfo.hp - damage
-                    console.log(yourEnemy.name + " " + "has" + " " + yourEnemy.hp + " hp remaining!" + "And you have " + " " + playerInfo.hp + "hp remaining!!")
-                }
-                // run  :50% escape or failed to run
-                if (runOrAttack === 'r') {
-                    if (Math.floor(Math.random() * 100) < 50) {
-                        console.log("Congratualtions!You have escaped !!")
-                        break
-                    } else {
-                        console.log("failed to run")
-                        playerInfo.hp = playerInfo.hp - damage
-                        console.log(playerInfo.name + " " + "has received" + " " + damage + " " + "hp damage(s) from" + " " + yourEnemy.name)
-                    }
-                }
-                if (yourEnemy.hp <= 0) {
-                    enemyList = enemyList.filter(function (enemy) {
-                        return enemy.id !== yourEnemy.id
-                    })
-                    playerInfo.hp = playerInfo.hp + 50
-                    //let items = ["a gold coin", " an amazing feather", " a beautiful coat"]
-                    let award = items.shift()
-                    playerInfo.inventory.push(award)
-                    console.log(yourEnemy.name + " " + "has died and your are awarded" + " " + award + " " + "and 50 hp!")
-
-
-                    //if (enemyList.length < 0) {
-                    //    console.log("you have killed all enemies and you won the game!")
-                    //    break
-                    //}
-                    //else if (playerInfo.hp < 0) {
-                    //    console.log("You have used up all your hp and you are dead!!")
-                    //    break
-                    //}
-
-                }
-
-            }
-
-        }
+    if (decision === 2) {
+        console.log("Some fanged creature bites you. You die instantly.")
+        youDied()
+    }
+    if (decision === 3) {
+        console.log("You find the key under some rubble.")
+        hasKey()
+    }
+    if (decision === 1 && player.hasKey === true) {
+        console.log("The door opens and you escape the cell.")
     }
 }

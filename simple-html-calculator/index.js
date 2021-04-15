@@ -1,4 +1,3 @@
-
 const addItUpForm = document.addIt
 
 addItUpForm.addEventListener("submit", e => {

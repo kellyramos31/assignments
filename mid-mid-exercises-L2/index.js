@@ -73,16 +73,40 @@ console.log(with500FriendsOrMore)
 
 // setInterval & setTimeout - Using a combination of arr.find or arr.filter & setInterval and setTimeout, find the user whose username is celebrityCrush, and console log that username every second for 5 seconds, then stop.
 
+function findCelebCrush() {
+    const findCrush = userData.find(user => user.username === "celebrityCrush")
+    console.log(findCrush)
+}
 
-// function findCelebCrush() {
-//     const findCrush = userData.find(user => user.username === "celebrityCrush")
-//     console.log(findCrush)
-//     clearTimeout(timeoutId);
-//     clearInterval(intervalId)
-// }
-/*  timeoutId = setTimeout(findCelebCrush, 5000)
+function stopFindingCelebCrush() {
+    clearInterval(intervalId)
+}
+
+const timeoutId = setTimeout(findCelebCrush, 5000)
 const intervalId = setInterval(findCelebCrush, 1000)
-findCelebCconstrush() */
+setTimeout(stopFindingCelebCrush, 5000)
+
+
+//EXAMPLE FROM ARTICLE:
+/*
+function sayHello() {
+    console.log('hello!');
+}
+
+
+function stopSayingHello() {
+    clearInterval(intervalID)
+}
+
+
+var intervalID = setInterval(sayHello, 1000);
+
+setTimeout(stopSayingHello, 6000)
+*/
+
+
+
+
 
 
 /* FROM ISA:
@@ -107,3 +131,4 @@ const moreOrEqual = userData.reduce(function (final, friendCount) {
 
 console.log(moreOrEqual)
 */
+
