@@ -6,7 +6,6 @@ import vacationData from "./vacationSpots"
 function App() {
     const vacationComponents = vacationData.map(item => <Card key={item.id} vacation={item} />)
 
-
     return (
         <div>
             {vacationComponents}
