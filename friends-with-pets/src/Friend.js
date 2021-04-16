@@ -3,14 +3,14 @@
 //Pets should also be displayed nicely.
 
 import React from "react"
-import FriendList from "./FriendList"
 
-function Friend(props) {
+
+function Friend() {
     return (
         <div>
-            <p>Friend: {props.friend}</p>
-            <p>Age: {props.age}</p>
-
+            <h1>Name</h1>
+            <h3>Age</h3>
+            <p>Pets</p>
         </div>
     )
 

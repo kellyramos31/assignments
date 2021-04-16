@@ -2,6 +2,7 @@
 //Feel free to use array at the bottom of this write up. In your .map(), render a <Friend /> component, 
 //passing through the name, age, and pets of each friend as props.
 
+
 const friends = [
     {
         id: 1,
@@ -64,14 +65,4 @@ const friends = [
     }
 ]
 
-function FriendList() {
-    const makeList = friends.map(item => <friends key={item.id} friend={item.name} age={item.age} pets={item.pets} />)
-    console.log(makeList)
-    return (
-        <div>
-            {makeList}
-        </div>
-    )
-}
 
-export default FriendList

@@ -1,12 +1,11 @@
 import React from "react"
-import FriendList from "./FriendList"
 
-function Pet(props) {
+
+function Pet() {
 
     return (
         <div>
-            <p>Pets: {props.pets}</p>
-
+            <h1>Hello from Pet Component!</h1>
         </div>
     )
 
