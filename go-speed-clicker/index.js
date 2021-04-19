@@ -1,3 +1,4 @@
+
 const displayClicks = document.getElementById("number-clicks");
 
 const startButton = document.getElementById("start-time")
@@ -88,6 +89,14 @@ window.addEventListener("click", () => {
     //console.log(displayClicks);
 })
 
-
 */
+
+
+
+
+
+
+
+
+
 

@@ -1,11 +1,12 @@
 import React from "react"
 
 
-function Pet() {
-
+function Pet(props) {
+    console.log("pet component props", props)
     return (
         <div>
-            <h1>Hello from Pet Component!</h1>
+            <h3>Name: {props.petName}</h3>
+            <h3>Breed: {props.petBreed}</h3>
         </div>
     )
 
