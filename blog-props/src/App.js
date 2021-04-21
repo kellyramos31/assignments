@@ -18,7 +18,9 @@ data from an API instead.
 
 import React from "react"
 import blogs from "./blogs"
+import Header from "./Header"
 import BlogList from "./BlogList"
+import Footer from "./Footer"
 
 
 function App() {
@@ -34,7 +36,9 @@ function App() {
 
     return (
         <div>
+            <Header />
             {blogInfo}
+            <Footer />
         </div>
 
     )

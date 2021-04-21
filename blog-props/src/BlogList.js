@@ -1,6 +1,8 @@
 import React from "react"
 
 
+//need to render a <BlogPost /> component inside this BlogList component
+
 function BlogList(props) {
 
     return (
