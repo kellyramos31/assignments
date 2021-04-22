@@ -9,7 +9,7 @@ function Header() {
         <div className="header-container">
             <div className="color-overlay">
                 <h1 className="header-text">Clean Blog</h1>
-                <p className="subtitle-text">A Blog Theme by Start Bootstrap</p>
+                <div className="subtitle-text">A Blog Theme by Start Bootstrap</div>
             </div>
         </div>
     )
