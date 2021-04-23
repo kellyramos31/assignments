@@ -14,6 +14,7 @@ body {
     margin-left: 25%;
     margin-right: 25%;
     line-height: 1.2;
+    margin-top: 30px;
     margin-bottom: 0;
 }
 
@@ -40,18 +41,20 @@ body {
     font-size: 18px;
     font-style: italic;
     margin-top: 0;
-    color: #212529;
+    color: #868e96;
     margin-left: 25%;
     margin-right: 25%;
     line-height: 1.2;
     margin-top: 10px;
+    margin-bottom: 30px;
 }
 
 span {
-    font-weight: bold;
+ color: #212529;
 }
 
 span:hover {
+    color: #17a2b8;
     text-decoration: underline;
 }
 
