@@ -15,6 +15,7 @@ function BlogList(props) {
 
     return (
         <BlogPost />
+
     )
 
 }

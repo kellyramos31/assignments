@@ -21,6 +21,7 @@ import blogs from "./blogs"
 import Header from "./Header"
 import BlogList from "./BlogList"
 import Footer from "./Footer"
+import "./App.css"
 
 function App() {
     const blogInfo = blogs.map((blog, index) => {
@@ -38,6 +39,8 @@ function App() {
         <div>
             <Header />
             {blogInfo}
+            <button>Older Posts →</button>
+            <hr className="footer-hr"></hr>
             <Footer />
         </div>
 
