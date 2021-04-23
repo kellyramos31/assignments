@@ -28,13 +28,14 @@ function App() {
         return <BlogList
             key={blog.index}
             title={blog.title}
-            subtitle={blog.subtitle}
+            subtitle={blog.subTitle}
             author={blog.author}
             date={blog.date}
         />
     })
 
     return (
+
         <div>
             <Header />
             {blogInfo}

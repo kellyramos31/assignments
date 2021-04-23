@@ -1,21 +1,21 @@
 import React from "react"
+import "./BlogList.css"
 
 
 //need to render a <BlogPost /> component inside this BlogList component
 
 function BlogList(props) {
-
-    return (
-
+    const BlogPost = () =>
         <div>
-            <h2>{props.title}</h2>
-            <h4>{props.subtitle}</h4>
-            <h6>Posted By {props.author} on {props.date}</h6>
+            <h3 className="title">{props.title}</h3>
+            <h3 className="subtitle-blog">{props.subtitle}</h3>
+            <h3 className="posted">Posted By {props.author} on {props.date}</h3>
         </div>
 
+    return (
+        <BlogPost />
     )
 
 }
-
 
 export default BlogList

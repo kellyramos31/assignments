@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+   
+}
+
+.title {
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    margin-left: 25%;
+    margin-right: 25%;
+    line-height: 1.2;
+}
+
+.subtitle-blog {
+    margin-left: 25%;
+    margin-right: 30%;
+    font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-weight: 300;
+    font-size: 1.75rem;
+    line-height: 1.2;
+}
+
+.posted {
+    margin-left: 25%;
+    margin-right: 25%;
+    line-height: 1.2;
+}
+
+
+
