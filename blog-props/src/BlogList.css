@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Lora:ital@1&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;800&display=swap");
+
 body {
     margin: 0;
    
@@ -6,25 +10,54 @@ body {
 .title {
     font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
     font-size: 36px;
-    font-weight: 800;
+    font-weight: bold;
     margin-left: 25%;
     margin-right: 25%;
     line-height: 1.2;
+    margin-bottom: 0;
+}
+
+.title:hover {
+    color: #17a2b8;
 }
 
 .subtitle-blog {
+    margin-top: 10px;
     margin-left: 25%;
     margin-right: 30%;
     font-family: 'Open Sans','Helvetica Neue',Helvetica,Arial,sans-serif;
-    font-weight: 300;
     font-size: 1.75rem;
     line-height: 1.2;
+    margin-bottom: 0;
+}
+
+.subtitle-blog:hover {
+      color: #17a2b8;
 }
 
 .posted {
+    font-family:  Lora,'Times New Roman',serif;
+    font-size: 18px;
+    font-style: italic;
+    margin-top: 0;
+    color: #212529;
     margin-left: 25%;
     margin-right: 25%;
     line-height: 1.2;
+    margin-top: 10px;
+}
+
+span {
+    font-weight: bold;
+}
+
+span:hover {
+    text-decoration: underline;
+}
+
+hr {
+    width: 50%;
+    opacity: .4;
 }
 
 

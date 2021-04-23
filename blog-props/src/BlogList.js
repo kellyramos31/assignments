@@ -7,9 +7,10 @@ import "./BlogList.css"
 function BlogList(props) {
     const BlogPost = () =>
         <div>
-            <h3 className="title">{props.title}</h3>
-            <h3 className="subtitle-blog">{props.subtitle}</h3>
-            <h3 className="posted">Posted By {props.author} on {props.date}</h3>
+            <p className="title">{props.title}</p>
+            <p className="subtitle-blog">{props.subtitle}</p>
+            <p className="posted">Posted By <span>{props.author}</span> on {props.date}</p>
+            <hr></hr>
         </div>
 
     return (
