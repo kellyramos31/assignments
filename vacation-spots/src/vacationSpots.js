@@ -1,4 +1,4 @@
-export default [
+let vacationSpots = [
   {
     id: 1,
     place: "Meridian, Idaho",
@@ -26,3 +26,5 @@ export default [
     timeToGo: "Spring"
   }
 ]
+
+export default vacationSpots

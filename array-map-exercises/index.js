@@ -253,3 +253,31 @@ console.log(domReady)
 //    return {`<h1>${person.name}</h1><h2>${person.age}</h2>`}
 //})
 //console.log("final result:  ", domStrings)
+
+const nameString = [
+    {
+        name: "Angelina Jolie",
+        age: 80
+    },
+    {
+        name: "Eric Jones",
+        age: 2
+    },
+    {
+        name: "Paris Hilton",
+        age: 5
+    },
+    {
+        name: "Kayne West",
+        age: 16
+    },
+    {
+        name: "Bob Ziroll",
+        age: 100
+    }
+];
+
+
+const ofAge = nameString.map(person => person.name + " " + "can go to The Matrix")
+
+console.log(ofAge)
