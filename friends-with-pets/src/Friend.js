@@ -7,9 +7,7 @@ import Pet from "./Pet"
 
 
 function Friend(props) {
-    console.log(props)
-    const petsList = props.pets.map((pet, index) => <Pet key={index} petName={pet.name} petBreed={pet.breed} />)
-    console.log(petsList)
+
     const styled = {
         color: "green",
         fontWeight: "bold",
@@ -38,6 +36,10 @@ function Friend(props) {
         marginBottom: "40px"
 
     }
+
+    console.log(props)
+    const petsList = props.pets.map((pet, index) => <Pet key={index} petName={pet.name} petBreed={pet.breed} />)
+    console.log(petsList)
 
     return (
         <div style={outerStyle}>
