@@ -3,6 +3,7 @@ import Squares from "./Squares"
 import "./Squares.css"
 
 function App() {
+
   return (
     <Squares />
   );
