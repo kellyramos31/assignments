@@ -8,6 +8,8 @@ class Squares extends Component {
         }
         this.changeToBlackOrWhite = this.changeToBlackOrWhite.bind(this)
         this.halfPurple = this.halfPurple.bind(this)
+        this.oneBlue = this.oneBlue.bind(this)
+        this.diffOneBlue = this.diffOneBlue.bind(this)
     }
 
     changeToBlackOrWhite() {
@@ -32,6 +34,24 @@ class Squares extends Component {
         })
     }
 
+    oneBlue() {
+        this.setState(prevState => {
+            return {
+                colors: [prevState.colors[0], prevState.colors[1], "blue", prevState.colors[3]]
+            }
+        })
+
+    }
+
+    diffOneBlue() {
+        this.setState(prevState => {
+            return {
+                colors: [prevState.colors[0], prevState.colors[1], prevState.colors[2], "blue"]
+            }
+        })
+
+    }
+
 
 
     render() {
@@ -44,8 +64,10 @@ class Squares extends Component {
                 <div className="square2" style={{ width: "250px", height: "250px", border: "8px solid black", backgroundColor: this.state.colors[1] }}></div>
                 <div className="square3" style={{ width: "250px", height: "250px", border: "8px solid black", backgroundColor: this.state.colors[2] }}></div>
                 <div className="square4" style={{ width: "250px", height: "250px", border: "8px solid black", backgroundColor: this.state.colors[3] }}></div>
-                <button onClick={this.changeToBlackOrWhite} className="small-time">Small Time DJ(all black or all white)</button>
-                <button onClick={this.halfPurple} className="party-time">Party DJ(top half purple)</button>
+                <button onClick={this.changeToBlackOrWhite} className="small-time">Small Time DJ (all black or all white)</button>
+                <button onClick={this.halfPurple} className="party-time">Party DJ (top half purple)</button>
+                <button onClick={this.oneBlue} className="prof-time1">Prof'l DJ (left one blue)</button>
+                <button onClick={this.diffOneBlue} className="prof-time2">Prof'l DJ (right one blue)</button>
             </div>
         )
     }

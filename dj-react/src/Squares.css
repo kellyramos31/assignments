@@ -45,3 +45,21 @@ body {
     padding-top: 5px;
     padding-bottom: 5px;
 }
+
+.prof-time1 {
+    grid-column-start:  2;
+    grid-row: 5 / 6;
+    width: 265px;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.prof-time2 {
+    grid-column-start:  2;
+    grid-row: 6 / 7;
+    width: 265px;
+    border-radius: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
