@@ -10,8 +10,13 @@ class Squares extends Component {
     }
 
     changeToBlackOrWhite() {
-        this.setState({
-            colors: ["black", "black", "black", "black"]
+
+        this.setState(prevState => {
+            if (prevState.colors[0] === "white") {
+                return { colors: ["black", "black", "black", "black"] }
+            } else /*if (prevState.colors[0] = "black"*/ {
+                return { colors: ["white", "white", "white", "white"] }
+            }
         })
     }
 
