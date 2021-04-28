@@ -10,6 +10,10 @@ class Squares extends Component {
         this.halfPurple = this.halfPurple.bind(this)
         this.oneBlue = this.oneBlue.bind(this)
         this.diffOneBlue = this.diffOneBlue.bind(this)
+        this.bigTimeOne = this.bigTimeOne.bind(this)
+        this.bigTimeTwo = this.bigTimeTwo.bind(this)
+        this.bigTimeThree = this.bigTimeThree.bind(this)
+        this.bigTimeFour = this.bigTimeFour.bind(this)
     }
 
     changeToBlackOrWhite() {
@@ -49,7 +53,38 @@ class Squares extends Component {
                 colors: [prevState.colors[0], prevState.colors[1], prevState.colors[2], "blue"]
             }
         })
+    }
 
+    bigTimeOne() {
+        this.setState(prevState => {
+            return {
+                colors: [prevState.colors[0], "orange", "yellow", prevState.colors[3]]
+            }
+        })
+    }
+
+    bigTimeTwo() {
+        this.setState(prevState => {
+            return {
+                colors: ["green", prevState.colors[1], "magenta", prevState.colors[3]]
+            }
+        })
+    }
+
+    bigTimeThree() {
+        this.setState(prevState => {
+            return {
+                colors: ["turquoise", "silver", prevState.colors[2], prevState.colors[3]]
+            }
+        })
+    }
+
+    bigTimeFour() {
+        this.setState(prevState => {
+            return {
+                colors: [prevState.colors[0], prevState.colors[1], "peach", "indigo"]
+            }
+        })
     }
 
 
@@ -68,6 +103,10 @@ class Squares extends Component {
                 <button onClick={this.halfPurple} className="party-time">Party DJ (top half purple)</button>
                 <button onClick={this.oneBlue} className="prof-time1">Prof'l DJ (left one blue)</button>
                 <button onClick={this.diffOneBlue} className="prof-time2">Prof'l DJ (right one blue)</button>
+                <button onClick={this.bigTimeOne} className="big-time1">Big Time DJ 1(  )</button>
+                <button onClick={this.bigTimeTwo} className="big-time2">Big Time DJ 2 (  )</button>
+                <button onClick={this.bigTimeThree} className="big-time3">Big Time DJ 3 (  )</button>
+                <button onClick={this.bigTimeFour} className="big-time4">Big Time DJ 4 (  )</button>
             </div>
         )
     }
