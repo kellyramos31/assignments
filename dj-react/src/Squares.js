@@ -7,18 +7,32 @@ class Squares extends Component {
             colors: ["white", "white", "white", "white"]
         }
         this.changeToBlackOrWhite = this.changeToBlackOrWhite.bind(this)
+        this.halfPurple = this.halfPurple.bind(this)
     }
 
     changeToBlackOrWhite() {
 
         this.setState(prevState => {
             if (prevState.colors[0] === "white") {
-                return { colors: ["black", "black", "black", "black"] }
-            } else /*if (prevState.colors[0] = "black"*/ {
+                return {
+                    colors: ["black", "black", "black", "black"]
+                }
+            } else {
                 return { colors: ["white", "white", "white", "white"] }
             }
         })
     }
+
+    halfPurple() {
+
+        this.setState(prevState => {
+            return {
+                colors: ["purple", "purple", prevState.colors[2], prevState.colors[3]]
+            }
+        })
+    }
+
+
 
     render() {
         //const squareColors = this.state.colors.map(color =>
@@ -31,6 +45,7 @@ class Squares extends Component {
                 <div className="square3" style={{ width: "250px", height: "250px", border: "8px solid black", backgroundColor: this.state.colors[2] }}></div>
                 <div className="square4" style={{ width: "250px", height: "250px", border: "8px solid black", backgroundColor: this.state.colors[3] }}></div>
                 <button onClick={this.changeToBlackOrWhite} className="small-time">Small Time DJ(all black or all white)</button>
+                <button onClick={this.halfPurple} className="party-time">Party DJ(top half purple)</button>
             </div>
         )
     }
