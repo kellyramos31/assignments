@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import "./audio.m4a"
 
 class Squares extends Component {
     constructor() {
@@ -86,8 +87,6 @@ class Squares extends Component {
             }
         })
     }
-
-
 
     render() {
         //const squareColors = this.state.colors.map(color =>
