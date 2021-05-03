@@ -27,4 +27,3 @@ submit.addEventListener("click", e => {
 
 //moved event listener out of function formAlert(); changed formalert in parentheses to e =>; 
 //and moved parentheses to end of handler; called function formAlert() inside event handler curly braces
-

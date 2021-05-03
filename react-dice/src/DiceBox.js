@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import "./Dice.css"
+import "./DiceBox.css"
 
 class DiceBox extends Component {
     constructor() {
@@ -11,6 +11,7 @@ class DiceBox extends Component {
             number3: null,
             number4: null,
             number5: null
+
         }
 
         this.rollTheDice = this.rollTheDice.bind(this)

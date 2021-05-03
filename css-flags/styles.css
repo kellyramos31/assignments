@@ -193,6 +193,7 @@ h3 {
     display: grid;
     width: 180px;
     grid-template-rows: 35px 35px 35px;
+    border: solid 10px black;
 
 }
 
@@ -221,6 +222,7 @@ h3 {
    height: 125px;
 
 }
+
     
 .japan-flag-red-circle {
     background-color: #BC022C;

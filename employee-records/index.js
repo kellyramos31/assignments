@@ -72,9 +72,3 @@ elena.groupThem();
 harry.groupThem();
 
 console.log(employees)
-
-
-
-
-
-
