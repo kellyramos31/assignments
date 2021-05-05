@@ -18,7 +18,7 @@ class Die extends Component {
             counter: 0
         }
 
-        this.rollEm = this.rollEm.bind(this)
+        this.rollEm = this.rollEm.bind(this)  //NOTE:  if write your method this way:  rollEm = () =>{this.setState({blah blah code object})}, then don't need the bind(this) stuff.
 
     }
 
@@ -27,7 +27,7 @@ class Die extends Component {
             return {
                 square1: "Set this",
                 square2: "Not this",
-                counter: this.state.counter + 1
+                counter: this.state.counter + 1  //this is OK, b/c not trying to change this.state.counter; this.state.counter++ is NOT OK.
             }
         })
     }

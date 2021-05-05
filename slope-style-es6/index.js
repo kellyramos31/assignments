@@ -134,7 +134,6 @@ console.log(giveProduct)
 
 
 //DONE --(but not sure if correct???) #8 Make the following function more ES6xy. Use at least both the rest and spread operators:
-
 //Make the following function more ES6xy.Use at least both the rest and spread operators:
 //function unshift(array, a, b, c, d, e) {
 //    return [a, b, c, d, e].concat(array);
