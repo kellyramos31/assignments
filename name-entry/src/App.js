@@ -22,33 +22,28 @@ class App extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
+    const addName = this.state.name
     this.setState(prevState => ({
-      namesArr: [...prevState.namesArr, prevState.name]
-    })
-    )
+      name: "",
+      namesArr: [...prevState.namesArr, addName]
+    }))
   }
 
 
   render() {
-    const namesList = this.state.namesArr.map((name, index) => (
-      <li key={index}>
-        {namesList}
-      </li>
-    ))
+    const namesList = this.state.namesArr.map(name => <li>{name}</li>)
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
-            name="firstName"
+            name="name"
             value={this.state.name}
             placeholder="Name"
             onChange={this.handleChange}
           />
-          <button type="submit">Update My List</button>
-          <h1>{this.state.name}</h1>
+          <button>Update My List</button>
         </form>
-
         <ol>
           {namesList}
         </ol>
