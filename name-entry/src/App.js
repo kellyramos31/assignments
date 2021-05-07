@@ -1,11 +1,13 @@
 import React, { Component } from "react"
+import "./App.css"
 
 class App extends Component {
   constructor() {
     super()
 
     this.state = {
-      name: "",
+      firstName: "",
+      lastName: "",
       namesArr: []
     }
 
@@ -22,9 +24,10 @@ class App extends Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    const addName = this.state.name
+    const addName = `${this.state.firstName} ${this.state.lastName}`
     this.setState(prevState => ({
-      name: "",
+      firstName: "",
+      lastName: "",
       namesArr: [...prevState.namesArr, addName]
     }))
   }
@@ -33,18 +36,25 @@ class App extends Component {
   render() {
     const namesList = this.state.namesArr.map(name => <li>{name}</li>)
     return (
-      <div>
+      <div className="data-entry">
         <form onSubmit={this.handleSubmit}>
           <input
             type="text"
-            name="name"
-            value={this.state.name}
-            placeholder="Name"
+            name="firstName"
+            value={this.state.firstName}
+            placeholder="First Name"
+            onChange={this.handleChange}
+          />
+          <input
+            type="text"
+            name="lastName"
+            value={this.state.lastName}
+            placeholder="Last Name"
             onChange={this.handleChange}
           />
           <button>Update My List</button>
         </form>
-        <ol>
+        <ol className="list-out">
           {namesList}
         </ol>
 
