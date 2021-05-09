@@ -37,7 +37,6 @@ window.addEventListener("click", () => {
     }
 })
 
-
 const lastCountClicks = localStorage.getItem("clicks");
 if (lastCountClicks) {
     displayClicks.textContent = lastCountClicks;
