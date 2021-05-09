@@ -64,7 +64,7 @@ var voters = [
     { name: 'Zack', age: 19, voted: false }
 ];
 
-
+/*
 //practice again
 const countWhoVoted = voters.reduce((final, num) => {
     if (num.voted) {
@@ -105,13 +105,13 @@ const result3 = voters.reduce(function totalVotes(final, voter) {
 
 console.log(result3)
 */
-
+/*
 //rewritten with shortened ES6 syntax (NOTE:  but does not put it into an object):
 const result3 = voters.reduce((final, voter) => voter.voted += final, 0)
 console.log(result3)
 
 //console.log(totalVotes(voters)); // 7
-
+*/
 
 //DONE --4) Given an array of all your wishlist items, figure out how much it would cost to just buy everything at once
 
@@ -186,6 +186,7 @@ console.log(result5)
 //See the example output at the bottom.
 
 //
+
 var voters = [
     { name: 'Bob', age: 30, voted: true },
     { name: 'Jake', age: 32, voted: true },
@@ -224,7 +225,7 @@ console.log(voterBreakdown)
 
 
 
-
+/*
 const result6 = voters.reduce(function voterResults(final, vote) {
     if (vote.age >= 18 && vote.age <= 25) {
         if (vote.voted === true) {
@@ -243,7 +244,7 @@ const result6 = voters.reduce(function voterResults(final, vote) {
 }, ({ numYoungVotes: 0, numYoungPeople: 0, numMidVotes: 0, numMidPeople: 0, numOlderVotes: 0, numOlderPeople: 0 }))
 
 console.log(result6)
-
+*/
 
 //console.log(voterResults(voters)); 
 // Returned value shown below:
@@ -261,7 +262,7 @@ console.log(result6)
 //DONE -- EXTRA CREDIT - PART 1
 //DONE runs in browser -- Using AJAX, do a GET request to your own Github repositories endpoint.
 //The URL will be https://api.github.com/users/<YOUR GITHUB USERNAME HERE>/repos.
-
+/*
 const xhr = new XMLHttpRequest();
 
 xhr.open("GET", "https://api.github.com/users/kellyramos31/repos", true);
@@ -275,7 +276,7 @@ xhr.onreadystatechange = function () {
         console.log(allWatchersResult)
     }
 }
-
+*/
 
 //DONE -- EXTRA CREDIT - PART 2
 //Once you get the data, use.reduce() to figure out how many watchers you have across all
