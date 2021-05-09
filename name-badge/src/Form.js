@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import "./Form.css"
 
 class Form extends Component {
     constructor() {
@@ -80,13 +81,6 @@ class Form extends Component {
                         name="phone"
                         value={this.state.phone}
                         placeholder="Phone Number"
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        type="text"
-                        name="faveFood"
-                        value={this.state.faveFood}
-                        placeholder="Favorite Food"
                         onChange={this.handleChange}
                     />
                     <input
