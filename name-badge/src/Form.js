@@ -61,10 +61,52 @@ class Form extends Component {
                         placeholder="Last Name"
                         onChange={this.handleChange}
                     />
-                    <button>Update My List</button>
+                    <input
+                        type="email"
+                        name="email"
+                        value={this.state.email}
+                        placeholder="email"
+                        onChange={this.handleChange}
+                    />
+                    <input
+                        type="text"
+                        name="birthPlace"
+                        value={this.state.birthPlace}
+                        placeholder="Place of Birth"
+                        onChange={this.handleChange}
+                    />
+                    <input
+                        type="tel"                        //CHECK does this need to be number & constrain min & max?
+                        name="phone"
+                        value={this.state.phone}
+                        placeholder="Phone Number"
+                        onChange={this.handleChange}
+                    />
+                    <input
+                        type="text"
+                        name="faveFood"
+                        value={this.state.faveFood}
+                        placeholder="Favorite Food"
+                        onChange={this.handleChange}
+                    />
+                    <input
+                        type="text"
+                        name="faveFood"
+                        value={this.state.faveFood}
+                        placeholder="Favorite Food"
+                        onChange={this.handleChange}
+                    />
+                    <input
+                        type="text"
+                        name="tellAboutSelf"
+                        value={this.state.tellAboutSelf}
+                        placeholder="Tell us about yourself."
+                        onChange={this.handleChange}
+                    />
+                    <button>Update My Name Badges List</button>
                 </form>
                 <ol className="list-out">
-                    {namesList}
+                    {badgeList}
                 </ol>
 
             </div>
@@ -72,7 +114,6 @@ class Form extends Component {
         )
     }
 }
-
 
 export default Form
 
