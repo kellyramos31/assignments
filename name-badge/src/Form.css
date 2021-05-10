@@ -1,0 +1,55 @@
+.form {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: auto;
+}
+
+.first-name {
+    grid-column-start: 3;
+    margin-top: 20px;
+}
+
+.last-name {
+    grid-column-start: 4;
+    margin-top: 20px;
+}
+
+.email {
+    grid-column-start: 3;
+    grid-row-start: 2;
+    margin-top: 20px;
+}
+
+.birth-place {
+    grid-column-start: 4;
+    grid-row-start: 2;
+    margin-top: 20px;
+}
+
+.phone-number {
+    grid-column-start: 3;
+    grid-row-start: 3;
+    margin-top: 20px;
+}
+
+.fave-food {
+    grid-column-start: 4;
+    grid-row-start: 3;
+    margin-top: 20px;
+}
+
+.tell-self {
+    grid-column: 3 / 5;
+    grid-row-start: 4;
+    margin-top: 20px;
+}
+
+.update-button {
+    grid-column: 3 / 5;
+    grid-row-start: 5;
+    width:  200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+}
+

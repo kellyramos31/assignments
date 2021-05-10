@@ -47,10 +47,11 @@ class Form extends Component {
         const badgeList = this.state.badgeInfo.map(name => <li>{name}</li>)
         return (
             <div className="data-entry">
-                <form onSubmit={this.handleSubmit}>
+                <form className="form" onSubmit={this.handleSubmit}>
                     <input
                         type="text"
                         name="firstName"
+                        className="first-name"
                         value={this.state.firstName}
                         placeholder="First Name"
                         onChange={this.handleChange}
@@ -58,6 +59,7 @@ class Form extends Component {
                     <input
                         type="text"
                         name="lastName"
+                        className="last-name"
                         value={this.state.lastName}
                         placeholder="Last Name"
                         onChange={this.handleChange}
@@ -65,6 +67,7 @@ class Form extends Component {
                     <input
                         type="email"
                         name="email"
+                        className="email"
                         value={this.state.email}
                         placeholder="email"
                         onChange={this.handleChange}
@@ -72,6 +75,7 @@ class Form extends Component {
                     <input
                         type="text"
                         name="birthPlace"
+                        className="birth-place"
                         value={this.state.birthPlace}
                         placeholder="Place of Birth"
                         onChange={this.handleChange}
@@ -79,6 +83,7 @@ class Form extends Component {
                     <input
                         type="tel"                        //CHECK does this need to be number & constrain min & max?
                         name="phone"
+                        className="phone-number"
                         value={this.state.phone}
                         placeholder="Phone Number"
                         onChange={this.handleChange}
@@ -86,6 +91,7 @@ class Form extends Component {
                     <input
                         type="text"
                         name="faveFood"
+                        className="fave-food"
                         value={this.state.faveFood}
                         placeholder="Favorite Food"
                         onChange={this.handleChange}
@@ -93,11 +99,12 @@ class Form extends Component {
                     <input
                         type="text"
                         name="tellAboutSelf"
+                        className="tell-self"
                         value={this.state.tellAboutSelf}
                         placeholder="Tell us about yourself."
                         onChange={this.handleChange}
                     />
-                    <button>Update My Name Badges List</button>
+                    <button className="update-button">Update My Name Badges List</button>
                 </form>
                 <ol className="list-out">
                     {badgeList}
