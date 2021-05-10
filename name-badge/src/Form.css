@@ -1,55 +1,53 @@
-.form {
+.entries {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
 }
 
 .first-name {
-    grid-column-start: 3;
     margin-top: 20px;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
 }
 
 .last-name {
-    grid-column-start: 4;
     margin-top: 20px;
+    grid-column: 3 / 4;
+    grid-row: 1 / 2;
 }
 
-.email {
-    grid-column-start: 3;
-    grid-row-start: 2;
-    margin-top: 20px;
+.e-mail {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
 }
 
 .birth-place {
-    grid-column-start: 4;
-    grid-row-start: 2;
-    margin-top: 20px;
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
 }
 
 .phone-number {
-    grid-column-start: 3;
-    grid-row-start: 3;
-    margin-top: 20px;
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
 }
 
 .fave-food {
-    grid-column-start: 4;
-    grid-row-start: 3;
-    margin-top: 20px;
+    grid-column: 3 / 4;
+    grid-row: 3 / 4;
 }
 
-.tell-self {
-    grid-column: 3 / 5;
-    grid-row-start: 4;
-    margin-top: 20px;
+.tell-about-self {
+    grid-column: 2 / 4;
+    grid-row: 4 / 5;
 }
 
 .update-button {
-    grid-column: 3 / 5;
-    grid-row-start: 5;
+    grid-column: 2 / 4;
+    grid-row: 5 / 6;
     width:  200px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 20px;
+    margin-top: 10px;
+    border-radius:  5px;
+    padding: 5px;
 }
-
