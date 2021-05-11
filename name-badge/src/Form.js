@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import "./Form.css"
+import Badge from "./Badge"
 
 class Form extends Component {
     constructor() {
@@ -29,7 +30,16 @@ class Form extends Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        const addName = `${this.state.firstName} ${this.state.lastName}`
+        const newBadge = {
+            name: `${this.state.firstName} ${this.state.lastName}`,
+            email: `${this.state.email}`,
+            birthPlace: `${this.state.birthPlace}`,
+            phone: `${this.state.phone}`,
+            faveFood: `${this.state.faveFood}`,
+            tellAboutSelf: `${this.state.tellAboutSelf}`
+        }
+
+
         this.setState(prevState => ({
             firstName: "",
             lastName: "",
@@ -38,14 +48,27 @@ class Form extends Component {
             phone: "",
             faveFood: "",
             tellAboutSelf: "",
-            badgeInfo: [...prevState.badgeInfo, addName]
+            badgeInfo: [...prevState.badgeInfo, newBadge]
         }))
     }
 
 
     render() {
-        const badgeList = this.state.badgeInfo.map(name => <li>{name}</li>)
+        const mappedBadges = this.state.badgeInfo.map((badge, index) => {
+            return <Badge
+                key={badge.index}
+                name={badge.name}
+                email={badge.email}
+                birthPlace={badge.birthPlace}
+                phone={badge.phone}
+                faveFood={badge.faveFood}
+                tellAboutSelf={badge.tellAboutSelf}
+            />
+        })
+
+
         return (
+
             <div className="data">
                 <div className="grid-container">
                     <form className="entries" onSubmit={this.handleSubmit}>
@@ -97,7 +120,7 @@ class Form extends Component {
                             placeholder="Favorite Food"
                             onChange={this.handleChange}
                         />
-                        <input
+                        <textarea
                             type="text"
                             name="tellAboutSelf"
                             className="tell-about-self"
@@ -107,11 +130,9 @@ class Form extends Component {
                         />
                         <button className="update-button">Update My Name Badges List</button>
                     </form>
-                </div>
-                <ol className="list-out">
-                    {badgeList}
-                </ol>
 
+                </div>
+                { mappedBadges}
             </div>
 
         )
@@ -119,6 +140,42 @@ class Form extends Component {
 }
 
 export default Form
+
+/*
+import React from "react"
+import blogs from "./blogs"
+import Header from "./Header"
+import BlogList from "./BlogList"
+import Footer from "./Footer"
+import "./App.css"
+
+function App() {
+    const blogInfo = blogs.map((blog, index) => {
+        return <BlogList
+            key={blog.index}
+            title={blog.title}
+            subtitle={blog.subTitle}
+            author={blog.author}
+            date={blog.date}
+        />
+    })
+
+    return (
+
+        <div>
+            <Header />
+            {blogInfo}
+            <button>Older Posts →</button>
+            <hr className="footer-hr"></hr>
+            <Footer />
+        </div>
+
+    )
+}
+
+export default App
+*/
+
 
 /*
 import React, { Component } from "react"
@@ -147,7 +204,7 @@ class App extends Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        const addName = `${this.state.firstName} ${this.state.lastName}`
+        const addName = `${ this.state.firstName } ${ this.state.lastName }`
         this.setState(prevState => ({
             firstName: "",
             lastName: "",
