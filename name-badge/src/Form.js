@@ -29,7 +29,11 @@ class Form extends Component {
     }
 
     handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
+        let phoneDigits = this.state.phone;
+        if (!Number(phoneDigits)) {
+            alert("Your phone must be all numbers, no dashes or other characters.  Please try again.");
+        }
         const newBadge = {
             name: `${this.state.firstName} ${this.state.lastName}`,
             email: `${this.state.email}`,
@@ -38,6 +42,7 @@ class Form extends Component {
             faveFood: `${this.state.faveFood}`,
             tellAboutSelf: `${this.state.tellAboutSelf}`
         }
+
 
 
         this.setState(prevState => ({
@@ -54,6 +59,8 @@ class Form extends Component {
 
 
     render() {
+
+
         const mappedBadges = this.state.badgeInfo.map((badge, index) => {
             return <Badge
                 key={badge.index}
@@ -69,7 +76,7 @@ class Form extends Component {
 
         return (
 
-            <div className="data">
+            <div className="data" >
                 <div className="grid-container">
                     <form className="entries" onSubmit={this.handleSubmit}>
                         <input
@@ -133,7 +140,7 @@ class Form extends Component {
 
                 </div>
                 { mappedBadges}
-            </div>
+            </div >
 
         )
     }

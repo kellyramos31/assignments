@@ -1,45 +1,66 @@
-.display-badge {
+.badge-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
+}
+
+.badge-border {
+    grid-column: 2 / 4;
+    border: 8px solid black;
+    border-radius: 20px;
+    margin-top: 20px;
 }
 
 .badge-title {
     grid-column: 2 / 4;
     grid-row: 1 / 2;
     background-color: royalblue;
-    border-radius: 8px;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    border-bottom: 8px solid black;
+    border-radius: 10px;
+    font-size: 25px;
+    font-family: Arial;
     color: white;
-    padding: 8px;
+    padding: 20px;
+    margin-top: 0px;
 }
 
 .badge-name {
     grid-column: 2 / 3;
     grid-row: 2/ 3;
+    padding-left: 50px;
 }
 
 .badge-phone {
     grid-column: 3 / 4;
     grid-row: 2 / 3;
+    padding-left: 50px;
 }
 
 .badge-birthplace {
     grid-column: 2 / 3;
     grid-row: 3 / 4;
+    padding-left: 50px;
 }
 
 .badge-favefood {
     grid-column: 3 / 4;
     grid-row: 3 / 4;
+    padding-left: 50px;
 }
 
 .badge-email {
     grid-column: 2 / 3;
     grid-row: 4 / 5;
+    padding-left: 50px;
 }
 
 .badge-aboutself {
     grid-column: 2 / 4;
     grid-row: 5 / 6;
+    height: 100px;
     border:  2px solid black;
+    margin-left: 50px;
+    margin-right: 50px;
 }
