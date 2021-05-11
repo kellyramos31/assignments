@@ -1,0 +1,45 @@
+.display-badge {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: auto;
+}
+
+.badge-title {
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
+    background-color: royalblue;
+    border-radius: 8px;
+    color: white;
+    padding: 8px;
+}
+
+.badge-name {
+    grid-column: 2 / 3;
+    grid-row: 2/ 3;
+}
+
+.badge-phone {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+}
+
+.badge-birthplace {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+}
+
+.badge-favefood {
+    grid-column: 3 / 4;
+    grid-row: 3 / 4;
+}
+
+.badge-email {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+}
+
+.badge-aboutself {
+    grid-column: 2 / 4;
+    grid-row: 5 / 6;
+    border:  2px solid black;
+}
