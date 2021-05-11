@@ -34,27 +34,46 @@ class Form extends Component {
         if (!Number(phoneDigits)) {
             alert("Your phone must be all numbers, no dashes or other characters.  Please try again.");
         }
-        const newBadge = {
-            name: `${this.state.firstName} ${this.state.lastName}`,
-            email: `${this.state.email}`,
-            birthPlace: `${this.state.birthPlace}`,
-            phone: `${this.state.phone}`,
-            faveFood: `${this.state.faveFood}`,
-            tellAboutSelf: `${this.state.tellAboutSelf}`
+
+        //do you have to go through every input field or is there a better way?
+
+        if (this.state.firstName === "") {
+            alert("All fields must be completed.")
+        } else if (this.state.lastName === "") {
+            alert("All fields must be completed.")
+        } else if (this.state.email === "") {
+            alert("All fields must be completed.")
+        } else if (this.state.birthPlace === "") {
+            alert("All fields must be completed.")
+        } else if (this.state.phone === "") {
+            alert("All fields must be completed.")
+        } else if (this.state.faveFood === "") {
+            alert("All fields must be completed.")
+        } else if (this.state.tellAboutSelf === "") {
+            alert("All fields must be completed.")
+        } else {
+
+            const newBadge = {
+                name: `${this.state.firstName} ${this.state.lastName}`,
+                email: `${this.state.email}`,
+                birthPlace: `${this.state.birthPlace}`,
+                phone: `${this.state.phone}`,
+                faveFood: `${this.state.faveFood}`,
+                tellAboutSelf: `${this.state.tellAboutSelf}`
+            }
+
+
+            this.setState(prevState => ({
+                firstName: "",
+                lastName: "",
+                email: "",
+                birthPlace: "",
+                phone: "",
+                faveFood: "",
+                tellAboutSelf: "",
+                badgeInfo: [...prevState.badgeInfo, newBadge]
+            }))
         }
-
-
-
-        this.setState(prevState => ({
-            firstName: "",
-            lastName: "",
-            email: "",
-            birthPlace: "",
-            phone: "",
-            faveFood: "",
-            tellAboutSelf: "",
-            badgeInfo: [...prevState.badgeInfo, newBadge]
-        }))
     }
 
 
@@ -135,7 +154,7 @@ class Form extends Component {
                             placeholder="Tell us about yourself."
                             onChange={this.handleChange}
                         />
-                        <button className="update-button">Update My Name Badges List</button>
+                        <button className="update-button"> Update My Name Badges List</button>
                     </form>
 
                 </div>
