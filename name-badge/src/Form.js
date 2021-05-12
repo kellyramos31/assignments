@@ -31,11 +31,8 @@ class Form extends Component {
     handleSubmit(e) {
         e.preventDefault();
         let phoneDigits = this.state.phone;
-        if (!Number(phoneDigits)) {
-            alert("Your phone must be all numbers, no dashes or other characters.  Please try again.");
-        }
 
-        //do you have to go through every input field or is there a better way?
+        //do you have to go through every input field or is there a better/cleaner way to approach?
 
         if (this.state.firstName === "") {
             alert("All fields must be completed.")
@@ -51,6 +48,8 @@ class Form extends Component {
             alert("All fields must be completed.")
         } else if (this.state.tellAboutSelf === "") {
             alert("All fields must be completed.")
+        } else if ((!Number(phoneDigits)) || (phoneDigits.length > 10)) {
+            alert("Your phone number must be 10 digits starting with area code.  No dashes or other characters.  Please try again.");
         } else {
 
             const newBadge = {
@@ -79,7 +78,6 @@ class Form extends Component {
 
     render() {
 
-
         const mappedBadges = this.state.badgeInfo.map((badge, index) => {
             return <Badge
                 key={badge.index}
@@ -98,12 +96,14 @@ class Form extends Component {
             <div className="data" >
                 <div className="grid-container">
                     <form className="entries" onSubmit={this.handleSubmit}>
+                        <label className="title">PLEASE FILL OUT THIS FORM TO CREATE YOUR BADGE:</label>
                         <input
                             type="text"
                             name="firstName"
                             className="first-name"
                             value={this.state.firstName}
                             placeholder="First Name"
+                            minlength="3"
                             onChange={this.handleChange}
                         />
                         <input
@@ -112,6 +112,7 @@ class Form extends Component {
                             className="last-name"
                             value={this.state.lastName}
                             placeholder="Last Name"
+                            minlength="3"
                             onChange={this.handleChange}
                         />
                         <input
@@ -120,6 +121,7 @@ class Form extends Component {
                             className="e-mail"
                             value={this.state.email}
                             placeholder="email"
+                            minlength="3"
                             onChange={this.handleChange}
                         />
                         <input
@@ -128,10 +130,11 @@ class Form extends Component {
                             className="birth-place"
                             value={this.state.birthPlace}
                             placeholder="Place of Birth"
+                            minlength="3"
                             onChange={this.handleChange}
                         />
                         <input
-                            type="tel"                        //CHECK does this need to be number & constrain min & max?
+                            type="tel"
                             name="phone"
                             className="phone-number"
                             value={this.state.phone}
@@ -144,6 +147,7 @@ class Form extends Component {
                             className="fave-food"
                             value={this.state.faveFood}
                             placeholder="Favorite Food"
+                            minlength="3"
                             onChange={this.handleChange}
                         />
                         <textarea
@@ -154,7 +158,7 @@ class Form extends Component {
                             placeholder="Tell us about yourself."
                             onChange={this.handleChange}
                         />
-                        <button className="update-button"> Update My Name Badges List</button>
+                        <button className="update-button"> Update Name Badges List</button>
                     </form>
 
                 </div>
@@ -166,109 +170,3 @@ class Form extends Component {
 }
 
 export default Form
-
-/*
-import React from "react"
-import blogs from "./blogs"
-import Header from "./Header"
-import BlogList from "./BlogList"
-import Footer from "./Footer"
-import "./App.css"
-
-function App() {
-    const blogInfo = blogs.map((blog, index) => {
-        return <BlogList
-            key={blog.index}
-            title={blog.title}
-            subtitle={blog.subTitle}
-            author={blog.author}
-            date={blog.date}
-        />
-    })
-
-    return (
-
-        <div>
-            <Header />
-            {blogInfo}
-            <button>Older Posts →</button>
-            <hr className="footer-hr"></hr>
-            <Footer />
-        </div>
-
-    )
-}
-
-export default App
-*/
-
-
-/*
-import React, { Component } from "react"
-import "./App.css"
-
-class App extends Component {
-    constructor() {
-        super()
-
-        this.state = {
-            firstName: "",
-            lastName: "",
-            namesArr: []
-        }
-
-        this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this)
-    }
-
-    handleChange(e) {
-        const { name, value } = e.target
-        this.setState({
-            [name]: value
-        })
-    }
-
-    handleSubmit(e) {
-        e.preventDefault()
-        const addName = `${ this.state.firstName } ${ this.state.lastName }`
-        this.setState(prevState => ({
-            firstName: "",
-            lastName: "",
-            namesArr: [...prevState.namesArr, addName]
-        }))
-    }
-
-
-    render() {
-        const namesList = this.state.namesArr.map(name => <li>{name}</li>)
-        return (
-            <div className="data-entry">
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                        type="text"
-                        name="firstName"
-                        value={this.state.firstName}
-                        placeholder="First Name"
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        type="text"
-                        name="lastName"
-                        value={this.state.lastName}
-                        placeholder="Last Name"
-                        onChange={this.handleChange}
-                    />
-                    <button>Update My List</button>
-                </form>
-                <ol className="list-out">
-                    {namesList}
-                </ol>
-
-            </div>
-
-        )
-    }
-}
-
-export default App;
-*/
