@@ -10,7 +10,7 @@
 .badge-title {
     grid-column: 2 / 4;
     grid-row: 1 / 2;
-    background-color: royalblue;
+    /* background-color: royalblue; */
     border-left: 3px solid black;
     border-right: 3px solid black;
     border-bottom: 8px solid black;
@@ -22,20 +22,22 @@
     padding: 20px;
     margin-top: 0px;
     margin-bottom: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
 }
 
 .badge-name {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     font-family: Arial;
-    padding-left: 50px;
+    padding-left: 70px;
 }
 
 .badge-phone {
     grid-column: 3 / 4;
     grid-row: 2 / 3;
     font-family: Arial;
-    padding-left: 50px;
+    padding-left: 70px;
  
 }
 
@@ -43,7 +45,7 @@
     grid-column: 2 / 3;
     grid-row: 3 / 4; 
     font-family: Arial;
-    padding-left: 50px;
+    padding-left: 70px;
 
 }
 
@@ -51,7 +53,7 @@
     grid-column: 3 / 4;
     grid-row: 3 / 4;
     font-family: Arial;
-    padding-left: 50px;
+    padding-left: 70px;
    
 }
 
@@ -59,7 +61,7 @@
     grid-column: 2 / 3;
     grid-row: 4 / 5;
     font-family: Arial;
-    padding-left: 50px;
+    padding-left: 70px;
 }
 
 .badge-aboutself {
@@ -69,6 +71,7 @@
     border:  2px solid black;
     border-radius: 5px;
     font-family: Arial;
-    margin-left: 50px;
-    margin-right: 50px;
+    font-size: 16px;
+    margin-left: 65px;
+    margin-right: 65px;
 }
