@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import "./Form.css"
 import Badge from "./Badge"
+import randomColor from "randomcolor"
 
 class Form extends Component {
     constructor() {
@@ -14,6 +15,7 @@ class Form extends Component {
             phone: "",
             faveFood: "",
             tellAboutSelf: "",
+            color: "",
             badgeInfo: []
         }
 
@@ -32,7 +34,6 @@ class Form extends Component {
         e.preventDefault();
         let phoneDigits = this.state.phone;
 
-        //do you have to go through every input field or is there a better/cleaner way to approach?
 
         if (this.state.firstName === "") {
             alert("All fields must be completed.")
@@ -52,14 +53,18 @@ class Form extends Component {
             alert("Your phone number must be 10 digits starting with area code.  No dashes or other characters.  Please try again.");
         } else {
 
+            let changeColor = randomColor()
+
             const newBadge = {
                 name: `${this.state.firstName} ${this.state.lastName}`,
                 email: `${this.state.email}`,
                 birthPlace: `${this.state.birthPlace}`,
                 phone: `${this.state.phone}`,
                 faveFood: `${this.state.faveFood}`,
-                tellAboutSelf: `${this.state.tellAboutSelf}`
+                tellAboutSelf: `${this.state.tellAboutSelf}`,
+                color: changeColor
             }
+
 
 
             this.setState(prevState => ({
@@ -70,6 +75,7 @@ class Form extends Component {
                 phone: "",
                 faveFood: "",
                 tellAboutSelf: "",
+                color: "",
                 badgeInfo: [...prevState.badgeInfo, newBadge]
             }))
         }
@@ -87,6 +93,7 @@ class Form extends Component {
                 phone={badge.phone}
                 faveFood={badge.faveFood}
                 tellAboutSelf={badge.tellAboutSelf}
+                badgeColor={badge.color}
             />
         })
 
