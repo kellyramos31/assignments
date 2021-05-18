@@ -11,7 +11,7 @@ class HitThese extends Component {
 
     componentDidMount() {
         console.log("hi")
-        this.setState({ loading: true })
+        this.setState()
         fetch("https://raw.githubusercontent.com/VSchool/vschool-api/master/static/hitlist.json")
             .then(response => (response.json()))
             .then(data => {
@@ -23,13 +23,19 @@ class HitThese extends Component {
 
     render() {
         const displayList = this.state.hitList.map(hit => (
-            <div className="list-o-hits">
-                <p>{hit.name} </p>
-                <img width="400px" height="300px" src={hit.image} alt="{hit.name}" />
+            <div className="container">
+                <li>
+                    <p className="hit-name">{hit.name}  <input type="checkbox"></input></p>
+                    <div className="hit-pic">
+                        <img width="350px" height="250px" src={hit.image} alt="{hit.name}" />
+                    </div>
+                </li>
             </div>))
         return (
             <div>
-                {displayList}
+                <ol>
+                    {displayList}
+                </ol>
             </div>
         )
     }
