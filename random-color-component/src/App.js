@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import "./App.css"
 import axios from "axios"
 
 
@@ -32,15 +33,15 @@ class App extends Component {
     })
   }
 
-
   render() {
     console.log(this.state.color)
     let pageDisplay = this.state.isLoading ? "Check out this color!  What do you think?" : null
     return (
       <div>
-        <p>{pageDisplay}</p>
-        <div className="change-it" style={{ height: "500px", backgroundColor: this.state.color }}></div>
-        <button onClick={this.handleClick}>Get a New Color</button>
+        <p className="question">{pageDisplay}</p>
+        <div className="change-it" style={{ height: "400px", backgroundColor: this.state.color }}></div>
+        <button className="getNewColor" onClick={this.handleClick}><span>CLICK HERE</span> to display a color!</button>
+        <div className="bottom-band"></div>
       </div >
     )
   }
