@@ -15,7 +15,6 @@ class Form extends Component {
             phone: "",
             faveFood: "",
             tellAboutSelf: "",
-            // color: ["royalblue", "purple"],
             badgeInfo: []
         }
 
