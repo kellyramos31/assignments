@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import "./Form.css"
 import Badge from "./Badge"
-import randomColor from "randomcolor"
+// import randomColor from "randomcolor"
 
 class Form extends Component {
     constructor() {
@@ -15,7 +15,7 @@ class Form extends Component {
             phone: "",
             faveFood: "",
             tellAboutSelf: "",
-            color: "",
+            // color: ["royalblue", "purple"],
             badgeInfo: []
         }
 
@@ -53,7 +53,7 @@ class Form extends Component {
             alert("Your phone number must be 10 digits starting with area code.  No dashes or other characters.  Please try again.");
         } else {
 
-            let changeColor = randomColor()
+            // let changeColor = randomColor()
 
             const newBadge = {
                 name: `${this.state.firstName} ${this.state.lastName}`,
@@ -62,7 +62,7 @@ class Form extends Component {
                 phone: `${this.state.phone}`,
                 faveFood: `${this.state.faveFood}`,
                 tellAboutSelf: `${this.state.tellAboutSelf}`,
-                color: changeColor
+                // color: changeColor
             }
 
 
@@ -74,31 +74,29 @@ class Form extends Component {
                 phone: "",
                 faveFood: "",
                 tellAboutSelf: "",
-                color: "",
+                // color: "",
                 badgeInfo: [...prevState.badgeInfo, newBadge]
             }))
         }
     }
 
-
     render() {
 
         const mappedBadges = this.state.badgeInfo.map((badge, index) => {
             return <Badge
-                key={badge.index}
+                // key={index}
+                id={index}
                 name={badge.name}
                 email={badge.email}
                 birthPlace={badge.birthPlace}
                 phone={badge.phone}
                 faveFood={badge.faveFood}
                 tellAboutSelf={badge.tellAboutSelf}
-                badgeColor={badge.color}
+            // badgeColor={badge.color}
             />
         })
 
-
         return (
-
             <div className="data" >
                 <div className="grid-container">
                     <form className="entries" onSubmit={this.handleSubmit}>
@@ -166,7 +164,6 @@ class Form extends Component {
                         />
                         <button className="update-button"> Update Name Badges List</button>
                     </form>
-
                 </div>
                 { mappedBadges}
             </div >

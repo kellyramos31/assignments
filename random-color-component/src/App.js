@@ -25,6 +25,7 @@ class App extends Component {
 
       })
       .catch(error => console.log(error))
+
     this.setState(prevState => {
       return {
         isLoading: !prevState.isLoading
