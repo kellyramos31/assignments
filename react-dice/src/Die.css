@@ -9,15 +9,15 @@
 .first-die {
     width: 75px;
     height: 75px;
-    background-color: darkgreen;
+    background-color: purple;
     color: white;
     border: 8px solid black;
 }
-
+/* 
 .second-die {
     width: 75px;
     height: 75px;
-    background-color: darkgreen;
+    background-color: purple;
     color: white;
     border: 8px solid black;
 }
@@ -25,7 +25,7 @@
 .third-die {
     width: 75px;
     height: 75px;
-    background-color: darkgreen;
+    background-color: purple;
     color: white;
     border: 8px solid black;
 }
@@ -33,7 +33,7 @@
 .fourth-die {
     width: 75px;
     height: 75px;
-    background-color: darkgreen;
+    background-color: purple;
     color: white;
     border: 8px solid black;
 }
@@ -41,10 +41,10 @@
 .fifth-die {
     width: 75px;
     height: 75px;
-    background-color: darkgreen;
+    background-color: purple;
     color: white;
     border: 8px solid black;
-}
+} */
 
 .roll-em {
     padding: 8px;

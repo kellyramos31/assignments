@@ -13,6 +13,26 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this)
   }
 
+  componentDidMount() {
+    console.log("hi")
+    axios.get(`https://www.colr.org/json/color/random?timestamp=${new Date().getTime()}`)
+      .then(response => {
+        this.setState({
+          isLoading: true,
+          color: "#" + response.data.colors[0].hex
+        })
+
+      })
+      .catch(error => console.log(error))
+
+    this.setState(prevState => {
+      return {
+        isLoading: !prevState.isLoading
+      }
+
+    })
+  }
+
 
   handleClick() {
     console.log("I'm working")
@@ -41,7 +61,7 @@ class App extends Component {
       <div>
         <p className="question">{pageDisplay}</p>
         <div className="change-it" style={{ height: "400px", backgroundColor: this.state.color }}></div>
-        <button className="getNewColor" onClick={this.handleClick}><span>CLICK HERE</span> to display a color!</button>
+        <button className="getNewColor" onClick={this.handleClick}><span>CLICK HERE</span> to display a different color!</button>
         <div className="bottom-band"></div>
       </div >
     )

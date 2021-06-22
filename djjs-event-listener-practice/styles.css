@@ -14,3 +14,8 @@ body {
     background-color: white;
     border: black solid 6px;
 }
+
+span {
+    height: 100px;
+    width: 100px;
+}
