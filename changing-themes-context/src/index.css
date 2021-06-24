@@ -7,21 +7,23 @@ body {
 header {
     padding: 10px;
     text-align: center;
+    font-family:'Lucida Sans';
 }
 
 h2 {
     padding: 30px;
     text-align: center;
+    font-family:'Lucida Sans';
 }
 
 .dark-theme {
     background-color: #333333;
-    color: whitesmoke;
+    color: lightskyblue;
 }
 
 .light-theme {
-    background-color: whitesmoke;
-    color: #333333;
+    background-color: lightskyblue;
+    color: darkblue;
 }
 
 button {
@@ -29,10 +31,15 @@ button {
     text-align: center;
     margin-left: 45%;
     margin-bottom: 40px;
+    font-family:'Lucida Sans';
+    font-weight: bold;
+   
 }
 
 footer {
     margin-top: 20px;
     padding: 45px;
     text-align: center;
+    font-family:'Lucida Sans';
+    font-weight: bold;
 }

@@ -5,7 +5,7 @@ function Footer() {
     return (
         <ThemeContextConsumer>
             {context => (
-                <footer className={`${context.theme}-theme`}>HEY!  I'm a GROOVY footer.</footer>
+                <footer className={`${context.theme}-theme`}>AND, I'm the GROOVY footer.</footer>
             )}
         </ThemeContextConsumer>
     )
