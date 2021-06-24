@@ -1,23 +1,21 @@
 import React from "react"
 import NavBar from "./NavBar"
 import Main from "./Main"
+import Button from "./Button"
 import Footer from "./Footer"
 
 
-class App extends React.Component {
-  state = {
+function App() {
 
-  }
+  return (
+    <div>
+      <NavBar />
+      <Main />
+      <Button />
+      <Footer />
+    </div>
+  )
 
-  render() {
-    return (
-      <div>
-        <NavBar />
-        <Main />
-        <Footer />
-      </div>
-    )
-  }
 }
 
 export default App

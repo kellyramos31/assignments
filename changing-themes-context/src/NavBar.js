@@ -1,10 +1,14 @@
 import React from "react"
 import { ThemeContextConsumer } from "./themeContext"
 
-function NavBar() {
+function NavBar(props) {
     return (
         <ThemeContextConsumer>
-            <h1>Check out the button below!  Wow, it toggles the page theme.</h1>
+            {context => (
+                <header className={`${context.theme}-theme`}>
+                    <h2>{context.theme === "light" ? "Light" : "Dark"} Theme</h2>
+                </header>
+            )}
         </ThemeContextConsumer>
     )
 }
