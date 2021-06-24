@@ -1,21 +1,22 @@
-import React from "react"
+import React, { Component } from "react"
 import NavBar from "./NavBar"
 import Main from "./Main"
-import Button from "./Button"
 import Footer from "./Footer"
 
 
-function App() {
+//should this be class component instead??
 
-  return (
-    <div>
-      <NavBar />
-      <Main />
-      <Button />
-      <Footer />
-    </div>
-  )
+class App extends Component {
 
+  render() {
+    return (
+      <div>
+        <NavBar />
+        <Main />
+        <Footer />
+      </div>
+    )
+  }
 }
 
 export default App

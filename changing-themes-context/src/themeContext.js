@@ -8,7 +8,6 @@ class ThemeContextProvider extends Component {
 
     toggleTheme = () => {
         this.setState(prevState => ({
-            // theme: !prevState.theme
             theme: prevState.theme === "dark" ? "light" : "dark"
         }
         ))
@@ -16,7 +15,10 @@ class ThemeContextProvider extends Component {
 
     render() {
         return (
-            <Provider value={{ theme: this.state.theme, toggleTheme: this.toggleTheme }}>
+            <Provider value={{
+                theme: this.state.theme,
+                toggleTheme: this.toggleTheme
+            }}>
                 {this.props.children}
             </Provider>
 
