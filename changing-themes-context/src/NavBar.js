@@ -5,8 +5,10 @@ function NavBar() {
     return (
         <ThemeContextConsumer>
             {context => (
-                <header className={`${context.theme}-theme`}>
-                    <h2>{context.theme === "light" ? "Light" : "Dark"} Theme -- I'm the NavBar, but no Nav for you -- haha</h2>
+                <header>
+                    {/* // <header className={`${context.theme}-theme`}> */}
+                    {/* <h2>{context.theme === "light" ? "Light" : "Dark"} Theme -- I'm the NavBar, but no Nav for you -- haha</h2> */}
+                    <h2 className={`${context.theme}-theme`}> I'm the NavBar, but no Nav for you -- haha </h2>
                 </header>
             )}
         </ThemeContextConsumer>
