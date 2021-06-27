@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 const Title = styled.h2`
     background-color: black;
     color: white;
-    width: 265px;
+    width: 250px;
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 5px;
@@ -23,8 +23,8 @@ const Title = styled.h2`
 `;
 
 const Image = styled.img`
-    height: 275px;
-    width: 275px;
+    height: 260px;
+    width: 260px;
     margin-left: 5px;
     margin-right: 5px;
     margin-top: 0px;
@@ -33,7 +33,7 @@ const Image = styled.img`
 const Comment = styled.p`
     background-color: black;
     color: white;
-    width: 265px;
+    width: 250px;
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 5px;
