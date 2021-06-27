@@ -10,5 +10,5 @@ ReactDOM.render(
     <App />
   </UglyThingsContextProvider>,
   document.getElementById('root')
-);
+)
 

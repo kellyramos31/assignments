@@ -30,13 +30,11 @@ class UglyThingsContextProvider extends Component {
                 this.setState({
                     uglyThingsList: response.data
                 })
-                console.log("axios get working")
+                console.log("axios GET working")
             })
             .catch(error => console.log(error))
 
     }
-
-    //need a clear list data function also???
 
 
     handleChange = (e) => {
@@ -61,12 +59,16 @@ class UglyThingsContextProvider extends Component {
                 const newItem = response.data
                 console.log("newItem:", newItem)
                 this.setState(prevState => ({
-                    uglyThingsList: [newUglyThing, ...prevState.uglyThingsList]
+                    //add newUglyThing to List
+                    uglyThingsList: [newUglyThing, ...prevState.uglyThingsList],
+                    //re-set form values
+                    title: "",
+                    imgUrl: "",
+                    description: ""
                 }))
-                console.log("axios post working")
-                //reset form values here too??
-                //clear data function
-                //get data function
+                console.log("axios POST working")
+
+                //get data function (to re-render list after adding to list)
                 this.getUglyThingsData()
 
             })
