@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
 
-
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -16,7 +15,10 @@ const Title = styled.h2`
     background-color: black;
     color: white;
     width: 265px;
-    padding: 5px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 5px;
+    padding-right: 5px;
     margin-bottom: 0px;
 `;
 
@@ -32,8 +34,8 @@ const Comment = styled.p`
     background-color: black;
     color: white;
     width: 265px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
     padding-left: 5px;
     padding-right: 5px;
     margin-bottom: 0px;

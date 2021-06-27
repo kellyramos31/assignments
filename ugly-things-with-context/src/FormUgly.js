@@ -1,35 +1,61 @@
 import React from "react"
+import styled from "styled-components"
 import { UglyThingsContextConsumer } from "./UglyThingsContext"
+
+const FormTitle = styled.h3`
+    text-align: center;
+    color: white;
+`;
+
+const UglyForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: black;
+    padding: 30px;
+`;
+
+const UglyInput = styled.input`
+    width: 450px;
+    margin-top: 5px;
+`;
+
+const SubmitUgly = styled.button`
+    margin-top: 5px;
+`;
+
 
 function FormUgly() {
 
     return (
         <div>
-            <h3>Ugly Things Form:</h3>
+
             <UglyThingsContextConsumer>
                 {context => {
                     return (
-                        <form onSubmit={context.handleSubmit}>
-                            <input
+                        <UglyForm onSubmit={context.handleSubmit}>
+                            <FormTitle>Ugly Things Form:</FormTitle>
+                            <UglyInput
                                 name="title"
                                 value={context.title}
                                 onChange={context.handleChange}
                                 placeholder="title"
                             />
-                            <input
+                            <UglyInput
                                 name="imgUrl"
                                 value={context.imgUrl}
                                 onChange={context.handleChange}
                                 placeholder="imgUrl"
                             />
-                            <input
+                            <UglyInput
                                 name="description"
                                 value={context.description}
                                 onChange={context.handleChange}
                                 placeholder="description"
                             />
-                            <button>Submit Ugly Thing</button>
-                        </form>
+                            <SubmitUgly>Submit Ugly Thing</SubmitUgly>
+                        </UglyForm>
                     )
                 }}
             </UglyThingsContextConsumer>
