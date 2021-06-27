@@ -28,12 +28,6 @@ function FormUgly() {
                                 onChange={context.handleChange}
                                 placeholder="description"
                             />
-                            <input
-                                name="comment"
-                                value={context.comment}
-                                onChange={context.handleChange}
-                                placeholder="comment"
-                            />
                             <button>Submit Ugly Thing</button>
                         </form>
                     )
