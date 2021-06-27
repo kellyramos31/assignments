@@ -38,7 +38,7 @@ const Comment = styled.p`
     padding-bottom: 15px;
     padding-left: 5px;
     padding-right: 5px;
-    margin-bottom: 0px;
+    margin-bottom: 20px;
     margin-top: 0px;
     `;
 

@@ -22,7 +22,10 @@ const UglyInput = styled.input`
 `;
 
 const SubmitUgly = styled.button`
-    margin-top: 5px;
+    margin-top: 10px;
+    background-color: yellowgreen;
+    border-radius: 5px;
+    border: 2px solid white;
 `;
 
 
@@ -35,7 +38,7 @@ function FormUgly() {
                 {context => {
                     return (
                         <UglyForm onSubmit={context.handleSubmit}>
-                            <FormTitle>Ugly Things Form:</FormTitle>
+                            <FormTitle>Add Ugly Thing Here:</FormTitle>
                             <UglyInput
                                 name="title"
                                 value={context.title}
