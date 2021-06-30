@@ -14,11 +14,11 @@ class UglyThingsContextProvider extends Component {
 
     componentDidMount() {
         axios.get(`https://api.vschool.io/kellyr/thing`)
-            .then((response) => {
+            .then(res => {
                 this.setState({
-                    uglyThingsList: response.data
+                    uglyThingsList: res.data
                 })
-                console.log("axios get working")
+                console.log("axios GET working/componentDidMount")
             })
             .catch(error => console.log(error))
     }
@@ -26,9 +26,9 @@ class UglyThingsContextProvider extends Component {
 
     getUglyThingsData() {
         axios.get(`https://api.vschool.io/kellyr/thing`)
-            .then((response) => {
+            .then(res => {
                 this.setState({
-                    uglyThingsList: response.data
+                    uglyThingsList: res.data
                 })
                 console.log("axios GET working")
             })
@@ -55,8 +55,8 @@ class UglyThingsContextProvider extends Component {
         }
 
         axios.post(`https://api.vschool.io/kellyr/thing`, newUglyThing)
-            .then((response) => {
-                const newItem = response.data
+            .then(res => {
+                const newItem = res.data
                 console.log("newItem:", newItem)
                 this.setState(prevState => ({
                     //add newUglyThing to List
@@ -76,9 +76,24 @@ class UglyThingsContextProvider extends Component {
 
     }
 
+    handleDeleteClick = () => {
 
-    handleDelete = (e) => {
+    }
 
+
+    handleDelete = (id) => {
+        const deletedId = id;
+        console.log("deletedId:", deletedId)
+        console.log("deletedId:", id)
+        console.log("DELETE button was clicked!")
+        axios.delete(`https://api.vschool.io/kellyr/thing/${id}`)
+            .then((response) => {
+                const deletedThing = response.data
+                console.log("deletedThing:", deletedThing)
+                this.getUglyThingsData()
+
+            })
+            .catch(error => console.log(error))
     }
 
     handleEdit = (e) => {
@@ -94,7 +109,8 @@ class UglyThingsContextProvider extends Component {
                 description: this.state.description,
                 uglyThingsList: this.state.uglyThingsList,
                 handleChange: this.handleChange,
-                handleSubmit: this.handleSubmit
+                handleSubmit: this.handleSubmit,
+                handleDelete: this.handleDelete
 
             }}>
                 {this.props.children}

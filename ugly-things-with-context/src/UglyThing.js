@@ -47,14 +47,18 @@ const Comment = styled.p`
 function UglyThing(props) {
 
     return (
-        <Wrapper>
-            <Title>{props.item.title}</Title>
-            <Image src={props.item.imgUrl} alt={props.item.description} />
-            <Comment>{props.item.description}</Comment>
-        </Wrapper>
+        <div key={props.id}>
+            <Wrapper>
+                <Title>{props.item.title}</Title>
+                <Image src={props.item.imgUrl} alt={props.item.description} />
+                <Comment>{props.item.description}</Comment>
+                <button onClick={props.handleDelete(props.id)}> Delete Ugly Thing</button>
+            </Wrapper>
+        </div>
 
     )
 
 }
 
 export default UglyThing
+
