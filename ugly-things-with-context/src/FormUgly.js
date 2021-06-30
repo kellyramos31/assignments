@@ -35,26 +35,26 @@ function FormUgly() {
         <div>
 
             <UglyThingsContextConsumer>
-                {context => {
+                {({ handleSubmit, handleChange, title, imgUrl, description }) => {
                     return (
-                        <UglyForm onSubmit={context.handleSubmit}>
+                        <UglyForm onSubmit={handleSubmit}>
                             <FormTitle>Add Ugly Thing Here:</FormTitle>
                             <UglyInput
                                 name="title"
-                                value={context.title}
-                                onChange={context.handleChange}
+                                value={title}
+                                onChange={handleChange}
                                 placeholder="title"
                             />
                             <UglyInput
                                 name="imgUrl"
-                                value={context.imgUrl}
-                                onChange={context.handleChange}
+                                value={imgUrl}
+                                onChange={handleChange}
                                 placeholder="imgUrl"
                             />
                             <UglyInput
                                 name="description"
-                                value={context.description}
-                                onChange={context.handleChange}
+                                value={description}
+                                onChange={handleChange}
                                 placeholder="description"
                             />
                             <SubmitUgly>Submit Ugly Thing</SubmitUgly>

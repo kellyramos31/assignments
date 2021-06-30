@@ -24,7 +24,7 @@ class UglyThingsContextProvider extends Component {
     }
 
 
-    getUglyThingsData() {
+    getUglyThingsData = () => {
         axios.get(`https://api.vschool.io/kellyr/thing`)
             .then(res => {
                 this.setState({
@@ -68,27 +68,20 @@ class UglyThingsContextProvider extends Component {
                 }))
                 console.log("axios POST working")
 
-                //get data function (to re-render list after adding to list)
-                this.getUglyThingsData()
 
             })
             .catch(error => console.log(error))
 
     }
 
-    handleDeleteClick = () => {
-
-    }
-
 
     handleDelete = (id) => {
-        const deletedId = id;
+        const deletedId = id
         console.log("deletedId:", deletedId)
-        console.log("deletedId:", id)
         console.log("DELETE button was clicked!")
         axios.delete(`https://api.vschool.io/kellyr/thing/${id}`)
-            .then((response) => {
-                const deletedThing = response.data
+            .then(res => {
+                const deletedThing = res.data
                 console.log("deletedThing:", deletedThing)
                 this.getUglyThingsData()
 
@@ -111,7 +104,6 @@ class UglyThingsContextProvider extends Component {
                 handleChange: this.handleChange,
                 handleSubmit: this.handleSubmit,
                 handleDelete: this.handleDelete
-
             }}>
                 {this.props.children}
             </Provider>
