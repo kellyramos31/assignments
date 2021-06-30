@@ -83,7 +83,7 @@ class UglyThingsContextProvider extends Component {
             .then(res => {
                 const deletedThing = res.data
                 console.log("deletedThing:", deletedThing)
-                this.getUglyThingsData()
+                // this.getUglyThingsData()
 
             })
             .catch(error => console.log(error))

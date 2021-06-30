@@ -47,7 +47,7 @@ const Comment = styled.p`
 function UglyThing(props) {
 
     return (
-        <div key={props.index}>
+        <div key={props.id}>
             <Wrapper>
                 <Title>{props.item.title}</Title>
                 <Image src={props.item.imgUrl} alt={props.item.description} />
