@@ -37,6 +37,7 @@ class UglyThingsContextProvider extends Component {
     }
 
 
+
     handleChange = (e) => {
         const { name, value } = e.target
         this.setState({
@@ -60,7 +61,7 @@ class UglyThingsContextProvider extends Component {
                 console.log("newItem:", newItem)
                 this.setState(prevState => ({
                     //add newUglyThing to List
-                    uglyThingsList: [newUglyThing, ...prevState.uglyThingsList],
+                    uglyThingsList: [...prevState.uglyThingsList, newUglyThing],
                     //re-set form values
                     title: "",
                     imgUrl: "",
@@ -83,8 +84,7 @@ class UglyThingsContextProvider extends Component {
             .then(res => {
                 const deletedThing = res.data
                 console.log("deletedThing:", deletedThing)
-                // this.getUglyThingsData()
-
+                this.getUglyThingsData()
             })
             .catch(error => console.log(error))
     }

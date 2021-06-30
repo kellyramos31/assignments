@@ -7,12 +7,16 @@ const Wrapper = styled.div`
     align-items: center;
     width: 400px;
     height: 400px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     margin-left:  5%;
     float: left;
+    border: 10px solid black;
+    background-color: black;
 `;
 
 const Title = styled.h2`
-    background-color: black;
+    // background-color: black;
     color: white;
     width: 250px;
     padding-top: 15px;
@@ -31,7 +35,7 @@ const Image = styled.img`
     `;
 
 const Comment = styled.p`
-    background-color: black;
+    // background-color: black;
     color: white;
     width: 250px;
     padding-top: 15px;
@@ -40,6 +44,16 @@ const Comment = styled.p`
     padding-right: 5px;
     margin-bottom: 20px;
     margin-top: 0px;
+    `;
+
+const Buttons = styled.button`
+    margin-top: 8px;
+    width: 175px;
+    background-color: royalblue;
+    color: white;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 3px;
     `;
 
 
@@ -52,7 +66,8 @@ function UglyThing(props) {
                 <Title>{props.item.title}</Title>
                 <Image src={props.item.imgUrl} alt={props.item.description} />
                 <Comment>{props.item.description}</Comment>
-                <button onClick={() => props.handleDelete(props.item._id)} > Delete Ugly Thing</button>
+                <Buttons onClick={() => props.handleDelete(props.item._id)} > Delete This Ugly Thing</Buttons>
+                <Buttons>Edit This Ugly Thing</Buttons>
             </Wrapper>
         </div>
 
