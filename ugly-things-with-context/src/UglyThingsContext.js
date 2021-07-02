@@ -8,6 +8,7 @@ class UglyThingsContextProvider extends Component {
         title: "",
         imgUrl: "",
         description: "",
+        isEditing: false,
         uglyThingsList: []
     }
 
@@ -37,7 +38,6 @@ class UglyThingsContextProvider extends Component {
     }
 
 
-
     handleChange = (e) => {
         const { name, value } = e.target
         this.setState({
@@ -45,6 +45,8 @@ class UglyThingsContextProvider extends Component {
         })
     }
 
+
+    //create conditions for submit maybe based on whether editing or not??
 
     handleSubmit = (e) => {
         e.preventDefault()
@@ -89,8 +91,33 @@ class UglyThingsContextProvider extends Component {
             .catch(error => console.log(error))
     }
 
-    handleEdit = (e) => {
+    toggleEdit = () =>
+        this.setState(prevState => ({
+            isEditing: !prevState.isEditing
+        }
+        ))
 
+    handleEdit = (id) => {
+        console.log("EDIT button was clicked!")
+        const editedId = id
+        console.log("editedId", editedId)
+
+        const editedThing = {
+            title: this.state.title,
+            imgUrl: this.state.imgUrl,
+            description: this.state.description
+        }
+        console.log("editedThing:", editedThing)
+
+        axios.put(`https://api.vschool.io/kellyr/thing/${id}`)
+            .then(res => {
+                const editedThing = res.data
+                console.log("2nd console(after .then) editedThing:", editedThing)
+                this.getUglyThingsData()
+            })
+            .catch(error => console.log(error))
+
+        this.toggleEdit()
     }
 
 
@@ -100,10 +127,13 @@ class UglyThingsContextProvider extends Component {
                 title: this.state.title,
                 imgUrl: this.state.imgUrl,
                 description: this.state.description,
+                isEditing: this.state.isEditing,
                 uglyThingsList: this.state.uglyThingsList,
                 handleChange: this.handleChange,
                 handleSubmit: this.handleSubmit,
-                handleDelete: this.handleDelete
+                handleDelete: this.handleDelete,
+                toggleEdit: this.toggleEdit,
+                handleEdit: this.handleEdit
             }}>
                 {this.props.children}
             </Provider>

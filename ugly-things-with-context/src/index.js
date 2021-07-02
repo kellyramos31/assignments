@@ -6,8 +6,10 @@ import { UglyThingsContextProvider } from "./UglyThingsContext"
 
 
 ReactDOM.render(
+
   <UglyThingsContextProvider>
     <App />
-  </UglyThingsContextProvider>,
+  </UglyThingsContextProvider>
+  ,
   document.getElementById('root')
 )
