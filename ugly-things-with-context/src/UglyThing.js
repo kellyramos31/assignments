@@ -77,6 +77,7 @@ const CancelAndEditButton = styled.button`
 const FormTitle = styled.h3`
     margin: 0;  
     text-align: center;
+    font-family: verdana;
     background-color: black;
     color: white;
 `;
@@ -151,7 +152,6 @@ class UglyThing extends Component {
                         <Wrapper>
 
                             <FormTitle>Edit This Ugly Thing:</FormTitle>
-
 
                             <UglyForm key={this.props.index} id={this.props.item._id} >
 

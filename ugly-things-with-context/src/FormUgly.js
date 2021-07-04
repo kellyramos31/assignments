@@ -3,10 +3,11 @@ import styled from "styled-components"
 import { UglyThingsContextConsumer } from "./UglyThingsContext"
 
 const FormTitle = styled.h3`
-    margin: 0;  
+    margin: 0px;
+    padding-top: 30px;
     text-align: center;
     background-color: black;
-    color: white;
+    color: yellowgreen;
 `;
 
 const UglyForm = styled.form`
@@ -41,7 +42,7 @@ function FormUgly() {
                     return (
                         <div>
 
-                            <FormTitle>Add Ugly Thing Here:</FormTitle>
+                            <FormTitle>ADD NEW UGLY THING HERE:</FormTitle>
                             <UglyForm onSubmit={handleSubmit}>
                                 <UglyInput
                                     name="title"
