@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Component } from "react"
 import FormUgly from "./FormUgly"
 import styled from "styled-components"
 
@@ -75,42 +75,53 @@ const CancelAndEditButton = styled.button`
 `;
 
 
-function UglyThing(props) {
+class UglyThing extends Component {
+    state = {
+        isEditing: false
+    }
 
-    return (
+    toggleEdit = () =>
+        this.setState(prevState => ({
+            isEditing: !prevState.isEditing
+        }
+        ))
 
-        <div>
-            {props.isEditing
-                ? <div >
-                    < FormUgly
-                        key={props.index}
-                        id={props.item._id}
-                        title={props.item.title}
-                        imgUrl={props.item.imgUrl}
-                        description={props.item.description}
-                        handleChange={props.handleChange}
-                        handleEdit={props.handleEdit}
-                        isEditing={props.isEditing}
-                    />
-                    <CancelAndEditButton onClick={() => props.handleEdit(props.item._id)}>Save Edited Ugly Thing</CancelAndEditButton>
-                    <CancelAndEditButton onClick={props.toggleEdit} className="cancel">Cancel Edit</CancelAndEditButton>
-                </div >
-                :
+    render() {
+        return (
+            <div>
+                {this.state.isEditing
+                    ? <div >
+                        <Wrapper>
+                            < FormUgly
+                                key={this.props.index}
+                                id={this.props.item._id}
+                                title={this.props.item.title}
+                                imgUrl={this.props.item.imgUrl}
+                                description={this.props.item.description}
+                                toggleEdit={this.props.toggleEdit}
+                                handleEdit={this.props.handleEdit}
+                                handleChange={this.props.handleChange}
+                            />
+                            <CancelAndEditButton onClick={() => this.props.handleEdit(this.props.item._id)}>Save Edited Ugly Thing</CancelAndEditButton>
+                            <CancelAndEditButton onClick={this.toggleEdit} className="cancel">Cancel Edit</CancelAndEditButton>
+                        </Wrapper>
+                    </div >
+                    :
 
-                < div >
-                    < Wrapper >
-                        <Title>{props.item.title}</Title>
-                        <Image src={props.item.imgUrl} alt={props.item.description} />
-                        <Comment>{props.item.description}</Comment>
-                        <Button onClick={() => props.handleDelete(props.item._id)} > Delete This Ugly Thing</Button>
-                        <Button onClick={props.toggleEdit}>Edit This Ugly Thing</Button>
-                    </Wrapper>
-                </div>
-            }
+                    < div >
+                        < Wrapper >
+                            <Title>{this.props.item.title}</Title>
+                            <Image src={this.props.item.imgUrl} alt={this.props.item.description} />
+                            <Comment>{this.props.item.description}</Comment>
+                            <Button onClick={() => this.props.handleDelete(this.props.item._id)} > Delete This Ugly Thing</Button>
+                            <Button onClick={this.toggleEdit}>Edit This Ugly Thing</Button>
+                        </Wrapper>
+                    </div>
+                }
 
-        </div>
-    )
+            </div>
+        )
+    }
 }
 
 export default UglyThing
-

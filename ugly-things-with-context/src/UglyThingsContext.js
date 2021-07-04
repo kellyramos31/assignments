@@ -8,7 +8,6 @@ class UglyThingsContextProvider extends Component {
         title: "",
         imgUrl: "",
         description: "",
-        isEditing: false,
         uglyThingsList: []
     }
 
@@ -91,11 +90,7 @@ class UglyThingsContextProvider extends Component {
             .catch(error => console.log(error))
     }
 
-    toggleEdit = () =>
-        this.setState(prevState => ({
-            isEditing: !prevState.isEditing
-        }
-        ))
+
 
     handleEdit = (id) => {
         console.log("EDIT button was clicked!")

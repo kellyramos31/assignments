@@ -2,10 +2,12 @@ import React from "react"
 import styled from "styled-components"
 import { UglyThingsContextConsumer } from "./UglyThingsContext"
 
-const FormTitle = styled.h3`
-    text-align: center;
-    color: white;
-`;
+// const FormTitle = styled.h3`
+//     margin: 0;  
+//     text-align: center;
+//     background-color: black;
+//     color: white;
+// `;
 
 const UglyForm = styled.form`
     display: flex;
@@ -36,29 +38,32 @@ function FormUgly() {
 
             <UglyThingsContextConsumer>
                 {({ handleSubmit, handleChange, title, imgUrl, description }) => {
+
                     return (
-                        <UglyForm onSubmit={handleSubmit}>
-                            <FormTitle>Add Ugly Thing Here:</FormTitle>
-                            <UglyInput
-                                name="title"
-                                value={title}
-                                onChange={handleChange}
-                                placeholder="title"
-                            />
-                            <UglyInput
-                                name="imgUrl"
-                                value={imgUrl}
-                                onChange={handleChange}
-                                placeholder="imgUrl"
-                            />
-                            <UglyInput
-                                name="description"
-                                value={description}
-                                onChange={handleChange}
-                                placeholder="description"
-                            />
-                            <SubmitUgly>Submit Ugly Thing</SubmitUgly>
-                        </UglyForm>
+                        <div>
+                            {/* <FormTitle>Add Ugly Thing Here:</FormTitle> */}
+                            <UglyForm onSubmit={handleSubmit}>
+                                <UglyInput
+                                    name="title"
+                                    value={title}
+                                    onChange={handleChange}
+                                    placeholder="title"
+                                />
+                                <UglyInput
+                                    name="imgUrl"
+                                    value={imgUrl}
+                                    onChange={handleChange}
+                                    placeholder="imgUrl"
+                                />
+                                <UglyInput
+                                    name="description"
+                                    value={description}
+                                    onChange={handleChange}
+                                    placeholder="description"
+                                />
+                                <SubmitUgly>Submit Ugly Thing</SubmitUgly>
+                            </UglyForm>
+                        </div>
                     )
                 }}
             </UglyThingsContextConsumer>
