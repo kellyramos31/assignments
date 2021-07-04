@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-// import { UglyThingsContextConsumer } from "./UglyThingsContext"
 import axios from "axios"
 import styled from "styled-components"
 
@@ -135,10 +134,12 @@ class UglyThing extends Component {
             .then(res => {
                 const editedThing = res.data
                 console.log("2nd console(after .then) editedThing:", editedThing)
+                this.props.getUglyThingsData()
             })
             .catch(error => console.log(error))
 
         this.toggleEdit()
+
     }
 
     render() {
@@ -152,7 +153,7 @@ class UglyThing extends Component {
                             <FormTitle>Edit This Ugly Thing:</FormTitle>
 
 
-                            <UglyForm key={this.props.index} id={this.props.item._id}>
+                            <UglyForm key={this.props.index} id={this.props.item._id} >
 
                                 <UglyInput
                                     name="title"
