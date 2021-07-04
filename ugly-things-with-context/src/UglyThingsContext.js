@@ -5,9 +5,6 @@ const { Provider, Consumer } = React.createContext()
 class UglyThingsContextProvider extends Component {
 
     state = {
-        title: "",
-        imgUrl: "",
-        description: "",
         uglyThingsList: []
     }
 
@@ -122,12 +119,10 @@ class UglyThingsContextProvider extends Component {
                 title: this.state.title,
                 imgUrl: this.state.imgUrl,
                 description: this.state.description,
-                isEditing: this.state.isEditing,
                 uglyThingsList: this.state.uglyThingsList,
                 handleChange: this.handleChange,
                 handleSubmit: this.handleSubmit,
                 handleDelete: this.handleDelete,
-                toggleEdit: this.toggleEdit,
                 handleEdit: this.handleEdit
             }}>
                 {this.props.children}

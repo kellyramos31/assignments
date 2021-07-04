@@ -1,5 +1,5 @@
 import React, { Component } from "react"
-import FormUgly from "./FormUgly"
+// import FormUgly from "./FormUgly"
 import styled from "styled-components"
 
 const Wrapper = styled.div`
@@ -74,6 +74,15 @@ const CancelAndEditButton = styled.button`
     padding: 3px;
 `;
 
+const UglyForm = styled.form`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+    background-color: black;
+    padding: 30px;
+`;
+
 
 class UglyThing extends Component {
     state = {
@@ -92,16 +101,23 @@ class UglyThing extends Component {
                 {this.state.isEditing
                     ? <div >
                         <Wrapper>
-                            < FormUgly
-                                key={this.props.index}
-                                id={this.props.item._id}
-                                title={this.props.item.title}
-                                imgUrl={this.props.item.imgUrl}
-                                description={this.props.item.description}
-                                toggleEdit={this.props.toggleEdit}
-                                handleEdit={this.props.handleEdit}
-                                handleChange={this.props.handleChange}
-                            />
+                            <UglyForm key={this.props.index} id={this.props.item._id}>
+                                <input
+                                    name="title"
+                                    value={this.props.item.title}
+                                    onChange={this.props.handleChange}
+                                />
+                                <input
+                                    name="imgUrl"
+                                    value={this.props.item.imgUrl}
+                                    onChange={this.props.handleChange}
+                                />
+                                <input
+                                    name="description"
+                                    value={this.props.item.description}
+                                    onChange={this.props.handleChange}
+                                />
+                            </UglyForm>
                             <CancelAndEditButton onClick={() => this.props.handleEdit(this.props.item._id)}>Save Edited Ugly Thing</CancelAndEditButton>
                             <CancelAndEditButton onClick={this.toggleEdit} className="cancel">Cancel Edit</CancelAndEditButton>
                         </Wrapper>

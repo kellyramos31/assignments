@@ -35,12 +35,12 @@ function FormUgly() {
 
     return (
         <div>
-
             <UglyThingsContextConsumer>
                 {({ handleSubmit, handleChange, title, imgUrl, description }) => {
 
                     return (
                         <div>
+
                             {/* <FormTitle>Add Ugly Thing Here:</FormTitle> */}
                             <UglyForm onSubmit={handleSubmit}>
                                 <UglyInput
@@ -63,8 +63,11 @@ function FormUgly() {
                                 />
                                 <SubmitUgly>Submit Ugly Thing</SubmitUgly>
                             </UglyForm>
+
                         </div>
+
                     )
+
                 }}
             </UglyThingsContextConsumer>
         </div>
