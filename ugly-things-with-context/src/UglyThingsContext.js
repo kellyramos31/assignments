@@ -41,9 +41,6 @@ class UglyThingsContextProvider extends Component {
         })
     }
 
-
-    //create conditions for submit maybe based on whether editing or not??
-
     handleSubmit = (e) => {
         e.preventDefault()
 
@@ -89,41 +86,43 @@ class UglyThingsContextProvider extends Component {
 
 
 
-    handleEdit = (id) => {
-        console.log("EDIT button was clicked!")
-        const editedId = id
-        console.log("editedId", editedId)
+    // handleEdit = (id) => {
+    //     console.log("EDIT button was clicked!")
+    //     const editedId = id
+    //     console.log("editedId", editedId)
 
-        const editedThing = {
-            title: this.state.title,
-            imgUrl: this.state.imgUrl,
-            description: this.state.description
-        }
-        console.log("editedThing:", editedThing)
+    //     const editedThing = {
+    //         title: this.state.title,
+    //         imgUrl: this.state.imgUrl,
+    //         description: this.state.description
+    //     }
+    //     console.log("editedThing:", editedThing)
 
-        axios.put(`https://api.vschool.io/kellyr/thing/${id}`)
-            .then(res => {
-                const editedThing = res.data
-                console.log("2nd console(after .then) editedThing:", editedThing)
-                this.getUglyThingsData()
-            })
-            .catch(error => console.log(error))
+    //     axios.put(`https://api.vschool.io/kellyr/thing/${id}`)
+    //         .then(res => {
+    //             const editedThing = res.data
+    //             console.log("2nd console(after .then) editedThing:", editedThing)
+    //             this.getUglyThingsData()
+    //         })
+    //         .catch(error => console.log(error))
 
-        this.toggleEdit()
-    }
+    //     // this.toggleEdit()
+    // }
 
 
     render() {
         return (
             <Provider value={{
+                id: this.state.id,
                 title: this.state.title,
                 imgUrl: this.state.imgUrl,
                 description: this.state.description,
                 uglyThingsList: this.state.uglyThingsList,
+                getUglyThingsData: this.getUglyThingsData,
                 handleChange: this.handleChange,
                 handleSubmit: this.handleSubmit,
                 handleDelete: this.handleDelete,
-                handleEdit: this.handleEdit
+                // handleEdit: this.handleEdit
             }}>
                 {this.props.children}
             </Provider>

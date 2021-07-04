@@ -1,5 +1,6 @@
 import React, { Component } from "react"
-// import FormUgly from "./FormUgly"
+// import { UglyThingsContextConsumer } from "./UglyThingsContext"
+import axios from "axios"
 import styled from "styled-components"
 
 const Wrapper = styled.div`
@@ -98,6 +99,10 @@ const UglyInput = styled.input`
 
 class UglyThing extends Component {
     state = {
+        id: this.props.item._id || "",
+        title: this.props.item.title || "",
+        imgUrl: this.props.item.imgUrl || "",
+        description: this.props.item.description || "",
         isEditing: false
     }
 
@@ -107,33 +112,71 @@ class UglyThing extends Component {
         }
         ))
 
+    handleChange = (e) => {
+        const { name, value } = e.target
+        this.setState({
+            [name]: value
+        })
+    }
+
+    handleEdit = (id) => {
+        console.log("EDIT button was clicked!")
+        const editedId = id
+        console.log("editedId", editedId)
+
+        const editedThing = {
+            title: this.state.title,
+            imgUrl: this.state.imgUrl,
+            description: this.state.description
+        }
+        console.log("editedThing:", editedThing)
+
+        axios.put(`https://api.vschool.io/kellyr/thing/${id}`, editedThing)
+            .then(res => {
+                const editedThing = res.data
+                console.log("2nd console(after .then) editedThing:", editedThing)
+            })
+            .catch(error => console.log(error))
+
+        this.toggleEdit()
+    }
+
     render() {
         return (
             <div>
                 {this.state.isEditing
                     ? <div >
+
                         <Wrapper>
+
                             <FormTitle>Edit This Ugly Thing:</FormTitle>
+
+
                             <UglyForm key={this.props.index} id={this.props.item._id}>
+
                                 <UglyInput
                                     name="title"
-                                    value={this.props.item.title}
-                                    onChange={this.props.handleChange}
+                                    value={this.state.title}
+                                    onChange={this.handleChange}
                                 />
                                 <UglyInput
                                     name="imgUrl"
-                                    value={this.props.item.imgUrl}
-                                    onChange={this.props.handleChange}
+                                    value={this.state.imgUrl}
+                                    onChange={this.handleChange}
                                 />
                                 <UglyInput
                                     name="description"
-                                    value={this.props.item.description}
-                                    onChange={this.props.handleChange}
+                                    value={this.state.description}
+                                    onChange={this.handleChange}
                                 />
                             </UglyForm>
-                            <CancelAndEditButton onClick={() => this.props.handleEdit(this.props.item._id)}>Save Edited Ugly Thing</CancelAndEditButton>
+
+
+                            <CancelAndEditButton onClick={() => { this.handleEdit(this.props.item._id) }}>Save Edited Ugly Thing</CancelAndEditButton>
                             <CancelAndEditButton onClick={this.toggleEdit} className="cancel">Cancel Edit</CancelAndEditButton>
+
                         </Wrapper>
+
                     </div >
                     :
 
