@@ -74,6 +74,13 @@ const CancelAndEditButton = styled.button`
     padding: 3px;
 `;
 
+const FormTitle = styled.h3`
+    margin: 0;  
+    text-align: center;
+    background-color: black;
+    color: white;
+`;
+
 const UglyForm = styled.form`
     display: flex;
     flex-direction: column;
@@ -81,6 +88,11 @@ const UglyForm = styled.form`
     margin-bottom: 15px;
     background-color: black;
     padding: 30px;
+`;
+
+const UglyInput = styled.input`
+    width: 300px;
+    margin-top: 5px;
 `;
 
 
@@ -101,18 +113,19 @@ class UglyThing extends Component {
                 {this.state.isEditing
                     ? <div >
                         <Wrapper>
+                            <FormTitle>Edit This Ugly Thing:</FormTitle>
                             <UglyForm key={this.props.index} id={this.props.item._id}>
-                                <input
+                                <UglyInput
                                     name="title"
                                     value={this.props.item.title}
                                     onChange={this.props.handleChange}
                                 />
-                                <input
+                                <UglyInput
                                     name="imgUrl"
                                     value={this.props.item.imgUrl}
                                     onChange={this.props.handleChange}
                                 />
-                                <input
+                                <UglyInput
                                     name="description"
                                     value={this.props.item.description}
                                     onChange={this.props.handleChange}
