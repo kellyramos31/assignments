@@ -13,7 +13,8 @@ function UglyThingsList() {
                     ({ uglyThingsList, getUglyThingsData, handleDelete }) => {
                         const myUglyList = uglyThingsList.map((item, index) =>
                             <UglyThing
-                                key={index}
+                                key={item._id}
+                                index={index}
                                 id={item._id}
                                 item={item}
                                 // handleChange={handleChange}

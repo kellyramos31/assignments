@@ -182,7 +182,7 @@ class UglyThing extends Component {
                     :
 
                     < div >
-                        < Wrapper >
+                        < Wrapper key={this.props.item._id}>
                             <Title>{this.props.item.title}</Title>
                             <Image src={this.props.item.imgUrl} alt={this.props.item.description} />
                             <Comment>{this.props.item.description}</Comment>

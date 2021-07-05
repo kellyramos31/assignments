@@ -5,6 +5,10 @@ const { Provider, Consumer } = React.createContext()
 class UglyThingsContextProvider extends Component {
 
     state = {
+        id: "",
+        // title: "",
+        // imgUrl: "",
+        // description: "",
         uglyThingsList: []
     }
 
@@ -55,14 +59,16 @@ class UglyThingsContextProvider extends Component {
                 console.log("newItem:", newItem)
                 this.setState(prevState => ({
                     //add newUglyThing to List
-                    uglyThingsList: [...prevState.uglyThingsList, newUglyThing],
+                    // uglyThingsList: [...prevState.uglyThingsList, newUglyThing],
                     //re-set form values
                     title: "",
                     imgUrl: "",
                     description: ""
-                }))
-                console.log("axios POST working")
 
+                })
+                )
+                console.log("axios POST working")
+                this.getUglyThingsData()
 
             })
             .catch(error => console.log(error))
