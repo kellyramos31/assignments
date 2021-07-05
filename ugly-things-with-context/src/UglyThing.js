@@ -7,8 +7,8 @@ const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     width: 400px;
-    height: 400px;
-    margin-top: 20px;
+    height: 500px;
+    margin-top: 3px;
     margin-bottom: 20px;
     margin-left:  5%;
     float: left;
@@ -29,8 +29,8 @@ const Title = styled.h2`
 `;
 
 const Image = styled.img`
-    height: 260px;
-    width: 260px;
+    height: 250px;
+    width: 250px;
     border-radius: 6px;
     margin-left: 5px;
     margin-right: 5px;

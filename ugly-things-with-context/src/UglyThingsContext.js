@@ -57,16 +57,13 @@ class UglyThingsContextProvider extends Component {
             .then(res => {
                 const newItem = res.data
                 console.log("newItem:", newItem)
-                this.setState(prevState => ({
-                    //add newUglyThing to List
-                    // uglyThingsList: [...prevState.uglyThingsList, newUglyThing],
+                this.setState({
                     //re-set form values
                     title: "",
                     imgUrl: "",
                     description: ""
 
                 })
-                )
                 console.log("axios POST working")
                 this.getUglyThingsData()
 

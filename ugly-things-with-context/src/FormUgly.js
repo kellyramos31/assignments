@@ -4,7 +4,7 @@ import { UglyThingsContextConsumer } from "./UglyThingsContext"
 
 const FormTitle = styled.h3`
     margin: 0px;
-    padding-top: 30px;
+    padding-top: 5px;
     text-align: center;
     background-color: black;
     color: yellowgreen;
@@ -16,7 +16,7 @@ const UglyForm = styled.form`
     align-items: center;
     margin-bottom: 15px;
     background-color: black;
-    padding: 30px;
+    padding: 15px;
 `;
 
 const UglyInput = styled.input`
