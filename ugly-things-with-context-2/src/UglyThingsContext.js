@@ -2,6 +2,7 @@ import React, { Component } from "react"
 import axios from "axios"
 const { Provider, Consumer } = React.createContext()
 
+
 class UglyThingsContextProvider extends Component {
 
     state = {
@@ -26,14 +27,13 @@ class UglyThingsContextProvider extends Component {
 
 
     getUglyThingsData = () => {
-
-            axios.get(`https://api.vschool.io/kellyr/thing`)
-                .then(res => {
-                    this.setState({
-                        uglyThingsList: res.data
-                    })
-                    console.log("axios GET working")
+        axios.get(`https://api.vschool.io/kellyr/thing`)
+            .then(res => {
+                this.setState({
+                    uglyThingsList: res.data
                 })
+                console.log("axios GET working")
+            })
             .catch(error => console.log(error))
 
     }
