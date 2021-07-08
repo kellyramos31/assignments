@@ -6,10 +6,11 @@ const { Provider, Consumer } = React.createContext()
 class UglyThingsContextProvider extends Component {
 
     state = {
-        id: "",
-        // title: "",
-        // imgUrl: "",
-        // description: "",
+        id: this.props.item._id || "",
+        title: this.props.item.title || "",
+        imgUrl: this.props.item.imgUrl || "",
+        description: this.props.item.description || "",
+        isEditing: false,
         uglyThingsList: []
     }
 
@@ -88,29 +89,35 @@ class UglyThingsContextProvider extends Component {
     }
 
 
+    toggleEdit = () =>
+        this.setState(prevState => ({
+            isEditing: !prevState.isEditing
+        }
+        ))
 
-    // handleEdit = (id) => {
-    //     console.log("EDIT button was clicked!")
-    //     const editedId = id
-    //     console.log("editedId", editedId)
+    handleEdit = (id) => {
+        console.log("EDIT button was clicked!")
+        const editedId = id
+        console.log("editedId", editedId)
 
-    //     const editedThing = {
-    //         title: this.state.title,
-    //         imgUrl: this.state.imgUrl,
-    //         description: this.state.description
-    //     }
-    //     console.log("editedThing:", editedThing)
+        const editedThing = {
+            title: this.state.title,
+            imgUrl: this.state.imgUrl,
+            description: this.state.description
+        }
+        console.log("editedThing:", editedThing)
 
-    //     axios.put(`https://api.vschool.io/kellyr/thing/${id}`)
-    //         .then(res => {
-    //             const editedThing = res.data
-    //             console.log("2nd console(after .then) editedThing:", editedThing)
-    //             this.getUglyThingsData()
-    //         })
-    //         .catch(error => console.log(error))
+        axios.put(`https://api.vschool.io/kellyr/thing/${id}`, editedThing)
+            .then(res => {
+                const editedThing = res.data
+                console.log("2nd console(after .then) editedThing:", editedThing)
+                this.props.getUglyThingsData()
+            })
+            .catch(error => console.log(error))
 
-    //     // this.toggleEdit()
-    // }
+        this.toggleEdit()
+
+    }
 
 
     render() {
@@ -120,12 +127,14 @@ class UglyThingsContextProvider extends Component {
                 title: this.state.title,
                 imgUrl: this.state.imgUrl,
                 description: this.state.description,
+                isEditing: this.state.isEditing,
                 uglyThingsList: this.state.uglyThingsList,
                 getUglyThingsData: this.getUglyThingsData,
                 handleChange: this.handleChange,
                 handleSubmit: this.handleSubmit,
                 handleDelete: this.handleDelete,
-                // handleEdit: this.handleEdit
+                toggleEdit: this.toggleEdit,
+                handleEdit: this.handleEdit
             }}>
                 {this.props.children}
             </Provider>

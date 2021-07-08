@@ -198,3 +198,44 @@ class UglyThing extends Component {
 }
 
 export default UglyThing
+
+
+// render() {
+//     return (
+//         <div >
+
+//             {this.state.isEditing
+//                 ? < div className="meme-listing">
+//                     <MemeForm
+//                         key={this.props.key}
+//                         id={this.props.id}
+//                         topText={this.props.topText}
+//                         url={this.props.url}
+//                         name={this.props.name}
+//                         bottomText={this.props.bottomText}
+//                         submit={this.props.submit}
+//                         editOrNot={this.editOrNot}
+//                         isEditing={this.state.isEditing}
+//                     />
+//                     <button onClick={this.editOrNot} className="cancel">Cancel Edit</button>
+//                     {/* <div ref={this.scrollDiv}></div> */}
+//                 </div>
+//                 :
+//                 <div>
+//                     <div className="meme-listing" >
+//                         <h3 className="top-text" id="black-text2">{this.props.topText}</h3>
+//                         <img className="meme-image" width="350px" height="350px" src={this.props.url} alt={this.props.name} />
+//                         <h3 className="bottom-text" id="black-text3">{this.props.bottomText}</h3>
+//                     </div>
+//                     <div className="buttons">
+//                         <button type="submit" onClick={this.editOrNot}>Edit Your Meme</button>
+//                         <button onClick={this.handleClick}>Delete Your Meme</button>
+//                     </div>
+//                 </div>
+//             }
+
+//         </div >
+//     )
+// }
+// }
+// export default MemeList
