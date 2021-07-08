@@ -1,4 +1,5 @@
-import React from "react"
+import React, { Component } from "react"
+// import UglyThingsList from "./UglyThingsList"
 import { UglyThingsContextConsumer } from "./UglyThingsContext"
 import styled from "styled-components"
 
@@ -91,22 +92,28 @@ const UglyForm = styled.form`
     padding: 30px;
 `;
 
-// const UglyInput = styled.input`
-//     width: 300px;
-//     margin-top: 5px;
-// `;
+const UglyInput = styled.input`
+    width: 300px;
+    margin-top: 5px;
+`;
 
 
-function UglyThing() {
+class UglyThing extends Component {
 
+    state = {
+        id: this.props.item._id || "",
+        title: this.props.item.title || "",
+        imgUrl: this.props.item.imgUrl || "",
+        description: this.props.item.description || ""
+    }
 
-    return (
-        <div>
-            <UglyThingsContextConsumer>
-                {({ handleChange, handleEdit, toggleEdit, isEditing }) => {
+    render() {
 
-                    {
-                        {
+        return (
+            <div>
+                <UglyThingsContextConsumer>
+                    {({ handleChange, handleDelete, handleEdit, toggleEdit, isEditing }) => {
+                        return (
                             isEditing
                                 ? <div >
 
@@ -114,7 +121,7 @@ function UglyThing() {
 
                                         <FormTitle>Edit This Ugly Thing:</FormTitle>
 
-                                        <UglyForm key={index} id={this.state.id} >
+                                        <UglyForm key={this.props.item._id} >
 
                                             <UglyInput
                                                 name="title"
@@ -151,13 +158,14 @@ function UglyThing() {
                                         <Button onClick={toggleEdit}>Edit This Ugly Thing</Button>
                                     </Wrapper>
                                 </div>
-                        }
-                    }
-                }}
-            </UglyThingsContextConsumer>
 
-        </div>
-    )
+                        )
+                    }}
+                </UglyThingsContextConsumer>
+
+            </div>
+        )
+    }
 }
 
 export default UglyThing
