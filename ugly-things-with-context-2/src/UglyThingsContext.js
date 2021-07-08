@@ -10,7 +10,7 @@ class UglyThingsContextProvider extends Component {
         // title: "",
         // imgUrl: "",
         // description: "",
-        // isEditing: "",
+        isEditing: false,
         uglyThingsList: []
     }
 

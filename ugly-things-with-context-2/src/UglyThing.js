@@ -121,7 +121,7 @@ class UglyThing extends Component {
 
                                         <FormTitle>Edit This Ugly Thing:</FormTitle>
 
-                                        <UglyForm key={this.props.item._id} >
+                                        <UglyForm key={this.props.item._id} index={this.props.index}>
 
                                             <UglyInput
                                                 name="title"
@@ -155,7 +155,7 @@ class UglyThing extends Component {
                                         <Image src={this.props.item.imgUrl} alt={this.props.item.description} />
                                         <Comment>{this.props.item.description}</Comment>
                                         <Button onClick={() => handleDelete(this.props.item._id)} > Delete This Ugly Thing</Button>
-                                        <Button onClick={toggleEdit}>Edit This Ugly Thing</Button>
+                                        <Button onClick={() => toggleEdit(this.props.item._id)}>Edit This Ugly Thing</Button>
                                     </Wrapper>
                                 </div>
 
