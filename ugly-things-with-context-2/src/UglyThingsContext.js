@@ -6,11 +6,14 @@ const { Provider, Consumer } = React.createContext()
 class UglyThingsContextProvider extends Component {
 
     state = {
-        // id: "",
-        // title: "",
-        // imgUrl: "",
-        // description: "",
-        isEditing: false,
+        id: "",
+        title: "",
+        imgUrl: "",
+        description: "",
+        editTitle: "",
+        editImgUrl: "",
+        editDescription: "",
+        // isEditing: false,
         uglyThingsList: []
     }
 
@@ -89,21 +92,32 @@ class UglyThingsContextProvider extends Component {
     }
 
 
-    toggleEdit = () =>
-        this.setState(prevState => ({
-            isEditing: !prevState.isEditing
-        }
-        ))
+    //add a map here to the toggleEdit??
+
+    // toggleEdit = (id) => {
+    //     console.log("toggleEdit was clicked!!")
+    //     console.log(id)
+    //     const toggle = this.state.uglyThingsList.map((thing => thing._id === id ? !thing._id.isEditing : thing))
+    //     console.log(toggle)
+    // }
+
+    // // this.setState(prevState => ({
+    // //     isEditing: !prevState.isEditing
+    // // }
+    // ))
+
+
 
     handleEdit = (id) => {
         console.log("EDIT button was clicked!")
-        const editedId = id
-        console.log("editedId", editedId)
+        const editId = id
+
+        console.log("editedId", editId)
 
         const editedThing = {
-            title: this.state.title,
-            imgUrl: this.state.imgUrl,
-            description: this.state.description
+            title: this.state.editTitle,
+            imgUrl: this.state.editImgUrl,
+            description: this.state.editDescription
         }
         console.log("editedThing:", editedThing)
 
@@ -111,12 +125,9 @@ class UglyThingsContextProvider extends Component {
             .then(res => {
                 const editedThing = res.data
                 console.log("2nd console(after .then) editedThing:", editedThing)
-                this.props.getUglyThingsData()
+                this.getUglyThingsData()
             })
             .catch(error => console.log(error))
-
-        this.toggleEdit()
-
     }
 
 
@@ -127,13 +138,16 @@ class UglyThingsContextProvider extends Component {
                 title: this.state.title,
                 imgUrl: this.state.imgUrl,
                 description: this.state.description,
-                isEditing: this.state.isEditing,
+                editTitle: this.state.editTitle,
+                editImgUrl: this.state.editImgUrl,
+                editDescription: this.state.editDescription,
+                // isEditing: this.state.isEditing,
                 uglyThingsList: this.state.uglyThingsList,
-                getUglyThingsData: this.getUglyThingsData,
+                // getUglyThingsData: this.getUglyThingsData,
                 handleChange: this.handleChange,
                 handleSubmit: this.handleSubmit,
                 handleDelete: this.handleDelete,
-                toggleEdit: this.toggleEdit,
+                // toggleEdit: this.toggleEdit,
                 handleEdit: this.handleEdit
             }}>
                 {this.props.children}
