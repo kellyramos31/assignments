@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-// import UglyThingsList from "./UglyThingsList"
 import { UglyThingsContextConsumer } from "./UglyThingsContext"
 import styled from "styled-components"
 
@@ -100,12 +99,9 @@ const UglyInput = styled.input`
 
 class UglyThing extends Component {
 
-    // constructor(props) {
-    //     super(props)
     state = {
         isEditing: false
     }
-
 
 
     toggleEdit = () => {

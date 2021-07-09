@@ -10,7 +10,7 @@ function UglyThingsList() {
         <div>
             <UglyThingsContextConsumer>
                 {
-                    ({ uglyThingsList, handleChange, handleDelete, handleEdit }) => {
+                    ({ uglyThingsList }) => {
                         const myUglyList = uglyThingsList.map((item, index) =>
                             <UglyThing
                                 key={index}

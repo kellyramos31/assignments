@@ -92,7 +92,7 @@ class UglyThingsContextProvider extends Component {
     }
 
 
-    //add a map here to the toggleEdit??
+
 
     // toggleEdit = (id) => {
     //     console.log("toggleEdit was clicked!!")
