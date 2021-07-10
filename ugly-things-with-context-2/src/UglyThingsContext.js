@@ -6,17 +6,16 @@ const { Provider, Consumer } = React.createContext()
 class UglyThingsContextProvider extends Component {
 
     state = {
-        id: "",
+        // id: "",
         title: "",
         imgUrl: "",
         description: "",
         editTitle: "",
         editImgUrl: "",
         editDescription: "",
-        // isEditing: false,
+        isEditing: false,
         uglyThingsList: []
     }
-
 
     componentDidMount() {
         axios.get(`https://api.vschool.io/kellyr/thing`)
@@ -28,7 +27,6 @@ class UglyThingsContextProvider extends Component {
             })
             .catch(error => console.log(error))
     }
-
 
     getUglyThingsData = () => {
         axios.get(`https://api.vschool.io/kellyr/thing`)
@@ -77,7 +75,6 @@ class UglyThingsContextProvider extends Component {
 
     }
 
-
     handleDelete = (id) => {
         const deletedId = id
         console.log("deletedId:", deletedId)
@@ -92,39 +89,83 @@ class UglyThingsContextProvider extends Component {
     }
 
 
-
-
-    // toggleEdit = (id) => {
+    // toggleEdit = (e, id) => {
     //     console.log("toggleEdit was clicked!!")
     //     console.log(id)
-    //     const toggle = this.state.uglyThingsList.map((thing => thing._id === id ? !thing._id.isEditing : thing))
+    //     const toggle = this.state.uglyThingsList.map((thing => thing._id === id ? thing.isEditing : thing.isEditing === false))
     //     console.log(toggle)
     // }
 
-    // // this.setState(prevState => ({
-    // //     isEditing: !prevState.isEditing
-    // // }
-    // ))
+    toggleEdit = () => {
+        console.log("toggleEdit was clicked!!")
+        this.setState(prevState => ({
+            isEditing: !prevState.isEditing
+        }
+        ))
+    }
 
 
+    // handleEdit = (id) => {
+    //     console.log("EDIT button was clicked!")
+    //     const editId = id
 
-    handleEdit = (id) => {
+    //     console.log("editedId", editId)
+
+    //     const editedThing = {
+    //         title: this.state.editTitle,
+    //         imgUrl: this.state.editImgUrl,
+    //         description: this.state.editDescription
+    //     }
+    //     console.log("editedThing:", editedThing)
+
+    //     axios.put(`https://api.vschool.io/kellyr/thing/${id}`, editedThing)
+    //         .then(res => {
+    //             const editedThing = res.data
+    //             console.log("2nd console(after .then) editedThing:", editedThing)
+    //             //reset editForm values
+    //             this.setState({
+    //                 //re-set form values
+    //                 editTitle: "",
+    //                 editImgUrl: "",
+    //                 editDescription: ""
+
+    //             })
+    //             this.getUglyThingsData()
+    //         })
+    //         .catch(error => console.log(error))
+    // }
+
+
+    handleEdit = (e, id) => {
+        e.preventDefault()
+
         console.log("EDIT button was clicked!")
         const editId = id
 
+        console.log("this is editId:", editId)
         console.log("editedId", editId)
+        alert(e.target.editTitle.value)
+        alert(e.target.editImgUrl.value)
 
         const editedThing = {
-            title: this.state.editTitle,
-            imgUrl: this.state.editImgUrl,
-            description: this.state.editDescription
+            title: e.target.editTitle.value,
+            imgUrl: e.target.editImgUrl.value,
+            description: e.target.editDescription.value
         }
+
         console.log("editedThing:", editedThing)
 
         axios.put(`https://api.vschool.io/kellyr/thing/${id}`, editedThing)
             .then(res => {
                 const editedThing = res.data
                 console.log("2nd console(after .then) editedThing:", editedThing)
+                //reset editForm values
+                this.setState({
+                    editTitle: "",
+                    editImgUrl: "",
+                    editDescription: "",
+                    isEditing: false
+                })
                 this.getUglyThingsData()
             })
             .catch(error => console.log(error))
@@ -134,27 +175,26 @@ class UglyThingsContextProvider extends Component {
     render() {
         return (
             <Provider value={{
-                id: this.state.id,
+                // id: this.state.id,
                 title: this.state.title,
                 imgUrl: this.state.imgUrl,
                 description: this.state.description,
                 editTitle: this.state.editTitle,
                 editImgUrl: this.state.editImgUrl,
                 editDescription: this.state.editDescription,
-                // isEditing: this.state.isEditing,
+                isEditing: this.state.isEditing,
                 uglyThingsList: this.state.uglyThingsList,
                 // getUglyThingsData: this.getUglyThingsData,
                 handleChange: this.handleChange,
                 handleSubmit: this.handleSubmit,
                 handleDelete: this.handleDelete,
-                // toggleEdit: this.toggleEdit,
+                toggleEdit: this.toggleEdit,
                 handleEdit: this.handleEdit
             }}>
                 {this.props.children}
             </Provider>
         )
     }
-
 }
 
 export { UglyThingsContextProvider, Consumer as UglyThingsContextConsumer }
