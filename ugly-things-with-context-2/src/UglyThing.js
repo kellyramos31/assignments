@@ -1,5 +1,5 @@
-// import React, { Component } from "react"
-import React from "react"
+import React, { Component } from "react"
+// import React from "react"
 import { UglyThingsContextConsumer } from "./UglyThingsContext"
 import styled from "styled-components"
 
@@ -98,84 +98,81 @@ const UglyInput = styled.input`
 `;
 
 
-function UglyThing(props) {
+class UglyThing extends Component {
 
-    // state = {
-    //     isEditing: false
-    // }
-
-
-    // toggleEdit = () => {
-    //     console.log("toggleEdit was clicked!!")
-    //     this.setState(prevState => ({
-    //         isEditing: !prevState.isEditing
-    //     }
-    //     ))
-    // }
+    state = {
+        isEditing: false
+    }
 
 
-    // render() {
+    toggleEdit = () =>
+        this.setState(prevState => ({
+            isEditing: !prevState.isEditing
+        }
+        ))
 
 
+    render() {
 
 
-    return (
+        return (
 
-        <UglyThingsContextConsumer>
-            {({ editTitle, editImgUrl, editDescription, handleChange, handleDelete, handleEdit, isEditing, toggleEdit }) => {
-                return (
-                    isEditing
-                        ? <div key={props.item._id} id={props.item._id} index={props.index}>
-                            <Wrapper >
-                                <FormTitle>Edit This Ugly Thing:</FormTitle>
+            <UglyThingsContextConsumer>
+                {({ editTitle, editImgUrl, editDescription, handleChange, handleDelete, handleEdit, isEditing, toggleEdit }) => {
+                    return (
+                        this.state.isEditing
+                            ? <div key={this.props.item._id} id={this.props.item._id} index={this.props.index}>
+                                <Wrapper >
+                                    <FormTitle>Edit This Ugly Thing:</FormTitle>
 
-                                <UglyForm onSubmit={(e) => handleEdit(e, props.item._id)}>
+                                    <UglyForm onSubmit={(e) => { handleEdit(e, this.props.item._id); this.toggleEdit(e) }}>
 
-                                    <UglyInput
-                                        defaultValue={props.item.title}
-                                        name="editTitle"
-                                        // value={editTitle}
-                                        onChange={handleChange}
+                                        <UglyInput
+                                            defaultValue={this.props.item.title}
+                                            name="editTitle"
+                                            // value={editTitle}
+                                            onChange={handleChange}
+                                        />
+                                        <UglyInput
+                                            defaultValue={this.props.item.imgUrl}
+                                            name="editImgUrl"
+                                            // value={editImgUrl}
+                                            onChange={handleChange}
 
-                                    />
-                                    <UglyInput
-                                        defaultValue={props.item.imgUrl}
-                                        name="editImgUrl"
-                                        // value={editImgUrl}
-                                        onChange={handleChange}
-
-                                    />
-                                    <UglyInput
-                                        defaultValue={props.item.description}
-                                        name="editDescription"
-                                        // value={editDescription}
-                                        onChange={handleChange}
-                                    />
-                                    <CancelAndEditButton>Save Edited Ugly Thing</CancelAndEditButton>
-                                    <CancelAndEditButton id={props.item._id} onClick={() => toggleEdit(props.item._id)} className="cancel">Cancel Edit</CancelAndEditButton>
-                                </UglyForm>
+                                        />
+                                        <UglyInput
+                                            defaultValue={this.props.item.description}
+                                            name="editDescription"
+                                            // value={editDescription}
+                                            onChange={handleChange}
+                                        />
+                                        <CancelAndEditButton>Save Edited Ugly Thing</CancelAndEditButton>
+                                        <CancelAndEditButton onClick={this.toggleEdit} className="cancel">Cancel Edit</CancelAndEditButton>
+                                    </UglyForm>
 
 
-                            </Wrapper>
+                                </Wrapper>
 
-                        </div >
-                        :
+                            </div >
+                            :
 
-                        < div >
-                            < Wrapper key={props.index} id={props.item._id}>
-                                <Title>{props.item.title}</Title>
-                                <Image src={props.item.imgUrl} alt={props.description} />
-                                <Comment>{props.item.description}</Comment>
-                                <Button onClick={() => handleDelete(props.item._id)} > Delete This Ugly Thing</Button>
-                                <Button id={props.item._id} onClick={() => toggleEdit(props.item._id)}>Edit This Ugly Thing</Button>
-                            </Wrapper>
-                        </div>
-                )
-            }}
+                            < div >
+                                < Wrapper key={this.props.index} id={this.props.item._id}>
 
-        </UglyThingsContextConsumer>
-    )
+                                    <Title>{this.props.item.title}</Title>
+                                    <Image src={this.props.item.imgUrl} alt={this.props.description} />
+                                    <Comment>{this.props.item.description}</Comment>
+                                    <Button onClick={() => handleDelete(this.props.item._id)} > Delete This Ugly Thing</Button>
+                                    <Button onClick={this.toggleEdit}>Edit This Ugly Thing</Button>
+                                </Wrapper>
+                            </div>
+                    )
+                }
+                }
+
+            </UglyThingsContextConsumer >
+        )
+    }
 }
-// }
 
 export default UglyThing

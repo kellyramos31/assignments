@@ -13,7 +13,7 @@ class UglyThingsContextProvider extends Component {
         editTitle: "",
         editImgUrl: "",
         editDescription: "",
-        isEditing: false,
+        // isEditing: false,
         uglyThingsList: []
     }
 
@@ -90,13 +90,13 @@ class UglyThingsContextProvider extends Component {
             .catch(error => console.log(error))
     }
 
-    toggleEdit = (id) => {
-        console.log("toggleEdit was clicked!!")
-        this.setState(prevState => ({
-            isEditing: !prevState.isEditing
-        }
-        ))
-    }
+    // toggleEdit = (id) => {
+    //     console.log("toggleEdit was clicked!!")
+    //     this.setState(prevState => ({
+    //         isEditing: !prevState.isEditing
+    //     }
+    //     ))
+    // }
 
 
 
@@ -203,7 +203,7 @@ class UglyThingsContextProvider extends Component {
                     editDescription: ""
                 })
                 this.getUglyThingsData()
-                this.toggleEdit(id)
+                //this.toggleEdit
 
             })
             .catch(error => console.log(error))
@@ -220,14 +220,14 @@ class UglyThingsContextProvider extends Component {
                 editTitle: this.state.editTitle,
                 editImgUrl: this.state.editImgUrl,
                 editDescription: this.state.editDescription,
-                isEditing: this.state.isEditing,
+                // isEditing: this.state.isEditing,
                 uglyThingsList: this.state.uglyThingsList,
                 // getUglyThingsData: this.getUglyThingsData,
                 // focusInput: this.focusInput,
                 handleChange: this.handleChange,
                 handleSubmit: this.handleSubmit,
                 handleDelete: this.handleDelete,
-                toggleEdit: this.toggleEdit,
+                // toggleEdit: this.toggleEdit,
                 handleEdit: this.handleEdit
             }}>
                 {this.props.children}
