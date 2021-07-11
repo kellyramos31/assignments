@@ -1,3 +1,4 @@
+// import React, { Component } from "react"
 import React from "react"
 import { UglyThingsContextConsumer } from "./UglyThingsContext"
 import styled from "styled-components"
@@ -115,63 +116,64 @@ function UglyThing(props) {
 
     // render() {
 
+
+
+
     return (
-        <div>
 
-            <UglyThingsContextConsumer>
-                {({ editTitle, editImgUrl, editDescription, handleChange, handleDelete, isEditing, handleEdit, toggleEdit }) => {
-                    return (
-                        isEditing
-                            ? <div >
+        <UglyThingsContextConsumer>
+            {({ editTitle, editImgUrl, editDescription, handleChange, handleDelete, handleEdit, isEditing, toggleEdit }) => {
+                return (
+                    isEditing
+                        ? <div key={props.item._id} id={props.item._id} index={props.index}>
+                            <Wrapper >
+                                <FormTitle>Edit This Ugly Thing:</FormTitle>
 
-                                <Wrapper >
+                                <UglyForm onSubmit={(e) => handleEdit(e, props.item._id)}>
 
-                                    <FormTitle>Edit This Ugly Thing:</FormTitle>
+                                    <UglyInput
+                                        defaultValue={props.item.title}
+                                        name="editTitle"
+                                        // value={editTitle}
+                                        onChange={handleChange}
 
-                                    <UglyForm key={props.item._id} index={props.index} onSubmit={(e) => handleEdit(e, props.item._id)}>
+                                    />
+                                    <UglyInput
+                                        defaultValue={props.item.imgUrl}
+                                        name="editImgUrl"
+                                        // value={editImgUrl}
+                                        onChange={handleChange}
 
-                                        <UglyInput
-                                            name="editTitle"
-                                            value={editTitle}
-                                            onChange={handleChange}
-
-                                        />
-                                        <UglyInput
-                                            name="editImgUrl"
-                                            value={editImgUrl}
-                                            onChange={handleChange}
-
-                                        />
-                                        <UglyInput
-                                            name="editDescription"
-                                            value={editDescription}
-                                            onChange={handleChange}
-                                        />
-                                        <CancelAndEditButton>Save Edited Ugly Thing</CancelAndEditButton>
-                                        <CancelAndEditButton onClick={toggleEdit} className="cancel">Cancel Edit</CancelAndEditButton>
-                                    </UglyForm>
+                                    />
+                                    <UglyInput
+                                        defaultValue={props.item.description}
+                                        name="editDescription"
+                                        // value={editDescription}
+                                        onChange={handleChange}
+                                    />
+                                    <CancelAndEditButton>Save Edited Ugly Thing</CancelAndEditButton>
+                                    <CancelAndEditButton id={props.item._id} onClick={() => toggleEdit(props.item._id)} className="cancel">Cancel Edit</CancelAndEditButton>
+                                </UglyForm>
 
 
-                                </Wrapper>
+                            </Wrapper>
 
-                            </div >
-                            :
+                        </div >
+                        :
 
-                            < div >
-                                < Wrapper key={props.index} id={props.item._id}>
-                                    <Title>{props.item.title}</Title>
-                                    <Image src={props.item.imgUrl} alt={props.description} />
-                                    <Comment>{props.item.description}</Comment>
-                                    <Button onClick={() => handleDelete(props.item._id)} > Delete This Ugly Thing</Button>
-                                    <Button onClick={toggleEdit}>Edit This Ugly Thing</Button>
-                                </Wrapper>
-                            </div>
+                        < div >
+                            < Wrapper key={props.index} id={props.item._id}>
+                                <Title>{props.item.title}</Title>
+                                <Image src={props.item.imgUrl} alt={props.description} />
+                                <Comment>{props.item.description}</Comment>
+                                <Button onClick={() => handleDelete(props.item._id)} > Delete This Ugly Thing</Button>
+                                <Button id={props.item._id} onClick={() => toggleEdit(props.item._id)}>Edit This Ugly Thing</Button>
+                            </Wrapper>
+                        </div>
+                )
+            }}
 
-                    )
-                }}
-            </UglyThingsContextConsumer>
-
-        </div >
+        </UglyThingsContextConsumer>
     )
 }
 // }

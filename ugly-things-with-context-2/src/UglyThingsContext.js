@@ -32,13 +32,15 @@ class UglyThingsContextProvider extends Component {
         axios.get(`https://api.vschool.io/kellyr/thing`)
             .then(res => {
                 this.setState({
-                    uglyThingsList: res.data
+                    uglyThingsList: res.data.map(thing => ({ ...thing, isEditing: false }))
                 })
-                console.log("axios GET working")
             })
             .catch(error => console.log(error))
 
     }
+
+    // array.forEach(e => e.c = +e.b - +e.a);
+
 
     handleChange = (e) => {
         const { name, value } = e.target
@@ -88,21 +90,56 @@ class UglyThingsContextProvider extends Component {
             .catch(error => console.log(error))
     }
 
-
-    // toggleEdit = (e, id) => {
-    //     console.log("toggleEdit was clicked!!")
-    //     console.log(id)
-    //     const toggle = this.state.uglyThingsList.map((thing => thing._id === id ? thing.isEditing : thing.isEditing === false))
-    //     console.log(toggle)
-    // }
-
-    toggleEdit = () => {
+    toggleEdit = (id) => {
         console.log("toggleEdit was clicked!!")
         this.setState(prevState => ({
             isEditing: !prevState.isEditing
         }
         ))
     }
+
+
+
+    // toggleEdit = (id) => {
+    //     console.log("toggleEdit was clicked!!")
+    //     console.log(id)
+    //     const toggle = this.state.uglyThingsList.map((thing => thing._id === id ? thing.isEditing : thing.isEditing === false))
+    //     console.log(toggle)
+    // }
+
+
+    //something to match selected id & item id
+    //have to to map over list here again??
+
+    // toggleEdit = (e, id) => {
+    //     console.log("toggleEdit was clicked!!")
+    //     console.log("e.target id", e.target.id)
+    //     const editId = id
+    //     console.log("editId", editId)
+
+    //     const toggleIt = this.state.uglyThingsList.map(thing => thing._id === id
+    //         ?
+    //         thing.isEditing = true
+    //         :
+    //         thing.isEditing = false
+    //     )
+    //     console.log(toggleIt)
+
+
+    // }
+
+    // focusInput = () => {
+    //     this.inputRef.focus()
+    // }
+
+
+
+
+    //     this.setState(prevState => ({
+    //         isEditing: !prevState.isEditing
+    //     }
+    //     ))
+    // }
 
 
     // handleEdit = (id) => {
@@ -139,13 +176,13 @@ class UglyThingsContextProvider extends Component {
     handleEdit = (e, id) => {
         e.preventDefault()
 
-        console.log("EDIT button was clicked!")
+        // console.log("EDIT button was clicked!")
         const editId = id
 
         console.log("this is editId:", editId)
-        console.log("editedId", editId)
-        alert(e.target.editTitle.value)
-        alert(e.target.editImgUrl.value)
+        // console.log("editedId", editId)
+        // alert(e.target.editTitle.value)
+        // alert(e.target.editImgUrl.value)
 
         const editedThing = {
             title: e.target.editTitle.value,
@@ -163,10 +200,11 @@ class UglyThingsContextProvider extends Component {
                 this.setState({
                     editTitle: "",
                     editImgUrl: "",
-                    editDescription: "",
-                    isEditing: false
+                    editDescription: ""
                 })
                 this.getUglyThingsData()
+                this.toggleEdit(id)
+
             })
             .catch(error => console.log(error))
     }
@@ -185,6 +223,7 @@ class UglyThingsContextProvider extends Component {
                 isEditing: this.state.isEditing,
                 uglyThingsList: this.state.uglyThingsList,
                 // getUglyThingsData: this.getUglyThingsData,
+                // focusInput: this.focusInput,
                 handleChange: this.handleChange,
                 handleSubmit: this.handleSubmit,
                 handleDelete: this.handleDelete,

@@ -17,17 +17,16 @@ function UglyThingsList() {
                                 index={index}
                                 id={item._id}
                                 item={item}
-                                // isEditing={item.isEditing}
-                                // title={item.title}
-                                // imgUrl={item.imgUrl}
-                                // descriptoin={item.description}
-                                // isEditing={item.isEditing}
-                                // isEditing={item.isEditing}
-                                // handleChange={handleChange}
-                                // handleDelete={handleDelete}
-                                // getUglyThingsData={getUglyThingsData}
-                                toggleEdit={toggleEdit}
-                            // isEditing="false"
+                            // isEditing={item.isEditing}
+                            // title={item.title}
+                            // imgUrl={item.imgUrl}
+                            // description={item.description}
+                            // isEditing={item.isEditing}
+                            // isEditing={item.isEditing}
+                            // handleChange={handleChange}
+                            // handleDelete={handleDelete}
+                            // getUglyThingsData={getUglyThingsData}
+                            // toggleEdit={toggleEdit}
                             //handleEdit
                             />
                         )
