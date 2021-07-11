@@ -9,9 +9,6 @@ class UglyThingsContextProvider extends Component {
         title: "",
         imgUrl: "",
         description: "",
-        editTitle: "",
-        editImgUrl: "",
-        editDescription: "",
         uglyThingsList: []
     }
 
@@ -127,9 +124,9 @@ class UglyThingsContextProvider extends Component {
                 title: this.state.title,
                 imgUrl: this.state.imgUrl,
                 description: this.state.description,
-                editTitle: this.state.editTitle,
-                editImgUrl: this.state.editImgUrl,
-                editDescription: this.state.editDescription,
+                // editTitle: this.state.editTitle,
+                // editImgUrl: this.state.editImgUrl,
+                // editDescription: this.state.editDescription,
                 uglyThingsList: this.state.uglyThingsList,
                 handleChange: this.handleChange,
                 handleSubmit: this.handleSubmit,
