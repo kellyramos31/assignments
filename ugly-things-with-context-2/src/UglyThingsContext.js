@@ -6,14 +6,12 @@ const { Provider, Consumer } = React.createContext()
 class UglyThingsContextProvider extends Component {
 
     state = {
-        // id: "",
         title: "",
         imgUrl: "",
         description: "",
         editTitle: "",
         editImgUrl: "",
         editDescription: "",
-        // isEditing: false,
         uglyThingsList: []
     }
 
@@ -38,8 +36,6 @@ class UglyThingsContextProvider extends Component {
             .catch(error => console.log(error))
 
     }
-
-    // array.forEach(e => e.c = +e.b - +e.a);
 
 
     handleChange = (e) => {
@@ -90,95 +86,12 @@ class UglyThingsContextProvider extends Component {
             .catch(error => console.log(error))
     }
 
-    // toggleEdit = (id) => {
-    //     console.log("toggleEdit was clicked!!")
-    //     this.setState(prevState => ({
-    //         isEditing: !prevState.isEditing
-    //     }
-    //     ))
-    // }
-
-
-
-    // toggleEdit = (id) => {
-    //     console.log("toggleEdit was clicked!!")
-    //     console.log(id)
-    //     const toggle = this.state.uglyThingsList.map((thing => thing._id === id ? thing.isEditing : thing.isEditing === false))
-    //     console.log(toggle)
-    // }
-
-
-    //something to match selected id & item id
-    //have to to map over list here again??
-
-    // toggleEdit = (e, id) => {
-    //     console.log("toggleEdit was clicked!!")
-    //     console.log("e.target id", e.target.id)
-    //     const editId = id
-    //     console.log("editId", editId)
-
-    //     const toggleIt = this.state.uglyThingsList.map(thing => thing._id === id
-    //         ?
-    //         thing.isEditing = true
-    //         :
-    //         thing.isEditing = false
-    //     )
-    //     console.log(toggleIt)
-
-
-    // }
-
-    // focusInput = () => {
-    //     this.inputRef.focus()
-    // }
-
-
-
-
-    //     this.setState(prevState => ({
-    //         isEditing: !prevState.isEditing
-    //     }
-    //     ))
-    // }
-
-
-    // handleEdit = (id) => {
-    //     console.log("EDIT button was clicked!")
-    //     const editId = id
-
-    //     console.log("editedId", editId)
-
-    //     const editedThing = {
-    //         title: this.state.editTitle,
-    //         imgUrl: this.state.editImgUrl,
-    //         description: this.state.editDescription
-    //     }
-    //     console.log("editedThing:", editedThing)
-
-    //     axios.put(`https://api.vschool.io/kellyr/thing/${id}`, editedThing)
-    //         .then(res => {
-    //             const editedThing = res.data
-    //             console.log("2nd console(after .then) editedThing:", editedThing)
-    //             //reset editForm values
-    //             this.setState({
-    //                 //re-set form values
-    //                 editTitle: "",
-    //                 editImgUrl: "",
-    //                 editDescription: ""
-
-    //             })
-    //             this.getUglyThingsData()
-    //         })
-    //         .catch(error => console.log(error))
-    // }
 
 
     handleEdit = (e, id) => {
         e.preventDefault()
-
         // console.log("EDIT button was clicked!")
         const editId = id
-
         console.log("this is editId:", editId)
         // console.log("editedId", editId)
         // alert(e.target.editTitle.value)
@@ -203,8 +116,6 @@ class UglyThingsContextProvider extends Component {
                     editDescription: ""
                 })
                 this.getUglyThingsData()
-                //this.toggleEdit
-
             })
             .catch(error => console.log(error))
     }
@@ -213,21 +124,16 @@ class UglyThingsContextProvider extends Component {
     render() {
         return (
             <Provider value={{
-                // id: this.state.id,
                 title: this.state.title,
                 imgUrl: this.state.imgUrl,
                 description: this.state.description,
                 editTitle: this.state.editTitle,
                 editImgUrl: this.state.editImgUrl,
                 editDescription: this.state.editDescription,
-                // isEditing: this.state.isEditing,
                 uglyThingsList: this.state.uglyThingsList,
-                // getUglyThingsData: this.getUglyThingsData,
-                // focusInput: this.focusInput,
                 handleChange: this.handleChange,
                 handleSubmit: this.handleSubmit,
                 handleDelete: this.handleDelete,
-                // toggleEdit: this.toggleEdit,
                 handleEdit: this.handleEdit
             }}>
                 {this.props.children}

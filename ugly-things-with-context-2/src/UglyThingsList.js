@@ -10,24 +10,13 @@ function UglyThingsList() {
         <div>
             <UglyThingsContextConsumer>
                 {
-                    ({ uglyThingsList, toggleEdit }) => {
+                    ({ uglyThingsList }) => {
                         const myUglyList = uglyThingsList.map((item, index) =>
                             <UglyThing
                                 key={item._id}
                                 index={index}
                                 id={item._id}
                                 item={item}
-                            // isEditing={item.isEditing}
-                            // title={item.title}
-                            // imgUrl={item.imgUrl}
-                            // description={item.description}
-                            // isEditing={item.isEditing}
-                            // isEditing={item.isEditing}
-                            // handleChange={handleChange}
-                            // handleDelete={handleDelete}
-                            // getUglyThingsData={getUglyThingsData}
-                            // toggleEdit={toggleEdit}
-                            //handleEdit
                             />
                         )
                         return myUglyList

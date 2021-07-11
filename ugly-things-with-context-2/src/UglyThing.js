@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-// import React from "react"
 import { UglyThingsContextConsumer } from "./UglyThingsContext"
 import styled from "styled-components"
 
@@ -118,7 +117,7 @@ class UglyThing extends Component {
         return (
 
             <UglyThingsContextConsumer>
-                {({ editTitle, editImgUrl, editDescription, handleChange, handleDelete, handleEdit, isEditing, toggleEdit }) => {
+                {({ handleChange, handleDelete, handleEdit }) => {
                     return (
                         this.state.isEditing
                             ? <div key={this.props.item._id} id={this.props.item._id} index={this.props.index}>
@@ -130,20 +129,17 @@ class UglyThing extends Component {
                                         <UglyInput
                                             defaultValue={this.props.item.title}
                                             name="editTitle"
-                                            // value={editTitle}
                                             onChange={handleChange}
                                         />
                                         <UglyInput
                                             defaultValue={this.props.item.imgUrl}
                                             name="editImgUrl"
-                                            // value={editImgUrl}
                                             onChange={handleChange}
 
                                         />
                                         <UglyInput
                                             defaultValue={this.props.item.description}
                                             name="editDescription"
-                                            // value={editDescription}
                                             onChange={handleChange}
                                         />
                                         <CancelAndEditButton>Save Edited Ugly Thing</CancelAndEditButton>
