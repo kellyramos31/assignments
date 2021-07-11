@@ -27,7 +27,7 @@ class UglyThingsContextProvider extends Component {
         axios.get(`https://api.vschool.io/kellyr/thing`)
             .then(res => {
                 this.setState({
-                    uglyThingsList: res.data.map(thing => ({ ...thing, isEditing: false }))
+                    uglyThingsList: res.data
                 })
             })
             .catch(error => console.log(error))
@@ -124,9 +124,6 @@ class UglyThingsContextProvider extends Component {
                 title: this.state.title,
                 imgUrl: this.state.imgUrl,
                 description: this.state.description,
-                // editTitle: this.state.editTitle,
-                // editImgUrl: this.state.editImgUrl,
-                // editDescription: this.state.editDescription,
                 uglyThingsList: this.state.uglyThingsList,
                 handleChange: this.handleChange,
                 handleSubmit: this.handleSubmit,
