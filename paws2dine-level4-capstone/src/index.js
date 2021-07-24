@@ -1,14 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import { PawsContextProvider } from "./PawsContext"
 
 
 
 ReactDOM.render(
-  <React.StrictMode>
+  <PawsContextProvider>
     <App />
-  </React.StrictMode>,
+  </PawsContextProvider>,
   document.getElementById('root')
-);
+)
+
+
+
+
 
 

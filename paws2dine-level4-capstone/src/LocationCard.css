@@ -1,0 +1,14 @@
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat (4, 2fr);
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+}
+
+img {
+  margin-right: 8px;
+}
