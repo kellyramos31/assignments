@@ -157,3 +157,39 @@ console.log(oldEnough)
 //  { name: 'Bob Ziroll', age: 100 } ]
 
 
+// FIBONACCI SEQUENCE:
+
+// 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
+
+//Shane using:
+//1, 1, 2, 3, 5, 8, 13, 21, 34
+
+
+// CHALLENGE:
+// Fibonacci numbers are a series of numbers, beginning with 1, 1 and continuing such that each number is the result of adding the two previous numbers together.For example, the first 6 Fibonacci numbers are calculated as follows:
+// 1(default start number)
+// 1, 1(default start numbers)
+// sum(1, 1), 2
+// 1, sum(1, 2), 3
+// 1, 1, sum(2, 3), 5
+// 1, 1, 2, sum(3, 5), 8
+// 1, 1, 2, 3, sum(5, 8), 13
+// Challenges
+// LEVEL 1
+// Write a function that takes an integer length as an argument and returns an array of length Fibonacci numbers in the appropriate order.
+//     Example:
+// fibArray(6) // [1,1,2,3,5,8,13]
+// LEVEL 2
+// Write a function that takes an integer i as an argument and returns an integer representing the i - th value of the Fibonacci.
+//As a bonus, this function should be called recursively.
+//     Example:
+// // passing in 4 should return the 4th Fibonacci number, which is 3
+// fibNum(4) // 3 
+// fibNum(6) //8
+
+
+function
+
+
+
+    So if
