@@ -25,7 +25,7 @@ function LocationCard() {
                                 Price:  {business.price}
                                 <br/>
                                 Yelp Rating:  {business.rating}
-                                </p>
+                               </p>
                             
                         </div>
                         </div>

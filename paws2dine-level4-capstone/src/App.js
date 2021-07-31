@@ -1,8 +1,9 @@
 import React from "react"
 import { Switch, Route, Link } from "react-router-dom"
 import SLCMap from "./SLCMap"
+// import Loader from "./Loader"
 import Faves from "./Faves"
-// import LocationCard from "./LocationCard"
+import LocationCard from "./LocationCard"
 
 
 
@@ -10,8 +11,10 @@ import Faves from "./Faves"
 function App(){
 
 return (
+ 
 
   <div>
+   
       <nav>
         <Link to="/">MAP HOME</Link>
         <Link to="/details">DETAILS</Link>
@@ -20,10 +23,10 @@ return (
  
       <Switch>
        <Route exact path="/">
-          <SLCMap />
+          <SLCMap/>
        </Route>
        <Route path="/details">
-          {/* <LocationCard /> */}
+          <LocationCard />
        </Route>
       <Route path="/faves">
           <Faves />
