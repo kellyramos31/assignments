@@ -46,24 +46,3 @@ function LocationCard() {
 export default LocationCard
 
 
-
-//  return (
-//         <div>
-//             <UglyThingsContextConsumer>
-//                 {
-//                     ({ uglyThingsList }) => {
-//                         const myUglyList = uglyThingsList.map((item, index) =>
-//                             <UglyThing
-//                                 key={item._id}
-//                                 index={index}
-//                                 id={item._id}
-//                                 item={item}
-//                             />
-//                         )
-//                         return myUglyList
-//                     }
-//                 }
-
-//             </UglyThingsContextConsumer>
-//         </div>
-//     )

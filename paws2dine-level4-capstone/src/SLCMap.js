@@ -5,39 +5,50 @@
 // Salt Lake City=  lat:  40.760780  lng: -111.891045
 //NOTE:  website Snazzy Maps has alternatives styles for the Google Maps, if don't want the default
 
-import React, { Component } from 'react';
+// import React from 'react';
 import "./SLCMap.css"
 import GoogleMapReact from 'google-map-react';
+import LocationMarker from "./LocationMarker"
+//*****need to bring in contextconsumer to get at the Yelp array*****
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-class SLCMap extends Component {
-  static defaultProps = {
-    center: {
-      lat: 40.760780 ,
-      lng: -111.891045
-    },
-    zoom: 11
-  };
+// const AnyReactComponent = ({ text }) => <div>{text}</div>;
 
-  render() {
-    return (
-      // Important! Always set the container height explicitly
-      <div style={{ height: '100vh', width: '100%' }}>
+// class SLCMap extends Component {
+     
+
+//   render() {
+
+
+   const SLCMap = ({center, zoom}) => {
+   return(  
+
+                  
+      <div className = "map">
         <GoogleMapReact
           bootstrapURLKeys={{ key: `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`}}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}
+          defaultCenter={ center}
+          defaultZoom={ zoom }
         >
-          <AnyReactComponent
-            lat={40.760780 }
-            lng={-111.891045}
-            text="My Marker"
+          <LocationMarker 
+          lat={center.lat} 
+          lng={center.lng}
           />
+
         </GoogleMapReact>
       </div>
-    );
-  }
-}
-
-export default SLCMap;
+      )}
+            SLCMap.defaultProps = {
+            center: {
+            lat: 40.760780 ,
+            lng: -111.891045
+        },
+          zoom: 11
+    
+    }
+      
+  
+  // }}
+   
+  
+export default SLCMap
