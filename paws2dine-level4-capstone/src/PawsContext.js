@@ -63,7 +63,7 @@ class PawsContextProvider extends Component {
 
 
     getMarkers = () => {
-    const coords = this.state.dogFriendlyRestaurants.map(restaurant=>{return {lat: restaurant.coordinates.latitude, lng: restaurant.coordinates.longitude}})
+    const coords = this.state.dogFriendlyRestaurants.map(restaurant=>{return {key: restaurant.id, lat: restaurant.coordinates.latitude, lng: restaurant.coordinates.longitude}})
     this.setState({
         markers: coords
     })    

@@ -3,6 +3,8 @@ import {Icon} from "@iconify/react"
 import locationIcon from "@iconify/icons-mdi/bone"
 
 
+//maybe mapping of coords needs to happen here???
+
 
 const LocationMarker = ({lat, lng, onClick})=> {
     return(

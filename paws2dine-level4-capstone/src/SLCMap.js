@@ -4,57 +4,54 @@
 // Salt Lake City=  lat:  40.760780  lng: -111.891045
 // NOTE:  website Snazzy Maps has alternatives styles for the Google Maps, if don't want the default
 
-// import React, { useContext} from "react"
-// import "./SLCMap.css"
-// import GoogleMapReact from 'google-map-react';
-// import LocationMarker from "./LocationMarker"
-// import { PawsContext} from "./PawsContext"
+import React, { useContext} from "react"
+import "./SLCMap.css"
+import GoogleMapReact from 'google-map-react';
+import LocationMarker from "./LocationMarker"
+import { PawsContext} from "./PawsContext"
 
 
-// function SLCMap (){
+function SLCMap (){
 
-// const {markers} = useContext(PawsContext)
+const {markers} = useContext(PawsContext)
 
-// //  const coords = dogFriendlyRestaurants.map(restaurant=>{return {lat: restaurant.coordinates.latitude, lng: restaurant.coordinates.longitude}})
-// //  console.log (coords)
-// //above 2 lines work to return coords
+const MapSLC = ({center, zoom}) => {
 
-// const MapSLC = ({center, zoom}) => {
+const mapMarkers = markers.map((marker, index) => (
+  // return (
+ 
+      <LocationMarker
+            index={index}
+            key={marker.id}
+            lat={marker.latitude} 
+            lng={marker.longitude}
+          />
+       return mapMarkers
+))
 
-// MapSLC.defaultProps = {
-//             center: {
-//             lat: 40.760780 ,
-//             lng: -111.891045
-//         },
-//           zoom: 11
-//         }
+return(
+      <div className = "map">     
+        <GoogleMapReact
+          bootstrapURLKeys={{ key: `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`}}
+          defaultCenter={ center}
+          defaultZoom={ zoom }
+        >
+            {mapMarkers}
+        </GoogleMapReact>
+      </div>
+)
+}
 
-// const mapMarkers = markers.map(marker =>{ 
-//   return (
-//      <LocationMarker
-//             lat={marker.latitude} 
-//             lng={marker.longitude}
-//           />
-       
-// )
-// // return mapMarkers
-// })
-// return (
-//       <div className = "map">     
-//         <GoogleMapReact
-//           bootstrapURLKeys={{ key: `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`}}
-//           defaultCenter={ center}
-//           defaultZoom={ zoom }
-//         >
-//             {markers}
-//         </GoogleMapReact>
-//       </div>
-// )}
+MapSLC.defaultProps = {
+            center: {
+            lat: 40.760780 ,
+            lng: -111.891045
+        },
+          zoom: 11
+        }
+}     
 
-          
-//       }      
-
-// export default SLCMap
+export default SLCMap
 
 
 
