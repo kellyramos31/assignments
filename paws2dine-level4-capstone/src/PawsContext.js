@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 import axios from "axios"
-const { Provider, Consumer } = React.createContext()
+const PawsContext = React.createContext()
 
 
 class PawsContextProvider extends Component {
@@ -8,6 +8,7 @@ class PawsContextProvider extends Component {
     state = {
         //need to create other arrays in state for dropdown menu info??  Figure out how to handle this.
         dogFriendlyRestaurants: [],
+        markers: [],
         myFaves: []
     }
 
@@ -51,8 +52,9 @@ class PawsContextProvider extends Component {
                 this.setState({
                     dogFriendlyRestaurants: res.data.businesses
                 })
-               
+                this.getMarkers()
                 console.log(res.data)
+                console.log(this.state.markers)
 
             })
 
@@ -60,6 +62,13 @@ class PawsContextProvider extends Component {
     }
 
 
+    getMarkers = () => {
+    const coords = this.state.dogFriendlyRestaurants.map(restaurant=>{return {lat: restaurant.coordinates.latitude, lng: restaurant.coordinates.longitude}})
+    this.setState({
+        markers: coords
+    })    
+
+}
 
 
 //Something to handle dropdown menu choices??  Examples:  based on smaller geography; cuisine; price point; rating
@@ -68,17 +77,18 @@ class PawsContextProvider extends Component {
 render() {
 
     return (
-        <Provider value={{
-            dogFriendlyRestaurants: this.state.dogFriendlyRestaurants
+        <PawsContext.Provider value={{
+            dogFriendlyRestaurants: this.state.dogFriendlyRestaurants,
+            markers: this.state.markers
         }}
         >
             {this.props.children}
-        </Provider>
+        </PawsContext.Provider>
     )
 }
 
 }
-export { PawsContextProvider, Consumer as PawsContextConsumer }
+export { PawsContextProvider, PawsContext }
 
 
 

@@ -7,13 +7,18 @@ import { PawsContextProvider } from "./PawsContext"
 
 
 ReactDOM.render(
-  <Router>
-  <PawsContextProvider>
-    <App />
-  </PawsContextProvider>
-    </Router>,
+ 
+     <Router>
+         <PawsContextProvider>
+               <App />
+         </PawsContextProvider>
+     </Router>
+,
   document.getElementById('root')
-)
+  )
+
+
+
 
 
 

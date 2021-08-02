@@ -1,16 +1,19 @@
-import React from "react"
+// import React from "react"
+import React, { useContext} from "react"
+import { PawsContext} from "./PawsContext"
 import "./LocationCard.css"
-import { PawsContextConsumer } from "./PawsContext"
+
 
 function LocationCard() {
+    const {dogFriendlyRestaurants} = useContext(PawsContext)
+    // console.log(dogFriendlyRestaurants)
+
+    const dogGrub = dogFriendlyRestaurants.map((business, index) => {
 
     return(
+       
         <div>
-            <PawsContextConsumer>
-                 {
-                    ({ dogFriendlyRestaurants }) => {
-                        const dogFriendly = dogFriendlyRestaurants.map((business, index) => 
-                     <div className = "grid-container">
+                <div className = "grid-container">
                         <div className="card" key={business.id} index={index}>
                             <img width="150px" height="150px"src={business.image_url} alt={business.name}/>
                             <p >
@@ -28,21 +31,13 @@ function LocationCard() {
                                </p>
                             
                         </div>
-                        </div>
-                        )
-                        return dogFriendly
-                    }
-                }
-
-                
-            </PawsContextConsumer>
-
-
+                            {dogGrub}
+                </div>
+                        
         </div>
     )
+    })
 }
 
 
 export default LocationCard
-
-
