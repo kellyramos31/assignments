@@ -2,7 +2,7 @@ import React from "react"
 // import React, { useContext} from "react"
 // import { PawsContext} from "./PawsContext"
 import { Switch, Route, Link } from "react-router-dom"
-// import SLCMap from "./SLCMap"
+import SLCMap from "./SLCMap"
 import Faves from "./Faves"
 import LocationCard from "./LocationCard"
 // import Loader from "./Loader"
@@ -29,7 +29,7 @@ return (
  
       <Switch>
        <Route exact path="/">
-          {/* <SLCMap/> */}
+          <SLCMap/>
        </Route>
        <Route path="/details">
           <LocationCard />

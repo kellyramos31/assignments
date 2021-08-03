@@ -11,47 +11,95 @@ import LocationMarker from "./LocationMarker"
 import { PawsContext} from "./PawsContext"
 
 
-function SLCMap (){
+export default function SLCMap(){
+  
 
-const {markers} = useContext(PawsContext)
-
-const MapSLC = ({center, zoom}) => {
-
-const mapMarkers = markers.map((marker, index) => (
-  // return (
- 
-      <LocationMarker
-            index={index}
-            key={marker.id}
-            lat={marker.latitude} 
-            lng={marker.longitude}
-          />
-       return mapMarkers
-))
-
-return(
-      <div className = "map">     
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`}}
-          defaultCenter={ center}
-          defaultZoom={ zoom }
-        >
-            {mapMarkers}
-        </GoogleMapReact>
-      </div>
-)
-}
-
-MapSLC.defaultProps = {
+  const defaultProps = {
             center: {
             lat: 40.760780 ,
             lng: -111.891045
         },
           zoom: 11
         }
-}     
 
-export default SLCMap
+const {dogFriendlyRestaurants} = useContext(PawsContext)
+
+const mapMarkers = dogFriendlyRestaurants.map((restaurant => 
+  
+//   <LocationMarker
+//             key={marker.id}
+//             lat= {marker.latitude}
+//             lng={marker.longitude}
+// />
+// ))
+
+//return (
+  // <div>
+ 
+    <LocationMarker
+            key={restaurant.id}
+            lat= {restaurant.coordinates.latitude}
+            lng={restaurant.coordinates.longitude}
+/>
+))
+return (
+  <div className="map">
+      <GoogleMapReact
+          bootstrapURLKeys={{ key: `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`}}
+          defaultCenter={ defaultProps.center}
+          defaultZoom={ defaultProps.zoom }
+        >
+          {mapMarkers}
+        </GoogleMapReact>
+
+  </div>
+  // </div>
+
+)
+}
+
+
+
+// function SLCMap (){
+
+// const {markers} = useContext(PawsContext)
+
+// const MapSLC = ({center, zoom}) => {
+
+// const mapMarkers = markers.map((marker, index) => (
+//   // return (
+ 
+//       <LocationMarker
+//             index={index}
+//             key={marker.id}
+//             lat={marker.latitude} 
+//             lng={marker.longitude}
+//           />
+//     // return mapMarkers  
+// ))
+
+// return(
+//       <div className="map">     
+//         <GoogleMapReact
+//           bootstrapURLKeys={{ key: `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`}}
+//           defaultCenter={ center}
+//           defaultZoom={ zoom }
+//         >
+//           {mapMarkers}
+//         </GoogleMapReact>
+//       </div>
+// )
+// }
+// MapSLC.defaultProps = {
+//             center: {
+//             lat: 40.760780 ,
+//             lng: -111.891045
+//         },
+//           zoom: 11
+//         }
+//       }
+
+// export default SLCMap
 
 
 
@@ -84,6 +132,35 @@ export default SLCMap
 //           lng={30.337844}
 //           text="My Marker"
 //         />
+//       </GoogleMapReact>
+//     </div>
+//   );
+// }
+
+//ANOTHER EXAMPLE:
+// export default function App() {
+//   return (
+//     <div className="App">
+//       <GoogleMapReact
+//         bootstrapURLKeys={{
+//           key: "AIzaSyDiKc4HxX5G7EfneIZBN_Hlk2_luoT_yvo",
+//           language: "en",
+//           region: "US"
+//         }}
+//         defaultCenter={{ lat: 51.506, lng: -0.169 }}
+//         defaultZoom={15}
+//       >
+//         {points.map(({ lat, lng, id, title }) => {
+//           return (
+//             <MyMarker
+//               key={id}
+//               lat={lat}
+//               lng={lng}
+//               text={id}
+//               tooltip={title}
+//             />
+//           );
+//         })}
 //       </GoogleMapReact>
 //     </div>
 //   );

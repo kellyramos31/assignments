@@ -52,23 +52,28 @@ class PawsContextProvider extends Component {
                 this.setState({
                     dogFriendlyRestaurants: res.data.businesses
                 })
-                this.getMarkers()
                 console.log(res.data)
                 console.log(this.state.markers)
+                // this.getMarkers()
 
             })
+
+            
 
             .catch(err => console.log(err))
     }
 
 
-    getMarkers = () => {
-    const coords = this.state.dogFriendlyRestaurants.map(restaurant=>{return {key: restaurant.id, lat: restaurant.coordinates.latitude, lng: restaurant.coordinates.longitude}})
-    this.setState({
-        markers: coords
-    })    
+    // getMarkers = () => {
+    // const coords = this.state.dogFriendlyRestaurants.map(restaurant=>{
+        
+    //     return {key: restaurant.id, lat: Number(restaurant.coordinates.latitude), lng: Number(restaurant.coordinates.longitude)}})
 
-}
+    // this.setState({
+    //     markers: coords
+    // })    
+
+// }
 
 
 //Something to handle dropdown menu choices??  Examples:  based on smaller geography; cuisine; price point; rating

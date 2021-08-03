@@ -5,14 +5,13 @@ import "./LocationCard.css"
 
 
 function LocationCard() {
-    const {dogFriendlyRestaurants} = useContext(PawsContext)
+  
     // console.log(dogFriendlyRestaurants)
-
+    const {dogFriendlyRestaurants} = useContext(PawsContext) 
     const dogGrub = dogFriendlyRestaurants.map((business, index) => {
-
-    return(
-       
-        <div>
+  
+      <div>
+                     
                 <div className = "grid-container">
                         <div className="card" key={business.id} index={index}>
                             <img width="150px" height="150px"src={business.image_url} alt={business.name}/>
@@ -31,13 +30,13 @@ function LocationCard() {
                                </p>
                             
                         </div>
-                            {dogGrub}
+                      
                 </div>
-                        
+                 
         </div>
-    )
-    })
-}
+    return dogGrub 
+    })}
+ 
 
 
 export default LocationCard
