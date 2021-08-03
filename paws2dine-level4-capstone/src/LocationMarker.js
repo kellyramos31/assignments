@@ -1,6 +1,6 @@
 import React from "react"
 import {Icon} from "@iconify/react"
-import locationIcon from "@iconify/icons-mdi/bone"
+import locationIcon from "@iconify/icons-mdi/dog-side"
 
 
 //maybe mapping of coords needs to happen here???

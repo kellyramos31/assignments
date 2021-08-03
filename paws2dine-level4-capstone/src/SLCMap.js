@@ -25,16 +25,7 @@ export default function SLCMap(){
 const {dogFriendlyRestaurants} = useContext(PawsContext)
 
 const mapMarkers = dogFriendlyRestaurants.map((restaurant => 
-  
-//   <LocationMarker
-//             key={marker.id}
-//             lat= {marker.latitude}
-//             lng={marker.longitude}
-// />
-// ))
 
-//return (
-  // <div>
  
     <LocationMarker
             key={restaurant.id}
@@ -53,7 +44,6 @@ return (
         </GoogleMapReact>
 
   </div>
-  // </div>
 
 )
 }
