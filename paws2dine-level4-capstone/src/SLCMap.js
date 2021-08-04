@@ -8,6 +8,7 @@ import React, { useContext} from "react"
 import "./SLCMap.css"
 import GoogleMapReact from 'google-map-react';
 import LocationMarker from "./LocationMarker"
+// import LocationInfoBox from "./LocationInfoBox"
 import { PawsContext} from "./PawsContext"
 
 
@@ -25,14 +26,14 @@ export default function SLCMap(){
 const {dogFriendlyRestaurants} = useContext(PawsContext)
 
 const mapMarkers = dogFriendlyRestaurants.map((restaurant => 
-
- 
     <LocationMarker
             key={restaurant.id}
             lat= {restaurant.coordinates.latitude}
             lng={restaurant.coordinates.longitude}
+            // onClick={()=>}
 />
 ))
+
 return (
   <div className="map">
       <GoogleMapReact
