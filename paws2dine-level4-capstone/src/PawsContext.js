@@ -1,5 +1,28 @@
 import React, { Component } from "react"
 import axios from "axios"
+import zero from "./assets/small_0.png"
+import one from "./assets/small_1.png"
+import oneHalf from "./assets/small_1_half.png"
+import two from "./assets/small_2.png"
+import twoHalf from "./assets/small_2_half.png"
+import three from "./assets/small_3.png"
+import threeHalf from "./assets/small_3_half.png"
+import four from "./assets/small_4.png"
+import fourHalf from "./assets/small_4_half.png"
+import five from "./assets/small_5.png"
+
+// export const starsArr = [
+//     zero,
+//     one,
+//     oneHalf,
+//     two,
+//     twoHalf,
+//     three,
+//     threeHalf,
+//     four,
+//     fourHalf,
+//     five
+// ]
 
 
 
@@ -66,44 +89,67 @@ class PawsContextProvider extends Component {
             .catch(err => console.log(err))
     }
 
-    //Switch statement for yelp stars rating
+    //Switch statement for yelp stars rating -- working with console.log but have to figure out images & how to return those
 
     yelpStars = (yelpRating) => {
     
-    // let rating
+    // let img
 
     switch (yelpRating) {    
-        case 0:  console.log("0");
+        case 0:  return <img src={zero} alt = "zero stars"/>;
+        //img = zero
+        //img = {zero}
+        //{zero}
+        //rating = zero
+        //console.log("0");
         //rating = <img src="./assets/small_0.png" alt="rating"/>;
         break; 
-        case 1.0: console.log("1.0");
+        case 1.0: return <img src={one} alt = "one star"/>
+        //rating = one
+        //console.log("1.0");
         //rating = <img src="./assets/small_1.png" alt="rating"/>;
         break;
-        case 1.5:  console.log("1.5");
+        case 1.5:  return <img src={oneHalf} alt = "one and half stars"/>
+        //rating = oneHalf
+        //console.log("1.5");
         //rating = <img src= "./assets/small_1_half.png" alt="rating"/>;
         break;
-        case 2.0:  console.log("2.0");
+        case 2.0: return <img src={two} alt = "two stars"/>
+        //rating = two
+        //console.log("2.0");
         //rating = <img src="./assets/small_2.png" alt="rating"/>;
         break;
-        case 2.5:  console.log("2.5");
+        case 2.5:  return <img src={twoHalf} alt = "two and half stars"/>;
+        //rating = twoHalf
+        //console.log("2.5");
         //rating = <img src="./assets/small_2_half.png" alt="rating"/>;
         break;
-        case 3.0:  console.log("3.0")
+        case 3.0:  return <img src={three} alt = "three stars"/>
+        //rating = three
+        //console.log("3.0")
         //rating = <img src="./assets/small_3.png" alt="rating"/>;
         break;
-        case 3.5: console.log("3.5")
+        case 3.5: return <img src={threeHalf} alt = "three and half stars"/>
+        //rating = threeHalf
+        //console.log("3.5")
         //rating = <img src="./assets/small_3_half.png" alt="rating"/>;
         break;
-        case 4.0:  console.log("4.0")
+        case 4.0: return <img src={four} alt = "four stars"/>
+        //rating = four
+        //console.log("4.0")
         //rating = <img src="./assets/small_4.png" alt="rating"/>;
         break;
-        case 4.5:  console.log("4.5")
-        // rating = <img src={"./assets/small_4_half.png"} alt="rating"/> ;
+        case 4.5: return <img src={fourHalf} alt = "four and half stars"/>
+        //rating = fourHalf
+        //<img src = {fourHalf} alt = "rating"/>;
+        //console.log({fourHalf});
         break;
-        case 5.0:  console.log("5.0");
+        case 5.0:  return <img src={five} alt = "five stars"/>
+        //rating = five
+        //console.log("5.0");
         //rating = <img src="./assets/small_5.png" alt="rating"/>;
         break;
-        default:   console.log("no rating available")
+        default:   return <h2>no rating available</h2>
         //rating = <h3>"no rating available"</h3> ;
     }
 }

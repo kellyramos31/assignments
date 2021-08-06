@@ -2,6 +2,8 @@
 import React, { useContext} from "react"
 import { PawsContext} from "./PawsContext"
 import "./LocationCard.css"
+// import fourHalf from "./assets/small_4_half.png" -- works to have image show up
+// import small_4_half from "./assets/small_4_half.png" -- works to have image show up
 
 
 
@@ -30,8 +32,11 @@ function LocationCard() {
                                 Price:  {business.price}
                                 <br/>
                                 Yelp Rating:  {yelpStars(business.rating)}
+                                
+                                {/* right now is just returning the "alt" value for all */}
 
-                                {/* Right now yelpStars function is "UNDEFINED"; if take out the ()=> says "yelpStars not a function" */}
+                                {/* Yelp Rating:  <img src={()=>yelpStars(business.rating)} alt="rating"/> */}
+                              
                             </p>
                         </div>
              ))}
@@ -40,3 +45,7 @@ function LocationCard() {
                      
                 
 export default LocationCard
+
+
+
+// <Button onClick={() => handleDelete(this.props.item._id)} > Delete This Ugly Thing</Button>
