@@ -1,14 +1,17 @@
 import React, { Component } from "react"
 import axios from "axios"
+
+
+
 const PawsContext = React.createContext()
 
 
 class PawsContextProvider extends Component {
 
     state = {
-        //need to create other arrays in state for dropdown menu info??  Figure out how to handle this.
         dogFriendlyRestaurants: [],
-        markers: [],
+        // markers: [],
+        //create an array of images here instead???
         myFaves: []
     }
 
@@ -53,7 +56,7 @@ class PawsContextProvider extends Component {
                     dogFriendlyRestaurants: res.data.businesses
                 })
                 console.log(res.data)
-                console.log(this.state.markers)
+                //console.log(this.state.markers)
                 // this.getMarkers()
 
             })
@@ -62,6 +65,52 @@ class PawsContextProvider extends Component {
 
             .catch(err => console.log(err))
     }
+
+    //Switch statement for yelp stars rating
+
+    yelpStars = (yelpRating) => {
+    
+    // let rating
+
+    switch (yelpRating) {    
+        case 0:  console.log("0");
+        //rating = <img src="./assets/small_0.png" alt="rating"/>;
+        break; 
+        case 1.0: console.log("1.0");
+        //rating = <img src="./assets/small_1.png" alt="rating"/>;
+        break;
+        case 1.5:  console.log("1.5");
+        //rating = <img src= "./assets/small_1_half.png" alt="rating"/>;
+        break;
+        case 2.0:  console.log("2.0");
+        //rating = <img src="./assets/small_2.png" alt="rating"/>;
+        break;
+        case 2.5:  console.log("2.5");
+        //rating = <img src="./assets/small_2_half.png" alt="rating"/>;
+        break;
+        case 3.0:  console.log("3.0")
+        //rating = <img src="./assets/small_3.png" alt="rating"/>;
+        break;
+        case 3.5: console.log("3.5")
+        //rating = <img src="./assets/small_3_half.png" alt="rating"/>;
+        break;
+        case 4.0:  console.log("4.0")
+        //rating = <img src="./assets/small_4.png" alt="rating"/>;
+        break;
+        case 4.5:  console.log("4.5")
+        // rating = <img src={"./assets/small_4_half.png"} alt="rating"/> ;
+        break;
+        case 5.0:  console.log("5.0");
+        //rating = <img src="./assets/small_5.png" alt="rating"/>;
+        break;
+        default:   console.log("no rating available")
+        //rating = <h3>"no rating available"</h3> ;
+    }
+}
+
+//****Yelp rating in LocationCard coming back as "UNDEFINED" currently....
+
+
 
 
     // getMarkers = () => {
@@ -84,7 +133,7 @@ render() {
     return (
         <PawsContext.Provider value={{
             dogFriendlyRestaurants: this.state.dogFriendlyRestaurants,
-            markers: this.state.markers
+            yelpStars: this.yelpStars
         }}
         >
             {this.props.children}

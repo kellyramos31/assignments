@@ -4,15 +4,18 @@ import { PawsContext} from "./PawsContext"
 import "./LocationCard.css"
 
 
+
+ //Figure out how to incorporate dropdown menu for different possibilities
+
 function LocationCard() {
  
-        const {dogFriendlyRestaurants} = useContext(PawsContext) 
-        console.log("This is from LocationCard.js:",   dogFriendlyRestaurants)
+        const {dogFriendlyRestaurants, yelpStars} = useContext(PawsContext) 
+        // console.log("This is from LocationCard.js:",   dogFriendlyRestaurants)
  
      return(          
          <div className = "grid-container">
              {dogFriendlyRestaurants.map((business=>
-                       <div className="card">
+                       <div className="card" key={business.id}>
                             
                          <img width="150px" height="150px"src={business.image_url} alt={business.name}/>
                             <p >
@@ -26,7 +29,9 @@ function LocationCard() {
                                 <br/>
                                 Price:  {business.price}
                                 <br/>
-                                Yelp Rating:  {business.rating}
+                                Yelp Rating:  {yelpStars(business.rating)}
+
+                                {/* Right now yelpStars function is "UNDEFINED"; if take out the ()=> says "yelpStars not a function" */}
                             </p>
                         </div>
              ))}
