@@ -11,21 +11,6 @@ import four from "./assets/small_4.png"
 import fourHalf from "./assets/small_4_half.png"
 import five from "./assets/small_5.png"
 
-// export const starsArr = [
-//     zero,
-//     one,
-//     oneHalf,
-//     two,
-//     twoHalf,
-//     three,
-//     threeHalf,
-//     four,
-//     fourHalf,
-//     five
-// ]
-
-
-
 const PawsContext = React.createContext()
 
 
@@ -92,65 +77,29 @@ class PawsContextProvider extends Component {
     //Switch statement for yelp stars rating -- working with console.log but have to figure out images & how to return those
 
     yelpStars = (yelpRating) => {
-    
-    // let img
-
+   
     switch (yelpRating) {    
         case 0:  return <img src={zero} alt = "zero stars"/>;
-        //img = zero
-        //img = {zero}
-        //{zero}
-        //rating = zero
-        //console.log("0");
-        //rating = <img src="./assets/small_0.png" alt="rating"/>;
-        break; 
-        case 1.0: return <img src={one} alt = "one star"/>
-        //rating = one
-        //console.log("1.0");
-        //rating = <img src="./assets/small_1.png" alt="rating"/>;
-        break;
-        case 1.5:  return <img src={oneHalf} alt = "one and half stars"/>
-        //rating = oneHalf
-        //console.log("1.5");
-        //rating = <img src= "./assets/small_1_half.png" alt="rating"/>;
-        break;
-        case 2.0: return <img src={two} alt = "two stars"/>
-        //rating = two
-        //console.log("2.0");
-        //rating = <img src="./assets/small_2.png" alt="rating"/>;
-        break;
+        // break; (when use this says "Unreachable Code" error)
+        case 1.0: return <img src={one} alt = "one star"/>;
+        // break; (when use this says "Unreachable Code" error)
+        case 1.5:  return <img src={oneHalf} alt = "one and half stars"/>;
+        // break; (when use this says "Unreachable Code" error)
+        case 2.0: return <img src={two} alt = "two stars"/>;
+        // break; (when use this says "Unreachable Code" error)
         case 2.5:  return <img src={twoHalf} alt = "two and half stars"/>;
-        //rating = twoHalf
-        //console.log("2.5");
-        //rating = <img src="./assets/small_2_half.png" alt="rating"/>;
-        break;
-        case 3.0:  return <img src={three} alt = "three stars"/>
-        //rating = three
-        //console.log("3.0")
-        //rating = <img src="./assets/small_3.png" alt="rating"/>;
-        break;
-        case 3.5: return <img src={threeHalf} alt = "three and half stars"/>
-        //rating = threeHalf
-        //console.log("3.5")
-        //rating = <img src="./assets/small_3_half.png" alt="rating"/>;
-        break;
-        case 4.0: return <img src={four} alt = "four stars"/>
-        //rating = four
-        //console.log("4.0")
-        //rating = <img src="./assets/small_4.png" alt="rating"/>;
-        break;
-        case 4.5: return <img src={fourHalf} alt = "four and half stars"/>
-        //rating = fourHalf
-        //<img src = {fourHalf} alt = "rating"/>;
-        //console.log({fourHalf});
-        break;
-        case 5.0:  return <img src={five} alt = "five stars"/>
-        //rating = five
-        //console.log("5.0");
-        //rating = <img src="./assets/small_5.png" alt="rating"/>;
-        break;
+        // break; (when use this says "Unreachable Code" error)
+        case 3.0:  return <img src={three} alt = "three stars"/>;
+        // break; (when use this says "Unreachable Code" error)
+        case 3.5: return <img src={threeHalf} alt = "three and half stars"/>;
+        // break; (when use this says "Unreachable Code" error)
+        case 4.0: return <img src={four} alt = "four stars"/>;
+        // break; (when use this says "Unreachable Code" error)
+        case 4.5: return <img src={fourHalf} alt = "four and half stars"/>;
+        // break; (when use this says "Unreachable Code" error)
+        case 5.0:  return <img src={five} alt = "five stars"/>;
+        // break; (when use this says "Unreachable Code" error)
         default:   return <h2>no rating available</h2>
-        //rating = <h3>"no rating available"</h3> ;
     }
 }
 
