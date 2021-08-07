@@ -37,7 +37,9 @@ function LocationCard() {
                                     
                                 {/* </div>   */}
                                 <div>Click the Yelp logo for more restaurant details.</div>
-                               <button key={business.id} onClick={()=>handleFave(business.id, business.name, business.location.address1, business.location.city, business.display_phone)}>Add to Faves</button>
+                               <button key={business.id} 
+                                onClick={()=>handleFave(business.id, business.name, business.location.address1, business.location.city, business.display_phone)}>
+                                  Add to Faves</button>
                             </div>
                             
                         </div>

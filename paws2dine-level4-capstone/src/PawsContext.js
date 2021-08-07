@@ -120,6 +120,8 @@ handleFave = (id, restaurant, address, city, phone) => {
             myFaves:  [...prevState.myFaves, newFave]
     }
             
+    //Possible to add info here to 
+
 })
 }
 
@@ -148,7 +150,8 @@ render() {
         <PawsContext.Provider value={{
             dogFriendlyRestaurants: this.state.dogFriendlyRestaurants,
             yelpStars: this.yelpStars,
-            handleFave: this.handleFave
+            handleFave: this.handleFave,
+            myFaves: this.state.myFaves
         }}
         >
             {this.props.children}
