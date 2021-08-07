@@ -103,7 +103,26 @@ class PawsContextProvider extends Component {
     }
 }
 
-//****Yelp rating in LocationCard coming back as "UNDEFINED" currently....
+
+handleFave = (id, restaurant, address, city, phone) => {
+    console.log("id:", id)  //this is console logging the correct business id
+    const newFave = {
+        id: id,
+        restaurant: restaurant,
+        address: address,
+        city: city,  
+        phone: phone
+        // business:  //??? how reference the individual business info to add to array???  Info coming back as "undefined"
+    }
+
+    this.setState (prevState=> {
+        return {
+            myFaves:  [...prevState.myFaves, newFave]
+    }
+            
+})
+}
+
 
 
 
@@ -128,7 +147,8 @@ render() {
     return (
         <PawsContext.Provider value={{
             dogFriendlyRestaurants: this.state.dogFriendlyRestaurants,
-            yelpStars: this.yelpStars
+            yelpStars: this.yelpStars,
+            handleFave: this.handleFave
         }}
         >
             {this.props.children}

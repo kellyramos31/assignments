@@ -1,3 +1,7 @@
+body {
+  margin-left: 8px;
+}
+
 .grid-container {
   display: grid;
   grid-template-columns: repeat (4, 2fr);
@@ -6,9 +10,51 @@
 .card {
   display: flex;
   flex-direction: row;
+  margin-top: 20px;
   margin-bottom: 10px;
 }
 
-img {
-  margin-right: 8px;
+.bus-photo {
+  margin-right: 0px;
+  margin-left: 8px;
+}
+
+.bus-details {
+  border: 2px solid black;
+  margin-left: 0px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.business-name {
+  margin-top: 15px;
+  font-weight: bold;
+  font-family: Arial;
+  font-style: italic;
+  color: green;
+}
+
+.price-rating {
+  font-weight: bold;
+  color: green;
+}
+
+.bus-link {
+}
+
+.yelp-logo {
+  margin-top: -5px;
+  margin-left: -20px;
+  margin-bottom: -10px;
+  width: 85px;
+  height: 55px;
+}
+
+a:hover {
+  background-color: red;
+}
+
+button {
+  background-color: green;
+  color: white;
 }

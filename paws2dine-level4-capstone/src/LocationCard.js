@@ -2,6 +2,7 @@
 import React, { useContext} from "react"
 import { PawsContext} from "./PawsContext"
 import "./LocationCard.css"
+import logo from "./assets/Logo_RGB.png"
 // import fourHalf from "./assets/small_4_half.png" -- works to have image show up
 // import small_4_half from "./assets/small_4_half.png" -- works to have image show up
 
@@ -11,35 +12,38 @@ import "./LocationCard.css"
 
 function LocationCard() {
  
-        const {dogFriendlyRestaurants, yelpStars} = useContext(PawsContext) 
+        const {dogFriendlyRestaurants, yelpStars, handleFave} = useContext(PawsContext) 
         // console.log("This is from LocationCard.js:",   dogFriendlyRestaurants)
  
      return(          
          <div className = "grid-container">
-             {dogFriendlyRestaurants.map((business=>
-                       <div className="card" key={business.id}>
+             {dogFriendlyRestaurants.map((business, index)=>
+                       <div className="card" index={index}>
                             
-                         <img width="150px" height="150px"src={business.image_url} alt={business.name}/>
-                            <p >
-                                {business.name}
-                                <br/>
-                                Address:  {business.location.address}
-                                <br/>
-                                City:  {business.location.city}
-                                <br/>
-                                Phone:  {business.phone}
-                                <br/>
-                                Price:  {business.price}
-                                <br/>
-                                Yelp Rating:  {yelpStars(business.rating)}
+                         <img className="bus-photo" width="235px" height="235px"src={business.image_url} alt={business.name}/>
+                            <div className="bus-details">
+                                <div className="business-name">{business.name}</div>
+                                <div>Address:  {business.location.address1}</div>
+                                <div>City:  {business.location.city}</div>
+                                <div>Phone:  {business.display_phone}</div>
+                                <div>Category: {business.categories[0].title}</div>
+                                <a href={business.url}>
+                                        <img className="yelp-logo" src={logo} alt="Yelp Logo"/> 
+                                    </a>
+                                <div>{yelpStars(business.rating)} from {business.review_count} reviews</div>
+                                <div className="price-rating">Price:  {business.price}</div>
                                 
-                                {/* right now is just returning the "alt" value for all */}
-
-                                {/* Yelp Rating:  <img src={()=>yelpStars(business.rating)} alt="rating"/> */}
-                              
-                            </p>
+                                {/* <div className="bus-link"> */}
+                                    
+                                {/* </div>   */}
+                                <div>Click the Yelp logo for more restaurant details.</div>
+                               <button key={business.id} onClick={()=>handleFave(business.id, business.name, business.location.address1, business.location.city, business.display_phone)}>Add to Faves</button>
+                            </div>
+                            
                         </div>
-             ))}
+
+                         
+             )}
                  </div> 
      )}
                      
