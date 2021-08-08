@@ -1,0 +1,13 @@
+li {
+  list-style-image: url(./assets/print-306214_640.png);
+}
+
+.restaurant {
+  color: green;
+  font-family: Arial;
+  font-style: italic;
+}
+
+ul {
+  margin-left: 30%;
+}

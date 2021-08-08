@@ -8,7 +8,7 @@ import React, { useContext} from "react"
 import "./SLCMap.css"
 import GoogleMapReact from 'google-map-react';
 import LocationMarker from "./LocationMarker"
-// import LocationInfoBox from "./LocationInfoBox"
+import LocationInfoBox from "./LocationInfoBox"
 import { PawsContext} from "./PawsContext"
 
 
@@ -28,9 +28,11 @@ const {dogFriendlyRestaurants} = useContext(PawsContext)
 const mapMarkers = dogFriendlyRestaurants.map((restaurant => 
     <LocationMarker
             key={restaurant.id}
+            name={restaurant.name}
+            address={restaurant.location.address1}
             lat= {restaurant.coordinates.latitude}
             lng={restaurant.coordinates.longitude}
-            // onClick={()=>}
+//             onClick={()=>}
 />
 ))
 

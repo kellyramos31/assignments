@@ -120,7 +120,7 @@ handleFave = (id, restaurant, address, city, phone) => {
             myFaves:  [...prevState.myFaves, newFave]
     }
             
-    //Possible to add info here to 
+    //Possible to also change color of map icon somehow here??
 
 })
 }
