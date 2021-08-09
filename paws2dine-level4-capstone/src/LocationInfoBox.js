@@ -1,15 +1,16 @@
+import "./LocationInfoBox.css"
+import print from "./assets/print-306214_640.png"
+
 
 const LocationInfoBox = ({info}) => {
 
     return (
         <div className="location-info">
-            <h2>Restaurant</h2>
-                <h3>Name: {info.name}</h3>
-            <ul>
-                <li>{info.location.address1}</li>
-                <li>{info.location.city}</li>
-            </ul>
-
+            <img src={print} alt="paw" />
+            <div className="rest-name">{info.name}</div>
+            <div className="street">{info.address}/</div>
+            <div className="city">{info.city}</div>
+            <div className="phone">{info.phone}</div>
         </div>
 
     )

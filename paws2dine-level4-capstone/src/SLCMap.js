@@ -5,6 +5,7 @@
 // NOTE:  website Snazzy Maps has alternatives styles for the Google Maps, if don't want the default
 
 import React, { useContext} from "react"
+import {useState} from "react"
 import "./SLCMap.css"
 import GoogleMapReact from 'google-map-react';
 import LocationMarker from "./LocationMarker"
@@ -13,7 +14,7 @@ import { PawsContext} from "./PawsContext"
 
 
 export default function SLCMap(){
-  
+  const [locationInfo, setLocationInfo] = useState(null)
 
   const defaultProps = {
             center: {
@@ -32,7 +33,7 @@ const mapMarkers = dogFriendlyRestaurants.map((restaurant =>
             address={restaurant.location.address1}
             lat= {restaurant.coordinates.latitude}
             lng={restaurant.coordinates.longitude}
-//             onClick={()=>}
+            onClick={()=> setLocationInfo({name: restaurant.name, address: restaurant.location.address1, city: restaurant.location.city, phone: restaurant.display_phone })}
 />
 ))
 
@@ -42,10 +43,11 @@ return (
           bootstrapURLKeys={{ key: `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`}}
           defaultCenter={ defaultProps.center}
           defaultZoom={ defaultProps.zoom }
+          // yesIWantToUseGoogleMapApiInternals
         >
           {mapMarkers}
         </GoogleMapReact>
-
+    {locationInfo && <LocationInfoBox info={locationInfo}/>}
   </div>
 
 )
