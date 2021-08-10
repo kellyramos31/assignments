@@ -1,0 +1,14 @@
+.app-title {
+  color: white;
+  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  font-family: cursive;
+  font-size: 30px;
+}
+
+.paws2-logo {
+  border-radius: 19px;
+  width: 100%;
+  height: 120px;
+}

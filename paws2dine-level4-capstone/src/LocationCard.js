@@ -20,7 +20,7 @@ function LocationCard() {
              {dogFriendlyRestaurants.map((business, index)=>
                        <div className="card" index={index}>
                             
-                         <img className="bus-photo" width="235px" height="235px"src={business.image_url} alt={business.name}/>
+                         <img className="bus-photo" width="250px" height="250px"src={business.image_url} alt={business.name}/>
                             <div className="bus-details">
                                 <div className="business-name">{business.name}</div>
                                 <div>Address:  {business.location.address1}</div>
@@ -31,7 +31,7 @@ function LocationCard() {
                                         <img className="yelp-logo" src={logo} alt="Yelp Logo"/> 
                                     </a>
                                 <div>{yelpStars(business.rating)} from {business.review_count} reviews</div>
-                                <div className="price-rating">Price:  {business.price}</div>
+                                <div className="price-rating"><span>Price Rating:</span>  {business.price}</div>
                                 
                                 {/* <div className="bus-link"> */}
                                     
@@ -39,7 +39,7 @@ function LocationCard() {
                                 <div>Click the Yelp logo for more restaurant details.</div>
                                <button key={business.id} 
                                 onClick={()=>handleFave(business.id, business.name, business.location.address1, business.location.city, business.display_phone)}>
-                                  Add to Faves</button>
+                                  Add to Faves ❤</button>
                             </div>
                             
                         </div>

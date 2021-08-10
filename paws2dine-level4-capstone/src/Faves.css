@@ -3,11 +3,13 @@ li {
 }
 
 .restaurant {
-  color: green;
+  color: #32cd32;
   font-family: Arial;
   font-style: italic;
 }
 
 ul {
   margin-left: 30%;
+  margin-right: 30%;
+  color: whitesmoke;
 }

@@ -19,7 +19,11 @@ function Faves() {
             <div index={index}>
             <ul className="restaurant-list">
                 <li >
-                    <div><strong className="restaurant">{fave.restaurant}</strong>: {fave.address}, {fave.city}, Phone:  {fave.phone}</div>
+                    <div><strong className="restaurant">{fave.restaurant}</strong> 
+                    <br />
+                    {fave.address}, {fave.city} 
+                    <br/>
+                    Phone:  {fave.phone}</div>
                 </li>
 
             </ul>
