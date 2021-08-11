@@ -19,8 +19,8 @@ function LocationCard() {
          <div className = "grid-container">
              {dogFriendlyRestaurants.map((business, index)=>
                        <div className="card" index={index}>
-                            
-                         <img className="bus-photo" width="250px" height="250px"src={business.image_url} alt={business.name}/>
+                         <img className="bus-photo" width="25%" height="250px" src={business.image_url} alt={business.name}/>    
+                         {/* <img className="bus-photo" width="250px" height="250px"src={business.image_url} alt={business.name}/>  */}
                             <div className="bus-details">
                                 <div className="business-name">{business.name}</div>
                                 <div>Address:  {business.location.address1}</div>

@@ -125,6 +125,20 @@ handleFave = (id, restaurant, address, city, phone) => {
 })
 }
 
+handleFaveDelete = (id) => {
+    console.log("delete this id", id) 
+    this.setState(prevState => {
+      return {
+        myFaves: prevState.myFaves.filter(fave=> fave.id !== id)
+      }
+    })
+  }
+
+
+handleMyDogPhoto = () => {
+
+}
+
 
 
 
@@ -151,7 +165,8 @@ render() {
             dogFriendlyRestaurants: this.state.dogFriendlyRestaurants,
             yelpStars: this.yelpStars,
             handleFave: this.handleFave,
-            myFaves: this.state.myFaves
+            myFaves: this.state.myFaves,
+            handleFaveDelete: this.handleFaveDelete
         }}
         >
             {this.props.children}
@@ -319,3 +334,15 @@ export { PawsContextProvider, PawsContext }
 //     })
 //     .catch(err => console.log(err))
 // }
+
+
+// deleteMeme = (deletedMeme, id, index) => {
+//     console.log("deleteMeme was clicked -- deletedMeme", deletedMeme)
+//     console.log("deletedMemetid: ", id)
+//     console.log("deletedMeme.url", deletedMeme.url)
+//     this.setState(prevState => {
+//       return {
+//         myMemesList: prevState.myMemesList.filter(meme => meme.id !== id && meme.key === index)
+//       }
+//     })
+//   }
