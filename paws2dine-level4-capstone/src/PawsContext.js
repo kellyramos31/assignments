@@ -20,6 +20,7 @@ class PawsContextProvider extends Component {
         dogFriendlyRestaurants: [],
         // markers: [],
         //create an array of images here instead???
+        imageUrl: "",
         myFaves: []
     }
 
@@ -74,31 +75,42 @@ class PawsContextProvider extends Component {
             .catch(err => console.log(err))
     }
 
-    //Switch statement for yelp stars rating -- working with console.log but have to figure out images & how to return those
+    //Switch statement to display Yelp Stars ratings 
+    //(NOTE:  leave breaks in even though "unreachable code" warning)
 
     yelpStars = (yelpRating) => {
    
     switch (yelpRating) {    
         case 0:  return <img src={zero} alt = "zero stars"/>;
-        // break; (when use this says "Unreachable Code" error)
+        // eslint-disable-next-line
+        break; 
         case 1.0: return <img src={one} alt = "one star"/>;
-        // break; (when use this says "Unreachable Code" error)
+        // eslint-disable-next-line
+        break; 
         case 1.5:  return <img src={oneHalf} alt = "one and half stars"/>;
-        // break; (when use this says "Unreachable Code" error)
+        // eslint-disable-next-line
+        break;
         case 2.0: return <img src={two} alt = "two stars"/>;
-        // break; (when use this says "Unreachable Code" error)
+        // eslint-disable-next-line
+        break;
         case 2.5:  return <img src={twoHalf} alt = "two and half stars"/>;
-        // break; (when use this says "Unreachable Code" error)
+        // eslint-disable-next-line
+        break;
         case 3.0:  return <img src={three} alt = "three stars"/>;
-        // break; (when use this says "Unreachable Code" error)
+        // eslint-disable-next-line
+        break;
         case 3.5: return <img src={threeHalf} alt = "three and half stars"/>;
-        // break; (when use this says "Unreachable Code" error)
+        // eslint-disable-next-line
+        break;
         case 4.0: return <img src={four} alt = "four stars"/>;
-        // break; (when use this says "Unreachable Code" error)
+        // eslint-disable-next-line
+        break;
         case 4.5: return <img src={fourHalf} alt = "four and half stars"/>;
-        // break; (when use this says "Unreachable Code" error)
+        // eslint-disable-next-line
+        break;
         case 5.0:  return <img src={five} alt = "five stars"/>;
-        // break; (when use this says "Unreachable Code" error)
+        // eslint-disable-next-line
+        break;
         default:   return <h2>no rating available</h2>
     }
 }
@@ -112,7 +124,6 @@ handleFave = (id, restaurant, address, city, phone) => {
         address: address,
         city: city,  
         phone: phone
-        // business:  //??? how reference the individual business info to add to array???  Info coming back as "undefined"
     }
 
     this.setState (prevState=> {
@@ -135,24 +146,28 @@ handleFaveDelete = (id) => {
   }
 
 
-handleMyDogPhoto = () => {
+handleChange = (e) => {
+        const { name, value } = e.target
+        this.setState({
+            [name]: value
+        })
+    }
 
-}
 
+//need to add a toggle for form so show if want to add photo & then hide if not???
 
+// handleMyDogPhoto = () => {
 
+// this.setState(prevState => ({
+//     myFaves: {                   // object that we want to update
+//         ...prevState.myFaves,    // keep all other key-value pairs
+//         photo: imageUrl       // update the value of specific key
+//     }
+// }))
 
-
-    // getMarkers = () => {
-    // const coords = this.state.dogFriendlyRestaurants.map(restaurant=>{
-        
-    //     return {key: restaurant.id, lat: Number(restaurant.coordinates.latitude), lng: Number(restaurant.coordinates.longitude)}})
-
-    // this.setState({
-    //     markers: coords
-    // })    
 
 // }
+
 
 
 //Something to handle dropdown menu choices??  Examples:  based on smaller geography; cuisine; price point; rating
@@ -166,7 +181,9 @@ render() {
             yelpStars: this.yelpStars,
             handleFave: this.handleFave,
             myFaves: this.state.myFaves,
-            handleFaveDelete: this.handleFaveDelete
+            handleFaveDelete: this.handleFaveDelete,
+            handleChange: this.handleChange,
+            handleMyDogPhoto: this.handleMyDogPhoto
         }}
         >
             {this.props.children}

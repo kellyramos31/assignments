@@ -16,10 +16,10 @@ function LocationCard() {
         // console.log("This is from LocationCard.js:",   dogFriendlyRestaurants)
  
      return(          
-         <div className = "grid-container">
+         <div className = "flex-container">
              {dogFriendlyRestaurants.map((business, index)=>
-                       <div className="card" index={index}>
-                         <img className="bus-photo" width="25%" height="250px" src={business.image_url} alt={business.name}/>    
+                       <div className="card" key ={business.id} index={index}>
+                         <img className="bus-photo" width="40%" height="250px" src={business.image_url} alt={business.name}/>    
                          {/* <img className="bus-photo" width="250px" height="250px"src={business.image_url} alt={business.name}/>  */}
                             <div className="bus-details">
                                 <div className="business-name">{business.name}</div>
@@ -52,6 +52,3 @@ function LocationCard() {
                 
 export default LocationCard
 
-
-
-// <Button onClick={() => handleDelete(this.props.item._id)} > Delete This Ugly Thing</Button>

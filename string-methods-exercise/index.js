@@ -111,3 +111,17 @@ function capsOnSpace() {
 capsOnSpace()
 */
 
+function reverse(word) {
+    const splitItUp = word.split("").reverse().join("")
+    console.log(splitItUp)
+}
+reverse("cat")
+
+
+
+
+  // console.log(splitItUp)
+    // const flipIt = splitItUp.reverse()
+    // console.log(flipIt)
+    // const joinItBack = flipIt.join()
+    // console.log(joinItBack)

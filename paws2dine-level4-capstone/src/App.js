@@ -30,22 +30,20 @@ return (
         <Header/>
       <nav>
          <div>
-        <Link to="/">MAP</Link>
+            <Link to="/">MAP</Link>
         </div>
         <div>
-        <Link to="/details">DETAILS</Link>
+            <Link to="/details">DETAILS</Link>
         </div>
         <div>
-        <Link to="/faves">FAVES</Link>
+            <Link to="/faves">FAVES</Link>
         </div>
       </nav>
       
-      <img className="header-dog1" src={glassesDog} alt="glasses dog" />
-      <img className="header-dog2"src={fluffyPuppy} alt="fluffy puppy" />
-      <img className="header-dog3"src={dogWaterBottle} alt="dog water bottle table"/>
-      {/* <img className="header-dog1" src={glassesDog} alt="glasses dog" width="140px" height="90px"/>
-      <img className="header-dog2"src={fluffyPuppy} alt="fluffy puppy" width="220px" height="120px"/> */}
- </div>
+         <img className="header-dog1" src={glassesDog} alt="glasses dog" />
+         <img className="header-dog2"src={fluffyPuppy} alt="fluffy puppy" />
+         <img className="header-dog3"src={dogWaterBottle} alt="dog water bottle table"/>
+      </div>
 
       <Switch>
        <Route exact path="/">
