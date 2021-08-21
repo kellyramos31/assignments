@@ -1,9 +1,12 @@
 import React, { useContext} from "react"
+
 import { PawsContext} from "./PawsContext"
 import "./Faves.css"
 
 
+
 function Faves() {
+   
 
     const {myFaves, handleFaveDelete} = useContext(PawsContext) 
     //const favorites = myFaves.map()

@@ -11,7 +11,6 @@ import "./App.css"
 import glassesDog from "./assets/sunglasses-dog-cropped.jpg"
 import fluffyPuppy from "./assets/fluffy-puppy.jpg"
 import dogWaterBottle from "./assets/dog-water-bottle.jpg"
-// import Loader from "./Loader"
 
 
 
@@ -62,3 +61,4 @@ return (
 }
 
 export default App;
+

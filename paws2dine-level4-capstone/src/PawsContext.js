@@ -17,9 +17,11 @@ const PawsContext = React.createContext()
 class PawsContextProvider extends Component {
 
     state = {
+        // yelpResponse: [],
         dogFriendlyRestaurants: [],
         // markers: [],
         //create an array of images here instead???
+        isHearted: false,
         imageUrl: "",
         myFaves: []
     }
@@ -61,22 +63,100 @@ class PawsContextProvider extends Component {
 
             .then(res => {
                 console.log("axios GET/component did mount working")
+                console.log(res.data)
+
                 this.setState({
                     dogFriendlyRestaurants: res.data.businesses
                 })
-                console.log(res.data)
-                //console.log(this.state.markers)
-                // this.getMarkers()
 
+                this.addToggleProperty()
+    
             })
-
             
-
             .catch(err => console.log(err))
+
+           
     }
 
     //Switch statement to display Yelp Stars ratings 
     //(NOTE:  leave breaks in even though "unreachable code" warning)
+
+    // componentDidMount() {
+    //     //Q:  How combine the two axios GET requests needed for total datapoints??
+    //     //Call to Yelp Fusion API to get business data:
+    //     //Q:  Have to do multiple requests b/c limited to #  on each request??? [need to use offset]
+    //     //axios.all to do the 2 requests to get 1-50 & 51-100? + axios.spread?? (interceptors??)
+    //     //look for info re:  pagination/recursively//for loop
+
+
+    //     axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=Salt Lake City&categories=restaurants&term=dog friendly}`, {
+
+    //         headers: {
+    //             Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
+    //         }
+    //         ,
+
+    //         params: {
+    //             limit: 50
+    //         //     categories: "restaurants",
+    //         //     term: "dog friendly"
+    //         //     // limit: 50,
+    //         //     // offset: 51
+    //         //     //NOTE:  total of ~86 restaurants show up (b/c only 50 each request => do I need 2 requests to get all?? -- how structure this??)
+    //         //     //need offset of 81?? Or maybe sort by rated & just return top 50 based on ratings??
+    //         //     //other options = open_at, open_now 
+    //         //      
+    //         //     //ALSO:  options to sort by rating, review_count, distance
+    //         }
+    //     })
+
+    //         .then(res => {
+    //             console.log("axios GET/component did mount working")
+    //             this.setState({
+    //                 dogFriendlyRestaurants: res.data.businesses
+    //             })
+    //             console.log(res.data)
+    //             //console.log(this.state.markers)
+    //             // this.getMarkers()
+
+    //         })
+
+            
+
+    //         .catch(err => console.log(err))
+    // }
+
+
+
+
+    // addToggleProperty = () => {
+    //     const dogFriendlyRestaurants = this.state.yelpResponse.map(business=>{
+    //         return
+    //                {...business, isHearted:false}
+    //     })
+    //             this.setState({
+    //                 dogFriendlyRestaurants: dogFriendlyRestaurants
+    //             })
+
+    // }
+
+   addToggleProperty = () => {
+        let addedProperty = this.state.dogFriendlyRestaurants.map((item)=>{
+            item.isHearted = false
+            return item
+        })
+        console.log("data with isHearted added:", addedProperty)
+        this.setState({
+            dogFriendlyRestaurants: addedProperty
+        })
+        
+        // this.setState(prevState=> ({
+        //     dogFriendlyRestaurants: {...prevState.dogFriendlyRestaurants, isHearted: false}
+        // }))
+
+        
+    }
+    
 
     yelpStars = (yelpRating) => {
    
@@ -115,16 +195,30 @@ class PawsContextProvider extends Component {
     }
 }
 
+toggleHeart = (id) => {
+     // 
+    console.log("toggleHeart clicked! This is cuurent isHearted state:", this.state.isHearted)
+    this.setState({isHearted: !this.state.isHearted})
+    console.log("toggleHeart id", id)
+}
 
-handleFave = (id, restaurant, address, city, phone) => {
+
+
+handleFave = (id, restaurant, address, city, phone, isHearted) => {
+    // console.log("current isHearted state:", isHearted)
+    this.toggleHeart(id)
+    // console.log("isHearted after click?", !isHearted)
     console.log("id:", id)  //this is console logging the correct business id
     const newFave = {
         id: id,
         restaurant: restaurant,
         address: address,
         city: city,  
-        phone: phone
+        phone: phone,
+        isHearted: !this.state.isHearted
     }
+
+    console.log("newFave is:", newFave)
 
     this.setState (prevState=> {
         return {
@@ -132,9 +226,11 @@ handleFave = (id, restaurant, address, city, phone) => {
     }
             
     //Possible to also change color of map icon somehow here??
-
 })
+ 
 }
+
+
 
 handleFaveDelete = (id) => {
     console.log("delete this id", id) 
@@ -143,7 +239,10 @@ handleFaveDelete = (id) => {
         myFaves: prevState.myFaves.filter(fave=> fave.id !== id)
       }
     })
+  
   }
+
+
 
 
 handleChange = (e) => {
@@ -177,10 +276,13 @@ render() {
 
     return (
         <PawsContext.Provider value={{
+            // loading: this.state.loading,
             dogFriendlyRestaurants: this.state.dogFriendlyRestaurants,
             yelpStars: this.yelpStars,
             handleFave: this.handleFave,
             myFaves: this.state.myFaves,
+            // isHearted: this.state.isHearted,
+            // toggleHeart: this.toggleHeart,
             handleFaveDelete: this.handleFaveDelete,
             handleChange: this.handleChange,
             handleMyDogPhoto: this.handleMyDogPhoto
@@ -363,3 +465,6 @@ export { PawsContextProvider, PawsContext }
 //       }
 //     })
 //   }
+
+
+// if (this.props.isEditing) this.props.editOrNot()
