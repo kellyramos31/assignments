@@ -228,43 +228,9 @@ handleFave = (id, restaurant, address, city, phone, isHearted) => {
     this.handleFaveDelete(id)
 }
 }         
-    
+ 
 
 //Possible to also change color of map icon somehow here??
-
-//     handleFave = (id, restaurant, address, city, phone, isHearted) => {
-//     console.log("current isHearted state:", isHearted)
-//     this.handleFaveToggle(id)
-//     // this.buttonText()
-//     // console.log("isHearted after click?", !isHearted)
-//     console.log("id:", id)  //this is console logging the correct business id
-//     const newFave = {
-//         id: id,
-//         restaurant: restaurant,
-//         address: address,
-//         city: city,  
-//         phone: phone,
-//         isHearted: this.state.isHearted
-//     }
-
-    
-//     // console.log("newFave button text here", newFave.buttonTextHere)
-    
-//     // console.log("console log this.state.buttonTextHere", this.state.buttonTextHere)
-//     console.log("newFave is:", newFave)
-
-//     this.setState (prevState=> {
-//         return {
-//             myFaves:  [...prevState.myFaves, newFave]
-//     }
-            
-//     //Possible to also change color of map icon somehow here??
-// })
- 
-// }
- 
-
-
 
 handleFaveDelete = (id) => {
     console.log("delete this id", id) 
@@ -273,7 +239,7 @@ handleFaveDelete = (id) => {
         myFaves: prevState.myFaves.filter(fave=> fave.id !== id)
       }
     })
-  
+    this.handleFaveToggle(id)
   }
 
 
@@ -284,7 +250,7 @@ handleChange = (e) => {
         })
     }
 
-
+//Something to handle dropdown menu choices??  Examples:  based on smaller geography; cuisine; price point; rating
 
 //need to add a toggle for form so show if want to add photo & then hide if not???
 
@@ -299,10 +265,6 @@ handleChange = (e) => {
 
 
 // }
-
-
-
-//Something to handle dropdown menu choices??  Examples:  based on smaller geography; cuisine; price point; rating
 
 
 render() {
