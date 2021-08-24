@@ -197,14 +197,13 @@ handleFaveToggle = (id)=>{
         }
 
 
-//NOTE:  need condition here -- if "isHearted" = false, filter from Faves
+//NOTE:  Possible to also change color of map icon somehow here in handleFave?????
 
 handleFave = (id, restaurant, address, city, phone, isHearted) => {
     console.log("current isHearted state:", isHearted)
     this.handleFaveToggle(id)
-    // this.buttonText()
-    // console.log("isHearted after click?", !isHearted)
     console.log("id:", id)  //this is console logging the correct business id
+ 
     const newFave = {
         id: id,
         restaurant: restaurant,
@@ -217,20 +216,19 @@ handleFave = (id, restaurant, address, city, phone, isHearted) => {
        console.log("newFave is:", newFave)
        console.log("newFave.isHearted:", newFave.isHearted)
 
-   if (newFave.isHearted === true){
+if (newFave.isHearted === true){
     this.setState (prevState=> {
         return {
-            myFaves:  [...prevState.myFaves, newFave]
+            myFaves:  [...prevState.myFaves, newFave],
+            isHearted: !prevState.isHearted
         }
-    
     })
+    
 } else if (newFave.isHearted === false) {
     this.handleFaveDelete(id)
 }
 }         
  
-
-//Possible to also change color of map icon somehow here??
 
 handleFaveDelete = (id) => {
     console.log("delete this id", id) 
