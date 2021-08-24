@@ -21,7 +21,8 @@ class PawsContextProvider extends Component {
         dogFriendlyRestaurants: [],
         // markers: [],
         //create an array of images here instead???
-        buttonTextState: "",
+        // buttonTextHere: "Add to Faves",
+        options: [],
         isHearted: false,
         imageUrl: "",
         myFaves: []
@@ -195,21 +196,40 @@ class PawsContextProvider extends Component {
     }
 }
 
-toggleHeart = (id) => {
-     // 
-    console.log("toggleHeart clicked! This is current isHearted state:", this.state.isHearted)
-    this.setState({
-        isHearted: !this.state.isHearted
-    })
-    console.log("toggleHeart id", id)
-}
+// toggleHeart = (id) => {
+//      //add something here to update the list item into list?? 
+//     console.log("toggleHeart clicked! This is current isHearted state:", this.state.isHearted)
+//     this.setState({
+//         isHearted: !this.state.isHearted
+//     })
+//     console.log("toggleHeart id", id)
+// }
 
 
+handleFaveToggle = (id)=>{
+            console.log(id)
+            const updatedDogFriendly = this.state.dogFriendlyRestaurants.map((business)=>{
 
+                if(business.id === id) {
+                    const updatedListing = {
+                        ...business,
+                        isHearted: !business.isHearted
+                    }
+                    return updatedListing
+                }
+                return business
+            })
+            this.setState({
+                dogFriendlyRestaurants: updatedDogFriendly
+            }) 
+        }
+
+
+//NOTE:  may need condition here -- if "isHearted" then add to Faves; if "isHearted" = false, filter from Faves
 handleFave = (id, restaurant, address, city, phone, isHearted) => {
     console.log("current isHearted state:", isHearted)
-    this.toggleHeart(id)
-    this.buttonText()
+    this.handleFaveToggle(id)
+    // this.buttonText()
     // console.log("isHearted after click?", !isHearted)
     console.log("id:", id)  //this is console logging the correct business id
     const newFave = {
@@ -218,14 +238,13 @@ handleFave = (id, restaurant, address, city, phone, isHearted) => {
         address: address,
         city: city,  
         phone: phone,
-        // buttonTextState: this.state.buttonTextState,
-        isHearted: !this.state.isHearted
+        isHearted: this.state.isHearted
     }
 
     
-    console.log("button text state", this.state.buttonTextState)
+    // console.log("newFave button text here", newFave.buttonTextHere)
     
-    console.log("console log this.state.buttonTextState", this.state.buttonTextState)
+    // console.log("console log this.state.buttonTextHere", this.state.buttonTextHere)
     console.log("newFave is:", newFave)
 
     this.setState (prevState=> {
@@ -239,17 +258,19 @@ handleFave = (id, restaurant, address, city, phone, isHearted) => {
 }
 
 
-buttonText = () => {
-    if(this.state.isHearted===true){
-    this.setState ({ 
-        buttonTextState:  "❤️"
-    })
-    } else if (this.state.isHearted===false) {
-        this.setState ({
-            buttonTextState: "Add to Faves"
-        })
-    }
-}
+// buttonText = (isHearted) => {
+//     if(isHearted===true){
+//     this.setState ({ 
+//         buttonTextHere:  "❤️"
+//     })
+//     }
+//     // } else if (this.state.isHearted===false) {
+//     //     this.setState ({
+//     //         buttonTextHere: "Add to Faves"
+//     //     })
+//     // }
+//     console.log('buttonText function this.state.buttonTextState', this.state.buttonTextState)
+// }
 
     
 
@@ -303,8 +324,8 @@ render() {
             yelpStars: this.yelpStars,
             handleFave: this.handleFave,
             myFaves: this.state.myFaves,
-            buttonText: this.buttonText,
-            buttonTextState: this.state.buttonTextState,
+            // buttonText: this.buttonText,
+            // buttonTextHere: this.state.buttonTextHere,
             isHearted: this.state.isHearted,
             toggleHeart: this.toggleHeart,
             handleFaveDelete: this.handleFaveDelete,
