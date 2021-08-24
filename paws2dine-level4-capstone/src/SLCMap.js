@@ -33,7 +33,7 @@ const mapMarkers = dogFriendlyRestaurants.map((restaurant =>
             address={restaurant.location.address1}
             lat= {restaurant.coordinates.latitude}
             lng={restaurant.coordinates.longitude}
-            onClick={()=> setLocationInfo({name: restaurant.name, address: restaurant.location.address1, city: restaurant.location.city, phone: restaurant.display_phone })}
+            onClick={()=> setLocationInfo({name: restaurant.name, address: restaurant.location.address1, city: restaurant.location.city, phone: restaurant.display_phone, isHearted: restaurant.isHearted })}
 />
 ))
 

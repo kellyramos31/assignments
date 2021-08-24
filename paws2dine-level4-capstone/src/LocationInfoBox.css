@@ -42,5 +42,11 @@
 
 .phone {
   margin-left: 35px;
-  padding-bottom: 18px;
+  padding-bottom: 8px;
+}
+
+.isHearted {
+  float: right;
+  font-size: 20px;
+  font-style: normal;
 }
