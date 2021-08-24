@@ -17,12 +17,8 @@ const PawsContext = React.createContext()
 class PawsContextProvider extends Component {
 
     state = {
-        // yelpResponse: [],
         dogFriendlyRestaurants: [],
-        // markers: [],
-        //create an array of images here instead???
-        // buttonTextHere: "Add to Faves",
-        options: [],
+        // options: [],
         isHearted: false,
         imageUrl: "",
         myFaves: []
@@ -129,19 +125,6 @@ class PawsContextProvider extends Component {
     // }
 
 
-
-
-    // addToggleProperty = () => {
-    //     const dogFriendlyRestaurants = this.state.yelpResponse.map(business=>{
-    //         return
-    //                {...business, isHearted:false}
-    //     })
-    //             this.setState({
-    //                 dogFriendlyRestaurants: dogFriendlyRestaurants
-    //             })
-
-    // }
-
    addToggleProperty = () => {
         let addedProperty = this.state.dogFriendlyRestaurants.map((restaurant)=>{
             restaurant.isHearted = false
@@ -151,11 +134,7 @@ class PawsContextProvider extends Component {
         this.setState({
             dogFriendlyRestaurants: addedProperty
         })
-        
-        // this.setState(prevState=> ({
-        //     dogFriendlyRestaurants: {...prevState.dogFriendlyRestaurants, isHearted: false}
-        // }))
-        
+          
     }
     
 
@@ -196,14 +175,6 @@ class PawsContextProvider extends Component {
     }
 }
 
-// toggleHeart = (id) => {
-//      //add something here to update the list item into list?? 
-//     console.log("toggleHeart clicked! This is current isHearted state:", this.state.isHearted)
-//     this.setState({
-//         isHearted: !this.state.isHearted
-//     })
-//     console.log("toggleHeart id", id)
-// }
 
 
 handleFaveToggle = (id)=>{
@@ -220,12 +191,14 @@ handleFaveToggle = (id)=>{
                 return business
             })
             this.setState({
+                isHearted: !this.state.isHearted,
                 dogFriendlyRestaurants: updatedDogFriendly
             }) 
         }
 
 
-//NOTE:  may need condition here -- if "isHearted" then add to Faves; if "isHearted" = false, filter from Faves
+//NOTE:  need condition here -- if "isHearted" = false, filter from Faves
+
 handleFave = (id, restaurant, address, city, phone, isHearted) => {
     console.log("current isHearted state:", isHearted)
     this.handleFaveToggle(id)
@@ -238,41 +211,59 @@ handleFave = (id, restaurant, address, city, phone, isHearted) => {
         address: address,
         city: city,  
         phone: phone,
-        isHearted: this.state.isHearted
+        isHearted: !this.state.isHearted
     }
 
-    
-    // console.log("newFave button text here", newFave.buttonTextHere)
-    
-    // console.log("console log this.state.buttonTextHere", this.state.buttonTextHere)
-    console.log("newFave is:", newFave)
+       console.log("newFave is:", newFave)
+       console.log("newFave.isHearted:", newFave.isHearted)
 
+   if (newFave.isHearted === true){
     this.setState (prevState=> {
         return {
             myFaves:  [...prevState.myFaves, newFave]
-    }
-            
-    //Possible to also change color of map icon somehow here??
-})
- 
+        }
+    
+    })
+} else if (newFave.isHearted === false) {
+    this.handleFaveDelete(id)
 }
+}         
+    
 
+//Possible to also change color of map icon somehow here??
 
-// buttonText = (isHearted) => {
-//     if(isHearted===true){
-//     this.setState ({ 
-//         buttonTextHere:  "❤️"
-//     })
+//     handleFave = (id, restaurant, address, city, phone, isHearted) => {
+//     console.log("current isHearted state:", isHearted)
+//     this.handleFaveToggle(id)
+//     // this.buttonText()
+//     // console.log("isHearted after click?", !isHearted)
+//     console.log("id:", id)  //this is console logging the correct business id
+//     const newFave = {
+//         id: id,
+//         restaurant: restaurant,
+//         address: address,
+//         city: city,  
+//         phone: phone,
+//         isHearted: this.state.isHearted
 //     }
-//     // } else if (this.state.isHearted===false) {
-//     //     this.setState ({
-//     //         buttonTextHere: "Add to Faves"
-//     //     })
-//     // }
-//     console.log('buttonText function this.state.buttonTextState', this.state.buttonTextState)
-// }
 
     
+//     // console.log("newFave button text here", newFave.buttonTextHere)
+    
+//     // console.log("console log this.state.buttonTextHere", this.state.buttonTextHere)
+//     console.log("newFave is:", newFave)
+
+//     this.setState (prevState=> {
+//         return {
+//             myFaves:  [...prevState.myFaves, newFave]
+//     }
+            
+//     //Possible to also change color of map icon somehow here??
+// })
+ 
+// }
+ 
+
 
 
 handleFaveDelete = (id) => {
@@ -286,14 +277,13 @@ handleFaveDelete = (id) => {
   }
 
 
-
-
 handleChange = (e) => {
         const { name, value } = e.target
         this.setState({
             [name]: value
         })
     }
+
 
 
 //need to add a toggle for form so show if want to add photo & then hide if not???
@@ -326,8 +316,8 @@ render() {
             myFaves: this.state.myFaves,
             // buttonText: this.buttonText,
             // buttonTextHere: this.state.buttonTextHere,
-            isHearted: this.state.isHearted,
-            toggleHeart: this.toggleHeart,
+            // isHearted: this.state.isHearted,
+            // toggleHeart: this.toggleHeart,
             handleFaveDelete: this.handleFaveDelete,
             handleChange: this.handleChange,
             handleMyDogPhoto: this.handleMyDogPhoto

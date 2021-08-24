@@ -20,8 +20,6 @@ function LocationCard() {
         const {dogFriendlyRestaurants, yelpStars, handleFave} = useContext(PawsContext) 
 
      
-     
- 
      return(   
          <div className = "flex-container">
                 
