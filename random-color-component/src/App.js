@@ -37,7 +37,7 @@ class App extends Component {
   handleClick() {
     console.log("I'm working")
     axios.get(`https://www.colr.org/json/color/random?timestamp=${new Date().getTime()}`)
-      .then(response => {
+           .then(response => {
         this.setState({
           isLoading: true,
           color: "#" + response.data.colors[0].hex
@@ -69,5 +69,4 @@ class App extends Component {
 }
 
 export default App;
-
 

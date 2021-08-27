@@ -7,8 +7,9 @@ function Header () {
         <div className="app-title">
             <img src={logo} className="paws2-logo" alt="logo" />
         </div>
+  
+            
     )
-
 }
 
 export default Header

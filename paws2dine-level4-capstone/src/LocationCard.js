@@ -15,16 +15,18 @@ import logo from "./assets/Logo_RGB.png"
 
 function LocationCard() {
 
-        //MAYBE have to employ USEEFFECT HOOK HERE for toggle display?? -- think maybe it's not re-rendering aFter the click.
-
-        const {dogFriendlyRestaurants, yelpStars, handleFave} = useContext(PawsContext) 
+        
+    const {dogFriendlyRestaurants, yelpStars, handleFave} = useContext(PawsContext) 
 
      
-     return(   
+     return(  
+         <div>
+              <input type = "text" placeholder="Search..."/> 
+     
          <div className = "flex-container">
-                
+               
             {dogFriendlyRestaurants.map((business, index)=>
-              <div>              
+              <div>                         
                        <div className="card" key ={business.id} index={index}>
                          <img className="bus-photo" width="40%" height="250px" src={business.image_url} alt={business.name}/>    
                          {/* <img className="bus-photo" width="250px" height="250px"src={business.image_url} alt={business.name}/>  */}
@@ -40,8 +42,7 @@ function LocationCard() {
                                 <div>{yelpStars(business.rating)} from {business.review_count} reviews</div>
                                 <div className="price-rating"><span>Price Rating:</span>  {business.price}</div>
                                 <div>Click the Yelp logo for more restaurant details.</div>
-                                <div>{business.isHearted}</div>
-                                 {/* {business.isHearted  */}
+                                    
 
                                 {business.isHearted 
                                 ?
@@ -67,6 +68,7 @@ function LocationCard() {
                          
               )}
                  </div>
+                     </div>
                 
      )}
                      

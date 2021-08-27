@@ -8,7 +8,7 @@ import print from "./assets/print-306214_640.png"
 const LocationInfoBox = ({info}) => {
 
     return (
-        <div className="location-info">
+        <div className="location-info" key={info.id}>
             <img src={print} alt="paw" />
             <div className="rest-name">{info.name}</div>
             <div className="street">{info.address}/</div>

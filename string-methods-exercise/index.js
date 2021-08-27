@@ -111,17 +111,88 @@ function capsOnSpace() {
 capsOnSpace()
 */
 
-function reverse(word) {
-    const splitItUp = word.split("").reverse().join("")
-    console.log(splitItUp)
-}
-reverse("cat")
 
-
-
+//CODE CHALLENGE:
+// function reverse(word) {
+//     const splitItUp = word.split("").reverse().join("")
+//     console.log(splitItUp)
+// }
+// reverse("cat")
 
   // console.log(splitItUp)
     // const flipIt = splitItUp.reverse()
     // console.log(flipIt)
     // const joinItBack = flipIt.join()
     // console.log(joinItBack)
+
+//CODE CHALLENGE Anagram:
+// function isAnagram(word1, word2) {
+//     const array1 = word1.split("")
+//     const array2 = word2.split("")
+//     const matchedLetters = []
+ 
+//     if (array1.length !== array2.length){
+//         console.log("FALSE (outside of loop) -- not an anagram")
+//         return false
+    
+//     } else if (array1.length === array2.length){
+
+//     for (let i = 0; i < array1.length; i++){
+
+//         if (array2.includes(array1[i])){          
+//             matchedLetters.push(array1[i])
+//             console.log("it's a letter match!", array1[i])
+//             console.log("matchedLetters Array", matchedLetters)
+//         } else if (!array2.includes(array1[i])) {
+//             console.log("FALSE (from loop) -- not an anagram")
+//             return false
+//         }}
+//     }
+//         console.log("TRUE -- loop done -- this is an anagram")
+//         return true
+// }
+
+// function isAnagram(word1, word2) {
+//     const array1 = word1.split("")
+//     const array2 = word2.split("")
+//     // const matchedLetters = []  //this really just serves as a checkpoint
+ 
+//     if (array1.length !== array2.length){
+//         console.log("FALSE --NOT an anagram :(")
+//         return false
+    
+//     } else if (array1.length === array2.length){
+
+//     for (let i = 0; i < array1.length; i++){
+
+//         if (array2.includes(array1[i])){          
+//             // matchedLetters.push(array1[i])
+//             console.log("it's a letter match!", array1[i])
+            
+//         } else if (!array2.includes(array1[i])) {
+//             console.log("FALSE --NOT an anagram :(")
+//             return false
+//         }}
+//     }
+//         // console.log("matchedLetters Array", matchedLetters)
+//         console.log("TRUE -- it's an ANAGRAM :)")
+//         return true
+// }
+
+
+
+
+// isAnagram("dusty", "study")
+//isAnagram("night", "thing")
+// isAnagram("listened", "silent")
+//isAnagram('triangle', 'integral')
+//isAnagram('arc', 'car')
+
+
+
+    // CHECK ARRAY LENGTHS FIRST:
+    // start off with if lengths are different -- not an anagram
+    // if lengths are equal, then start matching/finding if letters are same
+
+    // THEN COMPARE LETTERS ACROSS THE TWO ARRAYS: 
+

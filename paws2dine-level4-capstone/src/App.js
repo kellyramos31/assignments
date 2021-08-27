@@ -42,7 +42,9 @@ return (
          <img className="header-dog1" src={glassesDog} alt="glasses dog" />
          <img className="header-dog2"src={fluffyPuppy} alt="fluffy puppy" />
          <img className="header-dog3"src={dogWaterBottle} alt="dog water bottle table"/>
+            
       </div>
+      
 
       <Switch>
        <Route exact path="/">

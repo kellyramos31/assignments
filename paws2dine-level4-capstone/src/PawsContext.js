@@ -191,8 +191,8 @@ handleFaveToggle = (id)=>{
                 return business
             })
             this.setState({
-                isHearted: !this.state.isHearted,
-                dogFriendlyRestaurants: updatedDogFriendly
+                dogFriendlyRestaurants: updatedDogFriendly,
+                isHearted: !this.state.isHearted
             }) 
         }
 
@@ -210,19 +210,23 @@ handleFave = (id, restaurant, address, city, phone, isHearted) => {
         address: address,
         city: city,  
         phone: phone,
-        isHearted: !this.state.isHearted
+        isHearted: !isHearted
     }
 
        console.log("newFave is:", newFave)
        console.log("newFave.isHearted:", newFave.isHearted)
+       console.log("current isHearted state", this.state.isHearted)
 
 if (newFave.isHearted === true){
+    this.handleFaveToggle(id)
     this.setState (prevState=> {
         return {
-            myFaves:  [...prevState.myFaves, newFave],
-            isHearted: !prevState.isHearted
+            myFaves:  [...prevState.myFaves, newFave]
+            // isHearted: !prevState.isHearted
+            // isHearted: this.state.isHearted
         }
     })
+    
     
 } else if (newFave.isHearted === false) {
     this.handleFaveDelete(id)
@@ -231,13 +235,15 @@ if (newFave.isHearted === true){
  
 
 handleFaveDelete = (id) => {
-    console.log("delete this id", id) 
+    console.log("delete this id", id)
+
     this.setState(prevState => {
       return {
         myFaves: prevState.myFaves.filter(fave=> fave.id !== id)
       }
     })
-    this.handleFaveToggle(id)
+   
+    this.handleFaveToggle(id) 
   }
 
 
