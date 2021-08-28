@@ -1,29 +1,27 @@
 // import React from "react"
-
+// import {useState} from "react"
 import React, { useContext} from "react"
 import { PawsContext} from "./PawsContext"
 // import Select from "react-select"
 // import options from "./options"
-// import SearchBar from "./SearchBar"
 import "./LocationCard.css"
 import logo from "./assets/Logo_RGB.png"
-
+// import SearchBar from "./SearchBar"
+// import fourHalf from "./assets/small_4_half.png" -- works to have image show up
+// import small_4_half from "./assets/small_4_half.png" -- works to have image show up
 
 
 
  //Figure out how to incorporate dropdown menu for different possibilities
- //add search bar at top
 
 function LocationCard() {
 
-           
+        
     const {dogFriendlyRestaurants, yelpStars, handleFave} = useContext(PawsContext) 
 
      
      return(  
- 
-        
-            
+     
          <div className = "flex-container">
                
             {dogFriendlyRestaurants.map((business, index)=>
@@ -56,7 +54,7 @@ function LocationCard() {
                                 :
 
                                 <button key={business.id} id={business.id}      
-                                   onClick={(e, id)=>handleFave(e, business.id, business.name, business.location.address1, 
+                                   onClick={(id)=>handleFave(business.id, business.name, business.location.address1, 
                                     business.location.city, business.display_phone, business.isHearted)} >
                                       Add to Faves 🤍
                                </button>
@@ -69,9 +67,8 @@ function LocationCard() {
                          
               )}
                  </div>
-           
+                
      )}
                      
                 
 export default LocationCard
-

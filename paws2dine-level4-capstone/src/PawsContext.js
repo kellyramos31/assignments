@@ -18,6 +18,7 @@ class PawsContextProvider extends Component {
 
     state = {
         dogFriendlyRestaurants: [],
+        // options: [],
         searchText: "",
         isHearted: false,
         imageUrl: "",
@@ -176,6 +177,7 @@ class PawsContextProvider extends Component {
 }
 
 
+
 handleFaveToggle = (id)=>{
             console.log(id)
             const updatedDogFriendly = this.state.dogFriendlyRestaurants.map((business)=>{
@@ -198,7 +200,7 @@ handleFaveToggle = (id)=>{
 
 //NOTE:  Possible to also change color of map icon somehow here in handleFave?????
 
-handleFave = (e, id, restaurant, address, city, phone, isHearted) => {
+handleFave = (id, restaurant, address, city, phone, isHearted) => {
     console.log("current isHearted state:", isHearted)
     this.handleFaveToggle(id)
     console.log("id:", id)  //this is console logging the correct business id
@@ -221,6 +223,8 @@ if (newFave.isHearted === true){
     this.setState (prevState=> {
         return {
             myFaves:  [...prevState.myFaves, newFave]
+            // isHearted: !prevState.isHearted
+            // isHearted: this.state.isHearted
         }
     })
     
@@ -251,13 +255,15 @@ handleChange = (e) => {
         })
     }
 
+
+
 searchBarOnChange = (searchTerm) => {
     console.log("searchText", searchTerm)
     this.setState ({
         searchText: searchTerm
     })
     console.log("this.state.searchText", this.state.searchText)
-}
+}    
 
 //Something to handle dropdown menu choices??  Examples:  based on smaller geography; cuisine; price point; rating
 
@@ -280,14 +286,14 @@ render() {
 
     return (
         <PawsContext.Provider value={{
+            // loading: this.state.loading,
             dogFriendlyRestaurants: this.state.dogFriendlyRestaurants,
             yelpStars: this.yelpStars,
             handleFave: this.handleFave,
             myFaves: this.state.myFaves,
+            searchBarOnChange: this.searchBarOnChange,
             handleFaveDelete: this.handleFaveDelete,
             handleChange: this.handleChange,
-            searchText: this.state.searchText,
-            searchBarOnChange: this.searchBarOnChange,
             handleMyDogPhoto: this.handleMyDogPhoto
         }}
         >
@@ -471,10 +477,3 @@ export { PawsContextProvider, PawsContext }
 
 
 // if (this.props.isEditing) this.props.editOrNot()
-
-// handleChange = (e) => {
-//         const { name, value } = e.target
-//         this.setState({
-//             [name]: value
-//         })
-//     }
