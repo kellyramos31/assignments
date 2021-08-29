@@ -24,9 +24,9 @@ export default function SLCMap(){
           zoom: 11
         }
 
-const {dogFriendlyRestaurants} = useContext(PawsContext)
+const {filteredSearchList} = useContext(PawsContext)
 
-const mapMarkers = dogFriendlyRestaurants.map((restaurant => 
+const mapMarkers = filteredSearchList.map((restaurant => 
     <LocationMarker
             key={restaurant.id}
             name={restaurant.name}

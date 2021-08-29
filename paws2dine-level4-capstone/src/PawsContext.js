@@ -205,7 +205,7 @@ handleFaveToggle = (id)=>{
 handleFave = (id, restaurant, address, city, phone, isHearted) => {
     console.log("current isHearted state:", isHearted)
     this.handleFaveToggle(id)
-    console.log("id:", id)  //this is console logging the correct business id
+    console.log("id:", id)  
  
     const newFave = {
         id: id,
@@ -225,8 +225,6 @@ if (newFave.isHearted === true){
     this.setState (prevState=> {
         return {
             myFaves:  [...prevState.myFaves, newFave]
-            // isHearted: !prevState.isHearted
-            // isHearted: this.state.isHearted
         }
     })
     
