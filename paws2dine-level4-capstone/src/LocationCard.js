@@ -17,14 +17,11 @@ import logo from "./assets/Logo_RGB.png"
 function LocationCard() {
 
         
-    const {dogFriendlyRestaurants, yelpStars, handleFave} = useContext(PawsContext) 
-
-     
-     return(  
-     
+    const {filteredSearchList, yelpStars, handleFave} = useContext(PawsContext) 
+      
+    return(  
          <div className = "flex-container">
-               
-            {dogFriendlyRestaurants.map((business, index)=>
+              {filteredSearchList.map((business, index)=>
               <div>                         
                        <div className="card" key ={business.id} index={index}>
                          <img className="bus-photo" width="40%" height="250px" src={business.image_url} alt={business.name}/>    
@@ -61,14 +58,16 @@ function LocationCard() {
                                 }                   
                             
                             </div>
-                            
+        
                         </div>
+        
                     </div>
                          
-              )}
+                )}
                  </div>
                 
-     )}
+    
+    )}
                      
                 
 export default LocationCard

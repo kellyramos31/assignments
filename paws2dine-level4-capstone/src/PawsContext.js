@@ -20,6 +20,7 @@ class PawsContextProvider extends Component {
         dogFriendlyRestaurants: [],
         // options: [],
         searchText: "",
+        filteredSearchList: [],
         isHearted: false,
         imageUrl: "",
         myFaves: []
@@ -66,6 +67,7 @@ class PawsContextProvider extends Component {
 
                 this.setState({
                     dogFriendlyRestaurants: res.data.businesses
+                    // filteredSearchList: res.data.businesses
                 })
 
                 this.addToggleProperty()
@@ -262,8 +264,26 @@ searchBarOnChange = (searchTerm) => {
     this.setState ({
         searchText: searchTerm
     })
+    this.getSearchFilteredList(searchTerm)
+    
     console.log("this.state.searchText", this.state.searchText)
 }    
+
+getSearchFilteredList = (searchText) => {
+   if (searchText !== ""){
+       const searchResults = this.state.dogFriendlyRestaurants.filter((restaurant)=>
+           restaurant.name.toString().toLowerCase().includes(searchText.toLowerCase())
+       )
+       this.setState ({
+           filteredSearchList: searchResults
+       })
+   } else {
+       this.setState({
+           filteredSearchList: this.state.dogFriendlyRestaurants
+       })
+    }
+}
+
 
 //Something to handle dropdown menu choices??  Examples:  based on smaller geography; cuisine; price point; rating
 
@@ -292,6 +312,9 @@ render() {
             handleFave: this.handleFave,
             myFaves: this.state.myFaves,
             searchBarOnChange: this.searchBarOnChange,
+            searchText: this.state.searchText,
+            getSearchFilteredList: this.getSearchFilteredList,
+            filteredSearchList: this.state.filteredSearchList,
             handleFaveDelete: this.handleFaveDelete,
             handleChange: this.handleChange,
             handleMyDogPhoto: this.handleMyDogPhoto

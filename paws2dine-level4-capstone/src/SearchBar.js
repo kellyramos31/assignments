@@ -16,10 +16,10 @@ const {searchBarOnChange} = useContext(PawsContext)
             {/* <form> */}
               <input 
                 type="text" 
-                placeholder="Search..."
+                placeholder="Search by Restaurant Name..."
                 onChange={(e)=>searchBarOnChange(e.target.value)}
                 />
-                {/* </form> */}
+               {/* {filteredSearchList} */}
                 
             {/* {dogFriendlyRestaurants.filter((item)=>{   
             if(searchText === ""){
