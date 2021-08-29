@@ -66,8 +66,8 @@ class PawsContextProvider extends Component {
                 console.log(res.data)
 
                 this.setState({
-                    dogFriendlyRestaurants: res.data.businesses
-                    // filteredSearchList: res.data.businesses
+                    dogFriendlyRestaurants: res.data.businesses,
+                    filteredSearchList: res.data.businesses
                 })
 
                 this.addToggleProperty()
@@ -182,7 +182,7 @@ class PawsContextProvider extends Component {
 
 handleFaveToggle = (id)=>{
             console.log(id)
-            const updatedDogFriendly = this.state.dogFriendlyRestaurants.map((business)=>{
+            const updatedDogFriendly = this.state.filteredSearchList.map((business)=>{
 
                 if(business.id === id) {
                     const updatedListing = {
@@ -194,7 +194,7 @@ handleFaveToggle = (id)=>{
                 return business
             })
             this.setState({
-                dogFriendlyRestaurants: updatedDogFriendly,
+                filteredSearchList: updatedDogFriendly,
                 isHearted: !this.state.isHearted
             }) 
         }
