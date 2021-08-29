@@ -19,10 +19,11 @@ class PawsContextProvider extends Component {
     state = {
         dogFriendlyRestaurants: [],
         // options: [],
+        isChangingPhoto: false,
         searchText: "",
         filteredSearchList: [],
+        // imageUrl: "",
         isHearted: false,
-        imageUrl: "",
         myFaves: []
     }
 
@@ -131,6 +132,7 @@ class PawsContextProvider extends Component {
    addToggleProperty = () => {
         let addedProperty = this.state.dogFriendlyRestaurants.map((restaurant)=>{
             restaurant.isHearted = false
+            restaurant.isChangingPhoto = false
             return restaurant
         })
         console.log("data with isHearted added:", addedProperty)
@@ -213,7 +215,8 @@ handleFave = (id, restaurant, address, city, phone, isHearted) => {
         address: address,
         city: city,  
         phone: phone,
-        isHearted: !isHearted
+        isHearted: !isHearted,
+        // isChangingPhoto: isChangingPhoto
     }
 
        console.log("newFave is:", newFave)
@@ -248,15 +251,6 @@ handleFaveDelete = (id) => {
   }
 
 
-handleChange = (e) => {
-        const { name, value } = e.target
-        this.setState({
-            [name]: value
-        })
-    }
-
-
-
 searchBarOnChange = (searchTerm) => {
     console.log("searchText", searchTerm)
     this.setState ({
@@ -283,28 +277,101 @@ getSearchFilteredList = (searchText) => {
 }
 
 
+togglePhotoEdit = (id, index) =>{
+    console.log("toggled this id to add/edit photo", id)
+    console.log("toggled this index to add/edit photo", index)
+    this.setState (prevState=>{
+        return { 
+        isChangingPhoto: !prevState.isChangingPhoto
+    }}
+    )
+}
+
+  // const updatedDogPhotoProp = this.state.myFaves.map((business)=>{
+
+//                 if(business.id === id) {
+//                     const updatedPhotoProp = {
+//                         ...business,
+//                         isChangingPhoto: !business.isChangingPhoto
+//                     }
+//                     console.log("updatedWithPhoto object", updatedPhotoProp)
+//                     return updatedPhotoProp
+//                 }
+//                 return business
+//             })
+//             this.setState({
+//                 filteredSearchList:  updatedDogPhotoProp,
+//                 isChangingPhoto: !this.state.isChangingPhoto    
+//         })
+//         console.log("updatedDogPhotoProp", updatedDogPhotoProp)
+   
+
+
+
+
 //Something to handle dropdown menu choices??  Examples:  based on smaller geography; cuisine; price point; rating
 
 //need to add a toggle for form so show if want to add photo & then hide if not???
 
-// handleMyDogPhoto = () => {
-
-// this.setState(prevState => ({
-//     myFaves: {                   // object that we want to update
-//         ...prevState.myFaves,    // keep all other key-value pairs
-//         photo: imageUrl       // update the value of specific key
-//     }
-// }))
+handlePhotoChange = (e) => {
+    const {name, value} = e.target
+    this.setState ({
+        [name]: value
+    })
+}
 
 
-// }
+handleMyDogPhotoSubmit = (id, restaurant, address, city, phone, isHearted, imageUrl) => {
+console.log("change/add photo for this id", id)
+console.log("image URL", imageUrl)
+
+const updatedListItem = {
+    id: id,
+    restaurant: restaurant,
+    address: address,
+    city: city,  
+    phone: phone,
+    isHearted: isHearted,
+    imageUrl: imageUrl
+}
+console.log("updatedListItem photo object", updatedListItem)
+// this.togglePhotoEdit(id)
+
+this.setState(prevState => ({
+    myFaves: {                   // object that we want to update
+        ...prevState.myFaves,    // keep all other key-value pairs
+        updatedListItem     // update the value of specific key
+    }
+}))
+
+
+}
+
+//  console.log(id)
+//             const updatedDogFriendly = this.state.filteredSearchList.map((business)=>{
+
+//                 if(business.id === id) {
+//                     const updatedListing = {
+//                         ...business,
+//                         isHearted: !business.isHearted
+//                     }
+//                     return updatedListing
+//                 }
+//                 return business
+//             })
+//             this.setState({
+//                 filteredSearchList: updatedDogFriendly,
+//                 isHearted: !this.state.isHearted
+//             }) 
+
+
+
 
 
 render() {
 
     return (
         <PawsContext.Provider value={{
-            // loading: this.state.loading,
             dogFriendlyRestaurants: this.state.dogFriendlyRestaurants,
             yelpStars: this.yelpStars,
             handleFave: this.handleFave,
@@ -314,8 +381,12 @@ render() {
             getSearchFilteredList: this.getSearchFilteredList,
             filteredSearchList: this.state.filteredSearchList,
             handleFaveDelete: this.handleFaveDelete,
-            handleChange: this.handleChange,
-            handleMyDogPhoto: this.handleMyDogPhoto
+            // handleChange: this.handleChange,
+            imageUrl: this.state.imageUrl,
+            isChangingPhoto:  this.state.isChangingPhoto,
+            handlePhotoChange: this.handlePhotoChange,
+            togglePhotoEdit: this.togglePhotoEdit,
+            handleMyDogPhotoSubmit: this.handleMyDogPhotoSubmit
         }}
         >
             {this.props.children}

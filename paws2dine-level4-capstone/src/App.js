@@ -26,8 +26,9 @@ function App(){
 return (
  
   <div>
-     <div className="header-logo">     
-        <Header/>
+     
+     <div className="header-logo">
+       <Header/>
       <nav>
          <div>
             <Link to="/">MAP</Link>
@@ -45,7 +46,6 @@ return (
          <img className="header-dog3"src={dogWaterBottle} alt="dog water bottle table"/>
             
       </div>
-      
 
       <Switch>
        <Route exact path="/">

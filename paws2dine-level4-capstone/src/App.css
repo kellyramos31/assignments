@@ -29,6 +29,7 @@ nav {
 }
 
 .header-logo {
+  background-color: black;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

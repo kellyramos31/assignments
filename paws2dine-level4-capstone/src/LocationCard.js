@@ -1,5 +1,6 @@
 // import React from "react"
-// import {useState} from "react"
+
+
 import React, { useContext} from "react"
 import { PawsContext} from "./PawsContext"
 // import Select from "react-select"
@@ -16,7 +17,7 @@ import logo from "./assets/Logo_RGB.png"
 
 function LocationCard() {
 
-        
+  
     const {filteredSearchList, yelpStars, handleFave} = useContext(PawsContext) 
       
     return(  
@@ -43,14 +44,14 @@ function LocationCard() {
                                 {business.isHearted 
                                 ?
                             
-                               <button key={business.id} id={business.id}                                                    
+                               <button key={business.id} id={business.id} index={index}                                                        
                                 onClick={(id)=>handleFave(business.id, business.name, business.location.address1, 
                                     business.location.city, business.display_phone, business.isHearted)}>
                                          ❤️ 
                                </button>
                                 :
 
-                                <button key={business.id} id={business.id}      
+                                <button key={business.id} id={business.id} index={index}     
                                    onClick={(id)=>handleFave(business.id, business.name, business.location.address1, 
                                     business.location.city, business.display_phone, business.isHearted)} >
                                       Add to Faves 🤍

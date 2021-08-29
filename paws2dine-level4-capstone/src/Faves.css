@@ -1,4 +1,4 @@
-body{
+body {
   margin: 0;
 }
 
@@ -15,4 +15,8 @@ li {
 ul {
   margin-left: 40%;
   color: whitesmoke;
+}
+
+form {
+  color: white;
 }
