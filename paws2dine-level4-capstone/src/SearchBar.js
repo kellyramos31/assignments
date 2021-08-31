@@ -1,6 +1,8 @@
 // import React from "react"
 import React, { useContext} from "react"
 import { PawsContext} from "./PawsContext"
+import DropDownMenu from "./DropDownMenu"
+import "./SearchBar.css"
 // import {useState} from "react"
 
 
@@ -12,31 +14,18 @@ const {searchBarOnChange} = useContext(PawsContext)
 
 
     return (
-        <div>
-            {/* <form> */}
+        <div className="searchbar-dropdown">
+            <div className="searchbar">
               <input 
                 type="text" 
                 placeholder="Search by Restaurant Name..."
                 onChange={(e)=>searchBarOnChange(e.target.value)}
                 />
-               {/* {filteredSearchList} */}
-                
-            {/* {dogFriendlyRestaurants.filter((item)=>{   
-            if(searchText === ""){
-                return( 
-                    <p>{item}</p>
-                )
-            }else if(item.toLowerCase().includes(searchText.toLowerCase())){
-
-            }
-        }).map((item, key)=>{
-                return( 
-                <div key={key}>
-                    <p>{item.name}</p>
-                </div>
-    )
-    })} */}
-    </div>
+            </div>
+            <div classname="dropdown">
+                <DropDownMenu/>
+            </div>
+        </div>
     )}
 
 export default SearchBar

@@ -19,10 +19,10 @@ class PawsContextProvider extends Component {
     state = {
         dogFriendlyRestaurants: [],
         // options: [],
-        isChangingPhoto: false,
+        // isChangingPhoto: false,
         searchText: "",
         filteredSearchList: [],
-        // imageUrl: "",
+        myDoggieImage: "",
         isHearted: false,
         myFaves: []
     }
@@ -132,7 +132,7 @@ class PawsContextProvider extends Component {
    addToggleProperty = () => {
         let addedProperty = this.state.dogFriendlyRestaurants.map((restaurant)=>{
             restaurant.isHearted = false
-            restaurant.isChangingPhoto = false
+            restaurant.myDoggieImage = ""
             return restaurant
         })
         console.log("data with isHearted added:", addedProperty)
@@ -204,7 +204,7 @@ handleFaveToggle = (id)=>{
 
 //NOTE:  Possible to also change color of map icon somehow here in handleFave?????
 
-handleFave = (id, restaurant, address, city, phone, isHearted) => {
+handleFave = (id, restaurant, address, city, phone, isHearted, myDoggieImage) => {
     console.log("current isHearted state:", isHearted)
     this.handleFaveToggle(id)
     console.log("id:", id)  
@@ -216,7 +216,7 @@ handleFave = (id, restaurant, address, city, phone, isHearted) => {
         city: city,  
         phone: phone,
         isHearted: !isHearted,
-        // isChangingPhoto: isChangingPhoto
+        myDoggieImage: myDoggieImage
     }
 
        console.log("newFave is:", newFave)
@@ -277,15 +277,15 @@ getSearchFilteredList = (searchText) => {
 }
 
 
-togglePhotoEdit = (id, index) =>{
-    console.log("toggled this id to add/edit photo", id)
-    console.log("toggled this index to add/edit photo", index)
-    this.setState (prevState=>{
-        return { 
-        isChangingPhoto: !prevState.isChangingPhoto
-    }}
-    )
-}
+// togglePhotoEdit = (id, index) =>{
+//     console.log("toggled this id to add/edit photo", id)
+//     console.log("toggled this index to add/edit photo", index)
+//     this.setState (prevState=>{
+//         return { 
+//         isChangingPhoto: !prevState.isChangingPhoto
+//     }}
+//     )
+// }
 
   // const updatedDogPhotoProp = this.state.myFaves.map((business)=>{
 
@@ -313,39 +313,96 @@ togglePhotoEdit = (id, index) =>{
 
 //need to add a toggle for form so show if want to add photo & then hide if not???
 
-handlePhotoChange = (e) => {
-    const {name, value} = e.target
+handlePhotoFormChange = (myDoggieImage) => {
     this.setState ({
-        [name]: value
+        myDoggieImage: myDoggieImage
     })
+    console.log("myDoggieImage URL from input", myDoggieImage)
 }
 
-
-handleMyDogPhotoSubmit = (id, restaurant, address, city, phone, isHearted, imageUrl) => {
+handleMyDogPhotoSubmit = (id)=> {
+console.log("HEY")
 console.log("change/add photo for this id", id)
-console.log("image URL", imageUrl)
+// console.log("image URL entered", myDoggieImage)
+// // const filteredOutOldListing = this.state.myFaves.filter(id)
+// // console.log("filtered out old entry from faves id", filteredOutOldListing)
 
-const updatedListItem = {
-    id: id,
-    restaurant: restaurant,
-    address: address,
-    city: city,  
-    phone: phone,
-    isHearted: isHearted,
-    imageUrl: imageUrl
-}
-console.log("updatedListItem photo object", updatedListItem)
-// this.togglePhotoEdit(id)
-
-this.setState(prevState => ({
-    myFaves: {                   // object that we want to update
-        ...prevState.myFaves,    // keep all other key-value pairs
-        updatedListItem     // update the value of specific key
+const updatedWithPhoto = this.state.myFaves.map((business)=>{
+    if(business.id === id){
+        const updatedPhotoListing = {
+            ...business,
+            myDoggieImage: this.state.myDoggieImage
+        }
+        return updatedPhotoListing
     }
-}))
-
-
+    return business
+})
+this.setState({
+    myFaves: updatedWithPhoto,
+    myDoggieImage: ""
+})
 }
+
+
+
+// const updatedPhoto = {
+//     id: id,
+//     restaurant: restaurant,
+//     address: address,
+//     city: city,  
+//     phone: phone,
+//     isHearted: isHearted,
+//     myDoggieImage: this.state.myDoggieImage
+// }
+// console.log("updatedListItem with photo URL object", updatedPhoto)
+
+// this.setState (prevState=>{
+//      return ({
+//              myFaves:  [...prevState.myFaves, updatedPhoto]
+//     })
+//  })
+// }
+
+
+// handleFaveToggle = (id)=>{
+//             console.log(id)
+//             const updatedDogFriendly = this.state.filteredSearchList.map((business)=>{
+
+//                 if(business.id === id) {
+//                     const updatedListing = {
+//                         ...business,
+//                         isHearted: !business.isHearted
+//                     }
+//                     return updatedListing
+//                 }
+//                 return business
+//             })
+//             this.setState({
+//                 filteredSearchList: updatedDogFriendly,
+//                 isHearted: !this.state.isHearted
+//             }) 
+//         }
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            // this.setState(prevState=>{
+            //     return {
+            //     myFaves: [...prevState.myFaves, updatedPhoto]
+            //     }
+            // }) 
+    //     }
+    // }
+
 
 //  console.log(id)
 //             const updatedDogFriendly = this.state.filteredSearchList.map((business)=>{
@@ -382,9 +439,9 @@ render() {
             filteredSearchList: this.state.filteredSearchList,
             handleFaveDelete: this.handleFaveDelete,
             // handleChange: this.handleChange,
-            imageUrl: this.state.imageUrl,
+            myDoggieImage: this.state.myDoggieImage,
             isChangingPhoto:  this.state.isChangingPhoto,
-            handlePhotoChange: this.handlePhotoChange,
+            handlePhotoFormChange: this.handlePhotoFormChange,
             togglePhotoEdit: this.togglePhotoEdit,
             handleMyDogPhotoSubmit: this.handleMyDogPhotoSubmit
         }}

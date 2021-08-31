@@ -69,3 +69,9 @@ nav {
   border-radius: 50%;
   /* border: 5px double green; */
 }
+
+.dropdown {
+  margin-top: 50px;
+  padding-bottom: 0px;
+  border-top: 5px solid #32cd32;
+}

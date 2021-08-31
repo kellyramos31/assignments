@@ -9,14 +9,28 @@ li {
 .restaurant {
   color: #32cd32;
   font-family: Arial;
+  font-size: 18px;
   font-style: italic;
 }
 
+.restaurant-list {
+  font-family: Arial;
+  font-style: italic;
+  font-size: 16px;
+}
+
 ul {
-  margin-left: 40%;
+  margin-left: 38%;
   color: whitesmoke;
 }
 
 form {
   color: white;
+  font-family: Arial;
+  font-size: 14px;
+}
+
+input {
+  width: 250px;
+  margin-left: -2px;
 }

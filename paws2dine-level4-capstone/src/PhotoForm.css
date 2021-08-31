@@ -1,0 +1,11 @@
+form {
+  font-family: Arial;
+  font-style: italic;
+  font-size: 14px;
+}
+
+.photo-input {
+  margin-left: -3px;
+  width: 375px;
+  height: 14px;
+}

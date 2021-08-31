@@ -24,17 +24,17 @@ function LocationCard() {
          <div className = "flex-container">
               {filteredSearchList.map((business, index)=>
               <div>                         
-                       <div className="card" key ={business.id} index={index}>
+                       <div className="card" key={business.id} index={index}>
                          <img className="bus-photo" width="40%" height="250px" src={business.image_url} alt={business.name}/>    
                          {/* <img className="bus-photo" width="250px" height="250px"src={business.image_url} alt={business.name}/>  */}
-                            <div className="bus-details">
+                            <div key={business.id} className="bus-details">
                                 <div className="business-name">{business.name}</div>
                                 <div>Address:  {business.location.address1}</div>
                                 <div>City:  {business.location.city}</div>
                                 <div>Phone:  {business.display_phone}</div>
                                 <div>Category: {business.categories[0].title}</div>
                                 <a href={business.url}>
-                                        <img className="yelp-logo" src={logo} alt="Yelp Logo"/> 
+                                    <img className="yelp-logo" src={logo} alt="Yelp Logo"/> 
                                     </a>
                                 <div>{yelpStars(business.rating)} from {business.review_count} reviews</div>
                                 <div className="price-rating"><span>Price Rating:</span>  {business.price}</div>
@@ -53,7 +53,7 @@ function LocationCard() {
 
                                 <button key={business.id} id={business.id} index={index}     
                                    onClick={(id)=>handleFave(business.id, business.name, business.location.address1, 
-                                    business.location.city, business.display_phone, business.isHearted)} >
+                                    business.location.city, business.display_phone, business.isHearted, business.myDoggieImage)} >
                                       Add to Faves 🤍
                                </button>
                                 }                   
