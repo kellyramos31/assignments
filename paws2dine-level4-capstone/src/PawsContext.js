@@ -287,24 +287,6 @@ getSearchFilteredList = (searchText) => {
 //     )
 // }
 
-  // const updatedDogPhotoProp = this.state.myFaves.map((business)=>{
-
-//                 if(business.id === id) {
-//                     const updatedPhotoProp = {
-//                         ...business,
-//                         isChangingPhoto: !business.isChangingPhoto
-//                     }
-//                     console.log("updatedWithPhoto object", updatedPhotoProp)
-//                     return updatedPhotoProp
-//                 }
-//                 return business
-//             })
-//             this.setState({
-//                 filteredSearchList:  updatedDogPhotoProp,
-//                 isChangingPhoto: !this.state.isChangingPhoto    
-//         })
-//         console.log("updatedDogPhotoProp", updatedDogPhotoProp)
-   
 
 
 
@@ -323,11 +305,10 @@ handlePhotoFormChange = (myDoggieImage) => {
 handleMyDogPhotoSubmit = (id)=> {
 console.log("HEY")
 console.log("change/add photo for this id", id)
-// console.log("image URL entered", myDoggieImage)
-// // const filteredOutOldListing = this.state.myFaves.filter(id)
-// // console.log("filtered out old entry from faves id", filteredOutOldListing)
+// console.log("here's index for this id", index)
 
 const updatedWithPhoto = this.state.myFaves.map((business)=>{
+    console.log('business', business)
     if(business.id === id){
         const updatedPhotoListing = {
             ...business,
@@ -337,91 +318,14 @@ const updatedWithPhoto = this.state.myFaves.map((business)=>{
     }
     return business
 })
+
+console.log("updatedWithPhoto Faves List", updatedWithPhoto)
+
+
 this.setState({
-    myFaves: updatedWithPhoto,
-    myDoggieImage: ""
+    myFaves: updatedWithPhoto
 })
 }
-
-
-
-// const updatedPhoto = {
-//     id: id,
-//     restaurant: restaurant,
-//     address: address,
-//     city: city,  
-//     phone: phone,
-//     isHearted: isHearted,
-//     myDoggieImage: this.state.myDoggieImage
-// }
-// console.log("updatedListItem with photo URL object", updatedPhoto)
-
-// this.setState (prevState=>{
-//      return ({
-//              myFaves:  [...prevState.myFaves, updatedPhoto]
-//     })
-//  })
-// }
-
-
-// handleFaveToggle = (id)=>{
-//             console.log(id)
-//             const updatedDogFriendly = this.state.filteredSearchList.map((business)=>{
-
-//                 if(business.id === id) {
-//                     const updatedListing = {
-//                         ...business,
-//                         isHearted: !business.isHearted
-//                     }
-//                     return updatedListing
-//                 }
-//                 return business
-//             })
-//             this.setState({
-//                 filteredSearchList: updatedDogFriendly,
-//                 isHearted: !this.state.isHearted
-//             }) 
-//         }
-
-
-
-
-
-
-
-
-
-
-
-
-                
-            // this.setState(prevState=>{
-            //     return {
-            //     myFaves: [...prevState.myFaves, updatedPhoto]
-            //     }
-            // }) 
-    //     }
-    // }
-
-
-//  console.log(id)
-//             const updatedDogFriendly = this.state.filteredSearchList.map((business)=>{
-
-//                 if(business.id === id) {
-//                     const updatedListing = {
-//                         ...business,
-//                         isHearted: !business.isHearted
-//                     }
-//                     return updatedListing
-//                 }
-//                 return business
-//             })
-//             this.setState({
-//                 filteredSearchList: updatedDogFriendly,
-//                 isHearted: !this.state.isHearted
-//             }) 
-
-
 
 
 
@@ -438,7 +342,6 @@ render() {
             getSearchFilteredList: this.getSearchFilteredList,
             filteredSearchList: this.state.filteredSearchList,
             handleFaveDelete: this.handleFaveDelete,
-            // handleChange: this.handleChange,
             myDoggieImage: this.state.myDoggieImage,
             isChangingPhoto:  this.state.isChangingPhoto,
             handlePhotoFormChange: this.handlePhotoFormChange,
@@ -456,52 +359,6 @@ export { PawsContextProvider, PawsContext }
 
 
 
-// import React, { Component } from "react"
-// import axios from "axios"
-// const { Provider, Consumer } = React.createContext()
-
-
-// class UglyThingsContextProvider extends Component {
-
-//     state = {
-//         title: "",
-//         imgUrl: "",
-//         description: "",
-//         uglyThingsList: []
-//     }
-
-//     componentDidMount() {
-//         axios.get(`https://api.vschool.io/kellyr/thing`)
-//             .then(res => {
-//                 this.setState({
-//                     uglyThingsList: res.data
-//                 })
-//                 console.log("axios GET working/componentDidMount")
-//             })
-//             .catch(error => console.log(error))
-//     }
-
-//     getUglyThingsData = () => {
-//         axios.get(`https://api.vschool.io/kellyr/thing`)
-//             .then(res => {
-//                 this.setState({
-//                     uglyThingsList: res.data
-//                 })
-//             })
-//             .catch(error => console.log(error))
-
-//     }
-
-
-//     handleChange = (e) => {
-//         const { name, value } = e.target
-//         this.setState({
-//             [name]: value
-//         })
-//     }
-
-//     handleSubmit = (e) => {
-//         e.preventDefault()
 
 //         const newUglyThing = {
 //             title: this.state.title,
