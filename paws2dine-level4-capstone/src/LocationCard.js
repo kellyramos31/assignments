@@ -1,16 +1,9 @@
-// import React from "react"
-
-
 import React, { useContext} from "react"
 import { PawsContext} from "./PawsContext"
 // import Select from "react-select"
 // import options from "./options"
 import "./LocationCard.css"
 import logo from "./assets/Logo_RGB.png"
-// import SearchBar from "./SearchBar"
-// import fourHalf from "./assets/small_4_half.png" -- works to have image show up
-// import small_4_half from "./assets/small_4_half.png" -- works to have image show up
-
 
 
  //Figure out how to incorporate dropdown menu for different possibilities

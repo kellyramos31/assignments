@@ -282,16 +282,13 @@ getSearchFilteredList = (searchText) => {
 //need to add a toggle for form so show if want to add photo & then hide if not???
 
 handlePhotoFormToggle = (id) => {
-    console.log("isChangingPhoto state (after first click)", this.state.isChangingPhoto )  
-
     console.log("toggled for Photo id", id)
 
-
-    this.setState (prevState=>{
-        return {
-        isChangingPhoto:  !prevState.isChangingPhoto
-        }
-  
+    this.setState ({
+            isChangingPhoto:  {
+                ...this.state.isChangingPhoto, 
+                [id]: !this.state.isChangingPhoto[id]
+            }
     })
     console.log("isChangingPhoto state (after second click)", this.state.isChangingPhoto )    
 }
@@ -328,6 +325,8 @@ console.log("change/add photo for this id", id)
          this.setState({
             myFaves: [...editedFavesWithPhoto]
         })
+
+    this.handlePhotoFormToggle(id)
         
     }
 
@@ -363,19 +362,5 @@ render() {
 export { PawsContextProvider, PawsContext }
 
 
-
-
-//   editMeme = (memeEntry, id, index) => {
-//     console.log("editMeme was clicked - memeEntry", memeEntry)
-//     console.log("id: ", id)
-//     console.log("memeEntry.url", memeEntry.url)
-//     console.log("memeEntry", memeEntry)
-//     const myEditedMemeArray = this.state.myMemesList.map((meme => meme.id === id && meme.key === index ? memeEntry : meme))
-//     console.log(myEditedMemeArray)
-//     this.setState({
-//       myMemesList: [...myEditedMemeArray],
-//     })
-//     console.log(myEditedMemeArray)
-//   }
 
 
