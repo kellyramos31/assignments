@@ -19,11 +19,11 @@ class PawsContextProvider extends Component {
     state = {
         dogFriendlyRestaurants: [],
         // options: [],
-        // isChangingPhoto: false,
         searchText: "",
         filteredSearchList: [],
         myDoggieImage: "",
         isHearted: false,
+        isChangingPhoto: false,
         myFaves: []
     }
 
@@ -281,8 +281,22 @@ getSearchFilteredList = (searchText) => {
 
 //need to add a toggle for form so show if want to add photo & then hide if not???
 
+handlePhotoFormToggle = (id) => {
+    console.log("isChangingPhoto state (after first click)", this.state.isChangingPhoto )  
+
+    console.log("toggled for Photo id", id)
+
+
+    this.setState (prevState=>{
+        return {
+        isChangingPhoto:  !prevState.isChangingPhoto
+        }
+  
+    })
+    console.log("isChangingPhoto state (after second click)", this.state.isChangingPhoto )    
+}
+
 handlePhotoFormChange = (id, myDoggieImage) =>{
-    // e.preventDefault()
     console.log(id)
     this.setState ({
         myDoggieImage: myDoggieImage
@@ -336,6 +350,7 @@ render() {
             isChangingPhoto:  this.state.isChangingPhoto,
             handlePhotoFormChange: this.handlePhotoFormChange,
             togglePhotoEdit: this.togglePhotoEdit,
+            handlePhotoFormToggle: this.handlePhotoFormToggle,
             handleMyDogPhotoSubmit: this.handleMyDogPhotoSubmit
         }}
         >

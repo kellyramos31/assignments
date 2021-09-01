@@ -11,7 +11,7 @@ function Faves() {
     
     // const [myDoggieImage, setMyDoggieImage] = useState("")
     // const {myFaves, isChangingPhoto, togglePhotoEdit, handleFaveDelete, handlePhotoChange, handleMyDogPhotoSubmit, imageUrl} = useContext(PawsContext) 
-    const {myFaves, handleFaveDelete} = useContext(PawsContext) 
+    const {myFaves, handleFaveDelete, isChangingPhoto, handlePhotoFormToggle} = useContext(PawsContext) 
     
     return(
     
@@ -37,16 +37,21 @@ function Faves() {
                     <div>
                     <button key={index} id={fave.id} onClick={(id)=>handleFaveDelete(fave.id)} className="delete-button">Delete Fave</button>
                     </div>
+                    {isChangingPhoto
+                    ?
+                    <div>
+                        <button key={index} id={fave.id} onClick={(id)=>handlePhotoFormToggle(id)}>Cancel Photo</button>
+                                  <PhotoForm
+                                    fave={fave}
+                                />
+                    </div>    
+                    :
+                    <div>
+                    <button key={index} id={fave.id} onClick={(id)=>handlePhotoFormToggle(id)}>Click to Add Your Doggie & Me Photo </button>
+                    </div>
+                    }
                     {fave.isHearted}
-                <PhotoForm
-                    fave={fave}
-                    // id={fave.id}
-                    // name={fave.restaurant}
-                    // address={fave.address}
-                    // city={fave.city}
-                    // phone={fave.phone}
-                    // isHearted={fave.isHearted}
-                />
+               
 
                 </li>
             </ul>
