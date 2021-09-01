@@ -45,14 +45,14 @@ function LocationCard() {
                                 ?
                             
                                <button key={business.id} id={business.id} index={index}                                                        
-                                onClick={(id)=>handleFave(business.id, business.name, business.location.address1, 
+                                onClick={(id, index)=>handleFave(business.id, business.name, business.location.address1, 
                                     business.location.city, business.display_phone, business.isHearted)}>
                                          ❤️ 
                                </button>
                                 :
 
                                 <button key={business.id} id={business.id} index={index}     
-                                   onClick={(id)=>handleFave(business.id, business.name, business.location.address1, 
+                                   onClick={(id, index)=>handleFave(business.id, business.name, business.location.address1, 
                                     business.location.city, business.display_phone, business.isHearted)} >
                                       Add to Faves 🤍
                                </button>
