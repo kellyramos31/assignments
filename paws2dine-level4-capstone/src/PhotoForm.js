@@ -9,13 +9,13 @@ const {handleMyDogPhotoSubmit, handlePhotoFormChange, myDoggieImage} = useContex
 console.log("props:", props)
 return(
     <div id={props.fave.id} >
-        <form name="photoForm" onSubmit={(e)=>handleMyDogPhotoSubmit(e, props.fave.id, props.fave.name, props.fave.address, props.fave.city, props.fave.phone, props.fave.isHearted)}>
+        <form name="photoForm" onSubmit={(e)=>handleMyDogPhotoSubmit(e, props.fave.id, props.fave.name, props.fave.address, props.fave.city, props.fave.phone, props.fave.isHearted, myDoggieImage)}>
             <p>Add URL for image of you & your dog enjoying this restaurant:</p>
                     <input
                         className= "photo-input"
                         type="text"
                         value={myDoggieImage}
-                        onChange={(e)=>handlePhotoFormChange(e.target.value)}
+                        onChange={(e, id)=>handlePhotoFormChange(id, e.target.value)}
                     />
             <button type="submit">Save My Doggie & Me Photo</button>
                         

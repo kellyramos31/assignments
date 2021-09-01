@@ -281,16 +281,16 @@ getSearchFilteredList = (searchText) => {
 
 //need to add a toggle for form so show if want to add photo & then hide if not???
 
-handlePhotoFormChange = (id) =>{
+handlePhotoFormChange = (id, myDoggieImage) =>{
     // e.preventDefault()
     console.log(id)
     this.setState ({
-        myDoggieImage: this.state.myDoggieImage
+        myDoggieImage: myDoggieImage
     })
     console.log("myDoggieImage URL from input", this.state.myDoggieImage)
 }
 
-handleMyDogPhotoSubmit = (e, id, name, address, city, phone, isHearted)=> {
+handleMyDogPhotoSubmit = (e, id, name, address, city, phone, isHearted, myDoggieImage)=> {
 e.preventDefault()
 console.log("HEY")
 console.log("change/add photo for this id", id)
@@ -303,7 +303,7 @@ console.log("change/add photo for this id", id)
             city: city,
             phone: phone,
             isHearted: isHearted,
-            myDoggieImage: this.state.myDoggieImage
+            myDoggieImage: myDoggieImage
         }
         console.log("updated Photo Listing object", updatedPhotoListing)
     

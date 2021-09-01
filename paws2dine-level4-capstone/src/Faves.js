@@ -18,7 +18,7 @@ function Faves() {
         <div>
 
         {myFaves.map((fave)=>
-            <div id={fave.id}>
+            <div key={fave.id} id={fave.id}>
             <ul className="restaurant-list">
                 <li id={fave.id}>
                     <div><strong className="restaurant">{fave.name}</strong> 
