@@ -23,8 +23,8 @@ function LocationCard() {
     return(  
          <div className = "flex-container">
               {filteredSearchList.map((business, index)=>
-              <div>                         
-                       <div className="card" key={business.id} index={index}>
+              <div key={business.id} index={index}>                         
+                       <div className="card" >
                          <img className="bus-photo" width="40%" height="250px" src={business.image_url} alt={business.name}/>    
                          {/* <img className="bus-photo" width="250px" height="250px"src={business.image_url} alt={business.name}/>  */}
                             <div key={business.id} className="bus-details">
@@ -53,7 +53,7 @@ function LocationCard() {
 
                                 <button key={business.id} id={business.id} index={index}     
                                    onClick={(id)=>handleFave(business.id, business.name, business.location.address1, 
-                                    business.location.city, business.display_phone, business.isHearted, business.myDoggieImage)} >
+                                    business.location.city, business.display_phone, business.isHearted)} >
                                       Add to Faves 🤍
                                </button>
                                 }                   

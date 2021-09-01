@@ -132,7 +132,7 @@ class PawsContextProvider extends Component {
    addToggleProperty = () => {
         let addedProperty = this.state.dogFriendlyRestaurants.map((restaurant)=>{
             restaurant.isHearted = false
-            restaurant.myDoggieImage = ""
+            // restaurant.myDoggieImage = ""
             return restaurant
         })
         console.log("data with isHearted added:", addedProperty)
@@ -204,19 +204,19 @@ handleFaveToggle = (id)=>{
 
 //NOTE:  Possible to also change color of map icon somehow here in handleFave?????
 
-handleFave = (id, restaurant, address, city, phone, isHearted, myDoggieImage) => {
+handleFave = (id, restaurant, address, city, phone, isHearted) => {
     console.log("current isHearted state:", isHearted)
     this.handleFaveToggle(id)
     console.log("id:", id)  
  
     const newFave = {
         id: id,
-        restaurant: restaurant,
+        name: restaurant,
         address: address,
         city: city,  
         phone: phone,
-        isHearted: !isHearted,
-        myDoggieImage: myDoggieImage
+        isHearted: !isHearted
+        // myDoggieImage: ""
     }
 
        console.log("newFave is:", newFave)
@@ -277,57 +277,47 @@ getSearchFilteredList = (searchText) => {
 }
 
 
-// togglePhotoEdit = (id, index) =>{
-//     console.log("toggled this id to add/edit photo", id)
-//     console.log("toggled this index to add/edit photo", index)
-//     this.setState (prevState=>{
-//         return { 
-//         isChangingPhoto: !prevState.isChangingPhoto
-//     }}
-//     )
-// }
-
-
-
-
-
 //Something to handle dropdown menu choices??  Examples:  based on smaller geography; cuisine; price point; rating
 
 //need to add a toggle for form so show if want to add photo & then hide if not???
 
-handlePhotoFormChange = (myDoggieImage) => {
+handlePhotoFormChange = (id) =>{
+    // e.preventDefault()
+    console.log(id)
     this.setState ({
-        myDoggieImage: myDoggieImage
+        myDoggieImage: this.state.myDoggieImage
     })
-    console.log("myDoggieImage URL from input", myDoggieImage)
+    console.log("myDoggieImage URL from input", this.state.myDoggieImage)
 }
 
-handleMyDogPhotoSubmit = (id)=> {
+handleMyDogPhotoSubmit = (e, id, name, address, city, phone, isHearted)=> {
+e.preventDefault()
 console.log("HEY")
 console.log("change/add photo for this id", id)
 // console.log("here's index for this id", index)
 
-const updatedWithPhoto = this.state.myFaves.map((business)=>{
-    console.log('business', business)
-    if(business.id === id){
-        const updatedPhotoListing = {
-            ...business,
+      const updatedPhotoListing = {
+            id: id,
+            name: name,
+            address: address,
+            city: city,
+            phone: phone,
+            isHearted: isHearted,
             myDoggieImage: this.state.myDoggieImage
         }
-        return updatedPhotoListing
+        console.log("updated Photo Listing object", updatedPhotoListing)
+    
+    const editedFavesWithPhoto = this.state.myFaves.map((fave=> fave.id === id && fave.isHearted ? updatedPhotoListing : fave))
+    console.log("updatedPhotoListing id:", updatedPhotoListing.id) //this is consoling properly
+    console.log("editFavesWithPhoto result of map:", editedFavesWithPhoto)    //empty array here
+     
+         this.setState({
+            myFaves: [...editedFavesWithPhoto]
+        })
+        
     }
-    return business
-})
 
-console.log("updatedWithPhoto Faves List", updatedWithPhoto)
-
-
-this.setState({
-    myFaves: updatedWithPhoto
-})
-}
-
-
+ 
 
 render() {
 
@@ -360,126 +350,17 @@ export { PawsContextProvider, PawsContext }
 
 
 
-//         const newUglyThing = {
-//             title: this.state.title,
-//             imgUrl: this.state.imgUrl,
-//             description: this.state.description
-//         }
-
-//         axios.post(`https://api.vschool.io/kellyr/thing`, newUglyThing)
-//             .then(res => {
-//                 const newItem = res.data
-//                 console.log("newItem:", newItem)
-//                 this.setState({
-//                     //re-set form values
-//                     title: "",
-//                     imgUrl: "",
-//                     description: ""
-
-//                 })
-//                 console.log("axios POST working")
-//                 this.getUglyThingsData()
-
-//             })
-//             .catch(error => console.log(error))
-
-//     }
-
-//     handleDelete = (id) => {
-//         const deletedId = id
-//         console.log("deletedId:", deletedId)
-//         console.log("DELETE button was clicked!")
-//         axios.delete(`https://api.vschool.io/kellyr/thing/${id}`)
-//             .then(res => {
-//                 const deletedThing = res.data
-//                 console.log("deletedThing:", deletedThing)
-//                 this.getUglyThingsData()
-//             })
-//             .catch(error => console.log(error))
-//     }
-
-
-
-//     handleEdit = (e, id) => {
-//         e.preventDefault()
-//         // console.log("EDIT button was clicked!")
-//         const editId = id
-//         console.log("this is editId:", editId)
-//         // console.log("editedId", editId)
-//         // alert(e.target.editTitle.value)
-//         // alert(e.target.editImgUrl.value)
-
-//         const editedThing = {
-//             title: e.target.editTitle.value,
-//             imgUrl: e.target.editImgUrl.value,
-//             description: e.target.editDescription.value
-//         }
-
-//         console.log("editedThing:", editedThing)
-
-//         axios.put(`https://api.vschool.io/kellyr/thing/${id}`, editedThing)
-//             .then(res => {
-//                 const editedThing = res.data
-//                 console.log("2nd console(after .then) editedThing:", editedThing)
-//                 //reset editForm values
-//                 this.setState({
-//                     editTitle: "",
-//                     editImgUrl: "",
-//                     editDescription: ""
-//                 })
-//                 this.getUglyThingsData()
-//             })
-//             .catch(error => console.log(error))
-//     }
-
-
-//     render() {
-//         return (
-//             <Provider value={{
-//                 title: this.state.title,
-//                 imgUrl: this.state.imgUrl,
-//                 description: this.state.description,
-//                 uglyThingsList: this.state.uglyThingsList,
-//                 handleChange: this.handleChange,
-//                 handleSubmit: this.handleSubmit,
-//                 handleDelete: this.handleDelete,
-//                 handleEdit: this.handleEdit
-//             }}>
-//                 {this.props.children}
-//             </Provider>
-//         )
-//     }
-// }
-
-// export { UglyThingsContextProvider, Consumer as UglyThingsContextConsumer }
-
-
-// axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/gR9DTbKCvezQlqvD7_FzPw`, {
-//     headers: {
-//         Authorization: `Bearer ${token}`
-//     },
-//     params: {
-//         term: 'restaurants'
-//     }
-// })
-//     .then(res => {
-//         setSearchResults(res.data)
-//         console.log(res.data)
+//   editMeme = (memeEntry, id, index) => {
+//     console.log("editMeme was clicked - memeEntry", memeEntry)
+//     console.log("id: ", id)
+//     console.log("memeEntry.url", memeEntry.url)
+//     console.log("memeEntry", memeEntry)
+//     const myEditedMemeArray = this.state.myMemesList.map((meme => meme.id === id && meme.key === index ? memeEntry : meme))
+//     console.log(myEditedMemeArray)
+//     this.setState({
+//       myMemesList: [...myEditedMemeArray],
 //     })
-//     .catch(err => console.log(err))
-// }
-
-
-// deleteMeme = (deletedMeme, id, index) => {
-//     console.log("deleteMeme was clicked -- deletedMeme", deletedMeme)
-//     console.log("deletedMemetid: ", id)
-//     console.log("deletedMeme.url", deletedMeme.url)
-//     this.setState(prevState => {
-//       return {
-//         myMemesList: prevState.myMemesList.filter(meme => meme.id !== id && meme.key === index)
-//       }
-//     })
+//     console.log(myEditedMemeArray)
 //   }
 
 
-// if (this.props.isEditing) this.props.editOrNot()

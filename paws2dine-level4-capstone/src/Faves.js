@@ -17,28 +17,28 @@ function Faves() {
     
         <div>
 
-        {myFaves.map((fave, index)=>
-            <div key={fave.id} id={fave.id} index={index}>
+        {myFaves.map((fave)=>
+            <div id={fave.id}>
             <ul className="restaurant-list">
-                <li key={fave.id} id={fave.id}>
-                    <div><strong className="restaurant">{fave.restaurant}</strong> 
+                <li id={fave.id}>
+                    <div><strong className="restaurant">{fave.name}</strong> 
                     <br />
                     {fave.address}, {fave.city} 
                     <br/>
                     Phone:  {fave.phone}</div>
                     <img width="200px" height="200px" src={myDoggieImage} alt=""/>
                     <div>
-                    <button id={fave.id} index={index} onClick={(id)=>handleFaveDelete(fave.id)} className="delete-button">Delete Fave</button>
+                    <button id={fave.id} onClick={(id)=>handleFaveDelete(fave.id)} className="delete-button">Delete Fave</button>
                     </div>
+                    {fave.isHearted}
                 <PhotoForm
-                    key={fave.id}
-                    id={fave.id}
-                    name={fave.restaurant}
-                    address={fave.address}
-                    city={fave.city}
-                    phone={fave.phone}
-                    isHearted={fave.isHearted}
-                    myDoggieImage={fave.myDoggieImage}
+                    fave={fave}
+                    // id={fave.id}
+                    // name={fave.restaurant}
+                    // address={fave.address}
+                    // city={fave.city}
+                    // phone={fave.phone}
+                    // isHearted={fave.isHearted}
                 />
 
                 </li>

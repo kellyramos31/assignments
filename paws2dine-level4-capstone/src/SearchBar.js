@@ -1,7 +1,7 @@
 // import React from "react"
 import React, { useContext} from "react"
 import { PawsContext} from "./PawsContext"
-import DropDownMenu from "./DropDownMenu"
+// import DropDownMenu from "./DropDownMenu"
 import "./SearchBar.css"
 // import {useState} from "react"
 
@@ -22,8 +22,8 @@ const {searchBarOnChange} = useContext(PawsContext)
                 onChange={(e)=>searchBarOnChange(e.target.value)}
                 />
             </div>
-            <div classname="dropdown">
-                <DropDownMenu/>
+            <div className="dropdown">
+                {/* <DropDownMenu/> */}
             </div>
         </div>
     )}
