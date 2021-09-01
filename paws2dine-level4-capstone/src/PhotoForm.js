@@ -8,7 +8,7 @@ function PhotoForm(props) {
 const {handleMyDogPhotoSubmit, handlePhotoFormChange, myDoggieImage} = useContext(PawsContext) 
 console.log("props:", props)
 return(
-    <div id={props.fave.id} >
+    <div key={props.fave.id} id={props.fave.id} >
         <form name="photoForm" onSubmit={(e)=>handleMyDogPhotoSubmit(e, props.fave.id, props.fave.name, props.fave.address, props.fave.city, props.fave.phone, props.fave.isHearted, myDoggieImage)}>
             <p>Add URL for image of you & your dog enjoying this restaurant:</p>
                     <input
@@ -17,7 +17,7 @@ return(
                         value={myDoggieImage}
                         onChange={(e, id)=>handlePhotoFormChange(id, e.target.value)}
                     />
-            <button type="submit">Save My Doggie & Me Photo</button>
+            <button  key={props.fave.id} id={props.fave.id} type="submit">Save My Doggie & Me Photo</button>
                         
         </form>
     

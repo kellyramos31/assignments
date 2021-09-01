@@ -26,7 +26,14 @@ function Faves() {
                     {fave.address}, {fave.city} 
                     <br/>
                     Phone:  {fave.phone}</div>
-                    <img width="200px" height="200px" src={myDoggieImage} alt=""/>
+                    {fave.myDoggieImage !== ""
+                    ?
+                    <div>
+                    <img key={fave.id} id={fave.id} width="200px" height="200px" src={myDoggieImage} alt=""/>
+                    </div>
+                    :
+                    null
+                    }
                     <div>
                     <button id={fave.id} onClick={(id)=>handleFaveDelete(fave.id)} className="delete-button">Delete Fave</button>
                     </div>
