@@ -48,12 +48,11 @@ function Faves() {
                     </div>    
                     :
                     <div>
-                    <button key={index} id={fave.id} index={index} onClick={(id)=>handlePhotoFormToggle(fave.id)}>Click to Add Your Doggie & Me Photo </button>
+                    <button key={index} id={fave.id} index={index} onClick={(id)=>handlePhotoFormToggle(fave.id)}>Click to Add/Edit Your Doggie & Me Photo </button>
                     </div>
                     }
                     {fave.isHearted}
-               
-
+                    
                 </li>
             </ul>
         </div>

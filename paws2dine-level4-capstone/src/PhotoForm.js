@@ -14,7 +14,7 @@ return(
                     <input
                         className= "photo-input"
                         type="text"
-                        value={myDoggieImage}
+                        value={myDoggieImage || props.fave.myDoggieImage}
                         onChange={(e, id)=>handlePhotoFormChange(id, e.target.value)}
                     />
             <button  key={props.fave.id} id={props.fave.id} type="submit">Save My Doggie & Me Photo</button>

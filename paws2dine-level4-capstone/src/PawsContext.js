@@ -323,7 +323,8 @@ console.log("change/add photo for this id", id)
     console.log("editFavesWithPhoto result of map:", editedFavesWithPhoto)    //empty array here
      
          this.setState({
-            myFaves: [...editedFavesWithPhoto]
+            myFaves: [...editedFavesWithPhoto],
+            myDoggieImage:  ""
         })
 
     this.handlePhotoFormToggle(id)
