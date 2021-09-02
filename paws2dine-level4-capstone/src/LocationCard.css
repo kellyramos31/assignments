@@ -56,9 +56,6 @@ body {
   color: #32cd32;
 }
 
-/* .bus-link {
-} */
-
 .yelp-logo {
   margin-top: -5px;
   margin-left: -20px;
@@ -92,7 +89,7 @@ input {
   width: 2;
 }
 
-.search-bar {
+/* .search-bar {
   z-index: 3;
   background-color: white;
-}
+} */
