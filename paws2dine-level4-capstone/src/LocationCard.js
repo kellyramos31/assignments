@@ -2,6 +2,7 @@ import React, { useContext} from "react"
 import { PawsContext} from "./PawsContext"
 // import Select from "react-select"
 // import options from "./options"
+// import SearchBar from "./SearchBar"
 import "./LocationCard.css"
 import logo from "./assets/Logo_RGB.png"
 
@@ -13,10 +14,15 @@ function LocationCard() {
   
     const {filteredSearchList, yelpStars, handleFave} = useContext(PawsContext) 
       
-    return(  
+    return(
+        // <div>
+        //     <div className="search-bar">
+        //     <SearchBar />
+        <div className="detailed-list-items">
          <div className = "flex-container">
+            
               {filteredSearchList.map((business, index)=>
-              <div key={business.id} index={index}>                         
+              <div key={business.id} index={index} className="detailed-list">                         
                        <div className="card" >
                          <img className="bus-photo" width="40%" height="250px" src={business.image_url} alt={business.name}/>    
                          {/* <img className="bus-photo" width="250px" height="250px"src={business.image_url} alt={business.name}/>  */}
@@ -59,8 +65,7 @@ function LocationCard() {
                          
                 )}
                  </div>
-                
-    
+                 </div>
     )}
                      
                 

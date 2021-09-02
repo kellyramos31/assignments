@@ -2,10 +2,6 @@ body {
   margin: 0;
 }
 
-li {
-  list-style-image: url(./assets/print-306214_640.png);
-}
-
 .restaurant {
   color: #32cd32;
   font-family: Arial;
@@ -22,6 +18,10 @@ li {
 ul {
   margin-left: 38%;
   color: whitesmoke;
+}
+
+li {
+  list-style-image: url(./assets/print-306214_640.png);
 }
 
 form {

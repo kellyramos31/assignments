@@ -6,6 +6,12 @@ body {
   column-count: 2;
   margin-left: 12%;
   margin-right: 8%;
+  /* margin-top: 55px; */
+  /* margin-top: 2px; */
+}
+
+.detailed-list-items {
+  padding-top: 275px;
 }
 
 .card {
@@ -83,5 +89,10 @@ input {
   border-radius: 5px;
   font-family: Arial;
   font-size: 15px;
-  width: 250px;
+  width: 2;
+}
+
+.search-bar {
+  z-index: 3;
+  background-color: white;
 }

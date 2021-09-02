@@ -45,16 +45,16 @@ return (
          <img className="header-dog1" src={glassesDog} alt="glasses dog" />
          <img className="header-dog2"src={fluffyPuppy} alt="fluffy puppy" />
          <img className="header-dog3"src={dogWaterBottle} alt="dog water bottle table"/>
-
+         
+         <SearchBar />
       </div>
 
       <Switch>
        <Route exact path="/">
-          <SLCMap/>
+         <SLCMap/>
        </Route>
        <Route path="/details">
-          <SearchBar />
-          <LocationCard />
+           <LocationCard />
        </Route>
       <Route path="/faves">
           <Faves />

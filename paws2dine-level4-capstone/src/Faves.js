@@ -14,8 +14,8 @@ function Faves() {
     const {myFaves, handleFaveDelete, isChangingPhoto, handlePhotoFormToggle} = useContext(PawsContext) 
     
     return(
-    
         <div>
+        <div className="details-list">
 
         {myFaves.map((fave, index)=>
             <div key={index} id={fave.id} index={index}>
@@ -57,6 +57,7 @@ function Faves() {
             </ul>
         </div>
         )}
+    </div>
     </div>
     )}
 

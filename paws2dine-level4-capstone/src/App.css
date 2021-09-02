@@ -19,29 +19,31 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  margin-top: 19px;
+  /* margin-top: 19px; */
   align-items: left;
   font-size: 14px;
   /* justify-content: center; */
   padding-top: 0;
-  margin-left: 15px;
+  margin-left: 25px;
   /* margin-top: 5px; */
 }
 
 .header-logo {
+  position: fixed;
   background-color: black;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin-left: 25px;
+  padding-top: 20px;
+  padding-left: 20px;
+  z-index: 2;
   /* border-bottom: 10px double green; */
-  margin-bottom: 20px;
 }
 
 .header-dog1 {
   height: 17%;
   width: 17%;
-  margin-top: 22px;
+  /* margin-top: 22px; */
   /* margin-bottom: 1%; */
   margin-left: 4.9%;
   margin-right: -22px;
@@ -53,7 +55,7 @@ nav {
 .header-dog2 {
   height: 19%;
   width: 23%;
-  margin-top: 22px;
+  /* margin-top: 22px; */
   /* margin-bottom: 1%; */
   border-radius: 50%;
   /* border: 5px double green; */
@@ -62,7 +64,7 @@ nav {
 .header-dog3 {
   height: 16%;
   width: 18%;
-  margin-top: 22px;
+  /* margin-top: 22px; */
   /* margin-bottom: 1%; */
   margin-left: -22px;
   padding-right: 0;
@@ -70,8 +72,8 @@ nav {
   /* border: 5px double green; */
 }
 
-.dropdown {
+/* .dropdown {
   margin-top: 50px;
   padding-bottom: 0px;
   border-top: 5px solid #32cd32;
-}
+} */
