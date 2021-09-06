@@ -13,6 +13,8 @@ import five from "./assets/small_5.png"
 
 const PawsContext = React.createContext()
 
+//NOTE:  should I change this to functional component & deploy useState throughout???
+
 
 class PawsContextProvider extends Component {
 
@@ -21,6 +23,7 @@ class PawsContextProvider extends Component {
         // options: [],
         searchText: "",
         filteredSearchList: [],
+        // oneDollarSign: [],
         myDoggieImage: "",
         isHearted: false,
         isChangingPhoto: false,
@@ -33,7 +36,7 @@ class PawsContextProvider extends Component {
 //From Postman:  url for 51-100 data records:  
 //https://api.yelp.com/v3/businesses/search?location=Salt Lake City&categories=restaurants&term=dog friendly&limit=50&offset=51
 
-    componentDidMount() {
+componentDidMount() {
         //Q:  How combine the two axios GET requests needed for total datapoints??
         //Call to Yelp Fusion API to get business data:
         //Q:  Have to do multiple requests b/c limited to #  on each request??? [need to use offset]
@@ -68,10 +71,11 @@ class PawsContextProvider extends Component {
 
                 this.setState({
                     dogFriendlyRestaurants: res.data.businesses,
-                    filteredSearchList: res.data.businesses
+                    filteredSearchList: res.data.businesses,
                 })
 
                 this.addToggleProperty()
+                // this.oneDollarSignFilter()
     
             })
             
@@ -137,7 +141,8 @@ class PawsContextProvider extends Component {
         })
         console.log("data with isHearted added:", addedProperty)
         this.setState({
-            dogFriendlyRestaurants: addedProperty
+            dogFriendlyRestaurants: addedProperty,
+            filteredSearchList:  addedProperty
         })
           
     }
@@ -181,10 +186,10 @@ class PawsContextProvider extends Component {
 }
 
 
-
+//change to dogFriendlyRestaurants.map???//
 handleFaveToggle = (id)=>{
             console.log(id)
-            const updatedDogFriendly = this.state.filteredSearchList.map((business)=>{
+            const updatedDogFriendly = this.state.dogFriendlyRestaurants.map((business)=>{
 
                 if(business.id === id) {
                     const updatedListing = {
@@ -196,6 +201,7 @@ handleFaveToggle = (id)=>{
                 return business
             })
             this.setState({
+                dogFriendlyRestaurants: updatedDogFriendly,
                 filteredSearchList: updatedDogFriendly,
                 isHearted: !this.state.isHearted
             }) 
@@ -225,6 +231,8 @@ handleFave = (id, restaurant, address, city, phone, isHearted) => {
 
 if (newFave.isHearted === true){
     this.handleFaveToggle(id)
+
+   
     this.setState (prevState=> {
         return {
             myFaves:  [...prevState.myFaves, newFave]
@@ -269,12 +277,23 @@ getSearchFilteredList = (searchText) => {
        this.setState ({
            filteredSearchList: searchResults
        })
-   } else {
+    } else {
        this.setState({
+           searchText: "",
            filteredSearchList: this.state.dogFriendlyRestaurants
        })
     }
-}
+  
+    }
+
+
+// oneDollarSignFilter = () =>{
+//     const oneDollarSign = this.state.filteredSearchList.filter({})
+//          this.setState ({
+//             oneDollarSign: oneDollarSign
+//         })
+//     }
+
 
 
 //Something to handle dropdown menu choices??  Examples:  based on smaller geography; cuisine; price point; rating
@@ -318,7 +337,9 @@ console.log("change/add photo for this id", id)
         }
         console.log("updated Photo Listing object", updatedPhotoListing)
     
-    const editedFavesWithPhoto = this.state.myFaves.map((fave=> fave.id === id && fave.isHearted ? updatedPhotoListing : fave))
+    // const editedFavesWithPhoto = this.state.myFaves.map((fave=> fave.id === id && fave.isHearted ? updatedPhotoListing : fave))
+
+    const editedFavesWithPhoto = this.state.myFaves.map((fave=> fave.id === id ? updatedPhotoListing : fave))
     console.log("updatedPhotoListing id:", updatedPhotoListing.id) //this is consoling properly
     console.log("editFavesWithPhoto result of map:", editedFavesWithPhoto)    //empty array here
      
@@ -351,7 +372,8 @@ render() {
             handlePhotoFormChange: this.handlePhotoFormChange,
             togglePhotoEdit: this.togglePhotoEdit,
             handlePhotoFormToggle: this.handlePhotoFormToggle,
-            handleMyDogPhotoSubmit: this.handleMyDogPhotoSubmit
+            handleMyDogPhotoSubmit: this.handleMyDogPhotoSubmit,
+            oneDollarSign: this.state.oneDollarSign
         }}
         >
             {this.props.children}

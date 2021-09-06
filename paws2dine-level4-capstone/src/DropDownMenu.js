@@ -1,22 +1,30 @@
-import React, { useContext} from "react"
-import { PawsContext} from "./PawsContext"
+import React from "react"
+// import React, { useContext} from "react"
+// import { PawsContext} from "./PawsContext"
 import "./DropDownMenu.css"
 
 
 function DropDownMenu() {
-    const {dogFriendlyRestaurants} = useContext(PawsContext) 
+    // const {filteredSearchResults} = useContext(PawsContext) 
+    // const [oneDollarSign, setOneDollarSign] = useState([])
+    // const createOneDropdown = () => {
+        
+    //     setOneDollarSign([...oneDollarSign, restaurant])
+    // }
+   
+
     return(
         <div className="dropdown-menu">
+               
 
-            <select className="select-menu">
-                {dogFriendlyRestaurants.map(restaurant =>(
-                <option>
-                    {restaurant.name}
-                    {restaurant.price}
-                    {restaurant.categories[0].title}
-                </option>
-                ))}
-            </select>
+            {/* <select className="select-menu">
+                <option value={props.price}></option>
+                {/* <option value={oneDollarSign}>$</option>
+                <option value={oneDollarSign}>$$</option>
+                <option value={oneDollarSign}>$$$</option>
+                <option value={oneDollarSign}>$$$$</option>
+               */}
+            {/* </select> */}
 
            
         </div>

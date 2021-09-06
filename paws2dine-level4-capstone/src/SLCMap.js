@@ -29,6 +29,7 @@ const {filteredSearchList} = useContext(PawsContext)
 const mapMarkers = filteredSearchList.map((restaurant => 
     <LocationMarker
             key={restaurant.id}
+            id={restaurant.id}
             name={restaurant.name}
             address={restaurant.location.address1}
             lat= {restaurant.coordinates.latitude}
@@ -45,7 +46,6 @@ return (
           bootstrapURLKeys={{ key: `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`}}
           defaultCenter={ defaultProps.center}
           defaultZoom={ defaultProps.zoom }
-          // yesIWantToUseGoogleMapApiInternals
         >
           {mapMarkers}
         </GoogleMapReact>

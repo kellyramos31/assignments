@@ -1,11 +1,12 @@
 import React from "react"
-// import cutePuppy from "./assets/cute-puppy.jpg"
+// import dogPaws from "./assets/dog-paws.jpg"
 import "./Footer.css"
+
 
 function Footer () {
     return (
         <div>
-            {/* <img/> */}
+            {/* <img src={dogPaws} alt="dog paws"/> */}
         </div>
     )
 

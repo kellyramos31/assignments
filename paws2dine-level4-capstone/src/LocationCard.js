@@ -15,10 +15,7 @@ function LocationCard() {
     const {filteredSearchList, yelpStars, handleFave} = useContext(PawsContext) 
       
     return(
-        // <div>
-        //     <div className="search-bar">
-        //     <SearchBar />
-        <div className="detailed-list-items">
+       <div className="detailed-list-items">
          <div className = "flex-container">
             
               {filteredSearchList.map((business, index)=>

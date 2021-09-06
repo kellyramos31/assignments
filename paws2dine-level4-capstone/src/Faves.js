@@ -8,9 +8,6 @@ import PhotoForm from "./PhotoForm"
 
 function Faves() {
    
-    
-    // const [myDoggieImage, setMyDoggieImage] = useState("")
-    // const {myFaves, isChangingPhoto, togglePhotoEdit, handleFaveDelete, handlePhotoChange, handleMyDogPhotoSubmit, imageUrl} = useContext(PawsContext) 
     const {myFaves, handleFaveDelete, isChangingPhoto, handlePhotoFormToggle} = useContext(PawsContext) 
     
     return(

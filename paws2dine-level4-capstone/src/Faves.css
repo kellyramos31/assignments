@@ -2,6 +2,10 @@ body {
   margin: 0;
 }
 
+.details-list {
+  padding-top: 225px;
+}
+
 .restaurant {
   color: #32cd32;
   font-family: Arial;
@@ -16,7 +20,7 @@ body {
 }
 
 ul {
-  margin-left: 38%;
+  margin-left: 39%;
   color: whitesmoke;
 }
 
