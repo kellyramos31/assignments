@@ -13,6 +13,9 @@ function Faves() {
     return(
         <div>
         <div className="details-list">
+            <div className="hide-it">
+                <p>HIDE THIS SEARCH BAR!</p>
+            </div>
 
         {myFaves.map((fave, index)=>
             <div key={index} id={fave.id} index={index}>

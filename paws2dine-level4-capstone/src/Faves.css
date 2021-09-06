@@ -38,3 +38,13 @@ input {
   width: 250px;
   margin-left: -2px;
 }
+
+.hide-it {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: black;
+  width: 350px;
+  height: 75px;
+  z-index: 2;
+}

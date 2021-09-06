@@ -62,7 +62,6 @@ return (
           <Faves />
       </Route>
       </Switch>
-      <Footer/>
  </div>
 )
 }
