@@ -1,6 +1,5 @@
 import React, { useContext} from "react"
 import { PawsContext} from "./PawsContext"
-// import {useState} from "react"
 import "./Faves.css"
 import PhotoForm from "./PhotoForm"
 

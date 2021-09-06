@@ -3,7 +3,6 @@ import React from "react"
 // import { PawsContext} from "./PawsContext"
 import { Switch, Route, Link } from "react-router-dom"
 import Header from "./Header"
-import Footer from "./Footer"
 import SLCMap from "./SLCMap"
 import Faves from "./Faves"
 import SearchBar from "./SearchBar"
@@ -18,11 +17,7 @@ import dogWaterBottle from "./assets/dog-water-bottle.jpg"
 
 function App(){
   
-   // const {dogFriendlyRestaurants} = useContext(PawsContext)
-   // console.log(dogFriendlyRestaurants)
-   //above context lines seems to work -- gets the array & console logs it
 
-  
 return (
  
   <div>

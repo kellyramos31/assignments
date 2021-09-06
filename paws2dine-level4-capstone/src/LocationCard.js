@@ -7,7 +7,7 @@ import "./LocationCard.css"
 import logo from "./assets/Logo_RGB.png"
 
 
- //Figure out how to incorporate dropdown menu for different possibilities
+ //Figure out how to incorporate dropdown menu OR buttons for different possibilities (pricing & ratings/categories)
 
 function LocationCard() {
 

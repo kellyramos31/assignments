@@ -337,8 +337,7 @@ console.log("change/add photo for this id", id)
         }
         console.log("updated Photo Listing object", updatedPhotoListing)
     
-    // const editedFavesWithPhoto = this.state.myFaves.map((fave=> fave.id === id && fave.isHearted ? updatedPhotoListing : fave))
-
+  
     const editedFavesWithPhoto = this.state.myFaves.map((fave=> fave.id === id ? updatedPhotoListing : fave))
     console.log("updatedPhotoListing id:", updatedPhotoListing.id) //this is consoling properly
     console.log("editFavesWithPhoto result of map:", editedFavesWithPhoto)    //empty array here

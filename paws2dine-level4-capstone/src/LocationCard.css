@@ -6,8 +6,6 @@ body {
   column-count: 2;
   margin-left: 12%;
   margin-right: 8%;
-  /* margin-top: 55px; */
-  /* margin-top: 2px; */
 }
 
 .detailed-list-items {
@@ -78,7 +76,6 @@ button {
 }
 
 input {
-  /* margin-left: 41%; */
   margin-bottom: 10px;
   border: 5px solid #32cd32;
   background-color: white;
@@ -88,8 +85,3 @@ input {
   font-size: 15px;
   width: 2;
 }
-
-/* .search-bar {
-  z-index: 3;
-  background-color: white;
-} */

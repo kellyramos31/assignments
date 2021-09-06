@@ -3,15 +3,12 @@ import React, { useContext} from "react"
 import { PawsContext} from "./PawsContext"
 import DropDownMenu from "./DropDownMenu"
 import "./SearchBar.css"
-// import {useState} from "react"
+
 
 
 function SearchBar () {
 
 const {searchBarOnChange} = useContext(PawsContext) 
-
-// const [searchTerm, setSearchTerm] = useState("")
-
 
     return (
         <div className="searchbar-dropdown">
