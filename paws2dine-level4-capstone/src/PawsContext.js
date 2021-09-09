@@ -13,17 +13,18 @@ import five from "./assets/small_5.png"
 
 const PawsContext = React.createContext()
 
-//NOTE:  should I change this to functional component & deploy useState throughout???
+//NOTE:  should I change this class component to functional component & deploy useState throughout?????
 
 
 class PawsContextProvider extends Component {
 
     state = {
         dogFriendlyRestaurants: [],
-        // options: [],
         searchText: "",
         filteredSearchList: [],
-        // oneDollarSign: [],
+        oneDollarSign: [],
+        twoDollarSigns: [],
+        // threeDollarSigns: [],
         myDoggieImage: "",
         isHearted: false,
         isChangingPhoto: false,
@@ -70,12 +71,10 @@ componentDidMount() {
                 console.log(res.data)
 
                 this.setState({
-                    dogFriendlyRestaurants: res.data.businesses,
-                    filteredSearchList: res.data.businesses,
+                    dogFriendlyRestaurants: res.data.businesses
                 })
 
                 this.addToggleProperty()
-                // this.oneDollarSignFilter()
     
             })
             
@@ -144,7 +143,7 @@ componentDidMount() {
             dogFriendlyRestaurants: addedProperty,
             filteredSearchList:  addedProperty
         })
-          
+        // this.createPricingButtonData()
     }
     
 
@@ -186,7 +185,6 @@ componentDidMount() {
 }
 
 
-//change to dogFriendlyRestaurants.map???//
 handleFaveToggle = (id)=>{
             console.log(id)
             const updatedDogFriendly = this.state.dogFriendlyRestaurants.map((business)=>{
@@ -200,15 +198,15 @@ handleFaveToggle = (id)=>{
                 }
                 return business
             })
+    
             this.setState({
                 dogFriendlyRestaurants: updatedDogFriendly,
                 filteredSearchList: updatedDogFriendly,
                 isHearted: !this.state.isHearted
-            }) 
+            })
+
         }
 
-
-//NOTE:  Possible to also change color of map icon somehow here in handleFave?????
 
 handleFave = (id, restaurant, address, city, phone, isHearted) => {
     console.log("current isHearted state:", isHearted)
@@ -231,21 +229,22 @@ handleFave = (id, restaurant, address, city, phone, isHearted) => {
 
 if (newFave.isHearted === true){
     this.handleFaveToggle(id)
-
+    
    
     this.setState (prevState=> {
         return {
             myFaves:  [...prevState.myFaves, newFave]
         }
     })
-    
-    
+    // this.createPricingButtonData()
+       
 } else if (newFave.isHearted === false) {
     this.handleFaveDelete(id)
+    // this.createPricingButtonData()
 }
+
 }         
  
-
 handleFaveDelete = (id) => {
     console.log("delete this id", id)
 
@@ -255,7 +254,7 @@ handleFaveDelete = (id) => {
       }
     })
    
-    this.handleFaveToggle(id) 
+    this.handleFaveToggle(id)
   }
 
 
@@ -287,17 +286,30 @@ getSearchFilteredList = (searchText) => {
     }
 
 
-// oneDollarSignFilter = () =>{
-//     const oneDollarSign = this.state.filteredSearchList.filter({})
-//          this.setState ({
-//             oneDollarSign: oneDollarSign
-//         })
-//     }
+handlePriceClickOne = () => {
+const  oneDollar = this.state.dogFriendlyRestaurants.filter(business=>business.price === "$")
+    this.setState ({
+        filteredSearchList: oneDollar
+    })
+}
 
 
+handlePriceClickTwo= (e) => {
+    const twoDollar = this.state.dogFriendlyRestaurants.filter(business=>business.price === "$$")
+    this.setState ({
+        filteredSearchList: twoDollar
+    })
+    
+}
+
+handleClickAll= (e) => {
+    this.setState ({
+        filteredSearchList: this.state.dogFriendlyRestaurants
+    })
+    
+}
 
 //Something to handle dropdown menu choices??  Examples:  based on smaller geography; cuisine; price point; rating
-
 //need to add a toggle for form so show if want to add photo & then hide if not???
 
 handlePhotoFormToggle = (id) => {
@@ -372,7 +384,9 @@ render() {
             togglePhotoEdit: this.togglePhotoEdit,
             handlePhotoFormToggle: this.handlePhotoFormToggle,
             handleMyDogPhotoSubmit: this.handleMyDogPhotoSubmit,
-            oneDollarSign: this.state.oneDollarSign
+            handlePriceClickOne: this.handlePriceClickOne,
+            handlePriceClickTwo: this.handlePriceClickTwo,
+            handleClickAll: this.handleClickAll
         }}
         >
             {this.props.children}

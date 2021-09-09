@@ -3,6 +3,7 @@ import { PawsContext} from "./PawsContext"
 // import Select from "react-select"
 // import options from "./options"
 // import SearchBar from "./SearchBar"
+import PriceRatingButtons from "./PriceRatingButtons"
 import "./LocationCard.css"
 import logo from "./assets/Logo_RGB.png"
 
@@ -15,6 +16,10 @@ function LocationCard() {
     const {filteredSearchList, yelpStars, handleFave} = useContext(PawsContext) 
       
     return(
+        <div>
+        <div className="price-buttons">
+            <PriceRatingButtons />
+        </div>
        <div className="detailed-list-items">
          <div className = "flex-container">
             
@@ -55,12 +60,13 @@ function LocationCard() {
                                 }                   
                             
                             </div>
-        
+                              
                         </div>
         
                     </div>
                          
                 )}
+                 </div>
                  </div>
                  </div>
     )}
