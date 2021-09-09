@@ -85,10 +85,3 @@ input {
   font-size: 15px;
   width: 2;
 }
-
-.price-buttons {
-  position: absolute;
-  right: 0px;
-  top: 50px;
-  z-index: 1;
-}

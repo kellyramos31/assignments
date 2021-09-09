@@ -6,7 +6,7 @@ import "./PriceRatingButtons.css"
 
 
 function PriceRatingButtons() {
-    const {handlePriceClickOne, handlePriceClickTwo, handleClickAll} = useContext(PawsContext) 
+    const {handlePriceClickOne, handlePriceClickTwo, handlePriceClickThree, handleClickAll} = useContext(PawsContext) 
     // const [oneDollarSign, setOneDollarSign] = useState([])
     // const createOneDropdown = () => {
         
@@ -15,15 +15,16 @@ function PriceRatingButtons() {
    
 
     return(
-        
-        <div className="price-buttons">
-
-            <button onClick={handlePriceClickOne}>$</button>
-            <button onClick={handlePriceClickTwo}>$$</button>
-            <button onClick={handleClickAll}>All</button>
+        <div>  
+            <div className="buttons-title">Dog Friendly Eats by Price Rating</div>
+            <div className="price-rating-buttons">
+                <button onClick={handlePriceClickOne}>$</button>
+                <button onClick={handlePriceClickTwo}>$$</button>
+                <button onClick={handlePriceClickThree}>$$$</button>
+                <button onClick={handleClickAll}>All</button>
     
+            </div>
         </div>
-
 
     )
 }

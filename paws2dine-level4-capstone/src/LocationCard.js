@@ -3,7 +3,7 @@ import { PawsContext} from "./PawsContext"
 // import Select from "react-select"
 // import options from "./options"
 // import SearchBar from "./SearchBar"
-import PriceRatingButtons from "./PriceRatingButtons"
+// import PriceRatingButtons from "./PriceRatingButtons"
 import "./LocationCard.css"
 import logo from "./assets/Logo_RGB.png"
 
@@ -17,10 +17,7 @@ function LocationCard() {
       
     return(
         <div>
-        <div className="price-buttons">
-            <PriceRatingButtons />
-        </div>
-       <div className="detailed-list-items">
+         <div className="detailed-list-items">
          <div className = "flex-container">
             
               {filteredSearchList.map((business, index)=>

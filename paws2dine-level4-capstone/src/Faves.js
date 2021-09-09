@@ -15,7 +15,7 @@ function Faves() {
             <div className="hide-it">
                 <p>HIDE THIS SEARCH BAR!</p>
             </div>
-
+        <div className="list-items">
         {myFaves.map((fave, index)=>
             <div key={index} id={fave.id} index={index}>
             <ul className="restaurant-list">
@@ -56,6 +56,7 @@ function Faves() {
             </ul>
         </div>
         )}
+    </div>
     </div>
     </div>
     )}

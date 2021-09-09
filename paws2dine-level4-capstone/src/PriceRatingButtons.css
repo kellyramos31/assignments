@@ -1,1 +1,16 @@
+.price-rating-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-left: 53px;
+  margin-right: 53px;
+}
 
+.buttons-title {
+  margin-left: 25px;
+  color: white;
+  font-family: Arial;
+  font-style: italic;
+  font-size: 14px;
+  font-weight: bold;
+}

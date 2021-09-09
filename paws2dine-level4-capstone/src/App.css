@@ -74,4 +74,10 @@ nav {
 
 .searchbar {
   margin-left: 15px;
+  z-index: 6;
+}
+
+.price-buttons {
+  margin-left: 5px;
+  z-index: 6;
 }

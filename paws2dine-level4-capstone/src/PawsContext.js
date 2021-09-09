@@ -24,7 +24,7 @@ class PawsContextProvider extends Component {
         filteredSearchList: [],
         oneDollarSign: [],
         twoDollarSigns: [],
-        // threeDollarSigns: [],
+        threeDollarSigns: [],
         myDoggieImage: "",
         isHearted: false,
         isChangingPhoto: false,
@@ -302,6 +302,14 @@ handlePriceClickTwo= (e) => {
     
 }
 
+handlePriceClickThree= (e) => {
+    const threeDollar = this.state.dogFriendlyRestaurants.filter(business=>business.price === "$$$")
+    this.setState ({
+        filteredSearchList: threeDollar
+    })
+    
+}
+
 handleClickAll= (e) => {
     this.setState ({
         filteredSearchList: this.state.dogFriendlyRestaurants
@@ -310,7 +318,7 @@ handleClickAll= (e) => {
 }
 
 //Something to handle dropdown menu choices??  Examples:  based on smaller geography; cuisine; price point; rating
-//need to add a toggle for form so show if want to add photo & then hide if not???
+
 
 handlePhotoFormToggle = (id) => {
     console.log("toggled for Photo id", id)
@@ -386,6 +394,7 @@ render() {
             handleMyDogPhotoSubmit: this.handleMyDogPhotoSubmit,
             handlePriceClickOne: this.handlePriceClickOne,
             handlePriceClickTwo: this.handlePriceClickTwo,
+            handlePriceClickThree: this.handlePriceClickThree,
             handleClickAll: this.handleClickAll
         }}
         >

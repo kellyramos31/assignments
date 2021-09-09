@@ -2,7 +2,7 @@
 
 import React, { useContext} from "react"
 import { PawsContext} from "./PawsContext"
-// import PriceRatingButtons from "./PriceRatingButtons"
+import PriceRatingButtons from "./PriceRatingButtons"
 import "./SearchBar.css"
 
 
@@ -20,9 +20,10 @@ const {searchBarOnChange} = useContext(PawsContext)
                 onChange={(e)=>searchBarOnChange(e.target.value)}
                 />
             </div>
-            {/* <div className="price-buttons">
-                <PriceRatingButtons/>
-            </div> */}
+            <div className="price-buttons">            
+                <PriceRatingButtons />
+            </div>
+
         </div>
     )}
 
