@@ -73,6 +73,7 @@ nav {
 }
 
 .searchbar {
+  margin-top: 40px;
   margin-left: 15px;
   z-index: 6;
 }

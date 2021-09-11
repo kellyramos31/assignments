@@ -3,6 +3,7 @@
 import React, { useContext} from "react"
 import { PawsContext} from "./PawsContext"
 import PriceRatingButtons from "./PriceRatingButtons"
+// import MoreRestaurantsButton from "./MoreRestaurantsButton"
 import "./SearchBar.css"
 
 
@@ -22,6 +23,7 @@ const {searchBarOnChange} = useContext(PawsContext)
             </div>
             <div className="price-buttons">            
                 <PriceRatingButtons />
+                {/* <MoreRestaurantsButton /> */}
             </div>
 
         </div>

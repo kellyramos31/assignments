@@ -9,6 +9,7 @@ body {
 }
 
 .detailed-list-items {
+  display: block;
   padding-top: 275px;
 }
 
@@ -17,6 +18,7 @@ body {
   flex-direction: row;
   margin-bottom: 10px;
   margin-right: 10px;
+  break-inside: avoid;
 }
 
 .bus-photo {

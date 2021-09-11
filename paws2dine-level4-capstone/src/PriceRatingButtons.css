@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-left: 53px;
-  margin-right: 53px;
+  margin-left: 48px;
+  margin-right: 48px;
 }
 
 .buttons-title {
-  margin-left: 25px;
+  margin-left: 48px;
   color: white;
   font-family: Arial;
   font-style: italic;

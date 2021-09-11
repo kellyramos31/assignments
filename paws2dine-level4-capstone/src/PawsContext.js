@@ -19,6 +19,8 @@ const PawsContext = React.createContext()
 class PawsContextProvider extends Component {
 
     state = {
+        results1: [],
+        results2: [],
         dogFriendlyRestaurants: [],
         searchText: "",
         filteredSearchList: [],
@@ -32,10 +34,11 @@ class PawsContextProvider extends Component {
     }
 
 
-//NOTE: got limit to 50 -- how structure request(s) to get the balance of businesses into one array?  Need to be 2 separate requests??
 
-//From Postman:  url for 51-100 data records:  
-//https://api.yelp.com/v3/businesses/search?location=Salt Lake City&categories=restaurants&term=dog friendly&limit=50&offset=51
+// NOTE: got limit to 50 -- how structure request(s) to get the balance of businesses into one array?  Need to be 2 separate requests??
+
+// From Postman:  url for 51-100 data records:  
+// https://api.yelp.com/v3/businesses/search?location=Salt Lake City&categories=restaurants&term=dog friendly&limit=50&offset=51
 
 componentDidMount() {
         //Q:  How combine the two axios GET requests needed for total datapoints??
@@ -66,7 +69,22 @@ componentDidMount() {
             }
         })
 
-            .then(res => {
+        //  .then (axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=Salt Lake City&categories=restaurants&term=dog friendly}`, {
+
+        //     headers: {
+        //         Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
+        //     }
+        //     ,
+
+        //     params: {
+        //         limit: 50,
+        //         offset: 51
+        //     }
+        // }))
+
+
+
+          .then(res => {
                 console.log("axios GET/component did mount working")
                 console.log(res.data)
 
@@ -79,57 +97,35 @@ componentDidMount() {
             })
             
             .catch(err => console.log(err))
-
            
     }
 
-    //Switch statement to display Yelp Stars ratings 
-    //(NOTE:  leave breaks in even though "unreachable code" warning)
-
-    // componentDidMount() {
-    //     //Q:  How combine the two axios GET requests needed for total datapoints??
-    //     //Call to Yelp Fusion API to get business data:
-    //     //Q:  Have to do multiple requests b/c limited to #  on each request??? [need to use offset]
-    //     //axios.all to do the 2 requests to get 1-50 & 51-100? + axios.spread?? (interceptors??)
-    //     //look for info re:  pagination/recursively//for loop
 
 
-    //     axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=Salt Lake City&categories=restaurants&term=dog friendly}`, {
+// componentDidMount() {
+//     console.log("component did mount working")
+//     Promise.all([
+//         this.dataResults1(),
+//         this.dataResults2()
+//     ])
+    
+//     // .then(res=>{
+//     //    console.log("res", res)  //undefined right now
+//     // })
 
-    //         headers: {
-    //             Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
-    //         }
-    //         ,
+//     .then (res=>{
 
-    //         params: {
-    //             limit: 50
-    //         //     categories: "restaurants",
-    //         //     term: "dog friendly"
-    //         //     // limit: 50,
-    //         //     // offset: 51
-    //         //     //NOTE:  total of ~86 restaurants show up (b/c only 50 each request => do I need 2 requests to get all?? -- how structure this??)
-    //         //     //need offset of 81?? Or maybe sort by rated & just return top 50 based on ratings??
-    //         //     //other options = open_at, open_now 
-    //         //      
-    //         //     //ALSO:  options to sort by rating, review_count, distance
-    //         }
-    //     })
+//         const firstData = res[0].data.businesses
+//         const secondData = res[1].data.businesses
 
-    //         .then(res => {
-    //             console.log("axios GET/component did mount working")
-    //             this.setState({
-    //                 dogFriendlyRestaurants: res.data.businesses
-    //             })
-    //             console.log(res.data)
-    //             //console.log(this.state.markers)
-    //             // this.getMarkers()
+//         this.setState({
+//            dogFriendlyRestaurants: [...firstData, ...secondData]
+//        })
+//     })
+//     .catch(err => console.log(err))
+          
+// }
 
-    //         })
-
-            
-
-    //         .catch(err => console.log(err))
-    // }
 
 
    addToggleProperty = () => {
@@ -143,9 +139,10 @@ componentDidMount() {
             dogFriendlyRestaurants: addedProperty,
             filteredSearchList:  addedProperty
         })
-        // this.createPricingButtonData()
     }
     
+    //Switch statement to display Yelp Stars ratings 
+    //(NOTE:  leave breaks in even though "unreachable code" warning)
 
     yelpStars = (yelpRating) => {
    
@@ -317,6 +314,69 @@ handleClickAll= (e) => {
     
 }
 
+handleMoreRestaurants = (e) => {
+    axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=Salt Lake City&categories=restaurants&term=dog friendly}`, {
+
+            headers: {
+                Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
+            }
+            ,
+
+            params: {
+                limit: 50,
+                offset: 51
+            }
+        })
+
+          .then(res => {
+                console.log("axios GET/component did mount working")
+                console.log(res.data)
+
+                this.setState({
+                    dogFriendlyRestaurants: [...res.data.businesses]
+                })
+
+                this.addToggleProperty()
+
+                this.setState({
+
+                })
+    
+            })
+            
+            .catch(err => console.log(err))
+
+}
+
+handleOriginalRestaurantsAgain = (e)=> {
+         axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=Salt Lake City&categories=restaurants&term=dog friendly}`, {
+
+            headers: {
+                Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
+            }
+            ,
+
+            params: {
+                limit: 50
+         
+            }
+        })
+
+          .then(res => {
+                console.log("axios GET/component did mount working")
+                console.log(res.data)
+
+                this.setState({
+                    dogFriendlyRestaurants: res.data.businesses
+                })
+
+                this.addToggleProperty()
+    
+            })
+            
+            .catch(err => console.log(err))
+}
+
 //Something to handle dropdown menu choices??  Examples:  based on smaller geography; cuisine; price point; rating
 
 
@@ -395,7 +455,9 @@ render() {
             handlePriceClickOne: this.handlePriceClickOne,
             handlePriceClickTwo: this.handlePriceClickTwo,
             handlePriceClickThree: this.handlePriceClickThree,
-            handleClickAll: this.handleClickAll
+            handleClickAll: this.handleClickAll,
+            // handleMoreRestaurants: this.handleMoreRestaurants,
+            // handleOriginalRestaurantsAgain: this.handleOriginalRestaurantsAgain
         }}
         >
             {this.props.children}

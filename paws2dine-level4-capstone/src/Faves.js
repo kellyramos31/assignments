@@ -2,6 +2,7 @@ import React, { useContext} from "react"
 import { PawsContext} from "./PawsContext"
 import "./Faves.css"
 import PhotoForm from "./PhotoForm"
+import FavesOnlyMap from "./FavesOnlyMap"
 
 
 
@@ -10,7 +11,10 @@ function Faves() {
     const {myFaves, handleFaveDelete, isChangingPhoto, handlePhotoFormToggle} = useContext(PawsContext) 
     
     return(
+        <div className="faves-page">
         <div>
+          <FavesOnlyMap />
+        </div>
         <div className="details-list">
             <div className="hide-it">
                 <p>HIDE THIS SEARCH BAR!</p>
@@ -54,10 +58,12 @@ function Faves() {
                     
                 </li>
             </ul>
+           
         </div>
-        )}
+         )}
     </div>
     </div>
+ 
     </div>
     )}
 

@@ -1,0 +1,13 @@
+.faves-map {
+  margin-top: 38%;
+  width: 40vw;
+  height: 50vh;
+}
+
+.location-info-box-faves {
+  position: absolute;
+  top: 220px;
+  right: 30%;
+  width: 50px;
+  font-size: 12px;
+}

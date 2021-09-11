@@ -1,12 +1,9 @@
-// import React from "react"
 import React, { useContext} from "react"
 import { PawsContext} from "./PawsContext"
-// import Select from "react-select"
-import "./PriceRatingButtons.css"
 
 
 function PriceRatingButtons() {
-    const {handlePriceClickOne, handlePriceClickTwo, handlePriceClickThree, handleClickAll} = useContext(PawsContext) 
+    const {handleMoreRestaurants, handleOriginalRestaurantsAgain} = useContext(PawsContext) 
     // const [oneDollarSign, setOneDollarSign] = useState([])
     // const createOneDropdown = () => {
         
@@ -18,11 +15,8 @@ function PriceRatingButtons() {
         <div>  
             <div className="buttons-title">Dog Friendly Eats by Price</div>
             <div className="price-rating-buttons">
-                <button onClick={handlePriceClickOne}>$</button>
-                <button onClick={handlePriceClickTwo}>$$</button>
-                <button onClick={handlePriceClickThree}>$$$</button>
-                <button onClick={handleClickAll}>All</button>
-    
+                <button onClick={handleMoreRestaurants}>See More Restaurants</button>
+                <button onClick={handleOriginalRestaurantsAgain}>Back to Original List</button>
             </div>
         </div>
 

@@ -2,8 +2,14 @@ body {
   margin: 0;
 }
 
+.faves-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .details-list {
-  padding-top: 225px;
+  padding-top: 25px;
 }
 
 .restaurant {
@@ -20,7 +26,6 @@ body {
 }
 
 ul {
-  margin-left: 39%;
   color: whitesmoke;
 }
 
@@ -48,7 +53,7 @@ input {
   top: 0;
   right: 0;
   background-color: black;
-  width: 330px;
-  height: 130px;
+  width: 21%;
+  height: 150px;
   z-index: 1;
 }

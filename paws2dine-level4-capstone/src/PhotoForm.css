@@ -1,4 +1,6 @@
 form {
+  display: flex;
+  flex-direction: column;
   font-family: Arial;
   font-style: italic;
   font-size: 14px;
@@ -8,4 +10,8 @@ form {
   margin-left: -3px;
   width: 375px;
   height: 14px;
+}
+
+.photo-button {
+  width: 200px;
 }
