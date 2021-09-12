@@ -14,3 +14,17 @@
   font-size: 14px;
   font-weight: bold;
 }
+
+@media only screen and (max-width: 414px) {
+  .price-rating-buttons {
+    margin-left: 12px;
+    margin-right: 0px;
+    /* justify-content: space-around; */
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .buttons-title {
+    display: none;
+  }
+}

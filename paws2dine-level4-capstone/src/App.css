@@ -97,6 +97,33 @@ nav {
   }
 }
 
+@media only screen and (max-width: 414px) {
+  .header-logo {
+    width: 100%;
+    padding-bottom: 45px;
+  }
+  .header-dog1 {
+    position: absolute;
+    height: 28%;
+    width: 28%;
+    top: 198px;
+    right: 21%;
+  }
+
+  .header-dog2 {
+    display: none;
+  }
+
+  .header-dog3 {
+    display: none;
+  }
+
+  .search-bar {
+    margin-top: 28%;
+    margin-left: -132px;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   .search-bar {
     position: absolute;
@@ -113,5 +140,3 @@ nav {
     margin-left: 3%;
   }
 }
-
-

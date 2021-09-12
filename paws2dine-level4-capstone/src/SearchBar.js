@@ -17,7 +17,7 @@ const {searchBarOnChange} = useContext(PawsContext)
             <div className="searchbar">
               <input 
                 type="text" 
-                placeholder="Search by Restaurant Name..."
+                placeholder="Search By Name..."
                 onChange={(e)=>searchBarOnChange(e.target.value)}
                 />
             </div>

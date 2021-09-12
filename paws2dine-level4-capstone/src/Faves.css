@@ -79,11 +79,6 @@ input {
   z-index: 7;
 }
 
-/* .hide-behind-map {
-  background-color: black;
-  z-index: 10;
-} */
-
 .hide-behind-list {
   background-color: black;
   position: absolute;
@@ -92,6 +87,12 @@ input {
   height: 150px;
   width: 327px;
   z-index: 3;
+}
+
+@media only screen and (max-width: 414px) {
+  input {
+    width: 160px;
+  }
 }
 
 @media only screen and (max-width: 768px) {
@@ -110,6 +111,10 @@ input {
     margin-right: -125px;
     padding: 8px;
     margin-bottom: -50px;
+  }
+
+  .list-items {
+    padding-top: 10px;
   }
 }
 

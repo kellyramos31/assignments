@@ -31,10 +31,10 @@ function Faves() {
                 <div>
                     <button  className="map-button" onClick={handleFaveMapToggle}>Switch to Map View</button>
                 </div>
-                <div className="details-list">
-            <div className="hide-it">
-                <p>HIDE THIS SEARCH BAR!</p>
-            </div>
+            <div className="details-list">
+                <div className="hide-it">
+                    <p>HIDE THIS SEARCH BAR!</p>
+                </div>
         <div className="list-items">
         {myFaves.map((fave, index)=>
             <div key={index} id={fave.id} index={index}>
