@@ -8,14 +8,29 @@ import FavesOnlyMap from "./FavesOnlyMap"
 
 function Faves() {
    
-    const {myFaves, handleFaveDelete, isChangingPhoto, handlePhotoFormToggle} = useContext(PawsContext) 
+    const {myFaves, handleFaveDelete, isChangingPhoto, handlePhotoFormToggle, isFaveMapView, handleFaveMapToggle} = useContext(PawsContext) 
     
-    return(
+    return( 
+//    <div className="faves-map">
+           
         <div className="faves-page">
-        <div>
-          <FavesOnlyMap />
+                       
+            {isFaveMapView 
+            ?
+            <div>
+           <div>
+               <button className="list-button" onClick={handleFaveMapToggle}>Switch to List View </button>
+            </div> 
+               <div className="faves-map">
+                <FavesOnlyMap />
+                </div>
         </div>
-        <div className="details-list">
+        :
+        <div >
+   
+            <button  className="map-button" onClick={handleFaveMapToggle}>Switch to Map View</button>
+     
+         <div className="details-list">
             <div className="hide-it">
                 <p>HIDE THIS SEARCH BAR!</p>
             </div>
@@ -32,7 +47,7 @@ function Faves() {
                     {fave.myDoggieImage !== ""
                     ?
                     <div>
-                    <img key={index} id={fave.id} width="300px" height="200px" src={fave.myDoggieImage} alt=""/>
+                    <img key={index} id={fave.id} width="400px" height="300px" src={fave.myDoggieImage} alt=""/>
                     </div>
                     :
                     null
@@ -63,9 +78,11 @@ function Faves() {
          )}
     </div>
     </div>
- 
     </div>
-    )}
+}
+    </div> 
+    // </div>
+     )}
 
 
 export default Faves

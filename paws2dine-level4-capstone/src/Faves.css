@@ -5,11 +5,14 @@ body {
 .faves-page {
   display: flex;
   flex-direction: column;
+  padding-top: 15%;
   align-items: center;
+  z-index: 2;
 }
 
 .details-list {
-  padding-top: 25px;
+  padding-top: 2%;
+  z-index: 1;
 }
 
 .restaurant {
@@ -44,10 +47,6 @@ input {
   margin-left: -2px;
 }
 
-.list-items {
-  z-index: 3;
-}
-
 .hide-it {
   position: fixed;
   top: 0;
@@ -55,5 +54,28 @@ input {
   background-color: black;
   width: 21%;
   height: 150px;
-  z-index: 1;
+  z-index: 7;
+}
+
+.map-button {
+  margin-left: 20%;
+  color: white;
+  width: 80px;
+  padding: 10px;
+  z-index: 9;
+  width: 200px;
+}
+
+.list-button {
+  margin-left: 43%;
+  color: white;
+  width: 80px;
+  padding: 10px;
+  z-index: 8;
+  width: 200px;
+}
+
+.favorites-map {
+  margin-right: auto;
+  margin-left: auto;
 }

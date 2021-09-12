@@ -30,7 +30,8 @@ class PawsContextProvider extends Component {
         myDoggieImage: "",
         isHearted: false,
         isChangingPhoto: false,
-        myFaves: []
+        myFaves: [],
+        isFaveMapView: false
     }
 
 
@@ -431,6 +432,13 @@ console.log("change/add photo for this id", id)
         
     }
 
+handleFaveMapToggle = (e) => {
+    this.setState(prevState=>{
+        return {
+        isFaveMapView: !prevState.isFaveMapView
+        }
+    })
+}
  
 
 render() {
@@ -456,8 +464,9 @@ render() {
             handlePriceClickTwo: this.handlePriceClickTwo,
             handlePriceClickThree: this.handlePriceClickThree,
             handleClickAll: this.handleClickAll,
-            // handleMoreRestaurants: this.handleMoreRestaurants,
-            // handleOriginalRestaurantsAgain: this.handleOriginalRestaurantsAgain
+            isFaveMapView: this.state.isFaveMapView,
+            handleFaveMapToggle: this.handleFaveMapToggle
+
         }}
         >
             {this.props.children}
