@@ -52,7 +52,7 @@ input {
   top: 0;
   right: 0;
   background-color: black;
-  width: 21.8%;
+  width: 21.28%;
   height: 150px;
   z-index: 6;
 }
@@ -90,7 +90,7 @@ input {
   top: 0;
   right: 0;
   height: 150px;
-  width: 325px;
+  width: 327px;
   z-index: 3;
 }
 
@@ -133,7 +133,7 @@ input {
   }
 
   .hide-it {
-    width: 8%;
+    width: 3%;
   }
 
   .hide-behind-list {
