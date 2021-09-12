@@ -16,7 +16,7 @@ function PriceRatingButtons() {
             <div className="buttons-title">Dog Friendly Eats by Price</div>
             <div className="price-rating-buttons">
                 <button onClick={handleMoreRestaurants}>See More Restaurants</button>
-                <button onClick={handleOriginalRestaurantsAgain}>Back to Original List</button>
+                {/* <button onClick={handleOriginalRestaurantsAgain}>Back to Original List</button> */}
             </div>
         </div>
 

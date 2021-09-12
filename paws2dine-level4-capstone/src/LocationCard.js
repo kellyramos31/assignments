@@ -23,7 +23,7 @@ function LocationCard() {
               {filteredSearchList.map((business, index)=>
               <div key={business.id} index={index} className="detailed-list">                         
                        <div className="card" >
-                         <img className="bus-photo" width="40%" height="250px" src={business.image_url} alt={business.name}/>    
+                         <img className="bus-photo" width="50%" height="265px" src={business.image_url} alt={business.name}/>    
                          {/* <img className="bus-photo" width="250px" height="250px"src={business.image_url} alt={business.name}/>  */}
                             <div key={business.id} className="bus-details">
                                 <div className="business-name">{business.name}</div>

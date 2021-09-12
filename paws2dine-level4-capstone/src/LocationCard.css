@@ -4,13 +4,15 @@ body {
 
 .flex-container {
   column-count: 2;
-  margin-left: 12%;
-  margin-right: 8%;
+  /* margin-left: 13%;
+  margin-right: 8%; */
+  margin-left: 14%;
+  margin-right: 10%;
 }
 
 .detailed-list-items {
   display: block;
-  padding-top: 275px;
+  padding-top: 210px;
 }
 
 .card {
@@ -86,4 +88,18 @@ input {
   font-family: Arial;
   font-size: 15px;
   width: 2;
+}
+
+@media only screen and (max-width: 768px) {
+}
+
+@media only screen and (max-width: 1024px) {
+  .flex-container {
+    column-count: 1;
+    margin-left: 30%;
+  }
+
+  .detailed-list-items {
+    padding-top: 280px;
+  }
 }
