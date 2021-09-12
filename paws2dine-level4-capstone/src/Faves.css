@@ -12,7 +12,7 @@ body {
 
 .details-list {
   padding-top: 2%;
-  z-index: 1;
+  /* z-index: 1; */
 }
 
 .restaurant {
@@ -54,28 +54,42 @@ input {
   background-color: black;
   width: 21%;
   height: 150px;
-  z-index: 7;
+  z-index: 6;
 }
 
 .map-button {
-  margin-left: 20%;
+  position: absolute;
+  top: 70px;
+  right: 120px;
   color: white;
   width: 80px;
   padding: 10px;
-  z-index: 9;
-  width: 200px;
+  width: 180px;
+  z-index: 7;
 }
 
 .list-button {
-  margin-left: 43%;
+  position: absolute;
+  top: 70px;
+  right: 120px;
   color: white;
   width: 80px;
   padding: 10px;
-  z-index: 8;
-  width: 200px;
+  width: 180px;
+  z-index: 7;
 }
 
-.favorites-map {
-  margin-right: auto;
-  margin-left: auto;
+/* .hide-behind-map {
+  background-color: black;
+  z-index: 10;
+} */
+
+.hide-behind-list {
+  background-color: black;
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 150px;
+  width: 325px;
+  z-index: 3;
 }

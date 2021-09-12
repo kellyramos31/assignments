@@ -1,7 +1,8 @@
 .faves-map {
   margin-top: 2%;
   width: 85vw;
-  height: 65vh;
+  height: 60vh;
+  background-color: black;
 }
 
 .location-info-box-faves {

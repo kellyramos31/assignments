@@ -18,19 +18,20 @@ function Faves() {
             {isFaveMapView 
             ?
             <div>
-           <div>
-               <button className="list-button" onClick={handleFaveMapToggle}>Switch to List View </button>
-            </div> 
+                <div className="hide-behind-list">
+                    <button className="list-button" onClick={handleFaveMapToggle}>Switch to List View </button>
+                </div> 
+               
                <div className="faves-map">
-                <FavesOnlyMap />
+                    <FavesOnlyMap />
+               </div>
+            </div>
+            :
+            <div>
+                <div>
+                    <button  className="map-button" onClick={handleFaveMapToggle}>Switch to Map View</button>
                 </div>
-        </div>
-        :
-        <div >
-   
-            <button  className="map-button" onClick={handleFaveMapToggle}>Switch to Map View</button>
-     
-         <div className="details-list">
+                <div className="details-list">
             <div className="hide-it">
                 <p>HIDE THIS SEARCH BAR!</p>
             </div>
@@ -78,9 +79,10 @@ function Faves() {
          )}
     </div>
     </div>
-    </div>
+       </div>
 }
     </div> 
+ 
     // </div>
      )}
 
