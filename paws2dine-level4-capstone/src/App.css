@@ -134,13 +134,13 @@ nav {
 @media only screen and (max-width: 1024px) {
   .search-bar {
     position: absolute;
-    top: 35%;
+    top: 44%;
     left: 43.5%;
     padding-bottom: 8px;
   }
 
   .header-logo {
-    padding-bottom: 15px;
+    padding-bottom: 29px;
   }
 
   .header-dog1 {
