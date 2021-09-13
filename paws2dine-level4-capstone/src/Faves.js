@@ -18,9 +18,11 @@ function Faves() {
             {isFaveMapView 
             ?
             <div>
+               
                 <div className="hide-behind-list">
-                    <button className="list-button" onClick={handleFaveMapToggle}>Switch to List View </button>
-                </div> 
+                    <button className="list-button" onClick={handleFaveMapToggle}>List View </button>
+                </div>
+             
                
                <div className="faves-map">
                     <FavesOnlyMap />
@@ -29,7 +31,7 @@ function Faves() {
             :
             <div>
                 <div>
-                    <button  className="map-button" onClick={handleFaveMapToggle}>Switch to Map View</button>
+                    <button  className="map-button" onClick={handleFaveMapToggle}>Map View</button>
                 </div>
             <div className="details-list">
                 <div className="hide-it">
@@ -67,7 +69,7 @@ function Faves() {
                     </div>    
                     :
                     <div>
-                    <button key={index} id={fave.id} index={index} onClick={(id)=>handlePhotoFormToggle(fave.id)}>Click to Add/Edit Your Doggie & Me Photo </button>
+                    <button key={index} id={fave.id} index={index} onClick={(id)=>handlePhotoFormToggle(fave.id)}>Click to Add Your Doggie & Me Photo </button>
                     </div>
                     }
                     {fave.isHearted}

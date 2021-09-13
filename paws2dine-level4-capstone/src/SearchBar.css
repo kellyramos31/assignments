@@ -1,1 +1,7 @@
-
+@media only screen and (max-width: 414px) {
+  .searchbar-buttons {
+    position: fixed;
+    top: 16.5%;
+    right: 51%;
+  }
+}

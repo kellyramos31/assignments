@@ -89,9 +89,35 @@ input {
   z-index: 3;
 }
 
-@media only screen and (max-width: 414px) {
+@media only screen and (max-width: 400px) {
   input {
-    width: 160px;
+    width: 140px;
+  }
+
+  .map-button {
+    position: absolute;
+    right: 0;
+    top: 50;
+    left: 6%;
+    /* margin-top: 225; */
+    padding: 3px;
+    width: auto;
+  }
+
+  .list-button {
+    position: absolute;
+    right: 0;
+    top: 50;
+    left: 6%;
+    padding: 3px;
+    /* margin-top: 225; */
+    width: auto;
+  }
+
+  .details-list {
+    margin-top: -25px;
+    margin-left: 5%;
+    margin-right: 5%;
   }
 }
 
@@ -109,7 +135,7 @@ input {
     position: fixed;
     margin-top: 12px;
     margin-right: -125px;
-    padding: 8px;
+    padding: 3px;
     margin-bottom: -50px;
   }
 

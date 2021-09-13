@@ -84,30 +84,24 @@ nav {
   z-index: 6;
 }
 
-@media only screen and (max-width: 768px) {
-  .search-bar {
-    position: absolute;
-    margin-top: 12px;
-    margin-left: 35px;
-    left: 55%;
-    padding-bottom: 15px;
-  }
-  .header-logo {
-    padding-bottom: 8px;
-  }
-}
-
-@media only screen and (max-width: 414px) {
+@media only screen and (max-width: 400px) {
   .header-logo {
     width: 100%;
-    padding-bottom: 45px;
+    margin-bottom: 1px;
+    padding-bottom: -50px;
   }
+  nav {
+    position: absolute;
+    margin-top: 6px;
+    left: 5px;
+  }
+
   .header-dog1 {
     position: absolute;
     height: 28%;
-    width: 28%;
-    top: 198px;
-    right: 21%;
+    width: 24%;
+    top: 18px;
+    left: 22%;
   }
 
   .header-dog2 {
@@ -124,6 +118,19 @@ nav {
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .search-bar {
+    position: absolute;
+    margin-top: 12px;
+    margin-left: 35px;
+    left: 55%;
+    padding-bottom: 15px;
+  }
+  .header-logo {
+    padding-bottom: 8px;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   .search-bar {
     position: absolute;
@@ -133,7 +140,7 @@ nav {
   }
 
   .header-logo {
-    padding-bottom: 75px;
+    padding-bottom: 15px;
   }
 
   .header-dog1 {
