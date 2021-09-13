@@ -10,7 +10,7 @@
 
 .location-info {
   position: absolute;
-  top: 35%;
+  top: 225px;
   right: 4%;
   width: 250px;
   min-height: 80px;
@@ -51,13 +51,23 @@
   .location-info {
     width: 185px;
     right: 2%;
-    top: 34%;
+    margin-top: -50px;
+    font-size: 14px;
+  }
+
+  .rest-name {
+    font-size: 14px;
   }
 }
 
 @media only screen and (max-width: 768px) {
   .location-info {
-    top: 24%;
-    right: 1%;
+    top: 255px;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .location-info {
+    top: 275px;
   }
 }
