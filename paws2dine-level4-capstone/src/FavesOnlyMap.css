@@ -15,7 +15,13 @@
 
 @media only screen and (max-width: 400px) {
   .faves-map {
-    width: 85vw;
-    height: 85vh;
+    width: 88vw;
+    height: 88vh;
+  }
+
+  .location-info-box-faves {
+    top: 214px;
+    right: 22px;
+    /* width: 20%; */
   }
 }
