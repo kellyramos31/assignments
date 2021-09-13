@@ -54,3 +54,10 @@
     top: 34%;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .location-info {
+    top: 24%;
+    right: 1%;
+  }
+}
