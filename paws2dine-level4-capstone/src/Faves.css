@@ -72,7 +72,7 @@ input {
 @media only screen and (max-width: 400px) {
   .map-button {
     position: fixed;
-    top: 81px;
+    top: 77px;
     left: 23px;
     height: 75px;
     width: 155px;
@@ -82,7 +82,7 @@ input {
 
   .list-button {
     position: fixed;
-    top: 81px;
+    top: 77px;
     left: 23px;
     height: 75px;
     width: 155px;
@@ -106,7 +106,7 @@ input {
   }
 }
 
-@media only screen and (max-width: 768px) {
+/* @media only screen and (max-width: 768px) {
   .map-button {
     top: 110px;
     left: 438px;
@@ -128,4 +128,4 @@ input {
   .list-items {
     padding-top: 90px;
   }
-}
+} */

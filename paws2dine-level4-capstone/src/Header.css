@@ -19,8 +19,9 @@ body {
 
 @media only screen and (max-width: 400px) {
   .paws2-logo {
-    width: 38%;
+    width: 35%;
     height: 85%;
-    margin-right: -129px;
+    margin-left: 5px;
+    margin-right: -155px;
   }
 }
