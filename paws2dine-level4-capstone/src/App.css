@@ -19,13 +19,10 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  /* margin-top: 19px; */
   align-items: left;
   font-size: 14px;
-  /* justify-content: center; */
   padding-top: 0;
   margin-left: 10px;
-  /* margin-top: 5px; */
 }
 
 .header-logo {
@@ -38,45 +35,30 @@ nav {
   padding-bottom: 5px;
   padding-left: 20px;
   z-index: 1;
-  /* border-bottom: 10px double green; */
 }
 
 .header-dog1 {
   height: 17%;
   width: 17%;
-  /* margin-top: 22px; */
-  /* margin-bottom: 1%; */
   margin-left: 4.9%;
   margin-right: -22px;
   padding-right: 0;
   border-radius: 50%;
-  /* border: 5px dotted green; */
 }
 
 .header-dog2 {
   height: 19%;
   width: 23%;
-  /* margin-top: 22px; */
-  /* margin-bottom: 1%; */
   border-radius: 50%;
-  /* border: 5px double green; */
 }
 
 .header-dog3 {
   height: 16%;
   width: 18%;
-  /* margin-top: 22px; */
-  /* margin-bottom: 1%; */
   margin-left: -22px;
   padding-right: 0;
   border-radius: 50%;
-  /* border: 5px double green; */
 }
-
-/* .price-buttons {
-  margin-left: -15px;
-  z-index: 6;
-} */
 
 @media only screen and (max-width: 400px) {
   .header-logo {
@@ -92,8 +74,8 @@ nav {
 
   .header-dog1 {
     position: absolute;
-    height: 28%;
-    width: 24%;
+    height: 32%;
+    width: 27%;
     top: 18px;
     left: 20%;
   }
@@ -104,21 +86,5 @@ nav {
 
   .header-dog3 {
     display: none;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .header-logo {
-    padding-bottom: 8px;
-  }
-}
-
-@media only screen and (max-width: 1520) {
-  .header-logo {
-    padding-bottom: 29px;
-  }
-
-  .header-dog1 {
-    margin-left: 3%;
   }
 }

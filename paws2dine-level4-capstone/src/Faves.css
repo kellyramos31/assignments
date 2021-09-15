@@ -12,7 +12,6 @@ body {
 
 .details-list {
   padding-top: 2%;
-  /* z-index: 1; */
 }
 
 .restaurant {
@@ -105,27 +104,3 @@ input {
     height: 90%;
   }
 }
-
-/* @media only screen and (max-width: 768px) {
-  .map-button {
-    top: 110px;
-    left: 438px;
-    height: 75px;
-    width: 165px;
-    padding: 15px;
-    z-index: 7;
-  }
-
-  .list-button {
-    top: 110px;
-    left: 438px;
-    height: 75px;
-    width: 165px;
-    padding: 15px;
-    z-index: 7;
-  }
-
-  .list-items {
-    padding-top: 90px;
-  }
-} */
