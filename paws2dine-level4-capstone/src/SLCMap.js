@@ -38,7 +38,7 @@ const mapMarkers = filteredSearchList.map((restaurant =>
 
 return (
   <div>
- 
+     
   <div className="map">
       <GoogleMapReact
           bootstrapURLKeys={{ key: `${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`}}

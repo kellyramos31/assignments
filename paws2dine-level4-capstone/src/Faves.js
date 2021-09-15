@@ -19,8 +19,8 @@ function Faves() {
             ?
             <div>
                
-                <div className="hide-behind-list">
-                    <button className="list-button" onClick={handleFaveMapToggle}>List View </button>
+                <div className="list-button-here">
+                    <button className="list-button" onClick={handleFaveMapToggle}>Faves List View </button>
                 </div>
              
                
@@ -30,13 +30,12 @@ function Faves() {
             </div>
             :
             <div>
-                <div>
-                    <button  className="map-button" onClick={handleFaveMapToggle}>Map View</button>
+                <div className="map-button-here">
+                    <button  className="map-button" onClick={handleFaveMapToggle}>Faves Map View</button>
                 </div>
             <div className="details-list">
-                <div className="hide-it">
-                    <p>HIDE THIS SEARCH BAR!</p>
-                </div>
+              
+                           
         <div className="list-items">
         {myFaves.map((fave, index)=>
             <div key={index} id={fave.id} index={index}>

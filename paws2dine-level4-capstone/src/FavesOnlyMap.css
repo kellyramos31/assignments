@@ -1,6 +1,5 @@
 .faves-map {
-  margin-top: 2%;
-  width: 88vw;
+  width: 100vw;
   height: 100vh;
   background-color: black;
 }
@@ -14,33 +13,20 @@
 }
 
 @media only screen and (max-width: 400px) {
-  /* .faves-map {
-    width: 88vw;
-  } */
-
   .location-info-box-faves {
     margin-top: -10px;
-    margin-right: -50px;
+    margin-right: -46px;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .faves-map {
-    width: 85vw;
-  }
-
   .location-info-box-faves {
     top: 230px;
     right: 50px;
   }
 }
 
-@media only screen and (max-width: 1024px) {
-  .faves-map {
-    width: 88vw;
-    height: 80vh;
-  }
-
+@media only screen and (max-width: 1520px) {
   .location-info-box-faves {
     top: 2px;
     right: 75px;

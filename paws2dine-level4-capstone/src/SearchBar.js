@@ -14,8 +14,9 @@ const {searchBarOnChange} = useContext(PawsContext)
 
     return (
         <div className="searchbar-buttons">
-            <div className="searchbar">
-              <input 
+            <div >
+              <input
+                className="searchbar" 
                 type="text" 
                 placeholder="Search By Name..."
                 onChange={(e)=>searchBarOnChange(e.target.value)}
@@ -23,7 +24,7 @@ const {searchBarOnChange} = useContext(PawsContext)
             </div>
             <div className="price-buttons">            
                 <PriceRatingButtons />
-                {/* <MoreRestaurantsButton /> */}
+                {/* <MoreRestaurantsButton />  */}
             </div>
 
         </div>

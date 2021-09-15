@@ -73,16 +73,10 @@ nav {
   /* border: 5px double green; */
 }
 
-.search-bar {
-  margin-top: 40px;
-  margin-left: 10px;
-  z-index: 6;
-}
-
-.price-buttons {
+/* .price-buttons {
   margin-left: -15px;
   z-index: 6;
-}
+} */
 
 @media only screen and (max-width: 400px) {
   .header-logo {
@@ -101,7 +95,7 @@ nav {
     height: 28%;
     width: 24%;
     top: 18px;
-    left: 22%;
+    left: 20%;
   }
 
   .header-dog2 {
@@ -111,34 +105,15 @@ nav {
   .header-dog3 {
     display: none;
   }
-
-  .search-bar {
-    margin-top: 28%;
-    margin-left: -132px;
-  }
 }
 
 @media only screen and (max-width: 768px) {
-  .search-bar {
-    position: absolute;
-    margin-top: 12px;
-    margin-left: 35px;
-    left: 55%;
-    padding-bottom: 15px;
-  }
   .header-logo {
     padding-bottom: 8px;
   }
 }
 
-@media only screen and (max-width: 1024px) {
-  .search-bar {
-    position: absolute;
-    top: 44%;
-    left: 43.5%;
-    padding-bottom: 8px;
-  }
-
+@media only screen and (max-width: 1520) {
   .header-logo {
     padding-bottom: 29px;
   }

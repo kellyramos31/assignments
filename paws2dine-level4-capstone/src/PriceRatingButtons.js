@@ -16,12 +16,11 @@ function PriceRatingButtons() {
 
     return(
         <div>  
-            <div className="buttons-title">Dog Friendly Eats by Price</div>
-            <div className="price-rating-buttons">
-                <button onClick={handlePriceClickOne}>$</button>
-                <button onClick={handlePriceClickTwo}>$$</button>
-                <button onClick={handlePriceClickThree}>$$$</button>
-                <button onClick={handleClickAll}>All</button>
+                <div className="price-rating-buttons">
+                <button className="pricing" onClick={handlePriceClickOne}>$</button>
+                <button className="pricing" onClick={handlePriceClickTwo}>$$</button>
+                <button className="pricing" onClick={handlePriceClickThree}>$$$</button>
+                <button className="pricing" onClick={handleClickAll}>All</button>
     
             </div>
         </div>

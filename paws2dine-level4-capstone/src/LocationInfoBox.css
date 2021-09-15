@@ -10,7 +10,7 @@
 
 .location-info {
   position: absolute;
-  top: 225px;
+  top: 275px;
   right: 4%;
   width: 250px;
   min-height: 80px;
@@ -66,8 +66,8 @@
   }
 }
 
-@media only screen and (max-width: 1024px) {
+/* @media only screen and (max-width: 1520px) {
   .location-info {
     top: 275px;
   }
-}
+} */

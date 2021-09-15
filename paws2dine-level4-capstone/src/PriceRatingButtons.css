@@ -1,32 +1,33 @@
 .price-rating-buttons {
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
-  margin-left: 48px;
-  margin-right: 48px;
 }
 
-.buttons-title {
-  margin-left: 48px;
-  color: white;
-  font-family: Arial;
-  font-style: italic;
-  font-size: 14px;
-  font-weight: bold;
+button.pricing {
+  width: 50px;
 }
 
 @media only screen and (max-width: 400px) {
   .price-rating-buttons {
-    margin-left: 12px;
-    margin-right: 0px;
-    margin-top: -8px;
-    /* justify-content: space-around; */
+    margin-right: 84px;
+  }
+  button.pricing {
+    width: 36px;
+    font-size: 12px;
+    padding-top: 4px;
+    padding-bottom: 5px;
   }
 }
 
-@media only screen and (max-width: 767px) {
-  .buttons-title {
-    display: none;
-    margin-top: 0px;
+@media only screen and (max-width: 768px) {
+  .price-rating-buttons {
+    margin-right: 50px;
+  }
+
+  button.pricing {
+    width: 35px;
+    font-size: 12px;
+    padding-top: 4px;
+    padding-bottom: 5px;
   }
 }
