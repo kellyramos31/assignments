@@ -1,18 +1,11 @@
-// import React from "react"
 import React, { useContext} from "react"
 import { PawsContext} from "./PawsContext"
-// import Select from "react-select"
 import "./PriceRatingButtons.css"
 
 
 function PriceRatingButtons() {
     const {handlePriceClickOne, handlePriceClickTwo, handlePriceClickThree, handleClickAll} = useContext(PawsContext) 
-    // const [oneDollarSign, setOneDollarSign] = useState([])
-    // const createOneDropdown = () => {
-        
-    //     setOneDollarSign([...oneDollarSign, restaurant])
-    // }
-   
+
 
     return(
         <div>  

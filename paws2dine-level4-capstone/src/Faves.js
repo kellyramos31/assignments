@@ -11,7 +11,6 @@ function Faves() {
     const {myFaves, handleFaveDelete, isChangingPhoto, handlePhotoFormToggle, isFaveMapView, handleFaveMapToggle} = useContext(PawsContext) 
     
     return( 
-//    <div className="faves-map">
            
         <div className="faves-page">
                        
@@ -84,7 +83,7 @@ function Faves() {
 }
     </div> 
  
-    // </div>
+
      )}
 
 

@@ -1,14 +1,9 @@
 import React, { useContext} from "react"
 import { PawsContext} from "./PawsContext"
-// import Select from "react-select"
-// import options from "./options"
-// import SearchBar from "./SearchBar"
-// import PriceRatingButtons from "./PriceRatingButtons"
 import "./LocationCard.css"
 import logo from "./assets/Logo_RGB.png"
 
 
- //Figure out how to incorporate dropdown menu OR buttons for different possibilities (pricing & ratings/categories)
 
 function LocationCard() {
 
@@ -24,8 +19,7 @@ function LocationCard() {
               <div key={business.id} index={index} className="detailed-list">                         
                        <div className="card" >
                          <img className="bus-photo" width="50%" height="265px" src={business.image_url} alt={business.name}/>    
-                         {/* <img className="bus-photo" width="250px" height="250px"src={business.image_url} alt={business.name}/>  */}
-                            <div key={business.id} className="bus-details">
+                           <div key={business.id} className="bus-details">
                                 <div className="business-name">{business.name}</div>
                                 <div>Address:  {business.location.address1}</div>
                                 <div>City:  {business.location.city}</div>

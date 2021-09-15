@@ -5,14 +5,11 @@ body {
 .app-title {
   color: white;
   text-align: center;
-  /* padding-top: 5px; */
   padding-bottom: 10px;
 }
 
 .paws2-logo {
   border-radius: 19px;
-  /* width: 100%;
-  height: auto; */
   border: 8px solid #32cd32;
   margin-left: 10px;
 }

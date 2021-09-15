@@ -278,9 +278,8 @@ handleMyDogPhotoSubmit = (e, id, name, address, city, phone, isHearted, myDoggie
 e.preventDefault()
 console.log("HEY")
 console.log("change/add photo for this id", id)
-// console.log("here's index for this id", index)
 
-      const updatedPhotoListing = {
+        const updatedPhotoListing = {
             id: id,
             name: name,
             address: address,
@@ -293,8 +292,8 @@ console.log("change/add photo for this id", id)
     
   
     const editedFavesWithPhoto = this.state.myFaves.map((fave=> fave.id === id ? updatedPhotoListing : fave))
-    console.log("updatedPhotoListing id:", updatedPhotoListing.id) //this is consoling properly
-    console.log("editFavesWithPhoto result of map:", editedFavesWithPhoto)    //empty array here
+    console.log("updatedPhotoListing id:", updatedPhotoListing.id) 
+    console.log("editFavesWithPhoto result of map:", editedFavesWithPhoto)
      
          this.setState({
             myFaves: [...editedFavesWithPhoto],
@@ -323,15 +322,11 @@ render() {
             handleFave: this.handleFave,
             myFaves: this.state.myFaves,
             searchBarOnChange: this.searchBarOnChange,
-            searchText: this.state.searchText,
-            getSearchFilteredList: this.getSearchFilteredList,
             filteredSearchList: this.state.filteredSearchList,
             handleFaveDelete: this.handleFaveDelete,
             myDoggieImage: this.state.myDoggieImage,
             isChangingPhoto:  this.state.isChangingPhoto,
             handlePhotoFormChange: this.handlePhotoFormChange,
-            togglePhotoEdit: this.togglePhotoEdit,
-            handlePhotoFormToggle: this.handlePhotoFormToggle,
             handleMyDogPhotoSubmit: this.handleMyDogPhotoSubmit,
             handlePriceClickOne: this.handlePriceClickOne,
             handlePriceClickTwo: this.handlePriceClickTwo,

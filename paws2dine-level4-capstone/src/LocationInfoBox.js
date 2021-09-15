@@ -3,8 +3,6 @@ import print from "./assets/print-306214_640.png"
 
 
 
-//NOTE:  if can't change map icon, maybe can give FAVE indicator/HEART inside of LocationInfoBox??
-
 const LocationInfoBox = ({info}) => {
 
     return (

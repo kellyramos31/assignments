@@ -1,6 +1,4 @@
 import React from "react"
-// import React, { useContext} from "react"
-// import { PawsContext} from "./PawsContext"
 import { Switch, Route, Link } from "react-router-dom"
 import Header from "./Header"
 import SLCMap from "./SLCMap"
