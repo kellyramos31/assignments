@@ -107,9 +107,9 @@ input {
 }
 
 @media only screen and (max-width: 768px) {
-  /* .map-button {
-    top: 13.2%;
-    left: 5%;
+  .map-button {
+    top: 110px;
+    left: 438px;
     height: 75px;
     width: 165px;
     padding: 15px;
@@ -117,14 +117,15 @@ input {
   }
 
   .list-button {
-    top: 13.2%;
-    left: 5%;
+    top: 110px;
+    left: 438px;
     height: 75px;
     width: 165px;
     padding: 15px;
     z-index: 7;
-  } */
+  }
+
   .list-items {
-    padding-top: 10px;
+    padding-top: 90px;
   }
 }

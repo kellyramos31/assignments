@@ -11,7 +11,7 @@ button.pricing {
   .price-rating-buttons {
     position: fixed;
     left: 25px;
-    right: 125px;
+    right: 130px;
     top: 125px;
   }
   button.pricing {
@@ -24,7 +24,9 @@ button.pricing {
 
 @media only screen and (max-width: 768px) {
   .price-rating-buttons {
-    margin-right: 50px;
+    position: fixed;
+    top: 150px;
+    right: 160px;
   }
 
   button.pricing {
@@ -32,5 +34,6 @@ button.pricing {
     font-size: 12px;
     padding-top: 4px;
     padding-bottom: 5px;
+    margin-left: 12px;
   }
 }

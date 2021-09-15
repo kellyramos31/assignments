@@ -18,31 +18,21 @@
 }
 
 @media only screen and (max-width: 400px) {
-  .searchbar-buttons {
-    /* position: fixed;
-    top: 90px;
-    left: 25px;
-    z-index: 6; */
-  }
   .searchbar {
     position: fixed;
     top: 90px;
     left: 25px;
-    z-index: 6;
-    /* position: fixed; */
+    z-index: 7;
     width: 150px;
-    /* z-index: 6; */
   }
 }
 
 @media only screen and (max-width: 768px) {
-  /* .searchbar-buttons {
-    position: fixed;
-    top: 120px;
-    left: 425px;
-  }
   .searchbar {
     position: fixed;
+    top: 115px;
+    left: 423px;
     width: 185px;
-  } */
+    z-index: 6;
+  }
 }

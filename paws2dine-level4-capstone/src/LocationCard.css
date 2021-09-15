@@ -121,8 +121,11 @@ input {
 }
 
 @media only screen and (max-width: 768px) {
+  .flex-container {
+    margin-top: -50px;
+  }
   .detailed-list-items {
-    padding-top: 100px;
+    padding-top: 50px;
   }
   .bus-details {
     border-top-width: 3px;
