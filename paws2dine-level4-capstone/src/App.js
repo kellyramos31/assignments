@@ -45,7 +45,7 @@ return (
 
       <Switch>
        <Route exact path="/">
-        <SearchBar/>
+         <SearchBar/>
          <SLCMap/>
        </Route>
        <Route path="/details">

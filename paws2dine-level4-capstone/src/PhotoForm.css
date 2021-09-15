@@ -15,3 +15,9 @@ form {
 .photo-button {
   width: 200px;
 }
+
+@media only screen and (max-width: 400px) {
+  .photo-input {
+    width: 255px;
+  }
+}

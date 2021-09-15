@@ -64,10 +64,10 @@ axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/busi
     this.setState({ dogFriendlyRestaurants: [...this.state.dogFriendlyRestaurants, ...response.data.businesses ]});
     this.addToggleProperty()
   })
-
   .catch(err => console.log(err))
-
 }
+
+
 
 
 addToggleProperty = () => {

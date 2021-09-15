@@ -19,20 +19,24 @@
 
 @media only screen and (max-width: 400px) {
   .searchbar-buttons {
+    /* position: fixed;
+    top: 90px;
+    left: 25px;
+    z-index: 6; */
+  }
+  .searchbar {
     position: fixed;
     top: 90px;
     left: 25px;
     z-index: 6;
-  }
-  .searchbar {
     /* position: fixed; */
-    width: 145px;
+    width: 150px;
     /* z-index: 6; */
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .searchbar-buttons {
+  /* .searchbar-buttons {
     position: fixed;
     top: 120px;
     left: 425px;
@@ -40,5 +44,5 @@
   .searchbar {
     position: fixed;
     width: 185px;
-  }
+  } */
 }
