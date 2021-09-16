@@ -169,12 +169,7 @@ handleFave = (id, restaurant, address, city, phone, isHearted) => {
 if (newFave.isHearted === true){
     this.handleFaveToggle(id)
     
-   
-    this.setState (prevState=> {
-        return {
-            myFaves:  [...prevState.myFaves, newFave]
-        }
-    })
+    this.setState (prevState=> ({myFaves:  [...prevState.myFaves, newFave]}))
        
 } else if (newFave.isHearted === false) {
     this.handleFaveDelete(id)
@@ -185,11 +180,7 @@ if (newFave.isHearted === true){
 handleFaveDelete = (id) => {
     console.log("delete this id", id)
 
-    this.setState(prevState => {
-      return {
-        myFaves: prevState.myFaves.filter(fave=> fave.id !== id)
-      }
-    })
+    this.setState(prevState => ({myFaves: prevState.myFaves.filter(fave=> fave.id !== id)}))
    
     this.handleFaveToggle(id)
   }
@@ -305,11 +296,7 @@ console.log("change/add photo for this id", id)
     }
 
 handleFaveMapToggle = (e) => {
-    this.setState(prevState=>{
-        return {
-        isFaveMapView: !prevState.isFaveMapView
-        }
-    })
+    this.setState(prevState=>({isFaveMapView: !prevState.isFaveMapView}))
 }
  
 
