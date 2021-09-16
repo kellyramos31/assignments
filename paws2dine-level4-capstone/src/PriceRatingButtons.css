@@ -14,25 +14,10 @@ button.pricing {
     margin-right: 85px;
   }
   button.pricing {
-    margin-left: 0px;
-    font-size: 12px;
-    padding-top: 4px;
-    padding-bottom: 5px;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  /* .price-rating-buttons {
-    position: fixed;
-    top: 150px;
-    right: 160px;
-  } */
-
-  button.pricing {
-    width: 35px;
-    font-size: 12px;
-    padding-top: 4px;
-    padding-bottom: 5px;
     margin-left: 12px;
+    font-size: 12px;
+    padding-top: 4px;
+    padding-bottom: 5px;
+    width: 35px;
   }
 }

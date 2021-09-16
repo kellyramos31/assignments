@@ -326,6 +326,7 @@ render() {
             handleFaveDelete: this.handleFaveDelete,
             myDoggieImage: this.state.myDoggieImage,
             isChangingPhoto:  this.state.isChangingPhoto,
+            handlePhotoFormToggle: this.handlePhotoFormToggle,
             handlePhotoFormChange: this.handlePhotoFormChange,
             handleMyDogPhotoSubmit: this.handleMyDogPhotoSubmit,
             handlePriceClickOne: this.handlePriceClickOne,
