@@ -52,8 +52,8 @@ input {
   width: 200px;
   padding: 30px;
   position: fixed;
-  top: 55px;
-  right: 90px;
+  top: 100px;
+  left: 220px;
   z-index: 7;
 }
 
@@ -63,29 +63,29 @@ input {
   width: 200px;
   padding: 30px;
   position: fixed;
-  top: 50px;
-  right: 90px;
+  top: 100px;
+  left: 220px;
   z-index: 7;
 }
 
 @media only screen and (max-width: 400px) {
   .map-button {
     position: fixed;
-    top: 77px;
-    left: 23px;
-    height: 75px;
+    top: 20%;
+    left: 55%;
+    height: 50px;
     width: 155px;
-    padding: 23px;
+    padding: 0;
     z-index: 7;
   }
 
   .list-button {
     position: fixed;
-    top: 77px;
-    left: 23px;
-    height: 75px;
+    top: 20%;
+    left: 55%;
+    height: 50px;
     width: 155px;
-    padding: 23px;
+    padding: 0;
     z-index: 7;
   }
 

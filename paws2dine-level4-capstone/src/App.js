@@ -6,9 +6,9 @@ import Faves from "./Faves"
 import SearchBar from "./SearchBar"
 import LocationCard from "./LocationCard"
 import "./App.css"
-import glassesDog from "./assets/sunglasses-dog-cropped.jpg"
-import fluffyPuppy from "./assets/fluffy-puppy.jpg"
-import dogWaterBottle from "./assets/dog-water-bottle.jpg"
+// import glassesDog from "./assets/sunglasses-dog-cropped.jpg"
+// import fluffyPuppy from "./assets/fluffy-puppy.jpg"
+// import dogWaterBottle from "./assets/dog-water-bottle.jpg"
 
 
 
@@ -35,9 +35,6 @@ return (
         </div>
       </nav>
 
-         <img className="header-dog1" src={glassesDog} alt="glasses dog" />
-         <img className="header-dog2"src={fluffyPuppy} alt="fluffy puppy" />
-         <img className="header-dog3"src={dogWaterBottle} alt="dog water bottle table"/>
          
       </div>
 

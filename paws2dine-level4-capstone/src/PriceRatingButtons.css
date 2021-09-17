@@ -10,14 +10,14 @@ button.pricing {
 @media only screen and (max-width: 400px) {
   .price-rating-buttons {
     position: fixed;
-    left: 10px;
-    margin-right: 85px;
+    right: 2%;
+    margin-top: -2.5%;
   }
   button.pricing {
     margin-left: 12px;
-    font-size: 12px;
+    font-size: 11px;
     padding-top: 4px;
     padding-bottom: 5px;
-    width: 35px;
+    width: 30px;
   }
 }

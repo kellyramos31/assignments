@@ -139,8 +139,7 @@ input {
 
 @media only screen and (max-width: 1520px) {
   .flex-container {
-    /* column-count: 2; */
-    margin-left: 12%;
+     margin-left: 12%;
   }
 
   .detailed-list-items {

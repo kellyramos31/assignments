@@ -11,14 +11,64 @@ body {
 .paws2-logo {
   border-radius: 19px;
   border: 8px solid #32cd32;
-  margin-left: 10px;
+  margin-top: 5%;
+  margin-left: 30px;
+}
+
+.logo-plus-dog-images {
+  position: fixed;
+  background-color: black;
+  display: flex;
+  z-index: 1;
+}
+
+.dog-header-images {
+  margin-left: 15%;
+}
+
+.header-dog1 {
+  height: 74%;
+  width: 26%;
+  margin-top: 25px;
+  margin-left: 4.9%;
+  margin-right: -22px;
+  padding-right: 0;
+  border-radius: 50%;
+}
+
+.header-dog2 {
+  height: 74%;
+  width: 27%;
+  margin-top: 25px;
+  border-radius: 50%;
+}
+
+.header-dog3 {
+  height: 74%;
+  width: 26%;
+  margin-left: -22px;
+  padding-right: 0;
+  border-radius: 50%;
 }
 
 @media only screen and (max-width: 400px) {
   .paws2-logo {
-    width: 35%;
-    height: 85%;
-    margin-left: 5px;
-    margin-right: -155px;
+    padding-top: 1.5%;
+    margin-left: 6%;
+  }
+
+  .header-dog1 {
+    margin-top: 6%;
+    margin-left: 0;
+    height: 35%;
+    width: 75%;
+  }
+
+  .header-dog2 {
+    display: none;
+  }
+
+  .header-dog3 {
+    display: none;
   }
 }
