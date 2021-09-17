@@ -71,7 +71,7 @@ input {
 @media only screen and (max-width: 400px) {
   .map-button {
     position: fixed;
-    top: 20%;
+    top: 21%;
     left: 55%;
     height: 50px;
     width: 155px;
@@ -81,7 +81,7 @@ input {
 
   .list-button {
     position: fixed;
-    top: 20%;
+    top: 21%;
     left: 55%;
     height: 50px;
     width: 155px;
@@ -102,5 +102,11 @@ input {
   .doggie-image {
     width: 90%;
     height: 90%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .details-list {
+    margin-top: 115px;
   }
 }

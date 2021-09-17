@@ -29,7 +29,7 @@ nav {
 }
 @media only screen and (max-width: 400px) {
   nav {
-    padding-top: 70px;
+    padding-top: 25px;
     margin-left: 53%;
   }
 }

@@ -6,8 +6,8 @@
 
 .location-info-box-faves {
   position: absolute;
-  top: 50px;
-  right: 160px;
+  top: 10px;
+  right: 90px;
   width: 50px;
   font-size: 12px;
 }
@@ -18,17 +18,3 @@
     margin-right: -46px;
   }
 }
-
-/* @media only screen and (max-width: 768px) {
-  .location-info-box-faves {
-    top: 230px;
-    right: 50px;
-  }
-}
-
-@media only screen and (max-width: 1520px) {
-  .location-info-box-faves {
-    top: 2px;
-    right: 75px;
-  }
-} */
