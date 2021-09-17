@@ -6,21 +6,17 @@ import Faves from "./Faves"
 import SearchBar from "./SearchBar"
 import LocationCard from "./LocationCard"
 import "./App.css"
-// import glassesDog from "./assets/sunglasses-dog-cropped.jpg"
-// import fluffyPuppy from "./assets/fluffy-puppy.jpg"
-// import dogWaterBottle from "./assets/dog-water-bottle.jpg"
 
 
 
 
 function App(){
   
-
 return (
  
   <div>
      
-     <div className="header-logo">
+     <div>
        <Header/>
 
       <nav>
