@@ -43,15 +43,15 @@ return (
 
       <Switch>
        <Route exact path="/">
-         <SearchBar/>
-         <SLCMap/>
+            <SearchBar/>
+            <SLCMap/>
        </Route>
        <Route path="/details">
-         <SearchBar />
-         <LocationCard />
+            <SearchBar/>
+            <LocationCard />
        </Route>
       <Route path="/faves">
-          <Faves />
+            <Faves />
       </Route>
       </Switch>
  </div>

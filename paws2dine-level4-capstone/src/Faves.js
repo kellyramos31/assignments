@@ -12,9 +12,9 @@ function Faves() {
     
     return( 
            
-        <div className="faves-page">
+         <div className="faves-page">
                        
-            {isFaveMapView 
+            {isFaveMapView
             ?
             <div>
                
@@ -27,35 +27,39 @@ function Faves() {
                     <FavesOnlyMap />
                </div>
             </div>
+     
             :
             <div>
                 <div className="map-button-here">
                     <button  className="map-button" onClick={handleFaveMapToggle}>Faves Map View</button>
                 </div>
+            
             <div className="details-list">
-              
-                           
-        <div className="list-items">
-        {myFaves.map((fave, index)=>
-            <div key={index} id={fave.id} index={index}>
-            <ul className="restaurant-list">
-                <li id={fave.id}>
-                    <div><strong className="restaurant">{fave.name}</strong> 
-                    <br />
-                    {fave.address}, {fave.city} 
-                    <br/>
-                    Phone:  {fave.phone}</div>
+                                       
+            <div className="list-items">
+                {myFaves.map((fave, index)=>
+                <div key={index} id={fave.id} index={index}>
+                    <ul className="restaurant-list">
+                        <li id={fave.id}>
+                            <div><strong className="restaurant">{fave.name}</strong> 
+                            <br />
+                        {   fave.address}, {fave.city} 
+                            <br/>
+                            Phone:  {fave.phone}</div>
+
                     {fave.myDoggieImage !== ""
-                    ?
-                    <div>
-                    <img className="doggie-image" key={index} id={fave.id} width="400px" height="300px" src={fave.myDoggieImage} alt=""/>
-                    </div>
-                    :
-                    null
+                        ?
+                        <div>
+                            <img className="doggie-image" key={index} id={fave.id} width="400px" height="300px" src={fave.myDoggieImage} alt=""/>
+                        </div>
+                        :
+                        null
                     }
+                    
                     <div>
-                    <button key={fave.id} id={fave.id} onClick={(id)=>handleFaveDelete(fave.id)} className="delete-button">Delete Fave</button>
+                        <button key={fave.id} id={fave.id} onClick={(id)=>handleFaveDelete(fave.id)} className="delete-button">Delete Fave</button>
                     </div>
+
                     {isChangingPhoto[fave.id]
                     ?
                     <div>
@@ -67,7 +71,7 @@ function Faves() {
                     </div>    
                     :
                     <div>
-                    <button key={index} id={fave.id} index={index} onClick={(id)=>handlePhotoFormToggle(fave.id)}>Click to Add Doggie & Me Photo </button>
+                        <button key={index} id={fave.id} index={index} onClick={(id)=>handlePhotoFormToggle(fave.id)}>Click to Add Doggie & Me Photo </button>
                     </div>
                     }
                     {fave.isHearted}

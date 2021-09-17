@@ -90,19 +90,23 @@ input {
 
 @media only screen and (max-width: 400px) {
   .flex-container {
-    margin-left: 1%;
-    margin-right: 1%;
-    margin-top: -20%;
+    column-count: 1;
+    margin-right: 5%;
+    /* margin-left: 15%; */
+    /* margin-top: -10px;
+    margin-right: -10px; */
   }
 
   .card {
     flex-direction: column;
+    margin-left: 30px;
+    margin-right: -15px;
   }
 
   .bus-photo {
-    width: 100%;
+    width: 100.3%;
     height: 160px;
-    margin-left: -33px;
+    margin-left: -34px;
   }
 
   .bus-details {
@@ -117,9 +121,9 @@ input {
     border-top-right-radius: 0;
   }
 }
-
 @media only screen and (max-width: 768px) {
   .flex-container {
+    column-count: 1;
     margin-top: -70px;
   }
 
@@ -135,8 +139,8 @@ input {
 
 @media only screen and (max-width: 1520px) {
   .flex-container {
-    column-count: 1;
-    margin-left: 21%;
+    /* column-count: 2; */
+    margin-left: 12%;
   }
 
   .detailed-list-items {

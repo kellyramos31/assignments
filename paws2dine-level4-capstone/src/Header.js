@@ -4,10 +4,10 @@ import logo from "./assets/paws2-logo-green.jpg"
 
 function Header () {
     return (
+  
         <div className="app-title">
             <img src={logo} className="paws2-logo" height="160px" width="160px" alt="logo" />
         </div>
-  
             
     )
 }
