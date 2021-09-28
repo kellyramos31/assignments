@@ -1,0 +1,219 @@
+#grid-container {
+    display: grid;
+    grid-template-columns:  1fr 2fr 1fr 1fr;
+}
+
+#main-title {
+    text-align: center;
+    margin-top:  30px;
+    margin-left:  auto;
+    margin-right: auto;
+    background-color: violet;
+    padding:  10px;
+    border-radius:  15px;
+    border: 8px solid white;
+    width:  80%;
+    font-family: "Raleway";
+    font-size:  30px;
+}
+
+#add-header {
+    font-family: "Raleway";
+    color: white;
+    font-size: 18px;
+    text-align: left;
+    padding-left: 5px;
+    padding-top:  23px;
+}
+
+body {
+    font-family: "Raleway";
+    color: black;
+    background-image: url(./assets/dark-green-leaves-wider.jpg);
+    background-repeat: repeat-y;
+}
+
+#todo-list {
+    grid-column: 2 / 3;
+    grid-row-start: 1;
+    width: 95%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    align-items: center;
+    border-radius:  25px;
+    border:  20px solid violet;
+    background: rgba(9, 51, 30, 0.9);  
+    padding-bottom:  0px;
+} 
+
+#add-form {
+    border-radius: 25px;
+    border:  20px solid violet;
+    grid-column:  3 / 4;
+    background-image: url(./assets/pink-flower-green-background-280.jpg);
+    background-repeat: cover;
+    height:  185px;
+    width:  75%;
+    margin-top:  20px;
+    margin-left:  30px;
+    padding-top:  80px;
+    padding-left:  12px;
+    padding-right: 40px;
+}
+
+.add-boxes { 
+    color: purple;
+    font-size: 16px; 
+    font-family: "Raleway";
+    margin-bottom:  2px;
+    height: 16px; 
+    width : 65%;
+    border-radius: 5px;
+}
+
+#add-button {
+    background-color:  violet;
+    color: black;
+    margin-top:  5px;
+    padding: 3px;
+    width:  68%;
+    border-radius: 5px;
+    border:  3.5px solid white;
+    font-family: "Raleway";
+    font-weight: bold;
+}
+
+#list {
+    grid-column: 2 / 3;
+    list-style-type:none;
+    color:  purple;
+ }
+ 
+#edit-form-title {
+    font-size:  18px;
+    width:  85%;
+    padding-left:  8px;
+    color: white;
+    margin-left: 2px;
+}
+
+#change-form {
+    display:  none; 
+}
+
+#display-form {
+    margin-right: auto;
+    background-color: black;
+    border-radius:  15px;
+    border: 5px solid white;
+    width: 89%;
+}
+
+
+#display-form img {
+    float: right;
+    border-radius:  10px;
+    margin-left: 0px;
+    margin-right: 10px;
+}
+
+
+.edit-boxes {
+    display: flex;
+    flex-direction: column;
+    font-family: "Raleway";
+    font-size:  15px;
+    padding: 3px;
+    height: 15px;
+    width:  65%;
+    margin:  8px;
+    border-radius: 5px;
+}
+
+#save-edits-button {
+    background-color:  violet;
+    color: black;
+    margin-top:  5px;
+    margin-bottom:  10px;
+    margin-left: 8px;
+    padding: 2px;
+    width:  67%;
+    border-radius: 5px;
+    border:  3px solid white;
+    font-family: "Raleway";
+    font-weight: bold;
+}
+
+
+li {
+    display: grid;
+    grid-template-columns: 1fr 2fr 3fr 2fr 2fr;
+    grid-template-rows: auto;
+    background-color: white;
+    border: 10px solid violet;
+    border-radius:  25px;
+    margin-top:  15px;
+    margin-bottom: 15px;
+    padding-left: 3px;
+    width:  89%;
+   
+}
+
+li input {
+    grid-column-start: 1;
+    margin:  10px;
+}
+
+.title-entries {
+    grid-column: 2 / 3;
+    grid-row-start: 1;
+    margin:  10px;
+}
+
+.detail-entries {
+    grid-column: 3 / 4;
+    grid-row-start: 1;
+    margin:  10px;
+}
+
+li img {
+    grid-column: 4;
+    grid-row-start: 1;
+    border-radius: 20px;
+    margin: 10px;
+ 
+}
+
+.edit-this-button  {
+    grid-column: 5;
+    grid-row-start: 1;
+    width:  75px;
+    height:  30px;
+    border-radius: 10px;
+    font-family: "Raleway";
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: violet;
+    border:  3.5px solid green;
+    margin-top: 10px;
+    margin-right: 10px;
+}
+
+.delete-this-button {
+    grid-column: 5;
+    grid-row-start: 1;
+    position: relative;
+    width:  75px;
+    height:  30px;
+    border-radius: 10px;
+    font-family: "Raleway";
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+    background-color: violet;
+    border:  3.5px solid green;
+    margin-top: 45px;
+    margin-right: 10px;
+}
+

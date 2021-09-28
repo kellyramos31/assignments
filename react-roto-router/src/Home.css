@@ -1,0 +1,17 @@
+body {
+    margin: 0;
+}
+
+h2 {
+    text-align: center;
+    font-family: Arial;
+    padding: 25px;
+
+}
+
+p {
+    text-align: center;
+    font-family: Arial;
+    padding: 10px;
+}
+

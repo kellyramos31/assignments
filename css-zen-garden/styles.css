@@ -1,0 +1,476 @@
+
+@font-face {
+    font-family: 'myZenFont';
+    src: url(./assets/verdemoderna.woff);
+}
+
+
+.container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: minmax(50px, auto); 
+    /* give the container display grid */
+    /* with six rows, 50px high */
+    /* default all cells/children on the left be 2/3 the screen width, and all on the left 1/3 */
+}
+
+/*.container > div {*/
+/*      /*border: solid black 2px;*/
+/*}*/
+
+#background-header  {
+    background-image:  url(./assets/huntington-900.jpg);
+    background-size: cover;
+    height: 250px;
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    font-family: "Julius Sans One", sans-serif;
+    font-size:  37px;
+    color: white;
+    text-align: center;
+}
+
+.container1 {
+   position: relative;
+   top: 50%;   /*50% of the container*/
+   transform: translateY(-50%);
+}
+
+.container1 img {
+    float: left;
+    position: relative;
+    left: 5%;
+}
+
+#logo {
+    width:  80px;
+    height: 80px;
+    opacity: .6;
+}
+
+#background-header2  {
+    background-image: url(./assets/header-right-side.jpg);
+    background-size: cover;
+    height: 250px;
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+#main-title {
+    font-size:  45px;
+    color: white;
+    padding-top:  10px;
+}
+
+#sub-title {
+    font-family: "Libre Baskerville", sans-serif;
+    color: white;
+    font-style: italic;
+    font-size:  18px;
+    opacity: .6;
+}
+
+.container2 {
+   position: relative;
+}  
+
+#view-all-designs {
+    background: rgba(202, 204, 203, 0.3);        /*from w3 Schools*/
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    font-family: "Julius Sans One", sans-serif;
+    font-size: 20px;
+    color: white;
+    opacity: .6;
+    height: 60px;
+    width:  60%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#view-all-designs:hover {
+    background: rgba(203, 218, 203, 0.5);
+    border: none;  
+    font-weight: bold;
+    opacity: .8;
+}
+
+#greater-than-arrow {
+    background: rgba(202, 204, 203, 0.2);        /*from w3 Schools*/
+    font-family: "myZenFont";           /*font here is supposed to be "verdemoderna", not available on google fonts; TRY @font-face*/
+    font-size:  26px;
+    color: white;
+    opacity: .6;
+    height: 60px;
+    width: 12%;
+    position: relative;
+    top: 50%;
+    left: 85%;
+    transform: translate(-50%,-50%);
+}
+
+#greater-than-arrow:hover {
+    background: rgba(203, 218, 203, 0.5);
+    opacity: .8;
+    font-weight: bold;
+}
+
+
+h3 {
+    font-family: "Julius Sans One", sans-serif;
+    margin-left: 20px;
+    margin-top: 40px;
+    color: #2e484c;
+}
+
+body {
+    font-family: "Libre Baskerville", sans-serif;
+    font-size:  15px;
+    color: #2e484c;
+}
+
+p {
+    margin-left: 20px;
+    margin-top: 35px;
+}
+
+#enlightenment {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    padding-top: 30px;
+    padding-bottom:  5px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.authors {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    background-color: #e5ede8;
+    padding-top: 5px;
+    padding-left: 10%;
+    padding-right: 35%;
+    font-family: "Julius Sans One", sans-serif;
+    font-size: 18px;
+    color:  #607476;
+}
+
+.book-title {
+    color:  #607476;
+}
+
+.book-title:hover {
+     color: #0d8ba1;
+}
+
+.book-author {
+    font-family: "Libre Baskerville", sans-serif;
+    color: #616857;
+    font-size: 15px;
+}
+
+.book-author:hover {
+    color: #0d8ba1;
+}
+
+li {
+    list-style-type: none;
+    padding-top: 50px;
+}
+
+#participation {
+    padding-left: 60px;
+    background-color: rgba(138, 188, 159, 0.5);
+    background-image: url(./assets/bamboo.png);
+    background-size: cover;
+    grid-column: 1 / 2;
+    grid-row: 3 / 4;
+    padding-top: 5px;
+    padding-bottom:  10px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.links {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    padding-left: 30px;
+    background-image: url(./assets/bamboo.png);
+    background-size: cover;
+    background-color:  rgba(138, 188, 159, 0.6);
+    font-family: "Julius Sans One", sans-serif;
+    font-size: 18px;
+    padding-left: 10%;
+    padding-right: 35%;
+}
+
+hr {
+    color: lightgrey;
+    opacity: .2;
+}
+
+.this-link:hover {
+     color: #0d8ba1;
+}
+
+#requirements {
+    grid-column: 1 / 2;
+    grid-row: 4 / 5;
+    padding-top: 5px;
+    padding-bottom:  10px;
+    padding-left: 60px;
+    padding-right: 60px;
+}  
+
+#green-empty-box {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+    background-color: #edf4f0;
+}
+
+.footer-acknowledge {
+    background-image: url(./assets/koi.jpg);
+    background-size: cover;
+    grid-column: 1 / 3;
+    grid-row: 5 / 6;
+    height: 150px;
+    text-align: center;
+    font-style: italic;
+    font-size: 20px;
+    color: silver;
+    padding-top: 80px;
+    padding-left:  10%;
+    padding-right: 10%;
+}
+
+.foots {
+    color: #fff;
+    font-style:normal;
+    font-size: larger;
+    font-family: "Libre Baskerville", sans-serif;
+    vertical-align: center;
+    text-align: center;
+    font-size: 20px;
+    padding-left:  10px;
+    padding-right:  10px;
+}
+
+.foots:hover {
+    text-decoration: underline;
+}
+
+.footer {
+    grid-column:  1 / 3;
+    grid-row: 6 / 7;
+    background-color: #134347;
+    height:  100px;
+    padding-top:  3%;
+    padding-left:  25%;
+    padding-right: 25%;
+}
+
+/* FLEX */
+/* use flexbox to make the icons behave like css zen garden's social icons */
+.icons {
+    display: flex;
+    justify-content: space-around;
+    margin-top:  15px;
+    font-size:  45px;
+    font-family: "myZenFont";
+    /*height: 50px;*/
+    /*width: 100%;*/
+    /*margin: auto;*/
+    /*padding: 5px;*/
+}
+
+#git {
+    color: #134347;
+    background-color:  rgba(255, 255, 255, 0.5);
+}
+
+/*NOTE:  icon font = verdemoderna, but have not been able to get this to work
+Used font awesome & inline styling in HTML as alternative*/
+
+.icons > div {
+    height: 50px;
+    width: 50px;
+    color:   rgba(255, 255, 255, 0.5);
+    background-color: #134347;
+    border-radius: 50%;
+    text-align: center;
+    vertical-align: bottom;
+}
+
+.icons > div:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: rgba(255, 255, 255, 0.5);
+    color: #134347;
+}
+
+#git:hover {
+    color:  rgba(255, 255, 255, 0.5);
+    background-color: #134347;
+}
+
+
+@media only screen and (max-width: 900px){
+    .container {
+        grid-template-columns: 1fr;
+    }
+    #background-header{
+       grid-column: 1 / 2;
+       grid-row: 1 / 3;
+    }
+    #main-title {
+        font-size: 30px;
+        padding-top:  20px;
+        padding-right: 10%;
+    }
+    #sub-title {
+        font-size:  16px;
+        padding-right: 10%;
+    }
+    
+    .container1 {
+       top: 38%;
+       left: -10%;
+    }
+
+    .container1 img {
+        position: relative;
+        float: unset;
+        left: 8%;
+        top: unset;
+        transform: unset;
+    }
+
+    .container2 {
+       grid-column: 1 / 2;
+       grid-row: 2 / 3;
+    }
+    
+    #background-header2  {
+        background-image: none;
+        height: 0px;
+    }
+
+    #logo {
+        width:  60px;
+        height: 60px;
+        margin-top: 2px;
+        float: left;
+        padding-left: 23%;
+        margin-right: 8px;
+    }
+
+    #view-all-designs {
+        height: 60px;
+        width: 100%;
+        margin-top:  72px;
+        font-size: 15px;
+    }
+
+    #view-all-designs:hover {
+        width: 80%;
+    }
+
+    #greater-than-arrow {
+        /*position: relative;*/
+        height: 60px;
+        width: 15%;
+        margin-top:  170px;
+        font-size: 40px;
+        border: none;
+        left: 95%;
+    }
+    
+    #enlightenment {
+        color: #2e484c;
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+    }
+    #participation {
+        grid-column: 1 / 2;
+        grid-row: 4 / 5;
+    }
+    #requirements {
+        grid-column: 1 / 2;
+        grid-row: 5 / 6;
+    }
+    .footer-acknowledge {
+        grid-row: 6 / 7;
+        padding-top: 40px;
+    }
+    
+    .footer {
+        grid-row: 7 / 8;
+        padding-left:  5%;
+        padding-right: 5%;
+}
+    
+    .authors {
+        grid-column: 1 / 2;
+        grid-row: 8 / 9;
+    }
+
+    .book-author {
+        font-size: 12px;
+    }
+    
+    ul {
+        column-count: 2;
+        column-gap: 120px;
+    }
+
+   .links {
+       background-color:  rgba(138, 188, 159, 0.5);
+       grid-column: 1 / 2;
+       grid-row: 9 / 10;
+    } 
+
+    #green-empty-box {
+       display: none;
+    }
+}
+
+@media only screen and (max-width: 500px){
+      #logo {
+       float: unset;
+       left: unset;
+       padding-left: 20%;
+       width: 50px;
+       height: 50px;
+    }
+    .container1 {
+       float: unset;
+       top: 38%;
+    }
+    #main-title {
+        padding-left:  20%;
+        font-size: 29px;
+        padding-right: unset;
+    }
+    #sub-title {
+        margin-top: 8px;
+        padding-left: 20%;
+        padding-right: unset;
+    }
+     #view-all-designs {
+        height: 55px;
+        margin-top:  75px;
+     }
+
+     #greater-than-arrow {
+         height: 55px;
+         margin-top: 174px;
+     }
+
+     
+    .footer-acknowledge {
+      padding-top: 15px;
+    }
+
+}
+

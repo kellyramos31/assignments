@@ -1,0 +1,77 @@
+
+.badge-display {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin-top: 20px;
+    /* border: 5px solid black; */
+    border-radius: 10px;
+}
+
+.badge-title {
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
+    /* background-color: royalblue; */
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    border-bottom: 8px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+    font-family: Arial;
+    text-align: center;
+    color: white;
+    padding: 20px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.badge-name {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+    font-family: Arial;
+    padding-left: 70px;
+}
+
+.badge-phone {
+    grid-column: 3 / 4;
+    grid-row: 2 / 3;
+    font-family: Arial;
+    padding-left: 70px;
+ 
+}
+
+.badge-birthplace {
+    grid-column: 2 / 3;
+    grid-row: 3 / 4; 
+    font-family: Arial;
+    padding-left: 70px;
+
+}
+
+.badge-favefood {
+    grid-column: 3 / 4;
+    grid-row: 3 / 4;
+    font-family: Arial;
+    padding-left: 70px;
+   
+}
+
+.badge-email {
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+    font-family: Arial;
+    padding-left: 70px;
+}
+
+.badge-aboutself {
+    grid-column: 2 / 4;
+    grid-row: 5 / 6;
+    height: 100px;
+    border:  2px solid black;
+    border-radius: 5px;
+    font-family: Arial;
+    font-size: 16px;
+    margin-left: 65px;
+    margin-right: 65px;
+}
