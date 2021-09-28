@@ -21,4 +21,4 @@ app.listen(9000, ()=> {
 })
 
 
-//***ALSO:  nodemon package installed so do not have to keep restarting server manually -- easier
+//***ALSO:  nodemon package installed so do not have to keep restarting server manually -- easier than having to re-start each time
