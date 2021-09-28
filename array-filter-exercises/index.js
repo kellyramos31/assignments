@@ -187,9 +187,3 @@ console.log(oldEnough)
 // fibNum(4) // 3 
 // fibNum(6) //8
 
-
-function
-
-
-
-    So if
