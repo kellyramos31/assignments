@@ -98,12 +98,12 @@ const bounties = [
 
 
 
-//GET Request
+//GET ALL Request
 bountyRouter.get("/", (req, res)=>{
     res.send(bounties)
 })
 
-//POST Request
+//POST ONE Request
 bountyRouter.post("/", (req, res)=>{
     const newBounty = req.body
     newBounty._id = uuidv4()
