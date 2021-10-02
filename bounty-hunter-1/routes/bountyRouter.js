@@ -112,11 +112,17 @@ bountyRouter.post("/", (req, res)=>{
 })
 
 
-//DELETE Request
-// app.delete()
+//DELETE ONE Request
+bountyRouter.delete("/:bountyId", (req, res)=>{
+    const bountyId = req.params.bountyId
+    const bountyIndex = bounties.findIndex(bounty=>bounty._id = bountyId)
+    bounties.splice(bountyIndex, 1)
+    res.send("Successfully deleted bounty!")
+})
+
 
 //PUT Request
-// app.put()
+// bountyRouter.put()
 
 
 module.exports = bountyRouter
