@@ -2,8 +2,6 @@ const express = require("express")
 const bountyRouter = express.Router()
 const { v4: uuidv4 } = require('uuid'); 
 
-
-
 //Bounties - "Fake Data"
 const bounties = [
     {firstName: "Star",
@@ -121,8 +119,13 @@ bountyRouter.delete("/:bountyId", (req, res)=>{
 })
 
 
-//PUT Request
-// bountyRouter.put()
+//PUT Request - UPDATE ONE
+bountyRouter.put("/:bountyId", (req, res)=>{
+   const bountyId = req.params.bountyId
+   const bountyIndex = bounties.findIndex(bounty=>bounty._id = bountyId)
+   const updatedBounty = Object.assign(bounties[bountyIndex], req.body)
+   res.send(updatedBounty)
+})
 
 
 module.exports = bountyRouter
