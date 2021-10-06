@@ -14,6 +14,6 @@ app.use("/todos", require("./routes/todosRouter.js"))
 
 
 
-app.listen(7000, ()=>{
-    console.log("The server is running on PORT 7000!")
+app.listen(6800, ()=>{
+    console.log("The server is running on PORT 6800!")
 })

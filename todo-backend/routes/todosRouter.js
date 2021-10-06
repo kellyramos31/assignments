@@ -73,7 +73,6 @@ todosRouter.get("/:todoId", (req, res)=>{
     const todoId = req.params.todoId
     const foundTodo = todos.find(todo=>todo._id === todoId)
     res.send(foundTodo)
-    res.send(todos)
 })
 
 
@@ -90,7 +89,7 @@ todosRouter.post("/", (req, res)=>{
 todosRouter.delete("/:todoId", (req, res)=>{
     const todoId = req.params.todoId
     const todoIndex = todos.findIndex(todo=>todo._id = todoId)
-    bounties.splice(todoIndex, 1)
+    todos.splice(todoIndex, 1)
     res.send("Successfully deleted todo!")
 })
 
