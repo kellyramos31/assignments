@@ -22,6 +22,14 @@ function App() {
     .catch(err=>console.log(err))
  }
 
+ const deleteBounty = (bountyId) =>{
+   axios.delete("/bounties/${bountyId}", bountyId)
+   .then(res=>{
+      setBounties(prevBounties=>prevBounties.filter(bounty => bounty._id !== bountyId))
+   })
+   .catch(err=>console.log(err))
+ }
+
   useEffect(()=>{
     getBounties()
   }, [])
@@ -31,7 +39,13 @@ function App() {
       <BountyForm 
         addBounty={addBounty}
       />
-      {bounties.map(bounty=> <Bounty {...bounty} key={bounty.firstName}/>)}
+      {bounties.map(bounty=> 
+          <Bounty 
+            {...bounty} 
+            key={bounty.firstName}
+            deleteBounty={deleteBounty}
+            />
+      )}
     </div>
   );
 }
