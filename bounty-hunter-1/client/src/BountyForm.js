@@ -12,7 +12,7 @@ function BountyForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        //post request
+        props.addBounty(inputs)
         setInputs(initInputs)
     }
 

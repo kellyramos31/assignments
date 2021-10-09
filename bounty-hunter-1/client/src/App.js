@@ -7,13 +7,20 @@ function App() {
 
  const [bounties, setBounties] = useState([])
 
- const getBounties = () => {
+ const getBounties = () =>{
     axios.get("/bounties")
     .then(res=>setBounties(res.data))
     .catch(err=>console.log(err))
   }
 
-
+ const addBounty = (newBounty) =>{
+    axios.post("/bounties", newBounty)
+    .then(res=> {
+      setBounties(prevBounties => [...prevBounties, res.data])
+    })
+      
+    .catch(err=>console.log(err))
+ }
 
   useEffect(()=>{
     getBounties()
@@ -21,7 +28,9 @@ function App() {
 
   return (
     <div>
-      <BountyForm />
+      <BountyForm 
+        addBounty={addBounty}
+      />
       {bounties.map(bounty=> <Bounty {...bounty} key={bounty.firstName}/>)}
     </div>
   );

@@ -1,6 +1,7 @@
 const express = require("express")
 const bountyRouter = express.Router()
 
+
 const { v4: uuidv4 } = require('uuid'); 
 
 //Bounties - "Fake Data"
@@ -102,12 +103,15 @@ bountyRouter.get("/", (req, res)=>{
     res.send(bounties)
 })
 
+//GET ONE Request
+
+
 //POST ONE Request
 bountyRouter.post("/", (req, res)=>{
     const newBounty = req.body
     newBounty._id = uuidv4()
     bounties.push(newBounty)
-    res.send("newBounty successfully added!")
+    res.send(newBounty)
 })
 
 

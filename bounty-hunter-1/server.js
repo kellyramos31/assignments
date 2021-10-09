@@ -3,9 +3,12 @@
 //Server
 const express = require("express")
 const app = express()
-const { v4: uuidv4 } = require('uuid'); 
+const morgan = require("morgan")
 
+
+//Middleware (for every request)
 app.use(express.json())  //Looks for request body and turns it into req.body
+app.use(morgan("dev"))   //Logs requests to the console
 
 //ROUTES
 app.use("/bounties", require("./routes/bountyRouter.js"))
