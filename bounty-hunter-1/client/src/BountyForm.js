@@ -2,7 +2,7 @@ import React, {useState} from "react"
 
 
 function BountyForm(props) {
-    const initInputs = { firstName: "", lastName: "", living: "", bountyAmount: "", type: ""}
+    const initInputs = { firstName: props.firstName || "", lastName: props.lastName || "", living: props.living || "", bountyAmount: props.bountyAmount || "", type: props.type || ""}
     const [inputs, setInputs] = useState(initInputs)
 
     const handleChange = (e) => {
@@ -12,7 +12,7 @@ function BountyForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        props.addBounty(inputs)
+        props.submit(inputs, props._id)
         setInputs(initInputs)
     }
 
@@ -55,7 +55,7 @@ function BountyForm(props) {
                 placeholder="Sith or Jedi?"
             />
 
-            <button>Add Bounty</button>
+            <button>{props.btnText}</button>
         </form>
 
     )
