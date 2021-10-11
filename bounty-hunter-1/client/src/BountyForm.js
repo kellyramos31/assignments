@@ -3,7 +3,7 @@ import React, {useState} from "react"
 
 
 function BountyForm(props) {
-    const initInputs = { firstName: props.firstName || "", lastName: props.lastName || "", checked: props.checked || "", bountyAmount: props.bountyAmount || "", type: props.type || ""}
+    const initInputs = { firstName: props.firstName || "", lastName: props.lastName || "", alive: props.alive || "", bountyAmount: props.bountyAmount || "", type: props.type || ""}
     const [inputs, setInputs] = useState(initInputs)
 
     const handleChange = (e) => {
@@ -13,15 +13,15 @@ function BountyForm(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        props.submit(inputs, props._id)
+        props.submit(inputs, props._id)  
         setInputs(initInputs)
+        props.setEditToggle(prevToggle=>!prevToggle)
     }
 
 
     return(
         <form className="bounty-form" onSubmit={handleSubmit}>
-            <h3>Add New Bounty Here:</h3>
-            <input 
+           <input 
                 type="text" 
                 name="firstName" 
                 value={inputs.firstName}
@@ -38,7 +38,7 @@ function BountyForm(props) {
              <input 
                 type="checkbox" 
                 name="alive" 
-                value="true"
+                value={inputs.alive}
                 onChange = {handleChange} 
                 placeholder="Living?(true or false)"
             />
@@ -58,6 +58,7 @@ function BountyForm(props) {
             />
 
             <button>{props.btnText}</button> 
+
         </form>
     )
 }

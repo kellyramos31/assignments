@@ -5,39 +5,41 @@ import BountyForm from "./BountyForm.js"
 function Bounty (props) {
 
     console.log(props)
-    const {firstName, lastName, alive, bountyAmount, type, _id} = props
+    const {firstName, lastName, bountyAmount, type, _id, index, editBounty} = props
     const [editToggle, setEditToggle] = useState(false)
 
     return(
     <div className="bounty-card">
       { !editToggle ?
         <>
-            <h1>{firstName}{" "}{lastName}</h1>
-            <h3>Alive?:  {alive ? "true" : "false"}</h3>
+            <h1 className="bounty-name">{firstName}{" "}{lastName}</h1>
+            {/* <h3>Alive?:  {alive ? "true" : "false"}</h3> */}
             <h2 className="bounty-dollars">Bounty: $ {bountyAmount}</h2>
             <h3>Type:  {type}</h3>
             <button
                 onClick={()=>props.deleteBounty(_id)}>
             Delete
             </button>
-            <button 
-                onClick = {()=>setEditToggle(prevToggle=>!prevToggle)}>
+            <button onClick = {()=>setEditToggle(prevEditToggle=>!prevEditToggle)}>
             Edit
             </button>
         </>
       :
         <>
             <BountyForm
-                _id={_id} 
+                _id={_id}
+                index={index} 
                 firstName={firstName}
                 lastName={lastName}
-                alive={alive}
+                // alive={alive}
+                editToggle={editToggle}
+                setEditToggle={setEditToggle}
                 bountyAmount={bountyAmount}
                 type={type}
-                submit={props.editBounty}
+                submit={editBounty}
                 btnText="Submit Edit"
             />
-            <button onClick = {()=>setEditToggle(prevToggle=>!prevToggle)}>
+            <button onClick = {()=>setEditToggle(prevEditToggle=>!prevEditToggle)}>
             Close
             </button>
         </>

@@ -33,29 +33,37 @@ function App() {
 
  const editBounty = (updates, bountyId) =>{
     axios.put(`/bounties/${bountyId}`, updates)
-    .then(res=> {setBounties(prevBounties=>prevBounties.map(bounty=>bounty._id !== bountyId ? bounty : res.data))
-    })
+    .then(res=> 
+      {setBounties(prevBounties=>prevBounties.map(bounty=>bounty._id !== bountyId ? bounty : res.data))})
+    
     .catch(err=>console.log(err))
  }
 
-  useEffect(()=>{
+
+//useEffect -- check this -- does not seem to be firing after initial get --
+useEffect (()=>{
+    console.log("useEffect triggered")
     getBounties()
   }, [])
 
+
   return (
     <div>
-      <BountyForm 
-        submit={addBounty}
-        btnText="Add Bounty"
-      />
-      {bounties.map(bounty=> 
-          <Bounty 
-            {...bounty}              //id already passing down here
-            key={bounty.firstName}
-            deleteBounty={deleteBounty}
-            editBounty={editBounty}
-            />
-      )}
+      <div>
+        <BountyForm 
+          submit={addBounty}
+          btnText="Add Bounty"
+        />
+        {bounties.map((bounty, index)=> 
+            <Bounty 
+              {...bounty}              //id already passing down here
+              key={bounty._id}
+              index={index}
+              deleteBounty={deleteBounty}
+              editBounty={editBounty}
+              />
+        )}
+      </div>
     </div>
   );
 }
