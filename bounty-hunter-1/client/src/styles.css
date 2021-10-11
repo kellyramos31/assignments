@@ -1,0 +1,51 @@
+body {
+    margin: 0px;
+    background-color:  midnightblue;
+    font-family: Arial;
+}
+
+button {
+    background-color: blue;
+    color: white;
+    padding: 2px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    border: 4px solid darkorange;
+    border-radius: 5px;
+    width: 100px;
+}
+
+input {
+    margin-bottom: 3px;
+}
+
+.bounty-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    border-top: 8px solid white;
+    border-bottom: 8px solid white;
+    width:  250px;
+    font-family: Arial;
+    color: orange;
+}
+
+.bounty-card {
+    background-color: lavenderblush;
+    border: 8px solid darkorange;
+    width:  450px;
+    border-radius:  10px;
+    padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.bounty-dollars {
+    color: green;
+}
+

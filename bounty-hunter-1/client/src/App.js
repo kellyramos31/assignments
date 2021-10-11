@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react"
+import "./styles.css"
 import axios from "axios"
 import Bounty from "./Bounty.js"
 import BountyForm from "./BountyForm.js"
@@ -8,13 +9,13 @@ function App() {
  const [bounties, setBounties] = useState([])
 
  const getBounties = () =>{
-    axios.get("/bounties")
+    axios.get(`/bounties`)
     .then(res=>setBounties(res.data))
     .catch(err=>console.log(err))
   }
 
  const addBounty = (newBounty) =>{
-    axios.post("/bounties", newBounty)
+    axios.post(`/bounties`, newBounty)
     .then(res=> {
       setBounties(prevBounties => [...prevBounties, res.data])
     })
@@ -49,7 +50,7 @@ function App() {
       />
       {bounties.map(bounty=> 
           <Bounty 
-            {...bounty} 
+            {...bounty}              //id already passing down here
             key={bounty.firstName}
             deleteBounty={deleteBounty}
             editBounty={editBounty}

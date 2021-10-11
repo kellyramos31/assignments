@@ -1,8 +1,9 @@
 import React, {useState} from "react"
 
 
+
 function BountyForm(props) {
-    const initInputs = { firstName: props.firstName || "", lastName: props.lastName || "", living: props.living || "", bountyAmount: props.bountyAmount || "", type: props.type || ""}
+    const initInputs = { firstName: props.firstName || "", lastName: props.lastName || "", checked: props.checked || "", bountyAmount: props.bountyAmount || "", type: props.type || ""}
     const [inputs, setInputs] = useState(initInputs)
 
     const handleChange = (e) => {
@@ -18,7 +19,8 @@ function BountyForm(props) {
 
 
     return(
-        <form onSubmit={handleSubmit}>
+        <form className="bounty-form" onSubmit={handleSubmit}>
+            <h3>Add New Bounty Here:</h3>
             <input 
                 type="text" 
                 name="firstName" 
@@ -34,9 +36,9 @@ function BountyForm(props) {
                 placeholder="Last Name"
             />
              <input 
-                type="text" 
-                name="living" 
-                value={inputs.living}
+                type="checkbox" 
+                name="alive" 
+                value="true"
                 onChange = {handleChange} 
                 placeholder="Living?(true or false)"
             />
@@ -55,9 +57,8 @@ function BountyForm(props) {
                 placeholder="Sith or Jedi?"
             />
 
-            <button>{props.btnText}</button>
+            <button>{props.btnText}</button> 
         </form>
-
     )
 }
 
