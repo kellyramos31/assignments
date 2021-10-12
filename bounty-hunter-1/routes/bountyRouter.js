@@ -8,7 +8,7 @@ const { v4: uuidv4 } = require('uuid');
 const bounties = [
     {firstName: "Star",
      lastName:  "Smith",
-     alive: false,
+     isAlive: false,
      bountyAmount:  300,
      type: "Jedi",
      _id: uuidv4()
@@ -16,7 +16,7 @@ const bounties = [
 
     {firstName: "Rick",
      lastName:  "Rockandroll",
-     alive: true,
+     isAlive: true,
      bountyAmount:  5000,
      type: "Sith",
      _id: uuidv4()
@@ -24,7 +24,7 @@ const bounties = [
 
     {firstName: "Sling",
      lastName:  "Bling",
-     alive: true,
+     isAlive: true,
      bountyAmount:  450,
      type: "Jedi",
      _id: uuidv4()
@@ -33,7 +33,7 @@ const bounties = [
  
     {firstName: "Brave",
      lastName:  "Heart",
-     alive: true,
+     isAlive: true,
      bountyAmount:  1000,
      type: "Sith",
      _id: uuidv4()
@@ -41,7 +41,7 @@ const bounties = [
 
     {firstName: "Daisy",
      lastName:  "Duchess",
-     alive: true,
+     isAlive: true,
      bountyAmount:  2500,
      type: "Jedi",
      _id: uuidv4()
@@ -49,7 +49,7 @@ const bounties = [
 
     {firstName: "Trouble",
      lastName:  "Smith",
-     alive: true,
+     isAlive: true,
      bountyAmount:  5500,
      type: "Sith",
      _id: uuidv4()
@@ -57,7 +57,7 @@ const bounties = [
         
     {firstName: "Chaos",
      lastName:  "Carter",
-     alive: true,
+     isAlive: true,
      bountyAmount:  7500,
      type: "Jedi",
      _id: uuidv4()
@@ -65,7 +65,7 @@ const bounties = [
 
     {firstName: "Forever",
      lastName:  "Fighting",
-     alive: true,
+     isAlive: true,
      bountyAmount:  2500,
      type: "Sith",
      _id: uuidv4()
@@ -73,7 +73,7 @@ const bounties = [
 
     {firstName: "Zap",
      lastName:  "Zest",
-     alive: true,
+     isAlive: true,
      bountyAmount:  300,
      type: "Jedi",
      _id: uuidv4()
@@ -81,7 +81,7 @@ const bounties = [
 
     {firstName: "Dragon",
      lastName:  "Jones",
-     alive: true,
+     isAlive: true,
      bountyAmount:  2500,
      type: "Sith",
      _id: uuidv4()
@@ -89,7 +89,7 @@ const bounties = [
 
     {firstName: "Eagle",
      lastName:  "Foster",
-     alive: true,
+     isAlive: true,
      bountyAmount:  200,
      type: "Sith",
      _id: uuidv4()

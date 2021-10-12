@@ -15,8 +15,9 @@ function BountyForm(props) {
         e.preventDefault()
         props.submit(inputs, props._id)  
         setInputs(initInputs)
-        props.setEditToggle(prevToggle=>!prevToggle)
+        props.setEditToggle(prevToggle=>!prevToggle)  //NOTE:  this solves the edit issue --BUT NOW the Add Form doesn't work!
     }
+
 
 
     return(
