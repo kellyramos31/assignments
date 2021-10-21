@@ -80,17 +80,24 @@ crudRouter.post("/", (req, res, next)=>{
             res.status(500)
             return next(err)
         }
-    return res.status(201).send(savedCrud)
+
+        return res.status(201).send(savedCrud)
+
     })
 })
 
 
 //DELETE ONE Request
 crudRouter.delete("/:crudId", (req, res)=>{
-    const crudId = req.params.crudId
-    const crudIndex = inventories.findIndex(crud=>crud._id = crudId)
-    inventories.splice(crudIndex, 1)
-    res.send("Successfully deleted crud!")
+    Inventory.findOneAndDelete({_id: req.params.crudId}, (err, deletedItem)=>{
+        if(err){
+            res.status(500)
+            return next(err)
+        }
+    
+        return res.status(200).send(`Successfully deleted ${deletedItem.item} from the DB`)
+
+    })
 })
 
 
