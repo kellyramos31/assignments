@@ -128,11 +128,19 @@ bountyRouter.get("/:bountyId", (req, res) => {
 
 
 //POST ONE Request
-bountyRouter.post("/", (req, res) => {
-    const newBounty = req.body
-    newBounty._id = uuidv4()
-    bounties.push(newBounty)
-    res.send(newBounty)
+bountyRouter.post("/", (req, res, next) => {
+    // const newBounty = req.body
+    // newBounty._id = uuidv4()
+    // bounties.push(newBounty)
+    // res.send(newBounty)
+    const newBounty = new Bounty(req.body)
+    newBounty.save((err, savedBounty) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+        return res.status(201).send(savedBounty)
+    })
 })
 
 
