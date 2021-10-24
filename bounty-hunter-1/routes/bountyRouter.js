@@ -162,11 +162,23 @@ bountyRouter.delete("/:bountyId", (req, res, next) => {
 
 
 //PUT Request - UPDATE ONE
-bountyRouter.put("/:bountyId", (req, res) => {
-    const bountyId = req.params.bountyId
-    const bountyIndex = bounties.findIndex(bounty => bounty._id = bountyId)
-    const updatedBounty = Object.assign(bounties[bountyIndex], req.body)
-    res.send(updatedBounty)
+bountyRouter.put("/:bountyId", (req, res, next) => {
+    // const bountyId = req.params.bountyId
+    // const bountyIndex = bounties.findIndex(bounty => bounty._id = bountyId)
+    // const updatedBounty = Object.assign(bounties[bountyIndex], req.body)
+    // res.send(updatedBounty)
+    Bounty.findOneAndUpdate(
+        { _id: req.params.bountyId },  //find this one to update
+        req.body,             //update the object with this data
+        { new: true },      //send back the updated version please
+        (err, updatedBounty) => {
+            if (err) {
+                res.status(500)
+                return (err)
+            }
+            return res.status(201).send(updatedBounty)
+        }
+    )
 })
 
 
