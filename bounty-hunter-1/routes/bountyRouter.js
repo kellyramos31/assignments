@@ -1,6 +1,6 @@
 const express = require("express")
 const bountyRouter = express.Router()
-
+const Bounty = require("../models/bounty.js")
 
 // const { v4: uuidv4 } = require('uuid');
 
@@ -110,8 +110,15 @@ const bountyRouter = express.Router()
 
 
 //GET ALL Request
-bountyRouter.get("/", (req, res) => {
-    res.send(bounties)
+bountyRouter.get("/", (req, res, next) => {
+    // res.send(bounties)
+    Bounty.find((err, bounties) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(bounties)
+    })
 })
 
 //GET ONE Request
