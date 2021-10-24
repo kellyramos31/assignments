@@ -145,11 +145,19 @@ bountyRouter.post("/", (req, res, next) => {
 
 
 //DELETE ONE Request
-bountyRouter.delete("/:bountyId", (req, res) => {
-    const bountyId = req.params.bountyId
-    const bountyIndex = bounties.findIndex(bounty => bounty._id = bountyId)
-    bounties.splice(bountyIndex, 1)
-    res.send("Successfully deleted bounty!")
+//note: first object/argument in findOneAndDelete is the filtering criteria
+bountyRouter.delete("/:bountyId", (req, res, next) => {
+    // const bountyId = req.params.bountyId
+    // const bountyIndex = bounties.findIndex(bounty => bounty._id = bountyId)
+    // bounties.splice(bountyIndex, 1)
+    // res.send("Successfully deleted bounty!")
+    Bounty.findOneAndDelete({ _id: req.params.bountyId }, (err, deletedBounty) => {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(`Sucessfully deleted bounty ${deletedBounty.firstName} from the DB!`)
+    })
 })
 
 
