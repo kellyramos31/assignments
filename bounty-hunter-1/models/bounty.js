@@ -13,8 +13,7 @@ const bountySchema = new Schema({
         required: true
     },
     isAlive: {
-        type: Boolean,
-        required: true
+        type: Boolean
     },
     bountyAmount: {
         type: Number,

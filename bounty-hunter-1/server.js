@@ -30,6 +30,6 @@ app.use("/bounties", require("./routes/bountyRouter.js"))
 
 
 
-app.listen(8400, () => {
-    console.log("The server is running on PORT 8400!")
+app.listen(9000, () => {
+    console.log("The server is running on PORT 9000!")
 })
