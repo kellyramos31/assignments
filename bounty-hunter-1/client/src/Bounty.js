@@ -5,7 +5,7 @@ import BountyForm from "./BountyForm.js"
 function Bounty(props) {
 
   console.log(props)
-  const { firstName, lastName, bountyAmount, type, _id, index, editBounty, isAlive } = props
+  const { firstName, lastName, bountyAmount, type, _id, index, editBounty, isAlive, checked } = props
   const [editToggle, setEditToggle] = useState(false)
 
   return (
@@ -13,7 +13,7 @@ function Bounty(props) {
       {!editToggle ?
         <>
           <h1 className="bounty-name">{firstName}{" "}{lastName}</h1>
-          <h3>Alive?:  {isAlive === true ? "true" : "false"}</h3>
+          <h3>Alive?:  {checked ? "true" : "false"}</h3>
           <h2 className="bounty-dollars">Bounty: $ {bountyAmount}</h2>
           <h3>Type:  {type}</h3>
           <button
@@ -32,6 +32,7 @@ function Bounty(props) {
             firstName={firstName}
             lastName={lastName}
             isAlive={isAlive}
+            checked={checked}
             editToggle={editToggle}
             setEditToggle={setEditToggle}
             bountyAmount={bountyAmount}

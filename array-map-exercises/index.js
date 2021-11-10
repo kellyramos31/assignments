@@ -257,3 +257,23 @@ console.log(domReady)
 
 
 
+import React from "react"
+import gameData from "./gameQuestions"
+import QuestionCard from "./QuestionCard"
+
+function Game() {
+
+    const gameCards = gameData.map((game, index) =>
+        <QuestionCard
+            key={game._id}
+            index={index}
+            game={game}
+        />)
+    return (
+        <div>
+            {gameCards}
+        </div>
+    )
+}
+
+export default Game;

@@ -13,7 +13,7 @@ const bountySchema = new Schema({
         required: true
     },
     isAlive: {
-        type: Boolean
+        type: String
     },
     bountyAmount: {
         type: Number,
@@ -22,6 +22,9 @@ const bountySchema = new Schema({
     type: {
         type: String,
         required: true
+    },
+    checked: {
+        type: String
     }
 })
 

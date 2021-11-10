@@ -3,10 +3,15 @@ import React, { useState } from "react"
 
 
 function BountyForm(props) {
-    const initInputs = { firstName: props.firstName || "", lastName: props.lastName || "", alive: props.isAlive || "", bountyAmount: props.bountyAmount || "", type: props.type || "" }
+    const initInputs = { firstName: props.firstName || "", lastName: props.lastName || "", isAlive: props.isAlive || "", bountyAmount: props.bountyAmount || "", type: props.type || "", checked: props.checked }
+
     const [inputs, setInputs] = useState(initInputs)
 
-    const [checked, setChecked] = useState(false)
+    // const [checked, setChecked] = useState(false)
+    //e.target.checked
+    //need to update the isAlive field with handleCheckmark or handleChange or handleSubmit
+    //right now it's updating state, but not the database info
+
 
     const handleChange = (e) => {
         const { name, value } = e.target
@@ -14,19 +19,23 @@ function BountyForm(props) {
 
     }
 
+    const handleCheckmark = (e) => {
+        let checked = e.target.checked
+        console.log("checked", checked)
+        console.log("e.target.checked", e.target.checked)
+    }
+
+
     const handleSubmit = (e) => {
         e.preventDefault()
         props.submit(inputs, props._id)
         setInputs(initInputs)
-        setChecked(!checked)
 
 
         if (props.btnText === "Submit Edit") {
             props.setEditToggle(prevToggle => !prevToggle)
         }
     }
-
-
 
     return (
         <form className="bounty-form" onSubmit={handleSubmit}>
@@ -49,13 +58,11 @@ function BountyForm(props) {
                 <input
                     type="checkbox"
                     name="checked"
-                    value={checked}
-                    onChange={handleChange}
+                    value={inputs.checked}
+                    onChange={handleCheckmark}
                     placeholder="Living?(true or false)"
                 />
             </label>
-
-
 
             <input
                 type="number"
