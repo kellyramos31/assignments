@@ -16,6 +16,11 @@ const todoSchema = new Schema({
     imgUrl: {
         type: String,
         required: false
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
     }
 });
 

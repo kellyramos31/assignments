@@ -2,6 +2,8 @@ const express = require("express");
 const todoRouter = express.Router();
 const Todo = require("../models/todo");
 
+
+//Get all todos
 todoRouter.get("/", (req, res, next) => {
     Todo.find((err, todos) => {
         if (err) {
@@ -12,7 +14,9 @@ todoRouter.get("/", (req, res, next) => {
     });
 });
 
+//Add new todo
 todoRouter.post("/", (req, res, next) => {
+    req.body.user = req.user._id
     const todo = new Todo(req.body);
     todo.save(function (err, newTodo) {
         if (err) {
@@ -23,6 +27,7 @@ todoRouter.post("/", (req, res, next) => {
     });
 });
 
+//Get one todo
 todoRouter.get("/:todoId", (req, res, next) => {
     Todo.findById(req.params.todoId, (err, todo) => {
         if (err) {
@@ -36,6 +41,8 @@ todoRouter.get("/:todoId", (req, res, next) => {
     });
 });
 
+
+//Edit todo
 todoRouter.put("/:todoId", (req, res, next) => {
     Todo.findByIdAndUpdate(
         req.params.todoId,
@@ -52,6 +59,7 @@ todoRouter.put("/:todoId", (req, res, next) => {
     );
 });
 
+//Delete todo
 todoRouter.delete("/:todoId", (req, res, next) => {
     Todo.findByIdAndRemove(req.params.todoId, 
     (err, deletedTodo) => {
