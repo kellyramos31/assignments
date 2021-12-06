@@ -1,6 +1,6 @@
 const express = require("express");
 const todoRouter = express.Router();
-const Todo = require("../models/todo");
+const Todo = require("../models/todo.js");
 
 
 //Get all todos
