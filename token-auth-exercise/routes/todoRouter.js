@@ -19,7 +19,7 @@ todoRouter.get("/user", (req, res, next)=>{
     Todo.find({user: req.user._id}, (err, todos)=>{
         if(err) {
             res.status(500)
-            return next(Error)
+            return next(err)
         }
         return res.status(200).send(todos)
     })
