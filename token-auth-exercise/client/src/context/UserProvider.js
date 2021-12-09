@@ -21,11 +21,18 @@ export default function UserProvider(props){
         .catch(err=>console.log(err.response.data.errMsg))   
     }
 
+    function login(credentials){
+        axios.post("/auth/login", credentials)
+        .then(res=> console.log(res))
+        .catch(err=>console.log(err.response.data.errMsg))   
+    }
+
     return (
         <UserContext.Provider
          value={{
             ...userState,
-            signup
+            signup,
+            login
         }}>
             {props.children}
         </UserContext.Provider>
