@@ -1,41 +1,94 @@
-import React, {useState} from "react"
+// const {userState, setUserState} = useState(initState)
+//console.dir -- will console.log it as an object, so can see its key-value pairs
+
+//error pointing to line const { userState, setUserState } = useState(initState);:  "Type Error:  cannot read properties of undefined (reading "username")"
+
+//problem with this .catch line   .catch((err) => console.log(err.response.data.errMsg));; works if put in wrong info, but when give correct info get back error:
+//"Unhandled rejection (Type Error): cannot read properties of undefined (reading "data")--but still adds it to database
+// .catch((err) => console.dir(err)) --- if use this line, then says setUserState is not a function
+
+import React, { useState } from "react"
 import axios from "axios"
 
+export const UserContext = React.createContext({})
 
-export const UserContext = React.createContext()
+const userAxios = axios.create()
 
-export default function UserProvider(props){
-    const initState = {
-        user: {}, 
-        token: "", 
-        todos: []
-    }
+userAxios.interceptors.request.use(config => {
+  const token = localStorage.getItem("token")
+  config.headers.Authorization = `Bearer ${token}`
+  return config
+})
 
-    // const {userState, setUserState} = useState(initState)
-    //console.dir -- will console.log it as an object, so can see its key-value pairs
-    const {userState} = useState(initState)
+export default function UserProvider(props) {
+  const initState = {
+    user: JSON.parse(localStorage.getItem("user")) || {},
+    token: localStorage.getItem("token") || "",
+    todos: []
+  }
 
-    function signup(credentials){
-        axios.post("/auth/signup", credentials)
-        .then(res=> console.log(res))
-        .catch(err=>console.log(err.response.data.errMsg))   
-    }
+  const { userState, setUserState } = useState(initState);
 
-    function login(credentials){
-        axios.post("/auth/login", credentials)
-        .then(res=> console.log(res))
-        .catch(err=>console.log(err.response.data.errMsg))   
-    }
+  function signup(credentials) {
+    axios
+      .post("/auth/signup", credentials)
+      .then(res => {
+        const { user, token } = res.data;
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+        setUserState(prevUserState => ({
+          ...prevUserState,
+          user,
+          token
+        }))
+      })
+      .catch((err) => console.log(err.response.data.errMsg));
+  }
 
-    return (
-        <UserContext.Provider
-         value={{
-            ...userState,
-            signup,
-            login
-        }}>
-            {props.children}
-        </UserContext.Provider>
+  function login(credentials) {
+    axios
+      .post("/auth/login", credentials)
+      .then(res => {
+        const { user, token } = res.data;
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", JSON.stringify(user));
+        setUserState(prevUserState => ({
+          ...prevUserState,
+          user,
+          token
+        }))
+      })
+      .catch(err => console.log(err.response.data.errMsg));
+  }
 
-    )
+  function logout(){
+    localStorage.removeItem("token")
+    localStorage.removeItem("user")
+    setUserState({
+      user: {},
+      token: "",
+      todos: []
+    })
+  }
+
+  function addTodo(newTodo){
+    userAxios.post("/api/todo", newTodo)
+    .then(res=> console.log(res))
+    .catch(err=>console.log(err.response.data.errMsg))
+  }
+
+  return (
+    <UserContext.Provider
+      value={{
+        ...userState,
+        signup,
+        login,
+        logout,
+        addTodo
+      }}>
+
+      {props.children}
+      
+    </UserContext.Provider>
+  )
 }
