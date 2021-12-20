@@ -6,7 +6,7 @@ const mongoose = require("mongoose")
 const expressJwt = require("express-jwt")
 
 app.use(express.json())
-app.use(morgan('dev'))
+app.use(morgan("dev"))
 
 mongoose.connect(
     "mongodb://localhost:27017/user-authentication",

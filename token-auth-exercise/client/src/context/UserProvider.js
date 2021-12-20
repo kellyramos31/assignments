@@ -1,4 +1,3 @@
-// const {userState, setUserState} = useState(initState)
 //console.dir -- will console.log it as an object, so can see its key-value pairs
 
 //error pointing to line const { userState, setUserState } = useState(initState);:  "Type Error:  cannot read properties of undefined (reading "username")"
@@ -21,44 +20,45 @@ userAxios.interceptors.request.use(config => {
 })
 
 export default function UserProvider(props) {
+
   const initState = {
     user: JSON.parse(localStorage.getItem("user")) || {},
     token: localStorage.getItem("token") || "",
     todos: []
   }
 
-  const { userState, setUserState } = useState(initState);
+  const [userState, setUserState ] = useState(initState)
 
   function signup(credentials) {
-    axios
-      .post("/auth/signup", credentials)
+    axios.post("/auth/signup", credentials)
       .then(res => {
         const { user, token } = res.data;
         localStorage.setItem("token", token);
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("user", JSON.stringify(user))
         setUserState(prevUserState => ({
           ...prevUserState,
           user,
           token
         }))
       })
-      .catch((err) => console.log(err.response.data.errMsg));
+      .catch(err => console.log(err.response.data.errMsg))
   }
 
   function login(credentials) {
-    axios
-      .post("/auth/login", credentials)
+    axios.post("/auth/login", credentials)
       .then(res => {
         const { user, token } = res.data;
         localStorage.setItem("token", token);
-        localStorage.setItem("user", JSON.stringify(user));
+        localStorage.setItem("user", JSON.stringify(user))
+        getUserTodos()
         setUserState(prevUserState => ({
           ...prevUserState,
           user,
           token
         }))
+        
       })
-      .catch(err => console.log(err.response.data.errMsg));
+      .catch((err) => console.log(err.response.data.errMsg))
   }
 
   function logout(){
@@ -71,9 +71,27 @@ export default function UserProvider(props) {
     })
   }
 
+  function getUserTodos(){
+    userAxios.get("/api/todo/user")
+    .then(res => {
+      console.log(res)
+      setUserState(prevState => ({
+        ...prevState,
+        todos: res.data
+      }))
+    })
+    .catch(err => console.log(err.response.data.errMsg))
+  }
+
   function addTodo(newTodo){
     userAxios.post("/api/todo", newTodo)
-    .then(res=> console.log(res))
+    .then(res => {
+      console.log(res)
+      setUserState(prevState => ({
+        ...prevState,
+        todos: [...prevState.todos, res.data]
+      }))
+    })
     .catch(err=>console.log(err.response.data.errMsg))
   }
 

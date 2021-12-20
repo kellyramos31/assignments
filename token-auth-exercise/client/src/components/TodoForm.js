@@ -32,19 +32,22 @@ export default function TodoForm(props){
         name="title" 
         value={title} 
         onChange={handleChange} 
-        placeholder="Title"/>
+        placeholder="Title"
+      />
       <input 
         type="text" 
         name="description" 
         value={description} 
         onChange={handleChange} 
-        placeholder="Description"/>
+        placeholder="Description"
+      />
       <input 
         type="text" 
         name="imgUrl" 
         value={imgUrl} 
         onChange={handleChange} 
-        placeholder="Image Url"/>
+        placeholder="Image Url"
+      />
       <button>Add Todo</button>
     </form>
   )

@@ -1,13 +1,21 @@
-// import TodoList from './TodoList.js'
+//NOTE:  Does not like Line #11-12 -- error:  "Type Error:  cannot read properties of undefined (reading "username")
 // import TodoComp from './TodoComp.js'
 
 import React, { useContext } from "react";
 import TodoForm from "./TodoForm.js";
+import TodoList from './TodoList.js'
 import { UserContext } from "../context/UserProvider.js";
 
 export default function Profile() {
 
-  const { user: {username}, addTodo } = useContext(UserContext)
+  const { 
+    user: {
+     username
+    }, 
+    addTodo, 
+    todos 
+  } = useContext(UserContext)
+
 
   return (
     <div className="profile">
@@ -17,6 +25,9 @@ export default function Profile() {
         addTodo={addTodo}
       />
       <h3>Your Todos</h3>
+      <TodoList 
+        todos={todos}
+      />
     </div>
   )
 }
