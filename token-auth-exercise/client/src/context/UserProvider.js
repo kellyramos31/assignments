@@ -1,11 +1,3 @@
-//console.dir -- will console.log it as an object, so can see its key-value pairs
-
-//error pointing to line const { userState, setUserState } = useState(initState);:  "Type Error:  cannot read properties of undefined (reading "username")"
-
-//problem with this .catch line   .catch((err) => console.log(err.response.data.errMsg));; works if put in wrong info, but when give correct info get back error:
-//"Unhandled rejection (Type Error): cannot read properties of undefined (reading "data")--but still adds it to database
-// .catch((err) => console.dir(err)) --- if use this line, then says setUserState is not a function
-
 import React, { useState } from "react"
 import axios from "axios"
 

@@ -1,6 +1,3 @@
-//NOTE:  Does not like Line #11-12 -- error:  "Type Error:  cannot read properties of undefined (reading "username")
-// import TodoComp from './TodoComp.js'
-
 import React, { useContext } from "react";
 import TodoForm from "./TodoForm.js";
 import TodoList from './TodoList.js'
