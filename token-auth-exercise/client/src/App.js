@@ -17,9 +17,9 @@ export default function App(){
 
   return (
     <div className="app">
-      <NavBar 
-        logout={logout}
-      />
+
+      { token && <NavBar logout={logout} /> }
+
       <Routes>
 
         <Route exact path="/" element={token ? <Navigate to="/profile"/> : <Auth/>}/> 
