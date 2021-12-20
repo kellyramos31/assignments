@@ -35,6 +35,14 @@ const userSchema = new Schema({
         })
     })
 
+    //method to check encrypted password on login
+    userSchema.methods.checkPassword = function(passwordAttempt, callback){
+        bcrypt.compare(passwordAttempt, this.password, (err, isMatch) => {
+            if(err) return callback(err)
+            return callback(null, isMatch)
+        })
+    }
+
 
 
 module.exports = mongoose.model("User", userSchema)
