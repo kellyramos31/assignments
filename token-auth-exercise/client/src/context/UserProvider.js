@@ -16,7 +16,8 @@ export default function UserProvider(props) {
   const initState = {
     user: JSON.parse(localStorage.getItem("user")) || {},
     token: localStorage.getItem("token") || "",
-    todos: []
+    todos: [],
+    errMsg: ""
   }
 
   const [userState, setUserState ] = useState(initState)
@@ -33,7 +34,7 @@ export default function UserProvider(props) {
           token
         }))
       })
-      .catch(err => console.log(err.response.data.errMsg))
+      .catch(err => handleAuthErr(err.response.data.errMsg))
   }
 
   function login(credentials) {
@@ -50,7 +51,7 @@ export default function UserProvider(props) {
         }))
         
       })
-      .catch((err) => console.log(err.response.data.errMsg))
+      .catch((err) => handleAuthErr(err.response.data.errMsg))
   }
 
   function logout(){
@@ -62,6 +63,20 @@ export default function UserProvider(props) {
       todos: []
     })
   }
+
+ function handleAuthErr(errMsg){
+    setUserState(prevState=>({
+      ...prevState,
+      errMsg
+    }))
+ }
+
+ function resetAuthErr(){
+   setUserState(prevState =>({
+      ...prevState,
+      errMsg: ""
+   }))
+ }
 
   function getUserTodos(){
     userAxios.get("/api/todo/user")
@@ -94,7 +109,8 @@ export default function UserProvider(props) {
         signup,
         login,
         logout,
-        addTodo
+        addTodo,
+        resetAuthErr
       }}>
 
       {props.children}
