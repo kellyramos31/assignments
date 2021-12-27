@@ -9,18 +9,18 @@ const issueSchema = new Schema({
     description: {
         type: String
     },
-    totalVotes: {
-        type: Number,
-        default: 0
-    },
-    upVotes: {
-        type: Number,
-        default: 0
-    },
-    downVotes: {
-        type: Number,
-        default: 0
-    },
+    // totalVotes: {
+    //     type: Number,
+    //     default: 0
+    // },
+    // upVotes: {
+    //     type: Number,
+    //     default: 0
+    // },
+    // downVotes: {
+    //     type: Number,
+    //     default: 0
+    // },
     user: {
         type: Schema.Types.ObjectId,
         ref: "User",

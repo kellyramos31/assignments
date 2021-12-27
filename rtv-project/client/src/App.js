@@ -1,11 +1,11 @@
-import './App.css';
+import { Route, Routes, Navigate } from "react-router-dom"
 
-function App() {
+
+
+export default function App() {
   return (
     <div>
    
     </div>
   );
 }
-
-export default App;
