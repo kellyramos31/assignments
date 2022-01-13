@@ -9,10 +9,10 @@ const issueSchema = new Schema({
     description: {
         type: String
     },
-    // totalVotes: {
-    //     type: Number,
-    //     default: 0
-    // },
+    totalVotes: {
+        type: Number,
+        default: 0
+    },
     // upVotes: {
     //     type: Number,
     //     default: 0

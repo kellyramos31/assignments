@@ -25,7 +25,7 @@ export default function App() {
 
         <Route exact path="/" element={token ? <Navigate to="/profile/"/> : <Auth/>}/>
 
-        <Route element={<ProtectedRoute token={token}/>}/>
+        <Route element={<ProtectedRoute token={token}/>}>
           <Route
             path="/profile"
             element={<Profile/>}
@@ -38,6 +38,7 @@ export default function App() {
             navigateTo="/"
           />
       
+    </Route>
 
       </Routes>
 
