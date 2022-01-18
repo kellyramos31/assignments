@@ -13,17 +13,17 @@ userAxios.interceptors.request.use(config => {
 })
 
 
-export default function UserProvider (props) {
+export default function UserProvider(props) {
 
     const initState = {
         user: JSON.parse(localStorage.getItem("user")) || {},
         token: localStorage.getItem("token") || "",
         issues: [],
-        comments: [],
+        // comments: [],
         errMsg: ""
     }
 
-    const [ userState, setUserState ] = useState(initState)
+const [userState, setUserState] = useState(initState)
 
 
 //signup
@@ -51,7 +51,7 @@ export default function UserProvider (props) {
             localStorage.setItem("token", token)
             localStorage.setItem("user", JSON.stringify(user))
             getUserIssues()
-            getUserComments()
+            // getUserComments()
             setUserState(prevUserState => ({
                 ...prevUserState,
                 user,
@@ -68,8 +68,8 @@ export default function UserProvider (props) {
         setUserState({
             user: {},
             token: "",
-            issues: [],
-            comments: []
+            issues: []
+            // comments: []
         })
     }
 
@@ -103,17 +103,17 @@ export default function UserProvider (props) {
     }
 
 //get all user comments
-    function getUserComments(){
-        userAxios.get("/api/comment/user")
-        .then(res => {
-            console.log(res)
-            setUserState(prevState => ({
-                ...prevState,
-                comments: res.data
-            }))
-        })
-        .catch(err => console.log(err.response.data.errMsg))
-    }
+    // function getUserComments(){
+    //     userAxios.get("/api/comment/user")
+    //     .then(res => {
+    //         console.log(res)
+    //         setUserState(prevState => ({
+    //             ...prevState,
+    //             comments: res.data
+    //         }))
+    //     })
+    //     .catch(err => console.log(err.response.data.errMsg))
+    // }
 
 //add issue -- move to issueCommentProvider??
     function addIssue(newIssue) {
@@ -125,46 +125,45 @@ export default function UserProvider (props) {
                 issues:  [...prevState.issues, res.data]
             }))
         })
-
+        .catch(err=>console.log(err.response.data.errMsg))
     }
 
 //add comment -- move to issueCommentProvider??
-   function addComment() {
-        userAxios.post("/api/comment", newComment)
-        .then(res => {
-            console.log(res)
-            setUserState(prevState => ({
-                ...prevState,
-                comments:  [...prevState.comments, res.data]
-            }))
-        })
+//    function addComment() {
+//         userAxios.post("/api/comment", newComment)
+//         .then(res => {
+//             console.log(res)
+//             setUserState(prevState => ({
+//                 ...prevState,
+//                 comments:  [...prevState.comments, res.data]
+//             }))
+//         })
         
-    }
+//     }
 
 //vote -- how handle this?? upvotes + downvotes
-   function addVote () {
+//    function addVote () {
 
-   }
+//    }
 
 
 
 return (
 
     <UserContext.Provider
-        value = {{
+        value={{
             ...userState,
             signup,
             login,
             logout,
             addIssue,
-            addComment,
+            // addComment,
             resetAuthErr
-
         }}>
 
         {props.children}
 
     </UserContext.Provider>
 
-)
+  )
 }

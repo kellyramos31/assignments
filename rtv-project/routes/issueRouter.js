@@ -1,6 +1,6 @@
 const express = require("express");
 const issueRouter = express.Router();
-const Issue = require("../models/Issue.js");
+const Issue = require("../models/issue.js");
 
 
 //Get all issues
@@ -46,7 +46,7 @@ issueRouter.get("/:issueId", (req, res, next) => {
             return next(err);
         } else if (!issue) {
             res.status(404)
-            return next(new Error("No issue item found."));
+            return next(new Error("No issue found."));
         }
         return res.send(issue);
     })

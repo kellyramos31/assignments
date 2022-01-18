@@ -26,19 +26,19 @@ export default function App() {
         <Route exact path="/" element={token ? <Navigate to="/profile/"/> : <Auth/>}/>
 
         <Route element={<ProtectedRoute token={token}/>}>
-          <Route
-            path="/profile"
-            element={<Profile/>}
-            navigateTo="/"
-          />
+              <Route
+                path="/profile"
+                element={<Profile/>}
+                navigateTo="/"
+              />
 
-          <Route
-            path="/public"
-            element={<Public/>}
-            navigateTo="/"
-          />
-      
-    </Route>
+              <Route
+                path="/public"
+                element={<Public/>}
+                navigateTo="/"
+              />
+
+        </Route>
 
       </Routes>
 

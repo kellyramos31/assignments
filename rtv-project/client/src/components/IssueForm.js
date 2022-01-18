@@ -6,9 +6,9 @@ const initInputs = {
 //   votes: ""
 }
 
-export default function TodoForm(props){
+export default function IssueForm(props){
   const [inputs, setInputs] = useState(initInputs)
-  const {addTodo} = props
+  const {addIssue} = props
 
   function handleChange(e){
     const {name, value} = e.target
@@ -20,11 +20,11 @@ export default function TodoForm(props){
 
   function handleSubmit(e){
     e.preventDefault()
-    addTodo(inputs)
+    addIssue(inputs)
     setInputs(initInputs)
   }
 
-  const { title, description, imgUrl } = inputs
+  const { title, description } = inputs
   return (
     <form onSubmit={handleSubmit}>
       <input 
