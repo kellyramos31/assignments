@@ -1,8 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import IssueForm from './IssueForm.js'
+import { IssueCommentContext } from "../context/IssueCommentProvider.js"
 
 export default function IssueText(props){
 
   const {title, description} = props
+
+ const {getUserIssues, addIssue} = useContext(IssueCommentContext)
+
 
   return (
     <div className="todo">

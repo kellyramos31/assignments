@@ -7,7 +7,6 @@ import Public from "./components/Public.js"
 import ProtectedRoute from "./components/ProtectedRoute.js"
 import { UserContext } from "./context/UserProvider.js"
 
-//comment
 
 export default function App() {
 
