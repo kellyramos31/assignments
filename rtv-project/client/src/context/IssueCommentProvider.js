@@ -6,6 +6,12 @@ export const IssueCommentContext = React.createContext({})
 
 const userAxios = axios.create()
 
+userAxios.interceptors.request.use(config => {
+    const token = localStorage.getItem("token")
+    config.headers.Authorization = `Bearer ${token}`
+    return config
+})
+
 export default function IssueCommentProvider(props) {
 
         const initState = {
