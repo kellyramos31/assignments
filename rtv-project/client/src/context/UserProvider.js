@@ -50,7 +50,7 @@ const [userState, setUserState] = useState(initState)
             const { user, token} = res.data
             localStorage.setItem("token", token)
             localStorage.setItem("user", JSON.stringify(user))
-            // getUserIssues()
+            //getUserIssues()
             // getUserComments()
             setUserState(prevUserState => ({
                 ...prevUserState,
