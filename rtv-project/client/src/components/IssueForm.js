@@ -49,7 +49,7 @@ export default function IssueForm(props){
         onChange={handleChange} 
         placeholder="Image Url"
       /> */}
-      <button>Add Issue</button>
+      <button className="add-issue-button">Add Issue</button>
     </form>
   )
 }

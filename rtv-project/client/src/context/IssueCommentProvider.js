@@ -28,7 +28,7 @@ const [issueState, setIssueState] = useState(initState)
     function getUserIssues(){
         userAxios.get("/api/issue/user")
         .then(res => {
-            console.log(res)
+            console.log("res from issueCommentProvider:", res)
             setIssueState(prevState => ({
                 ...prevState,
                 issues: res.data

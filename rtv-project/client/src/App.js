@@ -6,11 +6,16 @@ import Profile from "./components/Profile.js"
 import Public from "./components/Public.js"
 import ProtectedRoute from "./components/ProtectedRoute.js"
 import { UserContext } from "./context/UserProvider.js"
+// import { IssueCommentContext } from "./context/IssueCommentProvider.js"
 
 
 export default function App() {
 
+  // const { issues } = useContext(IssueCommentContext)
+
   const { token, logout } = useContext(UserContext)
+
+ 
 
   console.log("token from App.js", token)
 

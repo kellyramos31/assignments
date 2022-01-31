@@ -101,3 +101,29 @@
     padding: 8px;
     border-radius: 5px
 }
+
+.add-issue-button {
+    margin: 10px;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+}
+
+.up-vote {
+    margin: 10px;
+    background-color: greenyellow;
+    border-radius: 5px;
+    padding: 5px;
+    width:  100px;
+    font-weight: bold;
+
+}
+
+.down-vote {
+    margin: 10px;
+    background-color: orange;
+    border-radius: 5px;
+    padding: 5px;
+    width:  100px;
+    font-weight: bold;
+}
