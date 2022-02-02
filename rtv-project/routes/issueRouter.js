@@ -21,6 +21,7 @@ issueRouter.get("/user", (req, res, next)=>{
             res.status(500)
             return next(err)
         }
+        console.log("issues", issues)
         return res.status(200).send(issues)
     })
 })

@@ -8,13 +8,14 @@ export default function Profile() {
 
     const {
     user: {
-        username
+        username,
+        issues
     }
     } = useContext(UserContext)
 
     const {
-    addIssue,
-    issues
+        // issues,
+        addIssue
     } = useContext(IssueCommentContext)
 
 
@@ -22,9 +23,6 @@ export default function Profile() {
 
 
 return (
-    //  <UserContext.Provider>{(UserContext) => (
-
-    //     <IssueCommentContext.Provider>{(IssueCommentContext)=>{(
 
                <div className="profile">
 
@@ -41,11 +39,6 @@ return (
                         issues={issues}
                     />
             </div>
-        )}
-         
-        // </IssueCommentContext.Provider>
-    //  )}
 
-        
-    // </UserContext.Provider>
-
+        )
+    }

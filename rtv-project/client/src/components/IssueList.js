@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useContext } from "react"
 import IssueText from './IssueText.js'
+import { UserContext } from "../context/UserProvider.js"
 
 export default function IssueList(props){
 
-  const {issues} = props
+ const {
+    issues
+    } = useContext(UserContext)
+
+  console.log("props from IssueText comp", props)
 
 
   return (

@@ -48,9 +48,10 @@ const [userState, setUserState] = useState(initState)
         axios.post("/auth/login", credentials)
         .then(res => {
             const { user, token} = res.data
+            console.log("login user, token from UserProvider", res.data)
             localStorage.setItem("token", token)
             localStorage.setItem("user", JSON.stringify(user))
-            //getUserIssues()
+            getUserIssues()
             // getUserComments()
             setUserState(prevUserState => ({
                 ...prevUserState,
@@ -80,6 +81,20 @@ const [userState, setUserState] = useState(initState)
             errMsg
         }))
     }
+
+
+function getUserIssues(){
+    userAxios.get("/api/issue/user")
+    .then(res => {
+      console.log(res)
+      setUserState(prevState => ({
+        ...prevState,
+        issues: res.data
+      }))
+      console.log("issues from getUserIssues", res.data)
+    })
+    .catch(err => console.log(err.response.data.errMsg))
+  }
 
 //reset auth error
     function resetAuthErr(){
