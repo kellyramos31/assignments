@@ -87,7 +87,7 @@ const [issueState, setIssueState] = useState(initState)
             value={{
             ...issueState,
             getUserIssues,
-            addIssue,
+            addIssue
             // addComment,
         }}>
 

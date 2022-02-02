@@ -14,7 +14,7 @@ export default function Profile() {
     } = useContext(UserContext)
 
     const {
-        // issues,
+        issueState,
         addIssue
     } = useContext(IssueCommentContext)
 
@@ -31,6 +31,7 @@ return (
                     <h3>Add An Issue</h3>
 
                     <IssueForm
+                        issueState={issueState}
                         addIssue={addIssue}
                     />
 
