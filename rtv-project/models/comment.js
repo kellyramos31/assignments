@@ -1,3 +1,6 @@
+
+//NOTE:  COMMENTS need to be related to USERS AND ISSUES*****
+
 // const mongoose = require("mongoose");
 // const Schema = mongoose.Schema;
 

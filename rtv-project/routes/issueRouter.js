@@ -88,4 +88,39 @@ issueRouter.delete("/:issueId", (req, res, next)=> {
 })
 
 
+//NOTE:  USER SHOULD ONLY BE ABLE TO UPVOTE/DOWNVOTE AN ISSUE ONCE****
+//UPVOTE an Issue
+issueRouter.put("/upvote/:issueId", (req, res, next)=> {			
+  Issue.findOneAndUpdate(			
+  {_id: req.params.issueId},			
+  { $inc: {voteCount: 1}},			
+  {new: true},			
+  (err, updatedIssue)=> {			
+      if(err){			
+          res.status(500)			
+          return next(err)			
+      }			
+      return res.status(201).send(updatedIssue)			
+   }			
+  )			
+})			
+
+
+//DOWNVOTE an Issue
+issueRouter.put("/upvote/:issueId", (req, res, next)=> {			
+  Issue.findOneAndUpdate(			
+  {_id: req.params.issueId},			
+  { $inc: {voteCount: -1}},			
+  {new: true},			
+  (err, updatedIssue)=> {			
+      if(err){			
+          res.status(500)			
+          return next(err)			
+      }			
+      return res.status(201).send(updatedIssue)			
+   }			
+  )			
+})	
+
+
 module.exports = issueRouter;
