@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { UserContext } from "../context/UserProvider.js"
 
 
 const initInputs = {
@@ -11,6 +12,10 @@ export default function IssueForm(props){
   const [inputs, setInputs] = useState(initInputs)
   const {addIssue} = props
 
+  const {
+    getUserIssues
+    } = useContext(UserContext)
+
   function handleChange(e){
     const {name, value} = e.target
     setInputs(prevInputs => ({
@@ -22,7 +27,9 @@ export default function IssueForm(props){
   function handleSubmit(e){
     e.preventDefault()
     addIssue(inputs)
+    console.log("inputs from addIssue", inputs)
     setInputs(initInputs)
+    getUserIssues()
   }
 
   const { title, description } = inputs
@@ -42,13 +49,6 @@ export default function IssueForm(props){
         onChange={handleChange} 
         placeholder="Description"
       />
-      {/* <input 
-        type="text" 
-        name="votes" 
-        value={votes} 
-        onChange={handleChange} 
-        placeholder="Image Url"
-      /> */}
       <button className="add-issue-button">Add Issue</button>
     </form>
   )

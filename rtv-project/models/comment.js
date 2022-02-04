@@ -3,8 +3,19 @@
 
 
 // const commentSchema = new Schema({
-//     description: {
-//         type: String
+//     commentText: {
+//         type: String,
+//         required: true
+//     },
+//         user: {
+//         type: Schema.Types.ObjectId,
+//         ref: "User",
+//         required: true
+//     },
+//         issue: {
+//         type: Schema.Types.ObjectId,
+//         ref: "Issue",
+//         required: true
 //     }
 // })
 

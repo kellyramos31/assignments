@@ -25,17 +25,17 @@ export default function IssueCommentProvider(props) {
 const [issueState, setIssueState] = useState(initState)
 
     //get all user issues
-    function getUserIssues(){
-        userAxios.get("/api/issue/user")
-        .then(res => {
-            console.log("res from issueCommentProvider:", res)
-            setIssueState(prevState => ({
-                ...prevState,
-                issues: res.data
-            }))
-        })
-        .catch(err => console.log(err.response.data.errMsg))
-    }
+    // function getUserIssues(){
+    //     userAxios.get("/api/issue/user")
+    //     .then(res => {
+    //         console.log("res from issueCommentProvider:", res)
+    //         setIssueState(prevState => ({
+    //             ...prevState,
+    //             issues: res.data
+    //         }))
+    //     })
+    //     .catch(err => console.log(err.response.data.errMsg))
+    // }
 
     
 //get all user comments
@@ -86,7 +86,7 @@ const [issueState, setIssueState] = useState(initState)
         <IssueCommentContext.Provider
             value={{
             ...issueState,
-            getUserIssues,
+            // getUserIssues,
             addIssue
             // addComment,
         }}>

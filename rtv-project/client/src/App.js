@@ -11,8 +11,6 @@ import { IssueCommentContext } from "./context/IssueCommentProvider.js"
 
 export default function App() {
 
-  // const { issues } = useContext(IssueCommentContext) -- need to add issues context in here somewhere?
-
   const { token, logout } = useContext(UserContext)
 
   const { issues } = useContext(IssueCommentContext)

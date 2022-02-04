@@ -115,6 +115,7 @@ return (
             signup,
             login,
             logout,
+            getUserIssues,
             // addIssue,
             // addComment,
             resetAuthErr
