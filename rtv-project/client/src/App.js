@@ -34,6 +34,7 @@ export default function App() {
         <Route element={<ProtectedRoute token={token}/>}>
               <Route
                 path="/profile"
+                // element={<Profile/>}
                 element={<Profile issues={issues}/>}
                 navigateTo="/"
               />

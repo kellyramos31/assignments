@@ -54,9 +54,9 @@ issueRouter.get("/:issueId", (req, res, next) => {
 })
 
 
-//Edit issue
+//Edit issue (or should it be findOneAndUpdate)
 issueRouter.put("/:issueId", (req, res, next) => {
-    Issue.findOneAndUpdate(
+    Issue.findByIdAndUpdate(
         {_id: req.params.issueId, user: req.user._id},
     // Todo.findByIdAndUpdate(
         // req.params.todoId,
@@ -88,10 +88,11 @@ issueRouter.delete("/:issueId", (req, res, next)=> {
 })
 
 
-//NOTE:  USER SHOULD ONLY BE ABLE TO UPVOTE/DOWNVOTE AN ISSUE ONCE****
+//NOTE:  ****USER SHOULD ONLY BE ABLE TO UPVOTE/DOWNVOTE AN ISSUE ONCE****
+
 //UPVOTE an Issue
 issueRouter.put("/upvote/:issueId", (req, res, next)=> {			
-  Issue.findOneAndUpdate(			
+  Issue.findByIdAndUpdate(			
   {_id: req.params.issueId},			
   { $inc: {voteCount: 1}},			
   {new: true},			
@@ -107,7 +108,7 @@ issueRouter.put("/upvote/:issueId", (req, res, next)=> {
 
 
 //DOWNVOTE an Issue
-issueRouter.put("/upvote/:issueId", (req, res, next)=> {			
+issueRouter.put("/downvote/:issueId", (req, res, next)=> {			
   Issue.findOneAndUpdate(			
   {_id: req.params.issueId},			
   { $inc: {voteCount: -1}},			
@@ -117,10 +118,9 @@ issueRouter.put("/upvote/:issueId", (req, res, next)=> {
           res.status(500)			
           return next(err)			
       }			
-      return res.status(201).send(updatedIssue)			
+      return res.status(201).send(updatedIssue)		
    }			
   )			
 })	
-
 
 module.exports = issueRouter;

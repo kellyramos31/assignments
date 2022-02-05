@@ -23,6 +23,7 @@ export default function IssueCommentProvider(props) {
     }
 
 const [issueState, setIssueState] = useState(initState)
+// const [voteCount, setVoteCount] = useState(0)
 
     //get all user issues
     // function getUserIssues(){
@@ -51,7 +52,7 @@ const [issueState, setIssueState] = useState(initState)
     //     .catch(err => console.log(err.response.data.errMsg))
     // }
 
-//add issue -- move to issueCommentProvider??
+//Add Issue
     function addIssue(newIssue) {
         userAxios.post("/api/issue", newIssue)
         .then(res => {
@@ -64,7 +65,7 @@ const [issueState, setIssueState] = useState(initState)
         .catch(err=>console.log(err.response.data.errMsg))
     }
 
-//add comment -- move to issueCommentProvider??
+//Add Comment
 //    function addComment() {
 //         userAxios.post("/api/comment", newComment)
 //         .then(res => {
@@ -77,15 +78,33 @@ const [issueState, setIssueState] = useState(initState)
         
 //     }
 
-//vote -- how handle this?? upvotes + downvotes
-//    function addVote () {
+//UPVOTE AN ISSUE
+    function upVote(){
+      userAxios.put("/api/issue")		
+    .then(res => {
+      console.log(res)
+    })
+   
+    .catch(err => console.log(err.response.data.errMsg))
+  }
 
-//    }
+
+
+//DOWNVOTE AN ISSUE
+    function downVote(){
+
+    }
+
+
+
 
     return (
         <IssueCommentContext.Provider
             value={{
             ...issueState,
+            upVote,
+            downVote,
+            // voteCount,
             // getUserIssues,
             addIssue
             // addComment,

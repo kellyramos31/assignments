@@ -23,7 +23,12 @@ export default function UserProvider(props) {
         errMsg: ""
     }
 
-const [userState, setUserState] = useState(initState)
+    const [userState, setUserState] = useState(initState)
+
+//     useEffect(() => {
+//         console.log("useEffect triggered")
+//         getUserIssues()
+//     }, [])
 
 
 //signup
@@ -52,6 +57,7 @@ const [userState, setUserState] = useState(initState)
             localStorage.setItem("token", token)
             localStorage.setItem("user", JSON.stringify(user))
             getUserIssues()
+            console.log("getUserIssues from UserProvider")
             // getUserComments()
             setUserState(prevUserState => ({
                 ...prevUserState,
@@ -95,6 +101,19 @@ function getUserIssues(){
     })
     .catch(err => console.log(err.response.data.errMsg))
   }
+
+  //Add Issue
+    function addIssue(newIssue) {
+        userAxios.post("/api/issue", newIssue)
+        .then(res => {
+            console.log(res)
+            setIssueState(prevState => ({
+                ...prevState,
+                issues:  [...prevState.issues, res.data]
+            }))
+        })
+        .catch(err=>console.log(err.response.data.errMsg))
+    }
 
 //reset auth error
     function resetAuthErr(){

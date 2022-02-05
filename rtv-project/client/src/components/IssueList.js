@@ -11,11 +11,12 @@ export default function IssueList(){
 
   console.log("props from IssueText comp", issues)
 
+ 
+
 
   return (
     <div className="issue-list">
       {issues.map(issue => <IssueText {...issue} key={issue._id}/>)}
-
     </div>
   )
 }
