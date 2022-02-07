@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import { UserContext } from "../context/UserProvider.js"
+import { UserContext} from "../context/UserProvider.js"
 
 
 const initInputs = {
@@ -12,10 +12,11 @@ export default function IssueForm(props){
 
 
   const [inputs, setInputs] = useState(initInputs)
-  const {addIssue} = props
+  const { addIssue } = props
 
   const {
-    getUserIssues
+     userIssues,
+     getUserIssues
     } = useContext(UserContext)
 
   function handleChange(e){
@@ -32,6 +33,7 @@ export default function IssueForm(props){
     console.log("inputs from addIssue", inputs)
     setInputs(initInputs)
     getUserIssues()
+    console.log("issues after handleSubmit for IssueForm", userIssues)
   }
 
   const { title, description } = inputs

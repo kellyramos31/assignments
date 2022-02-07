@@ -7,13 +7,26 @@ import IssueCommentProvider from "./context/IssueCommentProvider.js"
 import "./css/styles.css"
 
 
+// ReactDOM.render(
+//   <BrowserRouter>
+//       <UserProvider>
+//         <IssueCommentProvider>
+//           <App />
+//         </IssueCommentProvider>
+//       </UserProvider>
+//   </BrowserRouter>,
+//   document.getElementById('root')
+// )
+
 ReactDOM.render(
   <BrowserRouter>
-      <UserProvider>
+      
         <IssueCommentProvider>
+          <UserProvider>
           <App />
+          </UserProvider>
         </IssueCommentProvider>
-      </UserProvider>
+      
   </BrowserRouter>,
   document.getElementById('root')
 )

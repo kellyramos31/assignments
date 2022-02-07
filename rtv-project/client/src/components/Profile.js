@@ -8,13 +8,15 @@ export default function Profile() {
 
     const {
     user: {
-        username,
-        issues
-    }
+        username
+    },
+        userIssues
     } = useContext(UserContext)
 
     const {
-        issueState,
+        // issueState,
+        //issues
+        // getUserIssues,
         addIssue
     } = useContext(IssueCommentContext)
 
@@ -31,13 +33,14 @@ return (
                     <h3>Add An Issue</h3>
 
                     <IssueForm
-                        issueState={issueState}
+                        // issueState={issueState}
+                        //getUserIssues={getUserIssues}
                         addIssue={addIssue}
                     />
 
                     <h3>Your Issues</h3>
                     <IssueList
-                        issues={issues}
+                        userIssues={userIssues}
                     />
             </div>
 

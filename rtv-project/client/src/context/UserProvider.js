@@ -1,6 +1,8 @@
 import React, { useState } from "react"
 import axios from "axios"
 
+
+
 export const UserContext = React.createContext({})
 
 
@@ -18,12 +20,15 @@ export default function UserProvider(props) {
     const initState = {
         user: JSON.parse(localStorage.getItem("user")) || {},
         token: localStorage.getItem("token") || "",
-        issues: [],
+        userIssues: [],
         // comments: [],
         errMsg: ""
     }
 
     const [userState, setUserState] = useState(initState)
+
+
+    // const [issueState, setIssueState] = useState(initState)
 
 //     useEffect(() => {
 //         console.log("useEffect triggered")
@@ -57,7 +62,7 @@ export default function UserProvider(props) {
             localStorage.setItem("token", token)
             localStorage.setItem("user", JSON.stringify(user))
             getUserIssues()
-            console.log("getUserIssues from UserProvider")
+            // console.log("getUserIssues from UserProvider")
             // getUserComments()
             setUserState(prevUserState => ({
                 ...prevUserState,
@@ -75,7 +80,7 @@ export default function UserProvider(props) {
         setUserState({
             user: {},
             token: "",
-            issues: []
+            userIssues: []
             // comments: []
         })
     }
@@ -95,25 +100,25 @@ function getUserIssues(){
       console.log(res)
       setUserState(prevState => ({
         ...prevState,
-        issues: res.data
+        userIssues: res.data
       }))
-      console.log("issues from getUserIssues", res.data)
+      console.log("userIssues from getUserIssues", res.data)
     })
     .catch(err => console.log(err.response.data.errMsg))
   }
 
-  //Add Issue
-    function addIssue(newIssue) {
-        userAxios.post("/api/issue", newIssue)
-        .then(res => {
-            console.log(res)
-            setIssueState(prevState => ({
-                ...prevState,
-                issues:  [...prevState.issues, res.data]
-            }))
-        })
-        .catch(err=>console.log(err.response.data.errMsg))
-    }
+//   //Add Issue
+//     function addIssue(newIssue) {
+//         userAxios.post("/api/issue", newIssue)
+//         .then(res => {
+//             console.log(res)
+//             setIssueState(prevState => ({
+//                 ...prevState,
+//                 issues:  [...prevState.issues, res.data]
+//             }))
+//         })
+//         .catch(err=>console.log(err.response.data.errMsg))
+//     }
 
 //reset auth error
     function resetAuthErr(){

@@ -102,10 +102,10 @@ const [issueState, setIssueState] = useState(initState)
         <IssueCommentContext.Provider
             value={{
             ...issueState,
+            // getUserIssues,
             upVote,
             downVote,
             // voteCount,
-            // getUserIssues,
             addIssue
             // addComment,
         }}>

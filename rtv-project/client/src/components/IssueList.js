@@ -1,22 +1,24 @@
-
-import React, { useContext } from "react"
+import React from "react"
+// import React, { useContext } from "react"
 import IssueText from './IssueText.js'
-import { UserContext } from "../context/UserProvider.js"
+// import { IssueCommentContext } from "../context/IssueCommentProvider.js"
 
-export default function IssueList(){
+export default function IssueList(props){
 
- const {
-    issues
-    } = useContext(UserContext)
+const {userIssues} = props
 
-  console.log("props from IssueText comp", issues)
+//  const {
+//     issues
+//     } = useContext(IssueCommentContext)
+
+console.log("issues from IssueCommentContext inside IssueText comp", userIssues)
 
  
 
 
   return (
-    <div className="issue-list">
-      {issues.map(issue => <IssueText {...issue} key={issue._id}/>)}
+    <div className="user-issue-list">
+      {userIssues.map(userIssue => <IssueText {...userIssue} key={userIssue._id}/>)}
     </div>
   )
 }
