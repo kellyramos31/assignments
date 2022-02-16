@@ -20,6 +20,7 @@ return (
     <div className="issue">
       <h1 className="issue-title">Title: {props.title}</h1>
       <h3 className="issue-description">Description: {props.description}</h3>
+      <h3 className="comments">Comments:  {props.comments}</h3>
       <h3 className="total-votes">Total Votes: {props.voteCount}</h3>
 
     <div className="vote-buttons">

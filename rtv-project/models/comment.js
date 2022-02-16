@@ -24,14 +24,14 @@ const commentSchema = new Schema({
     }
 })
 
-const autoPopulateUser  = function(next) {
-    this.populate({
-        path: "_user",
-        select: "username createdAt -_id"
-    })
-    next()
-    }
+// const autoPopulateUser  = function(next) {
+//     this.populate({
+//         path: "_user",
+//         select: "username createdAt -_id"
+//     })
+//     next()
+//     }
 
-commentSchema.pre("findOne", autoPopulateUser)
+// commentSchema.pre("findOne", autoPopulateUser)
 
 module.exports = mongoose.model("Comment", commentSchema)
