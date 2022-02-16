@@ -23,7 +23,7 @@ ReactDOM.render(
       
         <IssueCommentProvider>
           <UserProvider>
-          <App />
+            <App />
           </UserProvider>
         </IssueCommentProvider>
       

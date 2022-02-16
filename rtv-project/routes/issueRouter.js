@@ -1,4 +1,5 @@
 const express = require("express");
+const { isValidObjectId } = require("mongoose");
 const issueRouter = express.Router();
 const Issue = require("../models/issue.js");
 
@@ -26,7 +27,7 @@ issueRouter.get("/user", (req, res, next)=>{
     })
 })
 
-//Add new issue
+// //Add new issue for a specific user
 issueRouter.post("/", (req, res, next) => {
     req.body.user = req.user._id
     const issue = new Issue(req.body);
@@ -38,6 +39,26 @@ issueRouter.post("/", (req, res, next) => {
         return res.status(201).send(newIssue);
     })
 })
+
+//Add new issue-- attempting diff approach with $push
+// issueRouter.post("/", (req, res, next) => {
+//     req.body.user = req.user._id
+//     console.log(req.user._id)
+//     const issue = new Issue(req.body);
+
+//     issue.insertOne([
+//         {$push: {users: req.user._id}}
+//     ],
+//     (err, newIssue) => {
+//         if (err) {
+//             res.status(500);
+//             return next(err);
+//         }
+//         return res.status(201).send(newIssue);
+// }
+//     )
+// })
+
 
 //Get one issue
 issueRouter.get("/:issueId", (req, res, next) => {
@@ -90,8 +111,9 @@ issueRouter.delete("/:issueId", (req, res, next)=> {
 
 //NOTE:  ****USER SHOULD ONLY BE ABLE TO UPVOTE/DOWNVOTE AN ISSUE ONCE****
 
-//UPVOTE an Issue
-issueRouter.put("/upvote/:issueId", (req, res, next)=> {			
+//UPVOTE an Issue -- individual user
+// NOTE:  this route works, but receiving error:  Cast to ObjectId failed for value "{ _id: 'upvote', user: '61ec679e6a08cb02494b5734' }" (type Object) at path "_id" for model "Issue"
+issueRouter.put("/user/upvote/:issueId", (req, res, next)=> {			
   Issue.findByIdAndUpdate(			
   {_id: req.params.issueId},			
   { $inc: {voteCount: 1}},			
@@ -108,6 +130,7 @@ issueRouter.put("/upvote/:issueId", (req, res, next)=> {
 
 
 //DOWNVOTE an Issue
+//this route works also
 issueRouter.put("/downvote/:issueId", (req, res, next)=> {			
   Issue.findOneAndUpdate(			
   {_id: req.params.issueId},			

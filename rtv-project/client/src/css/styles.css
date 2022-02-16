@@ -127,3 +127,20 @@
     width:  100px;
     font-weight: bold;
 }
+
+.issue {
+    background-color: black;
+    border:  5px solid blue;
+}
+
+.issue-title {
+    color: white;
+}
+
+.issue-description {
+    color: orange;
+}
+
+.total-votes {
+    color: greenyellow;
+}

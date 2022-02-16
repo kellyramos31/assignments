@@ -6,11 +6,13 @@ const initInputs = {
   commentText: ""
 }
 
-export default function IssueForm(props){
+export default function CommentForm(props){
 
 
   const [inputs, setInputs] = useState(initInputs)
   const {addComment} = props
+
+  const [toggle, setToggle] = useState(false)
 
   const {
     getUserIssues
@@ -26,15 +28,23 @@ export default function IssueForm(props){
 
   function handleSubmit(e){
     e.preventDefault()
-    addIssue(inputs)
+    addComment(inputs)
     console.log("inputs from addComment", inputs)
     setInputs(initInputs)
     getUserIssues()
   }
 
   const { commentText } = inputs
+
+  function toggleForm(){
+    setToggle(prev => !prev)
+  }
+
+
   return (
-    <form onSubmit={handleSubmit}>
+    <div>
+      { toggle ?
+      <form onSubmit={handleSubmit}>
       <input 
         type="text" 
         name="commentText" 
@@ -42,7 +52,11 @@ export default function IssueForm(props){
         onChange={handleChange} 
         placeholder="Title"
       />
-      <button className="add-comment-button">Submit Comment</button>
+      <button className="add-comment-button" onClick={toggleForm}>Submit Comment</button>
     </form>
+    :
+    null
+      }
+    </div>
   )
 }

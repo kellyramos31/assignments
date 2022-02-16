@@ -21,8 +21,7 @@ const userSchema = new Schema({
         type: Boolean,
         default: false
     }
-
-})
+ })
 
     //pre-save hook to encrypt user passwords on signup
     userSchema.pre("save", function(next){

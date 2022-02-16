@@ -5,17 +5,15 @@ import IssueText from './IssueText.js'
 
 export default function IssueList(props){
 
-const {userIssues} = props
+const { userIssues } = props
 
 //  const {
 //     issues
 //     } = useContext(IssueCommentContext)
 
-console.log("issues from IssueCommentContext inside IssueText comp", userIssues)
+console.log("userIssues from IssueCommentContext inside IssueList comp", userIssues)
 
  
-
-
   return (
     <div className="user-issue-list">
       {userIssues.map(userIssue => <IssueText {...userIssue} key={userIssue._id}/>)}
