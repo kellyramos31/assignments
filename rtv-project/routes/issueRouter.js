@@ -105,7 +105,7 @@ issueRouter.delete("/user/:issueId", (req, res, next)=> {
 })
 
 
-//NOTE:  ****USER SHOULD ONLY BE ABLE TO UPVOTE/DOWNVOTE AN ISSUE ONCE****
+//NOTE:  ****USER SHOULD ONLY BE ABLE TO UPVOTE/DOWNVOTE AN ISSUE ONCE****NEED TO FIGURE THIS OUT
 
 //UPVOTE AN ISSUE-- individual user
 // NOTE:  this route works, but receiving error:  Cast to ObjectId failed for value "{ _id: 'upvote', user: '61ec679e6a08cb02494b5734' }" (type Object) at path "_id" for model "Issue"
