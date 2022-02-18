@@ -54,7 +54,7 @@ return (
                         //issueState={issueState}
                         //getUserIssues={getUserIssues}
                         deleteIssue={deleteIssue}
-                        //userIssues={userIssues}
+                        userIssues={userIssues}
                     />
                    
             </div>

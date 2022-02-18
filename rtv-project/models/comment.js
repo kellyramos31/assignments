@@ -12,12 +12,12 @@ const commentSchema = new Schema({
         type: Date,
         default: Date.now
     },
-    user: {
+    _user: {
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true
     },
-    issue: {
+    _issue: {
         type: Schema.Types.ObjectId,
         ref: "Issue",
         required: true
@@ -26,8 +26,8 @@ const commentSchema = new Schema({
 
 const autoPopulateUser  = function(next) {
     this.populate({
-        path: "user",
-        select: "username createdAt -_id"
+        path: "_user",
+        select: "username _id"
     })
     next()
     }

@@ -19,7 +19,7 @@ const issueSchema = new Schema({
     voteCount: {
         type: Number
     },
-    user: {
+    _user: {
         type: Schema.Types.ObjectId,
         ref: "User",
         required: true

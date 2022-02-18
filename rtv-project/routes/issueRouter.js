@@ -18,7 +18,7 @@ issueRouter.get("/", (req, res, next) => {
 
 //GET ISSUES by user id
 issueRouter.get("/user", (req, res, next)=>{
-    Issue.find({user: req.user._id}, (err, issues)=>{
+    Issue.find({user: req._user}, (err, issues)=>{
         if(err) {
             res.status(500)
             return next(err)
@@ -29,8 +29,22 @@ issueRouter.get("/user", (req, res, next)=>{
 })
 
 //ADD NEW ISSUE for a specific user
+// issueRouter.post("/user", (req, res, next) => {
+//     // req.body.user = req._user
+//     const issue._user = req.body.user
+//     const issue = new Issue(req.body);
+//     issue.save(function (err, newIssue) {
+//         if (err) {
+//             res.status(500);
+//             return next(err);
+//         }
+//         return res.status(201).send(newIssue);
+//     })
+// })
+
+//ADD NEW ISSUE for a specific user
 issueRouter.post("/user", (req, res, next) => {
-    req.body.user = req.user._id
+    req.body._user = req.user._id
     const issue = new Issue(req.body);
     issue.save(function (err, newIssue) {
         if (err) {
@@ -40,26 +54,6 @@ issueRouter.post("/user", (req, res, next) => {
         return res.status(201).send(newIssue);
     })
 })
-
-//Add new issue-- attempting diff approach with $push
-// issueRouter.post("/", (req, res, next) => {
-//     req.body.user = req.user._id
-//     console.log(req.user._id)
-//     const issue = new Issue(req.body);
-
-//     issue.insertOne([
-//         {$push: {users: req.user._id}}
-//     ],
-//     (err, newIssue) => {
-//         if (err) {
-//             res.status(500);
-//             return next(err);
-//         }
-//         return res.status(201).send(newIssue);
-// }
-//     )
-// })
-
 
 //GET ONE ISSUE
 issueRouter.get("/:issueId", (req, res, next) => {

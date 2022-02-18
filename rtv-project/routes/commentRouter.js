@@ -17,7 +17,7 @@ commentRouter.get("/", (req, res, next) => {
 
 //GET COMMENTS BY USER ID
 commentRouter.get("/user", (req, res, next)=>{
-    Comment.find({user: req.user._id}, (err, comments)=>{
+    Comment.find({user: req._user}, (err, comments)=>{
         if(err) {
             res.status(500)
             return next(err)
@@ -31,29 +31,35 @@ commentRouter.get("/user", (req, res, next)=>{
 //NOTE:  THIS ONE WORKS TO ADD COMMENT, BUT....NOT PUSHING TO ARRAY
 //NOT SURE THIS IS SET UP CORRECTLY -- with user/issue refs
 
-//ADD NEW COMMENT
-commentRouter.post("/user", (req, res, next) => {
 
-    const comment = new Comment(req.body);
+//ADD NEW COMMENT for a specific user
+commentRouter.post("/user", (req, res, next) => {
+    req.body._user = req.user._id
+    req.body._issue = req.issue._id
+    const comment = new Comment(req.body.commentText);
 
     comment.save(function(err, newComment) {
         if (err) {
             res.status(500)
             return next(err)
         }
-        
-    //$ push not working to update array here       
-    Issue.findOneAndUpdate(
-            {_id: req.body.issue },
-            { $push: { "comments": newComment._id } })
-        if (err) {
-            res.status(500)
-            return next(err)
-        }
-         
-         return res.status(201).send(newComment);
+                 
+        return res.status(201).send(newComment);
     })
 })
+    //$ push not working to update array here       
+    // Issue.findOneAndUpdate(
+    //         {_id: req.issue._id},
+    //         { $push: { "_comments": newComment._id } })
+    //     if (err) {
+    //         res.status(500)
+    //         return next(err)
+    //     }
+         
+    //      return res.status(201).send(newComment);
+    // })
+
+
 
 
 //DELETE COMMENT
