@@ -18,14 +18,14 @@ export default function IssueCommentProvider(props) {
         user: JSON.parse(localStorage.getItem("user")) || {},
         token: localStorage.getItem("token") || "",
         issues: [],
-        userIssues: [],
+        // userIssues: [],
         comments: [],
         errMsg: ""
     }
 
 const [issueState, setIssueState] = useState(initState)
 
-const [issues, setIssues] = useState([])
+// const [issues, setIssues] = useState([])
 
 // const [userIssues, setUserIssues] = useState([])
 
@@ -90,20 +90,20 @@ const [comments, setComments] = useState([])
 
 
 //Add Issue
-    function addIssue(newUserIssue) {
-        userAxios.post("/api/issue/user", newUserIssue)
-          .then(res => {
-            console.log(res)
-            setIssues(prevState => ({
-                ...prevState,
-                issues:  [...prevState, res.data]
-            }))
-        })
-        .catch(err=>console.log(err.response.data.errMsg))
-    }
+    // function addIssue(newUserIssue) {
+    //     userAxios.post("/api/issue/user", newUserIssue)
+    //       .then(res => {
+    //         console.log(res)
+    //         setUserIssues(prevState => ({
+    //             ...prevState,
+    //             userIssues:  [...prevState, res.data]
+    //         }))
+    //     })
+    //     .catch(err=>console.log(err.response.data.errMsg))
+    // }
 
 
-// //Delete Issue
+// //Delete User's Issue
 //     function deleteIssue(userIssueId) {
 //         console.log("userIssueId:", userIssueId)
 //         userAxios.delete(`/api/issue/user/${userIssueId}`)
@@ -170,12 +170,12 @@ function upVote(issueId){
             //getUserIssues,
             upVote,
             downVote,
-            issues,
-            //userIssues,
+            // issues,
+            // userIssues,
             comments,
             // voteCount,
-            addIssue,
-            //deleteIssue,
+            // addIssue,
+            // deleteIssue,
             addComment,
             getIssues
         }}>

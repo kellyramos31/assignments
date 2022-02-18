@@ -11,7 +11,7 @@ import { UserContext } from "./context/UserProvider.js"
 
 export default function App() {
 
-  const { token, logout } = useContext(UserContext)
+  const { token, logout} = useContext(UserContext)
 
   // const { userIssues } = useContext(IssueCommentContext)
 
@@ -35,7 +35,7 @@ export default function App() {
         <Route element={<ProtectedRoute token={token}/>}>
               <Route
                 path="/profile"
-                element={<Profile/>}
+                element={<Profile />}
                 //element={<Profile userIssues={userIssues}/>}
                 // element={<Profile issues={issues} getUserIssues={getUserIssues}/>}
                 navigateTo="/"

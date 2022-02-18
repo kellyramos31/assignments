@@ -3,7 +3,7 @@ import IssueForm from "./IssueForm.js"
 import IssueList from "./IssueList.js"
 // import CommentForm from "./CommentForm.js"
 import { UserContext } from "../context/UserProvider.js"
-import { IssueCommentContext } from "../context/IssueCommentProvider.js"
+// import { IssueCommentContext } from "../context/IssueCommentProvider.js"
 
 export default function Profile() {
 
@@ -11,16 +11,17 @@ export default function Profile() {
     user: {
         username
     },
-        userIssues
+        userIssues,
+        addIssue,
+        deleteIssue
     } = useContext(UserContext)
 
-    const {
+    // const {
         // issues,
         //userIssues,
         // getUserIssues,
-        addIssue,
-        deleteIssue
-    } = useContext(IssueCommentContext)
+        
+    // } = useContext(IssueCommentContext)
 
 
 // const [userIssues, setUserIssues] = useState([])
@@ -53,7 +54,7 @@ return (
                         //issueState={issueState}
                         //getUserIssues={getUserIssues}
                         deleteIssue={deleteIssue}
-                        userIssues={userIssues}
+                        //userIssues={userIssues}
                     />
                    
             </div>

@@ -28,7 +28,7 @@ export default function UserProvider(props) {
     const [userState, setUserState] = useState(initState)
 
 
-    // const [userIssues, setUserIssues] = useState(initState)
+    const [userIssues, setUserIssues] = useState(initState)
 
 //     useEffect(() => {
 //         console.log("useEffect triggered")
@@ -96,7 +96,7 @@ export default function UserProvider(props) {
 
  //GET USER'S INDIVIDUAL ISSUES   
 
-    function getUserIssues(){
+function getUserIssues(){
     userAxios.get("/api/issue/user")
     .then(res => {
       console.log(res)
@@ -110,18 +110,32 @@ export default function UserProvider(props) {
   }
 
 
-//   //Add Issue
-//     function addIssue(newIssue) {
-//         userAxios.post("/api/issue", newIssue)
-//         .then(res => {
-//             console.log(res)
-//             setIssueState(prevState => ({
-//                 ...prevState,
-//                 issues:  [...prevState.issues, res.data]
-//             }))
-//         })
-//         .catch(err=>console.log(err.response.data.errMsg))
-//     }
+  //Add Issue
+    // function addIssue(newIssue) {
+    //     userAxios.post("/api/issue", newIssue)
+    //     .then(res => {
+    //         console.log(res)
+    //         setUserState(prevState => ({
+    //             ...prevState,
+    //             issues:  [...prevState.issues, res.data]
+    //         }))
+    //     })
+    //     .catch(err=>console.log(err.response.data.errMsg))
+    // }
+
+    //Add Issue
+    function addIssue(newUserIssue) {
+        userAxios.post("/api/issue/user", newUserIssue)
+          .then(res => {
+            console.log(res)
+            setUserIssues(prevState => ({
+                ...prevState,
+                userIssues:  [...prevState, res.data]
+            }))
+        })
+        .catch(err=>console.log(err.response.data.errMsg))
+    }
+
 
 //reset auth error
     function resetAuthErr(){
@@ -131,6 +145,16 @@ export default function UserProvider(props) {
         }))
     }
 
+    //Delete User's Issue
+    function deleteIssue(userIssueId) {
+        console.log("userIssueId:", userIssueId)
+        userAxios.delete(`/api/issue/user/${userIssueId}`)
+             .then(res => {
+                setUserIssues(prevState=> prevState.userIssues.filter(userIssue => userIssue._id !== userIssueId))
+    })
+        
+            .catch(err=>console.log(err.response.data.errMsg))
+    }
 
 
 
@@ -144,7 +168,9 @@ return (
             login,
             logout,
             getUserIssues,
-            //addIssue,
+            userIssues,
+            deleteIssue,
+            addIssue,
             // addComment,
             resetAuthErr
         }}>

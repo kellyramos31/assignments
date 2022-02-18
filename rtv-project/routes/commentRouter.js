@@ -37,6 +37,10 @@ commentRouter.post("/user", (req, res, next) => {
     const comment = new Comment(req.body);
 
     comment.save(function(err, newComment) {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
         
     //$ push not working to update array here       
     Issue.findOneAndUpdate(
@@ -82,6 +86,7 @@ commentRouter.put("/user/:commentId", (req, res, next) => {
             return res.send(comment);
         })
 })
+
 
 
 
