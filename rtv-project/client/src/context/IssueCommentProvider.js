@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState} from "react"
 import axios from "axios"
 
 
@@ -18,7 +18,8 @@ export default function IssueCommentProvider(props) {
         user: JSON.parse(localStorage.getItem("user")) || {},
         token: localStorage.getItem("token") || "",
         issues: [],
-        // comments: [],
+        userIssues: [],
+        comments: [],
         errMsg: ""
     }
 
@@ -26,30 +27,51 @@ const [issueState, setIssueState] = useState(initState)
 
 const [issues, setIssues] = useState([])
 
-// const [comments, setComments] = useState([])
+// const [userIssues, setUserIssues] = useState([])
+
+const [comments, setComments] = useState([])
 
 
-//useEffect
-  useEffect(() => {
-    console.log("useEffect triggered")
-    getIssues()
-  }, [])
+//USEEFFECT
 
+//   useEffect(() => {
+//     console.log("useEffect triggered")
+//     getUserIssues()
+//   }, [])
 
 
 
 //GET ALL ISSUES (regardless of user)
     function getIssues(){
-        userAxios.get("/api/issues")
+        userAxios.get("/api/issue")
         .then(res => {
             console.log("res from issueCommentProvider:", res)
-            setIssues(prevState => ({
+            setIssueState(prevState => ({
                 ...prevState,
                 issues: res.data
             }))
         })
         .catch(err => console.log(err.response.data.errMsg))
     }
+
+
+//GET USER'S INDIVIDUAL ISSUES   
+
+// function getUserIssues(){
+//     userAxios.get("/api/issue/user")
+
+   
+//     .then(res => {
+//       console.log(res)
+//       setIssueState(prevState => ({
+//         ...prevState,
+//         userIssues: res.data
+//       }))
+//       console.log("userIssues from getUserIssues", res.data)
+//     })
+//     .catch(err => console.log(err.response.data.errMsg))
+//   }
+
 
 //GET ALL COMMENTS (regardless of user)
     
@@ -66,46 +88,48 @@ const [issues, setIssues] = useState([])
     //     .catch(err => console.log(err.response.data.errMsg))
     // }
 
+
 //Add Issue
-    function addIssue(newIssue) {
-        userAxios.post("/api/issue", newIssue)
-        .then(res => {
+    function addIssue(newUserIssue) {
+        userAxios.post("/api/issue/user", newUserIssue)
+          .then(res => {
             console.log(res)
-            setIssueState(prevState => ({
+            setIssues(prevState => ({
                 ...prevState,
-                issues:  [...prevState.issues, res.data]
+                issues:  [...prevState, res.data]
             }))
         })
         .catch(err=>console.log(err.response.data.errMsg))
     }
 
 
-//Delete Issue
-    function deleteIssue(issueId) {
-        console.log("issueId:", issueId)
-        userAxios.delete(`/api/issue/${issueId}`)
-             .then(res => {
-                setIssueState(prevState=> prevState.issues.filter(issue => issue._id !== issueId))
-    })
+// //Delete Issue
+//     function deleteIssue(userIssueId) {
+//         console.log("userIssueId:", userIssueId)
+//         userAxios.delete(`/api/issue/user/${userIssueId}`)
+//              .then(res => {
+//                 setUserIssues(prevState=> prevState.userIssues.filter(userIssue => userIssue._id !== userIssueId))
+//     })
         
-            .catch(err=>console.log(err.response.data.errMsg))
-    }
+//             .catch(err=>console.log(err.response.data.errMsg))
+//     }
 
 
 
 //Add Comment
    function addComment(newComment) {
         // console.log("adding comment -- issueId:", issueId)
-        userAxios.post("/api/comment", newComment)
+        userAxios.post("/api/comment/user", newComment)
         .then(res => {
             console.log(res)
-            setIssueState(prevState => ({
+            setComments(prevState => ({
                 ...prevState,
-                issues:  [...prevState.comments, res.data]
+                comments:  [...prevState.comments, res.data]
             }))
-        })
-        
-    }
+        .catch(err=>console.log(err.response.data.errMsg))
+    })
+}
+    
 
 //UPVOTE AN ISSUE
 function upVote(issueId){
@@ -125,12 +149,9 @@ function upVote(issueId){
 
 
 
-
-
-
 //DOWNVOTE AN ISSUE
     function downVote(){
-          userAxios.put("/api/issue/downvote")		
+          userAxios.put("/api/issue/user/downvote")		
     .then(res => {
       console.log("downVote res:", res)
     })
@@ -146,14 +167,17 @@ function upVote(issueId){
         <IssueCommentContext.Provider
             value={{
             ...issueState,
-            // getUserIssues,
+            //getUserIssues,
             upVote,
             downVote,
             issues,
+            //userIssues,
+            comments,
             // voteCount,
             addIssue,
-            deleteIssue,
-            addComment
+            //deleteIssue,
+            addComment,
+            getIssues
         }}>
 
         {props.children}

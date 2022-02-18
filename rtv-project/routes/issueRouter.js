@@ -2,6 +2,7 @@ const express = require("express");
 const { isValidObjectId } = require("mongoose");
 const issueRouter = express.Router();
 const Issue = require("../models/issue.js");
+// const User = require("../models/user.js")
 
 
 //GET ALL ISSUES
@@ -28,7 +29,7 @@ issueRouter.get("/user", (req, res, next)=>{
 })
 
 //ADD NEW ISSUE for a specific user
-issueRouter.post("/", (req, res, next) => {
+issueRouter.post("/user", (req, res, next) => {
     req.body.user = req.user._id
     const issue = new Issue(req.body);
     issue.save(function (err, newIssue) {
@@ -97,9 +98,9 @@ issueRouter.put("/:issueId", (req, res, next) => {
 //worked when took out=>>> user: req.user._id
 // Todo.findByIdAndRemove(req.params.todoId,) 
 
-issueRouter.delete("/:issueId", (req, res, next)=> {
+issueRouter.delete("/user/:issueId", (req, res, next)=> {
     Issue.findOneAndDelete(
-    { _id: req.params.issueId },
+    { _id: req.params.issueId, user: req.user_id },
     (err, deletedIssue) => {
         if (err) {
             res.status(500);

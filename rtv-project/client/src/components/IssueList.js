@@ -1,5 +1,5 @@
 import React from "react"
-// import React, { useContext } from "react"
+// import React, { useContext} from "react"
 import IssueText from './IssueText.js'
 // import { IssueCommentContext } from "../context/IssueCommentProvider.js"
 
@@ -11,12 +11,14 @@ const { userIssues } = props
 //     issues
 //     } = useContext(IssueCommentContext)
 
-console.log("userIssues from IssueCommentContext inside IssueList comp", userIssues)
+console.log("issueState from IssueCommentContext inside IssueList comp", userIssues)
+
 
  
   return (
+    
     <div className="user-issue-list">
-      {userIssues.map(userIssue => <IssueText {...userIssue} key={userIssue._id}/>)}
+       {userIssues.map(userIssue => <IssueText {...userIssue} key={userIssue._id}/>)}
     </div>
   )
 }

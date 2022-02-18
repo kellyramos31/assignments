@@ -28,7 +28,7 @@ export default function UserProvider(props) {
     const [userState, setUserState] = useState(initState)
 
 
-    // const [issueState, setIssueState] = useState(initState)
+    // const [userIssues, setUserIssues] = useState(initState)
 
 //     useEffect(() => {
 //         console.log("useEffect triggered")
@@ -94,7 +94,9 @@ export default function UserProvider(props) {
     }
 
 
-function getUserIssues(){
+ //GET USER'S INDIVIDUAL ISSUES   
+
+    function getUserIssues(){
     userAxios.get("/api/issue/user")
     .then(res => {
       console.log(res)
@@ -106,6 +108,7 @@ function getUserIssues(){
     })
     .catch(err => console.log(err.response.data.errMsg))
   }
+
 
 //   //Add Issue
 //     function addIssue(newIssue) {
@@ -141,7 +144,7 @@ return (
             login,
             logout,
             getUserIssues,
-            // addIssue,
+            //addIssue,
             // addComment,
             resetAuthErr
         }}>

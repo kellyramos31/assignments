@@ -19,6 +19,11 @@ mongoose.connect(
     () => console.log("Connected to the DB")
 )
 
+// mongoose.connect(
+//     "mongodb://localhost:27017/test",
+//     () => console.log("Connected to database.")
+// )
+
 app.use("/auth", require("./routes/authRouter.js"))
 app.use("/api", expressJwt({secret: process.env.SECRET, algorithms: ['HS256']}))  //algorithms: for express-jwt v6.0.0 & higher: adding an algorithm parameter is now required in addition to the secret.
 app.use("/api/issue", require("./routes/issueRouter.js"))

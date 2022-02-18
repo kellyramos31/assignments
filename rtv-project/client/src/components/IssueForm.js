@@ -1,10 +1,13 @@
 import React, { useState, useContext } from 'react'
+// import React, { useState, useEffect, useContext } from 'react'
 import { UserContext} from "../context/UserProvider.js"
+//import { IssueCommentContext} from "../context/IssueCommentProvider.js"
 
 
 const initInputs = {
   title: "",
   description: "",
+  // userIssues: []
 //   votes: ""
 }
 
@@ -15,9 +18,18 @@ export default function IssueForm(props){
   const { addIssue } = props
 
   const {
-     userIssues,
-     getUserIssues
+    //userIssues,
+    getUserIssues
     } = useContext(UserContext)
+
+  // const {
+  //     getUserIssues,
+  //     // userIssues
+  //   } = useContext(IssueCommentContext)
+
+  
+
+
 
   function handleChange(e){
     const {name, value} = e.target
@@ -33,7 +45,7 @@ export default function IssueForm(props){
     console.log("inputs from addIssue", inputs)
     setInputs(initInputs)
     getUserIssues()
-    console.log("issues after handleSubmit for IssueForm", userIssues)
+    // console.log("issues after handleSubmit for IssueForm", userIssues)
   }
 
   const { title, description } = inputs

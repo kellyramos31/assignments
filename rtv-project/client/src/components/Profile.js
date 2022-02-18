@@ -15,13 +15,22 @@ export default function Profile() {
     } = useContext(UserContext)
 
     const {
-        // issueState,
         // issues,
+        //userIssues,
         // getUserIssues,
         addIssue,
         deleteIssue
     } = useContext(IssueCommentContext)
 
+
+// const [userIssues, setUserIssues] = useState([])
+
+//USEEFFECT
+
+//   useEffect(() => {
+//     console.log("useEffect triggered")
+//     getUserIssues()
+//   }, [])
 
 
 
@@ -29,22 +38,22 @@ export default function Profile() {
 return (
 
                <div className="profile">
-
+                   
                     <h1>Welcome @{username}!</h1>
 
                     <h3>Add An Issue</h3>
 
                     <IssueForm
-                        // issueState={issueState}
-                        //getUserIssues={getUserIssues}
                         addIssue={addIssue}
                     />
 
 
                     <h3>Your Issues</h3>
                     <IssueList
-                        userIssues={userIssues}
+                        //issueState={issueState}
+                        //getUserIssues={getUserIssues}
                         deleteIssue={deleteIssue}
+                        userIssues={userIssues}
                     />
                    
             </div>
