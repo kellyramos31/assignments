@@ -32,31 +32,71 @@ commentRouter.get("/user", (req, res, next)=>{
 //NOT SURE THIS IS SET UP CORRECTLY -- with user/issue refs
 
 
-//ADD NEW COMMENT for a specific user
+//ADD NEW COMMENT for a specific user (this works to add a comment -- BUT need to get it to add comment Id to comments array in issues)
+// commentRouter.post("/", (req, res, next) => {
+//     req.body._user = req.user._id
+//     const comment = new Comment(req.body);
+
+//     comment.save(function(err, newComment) {
+//         if (err) {
+//             res.status(500)
+//             return next(err)
+//         }
+                 
+//         return res.status(201).send(newComment);
+//     })
+// })
+
+
+
+
+    
+//TRY TO JUST PUSH COMMENT ID TO ISSUES ARRAY...THIS NOW PUSHES COMMENT ID TO ISSUES ARRAY
+// commentRouter.put("/pusharray/:commentId", (req, res, next) => {
+//        const issueId = req.body._issue
+//         Issue.findByIdAndUpdate(
+//             {_id: issueId, _user: req.user._id},
+//             { $push: { "_comments": req.params.commentId }},
+//             { new: true},
+//         (err, commentId) => {
+//             if (err) {
+//                 console.log("Error");
+//                 res.status(500);
+//                 return next(err);
+//             }
+//             return res.send(commentId);
+//         })
+//     })
+
+
+//COMBINES -- THE ADD COMMENT & UPDATE COMMENTS ARRAY WITHIN ISSUES REQUESTS FROM ABOVE***
 commentRouter.post("/", (req, res, next) => {
     req.body._user = req.user._id
     const comment = new Comment(req.body);
 
     comment.save(function(err, newComment) {
-        if (err) {
+          if (err) {
             res.status(500)
             return next(err)
         }
                  
-        return res.status(201).send(newComment);
+    const issueId = req.body._issue
+      
+        Issue.findByIdAndUpdate(
+            {_id: issueId, _user: req.user._id},
+            { $push: { "_comments": newComment._id }},
+            { new: true},
+        (err, commentId) => {
+            if (err) {
+                console.log("Error");
+                res.status(500);
+                return next(err);
+            }
+            return res.send(commentId);
+        })
     })
-})
-    //$ push not working to update array here       
-    // Issue.findOneAndUpdate(
-    //         {_id: req.issue._id},
-    //         { $push: { "_comments": newComment._id } })
-    //     if (err) {
-    //         res.status(500)
-    //         return next(err)
-    //     }
-         
-    //      return res.status(201).send(newComment);
-    // })
+      
+    })
 
 
 //DELETE COMMENT

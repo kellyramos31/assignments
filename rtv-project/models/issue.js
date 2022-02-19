@@ -24,7 +24,7 @@ const issueSchema = new Schema({
         ref: "User",
         required: true
     },
-    comments: [{ type: Schema.Types.ObjectId, ref: "Comment"}]
+    _comments: [{ type: Schema.Types.ObjectId, ref: "Comment"}]
 
 })
 
