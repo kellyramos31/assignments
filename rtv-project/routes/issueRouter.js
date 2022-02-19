@@ -5,7 +5,7 @@ const Issue = require("../models/issue.js");
 // const User = require("../models/user.js")
 
 
-//GET ALL ISSUES
+//GET ALL ISSUES -- use on Public Page
 issueRouter.get("/", (req, res, next) => {
     Issue.find((err, issues) => {
         if (err) {
@@ -16,9 +16,11 @@ issueRouter.get("/", (req, res, next) => {
     });
 });
 
-//GET ISSUES by user id
+
+
+//GET ISSUES FOR INDIVIDUAL USER -- for logged in user
 issueRouter.get("/user", (req, res, next)=>{
-    Issue.find({user: req._user}, (err, issues)=>{
+    Issue.find({_user: req.user._id}, (err, issues)=>{
         if(err) {
             res.status(500)
             return next(err)
@@ -28,22 +30,9 @@ issueRouter.get("/user", (req, res, next)=>{
     })
 })
 
-//ADD NEW ISSUE for a specific user
-// issueRouter.post("/user", (req, res, next) => {
-//     // req.body.user = req._user
-//     const issue._user = req.body.user
-//     const issue = new Issue(req.body);
-//     issue.save(function (err, newIssue) {
-//         if (err) {
-//             res.status(500);
-//             return next(err);
-//         }
-//         return res.status(201).send(newIssue);
-//     })
-// })
 
 //ADD NEW ISSUE for a specific user
-issueRouter.post("/user", (req, res, next) => {
+issueRouter.post("/", (req, res, next) => {
     req.body._user = req.user._id
     const issue = new Issue(req.body);
     issue.save(function (err, newIssue) {
@@ -70,12 +59,10 @@ issueRouter.get("/:issueId", (req, res, next) => {
 })
 
 
-//EDIT ISSUE (or should it be findOneAndUpdate??)
+//EDIT ISSUE
 issueRouter.put("/:issueId", (req, res, next) => {
     Issue.findByIdAndUpdate(
-        {_id: req.params.issueId },
-    // Todo.findByIdAndUpdate(
-        // req.params.todoId,
+        {_id: req.params.issueId, _user: req.user._id  },
         req.body,
         { new: true },
         (err, issue) => {
@@ -89,12 +76,9 @@ issueRouter.put("/:issueId", (req, res, next) => {
 })
 
 //DELETE ISSUE
-//worked when took out=>>> user: req.user._id
-// Todo.findByIdAndRemove(req.params.todoId,) 
-
-issueRouter.delete("/user/:issueId", (req, res, next)=> {
+issueRouter.delete("/:issueId", (req, res, next)=> {
     Issue.findOneAndDelete(
-    { _id: req.params.issueId, user: req.user_id },
+    { _id: req.params.issueId, _user: req.user._id },
     (err, deletedIssue) => {
         if (err) {
             res.status(500);
@@ -108,10 +92,9 @@ issueRouter.delete("/user/:issueId", (req, res, next)=> {
 //NOTE:  ****USER SHOULD ONLY BE ABLE TO UPVOTE/DOWNVOTE AN ISSUE ONCE****NEED TO FIGURE THIS OUT
 
 //UPVOTE AN ISSUE-- individual user
-// NOTE:  this route works, but receiving error:  Cast to ObjectId failed for value "{ _id: 'upvote', user: '61ec679e6a08cb02494b5734' }" (type Object) at path "_id" for model "Issue"
-issueRouter.put("/user/upvote/:issueId", (req, res, next)=> {			
+issueRouter.put("/upvote/:issueId", (req, res, next)=> {			
   Issue.findByIdAndUpdate(			
-  {_id: req.params.issueId},			
+  {_id: req.params.issueId, _user: req.user._id },			//maybe don't need _user: req.user._id here??
   { $inc: {voteCount: 1}},			
   {new: true},			
   (err, updatedIssue)=> {			
@@ -126,10 +109,9 @@ issueRouter.put("/user/upvote/:issueId", (req, res, next)=> {
 
 
 //DOWNVOTE an Issue
-//this route works also
-issueRouter.put("/user/downvote/:issueId", (req, res, next)=> {			
+issueRouter.put("/downvote/:issueId", (req, res, next)=> {			
   Issue.findByIdAndUpdate(			
-  {_id: req.params.issueId},			
+  {_id: req.params.issueId, _user: req.user._id },		//maybe don't need _user: req.user._id here??
   { $inc: {voteCount: -1}},			
   {new: true},			
   (err, updatedIssue)=> {			

@@ -15,9 +15,9 @@ commentRouter.get("/", (req, res, next) => {
     });
 });
 
-//GET COMMENTS BY USER ID
+//GET COMMENTS FOR INDIVIDUAL USER
 commentRouter.get("/user", (req, res, next)=>{
-    Comment.find({user: req._user}, (err, comments)=>{
+    Comment.find({_user: req.user._id}, (err, comments)=>{
         if(err) {
             res.status(500)
             return next(err)
@@ -33,10 +33,9 @@ commentRouter.get("/user", (req, res, next)=>{
 
 
 //ADD NEW COMMENT for a specific user
-commentRouter.post("/user", (req, res, next) => {
+commentRouter.post("/", (req, res, next) => {
     req.body._user = req.user._id
-    req.body._issue = req.issue._id
-    const comment = new Comment(req.body.commentText);
+    const comment = new Comment(req.body);
 
     comment.save(function(err, newComment) {
         if (err) {
@@ -60,27 +59,22 @@ commentRouter.post("/user", (req, res, next) => {
     // })
 
 
-
-
 //DELETE COMMENT
-commentRouter.delete("/user/:commentId", (req, res, next)=> {
+commentRouter.delete("/:commentId", (req, res, next)=> {
     Comment.findOneAndDelete(
-    { _id: req.params.commentId, user: req.user._id },
+    { _id: req.params.commentId, _user: req.user._id },
     (err, deletedComment) => {
         if (err) {
-            res.status(500);
-            return next(err);
+            res.status(500); 
         }
         return res.status(200).send(`Successfully deleted: ${deletedComment.commentText}`);
     })
 })
 
 //EDIT COMMENT
-commentRouter.put("/user/:commentId", (req, res, next) => {
+commentRouter.put("/:commentId", (req, res, next) => {
     Comment.findByIdAndUpdate(
-        {_id: req.params.commentId, user: req.user._id},
-    // Todo.findByIdAndUpdate(
-        // req.params.todoId,
+        {_id: req.params.commentId, _user: req.user._id},
         req.body,
         { new: true },
         (err, comment) => {
@@ -92,7 +86,6 @@ commentRouter.put("/user/:commentId", (req, res, next) => {
             return res.send(comment);
         })
 })
-
 
 
 
