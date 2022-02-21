@@ -1,9 +1,9 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import IssueForm from "./IssueForm.js"
 import IssueList from "./IssueList.js"
 // import CommentForm from "./CommentForm.js"
 import { UserContext } from "../context/UserProvider.js"
-// import { IssueCommentContext } from "../context/IssueCommentProvider.js"
+import { IssueCommentContext } from "../context/IssueCommentProvider.js"
 
 export default function Profile() {
 
@@ -12,27 +12,28 @@ export default function Profile() {
         username
     },
         userIssues,
-        addIssue,
+        getUserIssues,
+        // addIssue,
         deleteIssue
     } = useContext(UserContext)
 
-    // const {
-        // issues,
+    const {
+        addIssue,
+        issueState,
         //userIssues,
         // getUserIssues,
         
-    // } = useContext(IssueCommentContext)
+    } = useContext(IssueCommentContext)
 
 
 // const [userIssues, setUserIssues] = useState([])
 
 //USEEFFECT
 
-//   useEffect(() => {
-//     console.log("useEffect triggered")
-//     getUserIssues()
-//   }, [])
-
+  useEffect(() => {
+    console.log("useEffect triggered")
+    getUserIssues()
+  }, [getUserIssues])
 
 
 
@@ -51,7 +52,7 @@ return (
 
                     <h3>Your Issues</h3>
                     <IssueList
-                        //issueState={issueState}
+                        issueState={issueState}
                         //getUserIssues={getUserIssues}
                         deleteIssue={deleteIssue}
                         userIssues={userIssues}

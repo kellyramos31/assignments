@@ -29,10 +29,6 @@ commentRouter.get("/user", (req, res, next)=>{
 
 
 //NOTE:  THIS ONE WORKS TO ADD COMMENT, BUT....NOT PUSHING TO ARRAY
-//NOT SURE THIS IS SET UP CORRECTLY -- with user/issue refs
-
-
-//ADD NEW COMMENT for a specific user (this works to add a comment -- BUT need to get it to add comment Id to comments array in issues)
 // commentRouter.post("/", (req, res, next) => {
 //     req.body._user = req.user._id
 //     const comment = new Comment(req.body);
@@ -47,10 +43,7 @@ commentRouter.get("/user", (req, res, next)=>{
 //     })
 // })
 
-
-
-
-    
+   
 //TRY TO JUST PUSH COMMENT ID TO ISSUES ARRAY...THIS NOW PUSHES COMMENT ID TO ISSUES ARRAY
 // commentRouter.put("/pusharray/:commentId", (req, res, next) => {
 //        const issueId = req.body._issue
@@ -69,7 +62,7 @@ commentRouter.get("/user", (req, res, next)=>{
 //     })
 
 
-//COMBINES -- THE ADD COMMENT & UPDATE COMMENTS ARRAY WITHIN ISSUES REQUESTS FROM ABOVE***
+//COMBINES THE TWO ROUTES DIRECTLY ABOVE (THE ADD COMMENT & UPDATE COMMENTS ARRAY WITHIN ISSUES REQUESTS)***
 commentRouter.post("/", (req, res, next) => {
     req.body._user = req.user._id
     const comment = new Comment(req.body);

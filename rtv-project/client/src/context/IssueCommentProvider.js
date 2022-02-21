@@ -1,4 +1,4 @@
-import React, { useState} from "react"
+import React, { useState } from "react"
 import axios from "axios"
 
 
@@ -17,8 +17,8 @@ export default function IssueCommentProvider(props) {
         const initState = {
         user: JSON.parse(localStorage.getItem("user")) || {},
         token: localStorage.getItem("token") || "",
+        userIssues: [],
         issues: [],
-        // userIssues: [],
         comments: [],
         errMsg: ""
     }
@@ -36,7 +36,7 @@ const [comments, setComments] = useState([])
 
 //   useEffect(() => {
 //     console.log("useEffect triggered")
-//     getUserIssues()
+//     getIssues()
 //   }, [])
 
 
@@ -114,6 +114,30 @@ const [comments, setComments] = useState([])
 //             .catch(err=>console.log(err.response.data.errMsg))
 //     }
 
+//ADD ISSUE
+    function addIssue(newUserIssue) {
+        userAxios.post("/api/issue", newUserIssue)
+          .then(res => {
+            console.log(res)
+            setIssueState(prevState => ({
+                ...prevState,
+                issueState:  [...prevState.userIssues, res.data]
+            }))
+        })
+        .catch(err=>console.log(err.response.data.errMsg))
+    }
+
+    
+//DELETE USER'S ISSUE
+    function deleteIssue(userIssueId) {
+        console.log("userIssueId:", userIssueId)
+        userAxios.delete(`/api/issue/${userIssueId}`)
+             .then(res => {
+                setIssueState(prevState=> prevState.userIssues.filter(userIssue => userIssue._id !== userIssueId))
+    })
+        
+            .catch(err=>console.log(err.response.data.errMsg))
+    }
 
 
 //Add Comment
@@ -174,8 +198,8 @@ function upVote(issueId){
             // userIssues,
             comments,
             // voteCount,
-            // addIssue,
-            // deleteIssue,
+            addIssue,
+            deleteIssue,
             addComment,
             getIssues
         }}>

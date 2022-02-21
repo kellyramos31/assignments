@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import axios from "axios"
 
 
@@ -28,12 +28,11 @@ export default function UserProvider(props) {
     const [userState, setUserState] = useState(initState)
 
 
-    const [userIssues, setUserIssues] = useState(initState)
-
-//     useEffect(() => {
-//         console.log("useEffect triggered")
-//         getUserIssues()
-//     }, [])
+    
+    useEffect(() => {
+        console.log("useEffect triggered")
+        getUserIssues()
+    }, [])
 
 
 //signup
@@ -62,7 +61,7 @@ export default function UserProvider(props) {
             localStorage.setItem("token", token)
             localStorage.setItem("user", JSON.stringify(user))
             getUserIssues()
-            // console.log("getUserIssues from UserProvider")
+            console.log("getUserIssues from UserProvider")
             // getUserComments()
             setUserState(prevUserState => ({
                 ...prevUserState,
@@ -109,7 +108,6 @@ function getUserIssues(){
     .catch(err => console.log(err.response.data.errMsg))
   }
 
-
   //Add Issue
     // function addIssue(newIssue) {
     //     userAxios.post("/api/issue", newIssue)
@@ -123,18 +121,6 @@ function getUserIssues(){
     //     .catch(err=>console.log(err.response.data.errMsg))
     // }
 
-    //Add Issue
-    function addIssue(newUserIssue) {
-        userAxios.post("/api/issue/user", newUserIssue)
-          .then(res => {
-            console.log(res)
-            setUserIssues(prevState => ({
-                ...prevState,
-                userIssues:  [...prevState, res.data]
-            }))
-        })
-        .catch(err=>console.log(err.response.data.errMsg))
-    }
 
 
 //reset auth error
@@ -143,17 +129,6 @@ function getUserIssues(){
             ...prevState,
             errMsg: ""
         }))
-    }
-
-    //Delete User's Issue
-    function deleteIssue(userIssueId) {
-        console.log("userIssueId:", userIssueId)
-        userAxios.delete(`/api/issue/user/${userIssueId}`)
-             .then(res => {
-                setUserIssues(prevState=> prevState.userIssues.filter(userIssue => userIssue._id !== userIssueId))
-    })
-        
-            .catch(err=>console.log(err.response.data.errMsg))
     }
 
 
@@ -168,9 +143,9 @@ return (
             login,
             logout,
             getUserIssues,
-            userIssues,
-            deleteIssue,
-            addIssue,
+            //userIssues,
+            //deleteIssue
+            // addIssue,
             // addComment,
             resetAuthErr
         }}>
