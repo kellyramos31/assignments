@@ -172,18 +172,20 @@ function upVote(issueId){
   }
 
 
-
-
 //DOWNVOTE AN ISSUE
-    function downVote(){
-          userAxios.put("/api/issue/downvote")		
+function downVote(issueId){
+    console.log("issueId for downVote:", issueId)    		
+    userAxios.put(`/api/issue/downvote/${issueId}`)		
     .then(res => {
       console.log("downVote res:", res)
+          setIssueState(prevState => ({
+                ...prevState,
+                issues:  [...prevState.issues, res.data]
+            }))
     })
    
     .catch(err => console.log(err.response.data.errMsg))
-
-    }
+  }
 
 
 
