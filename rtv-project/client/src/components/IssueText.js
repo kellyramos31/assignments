@@ -5,10 +5,10 @@ import { IssueCommentContext } from "../context/IssueCommentProvider.js"
 export default function IssueText(props){
 
     const {
-        upVote,
         deleteIssue,
-        addComment
-        // downVote   
+        addComment,
+        upVote,
+        downVote   
     } = useContext(IssueCommentContext)
 
   
@@ -25,9 +25,9 @@ return (
 
     <div className="vote-buttons">
        <button className="delete-issue-btn" key={props._id} index={props.index} onClick={() => deleteIssue(props._id)}>Delete Issue</button>
-        <button className="up-vote" onClick={() => upVote(props._id)}>Upvote</button>
-        {/* <button className="down-vote" onClick={downVote}>Downvote</button> */}
-        <button className="leave-a-comment" onClick={() => addComment(props._id)}>Add a Comment on this Issue</button>
+       <button className="up-vote" key={props._id} index={props.index} onClick={() => upVote(props._id)}>Upvote</button>
+       <button className="down-vote" onClick={downVote}>Downvote</button>
+       <button className="leave-a-comment" onClick={() => addComment(props._id)}>Add a Comment on this Issue</button>
       </div>
     </div>
   )

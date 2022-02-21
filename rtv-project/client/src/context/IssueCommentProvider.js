@@ -159,7 +159,7 @@ const [comments, setComments] = useState([])
 //UPVOTE AN ISSUE
 function upVote(issueId){
   console.log("issueId for upVote:", issueId)
-  userAxios.put(`/api/issue/user/upvote/${issueId}`)		
+  userAxios.put(`/api/issue/upvote/${issueId}`)		
     .then(res => {
       console.log("upVote res:", res)
           setIssueState(prevState => ({
@@ -176,7 +176,7 @@ function upVote(issueId){
 
 //DOWNVOTE AN ISSUE
     function downVote(){
-          userAxios.put("/api/issue/user/downvote")		
+          userAxios.put("/api/issue/downvote")		
     .then(res => {
       console.log("downVote res:", res)
     })

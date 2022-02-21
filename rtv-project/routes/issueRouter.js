@@ -94,10 +94,10 @@ issueRouter.delete("/:issueId", (req, res, next)=> {
 
 //NOTE:  ****USER SHOULD ONLY BE ABLE TO UPVOTE/DOWNVOTE AN ISSUE ONCE****NEED TO FIGURE THIS OUT
 
-//UPVOTE AN ISSUE-- individual user
+//UPVOTE AN ISSUE
 issueRouter.put("/upvote/:issueId", (req, res, next)=> {			
   Issue.findByIdAndUpdate(			
-  {_id: req.params.issueId, _user: req.user._id },			//maybe don't need _user: req.user._id here??
+  {_id: req.params.issueId, _user: req.user._id },	
   { $inc: {voteCount: 1}},			
   {new: true},			
   (err, updatedIssue)=> {			
