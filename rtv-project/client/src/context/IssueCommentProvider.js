@@ -164,7 +164,7 @@ function upVote(issueId){
       console.log("upVote res:", res)
           setIssueState(prevState => ({
                 ...prevState,
-                issues:  [...prevState.issues, res.data]
+                issueState:  [...prevState.userIssues, res.data]
             }))
     })
    
@@ -180,7 +180,7 @@ function downVote(issueId){
       console.log("downVote res:", res)
           setIssueState(prevState => ({
                 ...prevState,
-                issues:  [...prevState.issues, res.data]
+                issueState:  [...prevState.userIssues, res.data]
             }))
     })
    
