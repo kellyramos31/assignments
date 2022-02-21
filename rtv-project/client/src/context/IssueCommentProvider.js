@@ -129,12 +129,13 @@ const [comments, setComments] = useState([])
 
     
 //DELETE USER'S ISSUE
-    function deleteIssue(userIssueId) {
-        console.log("userIssueId:", userIssueId)
-        userAxios.delete(`/api/issue/${userIssueId}`)
+//right now this works once, but not on second attempt to delete something
+    function deleteIssue(issueId) {
+        console.log("issueId:", issueId)
+        userAxios.delete(`/api/issue/${issueId}`)
              .then(res => {
-                setIssueState(prevState=> prevState.userIssues.filter(userIssue => userIssue._id !== userIssueId))
-    })
+                setIssueState(prevState=> ({userIssues: prevState.userIssues.filter(userIssue => userIssue._id !== issueId)}))
+             })
         
             .catch(err=>console.log(err.response.data.errMsg))
     }

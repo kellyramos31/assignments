@@ -24,7 +24,7 @@ return (
       <h3 className="total-votes">Total Votes: {props.voteCount}</h3>
 
     <div className="vote-buttons">
-       <button className="delete-issue-btn" key={props._id} onClick={() => deleteIssue(props._id)}>Delete Issue</button>
+       <button className="delete-issue-btn" key={props._id} index={props.index} onClick={() => deleteIssue(props._id)}>Delete Issue</button>
         <button className="up-vote" onClick={() => upVote(props._id)}>Upvote</button>
         {/* <button className="down-vote" onClick={downVote}>Downvote</button> */}
         <button className="leave-a-comment" onClick={() => addComment(props._id)}>Add a Comment on this Issue</button>
