@@ -139,11 +139,13 @@ function getUserIssues(){
 
 
 //EDIT USER'S ISSUE
-    function editIssue(issueId) {
+    function editIssue(inputs, issueId) {
         console.log("issueId to be edited", issueId)
-        userAxios.put(`/api/issue/${issueId}`)
+        console.log("inputs for edit", inputs)
+        userAxios.put(`/api/issue/${issueId}`, inputs)
          .then(res => {
-            setIssueState(prevState => prevState.userIssues.map(userIssue=> userIssue._id !== issueId ? userIssue : res.data))
+            
+            setIssueState(prevState => prevState.userIssues.map(userIssue => userIssue._id !== issueId ? userIssue : res.data))
       })
       .catch(err=>console.log(err.response.data.errMsg))
     }
