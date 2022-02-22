@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import IssueForm from "./IssueForm.js"
 import IssueList from "./IssueList.js"
-// import CommentForm from "./CommentForm.js"
 import { UserContext } from "../context/UserProvider.js"
 import { IssueCommentContext } from "../context/IssueCommentProvider.js"
 

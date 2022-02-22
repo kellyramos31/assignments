@@ -1,22 +1,22 @@
 import React, { useState, useContext } from 'react'
-import { UserContext } from "../context/UserProvider.js"
+// import { UserContext } from "../context/UserProvider.js"
+import { IssueCommentContext } from "../context/IssueCommentProvider.js"
 
 
 const initInputs = {
   commentText: ""
 }
 
-export default function CommentForm(props){
+export default function CommentForm(){
 
 
   const [inputs, setInputs] = useState(initInputs)
-  const {addComment} = props
 
-  const [toggle, setToggle] = useState(false)
+  const {addComment } = useContext(IssueCommentContext)
 
-  const {
-    getUserIssues
-    } = useContext(UserContext)
+  // const {
+  //   getUserIssues
+  //   } = useContext(UserContext)
 
   function handleChange(e){
     const {name, value} = e.target
@@ -31,20 +31,19 @@ export default function CommentForm(props){
     addComment(inputs)
     console.log("inputs from addComment", inputs)
     setInputs(initInputs)
-    getUserIssues()
+    // getUserIssues()
   }
 
   const { commentText } = inputs
 
-  function toggleForm(){
-    setToggle(prev => !prev)
-  }
+  // function toggleForm(){
+  //   setToggle(prev => !prev)
+  // }
 
 
   return (
     <div>
-      { toggle ?
-      <form onSubmit={handleSubmit}>
+     <form onSubmit={handleSubmit}>
       <input 
         type="text" 
         name="commentText" 
@@ -52,11 +51,8 @@ export default function CommentForm(props){
         onChange={handleChange} 
         placeholder="Title"
       />
-      <button className="add-comment-button" onClick={toggleForm}>Submit Comment</button>
+      <button className="add-comment-button">Submit Comment</button>
     </form>
-    :
-    null
-      }
     </div>
   )
 }

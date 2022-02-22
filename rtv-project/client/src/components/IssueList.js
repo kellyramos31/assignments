@@ -1,6 +1,7 @@
 // import React, {useContext} from "react"
 import React from "react"
 import IssueText from './IssueText.js'
+//import Comment from "./Comment.js" -- HOW COMBINE IN THE COMMENT FORM HERE???
 // import { IssueCommentContext } from "../context/IssueCommentProvider.js"
 // import { UserContext } from "../context/UserProvider.js"
 

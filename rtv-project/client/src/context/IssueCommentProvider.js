@@ -29,7 +29,7 @@ const [issueState, setIssueState] = useState(initState)
 
 // const [userIssues, setUserIssues] = useState([])
 
-const [comments, setComments] = useState([])
+// const [comments, setComments] = useState([])
 
 
 //USEEFFECT
@@ -141,15 +141,15 @@ const [comments, setComments] = useState([])
     }
 
 
-//Add Comment
-   function addComment(newComment) {
-        // console.log("adding comment -- issueId:", issueId)
-        userAxios.post("/api/comment/user", newComment)
+//ADD COMMENT
+   function addComment(issueId, newComment) {
+        console.log("adding comment -- issueId:", issueId)
+        userAxios.post("/api/comment", newComment)
         .then(res => {
             console.log(res)
-            setComments(prevState => ({
+            setIssueState(prevState => ({
                 ...prevState,
-                comments:  [...prevState.comments, res.data]
+                issueState:  [...prevState.comments, res.data]
             }))
         .catch(err=>console.log(err.response.data.errMsg))
     })
@@ -199,7 +199,7 @@ function downVote(issueId){
             downVote,
             // issues,
             // userIssues,
-            comments,
+            // comments,
             // voteCount,
             addIssue,
             deleteIssue,

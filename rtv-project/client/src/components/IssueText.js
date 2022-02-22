@@ -1,17 +1,16 @@
 import React, { useContext } from 'react'
 import { IssueCommentContext } from "../context/IssueCommentProvider.js"
+import Comment from "./Comment.js"
 
 
 export default function IssueText(props){
 
     const {
         deleteIssue,
-        addComment,
+        // addComment,
         upVote,
         downVote   
     } = useContext(IssueCommentContext)
-
-  
 
     //add function to toggle Comment Form on & off
 
@@ -27,7 +26,9 @@ return (
        <button className="delete-issue-btn" onClick={() => deleteIssue(props._id)}>Delete Issue</button>
        <button className="up-vote" onClick={() => upVote(props._id)}>Upvote</button>
        <button className="down-vote" onClick={()=>downVote(props._id)}>Downvote</button>
-       <button className="leave-a-comment" onClick={() => addComment(props._id)}>Add a Comment on this Issue</button>
+       <Comment
+          issueId={props._id}
+       />
       </div>
     </div>
   )
