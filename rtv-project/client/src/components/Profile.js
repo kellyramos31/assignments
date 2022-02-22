@@ -10,8 +10,8 @@ export default function Profile() {
     user: {
         username
     },
-        userIssues,
-        getUserIssues,
+        // userIssues,
+        //getUserIssues,
         // addIssue,
         deleteIssue
     } = useContext(UserContext)
@@ -19,8 +19,8 @@ export default function Profile() {
     const {
         addIssue,
         issueState,
-        //userIssues,
-        // getUserIssues,
+        userIssues,
+        getUserIssues,
         
     } = useContext(IssueCommentContext)
 
@@ -32,7 +32,8 @@ export default function Profile() {
   useEffect(() => {
     console.log("useEffect triggered")
     getUserIssues()
-  }, [getUserIssues])
+    // eslint-disable-next-line  
+  }, [issueState])
 
 
 
@@ -51,7 +52,7 @@ return (
 
                     <h3>Your Issues</h3>
                     <IssueList
-                        issueState={issueState}
+                        // issueState={issueState}
                         //getUserIssues={getUserIssues}
                         deleteIssue={deleteIssue}
                         userIssues={userIssues}

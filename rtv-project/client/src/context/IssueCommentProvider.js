@@ -55,22 +55,20 @@ const [issueState, setIssueState] = useState(initState)
     }
 
 
-//GET USER'S INDIVIDUAL ISSUES   
+ //GET USER'S INDIVIDUAL ISSUES   
 
-// function getUserIssues(){
-//     userAxios.get("/api/issue/user")
-
-   
-//     .then(res => {
-//       console.log(res)
-//       setIssueState(prevState => ({
-//         ...prevState,
-//         userIssues: res.data
-//       }))
-//       console.log("userIssues from getUserIssues", res.data)
-//     })
-//     .catch(err => console.log(err.response.data.errMsg))
-//   }
+function getUserIssues(){
+    userAxios.get("/api/issue/user")
+    .then(res => {
+      console.log(res)
+      setIssueState(prevState => ({
+        ...prevState,
+        userIssues: res.data
+      }))
+      console.log("userIssues from getUserIssues", res.data)
+    })
+    .catch(err => console.log(err.response.data.errMsg))
+  }
 
 
 //GET ALL COMMENTS (regardless of user)
@@ -129,7 +127,6 @@ const [issueState, setIssueState] = useState(initState)
 
     
 //DELETE USER'S ISSUE
-//right now this works once, but not on second attempt to delete something
     function deleteIssue(issueId) {
         console.log("issueId:", issueId)
         userAxios.delete(`/api/issue/${issueId}`)
@@ -141,20 +138,31 @@ const [issueState, setIssueState] = useState(initState)
     }
 
 
-//ADD COMMENT
-   function addComment(issueId, newComment) {
-        console.log("adding comment -- issueId:", issueId)
-        userAxios.post("/api/comment", newComment)
-        .then(res => {
-            console.log(res)
-            setIssueState(prevState => ({
-                ...prevState,
-                issueState:  [...prevState.comments, res.data]
-            }))
-        .catch(err=>console.log(err.response.data.errMsg))
-    })
-}
+//EDIT USER'S ISSUE
+    function editIssue(issueId) {
+        console.log("issueId to be edited", issueId)
+        userAxios.put(`/api/issue/${issueId}`)
+         .then(res => {
+            setIssueState(prevState => prevState.userIssues.map(userIssue=> userIssue._id !== issueId ? userIssue : res.data))
+      })
+      .catch(err=>console.log(err.response.data.errMsg))
+    }
+
     
+//ADD COMMENT
+//    function addComment(newComment) {
+//         // console.log("adding comment -- issueId:", issueId)
+//         userAxios.post("/api/comment", newComment)
+//         .then(res => {
+//             console.log(res)
+//             setIssueState(prevState => ({
+//                 ...prevState,
+//                 issueState:  [...prevState.comments, res.data]
+//             }))
+//         .catch(err=>console.log(err.response.data.errMsg))
+//     })
+// }
+   
 
 //UPVOTE AN ISSUE
 function upVote(issueId){
@@ -194,16 +202,17 @@ function downVote(issueId){
         <IssueCommentContext.Provider
             value={{
             ...issueState,
-            //getUserIssues,
+            getUserIssues,
             upVote,
             downVote,
             // issues,
             // userIssues,
-            // comments,
+            //comments,
             // voteCount,
             addIssue,
             deleteIssue,
-            addComment,
+            editIssue,
+            // addComment,
             getIssues
         }}>
 

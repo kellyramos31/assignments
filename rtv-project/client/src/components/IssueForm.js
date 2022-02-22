@@ -1,4 +1,4 @@
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 // import React, { useState, useEffect, useContext } from 'react'
 // import { UserContext} from "../context/UserProvider.js"
 //import { IssueCommentContext} from "../context/IssueCommentProvider.js"
@@ -19,7 +19,7 @@ export default function IssueForm(props){
 
   // const {
   //   //userIssues,
-  //   // getUserIssues
+  //   getUserIssues
   //   } = useContext(UserContext)
 
   // const {
@@ -49,6 +49,7 @@ export default function IssueForm(props){
   }
 
   const { title, description } = inputs
+
   return (
     <form onSubmit={handleSubmit}>
       <input 
@@ -65,7 +66,7 @@ export default function IssueForm(props){
         onChange={handleChange} 
         placeholder="Description"
       />
-      <button className="add-issue-button">Add Issue</button>
+      <button className="add-issue-btn">Add Issue</button>
     </form>
   )
 }

@@ -102,30 +102,53 @@
     border-radius: 5px
 }
 
-.add-issue-button {
+.add-issue-btn {
     margin: 10px;
     background-color: blue;
     color: white;
     font-weight: bold;
 }
 
-.up-vote {
+.delete-issue-btn {
+    margin: 10px;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    width:  100px;
+}
+
+.edit-issue-btn {
+    margin: 10px;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    width:  100px;
+}
+
+.up-vote-btn {
     margin: 10px;
     /* background: ; */
     border-radius: 5px;
     padding: 5px;
     width:  100px;
     font-weight: bold;
-
+    font-size: 14px;
 }
 
-.down-vote {
+.down-vote-btn {
     margin: 10px;
     background-color: orange;
     border-radius: 5px;
     padding: 5px;
     width:  100px;
     font-weight: bold;
+    font-size: 14px;
 }
 
 .issue {

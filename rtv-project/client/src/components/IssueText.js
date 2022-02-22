@@ -1,12 +1,14 @@
 import React, { useContext } from 'react'
 import { IssueCommentContext } from "../context/IssueCommentProvider.js"
-import Comment from "./Comment.js"
+// import Comment from "./Comment.js"
 
 
 export default function IssueText(props){
 
     const {
+        // comments,
         deleteIssue,
+        editIssue,
         // addComment,
         upVote,
         downVote   
@@ -17,18 +19,20 @@ export default function IssueText(props){
 
 return (
     <div className="issue">
-      <h1 className="issue-title">Title: {props.title}</h1>
+      <h1 className="issue-title">Issue: {props.title}</h1>
       <h3 className="issue-description">Description: {props.description}</h3>
-      <h3 className="comments">Comments:  {props.comments}</h3>
-      <h3 className="total-votes">Total Votes: {props.voteCount}</h3>
+      {/* <h3 className="comments">Comments:  {comments.map(comment=>(comment.commentText))}</h3> */}
+      <h3 className="total-votes">Votes: {props.voteCount}</h3>
 
     <div className="vote-buttons" key={props._id} index={props.index} >
        <button className="delete-issue-btn" onClick={() => deleteIssue(props._id)}>Delete Issue</button>
-       <button className="up-vote" onClick={() => upVote(props._id)}>Upvote</button>
-       <button className="down-vote" onClick={()=>downVote(props._id)}>Downvote</button>
-       <Comment
+       <button className="edit-issue-btn" onClick={() => editIssue(props._id)}>Edit Issue</button>
+       <button className="up-vote-btn" onClick={() => upVote(props._id)}>Upvote</button>
+       <button className="down-vote-btn" onClick={()=>downVote(props._id)}>Downvote</button>
+       {/* <Comment
           issueId={props._id}
-       />
+          addComment={addComment}
+       /> */}
       </div>
     </div>
   )

@@ -60,7 +60,7 @@ export default function UserProvider(props) {
             console.log("login user, token from UserProvider", res.data)
             localStorage.setItem("token", token)
             localStorage.setItem("user", JSON.stringify(user))
-            getUserIssues()
+            // getUserIssues()
             console.log("getUserIssues from UserProvider")
             // getUserComments()
             setUserState(prevUserState => ({
@@ -95,18 +95,18 @@ export default function UserProvider(props) {
 
  //GET USER'S INDIVIDUAL ISSUES   
 
-function getUserIssues(){
-    userAxios.get("/api/issue/user")
-    .then(res => {
-      console.log(res)
-      setUserState(prevState => ({
-        ...prevState,
-        userIssues: res.data
-      }))
-      console.log("userIssues from getUserIssues", res.data)
-    })
-    .catch(err => console.log(err.response.data.errMsg))
-  }
+// function getUserIssues(){
+//     userAxios.get("/api/issue/user")
+//     .then(res => {
+//       console.log(res)
+//       setUserState(prevState => ({
+//         ...prevState,
+//         userIssues: res.data
+//       }))
+//       console.log("userIssues from getUserIssues", res.data)
+//     })
+//     .catch(err => console.log(err.response.data.errMsg))
+//   }
 
   //Add Issue
     // function addIssue(newIssue) {
@@ -142,7 +142,7 @@ return (
             signup,
             login,
             logout,
-            getUserIssues,
+            // getUserIssues,
             //userIssues,
             //deleteIssue
             // addIssue,
