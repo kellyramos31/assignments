@@ -58,7 +58,7 @@ const [issueState, setIssueState] = useState(initState)
  //GET USER'S INDIVIDUAL ISSUES   
 
 function getUserIssues(){
-    userAxios.get("/api/issue/user")
+  userAxios.get("/api/issue/user")
     .then(res => {
       console.log(res)
       setIssueState(prevState => ({

@@ -30,6 +30,8 @@ issueRouter.get("/user", (req, res, next)=>{
         }
         console.log("issues", issues)
         return res.status(200).send(issues)
+    }).populate({
+        path: "_comments"
     })
 })
 
