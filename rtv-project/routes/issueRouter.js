@@ -33,7 +33,14 @@ issueRouter.get("/user", (req, res, next)=>{
     const ObjectId = require('mongodb').ObjectId
     Issue.aggregate([
        { $match: { _user: new ObjectId(req.user._id) } },  //problem with matching the ID
-       { $sort: { voteCount: -1 } }
+       { $sort: { voteCount: -1 } },
+       { $lookup: 
+        { from: "comments",
+          localField: "_comments",
+          foreignField: "_id",
+          as: "userComments"
+        }},
+        // {$unwind: "$commentText"}
     ],
          (err, sortedUserIssues)=> {
             if (err){
@@ -70,6 +77,7 @@ issueRouter.post("/", (req, res, next) => {
         return res.status(201).send(newIssue);
     })
 })
+
 
 //GET ONE ISSUE
 issueRouter.get("/:issueId", (req, res, next) => {

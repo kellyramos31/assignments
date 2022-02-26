@@ -29,19 +29,19 @@ commentRouter.get("/user", (req, res, next)=>{
 
 
 //NOTE:  THIS ONE WORKS TO ADD COMMENT, BUT....NOT PUSHING TO ARRAY
-commentRouter.post("/", (req, res, next) => {
-    req.body._user = req.user._id
-    const comment = new Comment(req.body);
+// commentRouter.post("/", (req, res, next) => {
+//     req.body._user = req.user._id
+//     const comment = new Comment(req.body);
 
-    comment.save(function(err, newComment) {
-        if (err) {
-            res.status(500)
-            return next(err)
-        }
+//     comment.save(function(err, newComment) {
+//         if (err) {
+//             res.status(500)
+//             return next(err)
+//         }
                  
-        return res.status(201).send(newComment);
-    })
-})
+//         return res.status(201).send(newComment);
+//     })
+// })
 
 //TRYING TO MODIFY COMMENT ADD/POST TO WORK ON FRONTEND:
 // commentRouter.post("/", (req, res, next) => {
@@ -84,33 +84,33 @@ commentRouter.post("/", (req, res, next) => {
 
 
 //COMBINES THE TWO ROUTES DIRECTLY ABOVE (THE ADD COMMENT & UPDATE COMMENTS ARRAY WITHIN ISSUES REQUESTS)***
-// commentRouter.post("/", (req, res, next) => {
-//     req.body._user = req.user._id
-//     const comment = new Comment(req.body);
+commentRouter.post("/", (req, res, next) => {
+    req.body._user = req.user._id
+    const comment = new Comment(req.body);
 
-//     comment.save(function(err, newComment) {
-//           if (err) {
-//             res.status(500)
-//             return next(err)
-//         }
+    comment.save(function(err, newComment) {
+          if (err) {
+            res.status(500)
+            return next(err)
+        }
                  
-//     const issueId = req.body._issue
+    const issueId = req.body._issue
       
-//         Issue.findByIdAndUpdate(
-//             {_id: issueId, _user: req.user._id},
-//             { $push: { "_comments": newComment._id }},
-//             { new: true},
-//         (err, commentId) => {
-//             if (err) {
-//                 console.log("Error");
-//                 res.status(500);
-//                 return next(err);
-//             }
-//             return res.send(commentId);
-//         })
-//     })
+        Issue.findByIdAndUpdate(
+            {_id: issueId, _user: req.user._id},
+            { $push: { "_comments": newComment._id }},
+            { new: true},
+        (err, commentId) => {
+            if (err) {
+                console.log("Error");
+                res.status(500);
+                return next(err);
+            }
+            return res.send(commentId);
+        })
+    })
       
-//     })
+    })
 
 //TRYING TO RECONFIGURE SO WORKS ON FRONTEND***
 // commentRouter.post("/", (req, res, next) => {
