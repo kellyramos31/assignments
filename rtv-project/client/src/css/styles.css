@@ -131,6 +131,17 @@
     width:  100px;
 }
 
+.leave-comment-btn {
+     margin: 10px;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    width:  100px;
+}
+
 .up-vote-btn {
     margin: 10px;
     /* background: ; */

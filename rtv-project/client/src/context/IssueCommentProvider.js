@@ -87,6 +87,9 @@ function getUserIssues(){
     // }
 
 
+
+
+
 //Add Issue
     // function addIssue(newUserIssue) {
     //     userAxios.post("/api/issue/user", newUserIssue)
@@ -152,19 +155,22 @@ function getUserIssues(){
 
     
 //ADD COMMENT
-//    function addComment(newComment) {
-//         // console.log("adding comment -- issueId:", issueId)
-//         userAxios.post("/api/comment", newComment)
-//         .then(res => {
-//             console.log(res)
-//             setIssueState(prevState => ({
-//                 ...prevState,
-//                 issueState:  [...prevState.comments, res.data]
-//             }))
-//         .catch(err=>console.log(err.response.data.errMsg))
-//     })
-// }
-   
+   function addComment(newComment) {
+     
+        console.log("newComment:", newComment)
+        // console.log("adding comment -- issueId:", issueId)
+      userAxios.post("/api/comment", newComment)
+        .then(res => {
+            console.log(res)
+            setIssueState(prevState => ({
+                ...prevState,
+                issueState:  [...prevState.comments, res.data]
+             }))
+            
+        .catch(err=>console.log(err.response.data.errMsg))
+          })
+        }
+  
 
 //UPVOTE AN ISSUE
 function upVote(issueId){
@@ -214,7 +220,7 @@ function downVote(issueId){
             addIssue,
             deleteIssue,
             editIssue,
-            // addComment,
+            addComment,
             getIssues
         }}>
 

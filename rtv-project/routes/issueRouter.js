@@ -2,40 +2,62 @@ const express = require("express");
 const { isValidObjectId } = require("mongoose");
 const issueRouter = express.Router();
 const Issue = require("../models/issue.js");
+const Comment = require("../models/comment.js");
 
 
 
 //NOTE:  ISSUES SHOULD BE ORDERED BY UPVOTES/DOWNVOTES -- NEED TO ADD THIS IN (maybe $sort method)
 //NOTE:  ****USERS SHOULD ONLY BE ABLE TO UPVOTE/DOWNVOTE AN ISSUE ONCE****NEED TO ADD IN
 
-//GET ALL ISSUES -- use on Public Page
+//GET ALL ISSUES (Sorted in descending voteCount order) -- use for Public Page
 issueRouter.get("/", (req, res, next) => {
-    Issue.find((err, issues) => {
-        if (err) {
-            res.status(500);
-            return next(err);
+     Issue.aggregate([
+      { $sort: { voteCount: -1 } }
+    ],
+         (err, sortedUserIssues)=> {
+            if (err){
+            res.status(500)
+            return next(err)
         }
-        return res.send(issues);
-    });
+        return res.status(200).send(sortedUserIssues)
+    })
 });
 
 
 
-//GET ISSUES FOR INDIVIDUAL USER
+//GET ISSUES FOR INDIVIDUAL USER -- NOTE:  this sorts the issues, but doesn't give user specific issues now.
+
 issueRouter.get("/user", (req, res, next)=>{
-    Issue.find({_user: req.user._id}, (err, issues)=>{
-        if(err) {
+    // const filter = { _user: req.body._user} //pretty sure problem = this line here
+    //const ObjectId = require('mongoose').Types.ObjectId
+    const ObjectId = require('mongodb').ObjectId
+    Issue.aggregate([
+       { $match: { _user: new ObjectId(req.user._id) } },  //problem with matching the ID
+       { $sort: { voteCount: -1 } }
+    ],
+         (err, sortedUserIssues)=> {
+            if (err){
             res.status(500)
             return next(err)
         }
-        console.log("issues", issues)
-        return res.status(200).send(issues)
-    }).populate({
-        path: "_comments"
+        return res.status(200).send(sortedUserIssues)
     })
 })
 
-
+//GET ALL ISSUES FOR INDIVIDUAL USER == THIS ONE WORKS, BUT DOES NOT SORT
+// issueRouter.get("/user", (req, res, next)=>{
+//     Issue.find({_user: req.user._id}, (err, issues)=>{
+//         if(err) {
+//             res.status(500)
+//             return next(err)
+//         }
+//         console.log("issues", issues)
+//         return res.status(200).send(issues)
+//     }).populate({
+//         path: "_comments"
+//     })
+// })
+        
 //ADD NEW ISSUE
 issueRouter.post("/", (req, res, next) => {
     req.body._user = req.user._id
