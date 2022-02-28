@@ -28,5 +28,4 @@ const issueSchema = new Schema({
 
 })
 
-
 module.exports = mongoose.model("Issue", issueSchema)

@@ -42,6 +42,8 @@ const [issueState, setIssueState] = useState(initState)
 
 
 //GET ALL ISSUES (regardless of user)
+//.populate({path: "comments", select: "commentText, username"}) -- can I use this somewhere??
+
     function getIssues(){
         userAxios.get("/api/issue")
         .then(res => {
@@ -72,8 +74,20 @@ function getUserIssues(){
 
 
 //GET ALL COMMENTS (regardless of user)
+function getComments(){
+        userAxios.get("/api/comment")
+        .then(res => {
+            console.log(res)
+            setIssueState(prevState => ({
+                ...prevState,
+                comments: res.data
+            }))
+        })
+        .catch(err => console.log(err.response.data.errMsg))
+
+}
     
-//get all user comments
+//GET ALL USER COMMENTS
     // function getUserComments(){
     //     userAxios.get("/api/comment/user")
     //     .then(res => {
@@ -88,9 +102,7 @@ function getUserIssues(){
 
 
 
-
-
-//Add Issue
+//add issue
     // function addIssue(newUserIssue) {
     //     userAxios.post("/api/issue/user", newUserIssue)
     //       .then(res => {
@@ -157,7 +169,7 @@ function getUserIssues(){
 //ADD COMMENT
    function addComment(newComment) {
      
-        console.log("newComment:", newComment)
+      console.log("newComment:", newComment)
         // console.log("adding comment -- issueId:", issueId)
       userAxios.post("/api/comment", newComment)
         .then(res => {
@@ -220,6 +232,7 @@ function downVote(issueId){
             addIssue,
             deleteIssue,
             editIssue,
+            getComments,
             addComment,
             getIssues
         }}>

@@ -50,7 +50,7 @@ return (
                     />
 
 
-                    <h3>Your Issues</h3>
+                    <h3>My Issues</h3>
                     <IssueList
                         // issueState={issueState}
                         //getUserIssues={getUserIssues}

@@ -162,6 +162,15 @@
     font-size: 14px;
 }
 
+.all-issues {
+    background-color: black;
+    border:  5px solid blue;
+    width:  50%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .issue {
     background-color: black;
     border:  5px solid blue;
@@ -179,6 +188,6 @@
     color: greenyellow;
 }
 
-.comments {
-    color: white;
+.user-comments {
+    color:  yellow;
 }

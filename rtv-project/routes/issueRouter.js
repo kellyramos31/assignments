@@ -11,9 +11,13 @@ const Comment = require("../models/comment.js");
 
 //GET ALL ISSUES (Sorted in descending voteCount order) -- use for Public Page
 issueRouter.get("/", (req, res, next) => {
+    //  Issue.find({}).populate("_comments.commentText")
      Issue.aggregate([
       { $sort: { voteCount: -1 } }
-    ],
+      ],
+       //code below gets at username, but also creates separate array
+       
+        // {$unwind: "$commentText"}
          (err, sortedUserIssues)=> {
             if (err){
             res.status(500)
@@ -32,15 +36,14 @@ issueRouter.get("/user", (req, res, next)=>{
     //const ObjectId = require('mongoose').Types.ObjectId
     const ObjectId = require('mongodb').ObjectId
     Issue.aggregate([
-       { $match: { _user: new ObjectId(req.user._id) } },  //problem with matching the ID
+       { $match: { _user: new ObjectId(req.user._id) } },  //problem with matching the ID(this solution is from Stack Overflow)
        { $sort: { voteCount: -1 } },
        { $lookup: 
         { from: "comments",
           localField: "_comments",
           foreignField: "_id",
           as: "userComments"
-        }},
-        // {$unwind: "$commentText"}
+        }}
     ],
          (err, sortedUserIssues)=> {
             if (err){

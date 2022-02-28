@@ -86,6 +86,8 @@ commentRouter.get("/user", (req, res, next)=>{
 //COMBINES THE TWO ROUTES DIRECTLY ABOVE (THE ADD COMMENT & UPDATE COMMENTS ARRAY WITHIN ISSUES REQUESTS)***
 commentRouter.post("/", (req, res, next) => {
     req.body._user = req.user._id
+    req.body.username = req.user._id.username
+      
     const comment = new Comment(req.body);
 
     comment.save(function(err, newComment) {
@@ -98,7 +100,7 @@ commentRouter.post("/", (req, res, next) => {
       
         Issue.findByIdAndUpdate(
             {_id: issueId, _user: req.user._id},
-            { $push: { "_comments": newComment._id }},
+            { $push: { "_comments": newComment._id}},
             { new: true},
         (err, commentId) => {
             if (err) {
@@ -107,7 +109,7 @@ commentRouter.post("/", (req, res, next) => {
                 return next(err);
             }
             return res.send(commentId);
-        })
+        }).populate({path: "_user", select: "username"})
     })
       
     })

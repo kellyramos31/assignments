@@ -50,7 +50,7 @@ return (
           <h1 className="issue-title">Issue: {props.title}</h1>
           <h3 className="issue-description">Description: {props.description}</h3>
           {/* <h3 className="comments">Comments: {props._comments.map(comment=>(<li>{comment.commentText}</li>))}</h3> */}
-          <h3 className="comments">Comments: {props.userComments.map(comment=>(<li>{comment.commentText}</li>))}</h3>
+          <h3 className="user-comments">My Comments on this Issue:{props.userComments.map(comment=>(<li>{props._user.username}{comment.commentText}</li>))}</h3>
           <h3 className="total-votes">Votes: {props.voteCount}</h3>
           </div>
         <div className="vote-buttons" key={props._id} index={props.index} >
