@@ -10,22 +10,40 @@ const Comment = require("../models/comment.js");
 //NOTE:  ****USERS SHOULD ONLY BE ABLE TO UPVOTE/DOWNVOTE AN ISSUE ONCE****NEED TO ADD IN
 
 //GET ALL ISSUES (Sorted in descending voteCount order) -- use for Public Page
-issueRouter.get("/", (req, res, next) => {
-    //  Issue.find({}).populate("_comments.commentText")
-     Issue.aggregate([
-      { $sort: { voteCount: -1 } }
-      ],
-       //code below gets at username, but also creates separate array
+// issueRouter.get("/", (req, res, next) => {
+//     //  Issue.find({}).populate("_comments.commentText")
+//      Issue.aggregate([
+//       { $sort: { voteCount: -1 } }
+//       ],
+//        //code below gets at username, but also creates separate array
        
-        // {$unwind: "$commentText"}
-         (err, sortedUserIssues)=> {
-            if (err){
-            res.status(500)
-            return next(err)
+//         // {$unwind: "$commentText"}
+//          (err, sortedUserIssues)=> {
+//             if (err){
+//             res.status(500)
+//             return next(err)
+//         }
+//         return res.status(200).send(sortedUserIssues)
+//     })
+// });
+
+
+//ATTEMPT AT A GET ALL ISSUES ALTERNATIVE to include populate
+issueRouter.get("/", (req, res, next) => {
+Issue.find({}) 
+    .populate("_comments")
+    .sort({ voteCount: -1 })
+    .exec((err, issues)=> {
+
+// (err, issues)=> {
+    if (err) {
+            res.status(500);
+            return next(err);
         }
-        return res.status(200).send(sortedUserIssues)
-    })
-});
+        return res.status(201).send(issues);
+})
+})
+
 
 
 

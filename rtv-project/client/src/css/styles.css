@@ -162,14 +162,6 @@
     font-size: 14px;
 }
 
-.all-issues {
-    background-color: black;
-    border:  5px solid blue;
-    width:  50%;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-}
 
 .issue {
     background-color: black;
@@ -177,6 +169,10 @@
 }
 
 .issue-title {
+    color: white;
+}
+
+.comments {
     color: white;
 }
 
@@ -188,6 +184,23 @@
     color: greenyellow;
 }
 
+.public-issue-list {
+    background-color: black;
+    border:  5px solid blue;
+    width:  35%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.user-issue-list {
+    width:  500px;
+}
+
 .user-comments {
     color:  yellow;
+}
+
+.public-comments {
+    color: yellow;
 }

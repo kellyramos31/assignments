@@ -11,7 +11,7 @@ const { issues }  = props
 
 return (
     
-    <div className="user-issue-list">
+    <div className="public-issue-list">
        {issues.map(issue => <PublicIssueText {...issue} key={issue._id} index={issue.index}/>)}
     </div>
   )
