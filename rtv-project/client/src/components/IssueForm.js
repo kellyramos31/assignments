@@ -29,9 +29,7 @@ export default function IssueForm(props){
 
   
 
-
-
-  function handleChange(e){
+function handleChange(e){
     const {name, value} = e.target
     setInputs(prevInputs => ({
       ...prevInputs,

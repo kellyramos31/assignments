@@ -84,6 +84,7 @@ commentRouter.get("/user", (req, res, next)=>{
 
 
 //COMBINES THE TWO ROUTES DIRECTLY ABOVE (THE ADD COMMENT & UPDATE COMMENTS ARRAY WITHIN ISSUES REQUESTS)***
+//NOTE:  this is returning the issue with the comment, BUT -- NOT the comment
 commentRouter.post("/", (req, res, next) => {
     req.body._user = req.user._id
     // req.body.username = req.user._id.username
@@ -95,25 +96,24 @@ commentRouter.post("/", (req, res, next) => {
             res.status(500)
             return next(err)
         }
-                 
+   
     const issueId = req.body._issue
       
         Issue.findByIdAndUpdate(
             {_id: issueId, _user: req.user._id},
             { $push: { "_comments": newComment._id}},
             { new: true},
-        (err, commentId) => {
+        (err, updatedIssue) => {
             if (err) {
                 console.log("Error");
                 res.status(500);
                 return next(err);
             }
-            return res.send(commentId);
+            return res.send(updatedIssue);
         })
-        // .populate({path: "_user", select: "username"})
     })
-      
-    })
+})
+
 
 //TRYING TO RECONFIGURE SO WORKS ON FRONTEND***
 // commentRouter.post("/", (req, res, next) => {

@@ -176,7 +176,7 @@ function getComments(){
             console.log(res)
             setIssueState(prevState => ({
                 ...prevState,
-                issueState:  [...prevState.comments, res.data]
+                issueState:  [...prevState.userIssues, res.data]
              }))
             
         .catch(err=>console.log(err.response.data.errMsg))

@@ -163,11 +163,6 @@
 }
 
 
-.issue {
-    background-color: black;
-    border:  5px solid blue;
-}
-
 .issue-title {
     color: white;
 }
@@ -197,10 +192,24 @@
     width:  500px;
 }
 
+.user-issue-container {
+  background: black;
+  border:  5px solid blue;
+}
+
 .user-comments {
     color:  yellow;
 }
 
+.all-issues-container {
+ background-color: black;
+ border:  5px solid blue;
+}
+
 .public-comments {
     color: yellow;
+}
+
+.user-name-span {
+    color: royalblue;
 }

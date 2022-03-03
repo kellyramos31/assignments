@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { IssueCommentContext } from "../context/IssueCommentProvider.js"
-import CommentForm from "./CommentForm.js"
+// import CommentForm from "./CommentForm.js"
 
 
 const initInputs = {title: "", description: "" }
@@ -11,24 +11,21 @@ export default function IssueText(props){
         deleteIssue,
         editIssue,
         // addComment,
-        upVote,
-        downVote   
+        // upVote,
+        // downVote   
     } = useContext(IssueCommentContext)
 
     //add function to toggle Comment Form on & off
     //add isEditing toggle??
 
   const [toggleIsEditing, setToggleIsEditing] = useState(false)
-  const [toggleIsCommenting, setToggleIsCommenting] = useState(false)
+
   const [inputs, setInputs] = useState(initInputs)
 
   function toggleToEdit(){
     setToggleIsEditing(prev => !prev)
   }
 
-  function toggleToComment(){
-    setToggleIsCommenting(prev => !prev)
-  }
 
   function handleEditChange(e){
     const {name, value} = e.target
@@ -45,7 +42,7 @@ return (
    
     <div>
         { !toggleIsEditing ?
-        <div>
+        <div className="user-issue-container">
         <div className="issue">
           <h1 className="issue-title">Issue: {props.title}</h1>
           <h3 className="issue-description">Description: {props.description}</h3>
@@ -56,22 +53,8 @@ return (
         <div className="vote-buttons" key={props._id} index={props.index} >
           <button className="delete-issue-btn" onClick={() => deleteIssue(props._id)}>Delete Issue</button>
           <button className="edit-issue-btn" onClick={toggleToEdit}>Edit Issue</button>
-
-          { !toggleIsCommenting ?
-              <div>
-              <button className="leave-comment-btn" onClick={toggleToComment}>Leave a Comment</button>
-              </div>
-              :
-              <div>
-                  <CommentForm
-                    _issue={props._id}
-                    // handleSubmit={addComment}
-                  />
-              </div>
-          }
-
-          <button className="up-vote-btn" onClick={() => upVote(props._id)}>Upvote</button>
-          <button className="down-vote-btn" onClick={()=>downVote(props._id)}>Downvote</button>
+          {/* <button className="up-vote-btn" onClick={() => upVote(props._id)}>Upvote</button>
+          <button className="down-vote-btn" onClick={()=>downVote(props._id)}>Downvote</button> */}
         </div>
         </div>
       :

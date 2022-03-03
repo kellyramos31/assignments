@@ -8,7 +8,7 @@ export default function NavBar(props){
   return (
     <div className="navbar">
       <Link to="/profile">Profile</Link>
-      <Link to="/public">Public</Link>
+      <Link to="/public">All Issues</Link>
       <button onClick={logout}>Logout</button>
     </div>
   )

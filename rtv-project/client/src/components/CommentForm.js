@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react"
+// import React, { useState } from "react"
 import { IssueCommentContext } from "../context/IssueCommentProvider.js"
 
 
@@ -11,12 +12,12 @@ export default function CommentForm(props){
 
 const [inputs, setInputs] = useState(initInputs)
 
-const { toggleIsCommenting, _issue } = props
-
 const { addComment } = useContext(IssueCommentContext)
 
+const { _issue, toggleToComment } = props
 
-  function handleCommentChange(e){
+
+function handleCommentChange(e){
     const {name, value} = e.target
     setInputs(prevInputs => ({
       ...prevInputs,
@@ -24,18 +25,22 @@ const { addComment } = useContext(IssueCommentContext)
     }))
     }
 
-    
-  function handleSubmit(e){
+ function handleSubmit(e){
     e.preventDefault()
     const newComment = {
-       commentText: inputs,
+      commentText: inputs,
       _issue: _issue
     }
     addComment(newComment)
     console.log("_issue", _issue)
-    console.log("inputs from addIssue", newComment)
+    console.log("newComment", newComment)
     setInputs(initInputs)
   }
+
+  // function toggleToComment(){
+  //   setToggleIsCommenting(prev => !prev)
+  // }
+
 
 
  const { commentText } = inputs
@@ -49,10 +54,11 @@ return (
             name="commentText" 
             value={commentText} 
             onChange={handleCommentChange} 
-            placeholder="Title"
+            toggleToComment={toggleToComment}
+            placeholder="Comment Text"
         />
-      <button className="add-comment-button">Submit Comment</button>
-      <button className="cancel-comment-button" onClick={toggleIsCommenting}>Cancel</button>
+      <button className="add-comment-button" onClick={toggleToComment}>Submit Comment</button>
+      {/* <button className="cancel-comment-button" onClick={toggleToComment}>Cancel</button> */}
     </form>
     </div>
   )

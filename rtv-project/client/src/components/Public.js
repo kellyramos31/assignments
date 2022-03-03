@@ -7,7 +7,7 @@ import { IssueCommentContext } from "../context/IssueCommentProvider.js"
 export default function Public() {
 
       const {
-        // issueState,  
+        issueState,
         issues,
         comments,
         getIssues,
@@ -21,12 +21,13 @@ export default function Public() {
     getIssues()
     getComments()
     // eslint-disable-next-line  
-  }, [])
+  }, [issueState])
 
 
     return (
         <div className="public">
             <PublicIssueList 
+                issueState={issueState}
                 issues={issues}
                 comments={comments}
             />
