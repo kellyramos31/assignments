@@ -13,7 +13,7 @@ const { userIssues}  = props
 return (
     
     <div className="user-issue-list">
-       {userIssues.map(userIssue => <IssueText {...userIssue} key={userIssue._id} index={userIssue.index}/>)}
+       {userIssues.map(userIssue => <IssueText {...userIssue} key={userIssue._id}/>)}
     </div>
   )
 }

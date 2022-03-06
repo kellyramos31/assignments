@@ -37,7 +37,7 @@ function handleChange(e){
     }))
   }
 
-  function handleSubmit(e){
+  function handleSubmitIssue(e){
     e.preventDefault()
     addIssue(inputs)
     console.log("inputs from addIssue", inputs)
@@ -49,7 +49,7 @@ function handleChange(e){
   const { title, description } = inputs
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmitIssue}>
       <input 
         type="text" 
         name="title" 

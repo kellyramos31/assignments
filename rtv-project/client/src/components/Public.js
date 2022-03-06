@@ -1,16 +1,19 @@
 import React, { useContext, useEffect} from "react"
 import PublicIssueList from "./PublicIssueList.js"
+// import CommentForm from "./CommentForm.js"
 import { IssueCommentContext } from "../context/IssueCommentProvider.js"
 
 
 
 export default function Public() {
 
+
       const {
         issueState,
         issues,
         comments,
         getIssues,
+        // addComment,
         getComments
     } = useContext(IssueCommentContext)
 
@@ -30,6 +33,7 @@ export default function Public() {
                 issueState={issueState}
                 issues={issues}
                 comments={comments}
+                // addComment={addComment}
             />
         </div>
     )

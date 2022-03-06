@@ -166,23 +166,68 @@ function getComments(){
     }
 
     
-//ADD COMMENT
-   function addComment(newComment) {
+//ADD COMMENT -- try adding comment to the issue here instead??
+//    function addComment(newComment, issueId) {
+
+//       // const newComment = {
+//       //   commentText:  commentText,
+//       //   _issue: issueId
+//       // }
      
-      console.log("newComment:", newComment)
-        // console.log("adding comment -- issueId:", issueId)
-      userAxios.post("/api/comment", newComment)
+//       console.log("commentText from addComment:", newComment)
+//       // console.log("addComment -- _issue:", _issue)
+//       userAxios.post(`/api/issue/${issueId}`, newComment)
+//         .then(res => {
+//             console.log(res)
+//             setIssueState(prevState => ({
+//                 ...prevState,
+//                 issueState:  [...prevState.comments, res.data]
+//              }))
+            
+//         .catch(err=>console.log(err.response.data.errMsg))
+//           })
+//   }
+
+//ADD COMMENT
+   function addComment(commentText, _issue) {
+      const commentAdd = {
+        commentText: commentText,
+        _issue: _issue
+      }
+      // const _issue = issueId
+      console.log("commentAdd:", commentAdd)
+      // console.log("adding comment -- issueId:", issueId)
+      userAxios.post("/api/comment", commentAdd)
+         
         .then(res => {
             console.log(res)
             setIssueState(prevState => ({
                 ...prevState,
-                issueState:  [...prevState.userIssues, res.data]
+                issueState:  [...prevState.comments, res.data]
              }))
             
         .catch(err=>console.log(err.response.data.errMsg))
           })
         }
   
+
+
+
+  
+//DELETE COMMENT -- NEED TO TEST THIS ONE TO SEE IF WORKS
+    // function deleteComment(commentId) {
+    //     console.log("commentId:", commentId)
+    //     userAxios.delete(`/api/comment/${commentId}`)
+    //          .then(res => {
+    //             setIssueState(prevState=> ({userIssues: prevState.userComments.filter(userComment => userComment._id !== commentId)}))
+    //          })
+        
+    //         .catch(err=>console.log(err.response.data.errMsg))
+    // }
+
+//EDIT COMMENT
+
+
 
 //UPVOTE AN ISSUE
 function upVote(issueId){

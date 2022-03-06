@@ -179,14 +179,10 @@
     color: greenyellow;
 }
 
-.public-issue-list {
-    background-color: black;
-    border:  5px solid blue;
-    width:  35%;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
+.number-comments {
+    color: greenyellow;
 }
+
 
 .user-issue-list {
     width:  500px;
@@ -204,6 +200,15 @@
 .all-issues-container {
  background-color: black;
  border:  5px solid blue;
+}
+
+.public-issue-list {
+    background-color: black;
+    border:  5px solid blue;
+    width:  35%;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .public-comments {

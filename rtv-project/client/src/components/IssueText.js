@@ -42,15 +42,15 @@ return (
    
     <div>
         { !toggleIsEditing ?
-        <div className="user-issue-container">
+        <div className="user-issue-container" key={props._id} >
         <div className="issue">
           <h1 className="issue-title">Issue: {props.title}</h1>
           <h3 className="issue-description">Description: {props.description}</h3>
           {/* <h3 className="comments">Comments: {props._comments.map(comment=>(<li>{comment.commentText}</li>))}</h3> */}
-          <h3 className="user-comments">My Comments on this Issue:{props.userComments.map(comment=>(<li>{props._user.username}{comment.commentText}</li>))}</h3>
+          <h3 className="user-comments">My Comments on this Issue:{props.userComments.map(comment=>(<li key={comment._id}>{props._user.username}{comment.commentText}</li>))}</h3>
           <h3 className="total-votes">Votes: {props.voteCount}</h3>
           </div>
-        <div className="vote-buttons" key={props._id} index={props.index} >
+        <div className="vote-buttons">
           <button className="delete-issue-btn" onClick={() => deleteIssue(props._id)}>Delete Issue</button>
           <button className="edit-issue-btn" onClick={toggleToEdit}>Edit Issue</button>
           {/* <button className="up-vote-btn" onClick={() => upVote(props._id)}>Upvote</button>

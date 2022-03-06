@@ -109,10 +109,15 @@ commentRouter.post("/", (req, res, next) => {
                 res.status(500);
                 return next(err);
             }
-            return res.send(updatedIssue);
+            return res.send(newComment);
         })
     })
 })
+
+
+
+
+
 
 
 //TRYING TO RECONFIGURE SO WORKS ON FRONTEND***
@@ -208,6 +213,8 @@ commentRouter.put("/:commentId", (req, res, next) => {
             return res.send(comment);
         })
 })
+
+//COUNT THE TOTAL NUMBER OF COMMENTS FOR EACH ISSUE
 
 
 

@@ -1,20 +1,24 @@
 import React, { useState, useContext } from "react"
-// import React, { useState } from "react"
+//import React, { useState } from "react"
 import { IssueCommentContext } from "../context/IssueCommentProvider.js"
-
 
 
 const initInputs = {
   commentText: ""
 }
 
+
 export default function CommentForm(props){
 
 const [inputs, setInputs] = useState(initInputs)
 
+// const [issueId, setIssueId] = useState(initInputs._issue)
+
 const { addComment } = useContext(IssueCommentContext)
 
-const { _issue, toggleToComment } = props
+const { toggleToComment, _issue} = props
+
+
 
 
 function handleCommentChange(e){
@@ -25,17 +29,18 @@ function handleCommentChange(e){
     }))
     }
 
- function handleSubmit(e){
+ function handleSubmitComment(e){
     e.preventDefault()
-    const newComment = {
-      commentText: inputs,
-      _issue: _issue
-    }
-    addComment(newComment)
-    console.log("_issue", _issue)
-    console.log("newComment", newComment)
+    //console.log("_issue:", _issue)
+    console.log("inputs", inputs)
+    // console.log("_issue", _issue)
+    addComment(commentText, _issue)
     setInputs(initInputs)
+    toggleToComment()
   }
+
+const { commentText } = inputs
+
 
   // function toggleToComment(){
   //   setToggleIsCommenting(prev => !prev)
@@ -43,23 +48,23 @@ function handleCommentChange(e){
 
 
 
- const { commentText } = inputs
-
-
 return (
-    <div>
-     <form onSubmit= {handleSubmit}>
-        <input 
+    <div >
+     <form onSubmit={(e)=>handleSubmitComment(e, commentText, _issue)}>
+        <input
+            _issue={_issue}
             type="text" 
             name="commentText" 
             value={commentText} 
             onChange={handleCommentChange} 
-            toggleToComment={toggleToComment}
             placeholder="Comment Text"
         />
-      <button className="add-comment-button" onClick={toggleToComment}>Submit Comment</button>
+      <button className="add-comment-button">Submit Comment</button>
       {/* <button className="cancel-comment-button" onClick={toggleToComment}>Cancel</button> */}
     </form>
     </div>
   )
 }
+
+
+

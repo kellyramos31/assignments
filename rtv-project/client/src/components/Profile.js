@@ -14,7 +14,7 @@ export default function Profile() {
         // userIssues,
         //getUserIssues,
         // addIssue,
-        deleteIssue
+        // deleteIssue
     } = useContext(UserContext)
 
     const {
@@ -22,6 +22,7 @@ export default function Profile() {
         issueState,
         userIssues,
         getUserIssues,
+        deleteIssue
         // addComment
     } = useContext(IssueCommentContext)
 
