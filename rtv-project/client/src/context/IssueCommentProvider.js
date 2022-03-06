@@ -200,15 +200,16 @@ function getComments(){
       userAxios.post("/api/comment", commentAdd)
          
         .then(res => {
-            console.log(res)
-            setIssueState(prevState => ({
-                ...prevState,
-                issueState:  [...prevState.comments, res.data]
-             }))
+            console.log("addComment res", res)
+            getIssues()
+            // setIssueState(prevState => ({
+            //     ...prevState,
+            //     issueState:  [...prevState.comments, res.data]
+            })
             
         .catch(err=>console.log(err.response.data.errMsg))
-          })
-        }
+        
+          }
   
 
 
