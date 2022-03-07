@@ -147,37 +147,77 @@ issueRouter.delete("/:issueId", (req, res, next)=> {
 
 //NOTE:  ****USER SHOULD ONLY BE ABLE TO UPVOTE/DOWNVOTE AN ISSUE ONCE****NEED TO FIGURE THIS OUT
 
-//UPVOTE AN ISSUE
-issueRouter.put("/upvote/:issueId", (req, res, next)=> {			
-  Issue.findByIdAndUpdate(			
-  {_id: req.params.issueId, _user: req.user._id },	
-  { $inc: {voteCount: 1}},			
-  {new: true},			
-  (err, updatedIssue)=> {			
-      if(err){			
-          res.status(500)			
-          return next(err)			
-      }			
-      return res.status(201).send(updatedIssue)			
-   }			
-  )			
-})			
+//UPVOTE AN ISSUE-- this one works but can vote as many times as want to...
+// issueRouter.put("/upvote/:issueId", (req, res, next)=> {			
+//   Issue.findByIdAndUpdate(			
+//   {_id: req.params.issueId, _user: req.user._id },	
+//   { $inc: {voteCount: 1}},			
+//   {new: true},			
+//   (err, updatedIssue)=> {			
+//       if(err){			
+//           res.status(500)			
+//           return next(err)			
+//       }			
+//       return res.status(201).send(updatedIssue)			
+//    }			
+//   )			
+// })
+
+//UPVOTE AN ISSUE -- but only ONCE -- seems to work now -- but how implement with rest on front-end??
+issueRouter.put("/upvote/:issueId", (req, res, next)=> {		
+
+Issue.updateOne(
+    {_id: req.params.issueId}, 
+    { $addToSet: { _voters: req.user._id } },
 
 
-//DOWNVOTE AN ISSUE
-issueRouter.put("/downvote/:issueId", (req, res, next)=> {			
-  Issue.findByIdAndUpdate(			
-  {_id: req.params.issueId, _user: req.user._id },		//maybe don't need _user: req.user._id here??
-  { $inc: {voteCount: -1}},			
-  {new: true},			
-  (err, updatedIssue)=> {			
-      if(err){			
-          res.status(500)			
-          return next(err)			
-      }			
-      return res.status(201).send(updatedIssue)		
-   }			
-  )			
-})	
+(err, issues)=> {
+    if (err) {
+            res.status(500);
+            return next(err);
+        }
+        return res.status(201).send(issues);
+})
+})
+		
+
+
+//DOWNVOTE AN ISSUE-- this one works ==== but can downVote as many times as want
+// issueRouter.put("/downvote/:issueId", (req, res, next)=> {			
+//   Issue.findByIdAndUpdate(			
+//   {_id: req.params.issueId, _user: req.user._id },		//maybe don't need _user: req.user._id here??
+//   { $inc: {voteCount: -1}},			
+//   {new: true},			
+//   (err, updatedIssue)=> {			
+//       if(err){			
+//           res.status(500)			
+//           return next(err)			
+//       }			
+//       return res.status(201).send(updatedIssue)		
+//    }			
+//   )			
+// })	
+
+//DOWNVOTE AN ISSUE -- but only ONCE
+
+
+
+//COUNT THE TOTAL NUMBER OF COMMENTS FOR EACH ISSUE -- NEED TO WORK ON THIS ONE -*******
+// issueRouter.get("/countComments", (req, res, next)=>{
+//     Issue.aggregate([
+//         {"$project": {
+//             "$totalComments": {
+//                 "$size": "$_comments"
+//         }}}
+//     ]),
+//      (err, commentTotal)=> {
+//             if (err){
+//             res.status(500)
+//             return next(err)
+//         }
+//         return res.status(200).send(commentTotal)
+//     }})
+        
+
 
 module.exports = issueRouter;

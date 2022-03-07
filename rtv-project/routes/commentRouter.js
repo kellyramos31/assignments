@@ -214,7 +214,7 @@ commentRouter.put("/:commentId", (req, res, next) => {
         })
 })
 
-//COUNT THE TOTAL NUMBER OF COMMENTS FOR EACH ISSUE
+
 
 
 

@@ -16,8 +16,13 @@ const issueSchema = new Schema({
         type: Date,
         default: Date.now
     },
+    //maybe voteCount should be array of userIds instead of just #?
     voteCount: {
         type: Number
+    },
+    _voters: {
+        type: Schema.Types.ObjectId,
+        ref: "User"
     },
     _user: {
         type: Schema.Types.ObjectId,

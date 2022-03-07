@@ -8,6 +8,7 @@ export default function PublicIssueText(props){
 const {
       upVote,
       downVote,
+      totalComments
       // addComment,
       // handleSubmitComment   
      } = useContext(IssueCommentContext)
@@ -33,7 +34,7 @@ return (
             <h1 className="issue-title">Issue: {props.title}</h1>
             <h3 className="issue-description">Description: {props.description}</h3>
             <h3 className="total-votes">Votes: {props.voteCount}</h3>
-            <h4 className="number-comments"># Comments: </h4>
+            <h4 className="number-comments"># Comments: {totalComments} </h4>
             <button className="up-vote-btn" onClick={() => upVote(props._id)}>Upvote</button>
             <button className="down-vote-btn" onClick={()=>downVote(props._id)}>Downvote</button>
 

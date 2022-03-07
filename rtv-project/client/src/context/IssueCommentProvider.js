@@ -25,6 +25,8 @@ export default function IssueCommentProvider(props) {
 
 const [issueState, setIssueState] = useState(initState)
 
+const [totalComments, setTotalComments] = useState(0)
+
 // const [issues, setIssues] = useState([])
 
 // const [userIssues, setUserIssues] = useState([])
@@ -261,6 +263,13 @@ function downVote(issueId){
     .catch(err => console.log(err.response.data.errMsg))
   }
 
+  //TOTAL NUMBER OF COMMENTS ON ISSUE
+  function getTotalNumberComments(issueId) {
+        userAxios.get(`/api/issue/countComments/${issueId}`)
+            .then(res => setTotalComments(res.data[0].totalcomments))       
+            .catch(err => console.log(err))
+    }
+
 
 
 
@@ -271,6 +280,8 @@ function downVote(issueId){
             getUserIssues,
             upVote,
             downVote,
+            getTotalNumberComments,
+            totalComments,
             // issues,
             // userIssues,
             //comments,
