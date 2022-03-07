@@ -163,7 +163,7 @@ issueRouter.delete("/:issueId", (req, res, next)=> {
 //   )			
 // })
 
-//UPVOTE AN ISSUE -- but only ONCE -- seems to work now -- but how implement with rest on front-end??
+//UPVOTE AN ISSUE -- but only ONCE -- NOTE:  seems to ??MAYBE?? work NOW -- BUT...how implement with rest on front-end??
 issueRouter.put("/upvote/:issueId", (req, res, next)=> {		
 
 Issue.updateOne(
@@ -199,7 +199,25 @@ Issue.updateOne(
 // })	
 
 //DOWNVOTE AN ISSUE -- but only ONCE
+//NOTES:  maybe use $pull (or is there an opposite to $addToSet??)
+issueRouter.put("/downvote/:issueId", (req, res, next)=> {		
 
+// const ObjectId = require('mongodb').ObjectId    
+
+Issue.updateOne(
+    {_id: req.params.issueId}, 
+    { $pull: { _voters: req.user._id} },
+
+
+(err, issues)=> {
+    if (err) {
+            res.status(500);
+            return next(err);
+        }
+        return res.status(201).send(issues);
+})
+})
+		
 
 
 //COUNT THE TOTAL NUMBER OF COMMENTS FOR EACH ISSUE -- NEED TO WORK ON THIS ONE -*******
