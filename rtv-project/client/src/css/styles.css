@@ -131,15 +131,54 @@
     width:  100px;
 }
 
+.comment-related-btns {
+    display: flex;
+    flex-direction: row;
+}
+
+.eye-btn-pieces {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    font-weight: bold;
+    align-items: center;
+}
+
+.see-comments-btn {
+    margin: 10px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 12px;
+    height: 50px;
+    width:  170px;
+}
+
+.hide-comments-btn {
+    margin: 10px;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 12px;
+    height: 50px;
+    width:  170px;
+}
+
 .leave-comment-btn {
-     margin: 10px;
+    margin: 10px;
     background-color: blue;
     color: white;
     font-weight: bold;
     border-radius: 5px;
-    padding: 5px;
-    font-size: 14px;
-    width:  100px;
+    padding: 2px;
+    font-size: 12px;
+    height: 50px;
+    height: 55px;
+    width:  170px;
 }
 
 .up-vote-btn {
@@ -147,6 +186,7 @@
     background: white;
     border-radius: 5px;
     padding: 5px;
+    height: 55px;
     width:  75px;
     font-weight: bold;
     font-size: 12px;
@@ -157,6 +197,7 @@
     background-color: white;
     border-radius: 5px;
     padding: 5px;
+    height: 55px;
     width:  75px;
     font-weight: bold;
     font-size: 12px;
@@ -171,6 +212,7 @@
     font-weight: bold;
     font-size: 14px;
 }
+
 
 
 .issue-title {
