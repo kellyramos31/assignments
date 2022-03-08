@@ -8,6 +8,7 @@ export default function PublicIssueText(props){
 const {
       voterUpVote,
       voterDownVote,
+      // removeVote,
       totalComments
       // addComment,
       // handleSubmitComment   
@@ -37,6 +38,7 @@ return (
             <h4 className="number-comments"># Comments: {totalComments} </h4>
             <button className="up-vote-btn" onClick={() =>voterUpVote(props._id)}>Upvote</button>
             <button className="down-vote-btn" onClick={()=>voterDownVote(props._id)}>Downvote</button>
+            {/* <button className="cancel-vote-btn" onClick={()=>removeVote(props._id)}>Cancel Vote</button> */}
 
           { !toggleIsViewingComments ?
                 <button className="see-comments-btn" key={props._id} onClick={toggleViewComments}>View All Comments</button>

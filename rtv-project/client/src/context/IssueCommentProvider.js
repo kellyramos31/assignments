@@ -250,58 +250,24 @@ function upVote(issueId){
     .catch(err => console.log(err.response.data.errMsg))
   }
 
-//VOTE (using _voters)--this uses $addToSet, so will only add if not already there
+//UPVOTE with limit of 1 (using _voters)--this uses $addToSet, so will only add if not already there
  function voterUpVote(issueId){
   console.log("issueId for upVote:", issueId)
   userAxios.put(`/api/issue/voter/vote/${issueId}`)		
     .then(res => {
       console.log("upVote res:", res)
-          setIssueState(prevState => ({
-                ...prevState,
-                issueState:  [...prevState.userIssues, res.data]
-            }))
-      if(res.data.nModified === 1){
+      if(res.data.nModified !== 0){
         upVote(issueId)
       }
-    })
-   
-    .catch(err => console.log(err.response.data.errMsg))
- } 
-
- function voterDownVote(issueId){
-  console.log("issueId for upVote:", issueId)
-  userAxios.put(`/api/issue/voter/vote/${issueId}`)		
-    .then(res => {
-      console.log("upVote res:", res)
           setIssueState(prevState => ({
                 ...prevState,
                 issueState:  [...prevState.userIssues, res.data]
             }))
-      if(res.data.nModified === 1){
-        downVote(issueId)
-      }
+      
     })
    
     .catch(err => console.log(err.response.data.errMsg))
  } 
-
-
- //VOTE (using _voters)--this uses $addToSet, so will only add if not already there
-//  function voterVote(issueId){
-//   console.log("issueId for upVote:", issueId)
-//   userAxios.put(`/api/issue/voter/vote/${issueId}`)		
-//     .then(res => {
-//       console.log("upVote res:", res)
-//           setIssueState(prevState => ({
-//                 ...prevState,
-//                 issueState:  [...prevState.userIssues, res.data]
-//             }))
-//     })
-   
-//     .catch(err => console.log(err.response.data.errMsg))
-//  } 
-
-
 
 //DOWNVOTE AN ISSUE
 function downVote(issueId){
@@ -318,7 +284,47 @@ function downVote(issueId){
     .catch(err => console.log(err.response.data.errMsg))
   }
 
-//CANCEL VOTE (using _voters)
+ //DOWNVOTE with limit of 1
+ function voterDownVote(issueId){
+  console.log("issueId for upVote:", issueId)
+  userAxios.put(`/api/issue/voter/vote/${issueId}`)		
+    .then(res => {
+      if(res.data.nModified !== 0){
+        downVote(issueId)
+      }
+      console.log("upVote res:", res)
+          setIssueState(prevState => ({
+                ...prevState,
+                issueState:  [...prevState.userIssues, res.data]
+            }))
+   
+    })
+   
+    .catch(err => console.log(err.response.data.errMsg))
+ } 
+
+
+ //VOTER VOTE (using _voters)--this uses $addToSet, so will only add if not already there
+//  function voterVote(issueId){
+//   console.log("issueId for upVote:", issueId)
+//   userAxios.put(`/api/issue/voter/vote/${issueId}`)		
+//     .then(res => {
+//       console.log("upVote res:", res)
+//           setIssueState(prevState => ({
+//                 ...prevState,
+//                 issueState:  [...prevState.userIssues, res.data]
+//             }))
+//     })
+   
+//     .catch(err => console.log(err.response.data.errMsg))
+//  } 
+
+
+
+
+//CANCEL VOTE (using _voters) ==> However, how back this out if don't know if it was an up or down vote?
+//MAYBE -- Need to separate up and down votes in model and then calculate total??
+
 function removeVote(issueId){
   console.log("issueId for remove vote:", issueId)
   userAxios.put(`/api/issue/voter/cancelvote/${issueId}`)		
