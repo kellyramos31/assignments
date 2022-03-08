@@ -147,24 +147,24 @@ issueRouter.delete("/:issueId", (req, res, next)=> {
 
 //NOTE:  ****USER SHOULD ONLY BE ABLE TO UPVOTE/DOWNVOTE AN ISSUE ONCE****NEED TO FIGURE THIS OUT
 
-//UPVOTE AN ISSUE-- this one works but can vote as many times as want to...
-// issueRouter.put("/upvote/:issueId", (req, res, next)=> {			
-//   Issue.findByIdAndUpdate(			
-//   {_id: req.params.issueId, _user: req.user._id },	
-//   { $inc: {voteCount: 1}},			
-//   {new: true},			
-//   (err, updatedIssue)=> {			
-//       if(err){			
-//           res.status(500)			
-//           return next(err)			
-//       }			
-//       return res.status(201).send(updatedIssue)			
-//    }			
-//   )			
-// })
+//UPVOTE AN ISSUE--INCREMENT -- this one works to increment vote count --but can vote as many times as want to...
+issueRouter.put("/upvote/:issueId", (req, res, next)=> {			
+  Issue.findByIdAndUpdate(			
+  {_id: req.params.issueId, _user: req.user._id },	
+  { $inc: {voteCount: 1}},			
+  {new: true},			
+  (err, updatedIssue)=> {			
+      if(err){			
+          res.status(500)			
+          return next(err)			
+      }			
+      return res.status(201).send(updatedIssue)			
+   }			
+  )			
+})
 
-//UPVOTE AN ISSUE -- but only ONCE -- NOTE:  seems to ??MAYBE?? work NOW -- BUT...how implement with rest on front-end??
-issueRouter.put("/upvote/:issueId", (req, res, next)=> {		
+//VOTE ON AN ISSUE (adds to _voters array but only ONCE) -- NOTE:  seems to ??MAYBE?? work NOW -- BUT...how implement with rest on front-end??
+issueRouter.put("/voter/vote/:issueId", (req, res, next)=> {		
 
 Issue.updateOne(
     {_id: req.params.issueId}, 
@@ -182,27 +182,25 @@ Issue.updateOne(
 		
 
 
-//DOWNVOTE AN ISSUE-- this one works ==== but can downVote as many times as want
-// issueRouter.put("/downvote/:issueId", (req, res, next)=> {			
-//   Issue.findByIdAndUpdate(			
-//   {_id: req.params.issueId, _user: req.user._id },		//maybe don't need _user: req.user._id here??
-//   { $inc: {voteCount: -1}},			
-//   {new: true},			
-//   (err, updatedIssue)=> {			
-//       if(err){			
-//           res.status(500)			
-//           return next(err)			
-//       }			
-//       return res.status(201).send(updatedIssue)		
-//    }			
-//   )			
-// })	
+//DOWNVOTE AN ISSUE--DECREMENT this works to decrement vote count === but can downVote as many times as want
+issueRouter.put("/downvote/:issueId", (req, res, next)=> {			
+  Issue.findByIdAndUpdate(			
+  {_id: req.params.issueId, _user: req.user._id },		//maybe don't need _user: req.user._id here??
+  { $inc: {voteCount: -1}},			
+  {new: true},			
+  (err, updatedIssue)=> {			
+      if(err){			
+          res.status(500)			
+          return next(err)			
+      }			
+      return res.status(201).send(updatedIssue)		
+   }			
+  )			
+})	
 
-//DOWNVOTE AN ISSUE -- but only ONCE
+//MAYBE THIS IS JUST CANCEL A VOTE -- (removes from _voters array)
 //NOTES:  maybe use $pull (or is there an opposite to $addToSet??)
-issueRouter.put("/downvote/:issueId", (req, res, next)=> {		
-
-// const ObjectId = require('mongodb').ObjectId    
+issueRouter.put("/voter/cancelvote/:issueId", (req, res, next)=> {		
 
 Issue.updateOne(
     {_id: req.params.issueId}, 

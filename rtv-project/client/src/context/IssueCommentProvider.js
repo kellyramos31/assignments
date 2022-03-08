@@ -144,6 +144,7 @@ function getComments(){
 
     
 //DELETE USER'S ISSUE
+//NEED TO ADD SOMETHING TO DELETE COMMENTS ALSO -- they seem to persist even though issue deletes
     function deleteIssue(issueId) {
         console.log("issueId:", issueId)
         userAxios.delete(`/api/issue/${issueId}`)
@@ -230,6 +231,8 @@ function getComments(){
 
 //EDIT COMMENT
 
+//GOING TO NEED TO WRITE OVERALL VOTING FUNCTIONS (1 for Upvote & 1 for Downvote) 
+//THAT COMBINE UPDATING _voters and either incrementing or decrementing total votecount
 
 
 //UPVOTE AN ISSUE
@@ -247,6 +250,58 @@ function upVote(issueId){
     .catch(err => console.log(err.response.data.errMsg))
   }
 
+//VOTE (using _voters)--this uses $addToSet, so will only add if not already there
+ function voterUpVote(issueId){
+  console.log("issueId for upVote:", issueId)
+  userAxios.put(`/api/issue/voter/vote/${issueId}`)		
+    .then(res => {
+      console.log("upVote res:", res)
+          setIssueState(prevState => ({
+                ...prevState,
+                issueState:  [...prevState.userIssues, res.data]
+            }))
+      if(res.data.nModified === 1){
+        upVote(issueId)
+      }
+    })
+   
+    .catch(err => console.log(err.response.data.errMsg))
+ } 
+
+ function voterDownVote(issueId){
+  console.log("issueId for upVote:", issueId)
+  userAxios.put(`/api/issue/voter/vote/${issueId}`)		
+    .then(res => {
+      console.log("upVote res:", res)
+          setIssueState(prevState => ({
+                ...prevState,
+                issueState:  [...prevState.userIssues, res.data]
+            }))
+      if(res.data.nModified === 1){
+        downVote(issueId)
+      }
+    })
+   
+    .catch(err => console.log(err.response.data.errMsg))
+ } 
+
+
+ //VOTE (using _voters)--this uses $addToSet, so will only add if not already there
+//  function voterVote(issueId){
+//   console.log("issueId for upVote:", issueId)
+//   userAxios.put(`/api/issue/voter/vote/${issueId}`)		
+//     .then(res => {
+//       console.log("upVote res:", res)
+//           setIssueState(prevState => ({
+//                 ...prevState,
+//                 issueState:  [...prevState.userIssues, res.data]
+//             }))
+//     })
+   
+//     .catch(err => console.log(err.response.data.errMsg))
+//  } 
+
+
 
 //DOWNVOTE AN ISSUE
 function downVote(issueId){
@@ -263,6 +318,24 @@ function downVote(issueId){
     .catch(err => console.log(err.response.data.errMsg))
   }
 
+//CANCEL VOTE (using _voters)
+function removeVote(issueId){
+  console.log("issueId for remove vote:", issueId)
+  userAxios.put(`/api/issue/voter/cancelvote/${issueId}`)		
+    .then(res => {
+      console.log("upVote res:", res)
+          setIssueState(prevState => ({
+                ...prevState,
+                issueState:  [...prevState.userIssues, res.data]
+            }))
+    })
+   
+    .catch(err => console.log(err.response.data.errMsg))
+}
+
+
+
+
   //TOTAL NUMBER OF COMMENTS ON ISSUE
   function getTotalNumberComments(issueId) {
         userAxios.get(`/api/issue/countComments/${issueId}`)
@@ -278,10 +351,13 @@ function downVote(issueId){
             value={{
             ...issueState,
             getUserIssues,
-            upVote,
-            downVote,
+            // upVote,
+            // downVote,
             getTotalNumberComments,
             totalComments,
+            voterUpVote,
+            voterDownVote,
+            removeVote,
             // issues,
             // userIssues,
             //comments,
