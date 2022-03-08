@@ -6,6 +6,8 @@ import { BsArrowDownCircleFill} from 'react-icons/bs'
 import { FaEye} from 'react-icons/fa'
 import { FaComments } from 'react-icons/fa'
 import { BiHide } from 'react-icons/bi'
+import { FcCancel } from 'react-icons/fc'
+
 
 
 
@@ -50,22 +52,20 @@ return (
       
         { !toggleIsCommenting ?
               <div id={props._id}>
-                <button className="leave-comment-btn" onClick={toggleToComment}><FaComments size={25} style={{ fill: "white"}}/> Leave Comment</button>
+                <button className="leave-comment-btn" onClick={toggleToComment}><FaComments size={25} style={{ fill: "white"}}/> Leave a Comment</button>
               </div>
               :
-              <div id={props._id}>
+              <div id={props._id} className="comment-form" >
                   <CommentForm
                     _issue={props._id}
-                    // addComment={addComment}
                     toggleToComment={toggleToComment}
-                    // handleSubmitComment={handleSubmitComment}
                   />
-              <button className="leave-comment-btn" onClick={toggleToComment}>Cancel</button>
+              <button className="cancel-comment-btn" onClick={toggleToComment}><FcCancel size={25} style={{ fill: "white"}}/> Cancel</button>
               </div>
           }
            </div>
                { !toggleIsViewingComments ?
-                <button className="see-comments-btn" key={props._id} onClick={toggleViewComments}> <div className="eye-btn-pieces"><FaEye size={25} style={{ fill: "royalblue"}}/>View Comments</div></button>
+                <button className="see-comments-btn" key={props._id} onClick={toggleViewComments}> <div className="eye-btn-pieces"><FaEye size={25} style={{ fill: "royalblue"}}/> View Comments</div></button>
           :
           <div>
                 <button  className="hide-comments-btn" onClick={toggleViewComments}><BiHide size={25} style={{ fill: "royalblue"}}/>Hide Comments</button>    

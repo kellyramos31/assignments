@@ -9,7 +9,7 @@
 }
 
 .app {
-    background-color: #eee9;
+    background-color: silver;
 }
 
 .navbar {
@@ -17,7 +17,7 @@
     justify-content: space-around;
     align-items: center;
     height: 40px;
-    background-color: #3339;
+    background-color: blue;
 }
 
 .auth-container {
@@ -179,6 +179,39 @@
     height: 50px;
     height: 55px;
     width:  170px;
+}
+
+.submit-comment-button{
+    margin-top: 10px;
+    background-color: green;
+    color: white;
+    font-weight: bold;
+    font-size: 12px;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 12px;
+    height: 50px;
+    width:  90px;
+    margin-left: 20px;
+
+}
+
+.cancel-comment-btn{
+   margin: 10px;
+    background-color: blue;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 2px;
+    font-size: 12px;
+    height: 50px;
+    width:  90px;
+    margin-left: 20px;
+}
+
+.comment-form {
+    margin-top:  10px;
+    margin-left:  40px;
 }
 
 .up-vote-btn {

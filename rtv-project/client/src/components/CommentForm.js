@@ -59,7 +59,7 @@ return (
             onChange={handleCommentChange} 
             placeholder="Comment Text"
         />
-      <button className="add-comment-button">Submit Comment</button>
+      <button className="submit-comment-button">Submit Comment</button>
       {/* <button className="cancel-comment-button" onClick={toggleToComment}>Cancel</button> */}
     </form>
     </div>
