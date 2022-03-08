@@ -1,4 +1,4 @@
-* {
+*{
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -144,22 +144,22 @@
 
 .up-vote-btn {
     margin: 10px;
-    /* background: ; */
+    background: white;
     border-radius: 5px;
     padding: 5px;
-    width:  100px;
+    width:  75px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .down-vote-btn {
     margin: 10px;
-    background-color: orange;
+    background-color: white;
     border-radius: 5px;
     padding: 5px;
-    width:  100px;
+    width:  75px;
     font-weight: bold;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .cancel-vote-btn {

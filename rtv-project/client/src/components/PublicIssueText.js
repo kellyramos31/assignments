@@ -1,6 +1,9 @@
 import React, {useState, useContext} from "react"
 import CommentForm from "./CommentForm.js"
 import { IssueCommentContext } from "../context/IssueCommentProvider.js"
+import { BsArrowUpCircleFill} from 'react-icons/bs'
+import { BsArrowDownCircleFill} from 'react-icons/bs'
+
 
 
 export default function PublicIssueText(props){
@@ -36,8 +39,8 @@ return (
             <h3 className="issue-description">Description: {props.description}</h3>
             <h3 className="total-votes">Votes: {props.voteCount}</h3>
             <h4 className="number-comments"># Comments: {totalComments} </h4>
-            <button className="up-vote-btn" onClick={() =>voterUpVote(props._id)}>Upvote</button>
-            <button className="down-vote-btn" onClick={()=>voterDownVote(props._id)}>Downvote</button>
+            <button className="up-vote-btn" onClick={() =>voterUpVote(props._id)}> <BsArrowUpCircleFill size={25} style={{ fill: "royalblue"}}/> Upvote </button>
+            <button className="down-vote-btn" onClick={()=>voterDownVote(props._id)}> <BsArrowDownCircleFill size={25} style={{ fill: "royalblue"}}/>Downvote</button>
             {/* <button className="cancel-vote-btn" onClick={()=>removeVote(props._id)}>Cancel Vote</button> */}
 
           { !toggleIsViewingComments ?
