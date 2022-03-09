@@ -9,7 +9,8 @@
 }
 
 .app {
-    background-color: silver;
+    background-color: #0F4C75;
+  
 }
 
 .navbar {
@@ -24,6 +25,9 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    background-image: url(../assets/manny-becerra-6dUcJdXlo7Q-unsplash.jpg);
+    background-size: 34%;
+    background-repeat: space;
     height: 100vh;
 }
 
@@ -42,9 +46,9 @@
     padding: 20px;
     border-radius: 5px;
     background-color: #aaa9;
-
     display: flex;
     flex-direction: column;
+    margin-top: 55px;
 }
 
 .auth-container>form>input {
@@ -64,14 +68,14 @@
 .todo {} */
 
 .public {
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .profile {
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .profile>h1 {
@@ -90,7 +94,7 @@
     flex-direction: column;
     margin: 16px 0;
     border: 1px solid #3339;
-    background-color: #aaa9;
+    background-color: #00C3BF;
     padding: 16px;
     border-radius: 5px
 }
@@ -102,9 +106,21 @@
     border-radius: 5px
 }
 
+.app-title {
+    color: rgb(253, 201, 31);
+}
+
+.member-or-not {
+    color: #00C3BF;
+}
+
+.sign-up-btn {
+    background-color: rgb(253, 201, 31);
+}
+
 .add-issue-btn {
     margin: 10px;
-    background-color: blue;
+    background-color: ;
     color: white;
     font-weight: bold;
 }
@@ -183,8 +199,8 @@
 
 .submit-comment-button{
     margin-top: 10px;
-    background-color: green;
-    color: white;
+    background-color: #00C3BF;
+    color: black;
     font-weight: bold;
     font-size: 12px;
     border-radius: 5px;
@@ -274,8 +290,8 @@
 }
 
 .user-issue-container {
-  background: black;
-  border:  5px solid blue;
+  background: #BBE1FA;
+  border:  5px solid #0F4C75;
 }
 
 .user-comments {
@@ -283,7 +299,7 @@
 }
 
 .all-issues-container {
- background-color: black;
+ background-color: #f1b24d;
  border:  5px solid blue;
 }
 

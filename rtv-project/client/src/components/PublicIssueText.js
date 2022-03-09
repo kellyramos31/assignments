@@ -46,7 +46,7 @@ return (
             <h3 className="total-votes">Votes: {props.voteCount}</h3>
             <h4 className="number-comments"># Comments: {totalComments} </h4>
                <div className="comment-related-btns">
-            <button className="up-vote-btn" onClick={() =>voterUpVote(props._id)}> <BsArrowUpCircleFill size={25} style={{ fill: "royalblue"}}/> Upvote </button>
+            <button className="up-vote-btn" onClick={() =>voterUpVote(props._id)}> <BsArrowUpCircleFill size={25} style={{ fill: "steelblue"}}/> Upvote </button>
             <button className="down-vote-btn" onClick={()=>voterDownVote(props._id)}> <BsArrowDownCircleFill size={25} style={{ fill: "royalblue"}}/>Downvote</button>
             {/* <button className="cancel-vote-btn" onClick={()=>removeVote(props._id)}>Cancel Vote</button> */}
       
