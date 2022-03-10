@@ -17,7 +17,14 @@ const issueSchema = new Schema({
         default: Date.now
     },
     //maybe voteCount should be array of userIds instead of just #?
-    voteCount: {
+    //need a net votes count??
+    upVotes: {
+        type: Number
+    },
+    downVotes: {
+        type: Number
+    },
+    totalVotersVotedCount: {
         type: Number
     },
     _voters: {
@@ -29,8 +36,10 @@ const issueSchema = new Schema({
         ref: "User",
         required: true
     },
-    _comments: [{ type: Schema.Types.ObjectId, ref: "Comment"}]
-
+       _comments: [{ type: Schema.Types.ObjectId, ref: "Comment"}]
 })
+
+
+  
 
 module.exports = mongoose.model("Issue", issueSchema)

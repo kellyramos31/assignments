@@ -43,7 +43,7 @@ return (
 
                <div className="profile">
                    
-                    <h1>Welcome @{username}!</h1>
+                    <h1 className="welcome-msg">Welcome @{username}!</h1>
 
                     <h3>Add An Issue</h3>
 

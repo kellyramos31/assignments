@@ -3,7 +3,6 @@ import { IssueCommentContext } from "../context/IssueCommentProvider.js"
 // import CommentForm from "./CommentForm.js"
 
 
-const initInputs = {title: "", description: "" }
 
 export default function IssueText(props){
 
@@ -20,7 +19,7 @@ export default function IssueText(props){
 
   const [toggleIsEditing, setToggleIsEditing] = useState(false)
 
-  const [inputs, setInputs] = useState(initInputs)
+  const [inputs, setInputs] = useState("")
 
   function toggleToEdit(){
     setToggleIsEditing(prev => !prev)
@@ -40,9 +39,9 @@ export default function IssueText(props){
 return (
     
    
-    <div>
+    <div >
         { !toggleIsEditing ?
-        <div className="user-issue-container" key={props._id} >
+        <div key={props._id} className="user-issue-container">
         <div className="issue">
           <h1 className="issue-title">Issue: {props.title}</h1>
           <h3 className="issue-description">Description: {props.description}</h3>
@@ -63,7 +62,7 @@ return (
               <input
                 type="text"
                 defaultValue={props.title}
-                inputs={inputs}
+                inputs={props.title || inputs}
                 name="title"
                 onChange={handleEditChange}
                 placeholder="Title"
@@ -71,7 +70,7 @@ return (
               <input
                 type="text"
                 defaultValue={props.description}
-                inputs={inputs}
+                inputs={props.description || inputs}
                 name="description"
                 onChange={handleEditChange}
                 placeholder="Description"

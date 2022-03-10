@@ -6,10 +6,10 @@ export default function NavBar(props){
   const { logout } = props
   
   return (
-    <div className="navbar">
+    <nav className="navbar">
       <Link to="/profile">Profile</Link>
       <Link to="/public">All Issues</Link>
       <button onClick={logout}>Logout</button>
-    </div>
+    </nav>
   )
 }

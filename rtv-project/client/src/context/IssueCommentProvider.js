@@ -256,7 +256,7 @@ function upVote(issueId){
   userAxios.put(`/api/issue/voter/vote/${issueId}`)		
     .then(res => {
       console.log("upVote res:", res)
-      if(res.data.nModified !== 0){
+      if(res.data.nModified === 1){
         upVote(issueId)
       }
           setIssueState(prevState => ({
@@ -289,7 +289,7 @@ function downVote(issueId){
   console.log("issueId for upVote:", issueId)
   userAxios.put(`/api/issue/voter/vote/${issueId}`)		
     .then(res => {
-      if(res.data.nModified !== 0){
+      if(res.data.nModified === 1){
         downVote(issueId)
       }
       console.log("upVote res:", res)
@@ -343,11 +343,11 @@ function removeVote(issueId){
 
 
   //TOTAL NUMBER OF COMMENTS ON ISSUE
-  function getTotalNumberComments(issueId) {
-        userAxios.get(`/api/issue/countComments/${issueId}`)
-            .then(res => setTotalComments(res.data[0].totalcomments))       
-            .catch(err => console.log(err))
-    }
+  // function getTotalNumberComments(issueId) {
+  //       userAxios.get(`/api/issue/${issueId}`)
+  //           .then(res => setTotalComments(res.data._comments.length))       
+  //           .catch(err => console.log(err))
+  //   }
 
 
 
@@ -359,7 +359,7 @@ function removeVote(issueId){
             getUserIssues,
             // upVote,
             // downVote,
-            getTotalNumberComments,
+            // getTotalNumberComments,
             totalComments,
             voterUpVote,
             voterDownVote,

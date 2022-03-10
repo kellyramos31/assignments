@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react"
 //import React, { useState } from "react"
 import { IssueCommentContext } from "../context/IssueCommentProvider.js"
+import { FcCancel } from 'react-icons/fc'
 
 
 const initInputs = {
@@ -49,7 +50,7 @@ const { commentText } = inputs
 
 
 return (
-    <div >
+    <div className="comment-form">
      <form onSubmit={(e)=>handleSubmitComment(e, commentText, _issue)}>
         <input
             _issue={_issue}
@@ -59,9 +60,11 @@ return (
             onChange={handleCommentChange} 
             placeholder="Comment Text"
         />
-      <button className="submit-comment-button">Submit Comment</button>
-      {/* <button className="cancel-comment-button" onClick={toggleToComment}>Cancel</button> */}
-    </form>
+        <div className="comment-form-buttons">
+            <button className="submit-comment-button">Submit Comment</button>
+            <button className="cancel-comment-btn" onClick={toggleToComment}><FcCancel size={22} style={{ fill: "white"}}/></button>
+        </div>
+      </form>
     </div>
   )
 }

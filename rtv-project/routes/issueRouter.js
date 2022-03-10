@@ -32,7 +32,7 @@ const Comment = require("../models/comment.js");
 issueRouter.get("/", (req, res, next) => {
 Issue.find({}) 
     .populate("_comments")
-    .sort({ voteCount: -1 })
+    .sort({ upVotes: -1 })
     .exec((err, issues)=> {
 
 // (err, issues)=> {
@@ -55,7 +55,7 @@ issueRouter.get("/user", (req, res, next)=>{
     const ObjectId = require('mongodb').ObjectId
     Issue.aggregate([
        { $match: { _user: new ObjectId(req.user._id) } },  //problem with matching the ID(this solution is from Stack Overflow)
-       { $sort: { voteCount: -1 } },
+       { $sort: { upVotes: -1 } },
        { $lookup: 
         { from: "comments",
           localField: "_comments",
@@ -151,7 +151,7 @@ issueRouter.delete("/:issueId", (req, res, next)=> {
 issueRouter.put("/upvote/:issueId", (req, res, next)=> {			
   Issue.findByIdAndUpdate(			
   {_id: req.params.issueId, _user: req.user._id },	
-  { $inc: {voteCount: 1}},			
+  { $inc: {upVotes: 1, totalVotersVotedCount: 1} },			
   {new: true},			
   (err, updatedIssue)=> {			
       if(err){			
@@ -186,7 +186,7 @@ Issue.updateOne(
 issueRouter.put("/downvote/:issueId", (req, res, next)=> {			
   Issue.findByIdAndUpdate(			
   {_id: req.params.issueId, _user: req.user._id },		//maybe don't need _user: req.user._id here??
-  { $inc: {voteCount: -1}},			
+  { $inc: {downVotes: 1, totalVotersVotedCount: 1} },			
   {new: true},			
   (err, updatedIssue)=> {			
       if(err){			
@@ -215,25 +215,7 @@ Issue.updateOne(
         return res.status(201).send(issues);
 })
 })
+
 		
-
-
-//COUNT THE TOTAL NUMBER OF COMMENTS FOR EACH ISSUE -- NEED TO WORK ON THIS ONE -*******
-// issueRouter.get("/countComments", (req, res, next)=>{
-//     Issue.aggregate([
-//         {"$project": {
-//             "$totalComments": {
-//                 "$size": "$_comments"
-//         }}}
-//     ]),
-//      (err, commentTotal)=> {
-//             if (err){
-//             res.status(500)
-//             return next(err)
-//         }
-//         return res.status(200).send(commentTotal)
-//     }})
-        
-
 
 module.exports = issueRouter;

@@ -29,6 +29,7 @@ export default function Public() {
 
     return (
         <div className="public">
+          <h3 className="title-public-page">All Users' Issues</h3>
             <PublicIssueList 
                 issueState={issueState}
                 issues={issues}
