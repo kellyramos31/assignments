@@ -41,14 +41,16 @@ function toggleToComment(){
 return (
     <div className="all-issues-container" key={props._id}>
         <div className="all-issues" key={props._id}>
-                 <div className="tallies">
-                <h3 className="total-votes">Voters: {props.totalVotersVotedCount}</h3>
-                <h3 className="total-upVotes">UpVotes: {props.upVotes}</h3>
-                <h3 className="total-downVotes">DownVotes: {props.downVotes}</h3>
-                <h4 className="number-comments"># Comments: {totalComments} </h4>
-            </div>
+               <div className="tallies">
+                    <h3 className="total-votes">Voters: {props.totalVotersVotedCount}</h3>
+                    <h3 className="total-upVotes">UpVotes: {props.upVotes}</h3>
+                    <h3 className="total-downVotes">DownVotes: {props.downVotes}</h3>
+                    <h4 className="number-comments"># Comments: {totalComments} </h4>
+                </div>
+              
             <h1 className="issue-title">Issue: {props.title}</h1>
             <h3 className="issue-description">Description: {props.description}</h3>
+
      
         <div className="comment-related-btns">
             <button className="up-vote-btn" onClick={() =>voterUpVote(props._id)}> <BsArrowUpCircleFill size={25} style={{ fill: "#0F4C75"}}/></button>

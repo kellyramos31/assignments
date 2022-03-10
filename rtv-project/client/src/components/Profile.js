@@ -52,7 +52,7 @@ return (
                     />
 
 
-                    <h3>My Issues</h3>
+                    <h2 className="profile-issues-list-header">@{username}'s' Issues</h2>
                     <IssueList
                         // issueState={issueState}
                         //getUserIssues={getUserIssues}
