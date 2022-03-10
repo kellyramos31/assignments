@@ -159,6 +159,7 @@
 .comment-related-btns {
     display: flex;
     flex-direction: row;
+    margin-top:  10px;
 }
 
 .eye-btn-pieces {
@@ -213,7 +214,9 @@
 
 .comment-form-buttons {
     display: flex;
-    margin-top:  10px;
+    flex-direction: row;
+    margin-top:  5px;
+    margin-left: -30px;
 }
 
 .submit-comment-button{
@@ -239,7 +242,7 @@
     padding: 2px;
     font-size: 12px;
     height: 40px;
-    width:  120px;
+    width:  65px;
 }
 
 .comment-form {
@@ -253,12 +256,13 @@
     border: none;
     border-radius: 4px;
     margin-top: -2px;
+    margin-left: -30px;
     height: 35px;
-    width: 400px;
+    width: 190px;
     border:  3px solid #0F4C75;
     background-color:rgb(253, 201, 31);
     color: #0F4C75;
-    padding-left: 5px;
+    padding-left: 2px;
 }
 
 .up-vote-btn {
@@ -353,14 +357,25 @@
 }
 
 .all-issues-container {
-  background-color: rgba(194, 194, 194, 0.6);
-  border-radius: 10px;
+  /* background-color: rgba(194, 194, 194, 0.6); */
+  /* background-color: white;*/
+  background-image: linear-gradient(#90d1fd,#1a75b3, #bbd6e7 );
+  background-image:  url(../assets/andres-haro-R6ZJYwBzZx4-unsplash.jpg);
+  background-color: rgba(179, 179, 179, 0.6);
+  background-size: 35%;
+  background-repeat: no-repeat;
+  background-position-x: 380px;
+  background-position-y: 170px;
   margin-top: 25px;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
   margin-left: auto;
   margin-right: auto;
+  border-radius: 10px;
   width:  38%;
-  padding: 25px;
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-bottom:  75px;
   border:  3px solid white;
 }
 
@@ -369,6 +384,7 @@
     color: white;
     border-radius: 5px;
     padding: 8px;
+    margin-top:  65px;
     /* border:  1px solid white; */
 }
 

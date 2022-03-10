@@ -25,7 +25,7 @@ export default function IssueCommentProvider(props) {
 
 const [issueState, setIssueState] = useState(initState)
 
-const [totalComments, setTotalComments] = useState(0)
+// const [totalComments, setTotalComments] = useState(0)
 
 // const [issues, setIssues] = useState([])
 
@@ -360,7 +360,7 @@ function removeVote(issueId){
             // upVote,
             // downVote,
             // getTotalNumberComments,
-            totalComments,
+            // totalComments,
             voterUpVote,
             voterDownVote,
             removeVote,
