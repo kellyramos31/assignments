@@ -1,6 +1,7 @@
 import React, {useState, useContext} from "react"
 import CommentForm from "./CommentForm.js"
 import { IssueCommentContext } from "../context/IssueCommentProvider.js"
+import { UserContext } from "../context/UserProvider.js"
 import { BsArrowUpCircleFill} from 'react-icons/bs'
 import { BsArrowDownCircleFill} from 'react-icons/bs'
 import { FaEye} from 'react-icons/fa'
@@ -15,10 +16,24 @@ import { BiHide } from 'react-icons/bi'
 export default function PublicIssueText(props){
 
 const {
+    user: {
+        username
+    },
+        // userIssues,
+        //getUserIssues,
+        // addIssue,
+        // deleteIssue
+    } = useContext(UserContext)
+
+
+
+const {
       voterUpVote,
       voterDownVote,
       // removeVote,
-      totalComments
+      totalComments,
+      deleteComment,
+      editComment
       // addComment,
       // handleSubmitComment   
      } = useContext(IssueCommentContext)
@@ -76,7 +91,21 @@ return (
           :
           <div>
                 <button  className="hide-comments-btn" onClick={toggleViewComments}><BiHide size={25} style={{ fill: "#0F4C75"}}/>Hide Comments</button>    
-                <h3 className="public-comments">Comments:{props._comments.map(comment=>(<li key={comment._id}><span className="user-name-span">{comment._user.username}</span>{" "}{comment.commentText}</li>))}</h3>
+                <h3 className="public-comments">Comments:{props._comments.map(comment=>(
+                    <li className="comment-list-item" key={comment._id}><span className="user-name-span">{comment._user.username}</span>{" "}{comment.commentText} 
+                    {username === comment._user.username 
+                    ? 
+                    <div className="edit-del-comment-btns"> 
+                        <button id={comment._id} onClick={() => deleteComment(comment._id)}>Delete</button>
+                        <button id={comment._id} onClick={() => editComment(comment._id)}>Edit</button>
+                    </div>
+                    :
+                    <div>
+                        {null}
+                    </div>
+                    } 
+                    </li>))}
+                </h3>
           </div>
         }
           

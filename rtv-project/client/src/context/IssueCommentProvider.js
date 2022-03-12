@@ -147,7 +147,7 @@ function getComments(){
 
     
 //DELETE USER'S ISSUE
-//NEED TO ADD SOMETHING TO DELETE COMMENTS ALSO -- they seem to persist even though issue deletes
+//NEED TO ADD SOMETHING TO DELETE RELATED COMMENTS ALSO -- they seem to persist even though issue deletes
 
 //do i actually need to chain .filter and .map (or similiar) in my setIssueState???
 
@@ -228,13 +228,14 @@ function getComments(){
         console.log("commentId:", commentId)
         userAxios.delete(`/api/comment/${commentId}`)
              .then(res => {
-                setIssueState(prevState=> ({userIssues: prevState.userIssues.filter(userIssue=> userIssue._comment !== commentId)}))
+                setIssueState(prevState=> ({issues: prevState.issues.filter(issue=> issue._comment !== commentId)}))
                 getUserIssues()
                 getIssues()
              })
         
             .catch(err=>console.log(err.response.data.errMsg))
     }
+
 
 //EDIT COMMENT
    function editComment(inputs, commentId) {
@@ -243,7 +244,7 @@ function getComments(){
         userAxios.put(`/api/comment/${commentId}`, inputs)
          .then(res => {
             
-            setIssueState(prevState => prevState.userIssues.map(userIssue => userIssue.userComments._id !== commentId ? userIssue.userComment : res.data))
+            setIssueState(prevState => prevState.issues.map(issue => issue._comment !== commentId ? issue.userComment : res.data))
       })
       .catch(err=>console.log(err.response.data.errMsg))
     }

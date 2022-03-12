@@ -10,8 +10,8 @@ export default function IssueText(props){
         deleteIssue,
         editIssue,
         // comments,
-        deleteComment,
-        editComment
+        // deleteComment,
+        // editComment
         // addComment,
         // upVote,
         // downVote   
@@ -56,14 +56,14 @@ return (
           <button className="down-vote-btn" onClick={()=>downVote(props._id)}>Downvote</button> */}
         </div>
           {/* <h3 className="comments">Comments: {props._comments.map(comment=>(<li>{comment.commentText}</li>))}</h3> */}
-          <h3 className="user-comments">My Comments on this Issue:
+          {/* <h3 className="user-comments">My Comments on this Issue:
               {props.userComments.map(comment=>(
                     <li key={comment._id}>{comment.commentText} 
                     <button id={comment._id} onClick={() => deleteComment(comment._id)}>Delete</button>
                     <button id={comment._id} onClick={() => editComment(comment._id)}>Edit</button>
                     </li>))
               }
-          </h3>
+          </h3> */}
           <h3 className="total-votes">Votes: {props.voteCount}</h3>
           </div>  
         </div>
