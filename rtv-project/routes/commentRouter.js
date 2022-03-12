@@ -192,9 +192,10 @@ commentRouter.delete("/:commentId", (req, res, next)=> {
     { _id: req.params.commentId, _user: req.user._id },
     (err, deletedComment) => {
         if (err) {
-            res.status(500); 
+            res.status(500);
+            return next(err) 
         }
-        return res.status(200).send(`Successfully deleted: ${deletedComment.commentText}`);
+        return res.status(200).send(`Successfully deleted comment: ${deletedComment.commentText}`);
     })
 })
 

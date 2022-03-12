@@ -20,10 +20,14 @@ export default function Profile() {
     const {
         addIssue,
         issueState,
+        // issues,
         userIssues,
+        comments,
         getUserIssues,
-        deleteIssue
-        // addComment
+        getIssues,
+        // getComments,
+        deleteIssue,
+        deleteComment
     } = useContext(IssueCommentContext)
 
 
@@ -34,6 +38,8 @@ export default function Profile() {
   useEffect(() => {
     console.log("useEffect triggered")
     getUserIssues()
+    getIssues()
+    // getComments()
     // eslint-disable-next-line  
   }, [issueState])
 
@@ -52,12 +58,15 @@ return (
                     />
 
 
-                    <h2 className="profile-issues-list-header">@{username}'s' Issues</h2>
+                    <h2 className="profile-issues-list-header">{username}'s' Issues</h2>
                     <IssueList
                         // issueState={issueState}
                         //getUserIssues={getUserIssues}
+                        deleteComment={deleteComment}
                         deleteIssue={deleteIssue}
+                        // issues={issues}
                         userIssues={userIssues}
+                        comments={comments}
                     />
                    
             </div>

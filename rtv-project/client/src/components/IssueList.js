@@ -7,7 +7,7 @@ import IssueText from './IssueText.js'
 
 export default function IssueList(props){
 
-const { userIssues}  = props
+const { userIssues }  = props
 
 
 return (

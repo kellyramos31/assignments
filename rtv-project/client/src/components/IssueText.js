@@ -9,6 +9,9 @@ export default function IssueText(props){
     const {
         deleteIssue,
         editIssue,
+        // comments,
+        deleteComment,
+        editComment
         // addComment,
         // upVote,
         // downVote   
@@ -43,18 +46,26 @@ return (
         { !toggleIsEditing ?
         <div key={props._id} className="user-issue-container">
         <div className="issue">
+          <h3 className="my-issue-upvotes">Upvotes: {props.upVotes}</h3>
           <h1 className="issue-title">Issue: {props.title}</h1>
           <h3 className="issue-description">Description: {props.description}</h3>
-          {/* <h3 className="comments">Comments: {props._comments.map(comment=>(<li>{comment.commentText}</li>))}</h3> */}
-          <h3 className="user-comments">My Comments on this Issue:{props.userComments.map(comment=>(<li key={comment._id}>{props._user.username}{comment.commentText}</li>))}</h3>
-          <h3 className="total-votes">Votes: {props.voteCount}</h3>
-          </div>
-        <div className="vote-buttons">
+          <div className="vote-buttons">
           <button className="delete-issue-btn" onClick={() => deleteIssue(props._id)}>Delete Issue</button>
           <button className="edit-issue-btn" onClick={toggleToEdit}>Edit Issue</button>
           {/* <button className="up-vote-btn" onClick={() => upVote(props._id)}>Upvote</button>
           <button className="down-vote-btn" onClick={()=>downVote(props._id)}>Downvote</button> */}
         </div>
+          {/* <h3 className="comments">Comments: {props._comments.map(comment=>(<li>{comment.commentText}</li>))}</h3> */}
+          <h3 className="user-comments">My Comments on this Issue:
+              {props.userComments.map(comment=>(
+                    <li key={comment._id}>{comment.commentText} 
+                    <button id={comment._id} onClick={() => deleteComment(comment._id)}>Delete</button>
+                    <button id={comment._id} onClick={() => editComment(comment._id)}>Edit</button>
+                    </li>))
+              }
+          </h3>
+          <h3 className="total-votes">Votes: {props.voteCount}</h3>
+          </div>  
         </div>
       :
         <div id={props._id} index={props.index} >

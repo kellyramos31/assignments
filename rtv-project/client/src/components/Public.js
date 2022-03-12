@@ -11,7 +11,9 @@ export default function Public() {
       const {
         issueState,
         issues,
+        userIssues,
         comments,
+        getUserIssues,
         getIssues,
         // addComment,
         getComments
@@ -21,6 +23,7 @@ export default function Public() {
 
   useEffect(() => {
     console.log("useEffect triggered")
+    getUserIssues()
     getIssues()
     getComments()
     // eslint-disable-next-line  
@@ -31,8 +34,8 @@ export default function Public() {
         <div className="public">
           <h3 className="title-public-page">All Users' Issues</h3>
             <PublicIssueList 
-                issueState={issueState}
                 issues={issues}
+                userIssues={userIssues}
                 comments={comments}
                 // addComment={addComment}
             />

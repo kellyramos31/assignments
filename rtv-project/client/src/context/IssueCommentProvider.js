@@ -54,6 +54,8 @@ const [issueState, setIssueState] = useState(initState)
                 ...prevState,
                 issues: res.data
             }))
+
+             console.log("issues from getIssues", res.data)
         })
         .catch(err => console.log(err.response.data.errMsg))
     }
@@ -84,6 +86,7 @@ function getComments(){
                 ...prevState,
                 comments: res.data
             }))
+            console.log("comments from getComments", res.data)
         })
         .catch(err => console.log(err.response.data.errMsg))
 
@@ -145,6 +148,9 @@ function getComments(){
     
 //DELETE USER'S ISSUE
 //NEED TO ADD SOMETHING TO DELETE COMMENTS ALSO -- they seem to persist even though issue deletes
+
+//do i actually need to chain .filter and .map (or similiar) in my setIssueState???
+
     function deleteIssue(issueId) {
         console.log("issueId:", issueId)
         userAxios.delete(`/api/issue/${issueId}`)
@@ -215,21 +221,32 @@ function getComments(){
           }
   
 
-
-
   
-//DELETE COMMENT -- NEED TO TEST THIS ONE TO SEE IF WORKS
-    // function deleteComment(commentId) {
-    //     console.log("commentId:", commentId)
-    //     userAxios.delete(`/api/comment/${commentId}`)
-    //          .then(res => {
-    //             setIssueState(prevState=> ({userIssues: prevState.userComments.filter(userComment => userComment._id !== commentId)}))
-    //          })
+//DELETE USER'S COMMENT
+//NOTE******this filters it out of comments but does not clear id out of the issue in _comments array*****
+    function deleteComment(commentId) {
+        console.log("commentId:", commentId)
+        userAxios.delete(`/api/comment/${commentId}`)
+             .then(res => {
+                setIssueState(prevState=> ({userIssues: prevState.userIssues.filter(userIssue=> userIssue._comment !== commentId)}))
+                getUserIssues()
+                getIssues()
+             })
         
-    //         .catch(err=>console.log(err.response.data.errMsg))
-    // }
+            .catch(err=>console.log(err.response.data.errMsg))
+    }
 
 //EDIT COMMENT
+   function editComment(inputs, commentId) {
+        console.log("commentId to be edited", commentId)
+        console.log("inputs for edit", inputs)
+        userAxios.put(`/api/comment/${commentId}`, inputs)
+         .then(res => {
+            
+            setIssueState(prevState => prevState.userIssues.map(userIssue => userIssue.userComments._id !== commentId ? userIssue.userComment : res.data))
+      })
+      .catch(err=>console.log(err.response.data.errMsg))
+    }
 
 //GOING TO NEED TO WRITE OVERALL VOTING FUNCTIONS (1 for Upvote & 1 for Downvote) 
 //THAT COMBINE UPDATING _voters and either incrementing or decrementing total votecount
@@ -366,13 +383,14 @@ function removeVote(issueId){
             removeVote,
             // issues,
             // userIssues,
-            //comments,
             // voteCount,
             addIssue,
             deleteIssue,
             editIssue,
             getComments,
             addComment,
+            deleteComment,
+            editComment,
             getIssues
         }}>
 
