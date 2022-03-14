@@ -238,7 +238,7 @@ function getComments(){
 
 
 //EDIT COMMENT
-   function editComment(inputs, commentId) {
+   function editComment(inputs, commentId){
         console.log("commentId to be edited", commentId)
         console.log("inputs for edit", inputs)
         userAxios.put(`/api/comment/${commentId}`, inputs)

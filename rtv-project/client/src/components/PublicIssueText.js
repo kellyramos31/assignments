@@ -12,7 +12,6 @@ import { BiHide } from 'react-icons/bi'
 
 
 
-
 export default function PublicIssueText(props){
 
 const {
@@ -38,11 +37,13 @@ const {
       // handleSubmitComment   
      } = useContext(IssueCommentContext)
 
-
+const [inputsCommentEdit, setInputsCommentEdit] = useState("")
 
 const [toggleIsCommenting, setToggleIsCommenting] = useState(false)
 
 const [toggleIsViewingComments, setToggleIsViewingComments] = useState(false)
+
+const [toggleEdit, setToggleEdit] = useState(false)
 
 function toggleViewComments(){
     setToggleIsViewingComments(prev => !prev)
@@ -52,6 +53,20 @@ function toggleToComment(){
    console.log("toggleToComment clicked")
     setToggleIsCommenting(prev => !prev)
   }
+
+function toggleToEdit(){
+    setToggleEdit(prev => !prev)
+  }
+
+function handleChangeEdit(e){
+    const {name, value} = e.target
+    setInputsCommentEdit(prevInputs => ({
+      ...prevInputs,
+      [name]: value
+    }))
+    }
+
+
 
 return (
     <div className="all-issues-container" key={props._id}>
@@ -88,29 +103,51 @@ return (
            </div>
                { !toggleIsViewingComments ?
                 <button className="see-comments-btn" key={props._id} onClick={toggleViewComments}> <div className="eye-btn-pieces"><FaEye size={25} style={{ fill: "#0F4C75"}}/>View Comments</div></button>
-          :
-          <div>
+                :
+                <div>
                 <button  className="hide-comments-btn" onClick={toggleViewComments}><BiHide size={25} style={{ fill: "#0F4C75"}}/>Hide Comments</button>    
                 <h3 className="public-comments">Comments:{props._comments.map(comment=>(
                     <li className="comment-list-item" key={comment._id}><span className="user-name-span">{comment._user.username}</span>{" "}{comment.commentText} 
                     {username === comment._user.username 
                     ? 
-                    <div className="edit-del-comment-btns"> 
+                    <div key={props._id} className="edit-del-comment-btns"> 
                         <button id={comment._id} onClick={() => deleteComment(comment._id)}>Delete</button>
-                        <button id={comment._id} onClick={() => editComment(comment._id)}>Edit</button>
-                    </div>
-                    :
-                    <div>
-                        {null}
-                    </div>
+                        <button id={comment._id} onClick={toggleToEdit}>Edit</button>
+                        {toggleEdit 
+                        ?
+                           <div  key={props._id} index={props.index}>
+                                    <form onSubmit={()=>editComment(inputsCommentEdit, comment._id)}>
+                                                <input
+                                                     type="text"
+                                                     defaultValue={comment.commentText}
+                                                     inputs={comment.commentText || inputsCommentEdit}
+                                                     name="commentText"
+                                                     onChange={handleChangeEdit}
+                                                     placeholder="Comment Text"
+                                                 />
+                                                <button onClick={toggleToEdit}>Cancel Edit</button>
+                                                <button>Submit Edited Comment</button>
+                                        </form>
+                            </div>    
+                        :
+                        <div id={props._id}>
+                            {null}
+                        </div> 
+                        }
+                        </div>
+                        :
+                        <div>
+                            {null}
+                        </div>
                     } 
-                    </li>))}
+                    </li>
+                    ))
+                    }
                 </h3>
           </div>
         }
-          
-          
     </div>
     </div>
-)
-}
+)}
+
+
