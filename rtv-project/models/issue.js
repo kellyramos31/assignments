@@ -48,6 +48,17 @@ const issueSchema = new Schema({
        _comments: [{ type: Schema.Types.ObjectId, ref: "Comment"}]
 })
 
+
+const autoPopulateUser  = function(next) {
+    this.populate({
+        path: "_user",
+        select: "username _id"
+    })
+    next()
+    }
+
+issueSchema.pre("find", autoPopulateUser)
+
 // You can add your own 'remove' Mongoose middleware on the Person schema to 
 // remove that person from all other documents that reference it. 
 // In your middleware function, this is the Person document that's being removed.

@@ -326,6 +326,11 @@
     background-color:  #0F4C75;
     padding:  10px;
     border-radius: 5px;
+    font-style: italic;
+}
+
+.tallies-top {
+    color: white;
 }
 
 
@@ -348,8 +353,15 @@
  
 }
 
-.tallies-top {
+.user-name-span-issue {
+    color:rgb(253, 201, 31);
+    font-style: italic;
+}
+
+.posted-by {
+    margin-left:  25px;
     color: white;
+    font-style: italic;
 }
 
 .user-issue-list {
@@ -396,6 +408,13 @@
 .comment-votes-span {
     margin-left:  6px;
     color:  rgb(253, 201, 31);
+    font-style: italic;
+}
+
+.comment-tallies {
+    color: white;
+    font-style: italic;
+    margin-left: 3px;
 }
 
 .title-public-page {
@@ -451,7 +470,6 @@
 
 .edit-comments-grp-btns {
     display: flex;
-    margin-left:  10px;
 }
 
 .submit-edited-comment-btn {

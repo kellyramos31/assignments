@@ -85,8 +85,9 @@ return (
                     <h3 className="total-downVotes">Down: <span className="tallies-top">{props.downVotes}</span></h3>
                     <h3 className="net-votes">Net: <span className="tallies-top">{calcNetVotes(props.upVotes, props.downVotes)} </span> </h3>
                     <h4 className="number-comments"># Comments: <span className="tallies-top">{props.numberCommentsOnIssue}</span> </h4>
+                    <h3><span className="posted-by">posted by:</span> <span className="user-name-span-issue">{props._user.username}</span></h3>  
                 </div>
-              
+            
             <h1 className="issue-title">Issue: {props.title}</h1>
             <h3 className="issue-description">Description: {props.description}</h3>
 
@@ -121,7 +122,7 @@ return (
                         <button className="upvote-comment-btn" onClick={()=>commentUpVote(comment._id)}><BsArrowUpCircleFill size={14} style={{ fill: "#0F4C75"}}/></button>
                         <button className="downvote-comment-btn" onClick={()=>commentDownVote(comment._id)}><BsArrowDownCircleFill size={14} style={{ fill: "#0F4C75"}}/></button>
                     </div>
-                    <span className="user-name-span">{comment._user.username}</span> {comment.commentText}<span className="comment-votes-span">up:</span>{comment.upVotesComments}<span className="comment-votes-span">down:</span>{comment.downVotesComments}<span className="comment-votes-span">net:</span>{calcNetVotes(comment.upVotesComments, comment.downVotesComments)}
+                    <span className="user-name-span">{comment._user.username}</span> {comment.commentText}<span className="comment-votes-span">up:</span><span className="comment-tallies">{comment.upVotesComments}</span><span className="comment-votes-span">down:</span><span className="comment-tallies">{comment.downVotesComments}</span><span className="comment-votes-span">net:</span><span className="comment-tallies">{calcNetVotes(comment.upVotesComments, comment.downVotesComments)}</span>
                     {username === comment._user.username 
                     ? 
                     <div key={props._id} className="edit-del-comment-btns"> 
