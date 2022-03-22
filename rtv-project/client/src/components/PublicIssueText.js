@@ -31,6 +31,7 @@ const {
       voterUpVote,
       voterDownVote,
       // removeVote,
+      commentUpVote,
       totalComments,
       calcNetVotes,
       deleteCommentFromIssueArray,
@@ -116,8 +117,8 @@ return (
                 <h3 className="public-comments">Comments:{props._comments.map(comment=>(
                     <li className="comment-list-item" key={comment._id}><span className="user-name-span">{comment._user.username}</span>{comment.commentText} upvotes:{comment.upVotesComments}
                     <div>
-                        <button className="upvote-comment-btn">UpVote</button>
-                        <button className="downvote-comment-btn">DownVote</button>
+                        <button className="upvote-comment-btn" onClick={()=>commentUpVote(comment._id)}><BsArrowUpCircleFill size={18} style={{ fill: "#0F4C75"}}/></button>
+                        <button className="downvote-comment-btn"><BsArrowDownCircleFill size={18} style={{ fill: "#0F4C75"}}/></button>
                     </div>
                     
                     {username === comment._user.username 

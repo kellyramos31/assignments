@@ -234,10 +234,10 @@ commentRouter.put("/:commentId", (req, res, next) => {
 })
 
 //UPVOTE A COMMENT-INCREMENT -- this one works to increment vote count --but can vote as many times as want to...
-commentRouter.put("/upvote/:commentId", (req, res, next)=> {			
-  Issue.findByIdAndUpdate(			
+commentRouter.put("/upvoteit/:commentId", (req, res, next)=> {			
+  Comment.findByIdAndUpdate(			
   {_id: req.params.commentId, _user: req.user._id },	
-  { $inc: {upVotesComment: 1, totalVotersOnCommentCount: 1} },			
+  { $inc: {upVotesComments: 1, totalVotersOnCommentCount: 1} },			
   {new: true},			
   (err, updatedComment)=> {			
       if(err){			
@@ -250,7 +250,7 @@ commentRouter.put("/upvote/:commentId", (req, res, next)=> {
 })
 
 //VOTE ON AN ISSUE (adds to _voters array but only ONCE) -- NOTE:  seems to ??MAYBE?? work NOW -- BUT...how implement with rest on front-end??
-commentRouter.put("/voter/vote/:commentId", (req, res, next)=> {		
+commentRouter.put("/voter/vote/onlyonce/:commentId", (req, res, next)=> {		
 
 Comment.updateOne(
     {_id: req.params.commentId}, 
