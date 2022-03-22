@@ -28,21 +28,39 @@ const Comment = require("../models/comment.js");
 // });
 
 
-//ATTEMPT AT A GET ALL ISSUES ALTERNATIVE to include populate
+//GET ALL ISSUES ALTERNATIVE including populate _comments
 issueRouter.get("/", (req, res, next) => {
 Issue.find({}) 
     .populate("_comments")
-    .sort({ upVotes: -1 , upVotesComments: -1})
+    .sort({ upVotes: -1 })
     .exec((err, issues)=> {
 
-// (err, issues)=> {
-    if (err) {
+        if (err) {
             res.status(500);
             return next(err);
         }
         return res.status(201).send(issues);
 })
 })
+
+
+//TRYING TO SORT _COMMENTS ARRAY FOR SPECIFIC ISSUE
+
+issueRouter.put("/sort/:issueId", (req, res, next) => {
+    issueId = req.params.issueId
+    Issue.findOneAndUpdate(
+
+        {$unwind: "$_comments"},
+        {$match: {_id: 1}},
+        {$sort: {upVotesComments: -1}}
+    ),
+    (err, issues)=> {
+            if (err) {
+            res.status(500);
+            return next(err);
+        }
+        return res.status(201).send(issues);
+}})
 
 
 

@@ -25,26 +25,7 @@ export default function IssueCommentProvider(props) {
 
 const [issueState, setIssueState] = useState(initState)
 
-// const [totalComments, setTotalComments] = useState(0)
 
-// const [issues, setIssues] = useState([])
-
-// const [userIssues, setUserIssues] = useState([])
-
-// const [comments, setComments] = useState([])
-
-
-//USEEFFECT
-
-//   useEffect(() => {
-//     console.log("useEffect triggered")
-//     getIssues()
-//   }, [])
-
-
-
-//GET ALL ISSUES (regardless of user)
-//.populate({path: "comments", select: "commentText, username"}) -- can I use this somewhere??
 
 function getIssues(){
         userAxios.get("/api/issue")
@@ -59,6 +40,23 @@ function getIssues(){
         })
         .catch(err => console.log(err.response.data.errMsg))
     }
+
+
+
+// function sortCommentsForIssue() {
+//     userAxios.get("/api/issue/sortComments")
+//     .then(res => {
+//             console.log("res from issueCommentProvider:", res)
+//             setIssueState(prevState => ({
+//                 ...prevState,
+//                 issues: res.data
+//             }))
+
+//              console.log("issues from getIssues", res.data)
+//         })
+//         .catch(err => console.log(err.response.data.errMsg))
+
+// }
 
 
  //GET USER'S INDIVIDUAL ISSUES   
@@ -106,31 +104,6 @@ function getComments(){
     // }
 
 
-
-//add issue
-    // function addIssue(newUserIssue) {
-    //     userAxios.post("/api/issue/user", newUserIssue)
-    //       .then(res => {
-    //         console.log(res)
-    //         setUserIssues(prevState => ({
-    //             ...prevState,
-    //             userIssues:  [...prevState, res.data]
-    //         }))
-    //     })
-    //     .catch(err=>console.log(err.response.data.errMsg))
-    // }
-
-
-// //Delete User's Issue
-//     function deleteIssue(userIssueId) {
-//         console.log("userIssueId:", userIssueId)
-//         userAxios.delete(`/api/issue/user/${userIssueId}`)
-//              .then(res => {
-//                 setUserIssues(prevState=> prevState.userIssues.filter(userIssue => userIssue._id !== userIssueId))
-//     })
-        
-//             .catch(err=>console.log(err.response.data.errMsg))
-//     }
 
 //ADD ISSUE
     function addIssue(newUserIssue) {
@@ -180,29 +153,7 @@ function deleteIssue(issueId) {
       .catch(err=>console.log(err.response.data.errMsg))
     }
 
-    
-//ADD COMMENT -- try adding comment to the issue here instead??
-//    function addComment(newComment, issueId) {
-
-//       // const newComment = {
-//       //   commentText:  commentText,
-//       //   _issue: issueId
-//       // }
-     
-//       console.log("commentText from addComment:", newComment)
-//       // console.log("addComment -- _issue:", _issue)
-//       userAxios.post(`/api/issue/${issueId}`, newComment)
-//         .then(res => {
-//             console.log(res)
-//             setIssueState(prevState => ({
-//                 ...prevState,
-//                 issueState:  [...prevState.comments, res.data]
-//              }))
-            
-//         .catch(err=>console.log(err.response.data.errMsg))
-//           })
-//   }
-
+ 
 //COMBINED ADD COMMENT
 function combinedAddComment (commentText, _issue){
   addComment(commentText, _issue)
@@ -222,15 +173,14 @@ function combinedAddComment (commentText, _issue){
          
         .then(res => {
             console.log("addComment res", res)
-            getIssues()
-            // setIssueState(prevState => ({
-            //     ...prevState,
-            //     issueState:  [...prevState.comments, res.data]
+            setIssueState(prevState => ({
+                ...prevState,
+                issueState:  [...prevState.issues, res.data]
             })
-            
+              )})
         .catch(err=>console.log(err.response.data.errMsg))
-        
-          }
+    }
+
 
 //INCREMENT COMMENT TOTAL ON SPECIFIC ISSUE
 function addCommentTally (issueId) {
@@ -238,13 +188,14 @@ function addCommentTally (issueId) {
     userAxios.put(`/api/issue/increment/${issueId}`, issueId)
     .then(res => {
             console.log("addComment res", res)
-            getIssues()
-          
+            setIssueState(prevState => ({
+                ...prevState,
+                issueState:  [...prevState.issues, res.data]
             })
+              )})
             
         .catch(err=>console.log(err.response.data.errMsg))
         
-
 } 
   
 // function combinedDeleteComment(issueId, commentId){
@@ -282,9 +233,9 @@ function calcNetVotes(upVotes, downVotes){
     userAxios.put(`/api/issue/deleteCommentFromIssue/${issueId}`)
             // console.log("commentId:", commentId)
          .then(res => {
-            setIssueState(prevState => prevState.userIssues.map(userIssue => userIssue._id !== issueId ? userIssue : res.data))
+            setIssueState(prevState => prevState.issues.map(issue => issue._id !== issueId ? issue : res.data))
             // getUserIssues()
-            // getIssues()
+            getIssues()
       })
             
     .catch(err=>console.log(err.response.data.errMsg))
@@ -417,7 +368,7 @@ function upVoteComment(commentId){
       }
           setIssueState(prevState => ({
                 ...prevState,
-                issueState:  [...prevState.userIssues, res.data]
+                issueState:  [...prevState.issues, res.data]
             }))
     })
    
@@ -450,10 +401,8 @@ function downVoteComment(commentId){
       console.log("downVote res:", res)
           setIssueState(prevState => ({
                 ...prevState,
-                issueState:  [...prevState.userIssues, res.data]
+                issueState:  [...prevState.issues, res.data]
             }))
-            getIssues()
-   
     })
    
     .catch(err => console.log(err.response.data.errMsg))
@@ -478,8 +427,6 @@ function removeVote(issueId){
    
     .catch(err => console.log(err.response.data.errMsg))
 }
-
-
 
 
   //TOTAL NUMBER OF COMMENTS ON ISSUE
