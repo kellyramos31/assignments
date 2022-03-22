@@ -116,7 +116,7 @@ return (
                 <div>
                 <button  className="hide-comments-btn" onClick={toggleViewComments}><BiHide size={25} style={{ fill: "#0F4C75"}}/>Hide Comments</button>    
                 <h3 className="public-comments">Comments:{props._comments.map(comment=>(
-                    <li className="comment-list-item" key={comment._id}><span className="user-name-span">{comment._user.username}</span>{comment.commentText} upvotes:{comment.upVotesComments} downvotes:{comment.downVotesComments}
+                    <li className="comment-list-item" key={comment._id}><span className="user-name-span">{comment._user.username}</span>{comment.commentText} up votes:{comment.upVotesComments} down votes:{comment.downVotesComments}
                     <div>
                         <button className="upvote-comment-btn" onClick={()=>commentUpVote(comment._id)}><BsArrowUpCircleFill size={18} style={{ fill: "#0F4C75"}}/></button>
                         <button className="downvote-comment-btn" onClick={()=>commentDownVote(comment._id)}><BsArrowDownCircleFill size={18} style={{ fill: "#0F4C75"}}/></button>
