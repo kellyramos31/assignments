@@ -404,7 +404,39 @@ function upVoteComment(commentId){
     .catch(err => console.log(err.response.data.errMsg))
  } 
 
- 
+ //DOWNVOTE A COMMENT
+function downVoteComment(commentId){
+    console.log("commentId for downVote:", commentId)    		
+    userAxios.put(`/api/comment/downvoteit/${commentId}`)		
+    .then(res => {
+      console.log("downVote res:", res)
+          setIssueState(prevState => ({
+                ...prevState,
+                issueState:  [...prevState.issues, res.data]
+            }))
+    })
+   
+    .catch(err => console.log(err.response.data.errMsg))
+  }
+
+ //DOWNVOTE COMMENT with limit of 1
+ function commentDownVote(commentId){
+  console.log("commentId for downVote:", commentId)
+  userAxios.put(`/api/comment/voter/onlyonce/${commentId}`)		
+    .then(res => {
+      if(res.data.nModified === 1){
+        downVoteComment(commentId)
+      }
+      console.log("downVote res:", res)
+          setIssueState(prevState => ({
+                ...prevState,
+                issueState:  [...prevState.issues, res.data]
+            }))
+   
+    })
+   
+    .catch(err => console.log(err.response.data.errMsg))
+ } 
 
 
 
@@ -462,6 +494,7 @@ function removeVote(issueId){
             addComment,
             deleteComment,
             commentUpVote,
+            commentDownVote,
             deleteCommentFromIssueArray,
             // combinedDeleteComment,
             editComment,

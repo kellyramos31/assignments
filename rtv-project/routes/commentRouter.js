@@ -250,7 +250,7 @@ commentRouter.put("/upvoteit/:commentId", (req, res, next)=> {
 })
 
 //VOTE ON AN ISSUE (adds to _voters array but only ONCE) -- NOTE:  seems to ??MAYBE?? work NOW -- BUT...how implement with rest on front-end??
-commentRouter.put("/voter/vote/onlyonce/:commentId", (req, res, next)=> {		
+commentRouter.put("/voter/onlyonce/:commentId", (req, res, next)=> {		
 
 Comment.updateOne(
     {_id: req.params.commentId}, 
@@ -269,10 +269,10 @@ Comment.updateOne(
 
 
 //DOWNVOTE AN ISSUE--DECREMENT this works to decrement vote count === but can downVote as many times as want
-commentRouter.put("/downvote/:commentId", (req, res, next)=> {			
-  Issue.findByIdAndUpdate(			
+commentRouter.put("/downvoteit/:commentId", (req, res, next)=> {			
+  Comment.findByIdAndUpdate(			
   {_id: req.params.commentId, _user: req.user._id },		//maybe don't need _user: req.user._id here??
-  { $inc: {downVotesComment: 1, totalVotersOnCommentCount: 1} },			
+  { $inc: {downVotesComments: 1, totalVotersOnCommentCount: 1} },			
   {new: true},			
   (err, updatedComment)=> {			
       if(err){			
@@ -283,9 +283,6 @@ commentRouter.put("/downvote/:commentId", (req, res, next)=> {
    }			
   )			
 })	
-
-
-
 
 
 
