@@ -88,8 +88,8 @@ return (
                     <h3><span className="posted-by">posted by:</span> <span className="user-name-span-issue">{props._user.username}</span></h3>  
                 </div>
             
-            <h1 className="issue-title">Issue: {props.title}</h1>
-            <h3 className="issue-description">Description: {props.description}</h3>
+            <h1 className="issue-title"><span className="iss-title-descr">Issue:</span> <span className="iss-title">{props.title}</span></h1>
+            <h3 className="issue-description"><span className="iss-title-descr">Description:</span> <span className="iss-descr">{props.description}</span></h3>
 
      
         <div className="comment-related-btns">
@@ -122,7 +122,11 @@ return (
                         <button className="upvote-comment-btn" onClick={()=>commentUpVote(comment._id)}><BsArrowUpCircleFill size={14} style={{ fill: "#0F4C75"}}/></button>
                         <button className="downvote-comment-btn" onClick={()=>commentDownVote(comment._id)}><BsArrowDownCircleFill size={14} style={{ fill: "#0F4C75"}}/></button>
                     </div>
-                    <span className="user-name-span">{comment._user.username}</span> {comment.commentText}<span className="comment-votes-span">up:</span><span className="comment-tallies">{comment.upVotesComments}</span><span className="comment-votes-span">down:</span><span className="comment-tallies">{comment.downVotesComments}</span><span className="comment-votes-span">net:</span><span className="comment-tallies">{calcNetVotes(comment.upVotesComments, comment.downVotesComments)}</span>
+                        <span className="user-name-span">{comment._user.username}</span> 
+                        {comment.commentText}<span className="comment-votes-span">up:</span><span className="comment-tallies">{comment.upVotesComments}</span>
+                        <span className="comment-votes-span">down:</span><span className="comment-tallies">{comment.downVotesComments}</span>
+                        <span className="comment-votes-span">net:</span><span className="comment-tallies">{calcNetVotes(comment.upVotesComments, comment.downVotesComments)}</span>
+                    
                     {username === comment._user.username 
                     ? 
                     <div key={props._id} className="edit-del-comment-btns"> 
