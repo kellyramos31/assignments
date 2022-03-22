@@ -6,7 +6,7 @@ const Issue = require("../models/issue.js");
 
 //GET ALL COMMENTS
 commentRouter.get("/", (req, res, next) => {
-    Comment.find((err, comments) => {
+Comment.find((err, comments) => {
         if (err) {
             res.status(500);
             return next(err);

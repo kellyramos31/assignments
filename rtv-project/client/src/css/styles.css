@@ -375,6 +375,25 @@
     border-radius: 10px;
 }
 
+.comment-vote-group-btns {
+    display: flex;
+    flex-direction: row;
+}
+
+.upvote-comment-btn, .downvote-comment-btn {
+    padding-top: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+    height: 25px;
+}
+
+.comment-votes-span {
+    margin-left:  6px;
+    color:  rgb(253, 201, 31);
+}
+
 .title-public-page {
     text-align: center;
     color: white;
@@ -455,6 +474,11 @@
     margin-top: 2px;
     margin-left: 5px;
     width: 75px;
+}
+
+.edit-del-btns-group {
+    display: flex;
+    flex-direction: row;
 }
 
 .delete-comment-btn, .edit-comment-btn {

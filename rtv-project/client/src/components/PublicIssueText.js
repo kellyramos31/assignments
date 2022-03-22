@@ -81,9 +81,9 @@ return (
         <div className="all-issues" key={props._id}>
                <div className="tallies">
                     <h3 className="total-votes">Voters: {props.totalVotersVotedCount}</h3>
-                    <h3 className="total-upVotes">Up Votes: {props.upVotes}</h3>
-                    <h3 className="total-downVotes">Down Votes: {props.downVotes}</h3>
-                    <h3 className="net-votes">Net Votes: {calcNetVotes(props.upVotes, props.downVotes)}  </h3>
+                    <h3 className="total-upVotes">Up: {props.upVotes}</h3>
+                    <h3 className="total-downVotes">Down: {props.downVotes}</h3>
+                    <h3 className="net-votes">Net: {calcNetVotes(props.upVotes, props.downVotes)}  </h3>
                     <h4 className="number-comments"># Comments: {totalComments} </h4>
                 </div>
               
@@ -116,18 +116,20 @@ return (
                 <div>
                 <button  className="hide-comments-btn" onClick={toggleViewComments}><BiHide size={25} style={{ fill: "#0F4C75"}}/>Hide Comments</button>    
                 <h3 className="public-comments">Comments:{props._comments.map(comment=>(
-                    <li className="comment-list-item" key={comment._id}><span className="user-name-span">{comment._user.username}</span>{comment.commentText} up votes:{comment.upVotesComments} down votes:{comment.downVotesComments}
-                    <div>
-                        <button className="upvote-comment-btn" onClick={()=>commentUpVote(comment._id)}><BsArrowUpCircleFill size={18} style={{ fill: "#0F4C75"}}/></button>
-                        <button className="downvote-comment-btn" onClick={()=>commentDownVote(comment._id)}><BsArrowDownCircleFill size={18} style={{ fill: "#0F4C75"}}/></button>
+                    <li className="comment-list-item" key={comment._id}>
+                    <div className="comment-vote-group-btns">
+                        <button className="upvote-comment-btn" onClick={()=>commentUpVote(comment._id)}><BsArrowUpCircleFill size={14} style={{ fill: "#0F4C75"}}/></button>
+                        <button className="downvote-comment-btn" onClick={()=>commentDownVote(comment._id)}><BsArrowDownCircleFill size={14} style={{ fill: "#0F4C75"}}/></button>
                     </div>
-                    
+                    <span className="user-name-span">{comment._user.username}</span> {comment.commentText}<span className="comment-votes-span">up:</span>{comment.upVotesComments}<span className="comment-votes-span">down:</span>{comment.downVotesComments}<span className="comment-votes-span">net:</span>{calcNetVotes(comment.upVotesComments, comment.downVotesComments)}
                     {username === comment._user.username 
                     ? 
                     <div key={props._id} className="edit-del-comment-btns"> 
                         {/* <button className="delete-comment-btn" id={comment._id} onClick={() => combinedDeleteComment(props._id, comment._id)}>Delete</button> */}
-                        <button className="delete-comment-btn" id={comment._id} onClick={() => deleteCommentFromIssueArray(props._id, comment._id)}>Delete</button>
-                        <button className="edit-comment-btn" id={comment._id} onClick={toggleToEdit}>Edit</button>
+                        <div className="edit-del-btns-group">
+                           <button className="delete-comment-btn" id={comment._id} onClick={() => deleteCommentFromIssueArray(props._id, comment._id)}>Delete</button>
+                           <button className="edit-comment-btn" id={comment._id} onClick={toggleToEdit}>Edit</button>
+                        </div>
                         {toggleEdit 
                         ?
                            <div  className="edit-comment-form" key={props._id} index={props.index}>

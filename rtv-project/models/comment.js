@@ -16,7 +16,7 @@ const commentSchema = new Schema({
         type: Number,
         default: 0
     },
-      totalVotersOnCommentCount: {
+    totalVotersOnCommentCount: {
         type: Number
     },
     _voters: {

@@ -32,7 +32,7 @@ const Comment = require("../models/comment.js");
 issueRouter.get("/", (req, res, next) => {
 Issue.find({}) 
     .populate("_comments")
-    .sort({ upVotes: -1 })
+    .sort({ upVotes: -1 , upVotesComments: -1})
     .exec((err, issues)=> {
 
 // (err, issues)=> {

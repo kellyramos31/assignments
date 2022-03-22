@@ -232,7 +232,7 @@ function deleteIssue(issueId) {
   
 // }
 
-//CALCULATE NET VOTES (netVotes =upVotes - downVotes)
+//CALCULATE NET VOTES (NETVOTES = upVotes - downVotes)
 function calcNetVotes(upVotes, downVotes){
   console.log("upVotes", upVotes)
   console.log("downVotes", downVotes)
@@ -378,7 +378,7 @@ function upVoteComment(commentId){
       console.log("upVote res:", res)
           setIssueState(prevState => ({
                 ...prevState,
-                issueState:  [...prevState.comments, res.data]
+                issueState:  [...prevState.userIssues, res.data]
             }))
     })
    
@@ -396,7 +396,7 @@ function upVoteComment(commentId){
       }
           setIssueState(prevState => ({
                 ...prevState,
-                issueState:  [...prevState.comments, res.data]
+                issueState:  [...prevState.userIssues, res.data]
             }))
     })
    
@@ -411,7 +411,7 @@ function downVoteComment(commentId){
       console.log("downVote res:", res)
           setIssueState(prevState => ({
                 ...prevState,
-                issueState:  [...prevState.comments, res.data]
+                issueState:  [...prevState.userIssues, res.data]
             }))
     })
    
@@ -429,7 +429,7 @@ function downVoteComment(commentId){
       console.log("downVote res:", res)
           setIssueState(prevState => ({
                 ...prevState,
-                issueState:  [...prevState.comments, res.data]
+                issueState:  [...prevState.userIssues, res.data]
             }))
             getIssues()
    
