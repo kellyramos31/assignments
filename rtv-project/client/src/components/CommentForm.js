@@ -15,7 +15,7 @@ const [inputs, setInputs] = useState(initInputs)
 
 // const [issueId, setIssueId] = useState(initInputs._issue)
 
-const { addComment } = useContext(IssueCommentContext)
+const { combinedAddComment } = useContext(IssueCommentContext)
 
 const { toggleToComment, _issue} = props
 
@@ -35,7 +35,7 @@ function handleCommentChange(e){
     //console.log("_issue:", _issue)
     console.log("inputs", inputs)
     // console.log("_issue", _issue)
-    addComment(commentText, _issue)
+    combinedAddComment(commentText, _issue)
     setInputs(initInputs)
     toggleToComment()
   }

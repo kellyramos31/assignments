@@ -118,8 +118,6 @@ commentRouter.post("/", (req, res, next) => {
 
 
 
-
-
 //TRYING TO RECONFIGURE SO WORKS ON FRONTEND***
 // commentRouter.post("/", (req, res, next) => {
 //     const {commentText, _issue } = req.body

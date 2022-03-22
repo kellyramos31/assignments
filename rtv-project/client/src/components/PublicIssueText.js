@@ -33,7 +33,7 @@ const {
       // removeVote,
       commentUpVote,
       commentDownVote,
-      totalComments,
+    //   totalComments,
       calcNetVotes,
       deleteCommentFromIssueArray,
     //   combinedDeleteComment,
@@ -80,11 +80,11 @@ return (
     <div className="all-issues-container" key={props._id}>
         <div className="all-issues" key={props._id}>
                <div className="tallies">
-                    <h3 className="total-votes">Voters: {props.totalVotersVotedCount}</h3>
+                    <h3 className="total-votes"># Voters: {props.totalVotersVotedCount}</h3>
                     <h3 className="total-upVotes">Up: {props.upVotes}</h3>
                     <h3 className="total-downVotes">Down: {props.downVotes}</h3>
                     <h3 className="net-votes">Net: {calcNetVotes(props.upVotes, props.downVotes)}  </h3>
-                    <h4 className="number-comments"># Comments: {totalComments} </h4>
+                    <h4 className="number-comments"># Comments: {props.numberCommentsOnIssue} </h4>
                 </div>
               
             <h1 className="issue-title">Issue: {props.title}</h1>

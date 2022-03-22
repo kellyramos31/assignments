@@ -203,6 +203,12 @@ function deleteIssue(issueId) {
 //           })
 //   }
 
+//COMBINED ADD COMMENT
+function combinedAddComment (commentText, _issue){
+  addComment(commentText, _issue)
+  addCommentTally(_issue)
+}
+
 //ADD COMMENT
    function addComment(commentText, _issue) {
       const commentAdd = {
@@ -225,6 +231,21 @@ function deleteIssue(issueId) {
         .catch(err=>console.log(err.response.data.errMsg))
         
           }
+
+//INCREMENT COMMENT TOTAL ON SPECIFIC ISSUE
+function addCommentTally (issueId) {
+    console.log("_issue from addCommentTally:", issueId)
+    userAxios.put(`/api/issue/increment/${issueId}`, issueId)
+    .then(res => {
+            console.log("addComment res", res)
+            getIssues()
+          
+            })
+            
+        .catch(err=>console.log(err.response.data.errMsg))
+        
+
+} 
   
 // function combinedDeleteComment(issueId, commentId){
 //   // deleteComment(commentId)
@@ -492,6 +513,7 @@ function removeVote(issueId){
             editIssue,
             getComments,
             addComment,
+            combinedAddComment,
             deleteComment,
             commentUpVote,
             commentDownVote,

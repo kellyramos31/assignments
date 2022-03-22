@@ -29,7 +29,12 @@ const issueSchema = new Schema({
     },
    
     totalVotersVotedCount: {
-        type: Number
+        type: Number,
+        default: 0
+    },
+    numberCommentsOnIssue: {
+        type: Number,
+        default: 0
     },
     _voters: {
         type: Schema.Types.ObjectId,
