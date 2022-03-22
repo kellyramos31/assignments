@@ -52,7 +52,7 @@ Issue.find({})
 issueRouter.get("/user", (req, res, next)=>{
     // const filter = { _user: req.body._user} //pretty sure problem = this line here
     //const ObjectId = require('mongoose').Types.ObjectId
-    const ObjectId = require('mongodb').ObjectId
+    const ObjectId = require('mongodb').ObjectId            //problem with matching the ID(this solution is from Stack Overflow)   
     Issue.aggregate([
        { $match: { _user: new ObjectId(req.user._id) } },  //problem with matching the ID(this solution is from Stack Overflow)
        { $sort: { upVotes: -1 } },
@@ -131,9 +131,45 @@ issueRouter.put("/:issueId", (req, res, next) => {
         })
 })
 
-//DELETE ISSUE
+//DELETE ISSUE--this works but leaves comments with no issue
+// issueRouter.delete("/:issueId", (req, res, next)=> {
+//     Issue.findOneAndDelete(
+//     { _id: req.params.issueId, _user: req.user._id },
+//     (err, deletedIssue) => {
+//         if (err) {
+//             res.status(500);
+//             return next(err);
+//         }
+//         return res.status(200).send(`Successfully deleted: ${deletedIssue.title}`);
+//     })
+// })
+
+//DELETE ISSUE--this works but leaves comments with no issue
+
+
+// issueRouter.delete("/:issueId", (req, res, next)=> {
+//     Issue.findByIdAndDelete(
+//     { _id: req.params.issueId, _user: req.user._id },
+//     (err, deletedIssue) => {
+//         if (err) {
+//             res.status(500);
+//             return next(err);
+//         }
+//         return res.status(200).send(`Successfully deleted: ${deletedIssue.title}`);
+//     })
+// })
+
+// const Parent  = require("./parent"); 
+
+// router.delete('/delete/instance' , async (req,res) => {
+//   await Parent.updateOne({ childrens: '612cd0d8f9553c9f243db691' }, { $pull: { childrens: '612cd0d8f9553c9f243db691' }})
+//   const deletedInstance = await Children.findOneAndDelete({ _id: '612cd0d8f9553c9f243db691'})
+//   res.json(deletedInstance)
+// })
+
+
 issueRouter.delete("/:issueId", (req, res, next)=> {
-    Issue.findOneAndDelete(
+    Issue.findByIdAndDelete(
     { _id: req.params.issueId, _user: req.user._id },
     (err, deletedIssue) => {
         if (err) {
@@ -143,6 +179,43 @@ issueRouter.delete("/:issueId", (req, res, next)=> {
         return res.status(200).send(`Successfully deleted: ${deletedIssue.title}`);
     })
 })
+
+
+//DELETE all comments from associated with Issue
+// issueRouter.delete("/:issueId", (req, res, next)=> {
+//     Comment.findByIdAndDelete(
+//     { _issue: req.params.issueId, _user: req.user._id },
+//     { $pull: {_comments: req.body._id}},
+//     (err, deletedComment) => {
+//         if (err) {
+//             res.status(500);
+//             return next(err);
+//         }
+//         return res.status(200).send(`Successfully deleted: ${deletedComment.commentText}`);
+//     })
+// })
+
+//DELETE specified comment from _comment array
+issueRouter.put("/deleteCommentFromIssue/:issueId", (req, res, next)=> {
+        const commentId = req.body._id
+        // const ObjectId = require('mongodb').ObjectId 
+        Issue.findByIdAndUpdate(
+            {_id: req.params.issueId, _user: req.user._id},
+            { $pull: { "_comments": commentId}},
+        (err, updatedIssue) => {
+            if (err) {
+                console.log("Error");
+                res.status(500);
+                return next(err);
+            }
+            return res.send(updatedIssue);
+            //note:  appears to pull the commentId from the array in issues, but "updatedIssue res still shows comment id"  
+        })
+    })
+
+   
+
+
 
 
 //NOTE:  ****USER SHOULD ONLY BE ABLE TO UPVOTE/DOWNVOTE AN ISSUE ONCE****NEED TO FIGURE THIS OUT
@@ -198,22 +271,50 @@ issueRouter.put("/downvote/:issueId", (req, res, next)=> {
   )			
 })	
 
+
 //MAYBE THIS IS JUST CANCEL A VOTE -- (removes from _voters array)
 //NOTES:  maybe use $pull (or is there an opposite to $addToSet??)
-issueRouter.put("/voter/cancelvote/:issueId", (req, res, next)=> {		
+// issueRouter.put("/voter/cancelvote/:issueId", (req, res, next)=> {		
 
-Issue.updateOne(
-    {_id: req.params.issueId}, 
-    { $pull: { _voters: req.user._id} },
+// Issue.updateOne(
+//     {_id: req.params.issueId}, 
+//     { $pull: { _voters: req.user._id} },
 
 
-(err, issues)=> {
-    if (err) {
-            res.status(500);
-            return next(err);
+// (err, issues)=> {
+//     if (err) {
+//             res.status(500);
+//             return next(err);
+//         }
+//         return res.status(201).send(issues);
+// })
+// })
+
+
+// policies.aggregate([
+//     { "$project": {
+//        "count": { "$size": "$exploits" }
+//     }}
+// ],function(err,doc) {
+
+// });
+
+//TOTAL # OF COMMENTS FOR SPECIFIC ISSUE
+issueRouter.get("/countComments/:issueId", (req, res, next)=> {
+   Issue.aggregate([
+        // {$match: {_id: req.params.issueId}},
+        {"$project": {
+            "count": { "$size": "_comments"}
+        }}
+    ]), 
+        (err, commentCount)=> {
+            if (err){
+            res.status(500)
+            return next(err)
         }
-        return res.status(201).send(issues);
-})
+        return res.status(200).send(commentCount)
+    }
+
 })
 
 		

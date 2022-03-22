@@ -30,6 +30,8 @@ export default function Public() {
   }, [issueState])
 
 
+
+
     return (
         <div className="public">
           <h3 className="title-public-page">All Users' Issues</h3>

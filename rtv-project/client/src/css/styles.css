@@ -236,6 +236,7 @@
     width:  120px;
 }
 
+
 .cancel-comment-btn{
     margin-left: 10px;
     background-color: white;
@@ -267,6 +268,20 @@
     background-color:rgb(253, 201, 31);
     color: #0F4C75;
     padding-left: 2px;
+}
+
+.edit-comment-form input {
+    border: none;
+    border-radius: 4px;
+    margin-top: 2px;
+    margin-left: 2.5px;
+    height: 18px;
+    width: 214px;
+    border:  3px solid #0F4C75;
+    background-color:rgb(253, 201, 31);
+    color: #0F4C75;
+    padding-left: 2px;
+
 }
 
 .up-vote-btn {
@@ -323,11 +338,11 @@
     margin-top: 3px;
 }
 
- .total-upVotes, .total-downVotes, .number-comments {
+ .total-upVotes, .total-downVotes, .net-votes, .number-comments {
     margin-left:  10px;
 }
 
-.total-votes, .total-upVotes, .total-downVotes, .number-comments {
+.total-votes, .total-upVotes, .total-downVotes, .net-votes, .number-comments {
     font-weight: bold;
     color: rgb(253, 201, 31);
  
@@ -393,25 +408,75 @@
 .public-comments {
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
     background-color: #0F4C75;
     color: white;
     border-radius: 5px;
     padding: 8px;
     margin-top:  42px;
-    /* margin-bottom:  -45px; */
+    margin-bottom:  -30px;
     /* border:  1px solid white; */
 }
 
 .comment-list-item {
-    /* display: block; */
+    display: inline-flex;
 }
-.edit-del-comment-btns {
-    display: block;
+
+/* .edit-del-comment-btns {
+    font-size: 2px;
+} */
+
+.edit-comments-grp-btns {
+    display: flex;
+    margin-left:  10px;
 }
+
+.submit-edited-comment-btn {
+    font-size:  12px;
+    font-weight: bold;
+    padding: 1.5px;
+    border: none;
+    margin-left: -6px;
+    margin-top: 3px;
+    background-color: white;
+    color: #0F4C75;
+    border-radius: 3px;
+    width: 75px;
+}
+
+.cancel-edit-comment-btn {
+    font-size:  12px;
+    font-weight: bold;
+    padding: 1.5px;
+    border: none;
+    background-color: white;
+    color: #0F4C75;
+    border-radius: 3px;
+    margin-top: 2px;
+    margin-left: 5px;
+    width: 75px;
+}
+
+.delete-comment-btn, .edit-comment-btn {
+    font-size:  12px;
+    font-weight: bold;
+    padding: 1.5px;
+    border: none;
+    background-color: rgb(253, 201, 31);
+    border-radius: 3px;
+    margin-left: 5px;
+    width: 45px;
+}
+
+/* .cancel-edit-comment-btn, .submit-edited-comment-btn{
+    /* font-size: 2px; */
+
+
 
 .user-name-span {
     color: rgb(253, 201, 31);
     font-weight: bold;
+    margin-inline-end: 8px;
 }
 
 .profile-issues-list-header {

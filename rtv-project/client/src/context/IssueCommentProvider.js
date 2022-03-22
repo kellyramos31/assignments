@@ -46,7 +46,7 @@ const [issueState, setIssueState] = useState(initState)
 //GET ALL ISSUES (regardless of user)
 //.populate({path: "comments", select: "commentText, username"}) -- can I use this somewhere??
 
-    function getIssues(){
+function getIssues(){
         userAxios.get("/api/issue")
         .then(res => {
             console.log("res from issueCommentProvider:", res)
@@ -151,8 +151,15 @@ function getComments(){
 
 //do i actually need to chain .filter and .map (or similiar) in my setIssueState???
 
-    function deleteIssue(issueId) {
+//     Issue.pre('deleteIssue', function(next) {
+//     // Remove all the assignment docs that reference the removed person.
+//     this.Comment.remove({ _issue: this.issueId }, next);
+// });
+
+
+function deleteIssue(issueId) {
         console.log("issueId:", issueId)
+;
         userAxios.delete(`/api/issue/${issueId}`)
              .then(res => {
                 setIssueState(prevState=> ({userIssues: prevState.userIssues.filter(userIssue => userIssue._id !== issueId)}))
@@ -168,7 +175,6 @@ function getComments(){
         console.log("inputs for edit", inputs)
         userAxios.put(`/api/issue/${issueId}`, inputs)
          .then(res => {
-            
             setIssueState(prevState => prevState.userIssues.map(userIssue => userIssue._id !== issueId ? userIssue : res.data))
       })
       .catch(err=>console.log(err.response.data.errMsg))
@@ -220,7 +226,19 @@ function getComments(){
         
           }
   
+// function combinedDeleteComment(issueId, commentId){
+//   // deleteComment(commentId)
+//   deleteCommentFromIssueArray(issueId, commentId)
+  
+// }
 
+//CALCULATE NET VOTES (netVotes =upVotes - downVotes)
+function calcNetVotes(upVotes, downVotes){
+  console.log("upVotes", upVotes)
+  console.log("downVotes", downVotes)
+  const net = upVotes - downVotes
+  return net
+}
   
 //DELETE USER'S COMMENT
 //NOTE******this filters it out of comments but does not clear id out of the issue in _comments array*****
@@ -229,12 +247,27 @@ function getComments(){
         userAxios.delete(`/api/comment/${commentId}`)
              .then(res => {
                 setIssueState(prevState=> ({issues: prevState.issues.filter(issue=> issue._comment !== commentId)}))
-                getUserIssues()
-                getIssues()
+                // getUserIssues()
+                // getIssues()
              })
         
             .catch(err=>console.log(err.response.data.errMsg))
     }
+
+ //DELETE COMMENT FROM ARRAY of comments ids (_comments) in the issue
+ function deleteCommentFromIssueArray(issueId, commentId) {
+    console.log("comment._id to delete:", commentId)
+    console.log("issue to update the comments array in:", issueId)
+    userAxios.put(`/api/issue/deleteCommentFromIssue/${issueId}`)
+            // console.log("commentId:", commentId)
+         .then(res => {
+            setIssueState(prevState => prevState.userIssues.map(userIssue => userIssue._id !== issueId ? userIssue : res.data))
+            // getUserIssues()
+            // getIssues()
+      })
+            
+    .catch(err=>console.log(err.response.data.errMsg))
+}
 
 
 //EDIT COMMENT
@@ -385,12 +418,15 @@ function removeVote(issueId){
             // issues,
             // userIssues,
             // voteCount,
+            calcNetVotes,
             addIssue,
             deleteIssue,
             editIssue,
             getComments,
             addComment,
             deleteComment,
+            deleteCommentFromIssueArray,
+            // combinedDeleteComment,
             editComment,
             getIssues
         }}>

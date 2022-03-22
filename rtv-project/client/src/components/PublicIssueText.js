@@ -7,6 +7,7 @@ import { BsArrowDownCircleFill} from 'react-icons/bs'
 import { FaEye} from 'react-icons/fa'
 import { FaComments } from 'react-icons/fa'
 import { BiHide } from 'react-icons/bi'
+import { FcCancel } from 'react-icons/fc'
 
 
 
@@ -31,7 +32,9 @@ const {
       voterDownVote,
       // removeVote,
       totalComments,
-      deleteComment,
+      calcNetVotes,
+      deleteCommentFromIssueArray,
+    //   combinedDeleteComment,
       editComment
       // addComment,
       // handleSubmitComment   
@@ -45,7 +48,10 @@ const [toggleIsViewingComments, setToggleIsViewingComments] = useState(false)
 
 const [toggleEdit, setToggleEdit] = useState(false)
 
+
+
 function toggleViewComments(){
+    console.log("view comments toggled")
     setToggleIsViewingComments(prev => !prev)
   }
 
@@ -73,8 +79,9 @@ return (
         <div className="all-issues" key={props._id}>
                <div className="tallies">
                     <h3 className="total-votes">Voters: {props.totalVotersVotedCount}</h3>
-                    <h3 className="total-upVotes">UpVotes: {props.upVotes}</h3>
-                    <h3 className="total-downVotes">DownVotes: {props.downVotes}</h3>
+                    <h3 className="total-upVotes">Up Votes: {props.upVotes}</h3>
+                    <h3 className="total-downVotes">Down Votes: {props.downVotes}</h3>
+                    <h3 className="net-votes">Net Votes: {calcNetVotes(props.upVotes, props.downVotes)}  </h3>
                     <h4 className="number-comments"># Comments: {totalComments} </h4>
                 </div>
               
@@ -107,15 +114,21 @@ return (
                 <div>
                 <button  className="hide-comments-btn" onClick={toggleViewComments}><BiHide size={25} style={{ fill: "#0F4C75"}}/>Hide Comments</button>    
                 <h3 className="public-comments">Comments:{props._comments.map(comment=>(
-                    <li className="comment-list-item" key={comment._id}><span className="user-name-span">{comment._user.username}</span>{" "}{comment.commentText} 
+                    <li className="comment-list-item" key={comment._id}><span className="user-name-span">{comment._user.username}</span>{comment.commentText} upvotes:{comment.upVotesComments}
+                    <div>
+                        <button className="upvote-comment-btn">UpVote</button>
+                        <button className="downvote-comment-btn">DownVote</button>
+                    </div>
+                    
                     {username === comment._user.username 
                     ? 
                     <div key={props._id} className="edit-del-comment-btns"> 
-                        <button id={comment._id} onClick={() => deleteComment(comment._id)}>Delete</button>
-                        <button id={comment._id} onClick={toggleToEdit}>Edit</button>
+                        {/* <button className="delete-comment-btn" id={comment._id} onClick={() => combinedDeleteComment(props._id, comment._id)}>Delete</button> */}
+                        <button className="delete-comment-btn" id={comment._id} onClick={() => deleteCommentFromIssueArray(props._id, comment._id)}>Delete</button>
+                        <button className="edit-comment-btn" id={comment._id} onClick={toggleToEdit}>Edit</button>
                         {toggleEdit 
                         ?
-                           <div  key={props._id} index={props.index}>
+                           <div  className="edit-comment-form" key={props._id} index={props.index}>
                                     <form onSubmit={()=>editComment(inputsCommentEdit, comment._id)}>
                                                 <input
                                                      type="text"
@@ -125,8 +138,10 @@ return (
                                                      onChange={handleChangeEdit}
                                                      placeholder="Comment Text"
                                                  />
-                                                <button onClick={toggleToEdit}>Cancel Edit</button>
-                                                <button>Submit Edited Comment</button>
+                                                <div className="edit-comments-grp-btns">
+                                                    <button className="submit-edited-comment-btn">Submit Edit</button>
+                                                    <button className="cancel-edit-comment-btn" onClick={toggleToEdit}><FcCancel size={18} style={{ fill: "white"}}/></button>
+                                                </div>
                                         </form>
                             </div>    
                         :
