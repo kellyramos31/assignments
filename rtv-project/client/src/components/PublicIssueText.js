@@ -33,10 +33,11 @@ const {
       // removeVote,
       commentUpVote,
       commentDownVote,
-    //   totalComments,
+      //totalComments,
       calcNetVotes,
-      deleteCommentFromIssueArray,
-    //   combinedDeleteComment,
+      combinedDeleteComment,
+      //deleteCommentFromIssueArray,
+     //combinedDeleteComment,
       editComment
       // addComment,
       // handleSubmitComment   
@@ -132,7 +133,7 @@ return (
                     <div key={props._id} className="edit-del-comment-btns"> 
                         {/* <button className="delete-comment-btn" id={comment._id} onClick={() => combinedDeleteComment(props._id, comment._id)}>Delete</button> */}
                         <div className="edit-del-btns-group">
-                           <button className="delete-comment-btn" id={comment._id} onClick={() => deleteCommentFromIssueArray(props._id, comment._id)}>Delete</button>
+                           <button className="delete-comment-btn" id={comment._id} onClick={() => combinedDeleteComment(comment._id, props._id)}>Delete</button>
                            <button className="edit-comment-btn" id={comment._id} onClick={toggleToEdit}>Edit</button>
                         </div>
                         {toggleEdit 

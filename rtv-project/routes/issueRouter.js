@@ -334,7 +334,27 @@ issueRouter.put("/increment/:issueId", (req, res, next) => {
                 return next(err);
             }
             return res.send(updatedIssue)
+        })
 })
+
+//DECREMENT TOTAL # OF COMMENTS ON ISSUE
+issueRouter.put("/decrement/:issueId", (req, res, next) => {
+    req.body._user = req.user._id
+ 
+    const issueId = req.params.issueId
+      
+        Issue.findByIdAndUpdate(
+            {_id: issueId, _user: req.user._id},
+            { $inc: { numberCommentsOnIssue: -1}},
+            { new: true},
+        (err, updatedIssue) => {
+            if (err) {
+                console.log("Error");
+                res.status(500);
+                return next(err);
+            }
+            return res.send(updatedIssue)
+        })
 })
 
 //TOTAL # OF COMMENTS FOR SPECIFIC ISSUE

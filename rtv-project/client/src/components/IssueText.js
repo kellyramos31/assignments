@@ -11,7 +11,7 @@ export default function IssueText(props){
         deleteIssue,
         editIssue,
         // comments,
-        // deleteComment,
+        //deleteComment,
         // editComment
         // addComment,
         // upVote,

@@ -198,6 +198,29 @@ function addCommentTally (issueId) {
         .catch(err=>console.log(err.response.data.errMsg))
         
 } 
+
+//COMBINED DELETE COMMENT
+function combinedDeleteComment (commentId, issueId){
+  deleteComment(commentId)
+  minusCommentTally(issueId)
+}
+
+//DECREMENT COMMENT TOTAL ON SPECIFIC ISSUE
+function minusCommentTally (issueId) {
+    console.log("_issue from minusCommentTally:", issueId)
+    userAxios.put(`/api/issue/decrement/${issueId}`, issueId)
+    .then(res => {
+            console.log("minusComment res", res)
+            setIssueState(prevState => ({
+                ...prevState,
+                issueState:  [...prevState.issues, res.data]
+            })
+              )})
+            
+        .catch(err=>console.log(err.response.data.errMsg))
+        
+} 
+
   
 // function combinedDeleteComment(issueId, commentId){
 //   // deleteComment(commentId)
@@ -228,19 +251,19 @@ function calcNetVotes(upVotes, downVotes){
     }
 
  //DELETE COMMENT FROM ARRAY of comments ids (_comments) in the issue
- function deleteCommentFromIssueArray(issueId, commentId) {
-    console.log("comment._id to delete:", commentId)
-    console.log("issue to update the comments array in:", issueId)
-    userAxios.put(`/api/issue/deleteCommentFromIssue/${issueId}`)
-            // console.log("commentId:", commentId)
-         .then(res => {
-            setIssueState(prevState => prevState.issues.map(issue => issue._id !== issueId ? issue : res.data))
-            // getUserIssues()
-            getIssues()
-      })
+//  function deleteCommentFromIssueArray(issueId, commentId) {
+//     console.log("comment._id to delete:", commentId)
+//     console.log("issue to update the comments array in:", issueId)
+//     userAxios.put(`/api/issue/deleteCommentFromIssue/${issueId}`)
+//             // console.log("commentId:", commentId)
+//          .then(res => {
+//             setIssueState(prevState => prevState.issues.map(issue => issue._id !== issueId ? issue : res.data))
+//             // getUserIssues()
+//             getIssues()
+//       })
             
-    .catch(err=>console.log(err.response.data.errMsg))
-}
+//     .catch(err=>console.log(err.response.data.errMsg))
+// }
 
 
 //EDIT COMMENT
@@ -462,10 +485,11 @@ function removeVote(issueId){
             getComments,
             addComment,
             combinedAddComment,
+            combinedDeleteComment,
             deleteComment,
             commentUpVote,
             commentDownVote,
-            deleteCommentFromIssueArray,
+            // deleteCommentFromIssueArray,
             // combinedDeleteComment,
             editComment,
             getIssues
