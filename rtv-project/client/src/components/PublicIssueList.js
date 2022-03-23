@@ -1,8 +1,6 @@
 import React from "react"
 import PublicIssueText from './PublicIssueText.js'
-// import CommentForm from "./CommentForm.js"
-// import { IssueCommentContext } from "../context/IssueCommentProvider.js"
-// import { UserContext } from "../context/UserProvider.js"
+
 
 export default function IssueList(props){
 

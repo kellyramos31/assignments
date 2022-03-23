@@ -50,12 +50,13 @@ return (
         <div key={props._id} className="user-issue-container">
             <div className="issue">
               <div className="my-profile-issue-tallies">
-                <h3 className="total-votes"># Votes: {props.totalVotersVotedCount}</h3>
+                <h3 className="total-votes"># Voters: {props.totalVotersVotedCount}</h3>
                 <h3 className="my-issue-upvotes">Upvotes: {props.upVotes}</h3>
                 <h3 className="my-issue-downvotes">Downvotes: {props.downVotes}</h3>
+                <h3 className="my-issue-number-comments"># Comments: {props.numberCommentsOnIssue}</h3>
               </div>
-              <h1 className="issue-title">Issue: {props.title}</h1>
-              <h3 className="issue-description">Description: {props.description}</h3>
+              <h1 className="issue-title"><span className="my-issue-title">Issue</span> {props.title}</h1>
+              <h3 className="issue-description"><span className="my-issue-descr">Description</span>  {props.description}</h3>
                 <div className="vote-buttons">
                   <button className="delete-issue-btn" onClick={() => deleteIssue(props._id)}>Delete Issue</button>
                   <button className="edit-issue-btn" onClick={toggleToEdit}>Edit Issue</button>

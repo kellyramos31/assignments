@@ -96,7 +96,6 @@ return (
         <div className="comment-related-btns">
             <button className="up-vote-btn" onClick={() =>voterUpVote(props._id)}> <BsArrowUpCircleFill size={25} style={{ fill: "#0F4C75"}}/></button>
             <button className="down-vote-btn" onClick={()=>voterDownVote(props._id)}> <BsArrowDownCircleFill size={25} style={{ fill: "#0F4C75"}}/></button>
-            {/* <button className="cancel-vote-btn" onClick={()=>removeVote(props._id)}>Cancel Vote</button> */}
       
         { !toggleIsCommenting ?
               <div id={props._id}>
@@ -131,7 +130,6 @@ return (
                     {username === comment._user.username 
                     ? 
                     <div key={props._id} className="edit-del-comment-btns"> 
-                        {/* <button className="delete-comment-btn" id={comment._id} onClick={() => combinedDeleteComment(props._id, comment._id)}>Delete</button> */}
                         <div className="edit-del-btns-group">
                            <button className="delete-comment-btn" id={comment._id} onClick={() => combinedDeleteComment(comment._id, props._id)}>Delete</button>
                            <button className="edit-comment-btn" id={comment._id} onClick={toggleToEdit}>Edit</button>
