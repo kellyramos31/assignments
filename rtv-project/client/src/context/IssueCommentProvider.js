@@ -136,6 +136,7 @@ function deleteIssue(issueId) {
         userAxios.delete(`/api/issue/${issueId}`)
              .then(res => {
                 setIssueState(prevState=> ({userIssues: prevState.userIssues.filter(userIssue => userIssue._id !== issueId)}))
+                getIssues()
              })
         
             .catch(err=>console.log(err.response.data.errMsg))
