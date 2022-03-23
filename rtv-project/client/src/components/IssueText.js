@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { IssueCommentContext } from "../context/IssueCommentProvider.js"
+import { FcCancel } from 'react-icons/fc'
 // import CommentForm from "./CommentForm.js"
 
 
@@ -42,34 +43,34 @@ export default function IssueText(props){
 return (
     
    
-    <div >
-        { !toggleIsEditing ?
+    <div className="profile-container">
+
+        {/* { !toggleIsEditing ? */}
+      
         <div key={props._id} className="user-issue-container">
-        <div className="issue">
-          <h3 className="my-issue-upvotes">Upvotes: {props.upVotes}</h3>
-          <h1 className="issue-title">Issue: {props.title}</h1>
-          <h3 className="issue-description">Description: {props.description}</h3>
-          <div className="vote-buttons">
-          <button className="delete-issue-btn" onClick={() => deleteIssue(props._id)}>Delete Issue</button>
-          <button className="edit-issue-btn" onClick={toggleToEdit}>Edit Issue</button>
-          {/* <button className="up-vote-btn" onClick={() => upVote(props._id)}>Upvote</button>
-          <button className="down-vote-btn" onClick={()=>downVote(props._id)}>Downvote</button> */}
-        </div>
-          {/* <h3 className="comments">Comments: {props._comments.map(comment=>(<li>{comment.commentText}</li>))}</h3> */}
-          {/* <h3 className="user-comments">My Comments on this Issue:
-              {props.userComments.map(comment=>(
-                    <li key={comment._id}>{comment.commentText} 
-                    <button id={comment._id} onClick={() => deleteComment(comment._id)}>Delete</button>
-                    <button id={comment._id} onClick={() => editComment(comment._id)}>Edit</button>
-                    </li>))
-              }
-          </h3> */}
-          <h3 className="total-votes">Votes: {props.voteCount}</h3>
-          </div>  
-        </div>
+            <div className="issue">
+              <div className="my-profile-issue-tallies">
+                <h3 className="total-votes"># Votes: {props.totalVotersVotedCount}</h3>
+                <h3 className="my-issue-upvotes">Upvotes: {props.upVotes}</h3>
+                <h3 className="my-issue-downvotes">Downvotes: {props.downVotes}</h3>
+              </div>
+              <h1 className="issue-title">Issue: {props.title}</h1>
+              <h3 className="issue-description">Description: {props.description}</h3>
+                <div className="vote-buttons">
+                  <button className="delete-issue-btn" onClick={() => deleteIssue(props._id)}>Delete Issue</button>
+                  <button className="edit-issue-btn" onClick={toggleToEdit}>Edit Issue</button>
+                </div>
+            </div>
+        
+      
+         { !toggleIsEditing ?
+            <div>
+              {null}
+            </div>
+          
       :
-        <div id={props._id} index={props.index} >
-            <form onSubmit={()=>editIssue(inputs, props._id)}>
+        <div className="outline-edit-issue-form" id={props._id} index={props.index} >
+            <form className="edit-issue-form" onSubmit={()=>editIssue(inputs, props._id)}>
               <input
                 type="text"
                 defaultValue={props.title}
@@ -86,13 +87,14 @@ return (
                 onChange={handleEditChange}
                 placeholder="Description"
               />
-              <button onClick={toggleToEdit}>Cancel Edit</button>
-              <button>Submit Edited Issue</button>
+              <div className="edit-issue-form-btns">
+                  <button className="submit-issue-edit-btn">Submit Edit</button>
+                  <button className="cancel-issue-edit-btn" onClick={toggleToEdit}><FcCancel size={22} style={{ fill: "white"}}/></button>
+              </div>
             </form>
 
         </div>
           }
-      </div>
+   </div>
+     </div>
 )}
-    
-

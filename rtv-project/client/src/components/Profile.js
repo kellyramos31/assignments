@@ -57,8 +57,9 @@ return (
                         addIssue={addIssue}
                     />
 
-
+                    
                     <h2 className="profile-issues-list-header">{username}'s Issues</h2>
+                 <div className="issues-list">
                     <IssueList
                         // issueState={issueState}
                         //getUserIssues={getUserIssues}
@@ -68,7 +69,7 @@ return (
                         userIssues={userIssues}
                         comments={comments}
                     />
-                   
+                </div>
             </div>
 
         )
