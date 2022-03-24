@@ -22,6 +22,8 @@
     background-color: rgb(253, 201, 31);
 }
 
+/* LOGIN PAGE */
+
 .auth-container {
     display: flex;
     align-items: center;
@@ -64,13 +66,20 @@
     border-radius: 4px;
 }
 
-/* .todo-list {}
-
-.todo {} */
-
-.public {
-    padding-bottom: 10px;
+.app-title {
+    color: rgb(253, 201, 31);
 }
+
+.member-or-not {
+    color: #00C3BF;
+}
+
+.sign-up-btn {
+    background-color: rgb(253, 201, 31);
+    color: black;
+}
+
+/* PROFILE PAGE */
 
 .profile {
     display: flex;
@@ -113,17 +122,31 @@
     border-radius: 5px
 }
 
-.app-title {
-    color: rgb(253, 201, 31);
+.profile-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-.member-or-not {
-    color: #00C3BF;
+.user-issue-list {
+    width:  45%
 }
 
-.sign-up-btn {
-    background-color: rgb(253, 201, 31);
-    color: black;
+.user-issue-container {
+  padding:  25px;
+  background-image: linear-gradient(#b8d5e9, #6ca7ce,  #1a6ba1 );
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border:  3px solid white;
+}
+
+.profile-issues-list-header {
+    color: white;
+    text-decoration: underline;
+    margin-top: 45px;
+    margin-bottom: 18px;
+    font-size:  25px;
+
 }
 
 .add-issue-btn {
@@ -131,6 +154,78 @@
     background-color: rgb(253, 201, 31);
     color: black;
     font-weight: bold;
+}
+
+.my-profile-issue-tallies {
+    display: flex;
+    background-color:#0F4C75;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.my-issue-upvotes, .my-issue-downvotes, .my-issue-number-comments{
+    font-style: italic;
+    color: rgb(253, 201, 31);
+    margin-left:  12px;
+}
+
+.my-issue-title, .my-issue-descr {
+    background-color:#0F4C75;
+    color: white;
+}
+
+.my-issue-title {
+    padding: 5px 54px 4px 2px;
+}
+
+.my-issue-descr {
+    padding: 5px 12px 4px 2px;
+}
+
+
+/* PUBLIC PAGE  */
+
+.public {
+    padding-bottom: 10px;
+}
+
+.all-issues-container {
+  background-image: url(../assets/andres-haro-R6ZJYwBzZx4-unsplash.jpg);
+  background-color: #5687a8;
+  background-size: 35%;
+  background-repeat: no-repeat;
+  background-position-x: 402px;
+  background-position-y: 148px;
+  margin-top: px;
+  margin-bottom: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 10px;
+  width:  40%;
+  padding-top: 30px;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-bottom:  38px;
+  border:  3px solid white;
+}
+
+.title-public-page {
+    text-align: center;
+    color: white;
+    font-size: 28px;
+    margin-top: 2%;
+}
+
+.public-comments {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #0F4C75;
+    color: white;
+    border-radius: 5px;
+    padding: 8px;
+    margin-top:  42px;
+    margin-bottom:  -30px;
 }
 
 .delete-issue-btn {
@@ -147,7 +242,6 @@
     width:  100px;
 }
 
-
 .edit-issue-form {
     display: flex;
     flex-direction: column;
@@ -160,7 +254,6 @@
     border-radius: 5px;
     padding:  3px;
 }
-
 
 .edit-issue-btn {
     margin-top: 10px;
@@ -232,10 +325,7 @@
 }
 
 .hide-comments-btn {
-    /* margin: 10px; */
     margin-left: 2px;
-    /* margin-bottom: 18px; */
-    /* margin-top:  20px; */
     background-color: white;
     color: #0F4C75;
     font-weight: bold;
@@ -281,7 +371,6 @@
     width:  120px;
 }
 
-
 .cancel-comment-btn{
     margin-left: 10px;
     background-color: white;
@@ -299,7 +388,6 @@
     display: flex;
     margin-top: 6px;
     margin-left:  15px;
-
 }
 
 .comment-form input {
@@ -326,7 +414,6 @@
     background-color:rgb(253, 201, 31);
     color: #0F4C75;
     padding-left: 2px;
-
 }
 
 .up-vote-btn {
@@ -345,7 +432,6 @@
 .down-vote-btn {
     margin: 10px;
     background: white;
-    /* color: #0F4C75; */
     border-radius: 5px;
     border: none;
     padding: 5px;
@@ -406,7 +492,7 @@
     border:  3px solid #0F4C75;
     border-radius: 5px;
     padding-top: 4px;
-    padding-left: 5px;
+    padding-left: 0px;
     padding-right: 5px;
     padding-bottom: 0px;
     margin-top: 10px;
@@ -419,14 +505,10 @@
     background-color: #0F4C75;
     color:  white;
     border: none;
-    /* border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px; */
 }
 
 .title-issue {
     padding:  5px 79px 2px 6px;
-    /* background-color: #0F4C75;
-    color:  white; */
 }
 
 .descr-issue  {
@@ -442,14 +524,16 @@
     font-style: italic;
 }
 
+.user-name-span-comment {
+    color: rgb(253, 201, 31);
+    font-weight: bold;
+    margin-inline-end: 8px;
+}
+
 .posted-by {
     margin-left:  25px;
     color: white;
     font-style: italic;
-}
-
-.user-issue-list {
-    width:  45%
 }
 
 .total-votes, .total-upVotes, .total-downVotes, .net-votes, .number-comments {
@@ -457,44 +541,6 @@
     color: rgb(253, 201, 31);
     font-style: italic;
  
-}
-
-.my-profile-issue-tallies {
-    display: flex;
-    background-color:#0F4C75;
-    padding: 5px;
-    border-radius: 5px;
-}
-
-.my-issue-upvotes, .my-issue-downvotes, .my-issue-number-comments{
-    font-style: italic;
-    color: rgb(253, 201, 31);
-    margin-left:  12px;
-}
-
-.my-issue-title, .my-issue-descr {
-    background-color:#0F4C75;
-    color: white;
-    font-size: 14px;
-}
-
-.my-issue-title {
-    padding: 5px 54px 2px 4px;
-}
-
-.my-issue-descr {
-    padding: 5px 12px 2px 4px;
-}
-
-
-
-.user-issue-container {
-  padding:  25px;
-  background-image: linear-gradient(#b8d5e9, #6ca7ce,  #1a6ba1 );
-  border-radius: 10px;
-  margin-bottom: 20px;
-  width:  500px;
-  border:  3px solid white;
 }
 
 .user-comments {
@@ -530,57 +576,11 @@
     margin-left: 3px;
 }
 
-.title-public-page {
-    text-align: center;
-    color: white;
-    font-size: 28px;
-    margin-top: 2%;
-}
-
-.all-issues-container {
-  /* background-color: rgba(194, 194, 194, 0.6); */
-  /* background-color: white;*/
-  /* background: linear-gradient(#90d1fd,#1a75b3, #bbd6e7 ); */
-  background-image: url(../assets/andres-haro-R6ZJYwBzZx4-unsplash.jpg);
-  background-color: #5687a8;
-  background-size: 35%;
-  background-repeat: no-repeat;
-  background-position-x: 402px;
-  background-position-y: 148px;
-  margin-top: px;
-  margin-bottom: 15px;
-  margin-left: auto;
-  margin-right: auto;
-  border-radius: 10px;
-  width:  40%;
-  padding-top: 30px;
-  padding-right: 30px;
-  padding-left: 30px;
-  padding-bottom:  38px;
-  border:  3px solid white;
-}
-
-.public-comments {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    background-color: #0F4C75;
-    color: white;
-    border-radius: 5px;
-    padding: 8px;
-    margin-top:  42px;
-    margin-bottom:  -30px;
-    /* border:  1px solid white; */
-}
 
 .comment-list-item {
     display: inline-flex;
     margin-top: 15px;
 }
-
-/* .edit-del-comment-btns {
-    font-size: 2px;
-} */
 
 .edit-comments-grp-btns {
     display: flex;
@@ -627,26 +627,5 @@
     margin-left: 5px;
     width: 45px;
 }
-
-
-.user-name-span {
-    color: rgb(253, 201, 31);
-    font-weight: bold;
-    margin-inline-end: 8px;
-}
-
-.profile-issues-list-header {
-    color: white;
-    text-decoration: underline;
-    margin-top: 45px;
-    margin-bottom: 18px;
-    font-size:  25px;
-
-}
-
-/* .issues-list {
-    display: flex;
-
-} */
 
 

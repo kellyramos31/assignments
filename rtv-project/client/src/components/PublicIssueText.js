@@ -19,10 +19,7 @@ const {
     user: {
         username
     },
-        // userIssues,
-        //getUserIssues,
-        // addIssue,
-        // deleteIssue
+        
     } = useContext(UserContext)
 
 
@@ -30,17 +27,12 @@ const {
 const {
       voterUpVote,
       voterDownVote,
-      // removeVote,
       commentUpVote,
       commentDownVote,
-      //totalComments,
       calcNetVotes,
       combinedDeleteComment,
-      //deleteCommentFromIssueArray,
-     //combinedDeleteComment,
       editComment
-      // addComment,
-      // handleSubmitComment   
+
      } = useContext(IssueCommentContext)
 
 const [inputsCommentEdit, setInputsCommentEdit] = useState("")
@@ -122,7 +114,7 @@ return (
                         <button className="upvote-comment-btn" onClick={()=>commentUpVote(comment._id)}><BsArrowUpCircleFill size={14} style={{ fill: "#0F4C75"}}/></button>
                         <button className="downvote-comment-btn" onClick={()=>commentDownVote(comment._id)}><BsArrowDownCircleFill size={14} style={{ fill: "#0F4C75"}}/></button>
                     </div>
-                        <span className="user-name-span">{comment._user.username}</span> 
+                        <span className="user-name-span-comment">{comment._user.username}</span> 
                         {comment.commentText}<span className="comment-votes-span">up:</span><span className="comment-tallies">{comment.upVotesComments}</span>
                         <span className="comment-votes-span">down:</span><span className="comment-tallies">{comment.downVotesComments}</span>
                         <span className="comment-votes-span">net:</span><span className="comment-tallies">{calcNetVotes(comment.upVotesComments, comment.downVotesComments)}</span>

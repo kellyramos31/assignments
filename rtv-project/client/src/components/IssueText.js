@@ -55,8 +55,10 @@ return (
                 <h3 className="my-issue-downvotes">Downvotes: {props.downVotes}</h3>
                 <h3 className="my-issue-number-comments"># Comments: {props.numberCommentsOnIssue}</h3>
               </div>
-              <h1 className="issue-title"><span className="my-issue-title">Issue</span> {props.title}</h1>
-              <h3 className="issue-description"><span className="my-issue-descr">Description</span>  {props.description}</h3>
+              <div className="my-issue-descr-titles">
+                <h1 className="issue-title"><span className="my-issue-title">Issue</span> {props.title}</h1>
+                <h3 className="issue-description"><span className="my-issue-descr">Description</span>  {props.description}</h3>
+              </div>
                 <div className="vote-buttons">
                   <button className="delete-issue-btn" onClick={() => deleteIssue(props._id)}>Delete Issue</button>
                   <button className="edit-issue-btn" onClick={toggleToEdit}>Edit Issue</button>
