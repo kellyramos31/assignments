@@ -56,10 +56,10 @@ return (
                 <h3 className="my-issue-number-comments"># Comments: {props.numberCommentsOnIssue}</h3>
               </div>
               <div className="my-issue-descr-titles">
-                <h1 className="issue-title"><span className="my-issue-title">Issue</span> {props.title}</h1>
-                <h3 className="issue-description"><span className="my-issue-descr">Description</span>  {props.description}</h3>
+                <h1 className="issue-title-mine"><span className="my-issue-title">Issue</span> {props.title}</h1>
+                <h3 className="issue-description-mine"><span className="my-issue-descr">Description</span> <span className="my-descr-text">{props.description}</span></h3>
               </div>
-                <div className="vote-buttons">
+                <div className="edit-delete-issue-buttons">
                   <button className="delete-issue-btn" onClick={() => deleteIssue(props._id)}>Delete Issue</button>
                   <button className="edit-issue-btn" onClick={toggleToEdit}>Edit Issue</button>
                 </div>

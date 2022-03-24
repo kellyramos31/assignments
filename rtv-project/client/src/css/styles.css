@@ -11,7 +11,6 @@
 
 .app {
     background-color: #0F4C75;
-  
 }
 
 .navbar {
@@ -122,14 +121,11 @@
     border-radius: 5px
 }
 
-.profile-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-}
 
-.user-issue-list {
-    width:  45%
+.issues-list {
+   margin-left: auto;
+   margin-right: auto;
+   width: 40%;
 }
 
 .user-issue-container {
@@ -174,13 +170,106 @@
     color: white;
 }
 
+.issue-title-mine, .issue-description-mine {
+    color: #0F4C75;
+    background-color: white;
+    /* border:  3px solid #0F4C75; */
+    border-radius: 5px;
+    padding: 4px 3px 0px 0px;
+    margin-top: 10px;
+    font-style: italic;
+    margin-bottom: 5px;
+    font-size:  17px;
+}
+
+.my-issue-title, .my-issue-descr {
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    margin-left: 0;
+}
+
 .my-issue-title {
-    padding: 5px 54px 4px 2px;
+    padding: 5px 67px 4px 15px;
 }
 
 .my-issue-descr {
-    padding: 5px 12px 4px 2px;
+    padding: 5px 21px 4px 15px;
 }
+
+.edit-issue-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-issue-form input {
+    width:  97%;
+    margin-right: auto;
+    margin-top: 8px;
+    background-color:rgb(253, 201, 31);
+    border-radius: 5px;
+    padding:  3px;
+}
+
+.edit-issue-form-btns{
+    display: flex;
+    margin-top: 5px;
+}
+
+.submit-issue-edit-btn {
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #0F4C75;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-size: 14px;
+    width:  100px;
+}
+
+.cancel-issue-edit-btn {
+   margin-top: 10px;
+   width: 100px;
+   border: none;
+   border-radius: 5px;
+   height: 26.5px;
+   padding-top: 1px;
+}
+
+
+.edit-delete-issue-buttons {
+   text-align: center;
+}
+
+.delete-issue-btn {
+    margin-top: 10px;
+    margin-right: 10px;
+    background-color: #0F4C75;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-size: 14px;
+    width:  108px;
+}
+
+.edit-issue-btn {
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    background-color: #0F4C75;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-size: 14px;
+    width:  108px;
+}
+
 
 
 /* PUBLIC PAGE  */
@@ -226,75 +315,6 @@
     padding: 8px;
     margin-top:  42px;
     margin-bottom:  -30px;
-}
-
-.delete-issue-btn {
-    margin-top: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    background-color: #0F4C75;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    border: none;
-    padding: 5px;
-    font-size: 14px;
-    width:  100px;
-}
-
-.edit-issue-form {
-    display: flex;
-    flex-direction: column;
-}
-
-.edit-issue-form input {
-    width:  97%;
-    margin-right: auto;
-    background-color:rgb(253, 201, 31);
-    border-radius: 5px;
-    padding:  3px;
-}
-
-.edit-issue-btn {
-    margin-top: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    background-color: #0F4C75;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    border: none;
-    padding: 5px;
-    font-size: 14px;
-    width:  100px;
-}
-
-.edit-issue-form-btns{
-    display: flex;
-    margin-top: 5px;
-}
-
-.submit-issue-edit-btn {
-    margin-top: 10px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    background-color: #0F4C75;
-    color: white;
-    font-weight: bold;
-    border-radius: 5px;
-    border: none;
-    padding: 5px;
-    font-size: 14px;
-    width:  100px;
-}
-
-.cancel-issue-edit-btn {
-   margin-top: 10px;
-   width: 100px;
-   border: none;
-   border-radius: 5px;
-   height: 26.5px;
-   padding-top: 1px;
 }
 
 .comment-related-btns {
@@ -464,56 +484,33 @@
     color: white;
 }
 
-.iss-title {
-    background-color: #0F4C75;
-    color: white;
-    margin-left: -5px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left:  8px;
-    padding-right: 93%;
-    font-style: italic;
-}
-
-.iss-descr {
-    background-color: #0F4C75;
-    color: white;
-    margin-left: -5px;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    padding-left:  8px;
-    padding-right: 90%;
-    font-style: italic;
-}
-
 .issue-title, .issue-description {
     color: #0F4C75;
     background-color: white;
-    border:  3px solid #0F4C75;
     border-radius: 5px;
-    padding-top: 4px;
-    padding-left: 0px;
-    padding-right: 5px;
-    padding-bottom: 0px;
+    padding: 5px 8px 0px 0px;
     margin-top: 10px;
     font-style: italic;
     margin-bottom: 5px;
-    font-size:  14px;
+    font-size:  16px;
 }
 
 .title-issue, .descr-issue {
     background-color: #0F4C75;
     color:  white;
-    border: none;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
 }
 
 .title-issue {
-    padding:  5px 79px 2px 6px;
+    padding:  5px 100px 2px 12px;
 }
 
 .descr-issue  {
-     padding:  5px 33px 2px 6px;
+     padding:  5px 55px 2px 12px;
 }
+
+
 
  .total-upVotes, .total-downVotes, .net-votes, .number-comments {
     margin-left:  10px;
@@ -540,7 +537,6 @@
     font-weight: bold;
     color: rgb(253, 201, 31);
     font-style: italic;
- 
 }
 
 .user-comments {
@@ -575,7 +571,6 @@
     font-style: italic;
     margin-left: 3px;
 }
-
 
 .comment-list-item {
     display: inline-flex;
@@ -612,10 +607,6 @@
     width: 75px;
 }
 
-.edit-del-btns-group {
-    display: flex;
-    flex-direction: row;
-}
 
 .delete-comment-btn, .edit-comment-btn {
     font-size:  12px;
