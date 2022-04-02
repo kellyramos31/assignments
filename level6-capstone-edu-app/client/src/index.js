@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter } from "react-router-dom"
 import App from "./App.js"
 import UserProvider from "./context/UserProvider.js"
-import IssueCommentProvider from "./context/IssueCommentProvider.js"
+import LearnGameProvider from "./context/LearnGameProvider.js"
+import PostCommentProvider from "./context/PostCommentProvider"
 import "./css/styles.css"
 
 
@@ -11,13 +12,13 @@ import "./css/styles.css"
 
 ReactDOM.render(
   <BrowserRouter>
-      
-        <IssueCommentProvider>
-          <UserProvider>
-            <App />
-          </UserProvider>
-        </IssueCommentProvider>
-      
+      <PostCommentProvider>
+          <LearnGameProvider>
+              <UserProvider>
+                  <App />
+              </UserProvider>
+          </LearnGameProvider>
+      </PostCommentProvider>
   </BrowserRouter>,
   document.getElementById('root')
 )
