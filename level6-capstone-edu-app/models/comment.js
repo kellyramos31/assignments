@@ -8,21 +8,6 @@ const commentSchema = new Schema({
         type: String,
         required: true
     },
-    // upVotesComments: {
-    //     type: Number,
-    //     default: 0
-    // },
-    // downVotesComments: {
-    //     type: Number,
-    //     default: 0
-    // },
-    // totalVotersOnCommentCount: {
-    //     type: Number
-    // },
-    // _voters: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "User"
-    // },
     createdAt: {
         type: Date,
         default: Date.now
@@ -49,9 +34,5 @@ const autoPopulateUser  = function(next) {
 
 commentSchema.pre("find", autoPopulateUser)
 
-
-// commentSchema.post("deleteOne", function(next){
-//     Issue.deleteOne( { _comments: this._id}, next)
-// } )  
 
 module.exports = mongoose.model("Comment", commentSchema)

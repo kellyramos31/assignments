@@ -26,6 +26,7 @@ const learnSchema = new Schema({
     },
     alive: {
         type: Boolean,
+        required: true,
         defaultValue: true
     },
     profession: {
