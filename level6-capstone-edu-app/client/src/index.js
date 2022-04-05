@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter } from "react-router-dom"
 import App from "./App.js"
 import UserProvider from "./context/UserProvider.js"
-import LearnGameProvider from "./context/LearnGameProvider.js"
-import PostCommentProvider from "./context/PostCommentProvider"
+// import LearnGameProvider from "./context/LearnGameProvider.js"
+// import PostCommentProvider from "./context/PostCommentProvider"
 import "./css/styles.css"
 
 
@@ -12,13 +12,13 @@ import "./css/styles.css"
 
 ReactDOM.render(
   <BrowserRouter>
-      <PostCommentProvider>
-          <LearnGameProvider>
+      {/* <PostCommentProvider>
+          <LearnGameProvider> */}
               <UserProvider>
                   <App />
               </UserProvider>
-          </LearnGameProvider>
-      </PostCommentProvider>
+          {/* </LearnGameProvider>
+      </PostCommentProvider> */}
   </BrowserRouter>,
   document.getElementById('root')
 )

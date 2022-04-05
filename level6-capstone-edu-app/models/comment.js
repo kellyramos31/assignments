@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Post = require("../models/forumPost.js");
+const Post = require("./post.js");
 const Schema = mongoose.Schema;
 
 
