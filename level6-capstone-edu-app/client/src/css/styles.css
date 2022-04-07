@@ -7,5 +7,12 @@ body {
   color: royalblue;
 }
 
-.auth-container,
-input {}
+.navbar {
+  display: flex;
+  justify-content: space-around;
+  color: blue;
+}
+
+.profile {
+  color: royalblue;
+}

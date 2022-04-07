@@ -1,5 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+// import ReactDom from 'react-dom/client'
 import { BrowserRouter } from "react-router-dom"
 import App from "./App.js"
 import UserProvider from "./context/UserProvider.js"
@@ -9,8 +10,9 @@ import "./css/styles.css"
 
 
 //NEED TO EDIT CODE ABOVE & BELOW FOR THIS PROJECT
+const root = ReactDOM.createRoot(document.getElementById('root')); //React 18.0 change
 
-ReactDOM.render(
+root.render(
   <BrowserRouter>
       {/* <PostCommentProvider>
           <LearnGameProvider> */}
@@ -22,3 +24,5 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById('root')
 )
+
+

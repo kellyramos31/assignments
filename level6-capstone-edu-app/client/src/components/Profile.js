@@ -1,6 +1,6 @@
 import React, { useContext } from "react"
 import PostForm from "./PostForm.js"
-import PostList from "./PostList.js"
+// import PostList from "./PostList.js"
 // import CommentForm from "./CommentForm.js"
 import { UserContext } from "../context/UserProvider.js"
 // import { IssueCommentContext } from "../context/IssueCommentProvider.js"
@@ -53,21 +53,21 @@ return (
 
                     <h3>Add A Post to the Forum</h3>
 
-                    <PostForm
+                  <PostForm
                         // addPost={addPost}
                     />
 
                     
-                    <h2 className="profile-posts-list-header">{username}'s Posts</h2>
+                    {/* <h2 className="profile-posts-list-header">{username}'s Posts</h2>
                  <div className="posts-list">
                     <PostList
                         // deleteComment={deleteComment}
                         // deleteIssue={deleteIssue}
                         // userIssues={userIssues}
                         // comments={comments}
-                    />
+                    /> */}
                 </div>
-            </div>
+            // </div>
 
         )
     }

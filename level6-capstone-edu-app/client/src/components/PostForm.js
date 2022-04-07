@@ -15,7 +15,7 @@ export default function PostForm(props){
 
 
   const [inputs, setInputs] = useState(initInputs)
-  const { addIssue } = props
+  const { addPost } = props
 
   // const {
   //   //userIssues,
@@ -39,7 +39,7 @@ function handleChange(e){
 
   function handleSubmitIssue(e){
     e.preventDefault()
-    addIssue(inputs)
+    // addIssue(inputs)
     console.log("inputs from addIssue", inputs)
     setInputs(initInputs)
     // getUserIssues()
