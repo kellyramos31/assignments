@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter } from "react-router-dom"
 import App from "./App.js"
 import UserProvider from "./context/UserProvider.js"
-// import LearnGameProvider from "./context/LearnGameProvider.js"
+import LearnGameProvider from "./context/LearnGameProvider.js"
 // import PostCommentProvider from "./context/PostCommentProvider"
 import "./css/styles.css"
 
@@ -14,13 +14,13 @@ const root = ReactDOM.createRoot(document.getElementById('root')); //React 18.0 
 
 root.render(
   <BrowserRouter>
-      {/* <PostCommentProvider>
-          <LearnGameProvider> */}
+      {/* <PostCommentProvider> */}
+          <LearnGameProvider>
               <UserProvider>
                   <App />
               </UserProvider>
-          {/* </LearnGameProvider>
-      </PostCommentProvider> */}
+          </LearnGameProvider>
+      {/* </PostCommentProvider> */}
   </BrowserRouter>,
   document.getElementById('root')
 )

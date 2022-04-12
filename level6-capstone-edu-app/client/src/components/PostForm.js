@@ -15,7 +15,7 @@ export default function PostForm(props){
 
 
   const [inputs, setInputs] = useState(initInputs)
-  const { addPost } = props
+  // const { addPost } = props
 
   // const {
   //   //userIssues,
@@ -37,10 +37,10 @@ function handleChange(e){
     }))
   }
 
-  function handleSubmitIssue(e){
+  function handleSubmitPost(e){
     e.preventDefault()
     // addIssue(inputs)
-    console.log("inputs from addIssue", inputs)
+    console.log("inputs from addPost", inputs)
     setInputs(initInputs)
     // getUserIssues()
     // console.log("issues after handleSubmit for IssueForm", userIssues)
@@ -49,7 +49,7 @@ function handleChange(e){
   const { title, description } = inputs
 
   return (
-    <form onSubmit={handleSubmitIssue}>
+    <form onSubmit={handleSubmitPost}>
       <input 
         type="text" 
         name="title" 
@@ -64,7 +64,7 @@ function handleChange(e){
         onChange={handleChange} 
         placeholder="Description"
       />
-      <button className="add-issue-btn">Add Post</button>
+      <button className="add-post-btn">Add Post</button>
     </form>
   )
 }

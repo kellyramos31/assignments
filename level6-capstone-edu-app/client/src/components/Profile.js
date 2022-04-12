@@ -1,9 +1,10 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import PostForm from "./PostForm.js"
 // import PostList from "./PostList.js"
 // import CommentForm from "./CommentForm.js"
+import Learn from "./Learn.js"
 import { UserContext } from "../context/UserProvider.js"
-// import { IssueCommentContext } from "../context/IssueCommentProvider.js"
+import { LearnGameContext } from "../context/LearnGameProvider.js"
 
 export default function Profile() {
 
@@ -17,8 +18,10 @@ export default function Profile() {
         // deleteIssue
     } = useContext(UserContext)
 
-    // const {
-    //     addIssue,
+    const {
+        getFlashcards,
+        flashcards,
+        flashcardState
     //     issueState,
     //     // issues,
     //     userIssues,
@@ -28,20 +31,18 @@ export default function Profile() {
     //     // getComments,
     //     deleteIssue,
     //     deleteComment
-    // } = useContext(IssueCommentContext)
+   } = useContext(LearnGameContext)
 
 
 // const [userIssues, setUserIssues] = useState([])
 
 //USEEFFECT
 
-//   useEffect(() => {
-//     console.log("useEffect triggered")
-//     getUserIssues()
-//     getIssues()
-//     // getComments()
-//     // eslint-disable-next-line  
-//   }, [issueState])
+  useEffect(() => {
+    console.log("useEffect in Learn component triggered")
+    getFlashcards()
+    // eslint-disable-next-line  
+  }, [])
 
 
 
@@ -56,6 +57,12 @@ return (
                   <PostForm
                         // addPost={addPost}
                     />
+
+                    <Learn 
+                        flashcards={flashcards}
+                        flashcardState={flashcardState}
+                    />
+                
 
                     
                     {/* <h2 className="profile-posts-list-header">{username}'s Posts</h2>
