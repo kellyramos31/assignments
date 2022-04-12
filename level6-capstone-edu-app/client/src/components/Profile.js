@@ -5,7 +5,7 @@ import PostForm from "./PostForm.js"
 // import CommentForm from "./CommentForm.js"
 // import Learn from "./Learn.js"
 import { UserContext } from "../context/UserProvider.js"
-import { LearnGameContext } from "../context/LearnGameProvider.js"
+
 
 export default function Profile() {
 
@@ -19,31 +19,12 @@ export default function Profile() {
         // deleteIssue
     } = useContext(UserContext)
 
-  const {
-    getFlashcards,
-    //     // flashcards,
-    //     flashcardState
-//     //     issueState,
-//     //     // issues,
-//     //     userIssues,
-//     //     comments,
-//     //     getUserIssues,
-//     //     getIssues,
-//     //     // getComments,
-//     //     deleteIssue,
-//     //     deleteComment
-} = useContext(LearnGameContext)
+
 
 
 // const [userIssues, setUserIssues] = useState([])
 
-//USEEFFECT
 
-  useEffect(() => {
-    console.log("useEffect to get Flashcards triggered")
-    getFlashcards()
-    // eslint-disable-next-line  
-  }, [])
 
 
 
@@ -60,9 +41,9 @@ return (
                     />
 
 
-                      {/* <div>
-                        {flashcardState.map(flashcard=><h2>{flashcard.firstName}</h2>)}
-                    </div> */}
+                  {/* <Learn
+                    flashcards={flashcards}
+                  /> */}
             
 
                     

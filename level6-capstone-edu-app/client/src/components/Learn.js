@@ -1,17 +1,14 @@
-// import React, { useContext } from "react"
-import React from "react"
+import React, { useContext, useEffect } from "react"
+import { LearnGameContext } from "../context/LearnGameProvider.js"
 
 
 
+export default function Learn() {
 
-
-export default function Learn(props) {
-
-    // const { flashcards } = props
-    
-//         const {
-//         flashcards,
-//         // getFlashcards
+  const {
+    getFlashcards,
+    flashcardState,
+    flashcards
 //     //     issueState,
 //     //     // issues,
 //     //     userIssues,
@@ -21,16 +18,29 @@ export default function Learn(props) {
 //     //     // getComments,
 //     //     deleteIssue,
 //     //     deleteComment
-//    } = useContext(LearnGameContext)
+} = useContext(LearnGameContext)
 
-
+//USEEFFECT
+useEffect(() => {
+    console.log("useEffect to get Flashcards triggered")
+    getFlashcards()
+    // console.log("from Profile component flashcards", flashcards)
+    // console.log("from Profile component flashcardState", flashcardState)
+    // eslint-disable-next-line  
+  }, [flashcardState])
 
 
     
     return(
         <div>
             <h1>Hey I'm the Learn component!</h1>
-            {/* {flashcards.map(flashcard=><h2>{flashcard.firstName}</h2>)} */}
+            {flashcards.map(flashcard=>
+                <div>
+                    <h2>{flashcard.title}</h2>
+                    <h2>{flashcard.firstName}</h2>
+                    <h2>{flashcard.lastName}</h2>
+            </div>
+            )}
         </div>
     )
 }

@@ -33,9 +33,10 @@ function getFlashcards(){
         userAxios.get("/api/learngame/learn")
         .then(res => {
             console.log("res from learnGameProvider:", res)
-            setFlashcardState({flashcards: res.data
-            })
-
+             setFlashcardState(prevState => ({
+                ...prevState,
+                flashcards: res.data
+            }))
              console.log("flashcards from getFlashcards", res.data)
         })
         .catch(err => console.log(err.response.data.errMsg))
@@ -469,7 +470,7 @@ function getFlashcards(){
         <LearnGameContext.Provider
             value={{
             // flashcards,
-            flashcardState,
+            ...flashcardState,
             getFlashcards,
             addFlashcard
             // upVote,

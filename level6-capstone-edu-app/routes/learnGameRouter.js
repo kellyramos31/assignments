@@ -15,20 +15,9 @@ Flashcard.find((err, flashcards) => {
     });
 });
 
-// //GET COMMENTS FOR INDIVIDUAL USER
-// commentRouter.get("/user", (req, res, next)=>{
-//     Comment.find({_user: req.user._id}, (err, comments)=>{
-//         if(err) {
-//             res.status(500)
-//             return next(err)
-//         }
-//         console.log("comments", comments)
-//         return res.status(200).send(comments)
-//     })
-// })
 
-
-//NOTE:  THIS ONE WORKS TO ADD COMMENT, BUT....NOT PUSHING TO ARRAY
+//ADD A FLASHCARD
+//*******************figure out way to limit this to ADMIN/TEACHER*******
 learnGameRouter.post("/learn", (req, res, next) => {
     req.body._user = req.user._id
     const flashcard = new Flashcard(req.body);
