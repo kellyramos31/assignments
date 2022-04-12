@@ -16,3 +16,16 @@ body {
 .profile {
   color: royalblue;
 }
+
+
+.flashcard {}
+
+.flashcard-category {
+  color: blue;
+  font-style: italic;
+}
+
+.flashcard-bio-photo {
+  width: 15%;
+  height: 15%;
+}

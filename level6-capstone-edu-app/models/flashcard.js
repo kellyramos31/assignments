@@ -55,6 +55,9 @@ const flashcardSchema = new Schema({
     fact4: {
         type: String
     },
+    fact5: {
+        type: String
+    },
     quote1:  {
         type: String
     },

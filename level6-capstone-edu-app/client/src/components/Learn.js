@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react"
 import { LearnGameContext } from "../context/LearnGameProvider.js"
+// import Mae from "../images/mae-jemison.jpg"
 
 
 
@@ -31,14 +32,32 @@ useEffect(() => {
 
 
     
+  //figure out how to sort the flashcards based on category(maybe)??
+  //add flipcard feature so that have to flip it to read the text
+  //add functionality for teacher/admin to add/delete/edit flashcards???
+
+
     return(
         <div>
             <h1>Hey I'm the Learn component!</h1>
             {flashcards.map(flashcard=>
-                <div>
-                    <h2>{flashcard.title}</h2>
-                    <h2>{flashcard.firstName}</h2>
-                    <h2>{flashcard.lastName}</h2>
+                <div className="flashcard">
+                    <h4 className="flashcard-category">{flashcard.categorySTEM}</h4>
+                    <div>
+                    <img src={flashcard.imageURL} alt="flashcard photo" className="flashcard-bio-photo"/>
+                    </div>
+                    <h2>{flashcard.title}{" "}{flashcard.firstName}{" "}{flashcard.lastName}</h2>
+                    <h3>{flashcard.profession1}{" "}{flashcard.profession2}{" "}{flashcard.profession3}</h3>
+                    <h3>{flashcard.knownFor}</h3>
+                    <h3>{flashcard.born}</h3>
+                    <h3>{flashcard.fact1}</h3>
+                    <h3>{flashcard.fact2}</h3>
+                    <h3>{flashcard.fact3}</h3>
+                    <h3>{flashcard.fact4}</h3>
+                    <h3>{flashcard.fact5}</h3>
+                    <h3>{flashcard.quote1}</h3>
+                    <h3>{flashcard.quote2}</h3>
+                    <h3>{flashcard.quote3}</h3>
             </div>
             )}
         </div>
