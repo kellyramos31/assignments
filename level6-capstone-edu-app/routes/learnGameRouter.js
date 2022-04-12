@@ -5,13 +5,13 @@ const Flashcard = require("../models/flashcard.js");
 const Game = require("../models/game.js");
 
 //GET ALL FLASHCARDS
-learnGameRouter.get("/", (req, res, next) => {
-Learn.find((err, comments) => {
+learnGameRouter.get("/learn", (req, res, next) => {
+Flashcard.find((err, flashcards) => {
         if (err) {
             res.status(500);
             return next(err);
         }
-        return res.send(comments);
+        return res.send(flashcards);
     });
 });
 

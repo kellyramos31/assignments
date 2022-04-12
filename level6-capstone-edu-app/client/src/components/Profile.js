@@ -1,11 +1,11 @@
-// import React, { useContext, useEffect } from "react"
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
+//import React, { useContext } from "react"
 import PostForm from "./PostForm.js"
 // import PostList from "./PostList.js"
 // import CommentForm from "./CommentForm.js"
 // import Learn from "./Learn.js"
 import { UserContext } from "../context/UserProvider.js"
-// import { LearnGameContext } from "../context/LearnGameProvider.js"
+import { LearnGameContext } from "../context/LearnGameProvider.js"
 
 export default function Profile() {
 
@@ -19,10 +19,10 @@ export default function Profile() {
         // deleteIssue
     } = useContext(UserContext)
 
-//     const {
-//         getFlashcards,
-//         // flashcards,
-//         flashcardState
+  const {
+    getFlashcards,
+    //     // flashcards,
+    //     flashcardState
 //     //     issueState,
 //     //     // issues,
 //     //     userIssues,
@@ -32,18 +32,18 @@ export default function Profile() {
 //     //     // getComments,
 //     //     deleteIssue,
 //     //     deleteComment
-//    } = useContext(LearnGameContext)
+} = useContext(LearnGameContext)
 
 
 // const [userIssues, setUserIssues] = useState([])
 
 //USEEFFECT
 
-//   useEffect(() => {
-//     console.log("useEffect in Learn component triggered")
-//     getFlashcards()
-//     // eslint-disable-next-line  
-//   }, [])
+  useEffect(() => {
+    console.log("useEffect to get Flashcards triggered")
+    getFlashcards()
+    // eslint-disable-next-line  
+  }, [])
 
 
 
@@ -59,15 +59,11 @@ return (
                         // addPost={addPost}
                     />
 
-                    {/* <Learn 
-                        flashcards={flashcardState}
-                        flashcardState={flashcardState}
-                    /> */}
 
-                      <div>
-            {/* {flashcardState.map(flashcard=><h2>{flashcard.firstName}</h2>)}
-                </div>
-                 */}
+                      {/* <div>
+                        {flashcardState.map(flashcard=><h2>{flashcard.firstName}</h2>)}
+                    </div> */}
+            
 
                     
                     {/* <h2 className="profile-posts-list-header">{username}'s Posts</h2>

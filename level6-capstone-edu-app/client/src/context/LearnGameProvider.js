@@ -33,12 +33,10 @@ function getFlashcards(){
         userAxios.get("/api/learngame/learn")
         .then(res => {
             console.log("res from learnGameProvider:", res)
-            setFlashcardState(prevState => ({
-                ...prevState,
-                flashcards: res.data
-            }))
+            setFlashcardState({flashcards: res.data
+            })
 
-             console.log("posts from getPosts", res.data)
+             console.log("flashcards from getFlashcards", res.data)
         })
         .catch(err => console.log(err.response.data.errMsg))
     }
