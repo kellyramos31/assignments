@@ -7,7 +7,7 @@ import React from "react"
 
 export default function Learn(props) {
 
-    const { flashcards } = props
+    // const { flashcards } = props
     
 //         const {
 //         flashcards,
@@ -29,7 +29,8 @@ export default function Learn(props) {
     
     return(
         <div>
-            {flashcards.map(flashcard=><h2>{flashcard.firstName}</h2>)}
+            <h1>Hey I'm the Learn component!</h1>
+            {/* {flashcards.map(flashcard=><h2>{flashcard.firstName}</h2>)} */}
         </div>
     )
 }

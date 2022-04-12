@@ -29,9 +29,10 @@ const [flashcardState, setFlashcardState] = useState(initState)
 
 
 function getFlashcards(){
+        console.log("getFlashcards hit")
         userAxios.get("/api/learngame/learn")
         .then(res => {
-            console.log("res from learnGAmeProvider:", res)
+            console.log("res from learnGameProvider:", res)
             setFlashcardState(prevState => ({
                 ...prevState,
                 flashcards: res.data
