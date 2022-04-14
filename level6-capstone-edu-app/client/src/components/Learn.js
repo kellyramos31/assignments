@@ -33,6 +33,7 @@ useEffect(() => {
 
     
   //figure out how to sort the flashcards based on category(maybe)??
+  //maybe just put dropdown menu to filter by category??
   //add flipcard feature so that have to flip it to read the text
   //add functionality for teacher/admin to add/delete/edit flashcards???
 
@@ -44,7 +45,7 @@ useEffect(() => {
                 <div className="flashcard">
                     <h4 className="flashcard-category">{flashcard.categorySTEM}</h4>
                     <div>
-                    <img src={flashcard.imageURL} alt="flashcard photo" className="flashcard-bio-photo"/>
+                    <img src={flashcard.imageURL} alt="flashcard" className="flashcard-bio-photo"/>
                     </div>
                     <h2>{flashcard.title}{" "}{flashcard.firstName}{" "}{flashcard.lastName}</h2>
                     <h3>{flashcard.profession1}{" "}{flashcard.profession2}{" "}{flashcard.profession3}</h3>
