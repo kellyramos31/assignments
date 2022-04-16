@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 
+
 const flashcardSchema = new Schema({
     categorySTEM: {
     type: String,
