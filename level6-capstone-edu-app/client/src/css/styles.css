@@ -26,11 +26,17 @@ body {
 }
 
 .flashcard-bio-photo {
-  width: 15%;
-  height: 15%;
+  width: 85%;
+  height: 85%;
 }
 
 .front-of-card {
+  margin-left: 5%;
+  width: 19%;
+  height: 19%;
+}
+
+.cardBack {
   margin-left: 5%;
   width: 19%;
   height: 19%;
