@@ -5,6 +5,7 @@ import Flashcard from "./Flashcard.js"
 
 
 
+
 export default function Learn() {
 
   const {
@@ -41,11 +42,11 @@ useEffect(() => {
 
 
     return(
-        <div>
-            <h1>Hey I'm the Learn component!</h1>             
+        <div className="flashcard-learn">
+            {/* <h1>Hey I'm the Learn component!</h1>              */}
             {flashcards.map(flashcard=> 
                 <Flashcard flashcard={flashcard} key={flashcard._id}/>
             )}
-             </div>
+        </div>
             )}
          
