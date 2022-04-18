@@ -34,7 +34,7 @@ return (
                    
                     <h1 className="welcome-msg">Welcome @{username}!</h1>
 
-                    <h3>Add A Post to the Forum</h3>
+                    <h3 className="add-post-header">Add A New Post to the STEM Forum:</h3>
 
                   <PostForm
                         // addPost={addPost}
@@ -44,17 +44,14 @@ return (
                   {/* <Learn
                     flashcards={flashcards}
                   /> */}
-            
-
-                    
-                    {/* <h2 className="profile-posts-list-header">{username}'s Posts</h2>
+            <h2 className="profile-posts-list-header">@{username}'s Posts</h2>
                  <div className="posts-list">
-                    <PostList
-                        // deleteComment={deleteComment}
+                    {/* <PostList */}
+                        {/* // deleteComment={deleteComment}
                         // deleteIssue={deleteIssue}
                         // userIssues={userIssues}
-                        // comments={comments}
-                    /> */}
+                        // comments={comments} */}
+                    {/* /> */}
                 </div>
             // </div>
 

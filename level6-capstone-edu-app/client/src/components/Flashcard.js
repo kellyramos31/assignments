@@ -1,5 +1,5 @@
 import React, {useState} from "react"
-import Front from "../assets/cropped-sunset-quino-al-JFeOy62yjXk-unsplash.jpg"
+// import Front from "../assets/cropped-sunset-quino-al-JFeOy62yjXk-unsplash.jpg"
 
 
 export default function Flashcard(props){

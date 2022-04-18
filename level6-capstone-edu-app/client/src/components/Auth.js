@@ -36,7 +36,8 @@ export default function Auth(){
 
   return (
     <div className="auth-container">
-      <h1 className="app-title">WISE App</h1>
+      <h1 className="app-title">WISE</h1>
+      <h5 className="app-sub-title">Women In STEM Education</h5>
       { !toggle ?
         <>
           <AuthForm 

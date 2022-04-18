@@ -49,7 +49,7 @@ function handleChange(e){
   const { title, description } = inputs
 
   return (
-    <form onSubmit={handleSubmitPost}>
+    <form className="add-post-form" onSubmit={handleSubmitPost}>
       <input 
         type="text" 
         name="title" 
