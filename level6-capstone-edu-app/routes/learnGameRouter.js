@@ -2,7 +2,7 @@ const express = require("express");
 const { isValidObjectId } = require("mongoose");
 const learnGameRouter = express.Router();
 const Flashcard = require("../models/flashcard.js");
-const Game = require("../models/game.js");
+const Question = require("../models/question.js");
 
 //GET ALL FLASHCARDS
 learnGameRouter.get("/learn", (req, res, next) => {
@@ -220,56 +220,31 @@ learnGameRouter.post("/learn", (req, res, next) => {
 //         })
 // })
 
-//UPVOTE A COMMENT-INCREMENT -- this one works to increment vote count --but can vote as many times as want to...
-// commentRouter.put("/upvoteit/:commentId", (req, res, next)=> {			
-//   Comment.findByIdAndUpdate(			
-//   {_id: req.params.commentId, _user: req.user._id },	
-//   { $inc: {upVotesComments: 1, totalVotersOnCommentCount: 1} },			
-//   {new: true},			
-//   (err, updatedComment)=> {			
-//       if(err){			
-//           res.status(500)			
-//           return next(err)			
-//       }			
-//       return res.status(201).send(updatedComment)			
-//    }			
-//   )			
-// })
+//GET ALL GAME QUESTIONS
+learnGameRouter.get("/game", (req, res, next) => {
+Question.find((err, questions) => {
+        if (err) {
+            res.status(500);
+            return next(err);
+        }
+        return res.send(questions);
+    });
+});
 
-//VOTE ON AN ISSUE (adds to _voters array but only ONCE) -- NOTE:  seems to ??MAYBE?? work NOW -- BUT...how implement with rest on front-end??
-// commentRouter.put("/voter/onlyonce/:commentId", (req, res, next)=> {		
+//ADD A GAME QUESTION
+learnGameRouter.post("/game", (req, res, next) => {
+    req.body._user = req.user._id
+    const question = new Question(req.body);
 
-// Comment.updateOne(
-//     {_id: req.params.commentId}, 
-//     { $addToSet: { _voters: req.user._id } },
-
-
-// (err, issues)=> {
-//     if (err) {
-//             res.status(500);
-//             return next(err);
-//         }
-//         return res.status(201).send(issues);
-// })
-// })
-		
-
-
-//DOWNVOTE AN ISSUE--DECREMENT this works to decrement vote count === but can downVote as many times as want
-// commentRouter.put("/downvoteit/:commentId", (req, res, next)=> {			
-//   Comment.findByIdAndUpdate(			
-//   {_id: req.params.commentId, _user: req.user._id },		//maybe don't need _user: req.user._id here??
-//   { $inc: {downVotesComments: 1, totalVotersOnCommentCount: 1} },			
-//   {new: true},			
-//   (err, updatedComment)=> {			
-//       if(err){			
-//           res.status(500)			
-//           return next(err)			
-//       }			
-//       return res.status(201).send(updatedComment)		
-//    }			
-//   )			
-// })	
+    question.save(function(err, newQuestion) {
+        if (err) {
+            res.status(500)
+            return next(err)
+        }
+                 
+        return res.status(201).send(newQuestion);
+    })
+})
 
 
 
