@@ -32,6 +32,24 @@ learnGameRouter.post("/learn", (req, res, next) => {
     })
 })
 
+//EDIT A FLASHCARD
+learnGameRouter.put("/learn/:flashcardId", (req, res, next) => {
+    Flashcard.findByIdAndUpdate(
+        {_id: req.params.flashcardId, _user: req.user._id},
+        req.body,
+        { new: true },
+        (err, flashcard) => {
+            if (err) {
+                console.log("Error");
+                res.status(500);
+                return next(err);
+            }
+            return res.send(flashcard);
+        })
+})
+
+
+
 //TRYING TO MODIFY COMMENT ADD/POST TO WORK ON FRONTEND:
 // commentRouter.post("/", (req, res, next) => {
 //     const _user = req.user._id
@@ -246,6 +264,22 @@ learnGameRouter.post("/game", (req, res, next) => {
     })
 })
 
+
+//EDIT A GAME QUESTION
+learnGameRouter.put("/game/:questionId", (req, res, next) => {
+    Question.findByIdAndUpdate(
+        {_id: req.params.questionId, _user: req.user._id},
+        req.body,
+        { new: true },
+        (err, question) => {
+            if (err) {
+                console.log("Error");
+                res.status(500);
+                return next(err);
+            }
+            return res.send(question);
+        })
+})
 
 
 module.exports = learnGameRouter;
