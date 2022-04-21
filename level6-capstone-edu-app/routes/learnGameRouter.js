@@ -48,6 +48,18 @@ learnGameRouter.put("/learn/:flashcardId", (req, res, next) => {
         })
 })
 
+//DELETE A FLASHCARD
+learnGameRouter.delete("/:flashcardId", (req, res, next)=> {
+    Flashcard.findOneAndDelete(
+    { _id: req.params.flashcardId, _user: req.user._id },
+    (err, deletedFlashcard) => {
+        if (err) {
+            res.status(500);
+            return next(err) 
+        }
+        return res.status(200).send(`Successfully deleted comment: ${deletedFlashcard.firstName}${deletedFlashcard.lastName}`);
+    })
+})
 
 
 //TRYING TO MODIFY COMMENT ADD/POST TO WORK ON FRONTEND:
@@ -280,6 +292,21 @@ learnGameRouter.put("/game/:questionId", (req, res, next) => {
             return res.send(question);
         })
 })
+
+//DELETE A GAME QUESTION
+learnGameRouter.delete("/:questionId", (req, res, next)=> {
+    Question.findOneAndDelete(
+    { _id: req.params.questionId, _user: req.user._id },
+    (err, deletedQuestion) => {
+        if (err) {
+            res.status(500);
+            return next(err) 
+        }
+        return res.status(200).send(`Successfully deleted question: ${deletedFlashcard.answer}`);
+    })
+})
+
+
 
 
 module.exports = learnGameRouter;

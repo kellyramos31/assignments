@@ -1,18 +1,21 @@
 // import React, { useContext } from "react"
 import React from "react"
+import ForumPostText from './ForumPostText.js'
 
 
 
 
+export default function Forum(props) {
 
-export default function Forum() {
-
+    const { posts }  = props
 
     
     return(
         <div>
             <h1>Hey I'm the Forum component!</h1>
-            {/* {flashcards.map(flashcard=><h2>{flashcard.firstName}</h2>)} */}
+              {posts.map(post => <ForumPostText {...post} key={post._id}/>)}
         </div>
     )
 }
+
+

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 // import React, { useState, useEffect, useContext } from 'react'
 // import { UserContext} from "../context/UserProvider.js"
-//import { IssueCommentContext} from "../context/IssueCommentProvider.js"
+// import { PostCommentContext} from "../context/PostCommentProvider.js"
 
 
 const initInputs = {
@@ -15,7 +15,7 @@ export default function PostForm(props){
 
 
   const [inputs, setInputs] = useState(initInputs)
-  // const { addPost } = props
+  const { addPost } = props
 
   // const {
   //   //userIssues,
@@ -23,9 +23,9 @@ export default function PostForm(props){
   //   } = useContext(UserContext)
 
   // const {
-  //     getUserIssues,
+  //     //addPost
   //     // userIssues
-  //   } = useContext(IssueCommentContext)
+  //   } = useContext(PostCommentContext)
 
   
 
@@ -39,7 +39,7 @@ function handleChange(e){
 
   function handleSubmitPost(e){
     e.preventDefault()
-    // addIssue(inputs)
+    addPost(inputs)
     console.log("inputs from addPost", inputs)
     setInputs(initInputs)
     // getUserIssues()

@@ -105,7 +105,7 @@ function getComments(){
 
 
 
-//ADD ISSUE
+//ADD POST
     function addPost(newUserPost) {
         userAxios.post("/api/post", newUserPost)
           .then(res => {

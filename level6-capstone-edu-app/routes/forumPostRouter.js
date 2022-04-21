@@ -187,7 +187,7 @@ forumPostRouter.put("/:postId", (req, res, next) => {
 
 forumPostRouter.delete("/:postId", (req, res, next)=> {
     Post.findByIdAndDelete(
-    { _id: req.params.issueId, _user: req.user._id },
+    { _id: req.params.postId, _user: req.user._id },
     (err, deletedPost) => {
         if (err) {
             res.status(500);

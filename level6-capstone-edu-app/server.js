@@ -26,7 +26,7 @@ mongoose.connect(
 
 app.use("/auth", require("./routes/authRouter.js"))
 app.use("/api", expressJwt({secret: process.env.SECRET, algorithms: ['HS256']}))  //creates req.user -- ALSO:  algorithms: for express-jwt v6.0.0 & higher: adding an algorithm parameter is now required in addition to the secret.
-app.use("/api/post", require("./routes/forumPostRouter.js"))
+app.use("/api/forumpost", require("./routes/forumPostRouter.js"))
 app.use("/api/comment", require("./routes/commentRouter.js"))
 app.use("/api/learngame", require("./routes/learnGameRouter.js"))
 

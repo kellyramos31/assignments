@@ -5,6 +5,7 @@ import PostForm from "./PostForm.js"
 // import CommentForm from "./CommentForm.js"
 // import Learn from "./Learn.js"
 import { UserContext } from "../context/UserProvider.js"
+import { PostCommentContext } from "../context/PostCommentProvider.js"
 
 
 export default function Profile() {
@@ -13,13 +14,15 @@ export default function Profile() {
     user: {
         username
     },
-        // userIssues,
+        userPosts,
         //getUserIssues,
         // addIssue,
         // deleteIssue
     } = useContext(UserContext)
 
-
+    const {
+        addPost
+    } = useContext(PostCommentContext)
 
 
 // const [userIssues, setUserIssues] = useState([])
@@ -37,7 +40,7 @@ return (
                     <h3 className="add-post-header">Add A New Post to the STEM Forum:</h3>
 
                   <PostForm
-                        // addPost={addPost}
+                        addPost={addPost}
                     />
 
 
@@ -46,14 +49,14 @@ return (
                   /> */}
             <h2 className="profile-posts-list-header">@{username}'s Posts</h2>
                  <div className="posts-list">
-                    {/* <PostList */}
-                        {/* // deleteComment={deleteComment}
-                        // deleteIssue={deleteIssue}
-                        // userIssues={userIssues}
-                        // comments={comments} */}
-                    {/* /> */}
+                   <PostList 
+                        userPosts={userPosts}
+                        // {/* // deleteComment={deleteComment}
+                        // // deleteIssue={deleteIssue}
+                        // // comments={comments} */}
+                    />
                 </div>
-            // </div>
+            </div>
 
         )
     }
