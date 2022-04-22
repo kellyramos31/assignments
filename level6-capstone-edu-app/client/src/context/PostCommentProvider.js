@@ -28,7 +28,7 @@ const [postState, setPostState] = useState(initState)
 
 
 function getPosts(){
-        userAxios.get("/api/post")
+        userAxios.get("/api/forumpost")
         .then(res => {
             console.log("res from postCommentProvider:", res)
             setPostState(prevState => ({
@@ -62,7 +62,7 @@ function getPosts(){
  //GET USER'S INDIVIDUAL ISSUES   
 
 function getUserPosts(){
-  userAxios.get("/api/post/user")
+  userAxios.get("/api/forumpost/user")
     .then(res => {
       console.log(res)
       setPostState(prevState => ({
@@ -107,7 +107,7 @@ function getComments(){
 
 //ADD POST
     function addPost(newUserPost) {
-        userAxios.post("/api/post", newUserPost)
+        userAxios.post("/api/forumpost", newUserPost)
           .then(res => {
             console.log(res)
             setPostState(prevState => ({
@@ -133,7 +133,7 @@ function getComments(){
 function deletePost(postId) {
         console.log("postId:", postId)
 ;
-        userAxios.delete(`/api/post/${postId}`)
+        userAxios.delete(`/api/forumpost/${postId}`)
              .then(res => {
                 setPostState(prevState=> ({userPosts: prevState.userPosts.filter(userPost => userPost._id !== postId)}))
                 getPosts()
@@ -147,7 +147,7 @@ function deletePost(postId) {
     function editPost(inputs, postId) {
         console.log("postId to be edited", postId)
         console.log("inputs for edit", inputs)
-        userAxios.put(`/api/post/${postId}`, inputs)
+        userAxios.put(`/api/forumpost/${postId}`, inputs)
          .then(res => {
             setPostState(prevState => prevState.userPosts.map(userPost => userPost._id !== postId ? userPost : res.data))
       })
@@ -470,6 +470,9 @@ function minusCommentTally (postId) {
             value={{
             ...postState,
             getUserPosts,
+            getPosts,
+            // posts,
+            //userPosts,
             // upVote,
             // downVote,
             // getTotalNumberComments,
@@ -494,7 +497,7 @@ function minusCommentTally (postId) {
             // deleteCommentFromIssueArray,
             // combinedDeleteComment,
             editComment,
-            getPosts
+           
         }}>
 
         {props.children}

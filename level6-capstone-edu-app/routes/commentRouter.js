@@ -97,13 +97,13 @@ commentRouter.post("/", (req, res, next) => {
             return next(err)
         }
    
-    const postId = req.body._issue
+    const postId = req.body._post
       
         Post.findByIdAndUpdate(
-            {_id: issueId, _user: req.user._id},
+            {_id: postId, _user: req.user._id},
             { $push: { "_comments": newComment._id}},
             { new: true},
-        (err, updatedIssue) => {
+        (err, updatedPost) => {
             if (err) {
                 console.log("Error");
                 res.status(500);

@@ -61,7 +61,7 @@ export default function UserProvider(props) {
             console.log("login user, token from UserProvider", res.data)
             localStorage.setItem("token", token)
             localStorage.setItem("user", JSON.stringify(user))
-            // getUserIssues()
+            //getUserIssues()
             console.log("getUserIssues from UserProvider")
             // getUserComments()
             setUserState(prevUserState => ({
@@ -80,7 +80,7 @@ export default function UserProvider(props) {
         setUserState({
             user: {},
             token: "",
-            userIssues: []
+            userPosts: []
             // comments: []
         })
     }

@@ -40,7 +40,7 @@ export default function App() {
         <Route element={<ProtectedRoute token={token}/>}>
               <Route
                 path="/profile"
-                element={<Profile />}
+                element={<Profile/>}
                 //element={<Profile userIssues={userIssues}/>}
                 // element={<Profile issues={issues} getUserIssues={getUserIssues}/>}
                 navigateTo="/"

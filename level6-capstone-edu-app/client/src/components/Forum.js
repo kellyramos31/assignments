@@ -1,19 +1,46 @@
-// import React, { useContext } from "react"
-import React from "react"
-import ForumPostText from './ForumPostText.js'
+import React, { useContext, useEffect} from "react"
+import ForumPostList from "./ForumPostList.js"
+// import CommentForm from "./CommentForm.js"
+import { PostCommentContext } from "../context/PostCommentProvider.js"
+
+
+
+export default function Public() {
+
+
+      const {
+        postState,
+        posts,
+        userPosts,
+        comments,
+        getUserPosts,
+        getPosts,
+        // addComment,
+        getComments
+    } = useContext(PostCommentContext)
+
+    //USEEFFECT
+
+  useEffect(() => {
+    console.log("useEffect triggered")
+    getUserPosts()
+    getPosts()
+    getComments()
+    // eslint-disable-next-line  
+  }, [postState])
 
 
 
 
-export default function Forum(props) {
-
-    const { posts }  = props
-
-    
-    return(
-        <div>
-            <h1>Hey I'm the Forum component!</h1>
-              {posts.map(post => <ForumPostText {...post} key={post._id}/>)}
+    return (
+        <div className="forum">
+          <h3 className="title-forum-page">All Users' Posts</h3>
+            <ForumPostList 
+                posts={posts}
+                userPosts={userPosts}
+                comments={comments}
+                // addComment={addComment}
+            />
         </div>
     )
 }

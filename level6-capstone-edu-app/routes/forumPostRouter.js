@@ -32,14 +32,14 @@ const Comment = require("../models/comment.js");
 forumPostRouter.get("/", (req, res, next) => {
 Post.find({}) 
     .populate("_comments")
-    .sort({ upVotes: -1 })
-    .exec((err, issues)=> {
+    // .sort({ upVotes: -1 })
+    .exec((err, posts)=> {
 
         if (err) {
             res.status(500);
             return next(err);
         }
-        return res.status(201).send(issues);
+        return res.status(201).send(posts);
 })
 })
 
@@ -64,7 +64,7 @@ Post.find({})
 
 
 
-//GET ISSUES FOR INDIVIDUAL USER -- NOTE:  this sorts the issues, but doesn't give user specific issues now.
+//GET POST FOR INDIVIDUAL USER -- NOTE:  this sorts the post, but doesn't give user specific post now.
 
 forumPostRouter.get("/user", (req, res, next)=>{
     // const filter = { _user: req.body._user} //pretty sure problem = this line here
@@ -72,7 +72,7 @@ forumPostRouter.get("/user", (req, res, next)=>{
     const ObjectId = require('mongodb').ObjectId            //problem with matching the ID(this solution is from Stack Overflow)   
     Post.aggregate([
        { $match: { _user: new ObjectId(req.user._id) } },  //problem with matching the ID(this solution is from Stack Overflow)
-       { $sort: { upVotes: -1 } },
+    //    { $sort: { upVotes: -1 } },
        { $lookup: 
         { from: "comments",
           localField: "_comments",
@@ -132,7 +132,7 @@ forumPostRouter.get("/:postId", (req, res, next) => {
 })
 
 
-//EDIT ISSUE
+//EDIT FORUM POST
 forumPostRouter.put("/:postId", (req, res, next) => {
     Post.findByIdAndUpdate(
         {_id: req.params.postId, _user: req.user._id  },
@@ -162,8 +162,6 @@ forumPostRouter.put("/:postId", (req, res, next) => {
 // })
 
 //DELETE ISSUE--this works but leaves comments with no issue
-
-
 // issueRouter.delete("/:issueId", (req, res, next)=> {
 //     Issue.findByIdAndDelete(
 //     { _id: req.params.issueId, _user: req.user._id },
@@ -184,7 +182,7 @@ forumPostRouter.put("/:postId", (req, res, next) => {
 //   res.json(deletedInstance)
 // })
 
-
+//DELETE A FORUM POST
 forumPostRouter.delete("/:postId", (req, res, next)=> {
     Post.findByIdAndDelete(
     { _id: req.params.postId, _user: req.user._id },
@@ -260,55 +258,55 @@ forumPostRouter.put("/deleteCommentFromIssue/:postId", (req, res, next)=> {
 //NOTE:  ****USER SHOULD ONLY BE ABLE TO UPVOTE/DOWNVOTE AN ISSUE ONCE****NEED TO FIGURE THIS OUT
 
 //UPVOTE AN ISSUE--INCREMENT -- this one works to increment vote count --but can vote as many times as want to...
-forumPostRouter.put("/upvote/:postId", (req, res, next)=> {			
-  Post.findByIdAndUpdate(			
-  {_id: req.params.postId, _user: req.user._id },	
-  { $inc: {upVotes: 1, totalVotersVotedCount: 1} },			
-  {new: true},			
-  (err, updatedPost)=> {			
-      if(err){			
-          res.status(500)			
-          return next(err)			
-      }			
-      return res.status(201).send(updatedPost)			
-   }			
-  )			
-})
+// forumPostRouter.put("/upvote/:postId", (req, res, next)=> {			
+//   Post.findByIdAndUpdate(			
+//   {_id: req.params.postId, _user: req.user._id },	
+//   { $inc: {upVotes: 1, totalVotersVotedCount: 1} },			
+//   {new: true},			
+//   (err, updatedPost)=> {			
+//       if(err){			
+//           res.status(500)			
+//           return next(err)			
+//       }			
+//       return res.status(201).send(updatedPost)			
+//    }			
+//   )			
+// })
 
 //VOTE ON AN ISSUE (adds to _voters array but only ONCE) -- NOTE:  seems to ??MAYBE?? work NOW -- BUT...how implement with rest on front-end??
-forumPostRouter.put("/voter/vote/:postId", (req, res, next)=> {		
+// forumPostRouter.put("/voter/vote/:postId", (req, res, next)=> {		
 
-Post.updateOne(
-    {_id: req.params.postId}, 
-    { $addToSet: { _voters: req.user._id } },
+// Post.updateOne(
+//     {_id: req.params.postId}, 
+//     { $addToSet: { _voters: req.user._id } },
 
 
-(err, posts)=> {
-    if (err) {
-            res.status(500);
-            return next(err);
-        }
-        return res.status(201).send(posts);
-})
-})
+// (err, posts)=> {
+//     if (err) {
+//             res.status(500);
+//             return next(err);
+//         }
+//         return res.status(201).send(posts);
+// })
+// })
 		
 
 
 //DOWNVOTE AN ISSUE--DECREMENT this works to decrement vote count === but can downVote as many times as want
-forumPostRouter.put("/downvote/:postId", (req, res, next)=> {			
-  Post.findByIdAndUpdate(			
-  {_id: req.params.postId, _user: req.user._id },		//maybe don't need _user: req.user._id here??
-  { $inc: {downVotes: 1, totalVotersVotedCount: 1} },			
-  {new: true},			
-  (err, updatedPost)=> {			
-      if(err){			
-          res.status(500)			
-          return next(err)			
-      }			
-      return res.status(201).send(updatedPost)		
-   }			
-  )			
-})	
+// forumPostRouter.put("/downvote/:postId", (req, res, next)=> {			
+//   Post.findByIdAndUpdate(			
+//   {_id: req.params.postId, _user: req.user._id },		//maybe don't need _user: req.user._id here??
+//   { $inc: {downVotes: 1, totalVotersVotedCount: 1} },			
+//   {new: true},			
+//   (err, updatedPost)=> {			
+//       if(err){			
+//           res.status(500)			
+//           return next(err)			
+//       }			
+//       return res.status(201).send(updatedPost)		
+//    }			
+//   )			
+// })	
 
 
 //MAYBE THIS IS JUST CANCEL A VOTE -- (removes from _voters array)
@@ -338,7 +336,7 @@ forumPostRouter.put("/downvote/:postId", (req, res, next)=> {
 
 // });
 
-//INCREMENT TOTAL # OF COMMENTS ON ISSUE
+//INCREMENT TOTAL # OF COMMENTS ON POST
 forumPostRouter.put("/increment/:postId", (req, res, next) => {
     req.body._user = req.user._id
  
@@ -358,7 +356,7 @@ forumPostRouter.put("/increment/:postId", (req, res, next) => {
         })
 })
 
-//DECREMENT TOTAL # OF COMMENTS ON ISSUE
+//DECREMENT TOTAL # OF COMMENTS ON POST
 forumPostRouter.put("/decrement/:postId", (req, res, next) => {
     req.body._user = req.user._id
  
@@ -378,7 +376,7 @@ forumPostRouter.put("/decrement/:postId", (req, res, next) => {
         })
 })
 
-//TOTAL # OF COMMENTS FOR SPECIFIC ISSUE
+//TOTAL # OF COMMENTS FOR SPECIFIC POST
 forumPostRouter.get("/countComments/:postId", (req, res, next)=> {
    Post.aggregate([
         // {$match: {_id: req.params.issueId}},
@@ -396,6 +394,5 @@ forumPostRouter.get("/countComments/:postId", (req, res, next)=> {
 
 })
 
-		
 
 module.exports = forumPostRouter;

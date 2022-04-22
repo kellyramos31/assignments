@@ -1,7 +1,7 @@
-// import React, { useContext, useEffect } from "react"
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import PostForm from "./PostForm.js"
-// import PostList from "./PostList.js"
+// import Forum from "./Forum.js"
+import PostList from "./PostList.js"
 // import CommentForm from "./CommentForm.js"
 // import Learn from "./Learn.js"
 import { UserContext } from "../context/UserProvider.js"
@@ -14,20 +14,33 @@ export default function Profile() {
     user: {
         username
     },
-        userPosts,
         //getUserIssues,
         // addIssue,
         // deleteIssue
     } = useContext(UserContext)
 
     const {
+        postState,
+        userPosts,
+        // comments,
+        // userPosts,
+        getPosts,
+        getUserPosts,
         addPost
     } = useContext(PostCommentContext)
 
 
 // const [userIssues, setUserIssues] = useState([])
 
+//USEEFFECT
 
+  useEffect(() => {
+    console.log("useEffect triggered")
+    getUserPosts()
+    getPosts()
+    // getComments()
+    // eslint-disable-next-line  
+  }, [postState])
 
 
 
@@ -48,13 +61,16 @@ return (
                     flashcards={flashcards}
                   /> */}
             <h2 className="profile-posts-list-header">@{username}'s Posts</h2>
-                 <div className="posts-list">
-                   <PostList 
+                 <div className="profile-posts-list">
+                     <PostList
                         userPosts={userPosts}
+                     />
+                   {/* <Forum
+                        posts={posts}
                         // {/* // deleteComment={deleteComment}
                         // // deleteIssue={deleteIssue}
                         // // comments={comments} */}
-                    />
+                   {/* /> */}
                 </div>
             </div>
 
