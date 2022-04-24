@@ -30,7 +30,7 @@ export default function Public() {
   }, [postState])
 
 
-
+//WANT TO HAVE WAY TO SEARCH FORUM POSTS BY CATEGORY/KEYWORD
 
     return (
         <div className="forum">

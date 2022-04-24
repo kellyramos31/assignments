@@ -12,20 +12,11 @@ export default function Learn() {
     getFlashcards,
     flashcardState,
     flashcards
-//     //     issueState,
-//     //     // issues,
-//     //     userIssues,
-//     //     comments,
-//     //     getUserIssues,
-//     //     getIssues,
-//     //     // getComments,
-//     //     deleteIssue,
-//     //     deleteComment
 } = useContext(LearnGameContext)
 
 //USEEFFECT
 useEffect(() => {
-    console.log("useEffect to get Flashcards triggered")
+    console.log("useEffect in Learn Component to get Flashcards triggered")
     getFlashcards()
     // console.log("from Profile component flashcards", flashcards)
     // console.log("from Profile component flashcardState", flashcardState)
@@ -43,10 +34,11 @@ useEffect(() => {
 
     return(
         <div className="flashcard-learn">
-            {/* <h1>Hey I'm the Learn component!</h1>              */}
+            <h1>Hey I'm the Learn component!</h1>
             {flashcards.map(flashcard=> 
                 <Flashcard flashcard={flashcard} key={flashcard._id}/>
             )}
         </div>
-            )}
+            )
+    }
          

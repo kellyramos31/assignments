@@ -43,12 +43,14 @@ export default function Profile() {
   }, [postState])
 
 
+//MAYBE ADD GAME SCORE HISTORY & REWARDS/BADGES SECTIONS
+
 
 return (
 
                <div className="profile">
                    
-                    <h1 className="welcome-msg">Welcome @{username}!</h1>
+                    <h1 className="welcome-msg">Hi @{username}!</h1>
 
                     <h3 className="add-post-header">Add A New Post to the STEM Forum:</h3>
 

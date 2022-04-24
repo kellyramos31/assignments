@@ -49,7 +49,7 @@ learnGameRouter.put("/learn/:flashcardId", (req, res, next) => {
 })
 
 //DELETE A FLASHCARD
-learnGameRouter.delete("/:flashcardId", (req, res, next)=> {
+learnGameRouter.delete("/learn/:flashcardId", (req, res, next)=> {
     Flashcard.findOneAndDelete(
     { _id: req.params.flashcardId, _user: req.user._id },
     (err, deletedFlashcard) => {
@@ -251,7 +251,7 @@ learnGameRouter.delete("/:flashcardId", (req, res, next)=> {
 // })
 
 //GET ALL GAME QUESTIONS
-learnGameRouter.get("/game", (req, res, next) => {
+learnGameRouter.get("/play", (req, res, next) => {
 Question.find((err, questions) => {
         if (err) {
             res.status(500);
@@ -262,7 +262,7 @@ Question.find((err, questions) => {
 });
 
 //ADD A GAME QUESTION
-learnGameRouter.post("/game", (req, res, next) => {
+learnGameRouter.post("/play", (req, res, next) => {
     req.body._user = req.user._id
     const question = new Question(req.body);
 
@@ -278,7 +278,7 @@ learnGameRouter.post("/game", (req, res, next) => {
 
 
 //EDIT A GAME QUESTION
-learnGameRouter.put("/game/:questionId", (req, res, next) => {
+learnGameRouter.put("/play/:questionId", (req, res, next) => {
     Question.findByIdAndUpdate(
         {_id: req.params.questionId, _user: req.user._id},
         req.body,
@@ -294,7 +294,7 @@ learnGameRouter.put("/game/:questionId", (req, res, next) => {
 })
 
 //DELETE A GAME QUESTION
-learnGameRouter.delete("/:questionId", (req, res, next)=> {
+learnGameRouter.delete("/play/:questionId", (req, res, next)=> {
     Question.findOneAndDelete(
     { _id: req.params.questionId, _user: req.user._id },
     (err, deletedQuestion) => {

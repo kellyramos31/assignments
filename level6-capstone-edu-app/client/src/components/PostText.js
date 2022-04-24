@@ -39,7 +39,6 @@ export default function PostText(props){
     }
 
   
-
 return (
     
    
@@ -48,7 +47,7 @@ return (
         {/* { !toggleIsEditing ? */}
       
         <div key={props._id} className="user-post-container">
-            <div className="issue">
+            <div className="my-post">
               <div className="my-profile-post-tallies">
                 {/* <h3 className="total-votes"># Voters: {props.totalVotersVotedCount}</h3>
                 <h3 className="my-issue-upvotes">Upvotes: {props.upVotes}</h3>

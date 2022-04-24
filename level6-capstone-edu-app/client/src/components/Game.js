@@ -1,36 +1,42 @@
-// import React, { useContext } from "react"
-import React from "react"
+// import React, { useState, useContext, useEffect } from "react"
+import React, { useContext, useEffect } from "react"
+import { LearnGameContext } from "../context/LearnGameProvider.js"
+import Question from "./Question.js"
 
 
 
 
+export default function Game() {
 
-export default function Game(props) {
+  const {
+    getGameQuestions,
+    gameState,
+    questions
+} = useContext(LearnGameContext)
 
-    // const { flashcards } = props
+//USEEFFECT
+useEffect(() => {
+    console.log("useEffect in Game Component to get Game Questions triggered")
+    getGameQuestions()
+    // console.log("from Profile component flashcards", flashcards)
+    // console.log("from Profile component flashcardState", flashcardState)
+    // eslint-disable-next-line  
+  }, [gameState])
+
+
+//   [isFlipped, setIsFlippedState]=useState("false")
     
-//         const {
-//         flashcards,
-//         // getFlashcards
-//     //     issueState,
-//     //     // issues,
-//     //     userIssues,
-//     //     comments,
-//     //     getUserIssues,
-//     //     getIssues,
-//     //     // getComments,
-//     //     deleteIssue,
-//     //     deleteComment
-//    } = useContext(LearnGameContext)
+  //figure out how to sort the flashcards based on category(maybe)??
+  //maybe just put dropdown menu to filter by category??
+  //add flipcard feature so that have to flip it to read the text
+  //add functionality for teacher/admin to add/delete/edit flashcards???
 
 
-
-
-    
     return(
-        <div>
-            <h1>Hey I'm the Game component!</h1>
-            {/* {flashcards.map(flashcard=><h2>{flashcard.firstName}</h2>)} */}
+        <div className="question-play">
+            {/* <h1>Hey I'm the Learn component!</h1>              */}
+            {questions.map(question=> 
+                <Question question={question} key={question._id}/>
+            )}
         </div>
-    )
-}
+            )}

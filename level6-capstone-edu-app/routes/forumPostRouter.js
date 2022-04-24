@@ -28,11 +28,11 @@ const Comment = require("../models/comment.js");
 // });
 
 
-//GET ALL ISSUES ALTERNATIVE including populate _comments AND SORT BY ISSUE'S UPVOTES
+//GET ALL ISSUES ALTERNATIVE including populate _comments AND SORT BY # OF COMMENTS ON POST
 forumPostRouter.get("/", (req, res, next) => {
 Post.find({}) 
     .populate("_comments")
-    // .sort({ upVotes: -1 })
+    .sort({ numberCommentsOnPost: -1 })
     .exec((err, posts)=> {
 
         if (err) {

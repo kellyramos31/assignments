@@ -19,6 +19,7 @@ export default function LearnGameProvider(props) {
         user: JSON.parse(localStorage.getItem("user")) || {},
         token: localStorage.getItem("token") || "",
         flashcards: [],
+        questions: [],
         // posts: [],
         // comments: [],
         errMsg: ""
@@ -26,8 +27,10 @@ export default function LearnGameProvider(props) {
 
 const [flashcardState, setFlashcardState] = useState(initState)
 
+const [gameState, setGameState] = useState([])
 
 
+//GET ALL FLASHCARDS
 function getFlashcards(){
         console.log("getFlashcards hit")
         userAxios.get("/api/learngame/learn")
@@ -42,6 +45,21 @@ function getFlashcards(){
         .catch(err => console.log(err.response.data.errMsg))
     }
 
+
+//GET ALL GAME QUESTIONS
+function getGameQuestions(){
+        console.log("getGameQuestions hit")
+        userAxios.get("/api/learngame/play")
+        .then(res => {
+            console.log("res from learnGameProvider:", res)
+             setGameState(prevState => ({
+                ...prevState,
+                questions: res.data
+            }))
+             console.log("questions from getGameQuestions", res.data)
+        })
+        .catch(err => console.log(err.response.data.errMsg))
+    }
 
 
 // function sortCommentsForIssue() {
@@ -469,10 +487,11 @@ function getFlashcards(){
     return (
         <LearnGameContext.Provider
             value={{
-            // flashcards,
             ...flashcardState,
             getFlashcards,
-            addFlashcard
+            addFlashcard,
+            ...gameState,
+            getGameQuestions,
             // upVote,
             // downVote,
             // getTotalNumberComments,
