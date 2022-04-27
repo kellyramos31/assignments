@@ -109,7 +109,7 @@ commentRouter.post("/", (req, res, next) => {
                 res.status(500);
                 return next(err);
             }
-            return res.send(newComment);
+            return res.send(updatedPost);
         })
     })
 })

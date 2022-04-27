@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import AddCommentForm from "./AddCommentForm.js"
 import { UserContext} from "../context/UserProvider.js"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
 // import { FcCancel } from 'react-icons/fc'
@@ -63,14 +64,14 @@ function handleChangeEdit(e){
 
 return (
     <div className="all-post-container" key={props._id}>
-        <div className="all-post" key={props._id}>
+        <div className="all-posts" key={props._id}>
                <div className="tallies">
                     <h4 className="number-comments"># Comments: <span className="tallies-top">{props.numberCommentsOnPost}</span> </h4>
-                    <h3><span className="posted-by">posted by:</span> <span className="user-name-span-issue">{props._user.username}</span></h3>  
+                    <h3><span className="posted-by">posted by:</span> <span className="user-name-span-post">{props._user.username}</span></h3>  
                 </div>
             
-            <h1 className="issue-title"><span className="title-issue">Post:</span> {props.title}</h1>
-            <h3 className="issue-description"><span className="descr-issue">Description:</span> {props.description}</h3>
+            <h1 className="post-title"><span className="title-post">Post:</span> {props.title}</h1>
+            <h3 className="post-description"><span className="descr-post">Description:</span> {props.description}</h3>
 
      
         <div className="comment-related-btns">
@@ -81,10 +82,10 @@ return (
               </div>
               :
               <div id={props._id} className="comment-form" >
-                  {/* <AddCommentForm
+                  <AddCommentForm
                     _post={props._id}
                     toggleToComment={toggleToComment}
-                  /> */}
+                  />
               
               </div>
           }
@@ -101,9 +102,8 @@ return (
                         <button className="downvote-comment-btn" onClick={()=>commentDownVote(comment._id)}><BsArrowDownCircleFill size={14} style={{ fill: "#0F4C75"}}/></button> */}
                     </div>
                         <span className="user-name-span-comment">{comment._user.username}</span> 
-                        {comment.commentText}<span className="comment-votes-span">up:</span><span className="comment-tallies">{comment.upVotesComments}</span>
-                        <span className="comment-votes-span">down:</span><span className="comment-tallies">{comment.downVotesComments}</span>
-                        {/* <span className="comment-votes-span">net:</span><span className="comment-tallies">{calcNetVotes(comment.upVotesComments, comment.downVotesComments)}</span> */}
+                        {comment.commentText}
+                    
                     
                     {username === comment._user.username 
                     ? 

@@ -228,3 +228,23 @@ body {
   /* transition: 150ms;
   transform: perspective(1000px) rotateY(var(--rotate-y, 0)); */
 }
+
+.forum-post-list {
+  display: flex;
+  flex-direction: column;
+
+}
+
+.title-forum-page {
+  text-align: center;
+  color: whitesmoke;
+  font-size: larger;
+}
+
+.all-post-container {
+  margin-left: 20%;
+  margin-right: 30%;
+  color: whitesmoke;
+}
+
+.all-posts {}
