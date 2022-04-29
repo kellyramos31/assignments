@@ -88,7 +88,7 @@ body {
 
 .profile-container {
   margin-top: 10px;
-  background-color: skyblue;
+  background-color: rgba(0, 0, 0, .8);
   border-radius: .5rem;
   padding: .5rem;
 }
@@ -114,7 +114,6 @@ body {
   margin-right: 3%;
 }
 
-.flashcard-professions {}
 
 
 .card {
@@ -186,7 +185,17 @@ body {
 .flashcard-category {
   color: blue;
   font-style: italic;
+  text-transform: uppercase;
 }
+
+span {
+  color: blue;
+  font-style: italic;
+}
+
+/* .noteworthy-flashcard,
+.birthdate-flashcard, */
+
 
 /* .flashcard-bio-photo {
   width: 85%;
@@ -242,9 +251,12 @@ body {
 }
 
 .all-post-container {
-  margin-left: 20%;
-  margin-right: 30%;
+  margin-top: 2%;
+  margin-left: 25%;
+  margin-right: 25%;
   color: whitesmoke;
+  border-radius: .5rem;
+  background-color: rgba(0, 0, 0, .7);
 }
 
 .all-posts {}

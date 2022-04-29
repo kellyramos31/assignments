@@ -72,7 +72,7 @@ forumPostRouter.get("/user", (req, res, next)=>{
     const ObjectId = require('mongodb').ObjectId            //problem with matching the ID(this solution is from Stack Overflow)   
     Post.aggregate([
        { $match: { _user: new ObjectId(req.user._id) } },  //problem with matching the ID(this solution is from Stack Overflow)
-    //    { $sort: { upVotes: -1 } },
+       { $sort: { numberCommentsOnPost: -1 } },
        { $lookup: 
         { from: "comments",
           localField: "_comments",
@@ -344,7 +344,7 @@ forumPostRouter.put("/increment/:postId", (req, res, next) => {
       
         Post.findByIdAndUpdate(
             {_id: postId, _user: req.user._id},
-            { $inc: { numberCommentsOnIssue: 1}},
+            { $inc: { numberCommentsOnPost: 1}},
             { new: true},
         (err, updatedPost) => {
             if (err) {
@@ -364,7 +364,7 @@ forumPostRouter.put("/decrement/:postId", (req, res, next) => {
       
         Post.findByIdAndUpdate(
             {_id: postId, _user: req.user._id},
-            { $inc: { numberCommentsOnIssue: -1}},
+            { $inc: { numberCommentsOnPost: -1}},
             { new: true},
         (err, updatedPost) => {
             if (err) {

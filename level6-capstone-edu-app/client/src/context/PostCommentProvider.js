@@ -185,8 +185,8 @@ function combinedAddComment (commentText, _post){
 
 //INCREMENT COMMENT TOTAL ON SPECIFIC ISSUE
 function addCommentTally (postId) {
-    console.log("_issue from addCommentTally:", postId)
-    userAxios.put(`/api/issue/increment/${postId}`, postId)
+    console.log("_post from addCommentTally:", postId)
+    userAxios.put(`/api/forumpost/increment/${postId}`, postId)
     .then(res => {
             console.log("addComment res", res)
             setPostState(prevState => ({
@@ -238,7 +238,7 @@ function combinedDeleteComment (commentId, postId){
 //DECREMENT COMMENT TOTAL ON SPECIFIC ISSUE
 function minusCommentTally (postId) {
     console.log("_post from minusCommentTally:", postId)
-    userAxios.put(`/api/issue/decrement/${postId}`, postId)
+    userAxios.put(`/api/forumpost/decrement/${postId}`, postId)
     .then(res => {
             console.log("minusComment res", res)
             setPostState(prevState => ({
