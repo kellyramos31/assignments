@@ -11,6 +11,10 @@ const questionSchema = new Schema({
         type: String,
         required: true
     },
+    value: {
+        type: Number,
+        required: true
+    },
     questionOptions: [
         {
          questionText: {

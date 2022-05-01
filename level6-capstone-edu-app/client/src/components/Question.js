@@ -26,6 +26,7 @@ return(
                 <div className="question-card-back" key={question._id}>
                     <h4 className="question-category">{question.categorySTEM}</h4>
                     <h3>{question.answer} </h3>
+                    <h4>${question.value}</h4>
                     {question.questionOptions.map(questionOption=>
                         <h2>{questionOption.questionText}</h2>
                     )}

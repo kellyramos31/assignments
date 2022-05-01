@@ -8,8 +8,12 @@ import { PostCommentContext } from "../context/PostCommentProvider.js"
 export default function PostText(props){
 
     const {
+        // postState,
         deletePost,
         editPost,
+        // getUserPosts,
+        // getPosts,
+        // getComments
         // comments,
         //deleteComment,
         // editComment
@@ -37,6 +41,8 @@ export default function PostText(props){
       [name]: value
     }))
     }
+
+
 
   
 return (

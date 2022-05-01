@@ -197,22 +197,24 @@ commentRouter.delete("/:commentId", (req, res, next)=> {
     })
 })
 
-//DELETE COMMENT from _comments array in issue model
-commentRouter.delete("/deleteCommentFromIssue/:commentId", (req, res, next)=> {
-        // const issueId = req.body._issue
-        // const ObjectId = require('mongodb').ObjectId 
-        Post.findByIdAndUpdate(
-            {_id: req.body._post, _user: req.user._id},
-            { $pull: { "_comments": req.params.commentId}},
-        (err, updatedIssue) => {
-            if (err) {
-                console.log("Error");
-                res.status(500);
-                return next(err);
-            }
-            return res.send(updatedIssue);
-        })
-    })
+//DELETE COMMENT from _comments array in post model-- not working
+// commentRouter.put("/deleteCommentFromPost/:commentId", (req, res, next)=> {
+//         // const issueId = req.body._issue
+//         // const ObjectId = require('mongodb').ObjectId 
+//         Post.findByIdAndUpdate(
+//             {_id: req.body._post, _user: req.user._id},
+//             { $pull: { "_comments": req.params.commentId}},
+//         (err, updatedPost) => {
+//             if (err) {
+//                 console.log("Error");
+//                 res.status(500);
+//                 return next(err);
+//             }
+//             return res.send(updatedPost);
+//         })
+//     })
+
+//DELETE ALL COMMENTS FOR A SPECIFIED POST (for when post is deleted)
 
 
 //EDIT COMMENT

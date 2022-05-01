@@ -35,7 +35,7 @@ useEffect(() => {
 
     return(
         <div className="question-play">
-          <GameTable/>
+          {/* <GameTable/> */}
             {/* <h1>Hey I'm the Learn component!</h1>              */}
             {questions.map(question=> 
                 <Question question={question} key={question._id}/>

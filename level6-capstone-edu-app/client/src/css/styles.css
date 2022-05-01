@@ -88,6 +88,7 @@ body {
 
 .profile-container {
   margin-top: 10px;
+  margin-bottom: 20px;
   background-color: rgba(0, 0, 0, .8);
   border-radius: .5rem;
   padding: .5rem;
@@ -167,7 +168,7 @@ body {
   object-fit: cover;
 }
 
-.card .card-back {}
+/* .card .card-back {} */
 
 
 /* .card-front {
@@ -251,12 +252,13 @@ span {
 }
 
 .all-post-container {
-  margin-top: 2%;
+  margin-top: 1%;
   margin-left: 25%;
   margin-right: 25%;
+  margin-bottom: 1%;
   color: whitesmoke;
   border-radius: .5rem;
-  background-color: rgba(0, 0, 0, .7);
+  background-color: rgba(0, 0, 0, .65);
 }
 
-.all-posts {}
+/* .all-posts {} */

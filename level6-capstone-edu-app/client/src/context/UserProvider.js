@@ -22,7 +22,7 @@ export default function UserProvider(props) {
         token: localStorage.getItem("token") || "",
         flashcards: [],
         userPosts: [],
-        comments: [],
+        userComments: [],
         errMsg: ""
     }
 
@@ -80,7 +80,8 @@ export default function UserProvider(props) {
         setUserState({
             user: {},
             token: "",
-            userPosts: []
+            userPosts: [],
+            userComments: []
             // comments: []
         })
     }

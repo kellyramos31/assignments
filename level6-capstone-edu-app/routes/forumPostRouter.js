@@ -232,8 +232,8 @@ forumPostRouter.delete("/:postId", (req, res, next)=> {
 
 
 
-//DELETE specified comment from _comment array
-forumPostRouter.put("/deleteCommentFromIssue/:postId", (req, res, next)=> {
+//DELETE specified comment from _comments array--this works
+forumPostRouter.put("/deleteCommentFromPost/:postId", (req, res, next)=> {
         const commentId = req.body._id
         // const ObjectId = require('mongodb').ObjectId 
         Post.findByIdAndUpdate(
