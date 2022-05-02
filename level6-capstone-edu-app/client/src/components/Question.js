@@ -18,18 +18,21 @@ return(
                 question.categorySTEM==="Tech" ? "💻"
                 :
                 question.categorySTEM==="Engineering" ? "⚙️"
-                : "➗"
+                : 
+                "➗"
                 }
     
             </div>
             :
                 <div className="question-card-back" key={question._id}>
+                    <h4>{question.value}{" "}points</h4>
                     <h4 className="question-category">{question.categorySTEM}</h4>
                     <h3>{question.answer} </h3>
-                    <h4>${question.value}</h4>
-                    {question.questionOptions.map(questionOption=>
-                        <h2>{questionOption.questionText}</h2>
+                    <div className="question-options">
+                        {question.questionOptions.map(questionOption=>
+                            <h2>{questionOption.questionText}</h2>
                     )}
+                    </div>
             </div>
         }
         </div>

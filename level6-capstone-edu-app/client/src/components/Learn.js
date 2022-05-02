@@ -33,10 +33,12 @@ useEffect(() => {
 
 
     return(
-        <div className="flashcard-learn">
+      <div className="learn-container">
+        <div className="flashcard-learn-container">
             {flashcards.map(flashcard=> 
                 <Flashcard flashcard={flashcard} key={flashcard._id}/>
             )}
+        </div>
         </div>
             )
     }

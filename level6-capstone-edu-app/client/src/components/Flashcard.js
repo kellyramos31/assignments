@@ -9,21 +9,16 @@ const { flashcard } = props
 const [flipcard, setFlipcard]=useState(false)
 
 return(
+    //beginning of line below allows for dynamic classes
     <div className={`card ${flipcard ? "flip" : ""}`} onClick={()=>setFlipcard(!flipcard)}>
     {/* // <div className="flashcard-container" onClick={()=>setFlipcard(!flipcard)}> */}
         {!flipcard ?
             <div className="card-front">
-               <img src={flashcard.imageURL} alt="cardFront"/> 
-        
-               <h1>Front O'Card</h1>
+               <img src={flashcard.imageURL} width="145rem" height="185rem" alt="cardFront"/> 
             </div>
             :
                 <div className="card-back" key={flashcard._id}>
-                    <h4 className="flashcard-category">{flashcard.categorySTEM}</h4>
-                    <div>
-                        {/* <img src={flashcard.imageURL} alt="flashcard" className="flashcard-bio-photo"/> */}
-                    </div>
-                   
+                    <h4 className="flashcard-category">{flashcard.categorySTEM}</h4>      
                     <h2>{flashcard.title}{" "}{flashcard.firstName}{" "}{flashcard.lastName}</h2>
                     <h3 className="profession-flashcard">{flashcard.profession1}{" "}{flashcard.profession2}{" "}{flashcard.profession3}</h3> 
                     <h3 className="noteworthy-flashcard"><span>Noteworthy</span></h3> 
@@ -36,9 +31,9 @@ return(
                     <h3>{flashcard.fact4}</h3>
                     <h3>{flashcard.fact5}</h3>
                     <h3><span>In {flashcard.firstName}'s words:</span></h3>
-                    <h3>{flashcard.quote1}</h3>
-                    <h3>{flashcard.quote2}</h3>
-                    <h3>{flashcard.quote3}</h3>
+                    <h3 className="quote">{flashcard.quote1}</h3>
+                    <h3 className="quote">{flashcard.quote2}</h3>
+                    <h3 className="quote">{flashcard.quote3}</h3>
             </div>
         }
         </div>
