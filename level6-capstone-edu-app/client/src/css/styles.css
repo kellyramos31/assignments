@@ -122,6 +122,11 @@ a {
   text-transform: uppercase;
 }
 
+img {
+  padding-top: 5%;
+  border-radius: 10px;
+}
+
 span {
   color: blue;
   font-style: italic;
@@ -150,7 +155,7 @@ span {
   display: grid;
   align-items: center;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 6rem 4rem;
+  gap: 10rem 5rem;
 }
 
 .card-front {
@@ -169,9 +174,6 @@ span {
   background-color: skyblue;
 }
 
-/* .question-card-back {
- 
-} */
 
 .card {
   display: flex;
@@ -188,7 +190,6 @@ span {
   height: 150px;
   /* width: 150px; */
   transform: rotateY(var(--rotate-y, 0));
-  /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
   font-family: 'Gill Sans',
     'Gill Sans MT',
     Calibri,
@@ -212,7 +213,6 @@ span {
   border-radius: .25rem;
   box-shadow: 0 0 5px 2px rgb(0, 0, 0, .3);
   background-color: skyblue;
-  transform-style: preserve-3d;
   height: 150px;
   /* width: 150px; */
   transform: rotateY(var(--rotate-y, 0));
@@ -246,6 +246,7 @@ span {
   color: whitesmoke;
   border-radius: .25rem;
 }
+
 
 .question-options {
   margin-top: .1rem;

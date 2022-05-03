@@ -14,7 +14,7 @@ return(
     {/* // <div className="flashcard-container" onClick={()=>setFlipcard(!flipcard)}> */}
         {!flipcard ?
             <div className="card-front">
-               <img src={flashcard.imageURL} width="145rem" height="185rem" alt="cardFront"/> 
+               <img src={flashcard.imageURL} width="200rem" height="250rem" alt="cardFront"/> 
             </div>
             :
                 <div className="card-back" key={flashcard._id}>
