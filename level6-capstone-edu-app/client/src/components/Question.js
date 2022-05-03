@@ -1,5 +1,6 @@
-import React, {useState} from "react"
-// import Front from "../assets/cropped-sunset-quino-al-JFeOy62yjXk-unsplash.jpg"
+import React, {useState, useContext} from "react"
+import { LearnGameContext } from "../context/LearnGameProvider.js"
+
 
 
 export default function Question(props){
@@ -7,6 +8,10 @@ export default function Question(props){
 const { question } = props
 
 const [flip, setFlip]=useState(false)
+
+   const {
+        handleGameAnswerClick
+    } = useContext(LearnGameContext)
 
 return(
     <div className={`questionCard ${flip ? "questionFlip" : ""}`} onClick={()=>setFlip(!flip)}>
@@ -30,7 +35,7 @@ return(
                     <h3>{question.answer} </h3>
                     <div className="question-options">
                         {question.questionOptions.map(questionOption=>
-                            <h2>{questionOption.questionText}</h2>
+                            <h2 className="indiv-option" onClick={()=>handleGameAnswerClick(question._id, questionOption)}>{questionOption.questionText}</h2>
                     )}
                     </div>
             </div>

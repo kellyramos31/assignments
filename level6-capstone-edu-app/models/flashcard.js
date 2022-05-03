@@ -70,6 +70,9 @@ const flashcardSchema = new Schema({
     },
     imageURL: {
         type: String
+    },
+    imageAttribution: {
+        type: String
     }
 })
 

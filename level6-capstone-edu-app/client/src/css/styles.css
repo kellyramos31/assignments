@@ -122,9 +122,14 @@ a {
   text-transform: uppercase;
 }
 
+
 img {
   padding-top: 5%;
   border-radius: 10px;
+}
+
+.attribution {
+  font-family: italic;
 }
 
 span {
@@ -249,8 +254,14 @@ span {
 
 
 .question-options {
-  margin-top: .1rem;
   font-size: .7rem;
+  padding: 20px;
+}
+
+.indiv-option:hover {
+  background-color: navy;
+  color: whitesmoke;
+  padding: .2rem;
 }
 
 .forum-post-list {

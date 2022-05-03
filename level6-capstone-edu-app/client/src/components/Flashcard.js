@@ -13,9 +13,10 @@ return(
     <div className={`card ${flipcard ? "flip" : ""}`} onClick={()=>setFlipcard(!flipcard)}>
     {/* // <div className="flashcard-container" onClick={()=>setFlipcard(!flipcard)}> */}
         {!flipcard ?
-            <div className="card-front">
-               <img src={flashcard.imageURL} width="200rem" height="250rem" alt="cardFront"/> 
+             <div className="card-front">
+               <img src={flashcard.imageURL} width="200rem" height="250rem" alt="cardFront"/>
             </div>
+       
             :
                 <div className="card-back" key={flashcard._id}>
                     <h4 className="flashcard-category">{flashcard.categorySTEM}</h4>      
@@ -34,6 +35,7 @@ return(
                     <h3 className="quote">{flashcard.quote1}</h3>
                     <h3 className="quote">{flashcard.quote2}</h3>
                     <h3 className="quote">{flashcard.quote3}</h3>
+                    <h6 classname="attribution">{flashcard.imageAttribution}</h6> 
             </div>
         }
         </div>

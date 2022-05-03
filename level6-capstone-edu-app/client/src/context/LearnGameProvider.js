@@ -62,6 +62,19 @@ function getGameQuestions(){
     }
 
 
+//console-loggin correctly -- now figure out how to handle scoring, rewards, etc.
+
+//HANDLE ANSWER CHOICE SELECTION
+function handleGameAnswerClick(_id, questionOption) {
+    console.log("handling game answer click")
+    console.log(_id)
+    if(questionOption.isCorrect === true) {
+        console.log("Stellar!  That's correct.")
+    } else {
+        console.log("Sorry, that's not correct.")
+    }
+}
+
 // function sortCommentsForIssue() {
 //     userAxios.get("/api/issue/sortComments")
 //     .then(res => {
@@ -492,6 +505,7 @@ function getGameQuestions(){
             addFlashcard,
             ...gameState,
             getGameQuestions,
+            handleGameAnswerClick
             // upVote,
             // downVote,
             // getTotalNumberComments,
