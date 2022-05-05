@@ -62,7 +62,7 @@ return (
                   {/* <Learn
                     flashcards={flashcards}
                   /> */}
-            <h2 className="profile-posts-list-header">@{username}'s Posts</h2>
+            <h2 className="profile-posts-list-header">My Posts:</h2>
                  <div className="profile-posts-list">
                      <PostList
                         userPosts={userPosts}

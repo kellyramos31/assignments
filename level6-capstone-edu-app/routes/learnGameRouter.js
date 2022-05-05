@@ -3,6 +3,7 @@ const { isValidObjectId } = require("mongoose");
 const learnGameRouter = express.Router();
 const Flashcard = require("../models/flashcard.js");
 const Question = require("../models/question.js");
+const User = require("../models/user.js")
 
 //GET ALL FLASHCARDS
 learnGameRouter.get("/learn", (req, res, next) => {
@@ -304,6 +305,23 @@ learnGameRouter.delete("/play/:questionId", (req, res, next)=> {
         }
         return res.status(200).send(`Successfully deleted question: ${deletedFlashcard.answer}`);
     })
+})
+
+//INCREMENT USER SCORE FOR APPROPRIATE #POINTS FOR CORRECT GAME ANSWER
+learnGameRouter.put("/score", (req, res, next)=> {
+    User.findByIdAndUpdate(
+        {_user: req.user._id},
+        {$inc: {gameScore: req.body.questionPoints}},
+        { new: true },
+        (err, user) => {
+            if (err) {
+                console.log("Error");
+                res.status(500);
+                return next(err);
+            }
+            return res.send(user);
+
+        })
 })
 
 

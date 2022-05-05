@@ -13,6 +13,10 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    gameScore: {
+        type: Number,
+        default: 0
+    },
     memberSince: {
         type: Date,
         default: Date.now

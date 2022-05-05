@@ -34,7 +34,7 @@ export default function Public() {
 
     return (
         <div className="forum">
-          <h3 className="title-forum-page">All Users' Posts</h3>
+          <h3 className="title-forum-page">Welcome to the STEM Discussion Forum!</h3>
             <ForumPostList 
                 posts={posts}
                 userPosts={userPosts}

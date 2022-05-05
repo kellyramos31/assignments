@@ -3,7 +3,7 @@ body {
   /* background-color: darkblue; */
   background-image: url(../assets/nasa-rTZW4f02zY8-unsplash.jpg);
   background-size: cover;
-  background-repeat: no-repeat;
+  background-repeat: repeat-y;
 }
 
 .app-title {

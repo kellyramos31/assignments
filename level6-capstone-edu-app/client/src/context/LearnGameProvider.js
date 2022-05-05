@@ -69,8 +69,12 @@ function handleGameAnswerClick(_id, questionOption) {
     console.log("handling game answer click")
     console.log(_id)
     if(questionOption.isCorrect === true) {
+        //style.backgroundColor="orange"
+        //change background color of card to indicate answered already; award points; add to correct answer tally;
+        //if answer x# questions correctly in a row (3?), then provide reward badge
         console.log("Stellar!  That's correct.")
     } else {
+        //provide message feedback that answer is not correct -- & what else?
         console.log("Sorry, that's not correct.")
     }
 }
