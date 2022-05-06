@@ -308,10 +308,10 @@ learnGameRouter.delete("/play/:questionId", (req, res, next)=> {
 })
 
 //INCREMENT USER SCORE FOR APPROPRIATE #POINTS FOR CORRECT GAME ANSWER
-learnGameRouter.put("/score", (req, res, next)=> {
+learnGameRouter.put("/user/score/:_id", (req, res, next)=> {
     User.findByIdAndUpdate(
-        {_user: req.user._id},
-        {$inc: {gameScore: req.body.questionPoints}},
+        {_id: req.params._id},
+        {$inc: {gameScore: req.body.value}},
         { new: true },
         (err, user) => {
             if (err) {
