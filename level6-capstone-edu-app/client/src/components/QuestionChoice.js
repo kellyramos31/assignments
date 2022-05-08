@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, {useState, useContext} from "react"
 import { LearnGameContext } from "../context/LearnGameProvider.js"
 
 
@@ -11,9 +11,11 @@ const {
         // isAnswered
     } = useContext(LearnGameContext)
 
+const [isAnswered, setIsAnswered] = useState(false)
+
 return(
-    <div>
-        <h2 key="question.questionOption._id" className="indiv-option" onClick={()=>handleGameAnswerClick(question, questionOption)}>
+    <div className={`indiv-option ${isAnswered ? "answered" : ""}`} onClick={()=>setIsAnswered(!isAnswered)}>
+        <h2 key="question.questionOption._id" onClick={()=>handleGameAnswerClick(question, questionOption)}>
             {questionOption.questionText}</h2>
     </div>
 )}

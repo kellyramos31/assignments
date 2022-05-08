@@ -36,7 +36,7 @@ return(
                     <h3>{question.answer} </h3>
                     <div className="question-options">
                         {question.questionOptions.map(questionOption=>
-                            <QuestionChoice key={questionOption._id} questionOption={questionOption}/>
+                            <QuestionChoice key={questionOption._id} question={question} questionOption={questionOption}/>
                     )}
                     </div>
             </div>

@@ -2,14 +2,14 @@
 import React, { useContext, useEffect } from "react"
 import { LearnGameContext } from "../context/LearnGameProvider.js"
 import Question from "./Question.js"
-import QuestionOption from "./QuestionChoice.js"
+import GameScore from "./GameScore.js"
+// import QuestionOption from "./QuestionChoice.js"
 // import GameTable from "./GameTable.js"
 
 
 
 
 export default function Game() {
-
   const {
     getGameQuestions,
     gameState,
@@ -36,6 +36,7 @@ useEffect(() => {
 
     return(
       <div className="game-container">
+        <GameScore/>
         <div className="question-play-container">
           {/* <GameTable/> */}
              {questions.map(question=> 

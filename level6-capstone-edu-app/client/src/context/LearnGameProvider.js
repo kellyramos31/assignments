@@ -31,7 +31,7 @@ const [gameState, setGameState] = useState([])
 
 const [gameScore, setGameScore] = useState(0)
 
-const [isAnswered, setIsAnswered] = useState(false)
+
 
 
 
@@ -82,18 +82,16 @@ function handleGameAnswerClick(question, questionOption) {
     console.log("question.value", question.value)
     console.log("question._id", question._id)
     console.log("questionOption._id", questionOption._id)
-    setIsAnswered(!isAnswered)
     if(questionOption.isCorrect === true) {
         setGameScore(gameScore + question.value)
-        console.log("gameScore", gameScore)
-    
+          
         userAxios.put(`/api/learngame/user/score/`, question.value)
             .then(res => {
                 console.log("Stellar!  That's correct.")
-                console.log("isAnswered", isAnswered)
              })
              .catch(err=>console.log(err.response.data.errMsg))  
             }
+
 
         //      } else {
         // //provide message feedback that answer is not correct -- & what else?
@@ -566,7 +564,7 @@ function handleGameAnswerClick(question, questionOption) {
             ...gameState,
             getGameQuestions,
             handleGameAnswerClick,
-            isAnswered
+            gameScore
             // upVote,
             // downVote,
             // getTotalNumberComments,

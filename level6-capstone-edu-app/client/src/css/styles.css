@@ -171,20 +171,12 @@ span {
   border-radius: 10px;
 }
 
-
 .question-card-front {
   text-align: center;
   font-size: 50px;
   padding: 10%;
   background-color: skyblue;
 }
-
-/* .question-answered-card-back {
-  text-align: center;
-  font-size: 50px;
-  padding: 10%;
-  background-color: orange;
-} */
 
 .card {
   display: flex;
@@ -268,6 +260,24 @@ span {
   background-color: navy;
   color: whitesmoke;
   padding: .2rem;
+}
+
+.answered {
+  display: none;
+}
+
+.game-score {
+  float: top;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3%;
+  text-align: center;
+  border: 5px double royalblue;
+  border-radius: 10px;
+  background-color: whitesmoke;
+  color: royalblue;
+  width: 25%;
+
 }
 
 .forum-post-list {
