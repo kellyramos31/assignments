@@ -35,7 +35,7 @@ return(
                     <h3 className="quote">{flashcard.quote1}</h3>
                     <h3 className="quote">{flashcard.quote2}</h3>
                     <h3 className="quote">{flashcard.quote3}</h3>
-                    <h6 classname="attribution">{flashcard.imageAttribution}</h6> 
+                    <h6 className="attribution">{flashcard.imageAttribution}</h6> 
             </div>
         }
         </div>

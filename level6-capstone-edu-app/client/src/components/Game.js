@@ -2,7 +2,8 @@
 import React, { useContext, useEffect } from "react"
 import { LearnGameContext } from "../context/LearnGameProvider.js"
 import Question from "./Question.js"
-import GameTable from "./GameTable.js"
+import QuestionOption from "./QuestionChoice.js"
+// import GameTable from "./GameTable.js"
 
 
 
@@ -37,8 +38,7 @@ useEffect(() => {
       <div className="game-container">
         <div className="question-play-container">
           {/* <GameTable/> */}
-            {/* <h1>Hey I'm the Learn component!</h1>              */}
-            {questions.map(question=> 
+             {questions.map(question=> 
                 <Question question={question} key={question._id}/>
             )}
         </div>

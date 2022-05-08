@@ -29,6 +29,12 @@ const [flashcardState, setFlashcardState] = useState(initState)
 
 const [gameState, setGameState] = useState([])
 
+const [gameScore, setGameScore] = useState(0)
+
+const [isAnswered, setIsAnswered] = useState(false)
+
+
+
 
 //GET ALL FLASHCARDS
 function getFlashcards(){
@@ -63,21 +69,71 @@ function getGameQuestions(){
 
 
 //console-loggin correctly -- now figure out how to handle scoring, rewards, etc.
+    // }
+            //style.backgroundColor="orange"
+            //change background color of card to indicate answered already; award points; add to correct answer tally;
+            //if answer x# questions correctly in a row (3?), then provide reward badge
 
 //HANDLE ANSWER CHOICE SELECTION
-function handleGameAnswerClick(_id, questionOption) {
+function handleGameAnswerClick(question, questionOption) {
     console.log("handling game answer click")
-    console.log(_id)
+    console.log("gameScore", gameScore)
+    console.log("questionOption.isCorrect", questionOption.isCorrect)
+    console.log("question.value", question.value)
+    console.log("question._id", question._id)
+    console.log("questionOption._id", questionOption._id)
+    setIsAnswered(!isAnswered)
     if(questionOption.isCorrect === true) {
-        //style.backgroundColor="orange"
-        //change background color of card to indicate answered already; award points; add to correct answer tally;
-        //if answer x# questions correctly in a row (3?), then provide reward badge
-        console.log("Stellar!  That's correct.")
-    } else {
-        //provide message feedback that answer is not correct -- & what else?
-        console.log("Sorry, that's not correct.")
-    }
-}
+        setGameScore(gameScore + question.value)
+        console.log("gameScore", gameScore)
+    
+        userAxios.put(`/api/learngame/user/score/`, question.value)
+            .then(res => {
+                console.log("Stellar!  That's correct.")
+                console.log("isAnswered", isAnswered)
+             })
+             .catch(err=>console.log(err.response.data.errMsg))  
+            }
+
+        //      } else {
+        // //provide message feedback that answer is not correct -- & what else?
+        //     console.log("Sorry, that's not correct.")
+        
+        //      }
+            }
+     
+
+
+
+//     .then(res => {
+//             console.log("addComment res", res)
+//             setPostState(prevState => ({
+//                 ...prevState,
+//                 postState:  [...prevState.posts, res.data]
+//             })
+//               )})
+            
+//         .catch(err=>console.log(err.response.data.errMsg))
+        
+// } 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // function sortCommentsForIssue() {
 //     userAxios.get("/api/issue/sortComments")
@@ -509,7 +565,8 @@ function handleGameAnswerClick(_id, questionOption) {
             addFlashcard,
             ...gameState,
             getGameQuestions,
-            handleGameAnswerClick
+            handleGameAnswerClick,
+            isAnswered
             // upVote,
             // downVote,
             // getTotalNumberComments,
