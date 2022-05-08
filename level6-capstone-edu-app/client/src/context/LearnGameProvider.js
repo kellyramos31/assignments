@@ -32,10 +32,6 @@ const [gameState, setGameState] = useState([])
 const [gameScore, setGameScore] = useState(0)
 
 
-
-
-
-
 //GET ALL FLASHCARDS
 function getFlashcards(){
         console.log("getFlashcards hit")
@@ -74,6 +70,7 @@ function getGameQuestions(){
             //change background color of card to indicate answered already; award points; add to correct answer tally;
             //if answer x# questions correctly in a row (3?), then provide reward badge
 
+
 //HANDLE ANSWER CHOICE SELECTION
 function handleGameAnswerClick(question, questionOption) {
     console.log("handling game answer click")
@@ -83,21 +80,19 @@ function handleGameAnswerClick(question, questionOption) {
     console.log("question._id", question._id)
     console.log("questionOption._id", questionOption._id)
     if(questionOption.isCorrect === true) {
-        setGameScore(gameScore + question.value)
-          
-        userAxios.put(`/api/learngame/user/score/`, question.value)
+        setGameScore(gameScore + question.value)   
+        userAxios.put(`/api/learngame/user/score`, question.value)
             .then(res => {
-                console.log("Stellar!  That's correct.")
+               console.log(res)
+               console.log("Stellar!  That's correct.")
              })
              .catch(err=>console.log(err.response.data.errMsg))  
-            }
-
-
-        //      } else {
-        // //provide message feedback that answer is not correct -- & what else?
-        //     console.log("Sorry, that's not correct.")
+    
+    } else {
+        //provide message feedback that answer is not correct -- & what else?
+            console.log("Sorry, that's not correct.")
         
-        //      }
+             }
             }
      
 
@@ -115,20 +110,23 @@ function handleGameAnswerClick(question, questionOption) {
         
 // } 
 
+//STEM CATEGORY DROPDOWN MENU -- FILTER
+function handleMenuFilter(e){
+        console.log(e.target.value)
+        userAxios.get(`/api/learngame/learn/search/categorySTEM?categorySTEM=${e.target.value}`)
+            .then(res => {
+                setFlashcardState(res.data)
+                console.log("dropdown filtered data", res.data)
+        })
+              .catch(err=>console.log(err.response.data.errMsg))  
+    }
 
 
 
+//SEARCH TERMS IN FLASHCARDS
+function searchFlashcards() {
 
-
-
-
-
-
-
-
-
-
-
+}
 
 
 
@@ -564,32 +562,9 @@ function handleGameAnswerClick(question, questionOption) {
             ...gameState,
             getGameQuestions,
             handleGameAnswerClick,
-            gameScore
-            // upVote,
-            // downVote,
-            // getTotalNumberComments,
-            // totalComments,
-            // voterUpVote,
-            // voterDownVote,
-            // removeVote,
-            // issues,
-            // userIssues,
-            // voteCount,
-            // calcNetVotes,
-            // addPost,
-            // deletePost,
-            // editPost,
-            // getComments,
-            // addComment,
-            // combinedAddComment,
-            // combinedDeleteComment,
-            // deleteComment,
-            // commentUpVote,
-            // commentDownVote,
-            // deleteCommentFromIssueArray,
-            // combinedDeleteComment,
-            // editComment,
-            // getPosts
+            gameScore,
+            handleMenuFilter
+            
         }}>
 
         {props.children}

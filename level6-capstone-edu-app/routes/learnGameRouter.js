@@ -308,7 +308,7 @@ learnGameRouter.delete("/play/:questionId", (req, res, next)=> {
 })
 
 //INCREMENT USER SCORE FOR APPROPRIATE #POINTS FOR CORRECT GAME ANSWER
-learnGameRouter.put("/user/score/:user", (req, res, next)=> {
+learnGameRouter.put("/game/user/score/:user", (req, res, next)=> {
     User.findByIdAndUpdate(
         {user: req.user._id},
         {$inc: {gameScore: req.body.value}},
@@ -323,6 +323,21 @@ learnGameRouter.put("/user/score/:user", (req, res, next)=> {
 
         })
 })
+
+//SEARCH FLASHCARDS BY STEM CATEGORY
+learnGameRouter.get("/learn/search/categorySTEM", (req, res, next) => {
+    const { categorySTEM } = req.query
+    const pattern = new RegExp(categorySTEM)
+    Flashcard.find({ categorySTEM: { $regex: pattern, $options: "i" } },
+        (err, categories) => {
+            if (err) {
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(categories)
+        })
+})
+
 
 
 

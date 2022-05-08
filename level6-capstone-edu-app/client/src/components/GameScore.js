@@ -11,7 +11,7 @@ const {
 
     return (
         <div className="game-score">
-            <h2>Your Score: {gameScore}</h2>
+            <h2>Score:{" "}{gameScore}{" "}points</h2>
         </div>
     )
 }

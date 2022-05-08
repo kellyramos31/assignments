@@ -11,9 +11,6 @@ const { question } = props
 const [flip, setFlip]=useState(false)
 
 
-
-
-
 return(
     <div className={`questionCard ${flip ? "questionFlip" : ""}`} onClick={()=>setFlip(!flip)}>
     {/* // <div className="flashcard-container" onClick={()=>setFlipcard(!flipcard)}> */}

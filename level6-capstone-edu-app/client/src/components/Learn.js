@@ -2,6 +2,7 @@
 import React, { useContext, useEffect } from "react"
 import { LearnGameContext } from "../context/LearnGameProvider.js"
 import Flashcard from "./Flashcard.js"
+import DropDownFlashcards from "./DropDownFlashcards.js"
 
 
 
@@ -34,6 +35,10 @@ useEffect(() => {
 
     return(
       <div className="learn-container">
+        <div className="dropdown-flashcards">
+          <DropDownFlashcards/>
+        </div>
+
         <div className="flashcard-learn-container">
             {flashcards.map(flashcard=> 
                 <Flashcard flashcard={flashcard} key={flashcard._id}/>
