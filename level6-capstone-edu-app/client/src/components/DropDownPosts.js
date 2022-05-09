@@ -1,12 +1,13 @@
-import React from "react"
-
+import React, {useContext} from "react"
+import { PostCommentContext } from "../context/PostCommentProvider.js"
 
 export default function DropDownPosts(props) {
+
 
 const {
     handleMenuPosts,
     getPosts
-} = props
+} = useContext(PostCommentContext)
 
 
     return (

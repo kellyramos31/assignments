@@ -288,19 +288,6 @@ function handleMenuPosts(e){
             getUserPosts,
             getPosts,
             handleMenuPosts,
-            // posts,
-            //userPosts,
-            // upVote,
-            // downVote,
-            // getTotalNumberComments,
-            // totalComments,
-            // voterUpVote,
-            // voterDownVote,
-            // removeVote,
-            // issues,
-            // userIssues,
-            // voteCount,
-            // calcNetVotes,
             addPost,
             deletePost,
             editPost,
@@ -309,11 +296,7 @@ function handleMenuPosts(e){
             combinedAddComment,
             combinedDeleteComment,
             deleteComment,
-            // commentUpVote,
-            // commentDownVote,
-            // deleteCommentFromIssueArray,
-            // combinedDeleteComment,
-            editComment,
+            editComment
            
         }}>
 
