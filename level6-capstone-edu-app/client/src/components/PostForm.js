@@ -46,10 +46,18 @@ function handleChange(e){
     // console.log("issues after handleSubmit for IssueForm", userIssues)
   }
 
-  const { title, description } = inputs
+  const { category, title, description } = inputs
 
   return (
     <form className="add-post-form" onSubmit={handleSubmitPost}>
+      <input 
+        type="text" 
+        name="category" 
+        value={category} 
+        onChange={handleChange} 
+        placeholder="STEM Category"
+      />
+
       <input 
         type="text" 
         name="title" 

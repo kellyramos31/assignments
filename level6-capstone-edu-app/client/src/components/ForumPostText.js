@@ -69,8 +69,8 @@ return (
                     <h4 className="number-comments"># Comments: <span className="tallies-top">{props.numberCommentsOnPost}</span> </h4>
                     <h3><span className="posted-by">posted by:</span> <span className="user-name-span-post">{props._user.username}</span></h3>  
                 </div>
-            
-            <h1 className="post-title"><span className="title-post">Post:</span> {props.title}</h1>
+            <h2>{props.category}</h2>
+            <h1 className="post-title"><span className="title-post">Title:</span> {props.title}</h1>
             <h3 className="post-description"><span className="descr-post">Description:</span> {props.description}</h3>
 
      

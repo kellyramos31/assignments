@@ -61,6 +61,7 @@ return (
                 <h3 className="my-post-number-comments"># Comments: {props.numberCommentsOnPost}</h3>
               </div>
               <div className="my-postdescr-titles">
+                <h1>{props.category}</h1>
                 <h1 className="post-title-mine"><span className="my-post-title">Post</span> {props.title}</h1>
                 <h3 className="post-description-mine"><span className="my-post-descr">Description</span> <span className="my-descr-text">{props.description}</span></h3>
               </div>
@@ -79,6 +80,14 @@ return (
       :
         <div className="outline-edit-post-form" id={props._id} index={props.index} >
             <form className="edit-post-form" onSubmit={()=>editPost(inputs, props._id)}>
+              <input
+                type="text"
+                defaultValue={props.category}
+                inputs={props.category|| inputs}
+                name="title"
+                onChange={handleEditChange}
+                placeholder="STEM Category"
+              />
               <input
                 type="text"
                 defaultValue={props.title}

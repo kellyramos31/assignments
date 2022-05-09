@@ -394,5 +394,19 @@ forumPostRouter.get("/countComments/:postId", (req, res, next)=> {
 
 })
 
+//SEARCH POSTS BY STEM CATEGORY (for dropdown menu)
+forumPostRouter.get("/search/category", (req, res, next) => {
+    const { category } = req.query
+    const pattern = new RegExp(category)
+    Post.find({ category: { $regex: pattern, $options: "i" } },
+        (err, categories) => {
+            if (err) {
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(categories)
+        })
+})
+
 
 module.exports = forumPostRouter;

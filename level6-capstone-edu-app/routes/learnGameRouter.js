@@ -324,7 +324,7 @@ learnGameRouter.put("/game/user/score/:user", (req, res, next)=> {
         })
 })
 
-//SEARCH FLASHCARDS BY STEM CATEGORY
+//SEARCH FLASHCARDS BY STEM CATEGORY (for dropdown menu)
 learnGameRouter.get("/learn/search/categorySTEM", (req, res, next) => {
     const { categorySTEM } = req.query
     const pattern = new RegExp(categorySTEM)

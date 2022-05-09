@@ -1,11 +1,10 @@
 import React, { useContext, useEffect} from "react"
 import ForumPostList from "./ForumPostList.js"
-// import CommentForm from "./CommentForm.js"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
 
 
 
-export default function Public() {
+export default function Forum() {
 
 
       const {
@@ -34,7 +33,8 @@ export default function Public() {
 
     return (
         <div className="forum">
-          <h3 className="title-forum-page">Welcome to the STEM Discussion Forum!</h3>
+     
+          <h3 className="title-forum-page">Let's Talk About STEM!</h3>
             <ForumPostList 
                 posts={posts}
                 userPosts={userPosts}

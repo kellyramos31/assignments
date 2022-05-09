@@ -110,7 +110,7 @@ function handleGameAnswerClick(question, questionOption) {
         
 // } 
 
-//STEM CATEGORY DROPDOWN MENU -- FILTER
+//STEM CATEGORY DROPDOWN MENU FOR FLASHCARDS -- FILTER
 function handleMenuFilter(e){
         console.log(e.target.value)
         userAxios.get(`/api/learngame/learn/search/categorySTEM?categorySTEM=${e.target.value}`)

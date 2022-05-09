@@ -264,6 +264,19 @@ function minusCommentTally (postId) {
       .catch(err=>console.log(err.response.data.errMsg))
     }
 
+//STEM CATEGORY DROPDOWN MENU FOR POSTS -- FILTER
+function handleMenuPosts(e){
+        console.log(e.target.value)
+        userAxios.get(`/api/forumpost/search/category?category=${e.target.value}`)
+            .then(res => {
+                setPostState({posts: res.data})
+                console.log("dropdown filtered data", res.data)
+                console.log("postState", postState)
+        })
+              .catch(err=>console.log(err.response.data.errMsg))  
+    }
+
+
 
 
 
@@ -274,6 +287,7 @@ function minusCommentTally (postId) {
             ...postState,
             getUserPosts,
             getPosts,
+            handleMenuPosts,
             // posts,
             //userPosts,
             // upVote,
