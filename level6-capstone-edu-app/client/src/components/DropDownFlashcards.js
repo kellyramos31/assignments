@@ -4,7 +4,8 @@ import { LearnGameContext } from "../context/LearnGameProvider.js"
 export default function DropDownFlashcards(props) {
 
 const {
-    handleMenuFilter
+    handleMenuFilter,
+    getFlashcards
 } = useContext(LearnGameContext)
 
     return (
@@ -14,11 +15,13 @@ const {
 
                 <select onChange={handleMenuFilter} className="dropdown">
                     <option>--Select a Category--</option>
+                    {/* <option value=>All Flashcards</option> */}
                     <option value="Science">Science</option>
                     <option value="Tech">Tech</option>
                     <option value="Engineering">Engineering</option>
                     <option value="Math">Math</option>
                 </select>
+                <button className="return-to-all-flashcards-btn" onClick={getFlashcards}>View All Flashcards</button>
             </div>
         </div>
     )

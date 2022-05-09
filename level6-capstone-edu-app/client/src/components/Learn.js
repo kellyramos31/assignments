@@ -7,7 +7,7 @@ import DropDownFlashcards from "./DropDownFlashcards.js"
 
 
 
-export default function Learn() {
+export default function Learn(props) {
 
   const {
     getFlashcards,

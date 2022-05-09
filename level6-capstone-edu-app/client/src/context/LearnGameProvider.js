@@ -115,18 +115,19 @@ function handleMenuFilter(e){
         console.log(e.target.value)
         userAxios.get(`/api/learngame/learn/search/categorySTEM?categorySTEM=${e.target.value}`)
             .then(res => {
-                setFlashcardState(res.data)
+                setFlashcardState({flashcards: res.data})
                 console.log("dropdown filtered data", res.data)
+                console.log("flashcardState", flashcardState)
         })
               .catch(err=>console.log(err.response.data.errMsg))  
     }
 
 
 
-//SEARCH TERMS IN FLASHCARDS
-function searchFlashcards() {
+// //SEARCH TERMS IN FLASHCARDS
+// function searchFlashcards() {
 
-}
+// }
 
 
 

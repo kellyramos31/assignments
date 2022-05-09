@@ -257,8 +257,12 @@ span {
   padding: .2rem;
 }
 
+.dropdown-title {
+  margin-bottom: -.2%;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
 .dropdown-flashcards {
-  float: top;
   color: black;
   margin-top: -3%;
   margin-bottom: 7%;
@@ -268,6 +272,18 @@ span {
   /* background-color: rgba(0, 0, 0, .6); */
   width: 15%;
   text-align: center;
+}
+
+select {
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.return-to-all-flashcards-btn {
+  border-radius: 10px;
+  margin-top: .8%;
+  background-color: black;
+  color: whitesmoke;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .answered {
