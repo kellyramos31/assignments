@@ -31,6 +31,8 @@ const [gameState, setGameState] = useState([])
 
 const [questionsAnswered, setQuestionsAnswered] = useState(0)
 
+const [questionsCorrect, setQuestionsCorrect] = useState(0)
+
 const [gameScore, setGameScore] = useState(0)
 
 
@@ -97,10 +99,13 @@ function handleGameAnswerClick(_user, question, questionOption) {
     // endGame()
     if(questionOption.isCorrect === true) {
         setGameScore(gameScore + question.value)   
+        setQuestionsCorrect(questionsCorrect + 1)
         userAxios.put(`/api/learngame/game/user/score/${_user}`, question.value)
             .then(res => {
                console.log(res)
                console.log("Stellar!  That's correct.")
+               
+               //then something related to rewards -- e.g., if questionsCorrect=3, then reward & reset to zero.
              })
              .catch(err=>console.log(err.response.data.errMsg))  
     
@@ -581,6 +586,7 @@ function handleMenuFilter(e){
             handleGameAnswerClick,
             gameScore,
             questionsAnswered,
+            questionsCorrect,
             handleMenuFilter
             
         }}>
