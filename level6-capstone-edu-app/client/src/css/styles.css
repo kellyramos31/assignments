@@ -118,12 +118,20 @@ a {
   font-weight: lighter;
 }
 
+h3 {
+  margin-bottom: -2%;
+}
+
 .flashcard-category {
   font-size: 200%;
   margin-top: -2%;
   background-color: yellowgreen;
   width: 15%;
   border-radius: .2rem;
+}
+
+.profession {
+  font-size: 125%;
 }
 
 .name-flashcard {
@@ -142,7 +150,8 @@ img {
 }
 
 span {
-  color: skyblue;
+  color: yellowgreen;
+  /* color: skyblue; */
   /* font-style: italic; */
 }
 
@@ -265,7 +274,7 @@ span {
 }
 
 .indiv-option:hover {
-  background-color: skyblue;
+  background-color: yellowgreen;
   border-radius: 5px;
   color: #001E4E;
   padding: .3rem;
