@@ -19,9 +19,20 @@ return(
        
             :
                 <div className="card-back" key={flashcard._id}>
-                    <h4 className="flashcard-category">{flashcard.categorySTEM}</h4>      
-                    <h2>{flashcard.title}{" "}{flashcard.firstName}{" "}{flashcard.lastName}</h2>
-                    <h3 className="profession-flashcard">{flashcard.profession1}{" "}{flashcard.profession2}{" "}{flashcard.profession3}</h3> 
+                    <h4 className="flashcard-category">
+                    {flashcard.categorySTEM ==="Science" ? "🔬"
+                    :
+                    flashcard.categorySTEM==="Tech" ? "💻"
+                    :
+                    flashcard.categorySTEM==="Engineering" ? "⚙️"
+                    : 
+                    "➗"
+                }
+                    
+                    </h4>      
+                    <h2 className="name-flashcard">{flashcard.title}{" "}{flashcard.firstName}{" "}{flashcard.lastName}</h2>
+                    <h3 className="profession-flashcard"><span>Profession(s)</span></h3>
+                    <div>{flashcard.profession1}{" "}{flashcard.profession2}{" "}{flashcard.profession3}</div>
                     <h3 className="noteworthy-flashcard"><span>Noteworthy</span></h3> 
                     <h3>{flashcard.knownFor}</h3>
                     <h3><span>Born</span>  {flashcard.born}</h3>

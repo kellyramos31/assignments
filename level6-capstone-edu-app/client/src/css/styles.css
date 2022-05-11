@@ -119,11 +119,18 @@ a {
 }
 
 .flashcard-category {
-  color: blue;
-  font-style: italic;
-  text-transform: uppercase;
+  font-size: 200%;
+  margin-top: -2%;
+  background-color: yellowgreen;
+  width: 15%;
+  border-radius: .2rem;
 }
 
+.name-flashcard {
+  color: yellowgreen;
+  text-transform: uppercase;
+  margin-top: -10%;
+}
 
 img {
   padding-top: 5%;
@@ -135,8 +142,8 @@ img {
 }
 
 span {
-  color: blue;
-  font-style: italic;
+  color: skyblue;
+  /* font-style: italic; */
 }
 
 /* .noteworthy-flashcard,
@@ -240,7 +247,8 @@ span {
 .card .card-back,
 .questionCard .question-card-back {
   transform: rotateY(180deg);
-  background-color: #0f893b;
+  /* background-color: #0f893b; */
+  background-color: #001E4E;
   color: whitesmoke;
   border-radius: .25rem;
 }
@@ -257,9 +265,10 @@ span {
 }
 
 .indiv-option:hover {
-  background-color: navy;
-  color: whitesmoke;
-  padding: .2rem;
+  background-color: skyblue;
+  border-radius: 5px;
+  color: #001E4E;
+  padding: .3rem;
 }
 
 .dropdown-title {
