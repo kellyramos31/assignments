@@ -47,6 +47,7 @@ body {
 .add-post-header {
   color: whitesmoke;
   text-align: center;
+  margin-bottom: 1%;
 }
 
 .add-post-form {
@@ -92,7 +93,7 @@ body {
   margin-bottom: 20px;
   background-color: rgba(0, 0, 0, .8);
   border-radius: .5rem;
-  padding: .5rem;
+  padding: 1rem;
 }
 
 .delete-post-btn {
@@ -350,24 +351,25 @@ select {
 .title-forum-page {
   text-align: center;
   color: whitesmoke;
-  font-size: larger;
+  font-size: x-large;
+  margin-bottom: 1%;
 }
 
 .all-post-container {
-  margin-top: 2%;
   margin-left: 25%;
   margin-right: 25%;
   margin-bottom: 2%;
   color: whitesmoke;
   border-radius: .5rem;
   background-color: rgba(0, 0, 0, .65);
+  padding: 1rem;
 }
 
 .dropdown-posts {
   margin-left: auto;
   margin-right: auto;
   color: black;
-  margin-bottom: 7%;
+  margin-bottom: 3%;
   padding: .2% .2%;
   background-color: skyblue;
   border-radius: 10px;
