@@ -122,6 +122,12 @@ h3 {
   margin-bottom: -2%;
 }
 
+.question-category {
+  background-color: yellowgreen;
+  width: 16%;
+  border-radius: .2rem;
+}
+
 .flashcard-category {
   font-size: 200%;
   margin-top: -2%;
@@ -266,6 +272,7 @@ span {
   font-size: 75%;
   padding: .5rem;
 }
+
 
 
 .question-options {
