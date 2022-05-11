@@ -54,6 +54,16 @@ return (
       
         <div key={props._id} className="user-post-container">
             <div className="my-post">
+                <h1> 
+                    {props.category==="Science" ? "🔬"
+                    :
+                    props.category==="Tech" ? "💻"
+                    :
+                    props.category==="Engineering" ? "⚙️"
+                    : 
+                    "➗"
+                }
+                </h1>
               <div className="my-profile-post-tallies">
                 {/* <h3 className="total-votes"># Voters: {props.totalVotersVotedCount}</h3>
                 <h3 className="my-issue-upvotes">Upvotes: {props.upVotes}</h3>
@@ -61,7 +71,7 @@ return (
                 <h3 className="my-post-number-comments"># Comments: {props.numberCommentsOnPost}</h3>
               </div>
               <div className="my-postdescr-titles">
-                <h1>{props.category}</h1>
+      
                 <h1 className="post-title-mine"><span className="my-post-title">Post</span> {props.title}</h1>
                 <h3 className="post-description-mine"><span className="my-post-descr">Description</span> <span className="my-descr-text">{props.description}</span></h3>
               </div>

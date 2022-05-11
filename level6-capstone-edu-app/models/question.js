@@ -25,9 +25,15 @@ const questionSchema = new Schema({
             type: Boolean,
             required: true,
             defaultValue: false
-         }
+         },
+      
         }
     ]
+    //   _user: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: "User",
+    //     required: true
+    // },
 })
 
 // const autoPopulateUser  = function(next) {
@@ -38,7 +44,7 @@ const questionSchema = new Schema({
 //     next()
 //     }
 
-// learnSchema.pre("find", autoPopulateUser)
+// questionSchema.pre("find", autoPopulateUser)
 
 
 module.exports = mongoose.model("Question", questionSchema)

@@ -23,7 +23,7 @@ const flashcardSchema = new Schema({
         type: String
     },
     born: {
-        type: Date
+        type: String
     },
     alive: {
         type: Boolean,

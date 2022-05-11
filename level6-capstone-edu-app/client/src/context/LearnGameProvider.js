@@ -29,7 +29,10 @@ const [flashcardState, setFlashcardState] = useState(initState)
 
 const [gameState, setGameState] = useState([])
 
+const [questionsAnswered, setQuestionsAnswered] = useState(0)
+
 const [gameScore, setGameScore] = useState(0)
+
 
 
 //GET ALL FLASHCARDS
@@ -37,7 +40,7 @@ function getFlashcards(){
         console.log("getFlashcards hit")
         userAxios.get("/api/learngame/learn")
         .then(res => {
-            console.log("res from learnGameProvider:", res)
+             console.log("res from learnGameProvider:", res)
              setFlashcardState(prevState => ({
                 ...prevState,
                 flashcards: res.data
@@ -47,6 +50,9 @@ function getFlashcards(){
         .catch(err => console.log(err.response.data.errMsg))
     }
 
+
+
+//add isAnswered property temporarily to each question???  use FOREACH??
 
 //GET ALL GAME QUESTIONS
 function getGameQuestions(){
@@ -63,8 +69,16 @@ function getGameQuestions(){
         .catch(err => console.log(err.response.data.errMsg))
     }
 
+ //CHECK IF ALL QUESTIONS ANSWERED
+ function endGame(questions, questionsAnswered){
+     if(questions.length === questionsAnswered){
+         console.log("Game Over")
+     } else {
+         console.log("Let's try another question")
+     }
+ }   
 
-//console-loggin correctly -- now figure out how to handle scoring, rewards, etc.
+//console-logging correctly -- now figure out how to handle scoring, rewards, etc.
     // }
             //style.backgroundColor="orange"
             //change background color of card to indicate answered already; award points; add to correct answer tally;
@@ -72,16 +86,18 @@ function getGameQuestions(){
 
 
 //HANDLE ANSWER CHOICE SELECTION
-function handleGameAnswerClick(question, questionOption) {
+function handleGameAnswerClick(_user, question, questionOption) {
     console.log("handling game answer click")
     console.log("gameScore", gameScore)
     console.log("questionOption.isCorrect", questionOption.isCorrect)
     console.log("question.value", question.value)
     console.log("question._id", question._id)
     console.log("questionOption._id", questionOption._id)
+    setQuestionsAnswered(questionsAnswered + 1)
+    // endGame()
     if(questionOption.isCorrect === true) {
         setGameScore(gameScore + question.value)   
-        userAxios.put(`/api/learngame/user/score`, question.value)
+        userAxios.put(`/api/learngame/game/user/score/${_user}`, question.value)
             .then(res => {
                console.log(res)
                console.log("Stellar!  That's correct.")
@@ -564,6 +580,7 @@ function handleMenuFilter(e){
             getGameQuestions,
             handleGameAnswerClick,
             gameScore,
+            questionsAnswered,
             handleMenuFilter
             
         }}>

@@ -15,7 +15,7 @@ const [isAnswered, setIsAnswered] = useState(false)
 
 return(
     <div className={`indiv-option ${isAnswered ? "answered" : ""}`} onClick={()=>setIsAnswered(!isAnswered)}>
-        <h2 key="question.questionOption._id" onClick={()=>handleGameAnswerClick(question, questionOption)}>
+        <h2 key="question.questionOption._id" onClick={()=>handleGameAnswerClick(question._user, question, questionOption)}>
             {questionOption.questionText}</h2>
     </div>
 )}

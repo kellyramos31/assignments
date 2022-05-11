@@ -3,6 +3,7 @@ const { isValidObjectId } = require("mongoose");
 const learnGameRouter = express.Router();
 const Flashcard = require("../models/flashcard.js");
 const Question = require("../models/question.js");
+const Score = require("../models/score.js")
 const User = require("../models/user.js")
 
 //GET ALL FLASHCARDS
@@ -307,7 +308,9 @@ learnGameRouter.delete("/play/:questionId", (req, res, next)=> {
     })
 })
 
+//need to adjust this -- not quite right
 //INCREMENT USER SCORE FOR APPROPRIATE #POINTS FOR CORRECT GAME ANSWER
+//add in way to push score to score schema/model when game over
 learnGameRouter.put("/game/user/score/:user", (req, res, next)=> {
     User.findByIdAndUpdate(
         {user: req.user._id},

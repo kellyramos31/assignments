@@ -37,15 +37,13 @@ export default function Forum() {
 
     return (
         <div className="forum">
-             <div>
+          <h3 className="title-forum-page">Let's Talk About STEM!</h3>
+              <div className="dropdown-posts">
             <DropDownPosts
               handleMenuPosts={handleMenuPosts}
               getPosts={getPosts}
             />
           </div>
-
-     
-          <h3 className="title-forum-page">Let's Talk About STEM!</h3>
             <ForumPostList 
                 posts={posts}
                 userPosts={userPosts}

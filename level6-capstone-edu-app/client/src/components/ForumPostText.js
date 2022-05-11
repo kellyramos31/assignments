@@ -65,11 +65,22 @@ function handleChangeEdit(e){
 return (
     <div className="all-post-container" key={props._id}>
         <div className="all-posts" key={props._id}>
+            <h1>   
+                    {props.category==="Science" ? "🔬"
+                    :
+                    props.category==="Tech" ? "💻"
+                    :
+                    props.category==="Engineering" ? "⚙️"
+                    : 
+                    "➗"
+                }
+            </h1>
+
                <div className="tallies">
                     <h4 className="number-comments"># Comments: <span className="tallies-top">{props.numberCommentsOnPost}</span> </h4>
                     <h3><span className="posted-by">posted by:</span> <span className="user-name-span-post">{props._user.username}</span></h3>  
                 </div>
-            <h2>{props.category}</h2>
+      
             <h1 className="post-title"><span className="title-post">Title:</span> {props.title}</h1>
             <h3 className="post-description"><span className="descr-post">Description:</span> {props.description}</h3>
 
