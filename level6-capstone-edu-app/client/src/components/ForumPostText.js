@@ -3,6 +3,11 @@ import AddCommentForm from "./AddCommentForm.js"
 import { UserContext} from "../context/UserProvider.js"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
 import { FaComments } from 'react-icons/fa'
+import { MdOutlineComment} from 'react-icons/md'
+import { AiFillEye} from 'react-icons/ai'
+
+
+
 // import { FcCancel } from 'react-icons/fc'
 
 
@@ -90,7 +95,7 @@ return (
                   
         { !toggleIsCommenting ?
               <div id={props._id}>
-                <button className="leave-comment-btn" onClick={toggleToComment}>Leave Comment</button>
+                <button className="leave-comment-btn" onClick={toggleToComment}><MdOutlineComment size={20} style={{ fill: "royalblue"}}/></button>
               </div>
               :
               <div id={props._id} className="comment-form" >
@@ -103,7 +108,8 @@ return (
           }
            </div>
                { !toggleIsViewingComments ?
-                <button className="see-comments-btn" key={props._id} onClick={toggleViewComments}> <div className="eye-btn-pieces">View Comments</div></button>
+                <button className="see-comments-btn" key={props._id} onClick={toggleViewComments}> <div className="eye-btn-pieces"><AiFillEye
+                size={20} style={{ fill: "royalblue"}}/></div></button>
                 :
                 <div>
                 <button  className="hide-comments-btn" onClick={toggleViewComments}>Hide Comments</button>    

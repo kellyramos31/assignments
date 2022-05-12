@@ -319,6 +319,8 @@ span {
   padding: .5rem;
 }
 
+.comment-related-btns {}
+
 .game-score {
   display: flex;
   justify-content: space-between;
@@ -438,6 +440,20 @@ select {
 
 .number-comments {
   margin-left: .5rem;
+}
+
+.comment-related-btns {
+  display: inline-block;
+  margin-top: 1.5rem;
+}
+
+.leave-comment-btn,
+.see-comments-btn {
+  background-color: whitesmoke;
+  border-radius: 6px;
+  width: 3.5rem;
+  padding-top: .3rem;
+  height: 1.95rem;
 }
 
 
