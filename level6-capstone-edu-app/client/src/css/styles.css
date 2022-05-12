@@ -98,10 +98,25 @@ body {
   margin-left: auto;
   margin-top: 10px;
   margin-bottom: 20px;
-  background-color: rgba(0, 0, 0, .8);
+  background-color: rgba(0, 30, 78, .9);
+  ;
   border-radius: .5rem;
   padding: 1rem;
   width: 80%;
+}
+
+.post-title-mine {
+  margin-top: 5%;
+  font-size: 1.2rem;
+  color: whitesmoke;
+}
+
+.my-descr-text {
+  color: whitesmoke;
+}
+
+.my-post-number-comments {
+  color: yellowgreen;
 }
 
 .delete-post-btn {
@@ -409,6 +424,15 @@ select {
 .post-description {
   margin-top: -.5rem;
   font-size: 1.2rem;
+}
+
+.edit-delete-post-buttons {}
+
+.delete-post-btn,
+.edit-post-btn {
+  background-color: whitesmoke;
+  border-radius: 6px;
+  width: 3.5rem;
 }
 
 

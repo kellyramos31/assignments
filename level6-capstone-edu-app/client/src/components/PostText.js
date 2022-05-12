@@ -1,6 +1,11 @@
 import React, { useState, useContext } from 'react'
 import { PostCommentContext } from "../context/PostCommentProvider.js"
 import { FaComments } from 'react-icons/fa'
+import { FaEdit } from 'react-icons/fa'
+import { RiDeleteBin6Fill} from 'react-icons/ri'
+
+
+
 // import { FcCancel } from 'react-icons/fc'
 // import CommentForm from "./CommentForm.js"
 
@@ -73,12 +78,12 @@ return (
               </div>
               <div className="my-postdescr-titles">
       
-                <h1 className="post-title-mine"><span className="my-post-title">Title</span> {props.title}</h1>
-                <h3 className="post-description-mine"><span className="my-post-descr">Description</span> <span className="my-descr-text">{props.description}</span></h3>
+                <h1 className="post-title-mine"><span className="my-post-title">Title</span>{" "} {props.title}</h1>
+                <h3 className="post-description-mine"><span className="my-post-descr">Description</span> <span className="my-descr-text">{" "} {props.description}</span></h3>
               </div>
                 <div className="edit-delete-post-buttons">
-                  <button className="delete-post-btn" onClick={() => deletePost(props._id)}>Delete Post</button>
-                  <button className="edit-post-btn" onClick={toggleToEdit}>Edit Post</button>
+                  <button className="delete-post-btn" onClick={() => deletePost(props._id)}><RiDeleteBin6Fill size={18} style={{ fill: "royalblue"}}/></button>
+                  <button className="edit-post-btn" onClick={toggleToEdit}><FaEdit size={18} style={{ fill: "royalblue"}}/></button>
                 </div>
             </div>
         
