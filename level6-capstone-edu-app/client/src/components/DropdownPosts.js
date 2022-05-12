@@ -1,7 +1,7 @@
 import React, {useContext} from "react"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
 
-export default function DropDownPosts(props) {
+export default function DropdownPosts(props) {
 
 
 const {
@@ -23,7 +23,7 @@ const {
                     <option value="Engineering">Engineering</option>
                     <option value="Math">Math</option>
                 </select>
-                <button className="return-to-all-posts-btn" onClick={getPosts}>Show All Posts</button>
+                <button className="return-to-all-posts-btn" onClick={getPosts}>View All Posts</button>
             </div>
         </div>
     )

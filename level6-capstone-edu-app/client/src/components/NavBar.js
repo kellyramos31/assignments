@@ -11,7 +11,7 @@ export default function NavBar(props){
       <Link to="/forum">Forum</Link>
       <Link to="/learn">Learn</Link>
       <Link to="/play">Play</Link>
-      <button onClick={logout}>Logout</button>
+      <button className="logout-btn" onClick={logout}>Logout</button>
     </nav>
   )
 }
