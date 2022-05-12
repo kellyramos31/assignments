@@ -73,7 +73,9 @@ function getGameQuestions(){
 
  //CHECK IF ALL QUESTIONS ANSWERED
  function endGame(questions, questionsAnswered){
-     if(questions.length === questionsAnswered){
+     const arrLength = questions.length
+     console.log("arrLength", arrLength)
+     if(arrLength === questionsAnswered){
          console.log("Game Over")
      } else {
          console.log("Let's try another question")
@@ -87,6 +89,8 @@ function getGameQuestions(){
             //if answer x# questions correctly in a row (3?), then provide reward badge
 
 
+
+
 //HANDLE ANSWER CHOICE SELECTION
 function handleGameAnswerClick(_user, question, questionOption) {
     console.log("handling game answer click")
@@ -95,11 +99,12 @@ function handleGameAnswerClick(_user, question, questionOption) {
     console.log("question.value", question.value)
     console.log("question._id", question._id)
     console.log("questionOption._id", questionOption._id)
+    
     setQuestionsAnswered(questionsAnswered + 1)
-    // endGame()
     if(questionOption.isCorrect === true) {
         setGameScore(gameScore + question.value)   
         setQuestionsCorrect(questionsCorrect + 1)
+        filterAnsweredQuestion(question._id)
         userAxios.put(`/api/learngame/game/user/score/${_user}`, question.value)
             .then(res => {
                console.log(res)
@@ -112,24 +117,14 @@ function handleGameAnswerClick(_user, question, questionOption) {
     } else {
         //provide message feedback that answer is not correct -- & what else?
             console.log("Sorry, that's not correct.")
+            filterAnsweredQuestion(question._id)
         
              }
+
             }
      
 
 
-
-//     .then(res => {
-//             console.log("addComment res", res)
-//             setPostState(prevState => ({
-//                 ...prevState,
-//                 postState:  [...prevState.posts, res.data]
-//             })
-//               )})
-            
-//         .catch(err=>console.log(err.response.data.errMsg))
-        
-// } 
 
 //STEM CATEGORY DROPDOWN MENU FOR FLASHCARDS -- FILTER
 function handleMenuFilter(e){
@@ -142,6 +137,13 @@ function handleMenuFilter(e){
         })
               .catch(err=>console.log(err.response.data.errMsg))  
     }
+
+
+//FILTER OUT ANSWERED QUESTION FROM GAME QUESTIONS ARRAY
+function filterAnsweredQuestion(_id){
+     setGameState(prevState=>({questions: prevState.questions.filter(question=> question._id !== _id)}))
+}
+
 
 
 
@@ -587,7 +589,8 @@ function handleMenuFilter(e){
             gameScore,
             questionsAnswered,
             questionsCorrect,
-            handleMenuFilter
+            handleMenuFilter,
+            endGame
             
         }}>
 

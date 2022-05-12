@@ -36,12 +36,14 @@ useEffect(() => {
 
     return(
       <div className="game-container">
-        <GameScore/>
+       
+            <GameScore/>
+       
         <div className="question-play-container">
           {/* <GameTable/> */}
-             {questions.map(question=> 
-                <Question question={question} key={question._id}/>
-            )}
+             {questions.map((question, index)=>(
+                <Question index={index} question={question} key={question._id}/>
+             ))}
         </div>
         </div>
             )}

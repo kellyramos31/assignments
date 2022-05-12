@@ -41,9 +41,9 @@ return(
                 }
                    
                 </h2>
-                    <h3>{question.answer} </h3>
+                    <h3>{question.answer}</h3>
 
-                    <div className="question-options">
+                    <div className="question-options" index={question.index}>
                         {question.questionOptions.map(questionOption=>
                             <QuestionChoice key={questionOption._id} question={question} questionOption={questionOption}/>
                     )}

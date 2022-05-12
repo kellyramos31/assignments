@@ -279,7 +279,30 @@ span {
   padding: .5rem;
 }
 
+.game-score {
+  display: flex;
+  justify-content: space-around;
+  float: top;
+  margin-top: -5%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 3%;
+  text-align: center;
+  border: 10px double royalblue;
+  border-radius: 10px;
+  color: whitesmoke;
+  background-color: rgba(0, 0, 0, .6);
+  width: 55%;
+}
 
+.game-reset-btn {
+  margin: 1% 1%;
+  font-weight: bolder;
+  border-radius: 10px;
+  background-color: royalblue;
+  color: whitesmoke;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 
 .question-options {
   font-size: .7rem;
@@ -328,20 +351,6 @@ select {
   background-color: red;
 }
 
-.game-score {
-  display: flex;
-  justify-content: space-around;
-  float: top;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 3%;
-  text-align: center;
-  border: 10px double royalblue;
-  border-radius: 10px;
-  color: whitesmoke;
-  background-color: rgba(0, 0, 0, .6);
-  width: 45%;
-}
 
 .forum-post-list {
   display: flex;
