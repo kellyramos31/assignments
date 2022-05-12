@@ -26,5 +26,4 @@ const {
                 <button className="return-to-all-posts-btn" onClick={getPosts}>View All Posts</button>
             </div>
         </div>
-    )
-}
+  
