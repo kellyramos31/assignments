@@ -23,7 +23,7 @@ const postSchema = new Schema({
     },
     numberCommentsOnPost: {
         type: Number,
-        min: 0
+        defaultValue: 0
     },
     _user: {
         type: Schema.Types.ObjectId,

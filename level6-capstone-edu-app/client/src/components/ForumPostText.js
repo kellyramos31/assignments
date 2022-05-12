@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react'
 import AddCommentForm from "./AddCommentForm.js"
 import { UserContext} from "../context/UserProvider.js"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
+import { FaComments } from 'react-icons/fa'
 // import { FcCancel } from 'react-icons/fc'
 
 
@@ -65,31 +66,31 @@ function handleChangeEdit(e){
 return (
     <div className="all-post-container" key={props._id}>
         <div className="all-posts" key={props._id}>
-            <h1>   
-                    {props.category==="Science" ? "🔬"
-                    :
-                    props.category==="Tech" ? "💻"
-                    :
-                    props.category==="Engineering" ? "⚙️"
-                    : 
-                    "➗"
-                }
-            </h1>
 
-               <div className="tallies">
-                    <h4 className="number-comments"># Comments: <span className="tallies-top">{props.numberCommentsOnPost}</span> </h4>
-                    <h3><span className="posted-by">posted by:</span> <span className="user-name-span-post">{props._user.username}</span></h3>  
-                </div>
-      
-            <h1 className="post-title"><span className="title-post">Title:</span> {props.title}</h1>
-            <h3 className="post-description"><span className="descr-post">Description:</span> {props.description}</h3>
+            <div className="forum-post-header">
+                    <h1 className="post-icon">   
+                            {props.category==="Science" ? "🔬"
+                            :
+                            props.category==="Tech" ? "💻"
+                            :
+                            props.category==="Engineering" ? "⚙️"
+                            : 
+                            "➗"
+                        }
+                    </h1>
+                <h3><span className="posted-by">by</span>{" "}<span className="user-name-span-post">{props._user.username}</span></h3>  
+                  <h4 className="number-comments"><FaComments size={25} style={{ fill: "white"}}/> <span className="tallies-top">{props.numberCommentsOnPost}</span> </h4>
+            </div>
+               
+            <h1 className="post-title"><span className="title-post">Title</span>{" "}{props.title}</h1>
+            <h3 className="post-description"><span className="descr-post">Description</span>{" "}{props.description}</h3>
 
      
         <div className="comment-related-btns">
                   
         { !toggleIsCommenting ?
               <div id={props._id}>
-                <button className="leave-comment-btn" onClick={toggleToComment}> Leave Comment</button>
+                <button className="leave-comment-btn" onClick={toggleToComment}>Leave Comment</button>
               </div>
               :
               <div id={props._id} className="comment-form" >
@@ -113,7 +114,7 @@ return (
                         <button className="downvote-comment-btn" onClick={()=>commentDownVote(comment._id)}><BsArrowDownCircleFill size={14} style={{ fill: "#0F4C75"}}/></button> */}
                     {/* </div> */}
                         <span className="user-name-span-comment">{comment._user.username}</span> 
-                        {comment.commentText}
+                        {" "}{comment.commentText}
                     
                     
                     {username === comment._user.username 

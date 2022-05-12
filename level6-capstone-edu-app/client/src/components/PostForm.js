@@ -50,6 +50,30 @@ function handleChange(e){
 
   return (
     <form className="add-post-form" onSubmit={handleSubmitPost}>
+      {/* <div className="radio-buttons" onChange={handleChange}>
+        Select: 
+          <input 
+            type="radio" 
+            name="category" 
+            value="Science"
+             
+          /> Science
+          <input 
+            type="radio" 
+            name="category" 
+            value="Tech"
+          /> Tech
+          <input 
+            type="radio" 
+            name="category" 
+            value="Engineeering"
+          /> Engineering
+           <input 
+            type="radio" 
+            name="category" 
+            value="Math"
+          /> Math
+      </div> */}
       <input 
         type="text" 
         name="category" 
@@ -57,7 +81,6 @@ function handleChange(e){
         onChange={handleChange} 
         placeholder="STEM Category"
       />
-
       <input 
         type="text" 
         name="title" 

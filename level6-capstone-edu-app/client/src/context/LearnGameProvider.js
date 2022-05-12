@@ -71,15 +71,12 @@ function getGameQuestions(){
         .catch(err => console.log(err.response.data.errMsg))
     }
 
- //CHECK IF ALL QUESTIONS ANSWERED
- function endGame(questions, questionsAnswered){
-     const arrLength = questions.length
-     console.log("arrLength", arrLength)
-     if(arrLength === questionsAnswered){
-         console.log("Game Over")
-     } else {
-         console.log("Let's try another question")
-     }
+ //GAME RESET
+ function gameReset(){
+    getGameQuestions()
+    setQuestionsAnswered(0)
+    setQuestionsCorrect(0)
+    setGameScore(0)
  }   
 
 //console-logging correctly -- now figure out how to handle scoring, rewards, etc.
@@ -99,7 +96,6 @@ function handleGameAnswerClick(_user, question, questionOption) {
     console.log("question.value", question.value)
     console.log("question._id", question._id)
     console.log("questionOption._id", questionOption._id)
-    
     setQuestionsAnswered(questionsAnswered + 1)
     if(questionOption.isCorrect === true) {
         setGameScore(gameScore + question.value)   
@@ -118,8 +114,7 @@ function handleGameAnswerClick(_user, question, questionOption) {
         //provide message feedback that answer is not correct -- & what else?
             console.log("Sorry, that's not correct.")
             filterAnsweredQuestion(question._id)
-        
-             }
+            }
 
             }
      
@@ -590,7 +585,7 @@ function filterAnsweredQuestion(_id){
             questionsAnswered,
             questionsCorrect,
             handleMenuFilter,
-            endGame
+            gameReset
             
         }}>
 

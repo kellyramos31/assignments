@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import { PostCommentContext } from "../context/PostCommentProvider.js"
+import { FaComments } from 'react-icons/fa'
 // import { FcCancel } from 'react-icons/fc'
 // import CommentForm from "./CommentForm.js"
 
@@ -68,11 +69,11 @@ return (
                 {/* <h3 className="total-votes"># Voters: {props.totalVotersVotedCount}</h3>
                 <h3 className="my-issue-upvotes">Upvotes: {props.upVotes}</h3>
                 <h3 className="my-issue-downvotes">Downvotes: {props.downVotes}</h3> */}
-                <h3 className="my-post-number-comments"># Comments: {props.numberCommentsOnPost}</h3>
+                <h3 className="my-post-number-comments"><FaComments size={25} style={{ fill: "white"}}/> {props.numberCommentsOnPost}</h3>
               </div>
               <div className="my-postdescr-titles">
       
-                <h1 className="post-title-mine"><span className="my-post-title">Post</span> {props.title}</h1>
+                <h1 className="post-title-mine"><span className="my-post-title">Title</span> {props.title}</h1>
                 <h3 className="post-description-mine"><span className="my-post-descr">Description</span> <span className="my-descr-text">{props.description}</span></h3>
               </div>
                 <div className="edit-delete-post-buttons">
