@@ -7,7 +7,8 @@ import React, { useState } from 'react'
 const initInputs = {
   title: "",
   description: "",
-  category: ""
+  category: "",
+  checked: ""
   // userIssues: []
 //   votes: ""
 }
@@ -56,6 +57,7 @@ function handleChange(e){
           <input 
             type="radio" 
             id="Science"
+            index={props.index}
             name="category" 
             checked={inputs.category === "Science"}
             value="Science"
@@ -64,6 +66,7 @@ function handleChange(e){
           <input 
             type="radio" 
             id="Tech"
+            index={props.index}
             name="category" 
             checked={inputs.category === "Tech"}
             value="Tech"
@@ -72,6 +75,7 @@ function handleChange(e){
           <input 
             type="radio" 
             id="Engineering"
+            index={props.index}
             name="category" 
             checked={inputs.category === "Engineering"}
             value="Engineering"
@@ -80,6 +84,7 @@ function handleChange(e){
            <input 
             type="radio" 
             id="Math"
+            index={props.index}
             name="category" 
             checked={inputs.category === "Math"}
             value="Math"

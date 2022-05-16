@@ -16,7 +16,7 @@ export default function PostText(props){
     const {
         // postState,
         deletePost,
-        editPost,
+        editPost
         // getUserPosts,
         // getPosts,
         // getComments
@@ -102,7 +102,7 @@ return (
                         type="radio" 
                         id="Science"
                         name="category" 
-                        checked={inputs.category === "Science"}
+                        checked={props.category === "Science" || inputs.category === "Science"}//shows proper value, but does not allow edit here.
                         value="Science"
                         onChange={handleEditChange}
                       /> Science
@@ -110,7 +110,7 @@ return (
                         type="radio" 
                         id="Tech"
                         name="category" 
-                        checked={inputs.category === "Tech"}
+                        checked={props.category === "Tech" || inputs.category === "Tech"}
                         value="Tech"
                         onChange={handleEditChange}
                       /> Tech
@@ -118,7 +118,7 @@ return (
                         type="radio" 
                         id="Engineering"
                         name="category" 
-                        checked={inputs.category === "Engineering"}
+                        checked={props.category === "Engineering" || inputs.category === "Engineering"}
                         value="Engineering"
                         onChange={handleEditChange}
                       /> Engineering
@@ -126,7 +126,7 @@ return (
                         type="radio" 
                         id="Math"
                         name="category" 
-                        checked={inputs.category === "Math"}
+                        checked={props.category === "Math" || inputs.category === "Math"}
                         value="Math"
                         onChange={handleEditChange}
                       /> Math
