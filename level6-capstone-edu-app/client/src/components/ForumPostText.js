@@ -5,6 +5,10 @@ import { PostCommentContext } from "../context/PostCommentProvider.js"
 import { FaComments } from 'react-icons/fa'
 import { MdOutlineComment} from 'react-icons/md'
 import { AiFillEye} from 'react-icons/ai'
+import { BiHide } from 'react-icons/bi'
+import { MdCancel } from 'react-icons/md'
+import { FaEdit } from 'react-icons/fa'
+import { RiDeleteBin6Fill} from 'react-icons/ri'
 
 
 
@@ -112,7 +116,8 @@ return (
                 size={20} style={{ fill: "royalblue"}}/></div></button>
                 :
                 <div>
-                <button  className="hide-comments-btn" onClick={toggleViewComments}>Hide Comments</button>    
+                <button  className="hide-comments-btn" onClick={toggleViewComments}><BiHide
+                size={20} style={{ fill: "royalblue"}}/></button>    
                 <h3 className="public-comments">Comments:{props._comments.map(comment=>(
                     <li className="comment-list-item" key={comment._id}>
                     {/* <div className="comment-vote-group-btns"> */}
@@ -127,13 +132,13 @@ return (
                     ? 
                     <div key={props._id} className="edit-del-comment-btns"> 
                         <div className="edit-del-btns-group">
-                           <button className="delete-comment-btn" id={comment._id} onClick={() => combinedDeleteComment(comment._id, props._id)}>Delete</button>
-                           <button className="edit-comment-btn" id={comment._id} onClick={toggleToEdit}>Edit</button>
+                           <button className="delete-comment-btn" id={comment._id} onClick={() => combinedDeleteComment(comment._id, props._id)}><RiDeleteBin6Fill size={15} style={{ fill: "royalblue"}}/></button>
+                           <button className="edit-comment-btn" id={comment._id} onClick={toggleToEdit}><FaEdit size={15} style={{ fill: "royalblue"}}/></button>
                         </div>
                         {toggleEdit 
                         ?
-                           <div  className="edit-comment-form" key={props._id} index={props.index}>
-                                    <form onSubmit={()=>editComment(inputsCommentEdit, comment._id)}>
+                           <div  className="edit-comment-form-group" key={props._id} index={props.index}>
+                                    <form className="edit-comment-form" onSubmit={()=>editComment(inputsCommentEdit, comment._id)}>
                                                 <input
                                                      type="text"
                                                      defaultValue={comment.commentText}
@@ -144,7 +149,8 @@ return (
                                                  />
                                                 <div className="edit-comments-grp-btns">
                                                     <button className="submit-edited-comment-btn">Submit Edit</button>
-                                                    <button className="cancel-edit-comment-btn" onClick={toggleToEdit}>Cancel</button>
+                                                    <button className="cancel-edit-comment-btn" onClick={toggleToEdit}><MdCancel
+                size={20} style={{ fill: "royalblue"}}/></button>
                                                 </div>
                                         </form>
                             </div>    

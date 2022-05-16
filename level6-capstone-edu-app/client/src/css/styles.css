@@ -61,8 +61,9 @@ body {
   margin: auto;
 }
 
-.radio-buttons {
-  padding-left: 3rem;
+.category-radio-buttons {
+  text-align: center;
+  color: rgba(0, 30, 78, .85);
 }
 
 .add-post-btn {
@@ -71,7 +72,7 @@ body {
   margin-right: auto;
   margin-top: 1%;
   border-radius: .5rem;
-  background-color: black;
+  background-color: rgba(0, 30, 78, .85);
   color: white;
   font-weight: bolder;
 }
@@ -428,7 +429,6 @@ select {
   font-size: 1.2rem;
 }
 
-.edit-delete-post-buttons {}
 
 .delete-post-btn,
 .edit-post-btn {
@@ -437,6 +437,21 @@ select {
   width: 3.5rem;
 }
 
+.category-edit-radio-buttons {
+  color: whitesmoke;
+}
+
+.delete-comment-btn,
+.edit-comment-btn {
+  background-color: whitesmoke;
+  border-radius: 6px;
+  width: 2.4rem;
+  padding-top: .2rem;
+}
+
+.delete-comment-btn {
+  margin-left: 1.5rem;
+}
 
 .number-comments {
   margin-left: .5rem;
@@ -447,8 +462,19 @@ select {
   margin-top: 1.5rem;
 }
 
+.comment-form>input {
+  border-radius: 4px;
+  padding: 4px;
+  margin-right: 1%;
+}
+
+.edit-comment-form>input {}
+
 .leave-comment-btn,
-.see-comments-btn {
+.see-comments-btn,
+.hide-comments-btn,
+.cancel-edit-comment-btn,
+.cancel-comment-btn {
   background-color: whitesmoke;
   border-radius: 6px;
   width: 3.5rem;
@@ -471,7 +497,7 @@ select {
   color: whitesmoke;
   border-radius: .5rem;
   background-color: rgba(0, 30, 78, .85);
-  padding: 1rem;
+  padding: 2%;
 }
 
 .dropdown-posts {

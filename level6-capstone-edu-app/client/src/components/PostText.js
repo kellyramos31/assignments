@@ -96,14 +96,49 @@ return (
       :
         <div className="outline-edit-post-form" id={props._id} index={props.index} >
             <form className="edit-post-form" onSubmit={()=>editPost(inputs, props._id)}>
-              <input
+               <div className="category-edit-radio-buttons" >
+                    Category: 
+                      <input 
+                        type="radio" 
+                        id="Science"
+                        name="category" 
+                        checked={inputs.category === "Science"}
+                        value="Science"
+                        onChange={handleEditChange}
+                      /> Science
+                      <input 
+                        type="radio" 
+                        id="Tech"
+                        name="category" 
+                        checked={inputs.category === "Tech"}
+                        value="Tech"
+                        onChange={handleEditChange}
+                      /> Tech
+                      <input 
+                        type="radio" 
+                        id="Engineering"
+                        name="category" 
+                        checked={inputs.category === "Engineering"}
+                        value="Engineering"
+                        onChange={handleEditChange}
+                      /> Engineering
+                      <input 
+                        type="radio" 
+                        id="Math"
+                        name="category" 
+                        checked={inputs.category === "Math"}
+                        value="Math"
+                        onChange={handleEditChange}
+                      /> Math
+                  </div>
+              {/* <input
                 type="text"
                 defaultValue={props.category}
-                inputs={props.category|| inputs}
-                name="title"
+                inputs={props.category || inputs}
+                name="category"
                 onChange={handleEditChange}
                 placeholder="STEM Category"
-              />
+              /> */}
               <input
                 type="text"
                 defaultValue={props.title}

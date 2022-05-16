@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react"
 //import React, { useState } from "react"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
-// import { FcCancel } from 'react-icons/fc'
+import { MdCancel } from 'react-icons/md'
 
 
 const initInputs = {
@@ -50,8 +50,8 @@ const { commentText } = inputs
 
 
 return (
-    <div className="comment-form">
-     <form onSubmit={(e)=>handleSubmitComment(e, commentText, _post)}>
+    <div>
+     <form className="comment-form" onSubmit={(e)=>handleSubmitComment(e, commentText, _post)}>
         <input
             _post={_post}
             type="text" 
@@ -62,7 +62,8 @@ return (
         />
         <div className="comment-form-buttons">
             <button className="submit-comment-button">Submit Comment</button>
-            <button className="cancel-comment-btn" onClick={toggleToComment}>Cancel</button>
+            <button className="cancel-comment-btn" onClick={toggleToComment}><MdCancel
+                size={20} style={{ fill: "royalblue"}}/></button>
         </div>
       </form>
     </div>

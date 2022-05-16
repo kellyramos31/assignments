@@ -53,7 +53,7 @@ return (
                    
                     <h1 className="welcome-msg">Hi @{username}!</h1>
 
-                    <h3 className="add-post-header">Add A New Post to the STEM Forum:</h3>
+                    <h3 className="add-post-header">Add A New Post to the STEM Discussion Forum:</h3>
 
                   <PostForm
                         addPost={addPost}
