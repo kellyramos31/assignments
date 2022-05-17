@@ -132,8 +132,8 @@ a {
   display: flex;
   justify-content: space-around;
   background-color: whitesmoke;
-  border-top: 5px black solid;
-  border-bottom: 5px black solid;
+  border-top: 5px rgb(45, 76, 167) solid;
+  border-bottom: 5px rgb(45, 76, 167) solid;
   padding: 1%;
 }
 
@@ -528,6 +528,10 @@ select {
 
 .public-comments {
   margin: 1% 1%;
+}
+
+.modal-text {
+  z-index: 5;
 }
 
 /* .all-posts {} */

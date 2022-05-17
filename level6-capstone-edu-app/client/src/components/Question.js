@@ -1,6 +1,6 @@
 import React, {useState} from "react"
-// import { LearnGameContext } from "../context/LearnGameProvider.js"
 import QuestionChoice from "./QuestionChoice.js"
+
 
 
 
@@ -9,6 +9,8 @@ export default function Question(props){
 const { question } = props
 
 const [flip, setFlip]=useState(false)
+
+
 
 
 return(
@@ -48,6 +50,8 @@ return(
                             <QuestionChoice key={questionOption._id} question={question} questionOption={questionOption}/>
                     )}
                         </div>
+
+                       
             </div>
         }
         </div>

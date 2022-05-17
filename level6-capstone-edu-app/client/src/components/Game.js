@@ -10,6 +10,7 @@ import GameScore from "./GameScore.js"
 
 
 export default function Game() {
+
   const {
     getGameQuestions,
     gameState,
@@ -45,5 +46,6 @@ useEffect(() => {
                 <Question index={index} question={question} key={question._id}/>
              ))}
         </div>
+        
         </div>
             )}

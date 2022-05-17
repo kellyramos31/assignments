@@ -33,7 +33,11 @@ const [questionsAnswered, setQuestionsAnswered] = useState(0)
 
 const [questionsCorrect, setQuestionsCorrect] = useState(0)
 
+const [badgeReward, setBadgeReward] = useState(0)
+
 const [gameScore, setGameScore] = useState(0)
+
+const [modalToggleState, setModalToggleState] = useState(false)
 
 
 
@@ -52,9 +56,6 @@ function getFlashcards(){
         .catch(err => console.log(err.response.data.errMsg))
     }
 
-
-
-//add isAnswered property temporarily to each question???  use FOREACH??
 
 //GET ALL GAME QUESTIONS
 function getGameQuestions(){
@@ -79,14 +80,26 @@ function getGameQuestions(){
     setGameScore(0)
  }   
 
+ //CHECK FOR REWARD
+ function rewardCheck(){
+  console.log("questionsCorrect from rewardCheck", questionsCorrect)
+  if((questionsCorrect !== 0) && ((questionsCorrect + 1) % 3 === 0)){
+            console.log("GET A REWARD!!!")
+            setBadgeReward(badgeReward + 1)
+        }
+    }
+
 //console-logging correctly -- now figure out how to handle scoring, rewards, etc.
     // }
             //style.backgroundColor="orange"
             //change background color of card to indicate answered already; award points; add to correct answer tally;
             //if answer x# questions correctly in a row (3?), then provide reward badge
 
+            //Toggle Modal
 
-
+// function areYouWorking(){
+//     console.log("MODAL!!!!")
+// }
 
 //HANDLE ANSWER CHOICE SELECTION
 function handleGameAnswerClick(_user, question, questionOption) {
@@ -96,15 +109,24 @@ function handleGameAnswerClick(_user, question, questionOption) {
     console.log("question.value", question.value)
     console.log("question._id", question._id)
     console.log("questionOption._id", questionOption._id)
+    setModalToggleState(true)
     setQuestionsAnswered(questionsAnswered + 1)
+ 
+
     if(questionOption.isCorrect === true) {
         setGameScore(gameScore + question.value)   
-        setQuestionsCorrect(questionsCorrect + 1)
+        setQuestionsCorrect(prev=> prev + 1)
         filterAnsweredQuestion(question._id)
+        // setModalToggleState(!modalToggleState)
+        console.log("Stellar!  That's correct.")
+        
+        
+        
+    
         userAxios.put(`/api/learngame/game/user/score/${_user}`, question.value)
             .then(res => {
                console.log(res)
-               console.log("Stellar!  That's correct.")
+              
                
                //then something related to rewards -- e.g., if questionsCorrect=3, then reward & reset to zero.
              })
@@ -116,7 +138,9 @@ function handleGameAnswerClick(_user, question, questionOption) {
             filterAnsweredQuestion(question._id)
             }
 
-            }
+   rewardCheck()
+    
+}
      
 
 
@@ -146,7 +170,6 @@ function filterAnsweredQuestion(_id){
 // function searchFlashcards() {
 
 // }
-
 
 
 
@@ -585,7 +608,9 @@ function filterAnsweredQuestion(_id){
             questionsAnswered,
             questionsCorrect,
             handleMenuFilter,
-            gameReset
+            gameReset,
+            modalToggleState,
+            badgeReward
             
         }}>
 

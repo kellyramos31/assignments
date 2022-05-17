@@ -9,7 +9,8 @@ const {
     gameReset,
     gameScore,
     questionsAnswered,
-    questionsCorrect
+    questionsCorrect,
+    badgeReward
 } = useContext(LearnGameContext)
 
     return (
@@ -20,7 +21,7 @@ const {
             <h2>✅{" "}{questionsCorrect}</h2>
 
         {/* represent badges by a number?? */}
-            <h2>✨Badges✨ {" "}  </h2>
+            <h2>✨Badges✨ {" "} {badgeReward} </h2>
 
             <button className="game-reset-btn" onClick={gameReset}>New Game</button>
        
