@@ -77,11 +77,53 @@ body {
   font-weight: bolder;
 }
 
+.submit-post-edit-btn,
+.cancel-post-edit-btn {
+  border-radius: .5rem;
+  background-color: rgba(0, 30, 78, .85);
+  color: white;
+  font-weight: bolder;
+}
+
+.edit-post-form-btns {
+  display: flex;
+  justify-content: center;
+}
+
+.cancel-post-edit-btn {
+  margin-left: 1%;
+}
+
 .add-post-form>input {
   width: 80%;
   margin: 1% auto 0 auto;
   border-radius: .5rem;
   padding: .5rem;
+}
+
+.outline-edit-post-form {
+  margin-top: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: skyblue;
+  border-radius: .5rem;
+  padding: 8px;
+  width: 60%;
+}
+
+.edit-post-form>input {
+  width: 96%;
+  margin: 1% auto 1% auto;
+  border-radius: .5rem;
+  padding: .4rem;
+
+}
+
+.category-edit-radio-buttons {
+  color: rgba(0, 30, 78, .85);
+  background-color: skyblue;
+  margin-left: 1%;
+  text-align: center;
 }
 
 .profile-posts-list-header {
@@ -437,9 +479,7 @@ select {
   width: 3.5rem;
 }
 
-.category-edit-radio-buttons {
-  color: whitesmoke;
-}
+
 
 .delete-comment-btn,
 .edit-comment-btn {
@@ -468,7 +508,6 @@ select {
   margin-right: 1%;
 }
 
-.edit-comment-form>input {}
 
 .leave-comment-btn,
 .see-comments-btn,

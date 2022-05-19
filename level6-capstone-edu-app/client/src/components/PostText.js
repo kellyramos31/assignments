@@ -131,14 +131,7 @@ return (
                         onChange={handleEditChange}
                       /> Math
                   </div>
-              {/* <input
-                type="text"
-                defaultValue={props.category}
-                inputs={props.category || inputs}
-                name="category"
-                onChange={handleEditChange}
-                placeholder="STEM Category"
-              /> */}
+       
               <input
                 type="text"
                 defaultValue={props.title}

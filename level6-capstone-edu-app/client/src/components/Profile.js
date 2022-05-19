@@ -44,7 +44,7 @@ export default function Profile() {
   }, [postState])
 
 
-//MAYBE ADD GAME SCORE HISTORY & REWARDS/BADGES SECTIONS
+//ADD GAME SCORE HISTORY & REWARDS/BADGES SECTIONS
 
 
 return (

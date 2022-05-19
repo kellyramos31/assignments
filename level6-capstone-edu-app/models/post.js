@@ -9,9 +9,9 @@ const postSchema = new Schema({
         type: String,
         required: true
     },
-    checked: {
-        type: Boolean
-    },
+    // checked: {
+    //     type: Boolean
+    // },
     title: {
         type: String,
         required: true

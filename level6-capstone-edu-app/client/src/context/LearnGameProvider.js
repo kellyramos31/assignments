@@ -37,7 +37,7 @@ const [badgeReward, setBadgeReward] = useState(0)
 
 const [gameScore, setGameScore] = useState(0)
 
-const [modalToggleState, setModalToggleState] = useState(false)
+const [isModalOpen, setIsModalOpen] = useState(false)
 
 
 
@@ -72,6 +72,8 @@ function getGameQuestions(){
         .catch(err => console.log(err.response.data.errMsg))
     }
 
+
+//*****NOTE:  WHEN RESET GAME -- NEED TO UPDATE HISTORY IN USER PROFILE/MODEL*****
  //GAME RESET
  function gameReset(){
     getGameQuestions()
@@ -89,6 +91,10 @@ function getGameQuestions(){
         }
     }
 
+//END OF GAME CHECK
+//if q's answered === 20, then save/push user's point score
+
+
 //console-logging correctly -- now figure out how to handle scoring, rewards, etc.
     // }
             //style.backgroundColor="orange"
@@ -101,6 +107,11 @@ function getGameQuestions(){
 //     console.log("MODAL!!!!")
 // }
 
+//TOGGLE MODAL
+function toggleModal(){
+    setIsModalOpen(!isModalOpen)
+}
+
 //HANDLE ANSWER CHOICE SELECTION
 function handleGameAnswerClick(_user, question, questionOption) {
     console.log("handling game answer click")
@@ -109,7 +120,6 @@ function handleGameAnswerClick(_user, question, questionOption) {
     console.log("question.value", question.value)
     console.log("question._id", question._id)
     console.log("questionOption._id", questionOption._id)
-    setModalToggleState(true)
     setQuestionsAnswered(questionsAnswered + 1)
  
 
@@ -117,7 +127,6 @@ function handleGameAnswerClick(_user, question, questionOption) {
         setGameScore(gameScore + question.value)   
         setQuestionsCorrect(prev=> prev + 1)
         filterAnsweredQuestion(question._id)
-        // setModalToggleState(!modalToggleState)
         console.log("Stellar!  That's correct.")
         
         
@@ -137,8 +146,7 @@ function handleGameAnswerClick(_user, question, questionOption) {
             console.log("Sorry, that's not correct.")
             filterAnsweredQuestion(question._id)
             }
-
-   rewardCheck()
+    rewardCheck()
     
 }
      
@@ -609,7 +617,8 @@ function filterAnsweredQuestion(_id){
             questionsCorrect,
             handleMenuFilter,
             gameReset,
-            modalToggleState,
+            toggleModal,
+            isModalOpen,
             badgeReward
             
         }}>

@@ -58,8 +58,8 @@ function handleChange(e){
             type="radio" 
             id="Science"
             index={props.index}
-            name="category" 
-            checked={inputs.category === "Science"}
+            name="category"
+            checked={inputs.category === "Science"}  
             value="Science"
             onChange={handleChange}
           /> Science
@@ -67,8 +67,8 @@ function handleChange(e){
             type="radio" 
             id="Tech"
             index={props.index}
-            name="category" 
-            checked={inputs.category === "Tech"}
+            name="category"
+            checked={inputs.category === "Tech"} 
             value="Tech"
             onChange={handleChange}
           /> Tech
@@ -77,7 +77,6 @@ function handleChange(e){
             id="Engineering"
             index={props.index}
             name="category" 
-            checked={inputs.category === "Engineering"}
             value="Engineering"
             onChange={handleChange}
           /> Engineering

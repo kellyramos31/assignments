@@ -16,7 +16,7 @@ const {
     return (
         <div className="game-score">
        
-            <h2>🌟Points🌟{" "}{gameScore}{" "}{" "}</h2>
+            <h2>✨Points✨{" "}{gameScore}{" "}{" "}</h2>
             <h2>🙋{" "}{questionsAnswered}</h2>
             <h2>✅{" "}{questionsCorrect}</h2>
 

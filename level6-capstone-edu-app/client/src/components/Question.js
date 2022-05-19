@@ -3,14 +3,11 @@ import QuestionChoice from "./QuestionChoice.js"
 
 
 
-
 export default function Question(props){
 
 const { question } = props
 
 const [flip, setFlip]=useState(false)
-
-
 
 
 return(
@@ -54,6 +51,10 @@ return(
                        
             </div>
         }
+
+            <div>
+       
+        </div>
         </div>
 
 )}
