@@ -90,7 +90,7 @@ body {
   justify-content: center;
 }
 
-.cancel-post-edit-btn {
+.cancel-comment-btn {
   margin-left: 1%;
 }
 
@@ -362,7 +362,7 @@ span {
   padding: .5rem;
 }
 
-.comment-related-btns {}
+
 
 .game-score {
   display: flex;
@@ -479,8 +479,6 @@ select {
   width: 3.5rem;
 }
 
-
-
 .delete-comment-btn,
 .edit-comment-btn {
   background-color: whitesmoke;
@@ -497,15 +495,36 @@ select {
   margin-left: .5rem;
 }
 
+.comment-form-container {
+  padding: 12px 9px 3px 9px;
+  background-color: skyblue;
+  border-radius: 4px;
+  margin-left: 20px;
+  width: 250%;
+  margin-top: 1.5%;
+}
+
+
 .comment-related-btns {
   display: inline-block;
-  margin-top: 1.5rem;
+  margin-top: 5%;
 }
 
 .comment-form>input {
   border-radius: 4px;
-  padding: 4px;
+  padding: 5px;
   margin-right: 1%;
+  margin-bottom: 1%;
+  width: 97%;
+}
+
+.submit-comment-button {
+  margin-bottom: 1.5%;
+  padding: 6px;
+  border-radius: .5rem;
+  background-color: rgba(0, 30, 78, .85);
+  color: white;
+  font-weight: bolder;
 }
 
 
@@ -521,6 +540,24 @@ select {
   height: 1.95rem;
 }
 
+.comment-form-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1%;
+}
+
+.see-comments-btn {
+  float: left;
+  margin-top: 5.2%;
+}
+
+/* .cancel-edit-comment-btn {
+  margin-left: 1%;
+}
+
+.hide-comments-btn {
+  margin-left: 1.5%;
+} */
 
 .title-forum-page {
   text-align: center;

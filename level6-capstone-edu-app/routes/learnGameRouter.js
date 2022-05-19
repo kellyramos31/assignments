@@ -3,7 +3,6 @@ const { isValidObjectId } = require("mongoose");
 const learnGameRouter = express.Router();
 const Flashcard = require("../models/flashcard.js");
 const Question = require("../models/question.js");
-const Score = require("../models/score.js")
 const User = require("../models/user.js")
 
 //GET ALL FLASHCARDS
@@ -327,7 +326,7 @@ learnGameRouter.put("/game/user/score/:user", (req, res, next)=> {
         })
 })
 
-
+//add gamescore to user's history when complete game
 
 //SEARCH FLASHCARDS BY STEM CATEGORY (for dropdown menu)
 learnGameRouter.get("/learn/search/categorySTEM", (req, res, next) => {

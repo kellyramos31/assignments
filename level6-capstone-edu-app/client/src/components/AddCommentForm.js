@@ -50,7 +50,7 @@ const { commentText } = inputs
 
 
 return (
-    <div>
+    <div className="comment-form-container">
      <form className="comment-form" onSubmit={(e)=>handleSubmitComment(e, commentText, _post)}>
         <input
             _post={_post}
@@ -61,7 +61,7 @@ return (
             placeholder="Comment Text"
         />
         <div className="comment-form-buttons">
-            <button className="submit-comment-button">Submit Comment</button>
+            <button className="submit-comment-button">Add Comment</button>
             <button className="cancel-comment-btn" onClick={toggleToComment}><MdCancel
                 size={20} style={{ fill: "royalblue"}}/></button>
         </div>
