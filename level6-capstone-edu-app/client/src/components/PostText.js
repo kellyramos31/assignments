@@ -3,6 +3,7 @@ import { PostCommentContext } from "../context/PostCommentProvider.js"
 import { FaComments } from 'react-icons/fa'
 import { FaEdit } from 'react-icons/fa'
 import { RiDeleteBin6Fill} from 'react-icons/ri'
+import { MdCancel } from 'react-icons/md'
 
 
 
@@ -150,7 +151,8 @@ return (
               />
               <div className="edit-post-form-btns">
                   <button className="submit-post-edit-btn">Submit Edit</button>
-                  <button className="cancel-post-edit-btn" onClick={toggleToEdit}>Cancel</button>
+                  <button className="cancel-post-edit-btn" onClick={toggleToEdit}><MdCancel
+                size={20} style={{ fill: "royalblue"}}/></button>
               </div>
             </form>
 
