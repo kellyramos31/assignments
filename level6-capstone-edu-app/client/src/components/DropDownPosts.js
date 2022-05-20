@@ -1,19 +1,19 @@
 import React, {useContext} from "react"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
 
-export default function DropDownPosts(props) {
+export default function DropdownPosts(props) {
 
 
 const {
     handleMenuPosts,
-    getPosts
+    getPostsAndComments
 } = useContext(PostCommentContext)
 
 
     return (
         <div>
             <div className="dropdown-menu">
-                <h5 className="dropdown-title-psots">Posts By Category</h5>
+                <h5 className="dropdown-title">Posts By Category</h5>
 
                 <select onChange={handleMenuPosts} className="dropdown">
                     <option>--Select a Category--</option>
@@ -23,7 +23,8 @@ const {
                     <option value="Engineering">Engineering</option>
                     <option value="Math">Math</option>
                 </select>
-                <button className="return-to-all-posts-btn" onClick={getPosts}>View All Posts</button>
+                <button className="return-to-all-posts-btn" onClick={getPostsAndComments}>View All Posts</button>
             </div>
         </div>
-  
+    )
+}

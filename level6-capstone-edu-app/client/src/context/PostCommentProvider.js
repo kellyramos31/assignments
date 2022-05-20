@@ -20,12 +20,17 @@ export default function PostCommentProvider(props) {
         userPosts: [],
         posts: [],
         comments: [],
+        postComments: [],
         errMsg: ""
     }
 
 const [postState, setPostState] = useState(initState)
 
 
+function getPostsAndComments() {
+    getPosts()
+    getComments()
+}
 
 function getPosts(){
         userAxios.get("/api/forumpost")
@@ -41,7 +46,20 @@ function getPosts(){
         .catch(err => console.log(err.response.data.errMsg))
     }
 
+function getCommentsSpecifiedPost(_post){
+    userAxios.get("api/comment/")
+           .then(res => {
+            console.log("res comments for specified post:", res)
+            setPostState(prevState => ({
+                ...prevState,
+                postComments: res.data
+            }))
 
+             console.log("comments from postComments", res.data)
+        })
+        .catch(err => console.log(err.response.data.errMsg))
+
+}
 
 // function sortCommentsForIssue() {
 //     userAxios.get("/api/issue/sortComments")
@@ -77,7 +95,7 @@ function getUserPosts(){
 
 //GET ALL COMMENTS (regardless of user)
 function getComments(){
-        userAxios.get("/api/comment")
+        userAxios.get("/api/comment/post")
         .then(res => {
             console.log(res)
             setPostState(prevState => ({
@@ -136,7 +154,7 @@ function deletePost(postId) {
         userAxios.delete(`/api/forumpost/${postId}`)
              .then(res => {
                 setPostState(prevState=> ({userPosts: prevState.userPosts.filter(userPost => userPost._id !== postId)}))
-                getPosts()
+                getPostsAndComments()
              })
         
             .catch(err=>console.log(err.response.data.errMsg))
@@ -156,9 +174,9 @@ function deletePost(postId) {
 
  
 //COMBINED ADD COMMENT
-function combinedAddComment (commentText, _post){
-  addComment(commentText, _post)
-  addCommentTally(_post)
+function combinedAddComment (commentText, _id){
+  addComment(commentText, _id)
+  addCommentTally(_id)
 }
 
 //ADD COMMENT
@@ -211,7 +229,12 @@ function combinedDeleteComment (commentId, postId){
         console.log("commentId:", commentId)
         userAxios.delete(`/api/comment/${commentId}`)
              .then(res => {
-                setPostState(prevState=> ({posts: prevState.posts.filter(post=> post._comment !== commentId)}))
+                setPostState(prevState=> ({
+                    postComments: prevState.postComments.filter(comment=> comment._id !== commentId),
+                    comments: prevState.comments.filter(comment=> comment._id !== commentId),
+                    posts: prevState.posts.filter(post=> post._comment !== commentId)
+                }))
+              
                 // getUserIssues()
                 // getIssues()
              })
@@ -286,17 +309,17 @@ function handleMenuPosts(e){
             value={{
             ...postState,
             getUserPosts,
-            getPosts,
+            getPostsAndComments,
             handleMenuPosts,
             addPost,
             deletePost,
             editPost,
-            getComments,
+            getCommentsSpecifiedPost,
             addComment,
+            editComment,
             combinedAddComment,
             combinedDeleteComment,
-            deleteComment,
-            editComment
+            deleteComment
            
         }}>
 

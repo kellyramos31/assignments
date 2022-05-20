@@ -115,7 +115,18 @@ commentRouter.post("/", (req, res, next) => {
 })
 
 
+//GET ALL COMMENTS FOR A SPECIFIC POST
 
+commentRouter.get("/post", (req, res, next)=>{
+    Comment.find({_post: req.body._post}, (err, comments)=>{
+        if(err) {
+            res.status(500)
+            return next(err)
+        }
+        console.log("all comments for specified post id", comments)
+        return res.status(200).send(comments)
+    })
+})
 
 
 //TRYING TO RECONFIGURE SO WORKS ON FRONTEND***

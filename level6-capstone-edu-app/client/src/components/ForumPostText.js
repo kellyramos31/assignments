@@ -28,15 +28,13 @@ const {
 
 
 const {
-      // voterUpVote,
-      // voterDownVote,
-      // commentUpVote,
-      // commentDownVote,
-      // calcNetVotes,
       combinedDeleteComment,
-      editComment
-
+      editComment,
+      getCommentsSpecifiedPost,
+      postComments
      } = useContext(PostCommentContext)
+
+
 
 const [inputsCommentEdit, setInputsCommentEdit] = useState("")
 
@@ -44,11 +42,12 @@ const [toggleIsCommenting, setToggleIsCommenting] = useState(false)
 
 const [toggleIsViewingComments, setToggleIsViewingComments] = useState(false)
 
-const [toggleEdit, setToggleEdit] = useState(false)
+const [isEditing, setIsEditing] = useState(false)
 
 
 
-function toggleViewComments(){
+function toggleViewComments(_post){
+    getCommentsSpecifiedPost(_post)
     console.log("view comments toggled")
     setToggleIsViewingComments(prev => !prev)
   }
@@ -59,10 +58,14 @@ function toggleToComment(){
   }
 
 function toggleToEdit(){
-    setToggleEdit(prev => !prev)
+     console.log("toggleToEdit clicked")
+    // setCommentsToUpdate(props._comments.map(comment=>(id !==comment._id ? comment : comment.isEditing === !isEditing)))
+    setIsEditing(prev => !prev)
   }
 
-function handleChangeEdit(e){
+function handleChangeEdit(e, id){
+    console.log("handleChangeEdit id", id)
+ 
     const {name, value} = e.target
     setInputsCommentEdit(prevInputs => ({
       ...prevInputs,
@@ -73,8 +76,8 @@ function handleChangeEdit(e){
 
 
 return (
-    <div className="all-post-container" key={props._id}>
-        <div className="all-posts" key={props._id}>
+    <div key={props._id} index={props.index}className="all-post-container">
+        <div className="all-posts" >
 
             <div className="forum-post-header">
                     <h1 className="post-icon">   
@@ -98,13 +101,13 @@ return (
         <div className="comment-related-btns">
                   
         { !toggleIsCommenting ?
-              <div id={props._id}>
+              <div>
                 <button className="leave-comment-btn" onClick={toggleToComment}><MdOutlineComment size={20} style={{ fill: "royalblue"}}/></button>
               </div>
               :
-              <div id={props._id} className="comment-form" >
+              <div className="comment-form" >
                   <AddCommentForm
-                    _post={props._id}
+                    _id={props._id}
                     toggleToComment={toggleToComment}
                   />
               
@@ -112,14 +115,14 @@ return (
           }
            </div>
                { !toggleIsViewingComments ?
-                <button className="see-comments-btn" key={props._id} onClick={toggleViewComments}> <div className="eye-btn-pieces"><AiFillEye
+                <button className="see-comments-btn" onClick={toggleViewComments}> <div className="eye-btn-pieces"><AiFillEye
                 size={20} style={{ fill: "royalblue"}}/></div></button>
                 :
                 <div>
                 <button  className="hide-comments-btn" onClick={toggleViewComments}><BiHide
                 size={20} style={{ fill: "royalblue"}}/></button>    
-                <h3 className="public-comments">Comments:{props._comments.map((comment, index)=>(
-                    <li className="comment-list-item" key={comment._id} index={index}>
+                <h3 className="public-comments">Comments:{postComments.map((comment, index)=>(
+                    <li key={comment._id} className="comment-list-item">
                     {/* <div className="comment-vote-group-btns"> */}
                         {/* <button className="upvote-comment-btn" onClick={()=>commentUpVote(comment._id)}><BsArrowUpCircleFill size={14} style={{ fill: "#0F4C75"}}/></button>
                         <button className="downvote-comment-btn" onClick={()=>commentDownVote(comment._id)}><BsArrowDownCircleFill size={14} style={{ fill: "#0F4C75"}}/></button> */}
@@ -130,15 +133,15 @@ return (
                     
                     {username === comment._user.username 
                     ? 
-                    <div key={props._id} className="edit-del-comment-btns"> 
+                    <div className="edit-del-comment-btns"> 
                         <div className="edit-del-btns-group">
-                           <button className="delete-comment-btn" onClick={() => combinedDeleteComment(comment._id, props._id)}><RiDeleteBin6Fill size={15} style={{ fill: "royalblue"}}/></button>
+                           <button  className="delete-comment-btn" onClick={() => combinedDeleteComment(comment._id, props._id)}><RiDeleteBin6Fill size={15} style={{ fill: "royalblue"}}/></button>
                            <button className="edit-comment-btn" onClick={toggleToEdit}><FaEdit size={15} style={{ fill: "royalblue"}}/></button>
                         </div>
-                        {toggleEdit
+                        {isEditing
                         ?
-                           <div  className="edit-comment-form-group">
-                                    <form key={comment._id} index={comment.index} className="edit-comment-form" onSubmit={()=>editComment(inputsCommentEdit, comment._id)}>
+                           <div  className="edit-comment-form-group"  >
+                                    <form key={comment[index]} className="edit-comment-form" onSubmit={()=>editComment(inputsCommentEdit, comment._id)}>
                                                 <input
                                                      type="text"
                                                      defaultValue={comment.commentText}

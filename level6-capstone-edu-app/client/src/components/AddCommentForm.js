@@ -17,7 +17,7 @@ const [inputs, setInputs] = useState(initInputs)
 
 const { combinedAddComment } = useContext(PostCommentContext)
 
-const { toggleToComment, _post} = props
+const { toggleToComment, _id} = props
 
 
 
@@ -35,7 +35,7 @@ function handleCommentChange(e){
     //console.log("_issue:", _issue)
     console.log("inputs", inputs)
     // console.log("_issue", _issue)
-    combinedAddComment(commentText, _post)
+    combinedAddComment(commentText, _id)
     setInputs(initInputs)
     toggleToComment()
   }
@@ -51,9 +51,9 @@ const { commentText } = inputs
 
 return (
     <div className="comment-form-container">
-     <form className="comment-form" onSubmit={(e)=>handleSubmitComment(e, commentText, _post)}>
+     <form className="comment-form" onSubmit={(e)=>handleSubmitComment(e, commentText, _id)}>
         <input
-            _post={_post}
+            _id={_id}
             type="text" 
             name="commentText" 
             value={commentText} 

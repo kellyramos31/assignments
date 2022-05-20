@@ -13,12 +13,12 @@ export default function Forum() {
         posts,
         userPosts,
         comments,
+        getCommentsSpecifiedPost,
         getUserPosts,
-        getPosts,
+        getPostsAndComments,
         handleMenuPosts,
-        // addComment,
-        getComments
-    } = useContext(PostCommentContext)
+        // addComment    
+      } = useContext(PostCommentContext)
 
 
 
@@ -27,8 +27,8 @@ export default function Forum() {
   useEffect(() => {
     console.log("useEffect triggered")
     getUserPosts()
-    getPosts()
-    getComments()
+    getPostsAndComments()
+    getCommentsSpecifiedPost()
     // eslint-disable-next-line  
   }, [postState])
 
@@ -41,7 +41,7 @@ export default function Forum() {
               <div className="dropdown-posts">
             <DropdownPosts
               handleMenuPosts={handleMenuPosts}
-              getPosts={getPosts}
+              getPostsAndComments={getPostsAndComments}
             />
           </div>
             <ForumPostList 
