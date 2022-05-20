@@ -118,8 +118,8 @@ return (
                 <div>
                 <button  className="hide-comments-btn" onClick={toggleViewComments}><BiHide
                 size={20} style={{ fill: "royalblue"}}/></button>    
-                <h3 className="public-comments">Comments:{props._comments.map(comment=>(
-                    <li className="comment-list-item" key={comment._id}>
+                <h3 className="public-comments">Comments:{props._comments.map((comment, index)=>(
+                    <li className="comment-list-item" key={comment._id} index={index}>
                     {/* <div className="comment-vote-group-btns"> */}
                         {/* <button className="upvote-comment-btn" onClick={()=>commentUpVote(comment._id)}><BsArrowUpCircleFill size={14} style={{ fill: "#0F4C75"}}/></button>
                         <button className="downvote-comment-btn" onClick={()=>commentDownVote(comment._id)}><BsArrowDownCircleFill size={14} style={{ fill: "#0F4C75"}}/></button> */}
@@ -132,13 +132,13 @@ return (
                     ? 
                     <div key={props._id} className="edit-del-comment-btns"> 
                         <div className="edit-del-btns-group">
-                           <button className="delete-comment-btn" id={comment._id} onClick={() => combinedDeleteComment(comment._id, props._id)}><RiDeleteBin6Fill size={15} style={{ fill: "royalblue"}}/></button>
-                           <button className="edit-comment-btn" id={comment._id} onClick={toggleToEdit}><FaEdit size={15} style={{ fill: "royalblue"}}/></button>
+                           <button className="delete-comment-btn" onClick={() => combinedDeleteComment(comment._id, props._id)}><RiDeleteBin6Fill size={15} style={{ fill: "royalblue"}}/></button>
+                           <button className="edit-comment-btn" onClick={toggleToEdit}><FaEdit size={15} style={{ fill: "royalblue"}}/></button>
                         </div>
-                        {toggleEdit 
+                        {toggleEdit
                         ?
-                           <div  className="edit-comment-form-group" key={props._id} index={props.index}>
-                                    <form className="edit-comment-form" onSubmit={()=>editComment(inputsCommentEdit, comment._id)}>
+                           <div  className="edit-comment-form-group">
+                                    <form key={comment._id} index={comment.index} className="edit-comment-form" onSubmit={()=>editComment(inputsCommentEdit, comment._id)}>
                                                 <input
                                                      type="text"
                                                      defaultValue={comment.commentText}
