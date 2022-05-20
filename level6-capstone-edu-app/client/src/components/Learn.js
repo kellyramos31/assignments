@@ -2,7 +2,7 @@
 import React, { useContext, useEffect } from "react"
 import { LearnGameContext } from "../context/LearnGameProvider.js"
 import Flashcard from "./Flashcard.js"
-import DropDownFlashcards from "./DropDownFlashcards.js"
+import DropMenuFlashcards from "./DropMenuFlashcards.js"
 
 
 
@@ -36,7 +36,7 @@ useEffect(() => {
     return(
       <div className="learn-container">
         <div className="dropdown-flashcards">
-          <DropDownFlashcards/>
+          <DropMenuFlashcards/>
         </div>
 
         <div className="flashcard-learn-container">
