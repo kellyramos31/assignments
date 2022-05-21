@@ -20,7 +20,7 @@ const { combinedAddComment } = useContext(PostCommentContext)
 const { toggleToComment, _id} = props
 
 
-
+const { commentText } = inputs
 
 function handleCommentChange(e){
     const {name, value} = e.target
@@ -30,7 +30,7 @@ function handleCommentChange(e){
     }))
     }
 
- function handleSubmitComment(e){
+ function handleSubmitComment(e, commentText, _id){
     e.preventDefault()
     //console.log("_issue:", _issue)
     console.log("inputs", inputs)
@@ -40,7 +40,6 @@ function handleCommentChange(e){
     toggleToComment()
   }
 
-const { commentText } = inputs
 
 
   // function toggleToComment(){

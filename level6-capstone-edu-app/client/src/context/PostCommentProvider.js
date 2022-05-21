@@ -27,6 +27,11 @@ export default function PostCommentProvider(props) {
 const [postState, setPostState] = useState(initState)
 
 
+
+
+
+
+
 function getPostsAndComments() {
     getPosts()
     getComments()
@@ -180,11 +185,12 @@ function combinedAddComment (commentText, _id){
 }
 
 //ADD COMMENT
-   function addComment(commentText, _post) {
+   function addComment(commentText, _id) {
       const commentAdd = {
         commentText: commentText,
-        _post: _post
+        _post: _id
       }
+      console.log("_id", _id)
       // const _issue = issueId
       console.log("commentAdd:", commentAdd)
       // console.log("adding comment -- issueId:", issueId)
@@ -298,7 +304,6 @@ function handleMenuPosts(e){
         })
               .catch(err=>console.log(err.response.data.errMsg))  
     }
-
 
 
 

@@ -115,8 +115,20 @@ commentRouter.post("/", (req, res, next) => {
 })
 
 
-//GET ALL COMMENTS FOR A SPECIFIC POST
+//ADD COMMENT
+commentRouter.post("/", (req, res, next)=>{
+ req.body._user = req.user._id
+    const comment = new Comment(req.body);
+    comment.save(function (err, newComment) {
+        if (err) {
+            res.status(500);
+            return next(err);
+        }
+        return res.status(201).send(newComment);
+    })
+})
 
+//GET ALL COMMENTS FOR A SPECIFIC POST
 commentRouter.get("/post", (req, res, next)=>{
     Comment.find({_post: req.body._post}, (err, comments)=>{
         if(err) {

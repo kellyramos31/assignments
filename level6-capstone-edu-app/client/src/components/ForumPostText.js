@@ -1,14 +1,15 @@
 import React, { useState, useContext } from 'react'
 import AddCommentForm from "./AddCommentForm.js"
-import { UserContext} from "../context/UserProvider.js"
+// import { UserContext} from "../context/UserProvider.js"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
 import { FaComments } from 'react-icons/fa'
 import { MdOutlineComment} from 'react-icons/md'
 import { AiFillEye} from 'react-icons/ai'
 import { BiHide } from 'react-icons/bi'
-import { MdCancel } from 'react-icons/md'
-import { FaEdit } from 'react-icons/fa'
-import { RiDeleteBin6Fill} from 'react-icons/ri'
+import ForumCommentText from './ForumCommentText.js'
+// import { MdCancel } from 'react-icons/md'
+// import { FaEdit } from 'react-icons/fa'
+// import { RiDeleteBin6Fill} from 'react-icons/ri'
 
 
 
@@ -18,31 +19,31 @@ import { RiDeleteBin6Fill} from 'react-icons/ri'
 
 
 export default function ForumPostText(props){
-const {
-    user: {
-        username
-    },
+// const {
+//     user: {
+//         username
+//     },
         
-    } = useContext(UserContext)
+//     } = useContext(UserContext)
 
 
 
 const {
-      combinedDeleteComment,
-      editComment,
-      getCommentsSpecifiedPost,
-      postComments
+    //   combinedDeleteComment,
+    //   editComment,
+      getCommentsSpecifiedPost
+    //   postComments
      } = useContext(PostCommentContext)
 
 
 
-const [inputsCommentEdit, setInputsCommentEdit] = useState("")
+
 
 const [toggleIsCommenting, setToggleIsCommenting] = useState(false)
 
 const [toggleIsViewingComments, setToggleIsViewingComments] = useState(false)
 
-const [isEditing, setIsEditing] = useState(false)
+
 
 
 
@@ -57,21 +58,21 @@ function toggleToComment(){
     setToggleIsCommenting(prev => !prev)
   }
 
-function toggleToEdit(){
-     console.log("toggleToEdit clicked")
-    // setCommentsToUpdate(props._comments.map(comment=>(id !==comment._id ? comment : comment.isEditing === !isEditing)))
-    setIsEditing(prev => !prev)
-  }
+// function toggleToEdit(){
+//      console.log("toggleToEdit clicked")
+//     // setCommentsToUpdate(props._comments.map(comment=>(id !==comment._id ? comment : comment.isEditing === !isEditing)))
+//     setIsEditing(prev => !prev)
+//   }
 
-function handleChangeEdit(e, id){
-    console.log("handleChangeEdit id", id)
+// function handleChangeEdit(e, id){
+//     console.log("handleChangeEdit id", id)
  
-    const {name, value} = e.target
-    setInputsCommentEdit(prevInputs => ({
-      ...prevInputs,
-      [name]: value
-    }))
-    }
+//     const {name, value} = e.target
+//     setInputsCommentEdit(prevInputs => ({
+//       ...prevInputs,
+//       [name]: value
+//     }))
+//     }
 
 
 
@@ -107,7 +108,7 @@ return (
               :
               <div className="comment-form" >
                   <AddCommentForm
-                    _id={props._id}
+                     _id={props._id}
                     toggleToComment={toggleToComment}
                   />
               
@@ -121,13 +122,23 @@ return (
                 <div>
                 <button  className="hide-comments-btn" onClick={toggleViewComments}><BiHide
                 size={20} style={{ fill: "royalblue"}}/></button>    
-                <h3 className="public-comments">Comments:{postComments.map((comment, index)=>(
+
+                    <ForumCommentText
+                        id={props._id}
+
+
+                    />
+
+
+
+
+                {/* <h3 className="public-comments">Comments:{postComments.map((comment, index)=>(
                     <li key={comment._id} className="comment-list-item">
                     {/* <div className="comment-vote-group-btns"> */}
                         {/* <button className="upvote-comment-btn" onClick={()=>commentUpVote(comment._id)}><BsArrowUpCircleFill size={14} style={{ fill: "#0F4C75"}}/></button>
                         <button className="downvote-comment-btn" onClick={()=>commentDownVote(comment._id)}><BsArrowDownCircleFill size={14} style={{ fill: "#0F4C75"}}/></button> */}
                     {/* </div> */}
-                        <span className="user-name-span-comment">{comment._user.username}</span> 
+                        {/* <span className="user-name-span-comment">{comment._user.username}</span> 
                         {" "}{comment.commentText}
                     
                     
@@ -171,7 +182,7 @@ return (
                     </li>
                     ))
                     }
-                </h3>
+                </h3>  */}
           </div>
         }
     </div>
