@@ -23,9 +23,10 @@ export default function Profile() {
     const {
         postState,
         userPosts,
-        getPostsAndComments,
+        // comments,
+        // userPosts,
+        getPosts,
         getUserPosts,
-        getCommentsSpecifiedPost,
         addPost
     } = useContext(PostCommentContext)
 
@@ -37,8 +38,7 @@ export default function Profile() {
   useEffect(() => {
     console.log("useEffect triggered")
     getUserPosts()
-    getPostsAndComments()
-    getCommentsSpecifiedPost()
+    getPosts()
     // eslint-disable-next-line  
   }, [postState])
 

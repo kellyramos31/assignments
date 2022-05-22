@@ -14,20 +14,21 @@ const scoreSchema = new Schema({
         {
          scoreTotal: {
             type: Number
-         }
+         },
+         _user: {
+            type: Schema.Types.ObjectId,
+            ref: "User",
+            required: true
         }
-    ],
+        }
+    ]
 
-    _user: {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-        required: true
-    }
+    
 })
 
 const autoPopulateUser  = function(next) {
     this.populate({
-        path: "_user",
+        path: "scoreHistory._user",
         select: "username _id"
     })
     next()

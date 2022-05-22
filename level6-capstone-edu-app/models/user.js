@@ -13,20 +13,6 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    userGameScoreHistory:  [
-        {
-            score: {
-            type: Number
-            }
-        }
-    ],
-    userBadges: [
-        {
-            badgeUrl: {
-            type: String
-            }
-        }
-    ],
     memberSince: {
         type: Date,
         default: Date.now

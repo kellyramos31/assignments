@@ -3,7 +3,7 @@ const { isValidObjectId } = require("mongoose");
 const learnGameRouter = express.Router();
 const Flashcard = require("../models/flashcard.js");
 const Question = require("../models/question.js");
-const User = require("../models/user.js")
+const Score = require("../models/score.js")
 
 //GET ALL FLASHCARDS
 learnGameRouter.get("/learn", (req, res, next) => {
@@ -310,21 +310,64 @@ learnGameRouter.delete("/play/:questionId", (req, res, next)=> {
 //need to adjust this -- not quite right
 //INCREMENT USER SCORE FOR APPROPRIATE #POINTS FOR CORRECT GAME ANSWER
 //add in way to push score to score schema/model when game over
-learnGameRouter.put("/game/user/score/:user", (req, res, next)=> {
-    User.findByIdAndUpdate(
-        {user: req.user._id},
-        {$inc: {gameScore: req.body.value}},
-        { new: true },
-        (err, user) => {
-            if (err) {
-                console.log("Error");
-                res.status(500);
-                return next(err);
-            }
-            return res.send(user);
+// learnGameRouter.post("/score", (req, res, next)=> {
+//    User.findByIdAndUpdate(
+//         {_user: req.user._id},
+//         {$push: {"scoreHistory": {"score": req.body.score}}},
+//         { new: true },
+//         (err, score) => {
+//             if (err) {
+//                 console.log("Error");
+//                 res.status(500);
+//                 return next(err);
+//             }
+//             return res.send(score);
 
-        })
+//         })
+// })
+
+//GET ALL SCORES
+learnGameRouter.get("/play/score", (req, res, next) => {
+Score.find((err, scores) => {
+        if (err) {
+            res.status(500);
+            return next(err);
+        }
+        return res.send(scores);
+    });
 })
+
+
+//Add score to Score Model array
+learnGameRouter.post("/play/score", (req, res, next) => {
+    req.body._user = req.user._id
+    const score = new Score(req.body);
+    score.save(function (err, newScore) {
+        if (err) {
+            res.status(500);
+            return next(err);
+        }
+        return res.status(201).send(newScore);
+    })
+})
+
+
+// commentRouter.put("/pusharray/:commentId", (req, res, next) => {
+//        const issueId = req.body._issue
+//         Issue.findByIdAndUpdate(
+//             {_id: issueId, _user: req.user._id},
+//             { $push: { "_comments": req.params.commentId }},
+//             { new: true},
+//         (err, commentId) => {
+//             if (err) {
+//                 console.log("Error");
+//                 res.status(500);
+//                 return next(err);
+//             }
+//             return res.send(commentId);
+//         })
+//     })
+
 
 //add gamescore to user's history when complete game
 
@@ -347,3 +390,4 @@ learnGameRouter.get("/learn/search/categorySTEM", (req, res, next) => {
 
 
 module.exports = learnGameRouter;
+

@@ -82,7 +82,7 @@ function getGameQuestions(){
     setGameScore(0)
  }   
 
- //CHECK FOR REWARD
+ //CHECK FOR REWARD -- ***ALSO NEED TO SAVE SOMETHING TO SCORE SUMMARY SO BADGES SHOW UP IN PROFILE SUMMARY
  function rewardCheck(){
   console.log("questionsCorrect from rewardCheck", questionsCorrect)
   if((questionsCorrect !== 0) && ((questionsCorrect + 1) % 3 === 0)){
@@ -91,17 +91,9 @@ function getGameQuestions(){
         }
     }
 
-//END OF GAME CHECK
-//if q's answered === 20, then save/push user's point score
 
-
-//console-logging correctly -- now figure out how to handle scoring, rewards, etc.
-    // }
-            //style.backgroundColor="orange"
-            //change background color of card to indicate answered already; award points; add to correct answer tally;
-            //if answer x# questions correctly in a row (3?), then provide reward badge
-
-            //Toggle Modal
+ 
+//Toggle Modal
 
 // function areYouWorking(){
 //     console.log("MODAL!!!!")
@@ -181,68 +173,6 @@ function filterAnsweredQuestion(_id){
 
 
 
-// function sortCommentsForIssue() {
-//     userAxios.get("/api/issue/sortComments")
-//     .then(res => {
-//             console.log("res from issueCommentProvider:", res)
-//             setIssueState(prevState => ({
-//                 ...prevState,
-//                 issues: res.data
-//             }))
-
-//              console.log("issues from getIssues", res.data)
-//         })
-//         .catch(err => console.log(err.response.data.errMsg))
-
-// }
-
-
- //GET USER'S INDIVIDUAL ISSUES   
-
-// function getUserPosts(){
-//   userAxios.get("/api/post/user")
-//     .then(res => {
-//       console.log(res)
-//       setPostState(prevState => ({
-//         ...prevState,
-//         userPosts: res.data
-//       }))
-//       console.log("userPosts from getUserPosts", res.data)
-//     })
-//     .catch(err => console.log(err.response.data.errMsg))
-//   }
-
-
-//GET ALL COMMENTS (regardless of user)
-// function getComments(){
-//         userAxios.get("/api/comment")
-//         .then(res => {
-//             console.log(res)
-//             setPostState(prevState => ({
-//                 ...prevState,
-//                 comments: res.data
-//             }))
-//             console.log("comments from getComments", res.data)
-//         })
-//         .catch(err => console.log(err.response.data.errMsg))
-
-// }
-    
-//GET ALL USER COMMENTS
-    // function getUserComments(){
-    //     userAxios.get("/api/comment/user")
-    //     .then(res => {
-    //         console.log(res)
-    //         setUserState(prevState => ({
-    //             ...prevState,
-    //             comments: res.data
-    //         }))
-    //     })
-    //     .catch(err => console.log(err.response.data.errMsg))
-    // }
-
-
-
 //ADD FLASHCARD
     function addFlashcard(newFlashcard) {
         userAxios.post("/api/learngame/learn", newFlashcard)
@@ -257,68 +187,9 @@ function filterAnsweredQuestion(_id){
     }
 
     
-//DELETE USER'S ISSUE
-//NEED TO ADD SOMETHING TO DELETE RELATED COMMENTS ALSO -- they seem to persist even though issue deletes
-
-//do i actually need to chain .filter and .map (or similiar) in my setIssueState???
-
-//     Issue.pre('deleteIssue', function(next) {
-//     // Remove all the assignment docs that reference the removed person.
-//     this.Comment.remove({ _issue: this.issueId }, next);
-// });
 
 
-// function deletePost(postId) {
-//         console.log("postId:", postId)
-// ;
-//         userAxios.delete(`/api/post/${postId}`)
-//              .then(res => {
-//                 setPostState(prevState=> ({userPosts: prevState.userPosts.filter(userPost => userPost._id !== postId)}))
-//                 getPosts()
-//              })
-        
-//             .catch(err=>console.log(err.response.data.errMsg))
-//     }
 
-
-//EDIT USER'S ISSUE
-    // function editPost(inputs, postId) {
-    //     console.log("postId to be edited", postId)
-    //     console.log("inputs for edit", inputs)
-    //     userAxios.put(`/api/post/${postId}`, inputs)
-    //      .then(res => {
-    //         setPostState(prevState => prevState.userPosts.map(userPost => userPost._id !== postId ? userPost : res.data))
-    //   })
-    //   .catch(err=>console.log(err.response.data.errMsg))
-    // }
-
- 
-//COMBINED ADD COMMENT
-// function combinedAddComment (commentText, _post){
-//   addComment(commentText, _post)
-//   addCommentTally(_post)
-// }
-
-//ADD COMMENT
-//    function addComment(commentText, _post) {
-//       const commentAdd = {
-//         commentText: commentText,
-//         _post: _post
-//       }
-//       // const _issue = issueId
-//       console.log("commentAdd:", commentAdd)
-//       // console.log("adding comment -- issueId:", issueId)
-//       userAxios.post("/api/comment", commentAdd)
-         
-//         .then(res => {
-//             console.log("addComment res", res)
-//             setPostState(prevState => ({
-//                 ...prevState,
-//                 postState:  [...prevState.posts, res.data]
-//             })
-//               )})
-//         .catch(err=>console.log(err.response.data.errMsg))
-//     }
 
 
 //INCREMENT COMMENT TOTAL ON SPECIFIC ISSUE

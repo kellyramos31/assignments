@@ -38,6 +38,7 @@ useEffect(() => {
         <div className="dropdown-flashcards">
           <DropMenuFlashcards/>
         </div>
+    
 
         <div className="flashcard-learn-container">
             {flashcards.map(flashcard=> 
@@ -47,4 +48,5 @@ useEffect(() => {
         </div>
             )
     }
+        
          

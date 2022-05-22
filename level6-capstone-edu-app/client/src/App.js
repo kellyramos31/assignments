@@ -1,4 +1,3 @@
-
 //NEED TO EDIT BELOW TO ADAPT TO THIS PROJECT
 
 import React, { useContext } from "react"
@@ -67,4 +66,3 @@ export default function App() {
     </div>
   )
 }
-

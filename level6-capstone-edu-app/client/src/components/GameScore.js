@@ -24,6 +24,7 @@ const {
             <h2>✨Badges✨ {" "} {badgeReward} </h2>
 
             <button className="game-reset-btn" onClick={gameReset}>New Game</button>
+            <button className="game-reset-btn">Save My Score</button>
        
         </div>
     )

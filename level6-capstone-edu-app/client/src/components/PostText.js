@@ -15,8 +15,18 @@ import { MdCancel } from 'react-icons/md'
 export default function PostText(props){
 
     const {
+        // postState,
         deletePost,
-        editPost 
+        editPost
+        // getUserPosts,
+        // getPosts,
+        // getComments
+        // comments,
+        //deleteComment,
+        // editComment
+        // addComment,
+        // upVote,
+        // downVote   
     } = useContext(PostCommentContext)
 
     //add function to toggle Comment Form on & off

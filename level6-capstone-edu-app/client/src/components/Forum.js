@@ -1,7 +1,9 @@
 import React, { useContext, useEffect} from "react"
 import ForumPostList from "./ForumPostList.js"
+// import ForumCommentList from "./ForumCommentList.js"
 import DropMenuPosts from "./DropMenuPosts.js"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
+// import ForumCommentText from "./ForumCommentText.js"
 
 
 
@@ -12,13 +14,14 @@ export default function Forum() {
         postState,
         posts,
         userPosts,
-        comments,
-        getCommentsSpecifiedPost,
+        // comments,
+        // postComments,
         getUserPosts,
-        getPostsAndComments,
+        getPosts,
         handleMenuPosts,
-        // addComment    
-      } = useContext(PostCommentContext)
+        // addComment,
+        // getComments
+    } = useContext(PostCommentContext)
 
 
 
@@ -27,8 +30,7 @@ export default function Forum() {
   useEffect(() => {
     console.log("useEffect triggered")
     getUserPosts()
-    getPostsAndComments()
-    getCommentsSpecifiedPost()
+    getPosts()
     // eslint-disable-next-line  
   }, [postState])
 
@@ -41,18 +43,21 @@ export default function Forum() {
               <div className="dropdown-posts">
             <DropMenuPosts
               handleMenuPosts={handleMenuPosts}
-              getPostsAndComments={getPostsAndComments}
+              getPosts={getPosts}
             />
           </div>
-            <ForumPostList 
+
+         
+          <ForumPostList 
                 posts={posts}
                 userPosts={userPosts}
-                comments={comments}
                 // addComment={addComment}
             />
+
+          {/* <ForumCommentList/> */}
+
+
         </div>
     )
 }
-
-
 

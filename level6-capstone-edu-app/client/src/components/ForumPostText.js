@@ -1,15 +1,14 @@
 import React, { useState, useContext } from 'react'
 import AddCommentForm from "./AddCommentForm.js"
-// import { UserContext} from "../context/UserProvider.js"
+import { UserContext} from "../context/UserProvider.js"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
 import { FaComments } from 'react-icons/fa'
 import { MdOutlineComment} from 'react-icons/md'
 import { AiFillEye} from 'react-icons/ai'
 import { BiHide } from 'react-icons/bi'
-import ForumCommentText from './ForumCommentText.js'
-// import { MdCancel } from 'react-icons/md'
-// import { FaEdit } from 'react-icons/fa'
-// import { RiDeleteBin6Fill} from 'react-icons/ri'
+import { MdCancel } from 'react-icons/md'
+import { FaEdit } from 'react-icons/fa'
+import { RiDeleteBin6Fill} from 'react-icons/ri'
 
 
 
@@ -19,36 +18,41 @@ import ForumCommentText from './ForumCommentText.js'
 
 
 export default function ForumPostText(props){
-// const {
-//     user: {
-//         username
-//     },
+const {
+    user: {
+        username
+    },
         
-//     } = useContext(UserContext)
+    } = useContext(UserContext)
 
 
 
 const {
-    //   combinedDeleteComment,
-    //   editComment,
-      getCommentsSpecifiedPost
-    //   postComments
+      // voterUpVote,
+      // voterDownVote,
+      // commentUpVote,
+      // commentDownVote,
+      // calcNetVotes,
+      postComments,
+      getCommentsSpecifiedPost,
+      combinedDeleteComment,
+      editComment
+
      } = useContext(PostCommentContext)
 
-
-
-
+const [inputsCommentEdit, setInputsCommentEdit] = useState("")
 
 const [toggleIsCommenting, setToggleIsCommenting] = useState(false)
 
 const [toggleIsViewingComments, setToggleIsViewingComments] = useState(false)
 
+const [toggleEdit, setToggleEdit] = useState(false)
+
+const [isEditing, setIsEditing] = useState(false)
 
 
 
-
-function toggleViewComments(_post){
-    getCommentsSpecifiedPost(_post)
+function toggleViewComments(){
     console.log("view comments toggled")
     setToggleIsViewingComments(prev => !prev)
   }
@@ -58,27 +62,32 @@ function toggleToComment(){
     setToggleIsCommenting(prev => !prev)
   }
 
-// function toggleToEdit(){
-//      console.log("toggleToEdit clicked")
-//     // setCommentsToUpdate(props._comments.map(comment=>(id !==comment._id ? comment : comment.isEditing === !isEditing)))
-//     setIsEditing(prev => !prev)
-//   }
+function toggleToEdit(id, _post){
+    console.log("_post", _post)
+    getCommentsSpecifiedPost(_post)
+    console.log("postComments", postComments)
+    console.log("id", id)
+    console.log("toggleToEdit clicked!")
+    // console.log("index that was toggled", index)
+    setToggleEdit(prev => !prev)
+    console.log("toggleEdit state", toggleEdit)
+    setIsEditing(prev => !prev)
+    console.log("isEditing state", isEditing)
+  }
 
-// function handleChangeEdit(e, id){
-//     console.log("handleChangeEdit id", id)
- 
-//     const {name, value} = e.target
-//     setInputsCommentEdit(prevInputs => ({
-//       ...prevInputs,
-//       [name]: value
-//     }))
-//     }
+function handleChangeEdit(e){
+    const {name, value} = e.target
+    setInputsCommentEdit(prevInputs => ({
+      ...prevInputs,
+      [name]: value
+    }))
+    }
 
 
 
 return (
-    <div key={props._id} index={props.index}className="all-post-container">
-        <div className="all-posts" >
+    <div className="all-post-container" key={props._id}>
+        <div className="all-posts" key={props._id}>
 
             <div className="forum-post-header">
                     <h1 className="post-icon">   
@@ -102,13 +111,13 @@ return (
         <div className="comment-related-btns">
                   
         { !toggleIsCommenting ?
-              <div>
+              <div id={props._id}>
                 <button className="leave-comment-btn" onClick={toggleToComment}><MdOutlineComment size={20} style={{ fill: "royalblue"}}/></button>
               </div>
               :
-              <div className="comment-form" >
+              <div id={props._id} className="comment-form" >
                   <AddCommentForm
-                     _id={props._id}
+                    _post={props._id}
                     toggleToComment={toggleToComment}
                   />
               
@@ -116,44 +125,36 @@ return (
           }
            </div>
                { !toggleIsViewingComments ?
-                <button className="see-comments-btn" onClick={toggleViewComments}> <div className="eye-btn-pieces"><AiFillEye
+                <button className="see-comments-btn" key={props._id} onClick={toggleViewComments}> <div className="eye-btn-pieces"><AiFillEye
                 size={20} style={{ fill: "royalblue"}}/></div></button>
                 :
                 <div>
                 <button  className="hide-comments-btn" onClick={toggleViewComments}><BiHide
                 size={20} style={{ fill: "royalblue"}}/></button>    
-
-                    <ForumCommentText
-                        id={props._id}
-
-
-                    />
-
-
-
-
-                {/* <h3 className="public-comments">Comments:{postComments.map((comment, index)=>(
-                    <li key={comment._id} className="comment-list-item">
+                <h3 className="public-comments">Comments:{props._comments.map((comment, index)=>(
+                    <li className="comment-list-item" key={comment._id} index={index}>
                     {/* <div className="comment-vote-group-btns"> */}
                         {/* <button className="upvote-comment-btn" onClick={()=>commentUpVote(comment._id)}><BsArrowUpCircleFill size={14} style={{ fill: "#0F4C75"}}/></button>
                         <button className="downvote-comment-btn" onClick={()=>commentDownVote(comment._id)}><BsArrowDownCircleFill size={14} style={{ fill: "#0F4C75"}}/></button> */}
                     {/* </div> */}
-                        {/* <span className="user-name-span-comment">{comment._user.username}</span> 
+                        <span className="user-name-span-comment">{comment._user.username}</span> 
                         {" "}{comment.commentText}
                     
                     
                     {username === comment._user.username 
                     ? 
-                    <div className="edit-del-comment-btns"> 
+                    <div key={props._comments[index]} className="edit-del-comment-btns"> 
                         <div className="edit-del-btns-group">
-                           <button  className="delete-comment-btn" onClick={() => combinedDeleteComment(comment._id, props._id)}><RiDeleteBin6Fill size={15} style={{ fill: "royalblue"}}/></button>
-                           <button className="edit-comment-btn" onClick={toggleToEdit}><FaEdit size={15} style={{ fill: "royalblue"}}/></button>
+                           <button className="delete-comment-btn" onClick={() => combinedDeleteComment(comment._id, props._id)}><RiDeleteBin6Fill size={15} style={{ fill: "royalblue"}}/></button>
+                           <button className="edit-comment-btn" onClick={()=>toggleToEdit(comment._id, comment._post)}><FaEdit size={15} style={{ fill: "royalblue"}}/></button>
                         </div>
                         {isEditing
                         ?
-                           <div  className="edit-comment-form-group"  >
-                                    <form key={comment[index]} className="edit-comment-form" onSubmit={()=>editComment(inputsCommentEdit, comment._id)}>
+                         
+                           <div  className="edit-comment-form-group">
+                                    <form id={props._comments[index]} key={comment._id}className="edit-comment-form" onSubmit={()=>editComment(inputsCommentEdit, comment._id)}>
                                                 <input
+                                                     id={comment._id}
                                                      type="text"
                                                      defaultValue={comment.commentText}
                                                      inputs={comment.commentText || inputsCommentEdit}
@@ -162,12 +163,14 @@ return (
                                                      placeholder="Comment Text"
                                                  />
                                                 <div className="edit-comments-grp-btns">
-                                                    <button className="submit-edited-comment-btn">Submit Edit</button>
-                                                    <button className="cancel-edit-comment-btn" onClick={toggleToEdit}><MdCancel
+                                                    <button  id={comment._id} className="submit-edited-comment-btn">Submit Edit</button>
+                                                    <button  id={comment._id} className="cancel-edit-comment-btn" onClick={()=>toggleToEdit(comment._id, comment._post)}><MdCancel
                 size={20} style={{ fill: "royalblue"}}/></button>
                                                 </div>
                                         </form>
-                            </div>    
+                            </div>
+                            
+                            
                         :
                         <div id={props._id}>
                             {null}
@@ -182,7 +185,7 @@ return (
                     </li>
                     ))
                     }
-                </h3>  */}
+                </h3>
           </div>
         }
     </div>

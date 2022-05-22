@@ -27,6 +27,18 @@ commentRouter.get("/user", (req, res, next)=>{
     })
 })
 
+//GET ALL COMMENTS FOR A SPECIFIC POST
+commentRouter.get("/post", (req, res, next)=>{
+    Comment.find({_post: req.body._post}, (err, comments)=>{
+        if(err) {
+            res.status(500)
+            return next(err)
+        }
+        console.log("all comments for specified post id", comments)
+        return res.status(200).send(comments)
+    })
+})
+
 
 //NOTE:  THIS ONE WORKS TO ADD COMMENT, BUT....NOT PUSHING TO ARRAY
 // commentRouter.post("/", (req, res, next) => {
@@ -115,30 +127,7 @@ commentRouter.post("/", (req, res, next) => {
 })
 
 
-//ADD COMMENT
-commentRouter.post("/", (req, res, next)=>{
- req.body._user = req.user._id
-    const comment = new Comment(req.body);
-    comment.save(function (err, newComment) {
-        if (err) {
-            res.status(500);
-            return next(err);
-        }
-        return res.status(201).send(newComment);
-    })
-})
 
-//GET ALL COMMENTS FOR A SPECIFIC POST
-commentRouter.get("/post", (req, res, next)=>{
-    Comment.find({_post: req.body._post}, (err, comments)=>{
-        if(err) {
-            res.status(500)
-            return next(err)
-        }
-        console.log("all comments for specified post id", comments)
-        return res.status(200).send(comments)
-    })
-})
 
 
 //TRYING TO RECONFIGURE SO WORKS ON FRONTEND***
@@ -288,7 +277,6 @@ Comment.updateOne(
         return res.status(201).send(issues);
 })
 })
-		
 
 
 //DOWNVOTE AN ISSUE--DECREMENT this works to decrement vote count === but can downVote as many times as want

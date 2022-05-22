@@ -20,22 +20,13 @@ export default function PostCommentProvider(props) {
         userPosts: [],
         posts: [],
         comments: [],
-        postComments: [],
         errMsg: ""
     }
 
 const [postState, setPostState] = useState(initState)
 
+const [postComments, setPostComments] = useState([])
 
-
-
-
-
-
-function getPostsAndComments() {
-    getPosts()
-    getComments()
-}
 
 function getPosts(){
         userAxios.get("/api/forumpost")
@@ -51,20 +42,7 @@ function getPosts(){
         .catch(err => console.log(err.response.data.errMsg))
     }
 
-function getCommentsSpecifiedPost(_post){
-    userAxios.get("api/comment/")
-           .then(res => {
-            console.log("res comments for specified post:", res)
-            setPostState(prevState => ({
-                ...prevState,
-                postComments: res.data
-            }))
 
-             console.log("comments from postComments", res.data)
-        })
-        .catch(err => console.log(err.response.data.errMsg))
-
-}
 
 // function sortCommentsForIssue() {
 //     userAxios.get("/api/issue/sortComments")
@@ -100,7 +78,7 @@ function getUserPosts(){
 
 //GET ALL COMMENTS (regardless of user)
 function getComments(){
-        userAxios.get("/api/comment/post")
+        userAxios.get("/api/comment")
         .then(res => {
             console.log(res)
             setPostState(prevState => ({
@@ -112,20 +90,19 @@ function getComments(){
         .catch(err => console.log(err.response.data.errMsg))
 
 }
-    
-//GET ALL USER COMMENTS
-    // function getUserComments(){
-    //     userAxios.get("/api/comment/user")
-    //     .then(res => {
-    //         console.log(res)
-    //         setUserState(prevState => ({
-    //             ...prevState,
-    //             comments: res.data
-    //         }))
-    //     })
-    //     .catch(err => console.log(err.response.data.errMsg))
-    // }
 
+
+//ALL COMMENTS FOR SPECIFIED POST
+function getCommentsSpecifiedPost(){
+    userAxios.get("api/comment/post")
+        .then(res => {
+            console.log(res)
+            setPostComments(res.data)
+        })
+
+        .catch(err => console.log(err.response.data.errMsg))
+    }
+    
 
 
 //ADD POST
@@ -142,15 +119,6 @@ function getComments(){
     }
 
     
-//DELETE USER'S ISSUE
-//NEED TO ADD SOMETHING TO DELETE RELATED COMMENTS ALSO -- they seem to persist even though issue deletes
-
-//do i actually need to chain .filter and .map (or similiar) in my setIssueState???
-
-//     Issue.pre('deleteIssue', function(next) {
-//     // Remove all the assignment docs that reference the removed person.
-//     this.Comment.remove({ _issue: this.issueId }, next);
-// });
 
 
 function deletePost(postId) {
@@ -159,7 +127,7 @@ function deletePost(postId) {
         userAxios.delete(`/api/forumpost/${postId}`)
              .then(res => {
                 setPostState(prevState=> ({userPosts: prevState.userPosts.filter(userPost => userPost._id !== postId)}))
-                getPostsAndComments()
+                getPosts()
              })
         
             .catch(err=>console.log(err.response.data.errMsg))
@@ -179,18 +147,17 @@ function deletePost(postId) {
 
  
 //COMBINED ADD COMMENT
-function combinedAddComment (commentText, _id){
-  addComment(commentText, _id)
-  addCommentTally(_id)
+function combinedAddComment (commentText, _post){
+  addComment(commentText, _post)
+  addCommentTally(_post)
 }
 
 //ADD COMMENT
-   function addComment(commentText, _id) {
+   function addComment(commentText, _post) {
       const commentAdd = {
         commentText: commentText,
-        _post: _id
+        _post: _post
       }
-      console.log("_id", _id)
       // const _issue = issueId
       console.log("commentAdd:", commentAdd)
       // console.log("adding comment -- issueId:", issueId)
@@ -235,12 +202,7 @@ function combinedDeleteComment (commentId, postId){
         console.log("commentId:", commentId)
         userAxios.delete(`/api/comment/${commentId}`)
              .then(res => {
-                setPostState(prevState=> ({
-                    postComments: prevState.postComments.filter(comment=> comment._id !== commentId),
-                    comments: prevState.comments.filter(comment=> comment._id !== commentId),
-                    posts: prevState.posts.filter(post=> post._comment !== commentId)
-                }))
-              
+                setPostState(prevState=> ({posts: prevState.posts.filter(post=> post._comment !== commentId)}))
                 // getUserIssues()
                 // getIssues()
              })
@@ -309,22 +271,24 @@ function handleMenuPosts(e){
 
 
 
+
     return (
         <PostCommentContext.Provider
             value={{
             ...postState,
             getUserPosts,
-            getPostsAndComments,
+            getPosts,
             handleMenuPosts,
             addPost,
             deletePost,
             editPost,
+            getComments,
             getCommentsSpecifiedPost,
             addComment,
-            editComment,
             combinedAddComment,
             combinedDeleteComment,
-            deleteComment
+            deleteComment,
+            editComment
            
         }}>
 
