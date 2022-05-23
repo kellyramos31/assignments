@@ -42,7 +42,7 @@ const [gameScore, setGameScore] = useState(0)
 
 const [isModalOpen, setIsModalOpen] = useState(false)
 
-
+const [myScores, setMyScores] = useState([])
 
 //GET ALL FLASHCARDS
 function getFlashcards(){
@@ -94,7 +94,7 @@ function getGameQuestions(){
         }
     }
 
-
+//SAVE USER'S GAME SCORE
  function saveMyScore(gameScore) {
 //    console.log("newScore", newScore)
    const scoreTotal = {
@@ -115,7 +115,17 @@ function getGameQuestions(){
         .catch(err=>console.log(err.response.data.errMsg))
     }
 
- 
+
+//GET ALL OF USER'S SCORES & SORT IN DESCENDING ORDER & ONLY KEEP TOP 3 GAME SCORES
+function getMyGameScores() {
+    userAxios.get("/api/learngame/play/score/user")
+    .then(res => {
+        console.log(res)
+        setMyScores(res.data) 
+    })
+    .catch(err=>console.log(err.response.data.errMsg))
+}
+
 //Toggle Modal
 
 // function areYouWorking(){
@@ -508,6 +518,8 @@ function filterAnsweredQuestion(_id){
             handleGameAnswerClick,
             gameScore,
             saveMyScore,
+            getMyGameScores,
+            myScores,
             questionsAnswered,
             questionsCorrect,
             handleMenuFilter,
@@ -515,6 +527,7 @@ function filterAnsweredQuestion(_id){
             toggleModal,
             isModalOpen,
             badgeReward,
+        
           
             
         }}>

@@ -1,12 +1,10 @@
 import React, { useContext, useEffect } from "react"
 import PostForm from "./PostForm.js"
-// import Forum from "./Forum.js"
 import PostList from "./PostList.js"
-// import CommentForm from "./CommentForm.js"
-// import Learn from "./Learn.js"
+import MyScores from "./MyScores.js"
 import { UserContext } from "../context/UserProvider.js"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
-
+import { LearnGameContext } from "../context/LearnGameProvider.js"
 
 
 export default function Profile() {
@@ -23,12 +21,15 @@ export default function Profile() {
     const {
         postState,
         userPosts,
-        // comments,
-        // userPosts,
         getPosts,
         getUserPosts,
         addPost
     } = useContext(PostCommentContext)
+
+        const {
+        getMyGameScores,
+        myScores
+    } = useContext(LearnGameContext)
 
 
 // const [userIssues, setUserIssues] = useState([])
@@ -39,6 +40,7 @@ export default function Profile() {
     console.log("useEffect triggered")
     getUserPosts()
     getPosts()
+    getMyGameScores()
     // eslint-disable-next-line  
   }, [postState])
 
@@ -52,11 +54,19 @@ return (
                    
                     <h1 className="welcome-msg">Hi @{username}!</h1>
 
-                    <h3 className="add-post-header">Add A New Post to the STEM Discussion Forum:</h3>
+                  
+                  <MyScores
+                      myScores={myScores}
+                  />
+
+                  
+                
 
                   <PostForm
                         addPost={addPost}
                     />
+
+                
 
 
                   {/* <Learn

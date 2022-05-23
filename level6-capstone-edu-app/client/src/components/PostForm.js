@@ -51,7 +51,9 @@ function handleChange(e){
   const { title, description } = inputs
 
   return (
+
     <form className="add-post-form" onSubmit={handleSubmitPost}>
+      <h3 className="add-post-header">Add A New Post to the STEM Discussion Forum:</h3>
       <div className="category-radio-buttons" >
         Category: 
           <input 

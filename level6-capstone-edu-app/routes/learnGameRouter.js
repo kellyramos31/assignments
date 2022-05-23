@@ -354,8 +354,6 @@ learnGameRouter.delete("/play/score/:scoreId", (req, res, next)=> {
 
 //GET ALL GAMESCORES FOR SINGLE USER IN DESCENDING ORDER
 learnGameRouter.get("/play/score/user", (req, res, next)=>{
-    // const filter = { _user: req.body._user} //pretty sure problem = this line here
-    //const ObjectId = require('mongoose').Types.ObjectId
     const ObjectId = require('mongodb').ObjectId            //problem with matching the ID(this solution is from Stack Overflow)   
     Score.aggregate([
        { $match: { _user: new ObjectId(req.user._id) } },  //problem with matching the ID(this solution is from Stack Overflow)
