@@ -6,9 +6,9 @@ import { FaComments } from 'react-icons/fa'
 import { MdOutlineComment} from 'react-icons/md'
 import { AiFillEye} from 'react-icons/ai'
 import { BiHide } from 'react-icons/bi'
-import { MdCancel } from 'react-icons/md'
 import { FaEdit } from 'react-icons/fa'
 import { RiDeleteBin6Fill} from 'react-icons/ri'
+import EditCommentForm from './EditCommentForm.js'
 
 
 
@@ -35,12 +35,11 @@ const {
       // calcNetVotes,
       postComments,
       getCommentsSpecifiedPost,
-      combinedDeleteComment,
-      editComment
+      combinedDeleteComment
 
      } = useContext(PostCommentContext)
 
-const [inputsCommentEdit, setInputsCommentEdit] = useState("")
+
 
 const [toggleIsCommenting, setToggleIsCommenting] = useState(false)
 
@@ -63,6 +62,7 @@ function toggleToComment(){
   }
 
 function toggleToEdit(id, _post){
+    console.log("toggleToEdit id", id)
     console.log("_post", _post)
     getCommentsSpecifiedPost(_post)
     console.log("postComments", postComments)
@@ -75,13 +75,6 @@ function toggleToEdit(id, _post){
     console.log("isEditing state", isEditing)
   }
 
-function handleChangeEdit(e){
-    const {name, value} = e.target
-    setInputsCommentEdit(prevInputs => ({
-      ...prevInputs,
-      [name]: value
-    }))
-    }
 
 
 
@@ -143,35 +136,22 @@ return (
                     
                     {username === comment._user.username 
                     ? 
-                    <div key={props._comments[index]} className="edit-del-comment-btns"> 
+                    <div key={comment._id} className="edit-del-comment-btns"> 
                         <div className="edit-del-btns-group">
                            <button className="delete-comment-btn" onClick={() => combinedDeleteComment(comment._id, props._id)}><RiDeleteBin6Fill size={15} style={{ fill: "royalblue"}}/></button>
-                           <button className="edit-comment-btn" onClick={()=>toggleToEdit(comment._id, comment._post)}><FaEdit size={15} style={{ fill: "royalblue"}}/></button>
+                           <button key={comment._id} className="edit-comment-btn" onClick={()=>toggleToEdit(comment._id)}><FaEdit size={15} style={{ fill: "royalblue"}}/></button>
                         </div>
-                        {isEditing
-                        ?
-                         
-                           <div  className="edit-comment-form-group">
-                                    <form id={props._comments[index]} key={comment._id}className="edit-comment-form" onSubmit={()=>editComment(inputsCommentEdit, comment._id)}>
-                                                <input
-                                                     id={comment._id}
-                                                     type="text"
-                                                     defaultValue={comment.commentText}
-                                                     inputs={comment.commentText || inputsCommentEdit}
-                                                     name="commentText"
-                                                     onChange={handleChangeEdit}
-                                                     placeholder="Comment Text"
-                                                 />
-                                                <div className="edit-comments-grp-btns">
-                                                    <button  id={comment._id} className="submit-edited-comment-btn">Submit Edit</button>
-                                                    <button  id={comment._id} className="cancel-edit-comment-btn" onClick={()=>toggleToEdit(comment._id, comment._post)}><MdCancel
-                size={20} style={{ fill: "royalblue"}}/></button>
-                                                </div>
-                                        </form>
-                            </div>
-                            
-                            
+
+                        {isEditing 
+                        ? 
+                        <EditCommentForm
+                           comment={comment}
+                           id={comment._id}
+                           toggleToEdit={toggleToEdit}
+                        />
+
                         :
+                        
                         <div id={props._id}>
                             {null}
                         </div> 

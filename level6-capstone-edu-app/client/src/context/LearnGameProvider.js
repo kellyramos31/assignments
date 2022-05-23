@@ -28,7 +28,7 @@ export default function LearnGameProvider(props) {
 
 const [flashcardState, setFlashcardState] = useState(initState)
 
-const [scoreState, setScoreState] = useState(initState)
+// const [scoreState, setScoreState] = useState(initState)
 
 const [gameState, setGameState] = useState([])
 
