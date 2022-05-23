@@ -335,12 +335,11 @@ learnGameRouter.post("/play/score", (req, res, next) => {
 })
 
 //DELETE SCORE FROM SCORE MODEL ARRAY
-learnGameRouter.delete("/play/score/delete/:scoreId", (req, res, next)=> {
+learnGameRouter.delete("/play/score/:scoreId", (req, res, next)=> {
         // const issueId = req.body._issue
         // const ObjectId = require('mongodb').ObjectId 
-        Score.findByIdAndUpdate(
-            {_id: req.body._id, _user: req.user._id},
-            { $pull: { "scoreHistory": req.params.scoreId}},
+        Score.findOneAndDelete(
+            {_id: req.params.scoreId, _user: req.user._id},
         (err, updatedScore) => {
             if (err) {
                 console.log("Error");
@@ -353,8 +352,23 @@ learnGameRouter.delete("/play/score/delete/:scoreId", (req, res, next)=> {
 
 
 
-//GET ALL OF SPECIFIED USERS GAME SCORES
-
+//GET ALL GAMESCORES FOR SINGLE USER IN DESCENDING ORDER
+learnGameRouter.get("/play/score/user", (req, res, next)=>{
+    // const filter = { _user: req.body._user} //pretty sure problem = this line here
+    //const ObjectId = require('mongoose').Types.ObjectId
+    const ObjectId = require('mongodb').ObjectId            //problem with matching the ID(this solution is from Stack Overflow)   
+    Score.aggregate([
+       { $match: { _user: new ObjectId(req.user._id) } },  //problem with matching the ID(this solution is from Stack Overflow)
+       { $sort: { scoreTotal: -1 } }
+    ],
+         (err, sortedUserScores)=> {
+            if (err){
+            res.status(500)
+            return next(err)
+        }
+        return res.status(200).send(sortedUserScores)
+    })
+})
 
 
 
