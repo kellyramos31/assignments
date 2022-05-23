@@ -53,7 +53,7 @@ function handleChange(e){
   return (
 
     <form className="add-post-form" onSubmit={handleSubmitPost}>
-      <h3 className="add-post-header">Add A New Post to the STEM Discussion Forum:</h3>
+      <h3 className="add-post-header">Add A New Post to the STEM Forum:</h3>
       <div className="category-radio-buttons" >
         Category: 
           <input 
