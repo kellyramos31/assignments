@@ -5,13 +5,18 @@ import { LearnGameContext } from "../context/LearnGameProvider.js"
 
 export default function GameScore() {
 
+
+
 const {
     gameReset,
     gameScore,
     questionsAnswered,
     questionsCorrect,
-    badgeReward
+    badgeReward,
+    saveMyScore
 } = useContext(LearnGameContext)
+
+
 
     return (
         <div className="game-score">
@@ -24,7 +29,7 @@ const {
             <h2>✨Badges✨ {" "} {badgeReward} </h2>
 
             <button className="game-reset-btn" onClick={gameReset}>New Game</button>
-            <button className="game-reset-btn">Save My Score</button>
+            <button className="game-reset-btn" onClick={()=>saveMyScore(gameScore)}>Save My Score</button>
        
         </div>
     )

@@ -3,32 +3,27 @@ const Schema = mongoose.Schema;
 
 
 const scoreSchema = new Schema({
-    rewardBadges: [
-        {
-         imageURL: {
-            type: String
-         }
-        }
-    ],
-    scoreHistory: [
-        {
-         scoreTotal: {
+
+    scoreTotal: {
             type: Number
-         },
-         _user: {
+        },
+
+    _user: {
             type: Schema.Types.ObjectId,
             ref: "User",
             required: true
-        }
-        }
-    ]
+        },
 
-    
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+
 })
 
 const autoPopulateUser  = function(next) {
     this.populate({
-        path: "scoreHistory._user",
+        path: "_user",
         select: "username _id"
     })
     next()

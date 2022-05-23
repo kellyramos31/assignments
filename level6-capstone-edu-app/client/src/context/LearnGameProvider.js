@@ -20,12 +20,15 @@ export default function LearnGameProvider(props) {
         token: localStorage.getItem("token") || "",
         flashcards: [],
         questions: [],
+        // scores:[],
         // posts: [],
         // comments: [],
         errMsg: ""
     }
 
 const [flashcardState, setFlashcardState] = useState(initState)
+
+const [scoreState, setScoreState] = useState(initState)
 
 const [gameState, setGameState] = useState([])
 
@@ -91,6 +94,26 @@ function getGameQuestions(){
         }
     }
 
+
+ function saveMyScore(gameScore) {
+//    console.log("newScore", newScore)
+   const scoreTotal = {
+       scoreTotal: gameScore
+   }
+
+   userAxios.post("/api/learngame/play/score", scoreTotal)
+        .then(res => {
+            console.log(res)
+            console.log(res.data)
+            // setScoreState(prevState => ({
+            //     ...prevState,
+            //     scoreState:  [...prevState, res.data]
+            })
+
+        
+        
+        .catch(err=>console.log(err.response.data.errMsg))
+    }
 
  
 //Toggle Modal
@@ -484,13 +507,15 @@ function filterAnsweredQuestion(_id){
             getGameQuestions,
             handleGameAnswerClick,
             gameScore,
+            saveMyScore,
             questionsAnswered,
             questionsCorrect,
             handleMenuFilter,
             gameReset,
             toggleModal,
             isModalOpen,
-            badgeReward
+            badgeReward,
+          
             
         }}>
 

@@ -307,26 +307,8 @@ learnGameRouter.delete("/play/:questionId", (req, res, next)=> {
     })
 })
 
-//need to adjust this -- not quite right
-//INCREMENT USER SCORE FOR APPROPRIATE #POINTS FOR CORRECT GAME ANSWER
-//add in way to push score to score schema/model when game over
-// learnGameRouter.post("/score", (req, res, next)=> {
-//    User.findByIdAndUpdate(
-//         {_user: req.user._id},
-//         {$push: {"scoreHistory": {"score": req.body.score}}},
-//         { new: true },
-//         (err, score) => {
-//             if (err) {
-//                 console.log("Error");
-//                 res.status(500);
-//                 return next(err);
-//             }
-//             return res.send(score);
 
-//         })
-// })
-
-//GET ALL SCORES
+//GET ALL GAMESCORES (ALL USERS)
 learnGameRouter.get("/play/score", (req, res, next) => {
 Score.find((err, scores) => {
         if (err) {
@@ -338,9 +320,10 @@ Score.find((err, scores) => {
 })
 
 
-//Add score to Score Model array
+//ADD USER'S SCORE TO SCORE MODEL ARRAY OF ALL GAMESCORES
 learnGameRouter.post("/play/score", (req, res, next) => {
     req.body._user = req.user._id
+    // console.log("req.params.gameScore", req.params.gameScore)
     const score = new Score(req.body);
     score.save(function (err, newScore) {
         if (err) {
@@ -351,25 +334,29 @@ learnGameRouter.post("/play/score", (req, res, next) => {
     })
 })
 
+//DELETE SCORE FROM SCORE MODEL ARRAY
+learnGameRouter.delete("/play/score/delete/:scoreId", (req, res, next)=> {
+        // const issueId = req.body._issue
+        // const ObjectId = require('mongodb').ObjectId 
+        Score.findByIdAndUpdate(
+            {_id: req.body._id, _user: req.user._id},
+            { $pull: { "scoreHistory": req.params.scoreId}},
+        (err, updatedScore) => {
+            if (err) {
+                console.log("Error");
+                res.status(500);
+                return next(err);
+            }
+            return res.send(updatedScore);
+        })
+    })
 
-// commentRouter.put("/pusharray/:commentId", (req, res, next) => {
-//        const issueId = req.body._issue
-//         Issue.findByIdAndUpdate(
-//             {_id: issueId, _user: req.user._id},
-//             { $push: { "_comments": req.params.commentId }},
-//             { new: true},
-//         (err, commentId) => {
-//             if (err) {
-//                 console.log("Error");
-//                 res.status(500);
-//                 return next(err);
-//             }
-//             return res.send(commentId);
-//         })
-//     })
 
 
-//add gamescore to user's history when complete game
+//GET ALL OF SPECIFIED USERS GAME SCORES
+
+
+
 
 //SEARCH FLASHCARDS BY STEM CATEGORY (for dropdown menu)
 learnGameRouter.get("/learn/search/categorySTEM", (req, res, next) => {
@@ -384,9 +371,6 @@ learnGameRouter.get("/learn/search/categorySTEM", (req, res, next) => {
             return res.status(200).send(categories)
         })
 })
-
-
-
 
 
 module.exports = learnGameRouter;

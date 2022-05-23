@@ -98,6 +98,7 @@ function getCommentsSpecifiedPost(){
         .then(res => {
             console.log(res)
             setPostComments(res.data)
+            console.log("postComments", postComments)
         })
 
         .catch(err => console.log(err.response.data.errMsg))
