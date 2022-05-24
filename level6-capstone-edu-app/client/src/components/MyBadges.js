@@ -1,20 +1,19 @@
-// import React from "react"
+import React from "react"
 
 
-// export default function MyBadges(props) {
+export default function MyBadges(props) {
 
-// const { badgesAwarded } = props
+const { badgesAwarded } = props
 
-// return (
-//     <div className="my-badge-awards">
-//             <h3 className="my-badges-title">Badge Count:</h3>
+//need to somehow display the correct number of saturn icons based on the badgesAwarded number
 
-//             <h4>{badgesAwarded.badgeCount}</h4>
-//                 {/* {myBadges.map((reward, index) => ( */}
-//                    {/* <img key={index} src={reward} alt="reward image" />  //note: "reward" should be a reward URL to an image */}
-//                 {/* ))} */}
-//     </div>
-// )
+return (
+    <div className="my-badge-awards">
+            <h3 className="my-badges-title">Badge Count:</h3>
 
+            <h4>{badgesAwarded.badgeCount}</h4>
 
-// }
+                 <img src="./images/icons8-saturn-64.png" width="50px" height="50px" />
+        
+</div>
+)}

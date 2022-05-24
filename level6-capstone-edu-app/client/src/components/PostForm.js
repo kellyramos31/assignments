@@ -1,16 +1,11 @@
 import React, { useState } from 'react'
-// import React, { useState, useEffect, useContext } from 'react'
-// import { UserContext} from "../context/UserProvider.js"
-// import { PostCommentContext} from "../context/PostCommentProvider.js"
+
 
 
 const initInputs = {
   title: "",
   description: "",
-  category: "",
-  checked: ""
-  // userIssues: []
-//   votes: ""
+  category: ""
 }
 
 export default function PostForm(props){
@@ -19,17 +14,7 @@ export default function PostForm(props){
   const [inputs, setInputs] = useState(initInputs)
   const { addPost } = props
 
-  // const {
-  //   //userIssues,
-  //   getUserIssues
-  //   } = useContext(UserContext)
-
-  // const {
-  //     //addPost
-  //     // userIssues
-  //   } = useContext(PostCommentContext)
-
-  
+ 
 
 function handleChange(e){
     const {name, value} = e.target

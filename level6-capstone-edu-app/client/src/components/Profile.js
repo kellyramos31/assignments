@@ -2,10 +2,10 @@ import React, { useContext, useEffect } from "react"
 import PostForm from "./PostForm.js"
 import PostList from "./PostList.js"
 import MyScores from "./MyScores.js"
+import MyBadges from "./MyBadges.js"
 import { UserContext } from "../context/UserProvider.js"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
 import { LearnGameContext } from "../context/LearnGameProvider.js"
-import MyBadges from "./MyBadges.js"
 
 
 export default function Profile() {
@@ -30,6 +30,8 @@ export default function Profile() {
         const {
         getMyGameScores,
         myScores,
+        getBadgeCount,
+        badgesAwarded
         // getBadgeCount,
         // badgesAwarded
     } = useContext(LearnGameContext)
@@ -44,7 +46,7 @@ export default function Profile() {
     getUserPosts()
     getPosts()
     getMyGameScores()
-    // getBadgeCount()
+    getBadgeCount()
     // eslint-disable-next-line  
   }, [postState])
 
@@ -54,33 +56,37 @@ export default function Profile() {
 
 return (
 
-               <div className="profile">
+            <div className="profile">
                    
                     <h1 className="welcome-msg">Hi @{username}!</h1>
 
                   
+                <div className="status-boxes-and-post-form">
+
                   <MyScores
                       myScores={myScores}
                       // badgesAwarded={badgesAwarded}
                   />
 
-                  {/* <MyBadges
+                  <MyBadges
                       badgesAwarded={badgesAwarded}
                   />
-                   */}
                 
-
+         </div>
                   <PostForm
                         addPost={addPost}
                     />
+                    
 
-                
-                  <img src="./images/icons8-saturn-64.png" width="60px" height="60px" />
+       
+
+             
+
 
                   {/* <Learn
                     flashcards={flashcards}
                   /> */}
-            <h2 className="profile-posts-list-header">My Posts:</h2>
+                <h2 className="profile-posts-list-header">My Posts:</h2>
                  <div className="profile-posts-list">
                      <PostList
                         userPosts={userPosts}

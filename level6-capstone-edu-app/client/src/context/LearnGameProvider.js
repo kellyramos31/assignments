@@ -38,7 +38,7 @@ const [questionsCorrect, setQuestionsCorrect] = useState(0)
 
 const [badgeReward, setBadgeReward] = useState(0)
 
-// const [badgesAwarded, setBadgesAwarded] = useState(0)
+const [badgesAwarded, setBadgesAwarded] = useState(0)
 
 const [gameScore, setGameScore] = useState(0)
 
@@ -199,14 +199,14 @@ function incrementUserBadgeCount(){
 
 
 // //GET USER'S BADGECOUNT
-// function getBadgeCount(){
-//     userAxios.get(`/api/learngame/play/badge/count`)
-//         .then(res => {
-//         console.log(res)
-//         setBadgesAwarded(res.data) 
-//     })
-//     .catch(err=>console.log(err.response.data.errMsg))
-// }
+function getBadgeCount(){
+    userAxios.get(`/api/learngame/play/badge/count`)
+        .then(res => {
+        console.log(res)
+        setBadgesAwarded(res.data) 
+    })
+    .catch(err=>console.log(err.response.data.errMsg))
+}
 
 
 
@@ -527,8 +527,8 @@ function filterAnsweredQuestion(_id){
             getMyGameScores,
             myScores,
             badgeReward,
-            // badgesAwarded,
-            // getBadgeCount,
+            badgesAwarded,
+            getBadgeCount,
             questionsAnswered,
             questionsCorrect,
             handleMenuFilter,
