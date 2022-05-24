@@ -125,15 +125,11 @@ return (
                 <button  className="hide-comments-btn" onClick={toggleViewComments}><BiHide
                 size={20} style={{ fill: "royalblue"}}/></button>    
                 <h3 className="public-comments">Comments:{props._comments.map((comment, index)=>(
+                    
                     <li className="comment-list-item" key={comment._id} index={index}>
-                    {/* <div className="comment-vote-group-btns"> */}
-                        {/* <button className="upvote-comment-btn" onClick={()=>commentUpVote(comment._id)}><BsArrowUpCircleFill size={14} style={{ fill: "#0F4C75"}}/></button>
-                        <button className="downvote-comment-btn" onClick={()=>commentDownVote(comment._id)}><BsArrowDownCircleFill size={14} style={{ fill: "#0F4C75"}}/></button> */}
-                    {/* </div> */}
                         <span className="user-name-span-comment">{comment._user.username}</span> 
                         {" "}{comment.commentText}
-                    
-                    
+                                        
                     {username === comment._user.username 
                     ? 
                     <div key={comment._id} className="edit-del-comment-btns"> 
