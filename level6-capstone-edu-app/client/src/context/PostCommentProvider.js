@@ -93,8 +93,13 @@ function getComments(){
 
 
 //ALL COMMENTS FOR SPECIFIED POST
-function getCommentsSpecifiedPost(){
-    userAxios.get("api/comment/post")
+function getCommentsSpecifiedPost(postId){
+
+    const _post = {
+        _post: postId
+    }
+
+    userAxios.get("api/comment/post", _post)
         .then(res => {
             console.log(res)
             setPostComments(res.data)
@@ -104,7 +109,6 @@ function getCommentsSpecifiedPost(){
         .catch(err => console.log(err.response.data.errMsg))
     }
     
-
 
 //ADD POST
     function addPost(newUserPost) {

@@ -139,19 +139,20 @@ return (
                     <div key={comment._id} className="edit-del-comment-btns"> 
                         <div className="edit-del-btns-group">
                            <button className="delete-comment-btn" onClick={() => combinedDeleteComment(comment._id, props._id)}><RiDeleteBin6Fill size={15} style={{ fill: "royalblue"}}/></button>
-                           <button key={comment._id} className="edit-comment-btn" onClick={()=>toggleToEdit(comment._id)}><FaEdit size={15} style={{ fill: "royalblue"}}/></button>
+                           <button key={comment._id} className="edit-comment-btn" onClick={()=>toggleToEdit(comment._id, props._id)}><FaEdit size={15} style={{ fill: "royalblue"}}/></button>
                         </div>
 
                         {isEditing 
                         ? 
                         <EditCommentForm
-                           comment={comment}
+                           index={comment.index}
                            id={comment._id}
+                           comment={comment}
                            toggleToEdit={toggleToEdit}
                         />
 
                         :
-                        
+
                         <div id={props._id}>
                             {null}
                         </div> 

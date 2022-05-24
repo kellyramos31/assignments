@@ -38,6 +38,8 @@ const [questionsCorrect, setQuestionsCorrect] = useState(0)
 
 const [badgeReward, setBadgeReward] = useState(0)
 
+// const [badgesAwarded, setBadgesAwarded] = useState(0)
+
 const [gameScore, setGameScore] = useState(0)
 
 const [isModalOpen, setIsModalOpen] = useState(false)
@@ -85,16 +87,9 @@ function getGameQuestions(){
     setGameScore(0)
  }   
 
- //CHECK FOR REWARD -- ***ALSO NEED TO SAVE SOMETHING TO SCORE SUMMARY SO BADGES SHOW UP IN PROFILE SUMMARY
- function rewardCheck(){
-  console.log("questionsCorrect from rewardCheck", questionsCorrect)
-  if((questionsCorrect !== 0) && ((questionsCorrect + 1) % 3 === 0)){
-            console.log("GET A REWARD!!!")
-            setBadgeReward(badgeReward + 1)
-        }
-    }
+ 
 
-//SAVE USER'S GAME SCORE
+//SAVE USER'S GAME SCORE  -- tack on something to update badgecount too?
  function saveMyScore(gameScore) {
 //    console.log("newScore", newScore)
    const scoreTotal = {
@@ -110,8 +105,6 @@ function getGameQuestions(){
             //     scoreState:  [...prevState, res.data]
             })
 
-        
-        
         .catch(err=>console.log(err.response.data.errMsg))
     }
 
@@ -153,28 +146,67 @@ function handleGameAnswerClick(_user, question, questionOption) {
         setQuestionsCorrect(prev=> prev + 1)
         filterAnsweredQuestion(question._id)
         console.log("Stellar!  That's correct.")
-        
-        
+            
+         
         
     
-        userAxios.put(`/api/learngame/game/user/score/${_user}`, question.value)
-            .then(res => {
-               console.log(res)
-              
+        // userAxios.p(`/api/learngame/game/user/score/${_user}`, question.value)
+        //     .then(res => {
+        //        console.log(res)
+       
                
-               //then something related to rewards -- e.g., if questionsCorrect=3, then reward & reset to zero.
-             })
-             .catch(err=>console.log(err.response.data.errMsg))  
+        //        //then something related to rewards -- e.g., if questionsCorrect=3, then reward & reset to zero.
+        //      })
+        //      .catch(err=>console.log(err.response.data.errMsg))  
     
     } else {
         //provide message feedback that answer is not correct -- & what else?
             console.log("Sorry, that's not correct.")
             filterAnsweredQuestion(question._id)
             }
-    rewardCheck()
-    
+
+    rewardCheck(questionsCorrect)
 }
-     
+
+//CHECK FOR REWARD -- ***ALSO NEED TO SAVE SOMETHING TO SCORE SUMMARY SO BADGES SHOW UP IN PROFILE SUMMARY
+ function rewardCheck(){
+  console.log("questionsCorrect from rewardCheck", questionsCorrect)
+  if((questionsCorrect !== 0) && ((questionsCorrect + 1) % 3 === 0)){
+            console.log("GET A REWARD!!!")
+            setBadgeReward(badgeReward + 1)
+            console.log("badgeReward #", badgeReward)
+            incrementUserBadgeCount()
+        }
+      
+    }
+
+
+function incrementUserBadgeCount(){
+    console.log("hit incrementUserBadgeCount function")
+    userAxios.put("/api/learngame/play/badge/increment")
+     .then(res => {
+            console.log("res from incrementUserBadgeCount", res)
+            console.log(res.data)
+            // setScoreState(prevState => ({
+            //     ...prevState,
+            //     scoreState:  [...prevState, res.data]
+            })
+        .catch(err=>console.log(err.response.data.errMsg))
+    }
+
+
+
+
+
+// //GET USER'S BADGECOUNT
+// function getBadgeCount(){
+//     userAxios.get(`/api/learngame/play/badge/count`)
+//         .then(res => {
+//         console.log(res)
+//         setBadgesAwarded(res.data) 
+//     })
+//     .catch(err=>console.log(err.response.data.errMsg))
+// }
 
 
 
@@ -201,7 +233,6 @@ function filterAnsweredQuestion(_id){
 
 // //SEARCH TERMS IN FLASHCARDS
 // function searchFlashcards() {
-
 // }
 
 
@@ -221,31 +252,6 @@ function filterAnsweredQuestion(_id){
 
     
 
-
-
-
-
-//INCREMENT COMMENT TOTAL ON SPECIFIC ISSUE
-// function addCommentTally (postId) {
-//     console.log("_issue from addCommentTally:", postId)
-//     userAxios.put(`/api/issue/increment/${postId}`, postId)
-//     .then(res => {
-//             console.log("addComment res", res)
-//             setPostState(prevState => ({
-//                 ...prevState,
-//                 postState:  [...prevState.posts, res.data]
-//             })
-//               )})
-            
-//         .catch(err=>console.log(err.response.data.errMsg))
-        
-// } 
-
-//COMBINED DELETE COMMENT
-// function combinedDeleteComment (commentId, postId){
-//   deleteComment(commentId)
-//   minusCommentTally(postId)
-// }
 
 //DELETE USER'S COMMENT
 //NOTE******this filters it out of comments but does not clear id out of the issue in _comments array*****
@@ -520,14 +526,16 @@ function filterAnsweredQuestion(_id){
             saveMyScore,
             getMyGameScores,
             myScores,
+            badgeReward,
+            // badgesAwarded,
+            // getBadgeCount,
             questionsAnswered,
             questionsCorrect,
             handleMenuFilter,
             gameReset,
             toggleModal,
             isModalOpen,
-            badgeReward,
-        
+            
           
             
         }}>

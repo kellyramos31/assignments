@@ -25,8 +25,8 @@ const {
             <h2>🙋{" "}{questionsAnswered}</h2>
             <h2>✅{" "}{questionsCorrect}</h2>
 
-        {/* represent badges by a number?? */}
-            <h2>✨Badges✨ {" "} {badgeReward} </h2>
+     
+            <h2>✨New Badges✨ {" "} {badgeReward} </h2>
 
             <button className="game-reset-btn" onClick={gameReset}>New Game</button>
             <button className="game-reset-btn" onClick={()=>saveMyScore(gameScore)}>Save My Score</button>

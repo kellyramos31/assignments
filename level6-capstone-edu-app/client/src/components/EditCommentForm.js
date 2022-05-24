@@ -21,12 +21,15 @@ function handleChangeEdit(e){
     }))
     }
 
+
+
     return(
+        <div>
+     
         <div className="edit-comment-form-group">
-        
-            <form id={comment._id} key={comment._id}className="edit-comment-form" onSubmit={()=>editComment(inputsCommentEdit, comment._id)}>
+       
+            <form key={comment._id}className="edit-comment-form" onSubmit={()=>editComment(inputsCommentEdit, comment._id)}>
                                                 <input
-                                                     id={comment._id}
                                                      type="text"
                                                      defaultValue={comment.commentText}
                                                      inputs={comment.commentText || inputsCommentEdit}
@@ -39,8 +42,9 @@ function handleChangeEdit(e){
                                                     <button  id={comment._id} className="cancel-edit-comment-btn" onClick={()=>toggleToEdit(comment._id, comment._post)}><MdCancel
                 size={20} style={{ fill: "royalblue"}}/></button>
                                                 </div>
-                                        </form>
+            </form>
+        
         </div>
-
-    )
-}
+     </div>
+)}
+      

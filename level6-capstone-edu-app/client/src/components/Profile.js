@@ -5,6 +5,7 @@ import MyScores from "./MyScores.js"
 import { UserContext } from "../context/UserProvider.js"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
 import { LearnGameContext } from "../context/LearnGameProvider.js"
+import MyBadges from "./MyBadges.js"
 
 
 export default function Profile() {
@@ -28,7 +29,9 @@ export default function Profile() {
 
         const {
         getMyGameScores,
-        myScores
+        myScores,
+        // getBadgeCount,
+        // badgesAwarded
     } = useContext(LearnGameContext)
 
 
@@ -41,6 +44,7 @@ export default function Profile() {
     getUserPosts()
     getPosts()
     getMyGameScores()
+    // getBadgeCount()
     // eslint-disable-next-line  
   }, [postState])
 
@@ -57,9 +61,13 @@ return (
                   
                   <MyScores
                       myScores={myScores}
+                      // badgesAwarded={badgesAwarded}
                   />
 
-                  
+                  {/* <MyBadges
+                      badgesAwarded={badgesAwarded}
+                  />
+                   */}
                 
 
                   <PostForm
@@ -67,7 +75,7 @@ return (
                     />
 
                 
-
+                  <img src="./images/icons8-saturn-64.png" width="60px" height="60px" />
 
                   {/* <Learn
                     flashcards={flashcards}

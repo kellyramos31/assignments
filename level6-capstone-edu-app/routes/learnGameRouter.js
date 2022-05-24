@@ -4,6 +4,7 @@ const learnGameRouter = express.Router();
 const Flashcard = require("../models/flashcard.js");
 const Question = require("../models/question.js");
 const Score = require("../models/score.js")
+const User = require("../models/user.js")
 
 //GET ALL FLASHCARDS
 learnGameRouter.get("/learn", (req, res, next) => {
@@ -367,6 +368,60 @@ learnGameRouter.get("/play/score/user", (req, res, next)=>{
         return res.status(200).send(sortedUserScores)
     })
 })
+
+
+
+//****REWARDS ROUTES***
+
+//ADD A BADGE URL TO REWARDS FOR USER
+// learnGameRouter.put("/play/reward", (req, res, next) =>{
+//     req.body._user = req.user._id
+//     _id = req.body._id
+//     const reward = new Reward(req.body);
+
+//     reward.save(function(err, newReward) {
+//         if (err) {
+//             res.status(500)
+//             return next(err)
+//         }
+                 
+//         return res.status(201).send(newReward);
+//     })
+// })
+
+
+//INCREMENT BADGE COUNT
+learnGameRouter.put("/play/badge/increment", (req, res, next) => {
+req.body._user = req.user._id
+User.findByIdAndUpdate(			
+  {_id: req.user._id },	
+  {$inc: {badgeCount: 1}},			
+  {new: true},			
+  (err, updatedCount)=> {			
+      if(err){			
+          res.status(500)			
+          return next(err)			
+      }			
+      return res.status(201).send(updatedCount)			
+   }			
+  )			
+})
+
+
+//RETURN BADGECOUNT FIELD FOR USER
+learnGameRouter.get("/play/badge/count", (req, res, next) => {
+User.findOne({"_id" : req.user._id})
+    .select('badgeCount')
+    .exec((err, badgeCount)=> {
+
+        if (err) {
+            res.status(500);
+            return next(err);
+        }
+        return res.status(201).send(badgeCount);
+})
+})
+
 
 
 
