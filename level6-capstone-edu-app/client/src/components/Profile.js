@@ -27,7 +27,7 @@ export default function Profile() {
         addPost
     } = useContext(PostCommentContext)
 
-        const {
+   const {
         getMyGameScores,
         myScores,
         getBadgeCount,

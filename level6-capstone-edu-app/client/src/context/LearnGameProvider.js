@@ -32,6 +32,8 @@ const [flashcardState, setFlashcardState] = useState(initState)
 
 const [gameState, setGameState] = useState([])
 
+
+
 const [questionsAnswered, setQuestionsAnswered] = useState(0)
 
 const [questionsCorrect, setQuestionsCorrect] = useState(0)
@@ -100,6 +102,9 @@ function getGameQuestions(){
         .then(res => {
             console.log(res)
             console.log(res.data)
+            setQuestionsAnswered(0)
+            setQuestionsCorrect(0)
+            setGameScore(0)
             // setScoreState(prevState => ({
             //     ...prevState,
             //     scoreState:  [...prevState, res.data]

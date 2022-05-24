@@ -1,9 +1,14 @@
 import React from "react"
+// import { LearnGameContext } from "../context/LearnGameProvider.js"
 import { GiRingedPlanet } from 'react-icons/gi'
 
 export default function MyBadges(props) {
 
-const { badgesAwarded } = props
+const {
+    badgesAwarded
+    } = props
+
+// const { badgesAwarded } = props
 
 //need to somehow display the correct number of saturn icons based on the badgesAwarded number
 

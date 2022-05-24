@@ -31,6 +31,7 @@ export default function Forum() {
     console.log("useEffect triggered")
     getUserPosts()
     getPosts()
+    // eslint-disable
     // eslint-disable-next-line  
   }, [postState])
 

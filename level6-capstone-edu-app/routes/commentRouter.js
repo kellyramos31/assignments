@@ -28,8 +28,8 @@ commentRouter.get("/user", (req, res, next)=>{
 })
 
 //GET ALL COMMENTS FOR A SPECIFIC POST
-commentRouter.get("/post", (req, res, next)=>{
-    Comment.find({_post: req.body._post}, (err, comments)=>{
+commentRouter.get("/post/:postId", (req, res, next)=>{
+    Comment.find({_post: req.params.postId}, (err, comments)=>{
         if(err) {
             res.status(500)
             return next(err)

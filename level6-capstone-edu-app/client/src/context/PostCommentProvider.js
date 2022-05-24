@@ -95,13 +95,11 @@ function getComments(){
 //ALL COMMENTS FOR SPECIFIED POST
 function getCommentsSpecifiedPost(postId){
 
-    const _post = {
-        _post: postId
-    }
+console.log("_post from getCommentsSpecifiedPost", postId)
 
-    userAxios.get("api/comment/post", _post)
+    userAxios.get(`api/comment/post/${postId}`)
         .then(res => {
-            console.log(res)
+            console.log("res from getCommentsSpecifiedPost", res)
             setPostComments(res.data)
             console.log("postComments", postComments)
         })
@@ -289,6 +287,7 @@ function handleMenuPosts(e){
             editPost,
             getComments,
             getCommentsSpecifiedPost,
+            postComments,
             addComment,
             combinedAddComment,
             combinedDeleteComment,

@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react'
 import AddCommentForm from "./AddCommentForm.js"
+import CommentsOnPost from "./CommentsOnPost.js"
 import { UserContext} from "../context/UserProvider.js"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
 import { FaComments } from 'react-icons/fa'
@@ -51,9 +52,11 @@ const [isEditing, setIsEditing] = useState(false)
 
 
 
-function toggleViewComments(){
+function toggleViewComments(postId){
     console.log("view comments toggled")
+    console.log("postId from toggleViewComments", postId)
     setToggleIsViewingComments(prev => !prev)
+    getCommentsSpecifiedPost(postId)
   }
 
 function toggleToComment(){
@@ -118,19 +121,20 @@ return (
           }
            </div>
                { !toggleIsViewingComments ?
-                <button className="see-comments-btn" key={props._id} onClick={toggleViewComments}> <div className="eye-btn-pieces"><AiFillEye
+                <button className="see-comments-btn" key={props._id} onClick={()=>toggleViewComments(props._id)}> <div className="eye-btn-pieces"><AiFillEye
                 size={20} style={{ fill: "royalblue"}}/></div></button>
                 :
                 <div>
                 <button  className="hide-comments-btn" onClick={toggleViewComments}><BiHide
                 size={20} style={{ fill: "royalblue"}}/></button>    
-                <h3 className="public-comments">Comments:{props._comments.map((comment, index)=>(
+                {/* <h3 className="public-comments">Comments:{props._comments.map((comment, index)=>(
                     
                     <li className="comment-list-item" key={comment._id} index={index}>
                         <span className="user-name-span-comment">{comment._user.username}</span> 
-                        {" "}{comment.commentText}
+                        {" "}{comment.commentText} */}
+                        <CommentsOnPost/>
                                         
-                    {username === comment._user.username 
+                    {/* {username === comment._user.username 
                     ? 
                     <div key={comment._id} className="edit-del-comment-btns"> 
                         <div className="edit-del-btns-group">
@@ -153,16 +157,16 @@ return (
                             {null}
                         </div> 
                         }
-                        </div>
+                        </div> */}
                         :
                         <div>
                             {null}
                         </div>
-                    } 
-                    </li>
+                    {/* }  */}
+                    {/* </li>
                     ))
                     }
-                </h3>
+                </h3> */}
           </div>
         }
     </div>

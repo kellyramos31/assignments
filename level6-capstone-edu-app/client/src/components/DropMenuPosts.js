@@ -6,7 +6,7 @@ export default function DropMenuPosts(props) {
 
 const {
     handleMenuPosts,
-    getPostsAndComments
+    getPosts
 } = useContext(PostCommentContext)
 
 
@@ -23,7 +23,7 @@ const {
                     <option value="Engineering">Engineering</option>
                     <option value="Math">Math</option>
                 </select>
-                <button className="return-to-all-posts-btn" onClick={getPostsAndComments}>View All Posts</button>
+                <button className="return-to-all-posts-btn" onClick={getPosts}>View All Posts</button>
             </div>
         </div>
     )
