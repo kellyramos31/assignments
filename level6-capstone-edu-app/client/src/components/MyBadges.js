@@ -1,5 +1,5 @@
 import React from "react"
-
+import { GiRingedPlanet } from 'react-icons/gi'
 
 export default function MyBadges(props) {
 
@@ -9,11 +9,13 @@ const { badgesAwarded } = props
 
 return (
     <div className="my-badge-awards">
-            <h3 className="my-badges-title">Badge Count:</h3>
+            <h3 className="my-badges-title">Badge Count</h3>
 
             <h4>{badgesAwarded.badgeCount}</h4>
-
-                 <img src="./images/icons8-saturn-64.png" width="50px" height="50px" />
+    <p className="reward-icons">
+            {Array(badgesAwarded.badgeCount).fill(<GiRingedPlanet/>)}
+    </p>
+                 {/* <img src="../images/icons8-saturn-64.png" width="50px" height="50px" /> */}
         
 </div>
 )}
