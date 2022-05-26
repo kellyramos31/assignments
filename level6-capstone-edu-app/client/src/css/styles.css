@@ -7,6 +7,15 @@ body {
   font-family: Calibri;
 }
 
+.auth-container {
+  background-color: rgba(0, 30, 78, .7);
+  margin-left: 35%;
+  margin-right: 35%;
+  margin-top: 12%;
+  padding-bottom: 2%;
+  border-radius: .5rem;
+}
+
 .app-title {
   margin-top: 10%;
   color: whitesmoke;
@@ -730,6 +739,13 @@ select {
 
 .modal-text {
   z-index: 5;
+}
+
+.owl {
+  position: relative;
+  display: inline-block;
+  margin-bottom: -22.2%;
+  margin-left: 55.5%;
 }
 
 /* .all-posts {} */

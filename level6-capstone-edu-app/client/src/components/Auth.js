@@ -36,6 +36,7 @@ export default function Auth(){
 
   return (
     <div className="auth-container">
+      <img className="owl" src="./images/416387_bird_eyes_night_owl_vision_icon.png" alt="owl"/>
       <h1 className="app-title">WISE</h1>
       <h5 className="app-sub-title">Women In STEM Education</h5>
       { !toggle ?
