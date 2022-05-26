@@ -22,7 +22,7 @@ useEffect(() => {
     getGameQuestions()
     // eslint-disable
     // eslint-disable-next-line  
-  }, [gameState])
+  }, [])
 
 
   //add functionality for teacher/admin to add/delete/edit flashcards???

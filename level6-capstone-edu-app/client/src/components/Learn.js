@@ -20,7 +20,7 @@ useEffect(() => {
     console.log("useEffect in Learn Component to get Flashcards triggered")
     getFlashcards()
     // eslint-disable-next-line  
-  }, [flashcardState])
+  }, [])
 
 
 
