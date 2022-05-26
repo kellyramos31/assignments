@@ -20,6 +20,8 @@ export default function Game() {
 useEffect(() => {
     console.log("useEffect in Game Component to get Game Questions triggered")
     getGameQuestions()
+    // eslint-disable
+    // eslint-disable-next-line  
   }, [gameState])
 
 
