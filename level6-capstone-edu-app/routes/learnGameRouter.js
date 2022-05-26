@@ -440,5 +440,26 @@ learnGameRouter.get("/learn/search/categorySTEM", (req, res, next) => {
 })
 
 
+
+//SEARCH FLASHCARDS FOR TYPED IN TERMS (for search box)
+learnGameRouter.get("/learn/search", (req, res, next) => {
+    const { searchTerm } = req.query
+    const pattern = new RegExp(searchTerm)
+    Flashcard.find(
+        {profession1: { '$regex': pattern, '$options': 'i' } },
+        // {profession2: { '$regex': pattern, '$options': 'i' } },
+        // {profession3: { '$regex': pattern, '$options': 'i' } },
+     
+
+       (err, flashcards) => {
+            if (err) {
+                res.status(500)
+                return next(err)
+            }
+            return res.status(200).send(flashcards)
+        })
+})
+
+
 module.exports = learnGameRouter;
 

@@ -1,5 +1,8 @@
-import React, {useContext} from "react"
-// import EditCommentForm from "./EditCommentForm.js"
+import React, {useState, useContext} from "react"
+import { FaEdit } from 'react-icons/fa'
+import { RiDeleteBin6Fill} from 'react-icons/ri'
+import EditCommentForm from "./EditCommentForm.js"
+import { UserContext} from "../context/UserProvider.js"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
 
 
@@ -7,33 +10,161 @@ import { PostCommentContext } from "../context/PostCommentProvider.js"
 export default function CommentsOnPost(props){
 
     const {
-    //   isEditing,
-      postComments
+        _comments
+    } = props
+ 
+    const {
+    user: {
+        username
+    },
+        
+    } = useContext(UserContext)
+
+    const {
+    //   getCommentsSpecifiedPost,
+      combinedDeleteComment,
+    //   postComments
      } = useContext(PostCommentContext)
 
+    // const [toggleEdit, setToggleEdit] = useState(false)
+    const [isEditing, setIsEditing] = useState("")   
+    // const [editOneComment, setEditOneComment] = useState([])
 
+
+
+function toggleToEdit(index, id, _post){
+    console.log("toggleToEdit index", index)
+    console.log("toggleToEdit postComment._id", id)
+    // console.log("_post", _post)
+    // getCommentsSpecifiedPost(_post)
+    // console.log("postComments", postComments)
+    console.log("toggleToEdit clicked!")
+    // console.log("index that was toggled", index)
+    // setToggleEdit(prev => !prev[index])
+    // console.log("toggleEdit state", toggleEdit)
+    setIsEditing(id)
+    console.log("isEditing", isEditing)
+
+ 
+    // console.log("isEditing state", isEditing)
+    // setEditOneComment(postComments.filter(postComment=> postComment._id !== id))
+  }
+
+ 
+
+
+// return(
+
+//         <div>
+//             <div>
+//             <h3 className="public-comments">Comments
+//                 {_comments.map((_comment, index)=> 
+                                             
+//                          <li key={_comment._id} id={_comment._id} index={index} className="comment-list-item">
+//                         <span className="user-name-span-comment">{_comment._user.username}</span> 
+//                         {" "}{_comment.commentText}
+                    
+                         
+//             {username === _comment._user.username 
+//             ? 
+
+//             <div key={index} id={_comment._id} className="edit-del-comment-btns"> 
+//                         <div className="edit-del-btns-group">
+//                            <button className="delete-comment-btn" onClick={() => combinedDeleteComment(_comment._id, _comment._post)}><RiDeleteBin6Fill size={15} style={{ fill: "royalblue"}}/></button>
+//                            {/* <button className="edit-comment-btn" onClick={()=>toggleToEdit(postComment._id, postComment._post)}><FaEdit size={15} style={{ fill: "royalblue"}}/></button> */}
+//                             <button className="edit-comment-btn" onClick={()=>toggleToEdit(index, _comment._id, _comment._post)}><FaEdit size={15} style={{ fill: "royalblue"}}/></button> 
+//                         </div>
+
+
+                        
+                                      
+//             {isEditing[index]
+//             ?       
+//                 // <div key={index} id={_comment._id}>
+//                   <EditCommentForm
+//                     key={index}
+//                     id={_comment._id}
+//                      _comment={_comment}
+//                     toggleToEdit={toggleToEdit}
+//                 />
+          
+//                 // </div>
+//             :
+//             <div key={index} id={_comment._id}>
+//                 {null}
+//             </div>
+            
+//             }
+//             </div>
+
+//             :
+//             <div>
+//                 {null}
+//             </div>
+//             }
+//             </li>
+//              )} 
+
+//             </h3>
+
+//             </div>
+// </div>     
+// )}             
+
+   
 return(
-                 
+
         <div>
-            {/* {!isEditing
-                ? */}
-                <div>
-                    {postComments.map((comment, index)=>
-                        <div>
-                          <h3>{comment.commentText}</h3>
-                          <button>Toggle to Edit</button>
-                            <button>Cancel</button>
-                        </div>
-                    )}
-                    </div>
-            {/* :
+            <h3 className="public-comments">Comments
+                {_comments.map((_comment, index)=> 
+                                             
+                         <li key={_comment._id} id={_comment._id} index={index} className="comment-list-item">
+                        <span className="user-name-span-comment">{_comment._user.username}</span> 
+                        {" "}{_comment.commentText}
+                
+
+                     
+           {username === _comment._user.username 
+            ? 
+
+            <div key={index} id={_comment._id} className="edit-del-comment-btns"> 
+                        <div className="edit-del-btns-group">
+                           <button className="delete-comment-btn" onClick={() => combinedDeleteComment(_comment._id, _comment._post)}><RiDeleteBin6Fill size={15} style={{ fill: "royalblue"}}/></button>
+                           {/* <button className="edit-comment-btn" onClick={()=>toggleToEdit(postComment._id, postComment._post)}><FaEdit size={15} style={{ fill: "royalblue"}}/></button> */}
+                            <button className="edit-comment-btn" onClick={()=>toggleToEdit(index, _comment._id, _comment._post)}><FaEdit size={15} style={{ fill: "royalblue"}}/></button> 
+                         </div>
+            </div>            
+          :
+         <div key={index} id={_comment._id}>
+             {null}    
+        </div>    
+       }             
+                        
+                         
+            {isEditing ===_comment._id
+            ?
+        //    _comments.map((_comment, index)=> 
+
+            
+                <div key={index} id={_comment._id}>
+
+                  <EditCommentForm
+                    key={_comment._id}
+                    id={_comment._id}
+                    _comment={_comment}
+                    toggleToEdit={toggleToEdit}
+                />
+         
+               </div>
+                :
             <div>
-                <EditCommentForm/>
-            </div> */}
-{/* } */}
-        </div>
-    )
+                {null}
+            </div>
+            }          
 
-
-
-}
+            </li>
+                )}                
+            </h3>
+ </div>
+)}
+ 

@@ -1,13 +1,25 @@
 import React, {useState, useContext} from "react"
 import { MdCancel } from 'react-icons/md'
+// import { FaEdit } from 'react-icons/fa'
+// import { RiDeleteBin6Fill} from 'react-icons/ri'
 import { PostCommentContext } from "../context/PostCommentProvider.js"
 
 
 export default function EditCommentForm(props) {
 
-const {comment, toggleToEdit} = props
+const {id, _comment, toggleToEdit } = props
+
+    // const {
+    //   getCommentsSpecifiedPost,
+    //   postComments
+    //  } = useContext(PostCommentContext)
+
+// const [toggleEdit, setToggleEdit] = useState(false)
+
+// const [isEditing, setIsEditing] = useState(false)
 
 const [inputsCommentEdit, setInputsCommentEdit] = useState("")
+
 
 const {
       editComment
@@ -23,27 +35,26 @@ function handleChangeEdit(e){
 
 
 
-    return(
+
+return(
         <div>
-     
         <div className="edit-comment-form-group">
-       
-            <form key={comment._id}className="edit-comment-form" onSubmit={()=>editComment(inputsCommentEdit, comment._id)}>
+            <form className="edit-comment-form" onSubmit={()=>editComment(inputsCommentEdit, id)}>
                                                 <input
                                                      type="text"
-                                                     defaultValue={comment.commentText}
-                                                     inputs={comment.commentText || inputsCommentEdit}
+                                                     defaultValue={_comment.commentText}
+                                                     inputs={_comment.commentText || inputsCommentEdit}
                                                      name="commentText"
                                                      onChange={handleChangeEdit}
                                                      placeholder="Comment Text"
                                                  />
                                                 <div className="edit-comments-grp-btns">
-                                                    <button  id={comment._id} className="submit-edited-comment-btn">Submit Edit</button>
-                                                    <button  id={comment._id} className="cancel-edit-comment-btn" onClick={()=>toggleToEdit(comment._id, comment._post)}><MdCancel
+                                                    <button className="submit-edited-comment-btn">Submit Edit</button>
+                                                    <button  className="cancel-edit-comment-btn" onClick={()=>toggleToEdit(id, _comment._post)}><MdCancel
                 size={20} style={{ fill: "royalblue"}}/></button>
                                                 </div>
             </form>
-        
+
         </div>
      </div>
 )}

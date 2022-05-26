@@ -10,7 +10,7 @@ return (
 <div>
     
     <div className="forum-post-list">
-       {posts.map(post => <ForumPostText {...post} key={post._id}/>)}
+       {posts.map((post, index) => <ForumPostText {...post} key={post._id} index={index}/>)}
     </div>
 
 
