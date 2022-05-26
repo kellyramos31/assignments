@@ -1,7 +1,5 @@
 import React, {useState, useContext} from "react"
 import { MdCancel } from 'react-icons/md'
-// import { FaEdit } from 'react-icons/fa'
-// import { RiDeleteBin6Fill} from 'react-icons/ri'
 import { PostCommentContext } from "../context/PostCommentProvider.js"
 
 
@@ -9,14 +7,6 @@ export default function EditCommentForm(props) {
 
 const {id, _comment, toggleToEdit } = props
 
-    // const {
-    //   getCommentsSpecifiedPost,
-    //   postComments
-    //  } = useContext(PostCommentContext)
-
-// const [toggleEdit, setToggleEdit] = useState(false)
-
-// const [isEditing, setIsEditing] = useState(false)
 
 const [inputsCommentEdit, setInputsCommentEdit] = useState("")
 

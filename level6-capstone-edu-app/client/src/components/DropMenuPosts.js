@@ -17,7 +17,6 @@ const {
 
                 <select onChange={handleMenuPosts} className="dropdown">
                     <option>--Select a Category--</option>
-                    {/* <option value=>All Flashcards</option> */}
                     <option value="Science">Science</option>
                     <option value="Tech">Tech</option>
                     <option value="Engineering">Engineering</option>

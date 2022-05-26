@@ -29,22 +29,9 @@ const questionSchema = new Schema({
       
         }
     ]
-    //   _user: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: "User",
-    //     required: true
-    // },
+
 })
 
-// const autoPopulateUser  = function(next) {
-//     this.populate({
-//         path: "_user",
-//         select: "username _id"
-//     })
-//     next()
-//     }
-
-// questionSchema.pre("find", autoPopulateUser)
 
 
 module.exports = mongoose.model("Question", questionSchema)

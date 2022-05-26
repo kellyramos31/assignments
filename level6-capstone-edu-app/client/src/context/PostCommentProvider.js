@@ -43,23 +43,6 @@ function getPosts(){
     }
 
 
-
-// function sortCommentsForIssue() {
-//     userAxios.get("/api/issue/sortComments")
-//     .then(res => {
-//             console.log("res from issueCommentProvider:", res)
-//             setIssueState(prevState => ({
-//                 ...prevState,
-//                 issues: res.data
-//             }))
-
-//              console.log("issues from getIssues", res.data)
-//         })
-//         .catch(err => console.log(err.response.data.errMsg))
-
-// }
-
-
  //GET USER'S INDIVIDUAL ISSUES   
 
 function getUserPosts(){
@@ -269,9 +252,6 @@ function handleMenuPosts(e){
         })
               .catch(err=>console.log(err.response.data.errMsg))  
     }
-
-
-
 
 
 

@@ -11,8 +11,6 @@ return (
                 {myScores.slice(0,3).map(score => (
                    <h4 key={score._id}>✨{score.scoreTotal}{" "}points✨</h4>
                 ))}
-
-                {/* <h3>Badges: {badgesAwarded.badgeCount}</h3> */}
     </div>
 )
 

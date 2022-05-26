@@ -29,14 +29,8 @@ export default function UserProvider(props) {
     const [userState, setUserState] = useState(initState)
 
 
-    
-    // useEffect(() => {
-    //     console.log("useEffect triggered")
-    //     getUserIssues()
-    // }, [])
-
-
-//signup
+   
+//SIGNUP
     function signup(credentials) {
         axios.post("/auth/signup", credentials)
         .then(res => {
@@ -53,7 +47,7 @@ export default function UserProvider(props) {
     }
 
    
-//login
+//LOGIN
     function login(credentials) {
         axios.post("/auth/login", credentials)
         .then(res => {
@@ -73,7 +67,7 @@ export default function UserProvider(props) {
         .catch((err) => handleAuthErr(err.response.data.errMsg))
     }
 
-//logout
+//LOGOUT
     function logout() {
         localStorage.removeItem("token")
         localStorage.removeItem("user")
@@ -86,7 +80,7 @@ export default function UserProvider(props) {
         })
     }
 
-//handle auth error
+//HANDLE AUTH ERROR
     function handleAuthErr(errMsg){
         setUserState(prevState => ({
             ...prevState,
@@ -95,37 +89,8 @@ export default function UserProvider(props) {
     }
 
 
- //GET USER'S INDIVIDUAL ISSUES   
 
-// function getUserIssues(){
-//     userAxios.get("/api/issue/user")
-//     .then(res => {
-//       console.log(res)
-//       setUserState(prevState => ({
-//         ...prevState,
-//         userIssues: res.data
-//       }))
-//       console.log("userIssues from getUserIssues", res.data)
-//     })
-//     .catch(err => console.log(err.response.data.errMsg))
-//   }
-
-  //Add Issue
-    // function addIssue(newIssue) {
-    //     userAxios.post("/api/issue", newIssue)
-    //     .then(res => {
-    //         console.log(res)
-    //         setUserState(prevState => ({
-    //             ...prevState,
-    //             issues:  [...prevState.issues, res.data]
-    //         }))
-    //     })
-    //     .catch(err=>console.log(err.response.data.errMsg))
-    // }
-
-
-
-//reset auth error
+//RESET AUTH ERROR
     function resetAuthErr(){
         setUserState(prevState =>({
             ...prevState,
@@ -144,11 +109,6 @@ return (
             signup,
             login,
             logout,
-            // getUserIssues,
-            //userIssues,
-            //deleteIssue
-            // addIssue,
-            // addComment,
             resetAuthErr
         }}>
 

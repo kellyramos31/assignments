@@ -6,29 +6,7 @@ const Comment = require("../models/comment.js");
 
 
 
-//NOTE:  ISSUES SHOULD BE ORDERED BY UPVOTES/DOWNVOTES -- NEED TO ADD THIS IN (maybe $sort method)
-//NOTE:  ****USERS SHOULD ONLY BE ABLE TO UPVOTE/DOWNVOTE AN ISSUE ONCE****NEED TO ADD IN
-
-//GET ALL ISSUES (Sorted in descending voteCount order) -- use for Public Page
-// issueRouter.get("/", (req, res, next) => {
-//     //  Issue.find({}).populate("_comments.commentText")
-//      Issue.aggregate([
-//       { $sort: { voteCount: -1 } }
-//       ],
-//        //code below gets at username, but also creates separate array
-       
-//         // {$unwind: "$commentText"}
-//          (err, sortedUserIssues)=> {
-//             if (err){
-//             res.status(500)
-//             return next(err)
-//         }
-//         return res.status(200).send(sortedUserIssues)
-//     })
-// });
-
-
-//GET ALL ISSUES ALTERNATIVE including populate _comments AND SORT BY # OF COMMENTS ON POST
+//GET ALL POSTS ALTERNATIVE including populate _comments AND SORT BY # OF COMMENTS ON POST
 forumPostRouter.get("/", (req, res, next) => {
 Post.find({}) 
     .populate("_comments")
@@ -42,25 +20,6 @@ Post.find({})
         return res.status(201).send(posts);
 })
 })
-
-
-//TRYING TO SORT _COMMENTS ARRAY FOR SPECIFIC ISSUE
-
-// issueRouter.get("/sort/:issueId", (req, res, next) => {
-//     issueId = req.params.issueId
-//     Issue.find(
-//         {$match: {_id: 1}},
-//         {$unwind: "$_comments"},
-//         {$sort: {upVotesComments: -1}}
-//     ),
-//     (err, issues)=> {
-//             if (err) {
-//             res.status(500);
-//             return next(err);
-//         }
-//         return res.status(201).send(issues);
-// }})
-
 
 
 
@@ -89,19 +48,6 @@ forumPostRouter.get("/user", (req, res, next)=>{
     })
 })
 
-//GET ALL ISSUES FOR INDIVIDUAL USER == THIS ONE WORKS, BUT DOES NOT SORT
-// issueRouter.get("/user", (req, res, next)=>{
-//     Issue.find({_user: req.user._id}, (err, issues)=>{
-//         if(err) {
-//             res.status(500)
-//             return next(err)
-//         }
-//         console.log("issues", issues)
-//         return res.status(200).send(issues)
-//     }).populate({
-//         path: "_comments"
-//     })
-// })
         
 //ADD NEW FORUM POST
 forumPostRouter.post("/", (req, res, next) => {

@@ -13,8 +13,6 @@ export default function AddCommentForm(props){
 
 const [inputs, setInputs] = useState(initInputs)
 
-// const [issueId, setIssueId] = useState(initInputs._issue)
-
 const { combinedAddComment } = useContext(PostCommentContext)
 
 const { toggleToComment, _post} = props

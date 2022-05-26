@@ -13,10 +13,7 @@ export default function Profile() {
     const {
     user: {
         username
-    },
-        //getUserIssues,
-        // addIssue,
-        // deleteIssue
+    }
     } = useContext(UserContext)
 
     const {
@@ -32,9 +29,7 @@ export default function Profile() {
         myScores,
         getBadgeCount,
         badgesAwarded
-        // getBadgeCount,
-        // badgesAwarded
-    } = useContext(LearnGameContext)
+      } = useContext(LearnGameContext)
 
 
 // const [userIssues, setUserIssues] = useState([])
@@ -65,7 +60,6 @@ return (
 
                   <MyScores
                       myScores={myScores}
-                      // badgesAwarded={badgesAwarded}
                   />
 
                   <MyBadges
@@ -78,25 +72,12 @@ return (
                     />
                     
 
-       
-
-             
-
-
-                  {/* <Learn
-                    flashcards={flashcards}
-                  /> */}
                 <h2 className="profile-posts-list-header">My STEM Forum Posts</h2>
                  <div className="profile-posts-list">
                      <PostList
                         userPosts={userPosts}
                      />
-                   {/* <Forum
-                        posts={posts}
-                        // {/* // deleteComment={deleteComment}
-                        // // deleteIssue={deleteIssue}
-                        // // comments={comments} */}
-                   {/* /> */}
+               
                 </div>
             </div>
 

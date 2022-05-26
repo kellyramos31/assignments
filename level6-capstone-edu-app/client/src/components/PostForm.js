@@ -29,8 +29,6 @@ function handleChange(e){
     addPost(inputs)
     console.log("inputs from addPost", inputs)
     setInputs(initInputs)
-    // getUserIssues()
-    // console.log("issues after handleSubmit for IssueForm", userIssues)
   }
 
   const { title, description } = inputs
@@ -77,13 +75,7 @@ function handleChange(e){
             onChange={handleChange}
           /> Math
       </div>
-      {/* <input 
-        type="text" 
-        name="category" 
-        value={category} 
-        onChange={handleChange} 
-        placeholder="STEM Category"
-      /> */}
+
       <input 
         type="text" 
         name="title" 

@@ -7,30 +7,14 @@ import { MdCancel } from 'react-icons/md'
 
 
 
-// import { FcCancel } from 'react-icons/fc'
-// import CommentForm from "./CommentForm.js"
-
-
-
 export default function PostText(props){
 
     const {
-        // postState,
         deletePost,
-        editPost
-        // getUserPosts,
-        // getPosts,
-        // getComments
-        // comments,
-        //deleteComment,
-        // editComment
-        // addComment,
-        // upVote,
-        // downVote   
+        editPost 
     } = useContext(PostCommentContext)
 
-    //add function to toggle Comment Form on & off
-    //add isEditing toggle??
+
 
   const [toggleIsEditing, setToggleIsEditing] = useState(false)
 
@@ -57,7 +41,6 @@ return (
    
     <div className="profile-container">
 
-        {/* { !toggleIsEditing ? */}
       
         <div key={props._id} className="user-post-container">
             <div className="my-post">
@@ -72,9 +55,7 @@ return (
                 }
                 </h1>
               <div className="my-profile-post-tallies">
-                {/* <h3 className="total-votes"># Voters: {props.totalVotersVotedCount}</h3>
-                <h3 className="my-issue-upvotes">Upvotes: {props.upVotes}</h3>
-                <h3 className="my-issue-downvotes">Downvotes: {props.downVotes}</h3> */}
+         
                 <h3 className="my-post-number-comments"><FaComments size={25} style={{ fill: "white"}}/> {props.numberCommentsOnPost}</h3>
               </div>
               <div className="my-postdescr-titles">

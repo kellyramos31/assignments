@@ -1,9 +1,8 @@
 import React, { useContext, useEffect} from "react"
 import ForumPostList from "./ForumPostList.js"
-// import ForumCommentList from "./ForumCommentList.js"
 import DropMenuPosts from "./DropMenuPosts.js"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
-// import ForumCommentText from "./ForumCommentText.js"
+
 
 
 
@@ -14,19 +13,14 @@ export default function Forum() {
         postState,
         posts,
         userPosts,
-        // comments,
-        // postComments,
         getUserPosts,
         getPosts,
-        handleMenuPosts,
-        // addComment,
-        // getComments
+        handleMenuPosts
     } = useContext(PostCommentContext)
 
 
 
-    //USEEFFECT
-
+  //USEEFFECT
   useEffect(() => {
     console.log("useEffect triggered")
     getUserPosts()
@@ -36,7 +30,6 @@ export default function Forum() {
   }, [postState])
 
 
-//WANT TO HAVE WAY TO SEARCH FORUM POSTS BY CATEGORY/KEYWORD
 
     return (
         <div className="forum">
@@ -52,11 +45,7 @@ export default function Forum() {
           <ForumPostList 
                 posts={posts}
                 userPosts={userPosts}
-                // addComment={addComment}
             />
-
-          {/* <ForumCommentList/> */}
-
 
         </div>
     )
