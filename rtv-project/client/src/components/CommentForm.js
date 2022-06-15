@@ -58,7 +58,7 @@ return (
             name="commentText" 
             value={commentText} 
             onChange={handleCommentChange} 
-            placeholder="Comment Text"
+            placeholder="comment text"
         />
         <div className="comment-form-buttons">
             <button className="submit-comment-button">Submit Comment</button>

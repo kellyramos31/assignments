@@ -1,13 +1,15 @@
 import React, {useState, useContext} from "react"
+import arrows from "../assets/andres-haro-R6ZJYwBzZx4-unsplash.jpg"
 import CommentForm from "./CommentForm.js"
+import CommentsOnIssue from "./CommentsOnIssue.js"
 import { IssueCommentContext } from "../context/IssueCommentProvider.js"
-import { UserContext } from "../context/UserProvider.js"
+// import { UserContext } from "../context/UserProvider.js"
 import { BsArrowUpCircleFill} from 'react-icons/bs'
 import { BsArrowDownCircleFill} from 'react-icons/bs'
 import { FaEye} from 'react-icons/fa'
 import { FaComments } from 'react-icons/fa'
 import { BiHide } from 'react-icons/bi'
-import { FcCancel } from 'react-icons/fc'
+
 
 
 
@@ -15,33 +17,31 @@ import { FcCancel } from 'react-icons/fc'
 
 export default function PublicIssueText(props){
 
-const {
-    user: {
-        username
-    },
+// const {
+//     user: {
+//         username
+//     },
         
-    } = useContext(UserContext)
+//     } = useContext(UserContext)
 
 
 
 const {
       voterUpVote,
       voterDownVote,
-      commentUpVote,
-      commentDownVote,
+    //   commentUpVote,
+    //   commentDownVote,
       calcNetVotes,
-      combinedDeleteComment,
-      editComment
-
+    //   combinedDeleteComment
      } = useContext(IssueCommentContext)
 
-const [inputsCommentEdit, setInputsCommentEdit] = useState("")
+// const [inputsCommentEdit, setInputsCommentEdit] = useState("")
 
 const [toggleIsCommenting, setToggleIsCommenting] = useState(false)
 
 const [toggleIsViewingComments, setToggleIsViewingComments] = useState(false)
 
-const [toggleEdit, setToggleEdit] = useState(false)
+// const [toggleEdit, setToggleEdit] = useState(false)
 
 
 
@@ -55,43 +55,42 @@ function toggleToComment(){
     setToggleIsCommenting(prev => !prev)
   }
 
-function toggleToEdit(){
-    setToggleEdit(prev => !prev)
-  }
+// function toggleToEdit(){
+//     setToggleEdit(prev => !prev)
+//   }
 
-function handleChangeEdit(e){
-    const {name, value} = e.target
-    setInputsCommentEdit(prevInputs => ({
-      ...prevInputs,
-      [name]: value
-    }))
-    }
+
 
 
 
 return (
     <div className="all-issues-container" key={props._id}>
         <div className="all-issues" key={props._id}>
+           
                <div className="tallies">
-                    <h3 className="total-votes"># Voters: <span className="tallies-top">{props.totalVotersVotedCount}</span></h3>
-                    <h3 className="total-upVotes">Up: <span className="tallies-top">{props.upVotes}</span></h3>
-                    <h3 className="total-downVotes">Down: <span className="tallies-top">{props.downVotes}</span></h3>
-                    <h3 className="net-votes">Net: <span className="tallies-top">{calcNetVotes(props.upVotes, props.downVotes)} </span> </h3>
-                    <h4 className="number-comments"># Comments: <span className="tallies-top">{props.numberCommentsOnIssue}</span> </h4>
-                    <h3><span className="posted-by">posted by:</span> <span className="user-name-span-issue">{props._user.username}</span></h3>  
+                    <h3 className="name-posted-by"><span className="posted-by">posted by </span><span className="user-name-span-issue">{props._user.username}</span></h3>   
+                    <h3 className="total-votes">voters <span className="tallies-top">{props.totalVotersVotedCount}&nbsp;</span></h3>
+                    <h3 className="total-upVotes">up <span className="tallies-top">{props.upVotes}&nbsp;</span></h3>
+                    <h3 className="total-downVotes">down <span className="tallies-top">{props.downVotes}&nbsp;</span></h3>
+                    <h3 className="net-votes">net <span className="tallies-top">{calcNetVotes(props.upVotes, props.downVotes)}&nbsp; </span> </h3>
+                    <h4 className="number-comments">comments <span className="tallies-top">{props.numberCommentsOnIssue}</span> </h4>
                 </div>
             
-            <h1 className="issue-title"><span className="title-issue">Issue</span> {props.title}</h1>
-            <h3 className="issue-description"><span className="descr-issue">Description</span> {props.description}</h3>
+            <h1 className="issue-title"><span className="title-issue">title</span></h1> 
+            <h1 className="issue-title-text">{props.title}</h1>
+            <h3 className="issue-description"><span className="descr-issue">description</span></h3> 
+            <h3 className="issue-description-text">{props.description}</h3>
 
      
         <div className="comment-related-btns">
             <button className="up-vote-btn" onClick={() =>voterUpVote(props._id)}> <BsArrowUpCircleFill size={25} style={{ fill: "#0F4C75"}}/></button>
             <button className="down-vote-btn" onClick={()=>voterDownVote(props._id)}> <BsArrowDownCircleFill size={25} style={{ fill: "#0F4C75"}}/></button>
+            <img className="arrows" src={arrows} alt="arrows" width="26%" height="30%"/>
+
       
         { !toggleIsCommenting ?
               <div id={props._id}>
-                <button className="leave-comment-btn" onClick={toggleToComment}><FaComments size={20} style={{ fill: "white"}}/> Leave Comment</button>
+                <button className="leave-comment-btn" onClick={toggleToComment}><FaComments size={25} style={{ fill: "white"}}/> leave comment</button>
               </div>
               :
               <div id={props._id} className="comment-form" >
@@ -104,61 +103,18 @@ return (
           }
            </div>
                { !toggleIsViewingComments ?
-                <button className="see-comments-btn" key={props._id} onClick={toggleViewComments}> <div className="eye-btn-pieces"><FaEye size={25} style={{ fill: "#0F4C75"}}/>View Comments</div></button>
+               <div>
+                <button className="see-comments-btn" key={props._id} onClick={toggleViewComments}> <div className="eye-btn-pieces"><FaEye size={25} style={{ fill: "#0F4C75"}}/>view comments</div></button>
+                {/* <img className="arrows" src={arrows} alt="arrows" width="25%" height="29%"/> */}
+                </div>
                 :
                 <div>
-                <button  className="hide-comments-btn" onClick={toggleViewComments}><BiHide size={25} style={{ fill: "#0F4C75"}}/>Hide Comments</button>    
-                <h3 className="public-comments">Comments:{props._comments.map(comment=>(
-                    <li className="comment-list-item" key={comment._id}>
-                    <div className="comment-vote-group-btns">
-                        <button className="upvote-comment-btn" onClick={()=>commentUpVote(comment._id)}><BsArrowUpCircleFill size={14} style={{ fill: "#0F4C75"}}/></button>
-                        <button className="downvote-comment-btn" onClick={()=>commentDownVote(comment._id)}><BsArrowDownCircleFill size={14} style={{ fill: "#0F4C75"}}/></button>
-                    </div>
-                        <span className="user-name-span-comment">{comment._user.username}</span> 
-                        {comment.commentText}<span className="comment-votes-span">up:</span><span className="comment-tallies">{comment.upVotesComments}</span>
-                        <span className="comment-votes-span">down:</span><span className="comment-tallies">{comment.downVotesComments}</span>
-                        <span className="comment-votes-span">net:</span><span className="comment-tallies">{calcNetVotes(comment.upVotesComments, comment.downVotesComments)}</span>
-                    
-                    {username === comment._user.username 
-                    ? 
-                    <div key={props._id} className="edit-del-comment-btns"> 
-                        <div className="edit-del-btns-group">
-                           <button className="delete-comment-btn" id={comment._id} onClick={() => combinedDeleteComment(comment._id, props._id)}>Delete</button>
-                           <button className="edit-comment-btn" id={comment._id} onClick={toggleToEdit}>Edit</button>
-                        </div>
-                        {toggleEdit 
-                        ?
-                           <div  className="edit-comment-form" key={props._id} index={props.index}>
-                                    <form onSubmit={()=>editComment(inputsCommentEdit, comment._id)}>
-                                                <input
-                                                     type="text"
-                                                     defaultValue={comment.commentText}
-                                                     inputs={comment.commentText || inputsCommentEdit}
-                                                     name="commentText"
-                                                     onChange={handleChangeEdit}
-                                                     placeholder="Comment Text"
-                                                 />
-                                                <div className="edit-comments-grp-btns">
-                                                    <button className="submit-edited-comment-btn">Submit Edit</button>
-                                                    <button className="cancel-edit-comment-btn" onClick={toggleToEdit}><FcCancel size={18} style={{ fill: "white"}}/></button>
-                                                </div>
-                                        </form>
-                            </div>    
-                        :
-                        <div id={props._id}>
-                            {null}
-                        </div> 
-                        }
-                        </div>
-                        :
-                        <div>
-                            {null}
-                        </div>
-                    } 
-                    </li>
-                    ))
-                    }
-                </h3>
+                <button  className="hide-comments-btn" onClick={toggleViewComments}><BiHide size={25} style={{ fill: "#0F4C75"}}/>hide comments</button>    
+
+                    <CommentsOnIssue
+                        _comments={props._comments}
+                    />
+
           </div>
         }
     </div>

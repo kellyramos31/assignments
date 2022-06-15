@@ -49,22 +49,22 @@ function handleChange(e){
   const { title, description } = inputs
 
   return (
-    <form onSubmit={handleSubmitIssue}>
+    <form className="issue-form" onSubmit={handleSubmitIssue}>
       <input 
         type="text" 
         name="title" 
         value={title} 
         onChange={handleChange} 
-        placeholder="Title"
+        placeholder="title"
       />
       <input 
         type="text" 
         name="description" 
         value={description} 
         onChange={handleChange} 
-        placeholder="Description"
+        placeholder="description"
       />
-      <button className="add-issue-btn">Add Issue</button>
+      <button className="add-issue-btn">add issue</button>
     </form>
   )
 }

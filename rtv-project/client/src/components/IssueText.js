@@ -50,18 +50,20 @@ return (
         <div key={props._id} className="user-issue-container">
             <div className="issue">
               <div className="my-profile-issue-tallies">
-                <h3 className="total-votes"># Voters: {props.totalVotersVotedCount}</h3>
-                <h3 className="my-issue-upvotes">Upvotes: {props.upVotes}</h3>
-                <h3 className="my-issue-downvotes">Downvotes: {props.downVotes}</h3>
-                <h3 className="my-issue-number-comments"># Comments: {props.numberCommentsOnIssue}</h3>
+                <h3 className="total-votes">voters <span className="tallies-top">{props.totalVotersVotedCount}&nbsp;</span></h3>
+                <h3 className="my-issue-upvotes">upvotes <span className="tallies-top">{props.upVotes}&nbsp;</span></h3>
+                <h3 className="my-issue-downvotes">downvotes <span className="tallies-top">{props.downVotes}&nbsp;</span></h3>
+                <h3 className="my-issue-number-comments">comments <span className="tallies-top">{props.numberCommentsOnIssue}&nbsp;</span></h3>
               </div>
               <div className="my-issue-descr-titles">
-                <h1 className="issue-title-mine"><span className="my-issue-title">Issue</span> {props.title}</h1>
-                <h3 className="issue-description-mine"><span className="my-issue-descr">Description</span> <span className="my-descr-text">{props.description}</span></h3>
+                <h1 className="issue-title-mine"><span className="my-issue-title">title</span> </h1>
+                <h1 className="issue-title-mine-text">{props.title}</h1>
+                <h3 className="issue-description-mine"><span className="my-issue-descr">description</span></h3> 
+                <h3 className="issue-description-mine-text"><span className="my-descr-text">{props.description}</span></h3>
               </div>
                 <div className="edit-delete-issue-buttons">
-                  <button className="delete-issue-btn" onClick={() => deleteIssue(props._id)}>Delete Issue</button>
-                  <button className="edit-issue-btn" onClick={toggleToEdit}>Edit Issue</button>
+                  <button className="delete-issue-btn" onClick={() => deleteIssue(props._id)}>delete issue</button>
+                  <button className="edit-issue-btn" onClick={toggleToEdit}>edit issue</button>
                 </div>
             </div>
         

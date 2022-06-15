@@ -49,16 +49,16 @@ return (
 
                <div className="profile">
                    
-                    <h1 className="welcome-msg">Welcome @{username}!</h1>
+                    <h1 className="welcome-msg">welcome @{username}!</h1>
 
-                    <h3>Add An Issue</h3>
+                    {/* <h3>Add An Issue</h3> */}
 
                     <IssueForm
                         addIssue={addIssue}
                     />
 
                     
-                    <h2 className="profile-issues-list-header">{username}'s Issues</h2>
+                    <h2 className="profile-issues-list-header">{username}'s issues</h2>
                  <div className="issues-list">
                     <IssueList
                         // issueState={issueState}
