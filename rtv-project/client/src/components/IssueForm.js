@@ -50,6 +50,7 @@ function handleChange(e){
 
   return (
     <form className="issue-form" onSubmit={handleSubmitIssue}>
+      <h3 className="add-issue-form-header">add an issue for discussion</h3>
       <input 
         type="text" 
         name="title" 
@@ -64,7 +65,7 @@ function handleChange(e){
         onChange={handleChange} 
         placeholder="description"
       />
-      <button className="add-issue-btn">add issue</button>
+      <button className="add-issue-btn">submit issue</button>
     </form>
   )
 }

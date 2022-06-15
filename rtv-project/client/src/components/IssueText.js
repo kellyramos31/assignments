@@ -93,7 +93,7 @@ return (
                 placeholder="Description"
               />
               <div className="edit-issue-form-btns">
-                  <button className="submit-issue-edit-btn">Submit Edit</button>
+                  <button className="submit-issue-edit-btn">submit edit</button>
                   <button className="cancel-issue-edit-btn" onClick={toggleToEdit}><FcCancel size={22} style={{ fill: "white"}}/></button>
               </div>
             </form>

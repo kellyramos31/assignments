@@ -84,16 +84,15 @@ return(
                          
             {isEditing ===_comment._id
             ?
-              
+               
                 <div key={index} id={_comment._id} className="comment-edit-form">
-
+                  &nbsp;
                   <EditCommentForm
                     key={_comment._id}
                     id={_comment._id}
                     _comment={_comment}
                     toggleToEdit={toggleToEdit}
                 />
-         
                </div>
                 :
             <div>
