@@ -51,8 +51,8 @@ return (
             <div className="issue">
               <div className="my-profile-issue-tallies">
                 <h3 className="total-votes">voters <span className="tallies-top">{props.totalVotersVotedCount}&nbsp;</span></h3>
-                <h3 className="my-issue-upvotes">upvotes <span className="tallies-top">{props.upVotes}&nbsp;</span></h3>
-                <h3 className="my-issue-downvotes">downvotes <span className="tallies-top">{props.downVotes}&nbsp;</span></h3>
+                <h3 className="my-issue-upvotes">up <span className="tallies-top">{props.upVotes}&nbsp;</span></h3>
+                <h3 className="my-issue-downvotes">down <span className="tallies-top">{props.downVotes}&nbsp;</span></h3>
                 <h3 className="my-issue-number-comments">comments <span className="tallies-top">{props.numberCommentsOnIssue}&nbsp;</span></h3>
               </div>
               <div className="my-issue-descr-titles">

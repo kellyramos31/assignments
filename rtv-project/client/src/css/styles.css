@@ -9,6 +9,8 @@
     /* color: white; */
 }
 
+
+
 a {
     color: #0F4C75;
     font-weight: bold;
@@ -167,14 +169,14 @@ a:hover {
 .issues-list {
     margin-left: auto;
     margin-right: auto;
-    width: 40%;
+    width: 60%;
 }
 
 .user-issue-container {
     padding: 25px;
     background-image: linear-gradient(#a0cfee, #6ca7ce, #2770a0);
     border-radius: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 5%;
     border: 3px solid white;
 }
 
@@ -201,9 +203,11 @@ a:hover {
 .my-profile-issue-tallies {
     display: flex;
     justify-content: center;
+    flex-wrap: wrap;
     background-color: #0F4C75;
     padding: 8px;
     border-radius: 5px;
+    margin-bottom: 3%;
 }
 
 .my-issue-upvotes,
@@ -218,7 +222,9 @@ a:hover {
 .my-issue-descr {
     background-color: #0F4C75;
     color: white;
+    padding-right: 15%;
 }
+
 
 .issue-title-mine,
 .issue-description-mine {
@@ -239,8 +245,9 @@ a:hover {
 .issue-description-text {
     color: #0F4C75;
     background-color: whitesmoke;
-    border-radius: 5px;
-    margin-top: 0px;
+    border-radius: 4px;
+    margin-top: -1.5%;
+    margin-bottom: 3%;
     padding: 12px;
 }
 
@@ -250,16 +257,16 @@ a:hover {
 
 .my-issue-title,
 .my-issue-descr {
-    border-radius: 5px;
+    border-radius: 4px;
     margin-left: 0;
 }
 
 .my-issue-title {
-    padding: 5px 67px 4px 15px;
+    padding: 5px 15px 4px 15px;
 }
 
 .my-issue-descr {
-    padding: 5px 21px 4px 15px;
+    padding: 5px 15px 4px 15px;
 }
 
 .outline-edit-issue-form {}
@@ -318,6 +325,10 @@ a:hover {
 }
 
 
+.issue {
+    margin-bottom: -1%;
+}
+
 .delete-issue-btn {
     margin-top: 10px;
     margin-right: 10px;
@@ -369,6 +380,8 @@ a:hover {
     padding: 3.5% 4% 0 4%;
     border: 3px solid white;
 }
+
+
 
 .arrows {
     float: right;
@@ -453,7 +466,7 @@ a:hover {
 }
 
 .leave-comment-btn {
-    transform: translateY(10%);
+    transform: translateY(9%);
     margin: 0 5% 0 5%;
     background-color: #0F4C75;
     color: white;
@@ -464,6 +477,8 @@ a:hover {
     padding: 40px 10px 40px 10px;
     width: 174%;
 }
+
+
 
 .comment-form-buttons {
     display: flex;
@@ -588,6 +603,7 @@ a:hover {
 
 .tallies {
     display: flex;
+    flex-wrap: wrap;
     padding: 3.5% 3.5% 3.5% 2.2%;
     margin-bottom: 18px;
     background-color: #0F4C75;
@@ -602,7 +618,7 @@ a:hover {
 .issue-title,
 .issue-description {
     color: #0F4C75;
-    border-radius: 5px;
+    border-radius: 3px;
     margin-top: 10px;
     font-style: italic;
     margin-bottom: 4px;
@@ -617,7 +633,7 @@ a:hover {
 .descr-issue {
     background-color: #0F4C75;
     color: white;
-    border-radius: 5px;
+    border-radius: 4px;
 }
 
 .title-issue {
@@ -750,4 +766,50 @@ a:hover {
     border-radius: 3px;
     margin-left: 5px;
     width: 45px;
+}
+
+
+@media screen and (max-width: 1495px) {
+    .all-issues-container {
+        width: 25%;
+    }
+
+    .leave-comment-btn {
+        transform: translate(1%, 10%);
+        margin: .5% .5%;
+        padding: 8% 2% 2% 2%;
+        width: 103%;
+        height: 140%;
+        font-size: 60%;
+    }
+
+    .title-issue,
+    .descr-issue {
+        padding-right: 5%;
+
+    }
+
+
+    .see-comments-btn {
+        transform: translateY(.1%);
+        padding: 4px 4px;
+        margin-top: -2%;
+        width: 35%;
+        margin-bottom: 8%;
+    }
+
+    .arrows {
+        transform: translate(-3%, 38%);
+    }
+
+
+
+}
+
+@media screen and (max-width: 866px) {
+    .all-issues-container {
+        width: 55%;
+    }
+
+
 }
