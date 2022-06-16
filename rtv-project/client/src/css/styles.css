@@ -206,7 +206,7 @@ a:hover {
 .my-profile-issue-tallies {
     display: flex;
     justify-content: center;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
     background-color: #0F4C75;
     padding: 8px;
     border-radius: 5px;
@@ -252,6 +252,7 @@ a:hover {
     margin-top: -1.5%;
     margin-bottom: 3%;
     padding: 12px;
+    overflow-wrap: break-word;
 }
 
 .issue-title-text {
@@ -419,7 +420,8 @@ a:hover {
     border-radius: 5px;
     padding: 48px 8px 25px 8px;
     margin-top: -7%;
-    margin-bottom: 8%;
+    margin-bottom: 5%;
+    /* margin-bottom: 8%; */
     /* margin-bottom: -30px; */
 }
 
@@ -891,6 +893,10 @@ a:hover {
         width: 50%;
     }
 
+    .tallies-top {
+        font-size: medium;
+    }
+
     .name-posted-by {
         width: 95%;
         margin-bottom: 4%;
@@ -1073,5 +1079,10 @@ a:hover {
     .see-comments-btn {
         transform: translateY(-10%);
         width: 37%;
+    }
+
+    .issue-title-mine-text,
+    .issue-description-mine-text {
+        margin-top: -5.95%;
     }
 }
