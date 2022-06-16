@@ -417,7 +417,7 @@ a:hover {
     background-color: #0F4C75;
     color: white;
     border-radius: 5px;
-    padding: 8px 8px 8px 8px;
+    padding: 48px 8px 25px 8px;
     margin-top: -7%;
     margin-bottom: 8%;
     /* margin-bottom: -30px; */
@@ -566,9 +566,8 @@ a:hover {
 
 .comment-edit-form {
     position: absolute;
-    margin-top: .5%;
+    margin-top: 1%;
     margin-left: 22%;
-
     /* margin-right: 10%; */
     /* transform: translateX(-195%);  */
     /* flex-direction: row; */
@@ -578,7 +577,7 @@ a:hover {
 .edit-comments-grp-btns {
     display: flex;
     justify-content: flex-end;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     margin-right: -22%;
 }
 
@@ -641,7 +640,6 @@ a:hover {
     font-size: 17px;
     padding-top: 4px;
     padding-bottom: 0px;
-
 }
 
 
@@ -889,27 +887,62 @@ a:hover {
         width: 50%;
     }
 
+
     .see-comments-btn {
         width: 31%;
+        transform: translateY(-25%);
+    }
+
+    .hide-comments-btn {
+        width: 31%;
+        transform: translateY(-45%);
+        height: 50px;
+        padding-top: 2px;
+    }
+
+    .public-comments {
+        margin-top: 5%;
     }
 
     .comment-list-item {
         /* flex-wrap: wrap; */
-        flex-basis: 90%;
+        flex-basis: 109%;
         flex-wrap: wrap;
     }
 
     .leave-comment-btn {
         transform: translateX(24%);
-        height: 145%;
+        height: 125%;
         width: 80%;
         margin-top: 8%;
         font-size: small;
     }
 
+    .comment-edit-form {
+        position: relative;
+        transform: translate(-12%, -12%);
+    }
+
+    .comment-edit-form input {
+        width: 108%;
+    }
+
+    .submit-edited-comment-btn {
+        width: 19%;
+        font-size: xx-small;
+    }
+
+    .cancel-edit-comment-btn {
+        width: 18%;
+    }
+
+    .edit-comments-grp-btns {
+        transform: translate(23%, -115%);
+        margin-bottom: -20%;
+    }
 
     .arrows {
-        transform: translate(12%, 25%);
+        transform: translate(12%, 20%);
     }
 }
 
@@ -941,6 +974,8 @@ a:hover {
     .my-issue-upvotes {
         width: 35%;
     }
+
+
 
     .leave-comment-btn {
         width: 94%;
