@@ -13,16 +13,9 @@ export default function IssueText(props){
     const {
         deleteIssue,
         editIssue,
-        // comments,
-        //deleteComment,
-        // editComment
-        // addComment,
-        // upVote,
-        // downVote   
     } = useContext(IssueCommentContext)
 
-    //add function to toggle Comment Form on & off
-    //add isEditing toggle??
+
 
   const [toggleIsEditing, setToggleIsEditing] = useState(false)
 
@@ -48,8 +41,7 @@ return (
    
     <div className="profile-container">
 
-        {/* { !toggleIsEditing ? */}
-      
+        
         <div key={props._id} className="user-issue-container">
             <div className="issue">
               <div className="my-profile-issue-tallies">

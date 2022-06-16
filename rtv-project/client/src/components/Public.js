@@ -1,6 +1,5 @@
 import React, { useContext, useEffect} from "react"
 import PublicIssueList from "./PublicIssueList.js"
-// import CommentForm from "./CommentForm.js"
 import { IssueCommentContext } from "../context/IssueCommentProvider.js"
 
 
@@ -15,11 +14,11 @@ export default function Public() {
         comments,
         getUserIssues,
         getIssues,
-        // addComment,
         getComments
     } = useContext(IssueCommentContext)
 
-    //USEEFFECT
+
+//USEEFFECT
 
   useEffect(() => {
     console.log("useEffect triggered")
@@ -39,7 +38,6 @@ export default function Public() {
                 issues={issues}
                 userIssues={userIssues}
                 comments={comments}
-                // addComment={addComment}
             />
         </div>
     )

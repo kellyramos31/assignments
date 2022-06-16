@@ -1,5 +1,4 @@
 import React, { useState, useContext } from "react"
-//import React, { useState } from "react"
 import { IssueCommentContext } from "../context/IssueCommentProvider.js"
 import { FcCancel } from 'react-icons/fc'
 
@@ -12,8 +11,6 @@ const initInputs = {
 export default function CommentForm(props){
 
 const [inputs, setInputs] = useState(initInputs)
-
-// const [issueId, setIssueId] = useState(initInputs._issue)
 
 const { combinedAddComment } = useContext(IssueCommentContext)
 
@@ -41,11 +38,6 @@ function handleCommentChange(e){
   }
 
 const { commentText } = inputs
-
-
-  // function toggleToComment(){
-  //   setToggleIsCommenting(prev => !prev)
-  // }
 
 
 

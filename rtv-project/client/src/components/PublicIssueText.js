@@ -19,31 +19,18 @@ import {BsPeopleFill} from 'react-icons/bs'
 
 export default function PublicIssueText(props){
 
-// const {
-//     user: {
-//         username
-//     },
-        
-//     } = useContext(UserContext)
-
-
 
 const {
       voterUpVote,
       voterDownVote,
-    //   commentUpVote,
-    //   commentDownVote,
-      calcNetVotes,
-    //   combinedDeleteComment
+      calcNetVotes
      } = useContext(IssueCommentContext)
 
-// const [inputsCommentEdit, setInputsCommentEdit] = useState("")
 
 const [toggleIsCommenting, setToggleIsCommenting] = useState(false)
 
 const [toggleIsViewingComments, setToggleIsViewingComments] = useState(false)
 
-// const [toggleEdit, setToggleEdit] = useState(false)
 
 
 
@@ -56,11 +43,6 @@ function toggleToComment(){
    console.log("toggleToComment clicked")
     setToggleIsCommenting(prev => !prev)
   }
-
-// function toggleToEdit(){
-//     setToggleEdit(prev => !prev)
-//   }
-
 
 
 
@@ -104,10 +86,11 @@ return (
               </div>
           }
            </div>
-               { !toggleIsViewingComments ?
-               <div>
-                <button className="see-comments-btn" key={props._id} onClick={toggleViewComments}> <div className="eye-btn-pieces"><FaEye size={25} style={{ fill: "#0F4C75"}}/>view comments</div></button>
-                {/* <img className="arrows" src={arrows} alt="arrows" width="25%" height="29%"/> */}
+               { !toggleIsViewingComments 
+               
+               ?
+                <div>
+                  <button className="see-comments-btn" key={props._id} onClick={toggleViewComments}> <div className="eye-btn-pieces"><FaEye size={25} style={{ fill: "#0F4C75"}}/>view comments</div></button>
                 </div>
                 :
                 <div>

@@ -471,16 +471,9 @@ function removeVote(issueId){
             value={{
             ...issueState,
             getUserIssues,
-            // upVote,
-            // downVote,
-            // getTotalNumberComments,
-            // totalComments,
             voterUpVote,
             voterDownVote,
             removeVote,
-            // issues,
-            // userIssues,
-            // voteCount,
             calcNetVotes,
             addIssue,
             deleteIssue,
@@ -492,8 +485,6 @@ function removeVote(issueId){
             deleteComment,
             commentUpVote,
             commentDownVote,
-            // deleteCommentFromIssueArray,
-            // combinedDeleteComment,
             editComment,
             getIssues
         }}>
