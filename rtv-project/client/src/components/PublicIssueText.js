@@ -69,7 +69,7 @@ return (
            
                <div className="tallies">
                     <h3 className="name-posted-by"><span className="posted-by">posted by </span><span className="user-name-span-issue">{props._user.username}</span></h3>   
-                    <h3 className="total-votes">voters <span className="tallies-top">{props.totalVotersVotedCount}&nbsp;</span></h3>
+                    <h3 className="total-votes-public">voters <span className="tallies-top">{props.totalVotersVotedCount}&nbsp;</span></h3>
                     <h3 className="total-upVotes">up <span className="tallies-top">{props.upVotes}&nbsp;</span></h3>
                     <h3 className="total-downVotes">down <span className="tallies-top">{props.downVotes}&nbsp;</span></h3>
                     <h3 className="net-votes">net <span className="tallies-top">{calcNetVotes(props.upVotes, props.downVotes)}&nbsp; </span> </h3>

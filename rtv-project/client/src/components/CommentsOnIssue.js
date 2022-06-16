@@ -46,7 +46,7 @@ function toggleToEdit(index, id, _post){
     
 return(
 
-        <div>
+        <div className="public-comments-container">
             <h3 className="public-comments">Comments
                 {_comments.map((_comment, index)=> 
                                              
