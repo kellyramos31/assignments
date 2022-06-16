@@ -702,6 +702,10 @@ a:hover {
     font-style: italic;
 }
 
+.name-posted-by {
+    padding-top: .75%;
+}
+
 .user-comments {
     background-color: #0F4C75;
     color: rgb(253, 201, 31);
@@ -887,6 +891,10 @@ a:hover {
         width: 50%;
     }
 
+    .name-posted-by {
+        width: 95%;
+        margin-bottom: 4%;
+    }
 
     .see-comments-btn {
         width: 31%;

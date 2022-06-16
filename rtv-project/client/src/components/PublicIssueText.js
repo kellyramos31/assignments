@@ -9,6 +9,8 @@ import { BsArrowDownCircleFill} from 'react-icons/bs'
 import { FaEye} from 'react-icons/fa'
 import { FaComments } from 'react-icons/fa'
 import { BiHide } from 'react-icons/bi'
+import {TiEquals} from 'react-icons/ti'
+import {BsPeopleFill} from 'react-icons/bs'
 
 
 
@@ -69,11 +71,11 @@ return (
            
                <div className="tallies">
                     <h3 className="name-posted-by"><span className="posted-by">posted by </span><span className="user-name-span-issue">{props._user.username}</span></h3>   
-                    <h3 className="total-votes-public">voters <span className="tallies-top">{props.totalVotersVotedCount}&nbsp;</span></h3>
-                    <h3 className="total-upVotes">up <span className="tallies-top">{props.upVotes}&nbsp;</span></h3>
-                    <h3 className="total-downVotes">down <span className="tallies-top">{props.downVotes}&nbsp;</span></h3>
-                    <h3 className="net-votes">net <span className="tallies-top">{calcNetVotes(props.upVotes, props.downVotes)}&nbsp; </span> </h3>
-                    <h4 className="number-comments">comments <span className="tallies-top">{props.numberCommentsOnIssue}</span> </h4>
+                    <h3 className="total-votes-public"><BsPeopleFill size={21} style={{ fill: "rgb(253, 201, 31)"}}/><span className="tallies-top">{" "}{props.totalVotersVotedCount}&nbsp;</span></h3>
+                    <h3 className="total-upVotes"><BsArrowUpCircleFill size={21} style={{ fill: "rgb(253, 201, 31)"}}/> <span className="tallies-top">{" "}{props.upVotes}&nbsp;</span></h3>
+                    <h3 className="total-downVotes"><BsArrowDownCircleFill size={21} style={{ fill: "rgb(253, 201, 31)"}}/><span className="tallies-top">{" "}{props.downVotes}&nbsp;</span></h3>
+                    <h3 className="net-votes"><TiEquals size={21} style={{ fill: "rgb(253, 201, 31)"}}/><span className="tallies-top">{" "}{calcNetVotes(props.upVotes, props.downVotes)}&nbsp; </span> </h3>
+                    <h4 className="number-comments"><FaComments size={21} style={{ fill: "rgb(253, 201, 31)"}}/> <span className="tallies-top">{" "}{props.numberCommentsOnIssue}</span> </h4>
                 </div>
             
             <h1 className="issue-title"><span className="title-issue">title</span></h1> 
