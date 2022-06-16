@@ -178,6 +178,9 @@ a:hover {
     border-radius: 10px;
     margin-bottom: 5%;
     border: 3px solid white;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .profile-issues-list-header {
@@ -892,6 +895,17 @@ a:hover {
 @media only screen and (max-width: 415px) {
     .all-issues-container {
         width: 55%;
+    }
+
+
+    .profile>form {
+        width: 41%;
+        border-radius: 10px;
+    }
+
+    .total-votes {
+        width: 75%;
+        text-align: center;
     }
 
     .leave-comment-btn {
