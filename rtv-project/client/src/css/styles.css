@@ -769,6 +769,70 @@ a:hover {
 }
 
 
+
+
+
+
+/* @media only screen and (min-width: 1499) {
+    .all-issues-container {
+        width: 25%;
+    }
+
+    .leave-comment-btn {
+        transform: translate(1%, 8%);
+        margin: .5% .5%;
+        padding: 8% 2% 2% 2%;
+        width: 150%;
+        height: 140%;
+        font-size: 60%;
+    }
+
+    .title-issue,
+    .descr-issue {
+        padding-right: 5%;
+
+    }
+
+
+    .see-comments-btn {
+        transform: translateY(.1%);
+        padding: 4px 4px;
+        margin-top: -2%;
+        width: 35%;
+        margin-bottom: 8%;
+    }
+
+    .arrows {
+        transform: translate(-3%, 38%);
+    }
+} */
+
+/* @media only screeen and (min-width: 400px) and (max-width: 915) {} */
+
+/* @media only screen and (min-width: 375px) {
+    .all-issues-container {
+        width: 55%;
+    }
+
+    .leave-comment-btn {
+        width: 107%;
+        margin-left: -12%;
+        height: 178%;
+    }
+
+    .arrows {
+        margin-top: 10%;
+        margin-left: -2%;
+    }
+
+    .name-posted-by {
+        width: 90%;
+        margin-bottom: 6%;
+    }
+} */
+
+
+
 @media screen and (max-width: 1495px) {
     .all-issues-container {
         width: 25%;
@@ -801,15 +865,48 @@ a:hover {
     .arrows {
         transform: translate(-3%, 38%);
     }
-
-
-
 }
 
-@media screen and (max-width: 866px) {
+@media screen and (max-width: 912px) {
+    .all-issues-container {
+        width: 50%;
+    }
+
+    .see-comments-btn {
+        width: 31%;
+    }
+
+    .leave-comment-btn {
+        transform: translateX(24%);
+        height: 145%;
+        width: 80%;
+        margin-top: 8%;
+        font-size: small;
+    }
+
+    .arrows {
+        transform: translate(12%, 25%);
+    }
+}
+
+@media only screen and (max-width: 415px) {
     .all-issues-container {
         width: 55%;
     }
 
+    .leave-comment-btn {
+        width: 107%;
+        margin-left: -12%;
+        height: 175%;
+    }
 
+    .arrows {
+        margin-top: 10%;
+        margin-left: -2%;
+    }
+
+    .name-posted-by {
+        width: 90%;
+        margin-bottom: 6%;
+    }
 }

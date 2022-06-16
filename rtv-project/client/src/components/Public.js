@@ -34,7 +34,7 @@ export default function Public() {
 
     return (
         <div className="public">
-          <h3 className="title-public-page">All Users' Issues</h3>
+          <h3 className="title-public-page">all users' issues</h3>
             <PublicIssueList 
                 issues={issues}
                 userIssues={userIssues}
