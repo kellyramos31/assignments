@@ -215,7 +215,7 @@ issueRouter.delete("/:issueId", (req, res, next)=> {
 
 //DELETE specified comment from _comment array
 issueRouter.put("/deleteCommentFromIssue/:issueId", (req, res, next)=> {
-        const commentId = req.body._id
+        const commentId = req.body._comment
         // const ObjectId = require('mongodb').ObjectId 
         Issue.findByIdAndUpdate(
             {_id: req.params.issueId, _user: req.user._id},

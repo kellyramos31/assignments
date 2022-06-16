@@ -199,11 +199,45 @@ function addCommentTally (issueId) {
         
 } 
 
+
+//*** how delete the _comments refs from the issue for the deleted comment???? */
 //COMBINED DELETE COMMENT
 function combinedDeleteComment (commentId, issueId){
   deleteComment(commentId)
   minusCommentTally(issueId)
+  // deleteCommentFromIssueArray(issueId, commentId)
 }
+
+//DELETE USER'S COMMENT
+//NOTE******this filters it out of comments but does not clear id out of the issue in _comments array*****
+    function deleteComment(commentId) {
+        console.log("commentId:", commentId)
+        userAxios.delete(`/api/comment/${commentId}`)
+             .then(res => {
+                setIssueState(prevState=> ({issues: prevState.issues.filter(issue=> issue._comment !== commentId)}))
+                // getUserIssues()
+                // getIssues()
+             })
+        
+            .catch(err=>console.log(err.response.data.errMsg))
+    }
+
+ 
+ //DELETE COMMENT FROM ARRAY of comments ids (_comments) in the issue
+//  function deleteCommentFromIssueArray(issueId, commentId) {
+//     console.log("comment._id to delete:", commentId)
+//     console.log("issue to update the comments array in:", issueId)
+//     userAxios.put(`/api/issue/deleteCommentFromIssue/${issueId}`)
+//             // console.log("commentId:", commentId)
+//          .then(res => {
+//             setIssueState(prevState => prevState.issues.map(issue => issue._id !== issueId ? issue : res.data))
+//             // getUserIssues()
+//             // getIssues()
+//       })
+            
+//     .catch(err=>console.log(err.response.data.errMsg))
+// }
+
 
 //DECREMENT COMMENT TOTAL ON SPECIFIC ISSUE
 function minusCommentTally (issueId) {
@@ -221,12 +255,7 @@ function minusCommentTally (issueId) {
         
 } 
 
-  
-// function combinedDeleteComment(issueId, commentId){
-//   // deleteComment(commentId)
-//   deleteCommentFromIssueArray(issueId, commentId)
-  
-// }
+
 
 //CALCULATE NET VOTES (NETVOTES = upVotes - downVotes)
 function calcNetVotes(upVotes, downVotes){
@@ -236,34 +265,6 @@ function calcNetVotes(upVotes, downVotes){
   return net
 }
   
-//DELETE USER'S COMMENT
-//NOTE******this filters it out of comments but does not clear id out of the issue in _comments array*****
-    function deleteComment(commentId) {
-        console.log("commentId:", commentId)
-        userAxios.delete(`/api/comment/${commentId}`)
-             .then(res => {
-                setIssueState(prevState=> ({issues: prevState.issues.filter(issue=> issue._comment !== commentId)}))
-                // getUserIssues()
-                // getIssues()
-             })
-        
-            .catch(err=>console.log(err.response.data.errMsg))
-    }
-
- //DELETE COMMENT FROM ARRAY of comments ids (_comments) in the issue
-//  function deleteCommentFromIssueArray(issueId, commentId) {
-//     console.log("comment._id to delete:", commentId)
-//     console.log("issue to update the comments array in:", issueId)
-//     userAxios.put(`/api/issue/deleteCommentFromIssue/${issueId}`)
-//             // console.log("commentId:", commentId)
-//          .then(res => {
-//             setIssueState(prevState => prevState.issues.map(issue => issue._id !== issueId ? issue : res.data))
-//             // getUserIssues()
-//             getIssues()
-//       })
-            
-//     .catch(err=>console.log(err.response.data.errMsg))
-// }
 
 
 //EDIT COMMENT
@@ -381,6 +382,7 @@ function upVoteComment(commentId){
     .catch(err => console.log(err.response.data.errMsg))
   }
 
+
 //UPVOTE a COMMENT with limit of 1 (using _voters)--this uses $addToSet, so will only add if not already there
  function commentUpVote(commentId){
   console.log("commentId for upVote:", commentId)
@@ -399,7 +401,8 @@ function upVoteComment(commentId){
     .catch(err => console.log(err.response.data.errMsg))
  } 
 
- //DOWNVOTE A COMMENT
+
+//DOWNVOTE A COMMENT
 function downVoteComment(commentId){
     console.log("commentId for downVote:", commentId)    		
     userAxios.put(`/api/comment/downvoteit/${commentId}`)		

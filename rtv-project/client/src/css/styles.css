@@ -1,12 +1,10 @@
 * {
-    /* box-sizing: border-box; */
     margin: 0;
     padding: 0;
     font-size: 16px;
     font-family: sans-serif;
     outline: none;
     text-decoration: none;
-    /* color: white; */
 }
 
 
@@ -51,7 +49,6 @@ a:hover {
     color: whitesmoke;
 }
 
-/* LOGIN PAGE */
 
 .auth-container {
     display: flex;
@@ -108,14 +105,11 @@ a:hover {
     color: black;
 }
 
-/* PROFILE PAGE */
-
 .profile {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-bottom: 10px;
-    /* height: 100vh; */
 }
 
 .profile>h1 {
@@ -139,8 +133,6 @@ a:hover {
     display: flex;
     flex-direction: column;
     margin: 5px;
-    /* border: 5px solid rgb(253, 201, 31); */
-    /* background-color: rgba(206, 203, 203, 0.496); */
     background-color: rgb(236, 236, 207);
     padding: 16px;
     border-radius: 5px
@@ -206,7 +198,6 @@ a:hover {
 .my-profile-issue-tallies {
     display: flex;
     justify-content: center;
-    /* flex-wrap: wrap; */
     background-color: #0F4C75;
     padding: 8px;
     border-radius: 5px;
@@ -232,10 +223,7 @@ a:hover {
 .issue-title-mine,
 .issue-description-mine {
     color: #0F4C75;
-    /* background-color: white; */
-    /* border:  3px solid #0F4C75; */
     border-radius: 5px;
-    /* padding: 0px 3px 0px 0px; */
     margin-top: 10px;
     font-style: italic;
     margin-bottom: 10px;
@@ -273,7 +261,6 @@ a:hover {
     padding: 5px 15px 4px 15px;
 }
 
-.outline-edit-issue-form {}
 
 .edit-issue-form {
     display: flex;
@@ -319,7 +306,6 @@ a:hover {
     padding-top: 1px;
 }
 
-
 .edit-delete-issue-buttons {
     text-align: center;
 }
@@ -327,7 +313,6 @@ a:hover {
 .edit-del-btns-group {
     display: flex;
 }
-
 
 .issue {
     margin-bottom: -1%;
@@ -361,21 +346,12 @@ a:hover {
 }
 
 
-
-/* PUBLIC PAGE  */
-
 .public {
     padding-bottom: 10px;
 }
 
 .all-issues-container {
-    /* background-color: #5a8dae; */
     background-image: linear-gradient(#a0cfee, #6ca7ce, #2770a0);
-    /* background-image: url(../assets/andres-haro-R6ZJYwBzZx4-unsplash.jpg);
-    background-size: 18%;
-    background-position-x: 94%;
-    background-position-y: 80%;
-    background-repeat: no-repeat; */
     margin-bottom: 25px;
     margin-left: auto;
     margin-right: auto;
@@ -386,10 +362,8 @@ a:hover {
 }
 
 
-
 .arrows {
     float: right;
-    /* margin-top: -8.3%; */
     margin-left: 4%;
     margin-right: 4%;
     margin-top: 1.5%;
@@ -405,30 +379,19 @@ a:hover {
 }
 
 
-
 .public-comments {
     display: flex;
     font-style: italic;
     flex-direction: column;
     justify-content: flex-start;
-    /* flex-wrap: wrap-reverse; */
-    /* flex-flow: column wrap; */
-
-    /* flex-wrap: wrap; */
     background-color: #0F4C75;
     color: white;
     border-radius: 5px;
     padding: 48px 8px 25px 8px;
     margin-top: -7%;
     margin-bottom: 5%;
-    /* margin-bottom: 8%; */
-    /* margin-bottom: -30px; */
 }
 
-/* .public-comments-container {
-    flex-wrap: wrap;
-    word-wrap: break-word;
-} */
 
 .comment-span {
     color: rgb(253, 201, 31);
@@ -460,7 +423,6 @@ a:hover {
     border: none;
     padding: 1px;
     padding: 10px 10px;
-    /* height: 40px; */
     width: 132px;
     transform: translateY(-100%);
     margin-left: 2px;
@@ -477,7 +439,6 @@ a:hover {
     padding: 2px;
     font-size: 12px;
     padding: 10px 10px;
-    /* height: 40px; */
     width: 132px;
 }
 
@@ -493,7 +454,6 @@ a:hover {
     padding: 40px 10px 40px 10px;
     width: 174%;
 }
-
 
 
 .comment-form-buttons {
@@ -539,9 +499,6 @@ a:hover {
 .comment-form input {
     border: none;
     border-radius: 4px;
-    /* margin-top: 7%;
-    margin-left: -30px;
-    height: 35px; */
     margin-left: -15%;
     width: 108%;
     border: 3px solid #0F4C75;
@@ -556,7 +513,6 @@ a:hover {
     border: none;
     border-radius: 4px;
     margin-top: 1%;
-    /* transform: translateX(-120%); */
     border: 3px solid #0F4C75;
     background-color: rgb(253, 201, 31);
     color: #0F4C75;
@@ -568,12 +524,8 @@ a:hover {
 
 .comment-edit-form {
     position: absolute;
-    margin-top: 1%;
+    margin-top: 1.05%;
     margin-left: 22%;
-    /* margin-right: 10%; */
-    /* transform: translateX(-195%);  */
-    /* flex-direction: row; */
-    /* margin-top: 4%; */
 }
 
 .edit-comments-grp-btns {
@@ -680,7 +632,6 @@ a:hover {
 }
 
 .posted-by {
-    /* margin-left: 25px; */
     color: white;
     font-style: italic;
 }
@@ -688,7 +639,6 @@ a:hover {
 .name-posted-by {
     background-color: #0F4C75;
     border-radius: 5px;
-    /* margin-top: 10px; */
     font-style: italic;
     width: 39%;
 }
@@ -792,68 +742,6 @@ a:hover {
 
 
 
-
-
-/* @media only screen and (min-width: 1499) {
-    .all-issues-container {
-        width: 25%;
-    }
-
-    .leave-comment-btn {
-        transform: translate(1%, 8%);
-        margin: .5% .5%;
-        padding: 8% 2% 2% 2%;
-        width: 150%;
-        height: 140%;
-        font-size: 60%;
-    }
-
-    .title-issue,
-    .descr-issue {
-        padding-right: 5%;
-
-    }
-
-
-    .see-comments-btn {
-        transform: translateY(.1%);
-        padding: 4px 4px;
-        margin-top: -2%;
-        width: 35%;
-        margin-bottom: 8%;
-    }
-
-    .arrows {
-        transform: translate(-3%, 38%);
-    }
-} */
-
-/* @media only screeen and (min-width: 400px) and (max-width: 915) {} */
-
-/* @media only screen and (min-width: 375px) {
-    .all-issues-container {
-        width: 55%;
-    }
-
-    .leave-comment-btn {
-        width: 107%;
-        margin-left: -12%;
-        height: 178%;
-    }
-
-    .arrows {
-        margin-top: 10%;
-        margin-left: -2%;
-    }
-
-    .name-posted-by {
-        width: 90%;
-        margin-bottom: 6%;
-    }
-} */
-
-
-
 @media screen and (max-width: 1495px) {
     .all-issues-container {
         width: 25%;
@@ -919,7 +807,6 @@ a:hover {
     }
 
     .comment-list-item {
-        /* flex-wrap: wrap; */
         flex-basis: 109%;
         flex-wrap: wrap;
     }
@@ -958,6 +845,8 @@ a:hover {
     .arrows {
         transform: translate(12%, 20%);
     }
+
+
 }
 
 @media only screen and (max-width: 420px) {
@@ -966,7 +855,6 @@ a:hover {
     }
 
     .comment-list-item {
-        /* flex-wrap: wrap; */
         flex-basis: 100%;
         flex-wrap: wrap;
     }
@@ -988,8 +876,6 @@ a:hover {
     .my-issue-upvotes {
         width: 35%;
     }
-
-
 
     .leave-comment-btn {
         width: 94%;
@@ -1055,8 +941,6 @@ a:hover {
         position: relative;
         margin-bottom: -37%;
         margin-left: 14%;
-        /* margin-left: 8.5%;
-        margin-bottom: 2%; */
     }
 
     .submit-edited-comment-btn {
@@ -1085,4 +969,6 @@ a:hover {
     .issue-description-mine-text {
         margin-top: -5.95%;
     }
+
+
 }
