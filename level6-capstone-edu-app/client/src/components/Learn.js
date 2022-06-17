@@ -13,6 +13,7 @@ export default function Learn(props) {
   const {
     getFlashcards,
     flashcardState,
+    handleFlashcardSearch,
     flashcards
 } = useContext(LearnGameContext)
 
@@ -21,7 +22,7 @@ useEffect(() => {
     console.log("useEffect in Learn Component to get Flashcards triggered")
     getFlashcards()
     // eslint-disable-next-line  
-  }, [])
+  }, [flashcardState])
 
 
 
@@ -36,7 +37,9 @@ useEffect(() => {
         </div>
 
         <div className="searchbar-flashcards">
-          <SearchBar/>
+          <SearchBar
+            handleFlashcardSearch={handleFlashcardSearch}
+          />
         </div>
     
 

@@ -40,6 +40,8 @@ const [isModalOpen, setIsModalOpen] = useState(false)
 
 const [myScores, setMyScores] = useState([])
 
+const [searchTerm, setSearchTerm] = useState("")
+
 //GET ALL FLASHCARDS
 function getFlashcards(){
         console.log("getFlashcards hit")
@@ -207,6 +209,9 @@ function filterAnsweredQuestion(_id){
 
 //SEARCHBAR TERMS IN FLASHCARDS
 function handleFlashcardSearch(e) {
+    console.log("e.target.value", e.target.value)
+    setSearchTerm({searchTerm: e.target.value})
+    console.log("searchTerm", searchTerm)
     userAxios.get(`/api/learngame/learn/search?searchTerm=${e.target.value}`)
              .then(res => {
                 setFlashcardState({flashcards: res.data})

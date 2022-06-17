@@ -787,4 +787,22 @@ select {
   margin-left: 55.5%;
 }
 
+
+.searchbar-posts input {
+  float: top;
+  color: white;
+  background-color: #001E4E;
+  font-family: Calibri;
+  font-weight: bold;
+  border: 2px solid skyblue;
+  border-radius: .3rem;
+  padding: 5px;
+  transform: translate(407%, -310%);
+}
+
+::placeholder {
+  color: whitesmoke;
+  text-align: center;
+}
+
 /* .all-posts {} */

@@ -1,19 +1,19 @@
-import React, {useContext} from "react"
-import { LearnGameContext } from "../context/LearnGameProvider.js"
+import React from "react"
+// import { LearnGameContext } from "../context/LearnGameProvider.js"
 
 
 
-export default function SearchBar() {
-    const {handleFlashcardSearch} = useContext(LearnGameContext) 
+export default function SearchBar(props) {
+    const {handleFlashcardSearch} = props
 
     return (
-        <div>
+        <div className="searchbar-posts">
             <div >
               <input
                 className="searchbar" 
                 type="text" 
-                placeholder="Search Term..."
-                onChange={(e)=>handleFlashcardSearch(e.target.value)}
+                placeholder="Type a Search Term..."
+                onChange={(e)=>handleFlashcardSearch(e)}
                 />
             </div>
         </div>
