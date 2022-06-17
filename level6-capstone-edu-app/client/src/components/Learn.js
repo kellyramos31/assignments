@@ -33,6 +33,10 @@ useEffect(() => {
         <div className="dropdown-flashcards">
           <DropMenuFlashcards/>
         </div>
+
+        {/* <div className="searchbar-flashcards">
+          <SearchBar/>
+        </div> */}
     
 
         <div className="flashcard-learn-container">

@@ -233,22 +233,40 @@ learnGameRouter.get("/learn/search/categorySTEM", (req, res, next) => {
 
 //??? HOW SEARCH MORE THAN ONE FIELD FOR TERMS???
 //SEARCH FLASHCARDS FOR TYPED IN TERMS (for search box)
-learnGameRouter.get("/learn/search", (req, res, next) => {
-    const { searchTerm } = req.query
-    const pattern = new RegExp(searchTerm)
-    Flashcard.find(
-        {profession1: { '$regex': pattern, '$options': 'i' } },
-        // {profession2: { '$regex': pattern, '$options': 'i' } },
-        // {profession3: { '$regex': pattern, '$options': 'i' } },
+// learnGameRouter.get("/learn/search", (req, res, next) => {
+//     const { searchTerm } = req.query
+//     const pattern = new RegExp(searchTerm)
+//     Flashcard.find(
+//         {profession1: { '$regex': pattern, '$options': 'i' } },
+//         // {profession2: { '$regex': pattern, '$options': 'i' } },
+//         // {profession3: { '$regex': pattern, '$options': 'i' } },
      
 
-       (err, flashcards) => {
-            if (err) {
-                res.status(500)
-                return next(err)
-            }
-            return res.status(200).send(flashcards)
-        })
+//        (err, flashcards) => {
+//             if (err) {
+//                 res.status(500)
+//                 return next(err)
+//             }
+//             return res.status(200).send(flashcards)
+//         })
+// })
+
+//ANOTHER ATTEMPT AT CREATING SEARCH BAR ROUTE:
+//CREATED TEXT INDEX INSIDE MONGODB FOR FLASHCARD TEXT FIELDS (note: all string fields except imageURL)
+//*****note:  works great in testing inside mongodb -- figure out how to write/incorporate the query for router/frontend searchbar
+
+learnGameRouter.get("/learn/search", (req, res, next)=> {
+    const { searchTerm } = req.query
+    Flashcard.find(
+        {$text: {$search: searchTerm }},  
+    (err, flashcards) =>{
+        if(err) {
+            res.status(500)
+            return next(err)
+   }
+   return res.status(200).send(flashcards)
+ })
+
 })
 
 

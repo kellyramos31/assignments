@@ -37,7 +37,7 @@ return(
                     <div className="profession">{flashcard.profession3}</div>
                     <h3 className="noteworthy-flashcard"><span>Noteworthy</span></h3> 
                     <h3>{flashcard.knownFor}</h3>
-                    <h3><span>Born</span>  {flashcard.born}</h3>
+                    <h3><span>Born</span>&nbsp;&nbsp;{flashcard.born}</h3>
                     <h3><span>Details</span></h3>
                     <h3>{flashcard.fact1}</h3>
                     <h3>{flashcard.fact2}</h3>

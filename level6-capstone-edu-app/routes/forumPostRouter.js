@@ -355,4 +355,23 @@ forumPostRouter.get("/search/category", (req, res, next) => {
 })
 
 
+
+//ANOTHER ATTEMPT AT CREATING SEARCH BAR ROUTE:
+//CREATED TEXT INDEX INSIDE MONGODB FOR POST TEXT FIELDS (category, title, description)
+forumPostRouter.get("/search/userterm", (req, res, next)=> {
+    const { searchTerm } = req.query
+    Post.find(
+        {$text: {$search: searchTerm }},  
+    (err, posts) =>{
+        if(err) {
+            res.status(500)
+            return next(err)
+   }
+   return res.status(200).send(posts)
+ })
+
+})
+
+
+
 module.exports = forumPostRouter;
