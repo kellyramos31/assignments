@@ -205,9 +205,16 @@ function filterAnsweredQuestion(_id){
 
 
 
-// //SEARCH TERMS IN FLASHCARDS
-// function searchFlashcards() {
-// }
+//SEARCHBAR TERMS IN FLASHCARDS
+function handleFlashcardSearch(e) {
+    userAxios.get(`/api/learngame/learn/search?searchTerm=${e.target.value}`)
+             .then(res => {
+                setFlashcardState({flashcards: res.data})
+                console.log("searchbar filtered data", res.data)
+                console.log("flashcardState", flashcardState)
+        })
+              .catch(err=>console.log(err.response.data.errMsg))  
+    }
 
 
 
@@ -247,7 +254,7 @@ function filterAnsweredQuestion(_id){
             gameReset,
             toggleModal,
             isModalOpen,
-            
+            handleFlashcardSearch
           
             
         }}>
