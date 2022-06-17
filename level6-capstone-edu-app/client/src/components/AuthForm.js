@@ -13,6 +13,7 @@ export default function AuthForm(props){
   } = props
   
   return (
+
     <form className="auth-frm" onSubmit={handleSubmit}>
       <input 
         type="text" 
@@ -31,5 +32,6 @@ export default function AuthForm(props){
       <button className="sign-up-btn">{ btnText }</button>
       <p style={{color: "red"}}>{errMsg}</p>
     </form>
+
   )
 }

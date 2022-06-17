@@ -78,6 +78,10 @@ body {
   padding: 1rem;
 }
 
+/* .add-form-container {
+  width: 35%;
+} */
+
 .add-post-header {
   color: rgba(0, 30, 78);
   text-align: center;
@@ -215,8 +219,8 @@ body {
 .my-post-number-comments {
   color: yellowgreen;
   margin-top: -1%;
-  margin-left: .3rem;
-  margin-bottom: 2%;
+  margin-left: .5rem;
+  margin-bottom: 3%;
 }
 
 .status-boxes-and-post-form {
@@ -558,8 +562,17 @@ select {
 
 }
 
-.post-icon {
-  margin-bottom: -.5rem;
+.post-icon,
+.profile-post-icon {
+  margin-left: 1%;
+  margin-bottom: .5rem;
+  background-color: yellowgreen;
+  width: 6.1%;
+  border-radius: .2rem;
+}
+
+.profile-post-icon {
+  margin-bottom: 2rem;
 }
 
 .posted-by {

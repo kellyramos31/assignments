@@ -34,7 +34,7 @@ function handleChange(e){
   const { title, description } = inputs
 
   return (
-
+<div className="add-form-container">
     <form className="add-post-form" onSubmit={handleSubmitPost}>
       <h3 className="add-post-header">Add A New Post to the STEM Forum:</h3>
       <div className="category-radio-buttons" >
@@ -92,5 +92,6 @@ function handleChange(e){
       />
       <button className="add-post-btn">Add Post</button>
     </form>
+    </div>
   )
 }

@@ -44,7 +44,7 @@ return (
       
         <div key={props._id} className="user-post-container">
             <div className="my-post">
-                <h1> 
+                <h1 className="profile-post-icon"> 
                     {props.category==="Science" ? "🔬"
                     :
                     props.category==="Tech" ? "💻"
