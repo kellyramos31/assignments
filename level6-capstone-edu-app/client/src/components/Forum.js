@@ -1,6 +1,7 @@
 import React, { useContext, useEffect} from "react"
 import ForumPostList from "./ForumPostList.js"
 import DropMenuPosts from "./DropMenuPosts.js"
+import SearchBarPosts from "./SearchBarPosts.js"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
 
 
@@ -15,7 +16,8 @@ export default function Forum() {
         userPosts,
         getUserPosts,
         getPosts,
-        handleMenuPosts
+        handleMenuPosts,
+        handlePostSearch
     } = useContext(PostCommentContext)
 
 
@@ -34,10 +36,17 @@ export default function Forum() {
     return (
         <div className="forum">
           <h3 className="title-forum-page">Let's Talk About STEM!</h3>
-              <div className="dropdown-posts">
+          
+          <div className="dropdown-posts">
             <DropMenuPosts
               handleMenuPosts={handleMenuPosts}
               getPosts={getPosts}
+            />
+          </div>
+
+          <div>
+            <SearchBarPosts
+              handlePostSearch={handlePostSearch}
             />
           </div>
 

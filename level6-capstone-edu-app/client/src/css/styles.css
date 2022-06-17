@@ -747,6 +747,7 @@ select {
 }
 
 .dropdown-posts {
+  margin-top: 1%;
   margin-left: auto;
   margin-right: auto;
   background-color: #001E4E;
@@ -788,6 +789,7 @@ select {
 }
 
 
+.searchbar-cards input,
 .searchbar-posts input {
   float: top;
   color: white;
@@ -798,6 +800,11 @@ select {
   border-radius: .3rem;
   padding: 5px;
   transform: translate(407%, -310%);
+}
+
+.searchbar-posts input {
+  transform: translate(425%, -25%);
+  margin-bottom: 1%;
 }
 
 ::placeholder {

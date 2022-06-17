@@ -27,6 +27,8 @@ const [postState, setPostState] = useState(initState)
 
 const [postComments, setPostComments] = useState([])
 
+const [searchTerm, setSearchTerm] = useState("")
+
 
 function getPosts(){
         userAxios.get("/api/forumpost")
@@ -254,6 +256,22 @@ function handleMenuPosts(e){
     }
 
 
+//SEARCHBAR TERMS IN POSTS
+function handlePostSearch(e) {
+    console.log("e.target.value", e.target.value)
+    setSearchTerm({searchTerm: e.target.value})
+    console.log("searchTerm", searchTerm)
+    userAxios.get(`/api/forumpost/search/userterm?searchTerm=${e.target.value}`)
+             .then(res => {
+                setPostState({posts: res.data})
+                console.log("searchbar filtered data", res.data)
+                console.log("postState", postState)
+        })
+              .catch(err=>console.log(err.response.data.errMsg))  
+    }
+
+
+
 
     return (
         <PostCommentContext.Provider
@@ -272,7 +290,8 @@ function handleMenuPosts(e){
             combinedAddComment,
             combinedDeleteComment,
             deleteComment,
-            editComment
+            editComment,
+            handlePostSearch
            
         }}>
 

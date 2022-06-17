@@ -3,7 +3,7 @@ import React, { useContext, useEffect } from "react"
 import { LearnGameContext } from "../context/LearnGameProvider.js"
 import Flashcard from "./Flashcard.js"
 import DropMenuFlashcards from "./DropMenuFlashcards.js"
-import SearchBar from "./SearchBar.js"
+import SearchBarCards from "./SearchBarCards.js"
 
 
 
@@ -37,7 +37,7 @@ useEffect(() => {
         </div>
 
         <div className="searchbar-flashcards">
-          <SearchBar
+          <SearchBarCards
             handleFlashcardSearch={handleFlashcardSearch}
           />
         </div>
