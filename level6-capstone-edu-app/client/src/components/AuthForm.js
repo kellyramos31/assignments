@@ -8,13 +8,14 @@ export default function AuthForm(props){
     errMsg,
     inputs: {
       username, 
-      password
+      password,
+      adminCode
     } 
   } = props
   
   return (
 
-    <form className="auth-frm" onSubmit={handleSubmit}>
+    <form className="auth-form" onSubmit={handleSubmit}>
       <input 
         type="text" 
         value={username} 
@@ -28,6 +29,13 @@ export default function AuthForm(props){
         name="password" 
         onChange={handleChange} 
         placeholder="Password"
+      />
+       <input 
+        type="text" 
+        value={adminCode} 
+        name="adminCode" 
+        onChange={handleChange} 
+        placeholder="Admin Code"
       />
       <button className="sign-up-btn">{ btnText }</button>
       <p style={{color: "red"}}>{errMsg}</p>

@@ -66,10 +66,11 @@ function getGameQuestions(){
             console.log("res from learnGameProvider:", res)
              setGameState(prevState => ({
                 ...prevState,
-                questions: res.data
+                questions: res.data.sort(()=>Math.random() -.5) //note: would be better to use Fisher-Yates algorithm, but this does move them around
             }))
-             console.log("questions from getGameQuestions", res.data)
+    
         })
+
         .catch(err => console.log(err.response.data.errMsg))
     }
 
@@ -83,7 +84,24 @@ function getGameQuestions(){
     setGameScore(0)
  }   
 
- 
+ //SHUFFLE QUESTIONS ARRAY
+ //use Fisher-Yates Algorithm to shuffle the questions??
+//Fisher-Yates Algorithm:
+
+// var alphabet=["a","b","c","d","e"];
+// function randomArrayShuffle(questions) {
+//   var currentIndex = questions.length, temporaryValue, randomIndex;
+//   while (0 !== currentIndex) {
+//     randomIndex = Math.floor(Math.random() * currentIndex);
+//     currentIndex -= 1;
+//     temporaryValue = questions[currentIndex];
+//     questions[currentIndex] = questions[randomIndex];
+//     questions[randomIndex] = temporaryValue;
+//   }
+//   return questions;
+// }
+
+
 
 //SAVE USER'S GAME SCORE
  function saveMyScore(gameScore) {

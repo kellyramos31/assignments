@@ -1,6 +1,3 @@
-//NEED TO EDIT/ADJUST FOR THIS APP
-
-
 import React from "react"
 import { Outlet } from "react-router-dom"
 import Auth from "./Auth.js"

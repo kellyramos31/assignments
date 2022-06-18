@@ -1,5 +1,4 @@
 import React from "react"
-// import { LearnGameContext } from "../context/LearnGameProvider.js"
 import { GiRingedPlanet } from 'react-icons/gi'
 
 export default function MyBadges(props) {

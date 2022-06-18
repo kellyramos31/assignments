@@ -1,4 +1,3 @@
-// import React, { useState, useContext, useEffect } from "react"
 import React, { useContext, useEffect } from "react"
 import { LearnGameContext } from "../context/LearnGameProvider.js"
 import Flashcard from "./Flashcard.js"
@@ -27,11 +26,12 @@ useEffect(() => {
 
 
     
- //add functionality for teacher/admin to add/delete/edit flashcards???
-
-
+ 
     return(
+      <div>
+      <h3 className="title-learn-page">Let's Learn About Women in STEM!</h3>
       <div className="learn-container">
+    
         <div className="dropdown-flashcards">
           <DropMenuFlashcards/>
         </div>
@@ -47,6 +47,7 @@ useEffect(() => {
             {flashcards.map(flashcard=> 
                 <Flashcard flashcard={flashcard} key={flashcard._id}/>
             )}
+        </div>
         </div>
         </div>
             )

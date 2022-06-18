@@ -1,4 +1,3 @@
-// import React, { useState, useContext, useEffect } from "react"
 import React, { useContext, useEffect } from "react"
 import { LearnGameContext } from "../context/LearnGameProvider.js"
 import Question from "./Question.js"
@@ -12,7 +11,6 @@ export default function Game() {
 
   const {
     getGameQuestions,
-    gameState,
     questions
 } = useContext(LearnGameContext)
 
@@ -24,8 +22,6 @@ useEffect(() => {
     // eslint-disable-next-line  
   }, [])
 
-
-  //add functionality for teacher/admin to add/delete/edit flashcards???
 
 
     return(
@@ -40,4 +36,5 @@ useEffect(() => {
         </div>
         
         </div>
-            )}
+
+)}

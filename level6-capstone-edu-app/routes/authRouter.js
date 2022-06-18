@@ -19,6 +19,10 @@ authRouter.post("/signup", (req, res, next)=>{
 
             const newUser = new User(req.body)
 
+            if(req.body.adminCode === "secretcode"){          //checks to see if user has admin code
+                newUser.isAdmin = true;
+            }
+
             newUser.save((err, savedUser) => {
                 if(err){
                     res.status(500)

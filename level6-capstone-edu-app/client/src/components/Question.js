@@ -12,7 +12,7 @@ const [flip, setFlip]=useState(false)
 
 return(
     <div className={`questionCard ${flip ? "questionFlip" : ""}`} onClick={()=>setFlip(!flip)}>
-    {/* // <div className="flashcard-container" onClick={()=>setFlipcard(!flipcard)}> */}
+
         {!flip ?
             <div className="question-card-front">
                 {question.categorySTEM==="Science" ? "🔬"

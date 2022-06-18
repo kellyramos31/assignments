@@ -9,6 +9,7 @@ import { MdCancel } from 'react-icons/md'
 
 export default function PostText(props){
 
+
     const {
         deletePost,
         editPost 
@@ -64,9 +65,10 @@ return (
                 <h3 className="post-description-mine"><span className="my-post-descr">Description</span> <span className="my-descr-text">{" "} {props.description}</span></h3>
               </div>
                 <div className="edit-delete-post-buttons">
-                  <button className="delete-post-btn" onClick={() => deletePost(props._id)}><RiDeleteBin6Fill size={18} style={{ fill: "royalblue"}}/></button>
-                  <button className="edit-post-btn" onClick={toggleToEdit}><FaEdit size={18} style={{ fill: "royalblue"}}/></button>
-                </div>
+                    <button className="delete-post-btn" onClick={() => deletePost(props._id)}><RiDeleteBin6Fill size={18} style={{ fill: "royalblue"}}/></button>
+                    <button className="edit-post-btn" onClick={toggleToEdit}><FaEdit size={18} style={{ fill: "royalblue"}}/></button>
+                  </div>
+              
             </div>
         
       
@@ -84,7 +86,7 @@ return (
                         type="radio" 
                         id="Science"
                         name="category" 
-                        checked={props.category === "Science" || inputs.category === "Science"}//shows proper value, but does not allow edit here.
+                        checked={props.category === "Science" || inputs.category === "Science"}
                         value="Science"
                         onChange={handleEditChange}
                       /> Science

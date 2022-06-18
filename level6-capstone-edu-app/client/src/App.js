@@ -16,11 +16,7 @@ export default function App() {
 
   const { token, logout} = useContext(UserContext)
 
-
-
   console.log("token from App.js", token)
-
-  // console.log("issues from App.js", issues)
 
 
   return (
@@ -36,8 +32,6 @@ export default function App() {
               <Route
                 path="/profile"
                 element={<Profile/>}
-                //element={<Profile userIssues={userIssues}/>}
-                // element={<Profile issues={issues} getUserIssues={getUserIssues}/>}
                 navigateTo="/"
               />
 

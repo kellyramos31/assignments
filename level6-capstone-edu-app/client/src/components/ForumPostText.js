@@ -1,7 +1,6 @@
 import React, { useState, useContext } from 'react'
 import AddCommentForm from "./AddCommentForm.js"
 import CommentsOnPost from "./CommentsOnPost.js"
-// import { UserContext} from "../context/UserProvider.js"
 import { PostCommentContext } from "../context/PostCommentProvider.js"
 import { FaComments } from 'react-icons/fa'
 import { MdOutlineComment} from 'react-icons/md'
@@ -11,13 +10,6 @@ import { BiHide } from 'react-icons/bi'
 
 
 export default function ForumPostText(props){
-// const {
-//     user: {
-//         username
-//     },
-        
-//     } = useContext(UserContext)
-
 
 
 const {

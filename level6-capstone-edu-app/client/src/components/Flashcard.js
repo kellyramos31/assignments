@@ -1,5 +1,4 @@
 import React, {useState} from "react"
-// import Front from "../assets/cropped-sunset-quino-al-JFeOy62yjXk-unsplash.jpg"
 
 
 export default function Flashcard(props){
@@ -11,7 +10,6 @@ const [flipcard, setFlipcard]=useState(false)
 return(
     //beginning of line below allows for dynamic classes
     <div className={`card ${flipcard ? "flip" : ""}`} onClick={()=>setFlipcard(!flipcard)}>
-    {/* // <div className="flashcard-container" onClick={()=>setFlipcard(!flipcard)}> */}
         {!flipcard ?
              <div className="card-front">
                <img src={flashcard.imageURL} width="200rem" height="250rem" alt="cardFront"/>
@@ -31,7 +29,6 @@ return(
                     
                     </h4>      
                     <h2 className="name-flashcard">{flashcard.title}{" "}{flashcard.firstName}{" "}{flashcard.lastName}</h2>
-                    {/* <h3 className="profession-flashcard"><span>Profession</span></h3> */}
                     <div className="profession">{flashcard.profession1}</div>
                     <div className="profession">{flashcard.profession2}</div>
                     <div className="profession">{flashcard.profession3}</div>

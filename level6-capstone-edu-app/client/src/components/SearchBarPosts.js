@@ -1,6 +1,4 @@
 import React from "react"
-// import { LearnGameContext } from "../context/LearnGameProvider.js"
-
 
 
 export default function SearchBarPosts(props) {

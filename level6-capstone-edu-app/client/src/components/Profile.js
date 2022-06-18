@@ -12,7 +12,8 @@ export default function Profile() {
 
     const {
     user: {
-        username
+        username,
+        isAdmin
     }
     } = useContext(UserContext)
 
@@ -32,7 +33,7 @@ export default function Profile() {
       } = useContext(LearnGameContext)
 
 
-// const [userIssues, setUserIssues] = useState([])
+
 
 //USEEFFECT
 
@@ -46,16 +47,22 @@ export default function Profile() {
   }, [postState])
 
 
-//ADD GAME SCORE HISTORY & REWARDS/BADGES SECTIONS
-
 
 return (
 
             <div className="profile">
-                   
+                <div>
                     <h1 className="welcome-msg">Hi @{username}!</h1>
 
-                  
+                {isAdmin === true
+                ?
+                <h3 className="admin-msg">Hey, you're an ADMIN</h3>
+                :
+                null
+                }  
+                </div>
+    
+               
                 <div className="status-boxes-and-post-form">
 
                   <MyScores
@@ -70,7 +77,7 @@ return (
                   <PostForm
                         addPost={addPost}
                     />
-                    
+           
 
                 <h2 className="profile-posts-list-header">My STEM Forum Posts</h2>
                  <div className="profile-posts-list">
