@@ -185,8 +185,9 @@ issueRouter.put("/:issueId", (req, res, next) => {
 //   res.json(deletedInstance)
 // })
 
-
+//DELETE ISSUE ---AND ITS ASSOCIATED COMMENTS
 issueRouter.delete("/:issueId", (req, res, next)=> {
+    
     Issue.findByIdAndDelete(
     { _id: req.params.issueId, _user: req.user._id },
     (err, deletedIssue) => {
@@ -194,6 +195,15 @@ issueRouter.delete("/:issueId", (req, res, next)=> {
             res.status(500);
             return next(err);
         }
+
+    Comment.deleteMany({_issue: req.params.issueId}, (err, comments)=>{
+        if(err) {
+            res.status(500)
+            return next(err)
+        }
+        console.log("all comments for specified post id", comments)
+        return res.status(200).send(comments)
+    })
         return res.status(200).send(`Successfully deleted: ${deletedIssue.title}`);
     })
 })

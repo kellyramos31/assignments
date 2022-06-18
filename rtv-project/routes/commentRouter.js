@@ -28,6 +28,20 @@ commentRouter.get("/user", (req, res, next)=>{
 })
 
 
+//DELETE ALL COMMENTS FOR A SPECIFIC ISSUE
+commentRouter.delete("/issue/:issueId", (req, res, next)=>{
+    Comment.deleteMany({_issue: req.params.issueId}, (err, comments)=>{
+        if(err) {
+            res.status(500)
+            return next(err)
+        }
+        console.log("all comments for specified post id", comments)
+        return res.status(200).send(comments)
+    })
+})
+
+
+
 //NOTE:  THIS ONE WORKS TO ADD COMMENT, BUT....NOT PUSHING TO ARRAY
 // commentRouter.post("/", (req, res, next) => {
 //     req.body._user = req.user._id
