@@ -13,7 +13,10 @@ const [flip, setFlip]=useState(false)
 return(
     <div className={`questionCard ${flip ? "questionFlip" : ""}`} onClick={()=>setFlip(!flip)}>
 
-        {!flip ?
+        {!flip 
+        
+        ?
+
             <div className="question-card-front">
                 {question.categorySTEM==="Science" ? "🔬"
                 :
@@ -25,9 +28,12 @@ return(
                 }
     
             </div>
-            :
-                <div className="question-card-back">
-                    <h4>{question.value}{" "}points</h4>
+
+        :
+            <div className="question-card-back">
+
+                <h4>{question.value}{" "}points</h4>
+
                 <h2 className="question-category">      
            
                     {question.categorySTEM==="Science" ? "🔬"
@@ -37,24 +43,27 @@ return(
                     question.categorySTEM==="Engineering" ? "⚙️"
                     : 
                     "➗"
-                }
+                    }
                    
                 </h2>
-                    <h3>{question.answer}</h3>
 
-                    <div className="question-options" index={question.index}>
+                
+                <h3>{question.answer}</h3>
+
+                <div className="question-options" index={question.index}>
+
                         {question.questionOptions.map(questionOption=>
                             <QuestionChoice key={questionOption._id} question={question} questionOption={questionOption}/>
                     )}
-                        </div>
+                        
+                </div>
 
                        
             </div>
+
         }
 
-            <div>
-       
-        </div>
         </div>
 
-)}
+)
+}

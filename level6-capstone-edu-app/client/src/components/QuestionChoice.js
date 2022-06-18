@@ -15,16 +15,17 @@ const {
 return(
     <div>
      
-    <div className="indiv-option" >
+        <div className="indiv-option" >
        
-        <div key="question.questionOption._id" onClick={()=>handleGameAnswerClick(question._user, question, questionOption)}>
-            <h2>{questionOption.questionText}</h2>
+            <div key="question.questionOption._id" onClick={()=>handleGameAnswerClick(question._user, question, questionOption)}>
+            
+                <h2>{questionOption.questionText}</h2>
+
+            </div>
 
  
         </div>
-
- 
-    </div>
+    
     </div>
           
 )}

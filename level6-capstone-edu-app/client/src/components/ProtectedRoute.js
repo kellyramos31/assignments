@@ -13,6 +13,7 @@ export default function ProtectedRoute(props){
 
 
         return token ?
+        
             <Outlet />
             :
             <Auth />

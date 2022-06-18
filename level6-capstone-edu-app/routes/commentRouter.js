@@ -105,7 +105,6 @@ commentRouter.delete("/:commentId", (req, res, next)=> {
 //         })
 //     })
 
-//DELETE ALL COMMENTS FOR A SPECIFIED POST (for when post is deleted)
 
 
 //EDIT COMMENT
@@ -123,6 +122,8 @@ commentRouter.put("/:commentId", (req, res, next) => {
             return res.send(comment);
         })
 })
+
+//NEED DELETE ALL COMMENTS WITH SPECIFIED POST ID
 
 
 

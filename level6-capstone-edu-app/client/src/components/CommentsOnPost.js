@@ -15,7 +15,8 @@ export default function CommentsOnPost(props){
  
     const {
     user: {
-        username
+        username,
+        // isAdmin
     },
         
     } = useContext(UserContext)
@@ -46,33 +47,38 @@ return(
             <h3 className="public-comments">Comments
                 {_comments.map((_comment, index)=> 
                                              
-                         <li key={_comment._id} id={_comment._id} index={index} className="comment-list-item">
-                        <span className="user-name-span-comment">{_comment._user.username}</span> 
-                        {" "}{_comment.commentText}
-                
+                <li key={_comment._id} id={_comment._id} index={index} className="comment-list-item">
+                <span className="user-name-span-comment">{_comment._user.username}</span> {" "}{_comment.commentText}
+               
+         
 
-                     
-           {username === _comment._user.username 
+            {username === _comment._user.username  //NOTE: tried adding (or) "|| isAdmin" here=>which allowed admin to edit comment, but not delete it?
+            
             ? 
 
-            <div key={index} id={_comment._id} className="edit-del-comment-btns"> 
-                        <div className="edit-del-btns-group">
-                           <button className="delete-comment-btn" onClick={() => combinedDeleteComment(_comment._id, _comment._post)}><RiDeleteBin6Fill size={15} style={{ fill: "royalblue"}}/></button>
-                           {/* <button className="edit-comment-btn" onClick={()=>toggleToEdit(postComment._id, postComment._post)}><FaEdit size={15} style={{ fill: "royalblue"}}/></button> */}
-                            <button className="edit-comment-btn" onClick={()=>toggleToEdit(index, _comment._id, _comment._post)}><FaEdit size={15} style={{ fill: "royalblue"}}/></button> 
-                         </div>
-            </div>            
-          :
-         <div key={index} id={_comment._id}>
-             {null}    
-        </div>    
-       }             
+            <div key={index} id={_comment._id} className="edit-del-comment-btns">
+
+                    <div className="edit-del-btns-group">
+                        <button className="delete-comment-btn" onClick={() => combinedDeleteComment(_comment._id, _comment._post)}><RiDeleteBin6Fill size={15} style={{ fill: "royalblue"}}/></button>
+                        <button className="edit-comment-btn" onClick={()=>toggleToEdit(index, _comment._id, _comment._post)}><FaEdit size={15} style={{ fill: "royalblue"}}/></button> 
+                    </div>
+
+            </div>
+
+            :
+
+            <div key={index} id={_comment._id}>
+                {null}    
+            </div>
+
+            }             
                         
                          
             {isEditing ===_comment._id
+
             ?
               
-                <div key={index} id={_comment._id}>
+            <div key={index} id={_comment._id}>
 
                   <EditCommentForm
                     key={_comment._id}
@@ -81,15 +87,23 @@ return(
                     toggleToEdit={toggleToEdit}
                 />
          
-               </div>
-                :
+            </div>
+
+            :
+
             <div>
                 {null}
             </div>
+
             }          
 
             </li>
-                )}                
+
+            )}
+
             </h3>
- </div>
+        </div>
+
 )}
+
+

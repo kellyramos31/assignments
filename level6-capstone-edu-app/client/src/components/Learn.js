@@ -29,27 +29,29 @@ useEffect(() => {
  
     return(
       <div>
-      <h3 className="title-learn-page">Let's Learn About Women in STEM!</h3>
-      <div className="learn-container">
+          <h3 className="title-learn-page">Let's Learn About Women in STEM!</h3>
+      
+          <div className="learn-container">
     
-        <div className="dropdown-flashcards">
-          <DropMenuFlashcards/>
-        </div>
+                <div className="dropdown-flashcards">
+                  <DropMenuFlashcards/>
+                </div>
 
-        <div className="searchbar-flashcards">
-          <SearchBarCards
-            handleFlashcardSearch={handleFlashcardSearch}
-          />
-        </div>
-    
+                <div className="searchbar-flashcards">
+                  <SearchBarCards
+                    handleFlashcardSearch={handleFlashcardSearch}
+                  />
+                </div>
 
-        <div className="flashcard-learn-container">
-            {flashcards.map(flashcard=> 
-                <Flashcard flashcard={flashcard} key={flashcard._id}/>
-            )}
-        </div>
-        </div>
-        </div>
+                <div className="flashcard-learn-container">
+                    {flashcards.map(flashcard=> 
+                        <Flashcard flashcard={flashcard} key={flashcard._id}/>
+                    )}
+                </div>
+
+          </div>
+
+      </div>
             )
     }
         

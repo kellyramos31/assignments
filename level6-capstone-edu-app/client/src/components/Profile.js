@@ -50,9 +50,11 @@ export default function Profile() {
 
 return (
 
-            <div className="profile">
-                <div>
-                    <h1 className="welcome-msg">Hi @{username}!</h1>
+    <div className="profile">
+
+            <div>
+
+                <h1 className="welcome-msg">Hi @{username}!</h1>
 
                 {isAdmin === true
                 ?
@@ -60,10 +62,11 @@ return (
                 :
                 null
                 }  
-                </div>
+
+            </div>
     
                
-                <div className="status-boxes-and-post-form">
+            <div className="status-boxes-and-post-form">
 
                   <MyScores
                       myScores={myScores}
@@ -73,20 +76,25 @@ return (
                       badgesAwarded={badgesAwarded}
                   />
                 
-         </div>
-                  <PostForm
-                        addPost={addPost}
-                    />
+            </div>
+
+
+            <PostForm
+                addPost={addPost}
+            />
            
 
-                <h2 className="profile-posts-list-header">My STEM Forum Posts</h2>
-                 <div className="profile-posts-list">
-                     <PostList
+            <h2 className="profile-posts-list-header">My STEM Forum Posts</h2>
+
+            <div className="profile-posts-list">
+
+                    <PostList
                         userPosts={userPosts}
                      />
                
-                </div>
             </div>
+            
+    </div>
 
         )
     }

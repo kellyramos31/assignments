@@ -5,29 +5,36 @@ export default function Flashcard(props){
 
 const { flashcard } = props
 
-const [flipcard, setFlipcard]=useState(false)
+const [flipcard, setFlipcard] = useState(false)
 
 return(
     //beginning of line below allows for dynamic classes
     <div className={`card ${flipcard ? "flip" : ""}`} onClick={()=>setFlipcard(!flipcard)}>
-        {!flipcard ?
-             <div className="card-front">
-               <img src={flashcard.imageURL} width="200rem" height="250rem" alt="cardFront"/>
+
+            {!flipcard
+
+            ?
+
+            <div className="card-front">
+                <img src={flashcard.imageURL} width="200rem" height="250rem" alt="cardFront"/>
             </div>
-       
+        
             :
-                <div className="card-back" key={flashcard._id}>
+
+            <div className="card-back" key={flashcard._id}>
+
                     <h4 className="flashcard-category">
-                        {flashcard.categorySTEM ==="Science" ? "🔬"
-                        :
-                        flashcard.categorySTEM==="Tech" ? "💻"
-                        :
-                        flashcard.categorySTEM==="Engineering" ? "⚙️"
-                        : 
-                        "➗"
-                }
-                    
-                    </h4>      
+                            {flashcard.categorySTEM ==="Science" ? "🔬"
+                            :
+                            flashcard.categorySTEM==="Tech" ? "💻"
+                            :
+                            flashcard.categorySTEM==="Engineering" ? "⚙️"
+                            : 
+                            "➗"
+                            }  
+                    </h4>
+
+
                     <h2 className="name-flashcard">{flashcard.title}{" "}{flashcard.firstName}{" "}{flashcard.lastName}</h2>
                     <div className="profession">{flashcard.profession1}</div>
                     <div className="profession">{flashcard.profession2}</div>
@@ -46,8 +53,11 @@ return(
                     <h3 className="quote">{flashcard.quote2}</h3>
                     <h3 className="quote">{flashcard.quote3}</h3>
                     <h6 className="attribution">{flashcard.imageAttribution}</h6> 
+
             </div>
-        }
-        </div>
+            
+            }
+
+    </div>
 
 )}

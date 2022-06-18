@@ -8,13 +8,14 @@ import Profile from "./components/Profile.js"
 import Forum from "./components/Forum.js"
 import Learn from "./components/Learn.js"
 import Game from "./components/Game.js"
+import AdminDashboard from "./components/AdminDashboard.js"
 import ProtectedRoute from "./components/ProtectedRoute.js"
 import { UserContext } from "./context/UserProvider.js"
 
 
 export default function App() {
 
-  const { token, logout} = useContext(UserContext)
+  const { isAdmin, token, logout} = useContext(UserContext)
 
   console.log("token from App.js", token)
 
@@ -26,7 +27,7 @@ export default function App() {
 
       <Routes>
 
-        <Route exact path="/" element={token ? <Navigate to="/profile/"/> : <Auth/>}/>
+        <Route exact path="/" element={token ? <Navigate to="/profile/"/> : <Auth/> }/>
 
         <Route element={<ProtectedRoute token={token}/>}>
               <Route
@@ -52,6 +53,12 @@ export default function App() {
                 element={<Game/>}
                 navigateTo="/"
               />
+
+                {/* <Route
+                path="/admin"
+                element={<AdminDashboard/>}
+                navigateTo="/"
+              /> */}
 
         </Route>
 

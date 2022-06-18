@@ -27,25 +27,31 @@ function handleChangeEdit(e){
 
 
 return(
-        <div>
+    <div>
+
         <div className="edit-comment-form-group">
+
             <form className="edit-comment-form" onSubmit={()=>editComment(inputsCommentEdit, id)}>
-                                                <input
-                                                     type="text"
-                                                     defaultValue={_comment.commentText}
-                                                     inputs={_comment.commentText || inputsCommentEdit}
-                                                     name="commentText"
-                                                     onChange={handleChangeEdit}
-                                                     placeholder="Comment Text"
-                                                 />
-                                                <div className="edit-comments-grp-btns">
-                                                    <button className="submit-edited-comment-btn">Submit Edit</button>
-                                                    <button  className="cancel-edit-comment-btn" onClick={()=>toggleToEdit(id, _comment._post)}><MdCancel
-                size={20} style={{ fill: "royalblue"}}/></button>
-                                                </div>
+
+                    <input
+                        type="text"
+                        defaultValue={_comment.commentText}
+                        inputs={_comment.commentText || inputsCommentEdit}
+                        name="commentText"
+                        onChange={handleChangeEdit}
+                        placeholder="Comment Text"
+                    />
+
+                <div className="edit-comments-grp-btns">
+                    <button className="submit-edited-comment-btn">Submit Edit</button>
+                    <button  className="cancel-edit-comment-btn" onClick={()=>toggleToEdit(id, _comment._post)}><MdCancel
+                    size={20} style={{ fill: "royalblue"}}/></button>
+                </div>
+
             </form>
 
         </div>
+
      </div>
 )}
       

@@ -12,7 +12,9 @@ const {
 
     return (
         <div>
+
             <div className="dropdown-menu">
+
                 <h5 className="dropdown-title">Posts By Category</h5>
 
                 <select onChange={handleMenuPosts} className="dropdown">
@@ -22,8 +24,11 @@ const {
                     <option value="Engineering">Engineering</option>
                     <option value="Math">Math</option>
                 </select>
+
                 <button className="return-to-all-posts-btn" onClick={getPosts}>View All Posts</button>
+
             </div>
+            
         </div>
     )
 }

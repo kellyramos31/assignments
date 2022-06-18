@@ -34,29 +34,33 @@ export default function Forum() {
 
 
     return (
-        <div className="forum">
+      <div className="forum">
+
           <h3 className="title-forum-page">Let's Talk About STEM!</h3>
+            
+            <div className="dropdown-posts">
+
+                <DropMenuPosts
+                  handleMenuPosts={handleMenuPosts}
+                  getPosts={getPosts}
+                />
+
+            </div>
+
+            <div>
+
+                <SearchBarPosts
+                  handlePostSearch={handlePostSearch}
+                />
+
+            </div>
+
           
-          <div className="dropdown-posts">
-            <DropMenuPosts
-              handleMenuPosts={handleMenuPosts}
-              getPosts={getPosts}
-            />
-          </div>
+                <ForumPostList 
+                  posts={posts}
+                  userPosts={userPosts}
+                />
 
-          <div>
-            <SearchBarPosts
-              handlePostSearch={handlePostSearch}
-            />
-          </div>
-
-         
-          <ForumPostList 
-                posts={posts}
-                userPosts={userPosts}
-            />
-
-        </div>
+      </div>
     )
 }
-

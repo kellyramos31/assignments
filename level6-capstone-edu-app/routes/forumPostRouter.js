@@ -22,12 +22,9 @@ Post.find({})
 })
 
 
-
 //GET POST FOR INDIVIDUAL USER -- NOTE:  this sorts the post, but doesn't give user specific post now.
 
 forumPostRouter.get("/user", (req, res, next)=>{
-    // const filter = { _user: req.body._user} //pretty sure problem = this line here
-    //const ObjectId = require('mongoose').Types.ObjectId
     const ObjectId = require('mongodb').ObjectId            //problem with matching the ID(this solution is from Stack Overflow)   
     Post.aggregate([
        { $match: { _user: new ObjectId(req.user._id) } },  //problem with matching the ID(this solution is from Stack Overflow)
@@ -107,26 +104,6 @@ forumPostRouter.put("/:postId", (req, res, next) => {
 //     })
 // })
 
-//DELETE ISSUE--this works but leaves comments with no issue
-// issueRouter.delete("/:issueId", (req, res, next)=> {
-//     Issue.findByIdAndDelete(
-//     { _id: req.params.issueId, _user: req.user._id },
-//     (err, deletedIssue) => {
-//         if (err) {
-//             res.status(500);
-//             return next(err);
-//         }
-//         return res.status(200).send(`Successfully deleted: ${deletedIssue.title}`);
-//     })
-// })
-
-// const Parent  = require("./parent"); 
-
-// router.delete('/delete/instance' , async (req,res) => {
-//   await Parent.updateOne({ childrens: '612cd0d8f9553c9f243db691' }, { $pull: { childrens: '612cd0d8f9553c9f243db691' }})
-//   const deletedInstance = await Children.findOneAndDelete({ _id: '612cd0d8f9553c9f243db691'})
-//   res.json(deletedInstance)
-// })
 
 //DELETE A FORUM POST
 forumPostRouter.delete("/:postId", (req, res, next)=> {
@@ -197,90 +174,6 @@ forumPostRouter.put("/deleteCommentFromPost/:postId", (req, res, next)=> {
     })
 
    
-
-
-
-
-//NOTE:  ****USER SHOULD ONLY BE ABLE TO UPVOTE/DOWNVOTE AN ISSUE ONCE****NEED TO FIGURE THIS OUT
-
-//UPVOTE AN ISSUE--INCREMENT -- this one works to increment vote count --but can vote as many times as want to...
-// forumPostRouter.put("/upvote/:postId", (req, res, next)=> {			
-//   Post.findByIdAndUpdate(			
-//   {_id: req.params.postId, _user: req.user._id },	
-//   { $inc: {upVotes: 1, totalVotersVotedCount: 1} },			
-//   {new: true},			
-//   (err, updatedPost)=> {			
-//       if(err){			
-//           res.status(500)			
-//           return next(err)			
-//       }			
-//       return res.status(201).send(updatedPost)			
-//    }			
-//   )			
-// })
-
-//VOTE ON AN ISSUE (adds to _voters array but only ONCE) -- NOTE:  seems to ??MAYBE?? work NOW -- BUT...how implement with rest on front-end??
-// forumPostRouter.put("/voter/vote/:postId", (req, res, next)=> {		
-
-// Post.updateOne(
-//     {_id: req.params.postId}, 
-//     { $addToSet: { _voters: req.user._id } },
-
-
-// (err, posts)=> {
-//     if (err) {
-//             res.status(500);
-//             return next(err);
-//         }
-//         return res.status(201).send(posts);
-// })
-// })
-		
-
-
-//DOWNVOTE AN ISSUE--DECREMENT this works to decrement vote count === but can downVote as many times as want
-// forumPostRouter.put("/downvote/:postId", (req, res, next)=> {			
-//   Post.findByIdAndUpdate(			
-//   {_id: req.params.postId, _user: req.user._id },		//maybe don't need _user: req.user._id here??
-//   { $inc: {downVotes: 1, totalVotersVotedCount: 1} },			
-//   {new: true},			
-//   (err, updatedPost)=> {			
-//       if(err){			
-//           res.status(500)			
-//           return next(err)			
-//       }			
-//       return res.status(201).send(updatedPost)		
-//    }			
-//   )			
-// })	
-
-
-//MAYBE THIS IS JUST CANCEL A VOTE -- (removes from _voters array)
-//NOTES:  maybe use $pull (or is there an opposite to $addToSet??)
-// issueRouter.put("/voter/cancelvote/:issueId", (req, res, next)=> {		
-
-// Issue.updateOne(
-//     {_id: req.params.issueId}, 
-//     { $pull: { _voters: req.user._id} },
-
-
-// (err, issues)=> {
-//     if (err) {
-//             res.status(500);
-//             return next(err);
-//         }
-//         return res.status(201).send(issues);
-// })
-// })
-
-
-// policies.aggregate([
-//     { "$project": {
-//        "count": { "$size": "$exploits" }
-//     }}
-// ],function(err,doc) {
-
-// });
 
 //INCREMENT TOTAL # OF COMMENTS ON POST
 forumPostRouter.put("/increment/:postId", (req, res, next) => {
@@ -356,7 +249,7 @@ forumPostRouter.get("/search/category", (req, res, next) => {
 
 
 
-//ANOTHER ATTEMPT AT CREATING SEARCH BAR ROUTE:
+//SEARCH BAR FOR POSTS ON FORUM PAGE
 //CREATED TEXT INDEX INSIDE MONGODB FOR POST TEXT FIELDS (category, title, description)
 forumPostRouter.get("/search/userterm", (req, res, next)=> {
     const { searchTerm } = req.query

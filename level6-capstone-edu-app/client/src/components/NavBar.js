@@ -7,12 +7,17 @@ export default function NavBar(props){
   const { logout } = props
   
   return (
+
     <nav className="navbar">
-      <Link to="/profile">Profile</Link>
-      <Link to="/forum">Forum</Link>
-      <Link to="/learn">Learn</Link>
-      <Link to="/play">Play</Link>
-      <button className="logout-btn" onClick={logout}>Logout</button>
+
+        <Link to="/profile">Profile</Link>
+        <Link to="/forum">Forum</Link>
+        <Link to="/learn">Learn</Link>
+        <Link to="/play">Play</Link>
+        {/* <Link to="/admin">Admin Dashboard</Link> */}
+        <button className="logout-btn" onClick={logout}>Logout</button>
+
     </nav>
   )
+
 }
