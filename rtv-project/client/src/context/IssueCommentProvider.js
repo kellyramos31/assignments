@@ -129,7 +129,7 @@ function getComments(){
 //     this.Comment.remove({ _issue: this.issueId }, next);
 // });
 
-
+//DELETE ISSUE
 function deleteIssue(issueId) {
         console.log("issueId:", issueId)
 ;
@@ -210,7 +210,8 @@ function combinedDeleteComment (commentId, issueId){
 
 //DELETE USER'S COMMENT
 //NOTE******this filters it out of comments but does not clear id out of the issue in _comments array*****
-    function deleteComment(commentId) {
+    function deleteComment(commentId, issueId) {
+        console.log("issueId:", issueId)
         console.log("commentId:", commentId)
         userAxios.delete(`/api/comment/${commentId}`)
              .then(res => {
@@ -482,7 +483,6 @@ function removeVote(issueId){
             addComment,
             combinedAddComment,
             combinedDeleteComment,
-            deleteComment,
             commentUpVote,
             commentDownVote,
             editComment,

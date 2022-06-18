@@ -111,6 +111,7 @@ commentRouter.post("/", (req, res, next) => {
             return next(err)
         }
    
+        
     const issueId = req.body._issue
       
         Issue.findByIdAndUpdate(
@@ -198,18 +199,51 @@ commentRouter.post("/", (req, res, next) => {
 // export default userController;
 
 
-//DELETE COMMENT -- this works but leaves comment ids still attached to parent issue in array
+
+//DELETE COMMENT (but leaves the REF in the associated issue)
 commentRouter.delete("/:commentId", (req, res, next)=> {
-    Comment.findOneAndDelete(
+   
+   
+Comment.findByIdAndDelete(
     { _id: req.params.commentId, _user: req.user._id },
     (err, deletedComment) => {
         if (err) {
             res.status(500);
             return next(err) 
         }
-        return res.status(200).send(`Successfully deleted comment: ${deletedComment.commentText}`);
-    })
+  return res.send(deletedComment);
+
+  })
 })
+
+//DELETE COMMENT & ITS REF IN ISSUE 
+//****this works on backend with postman -- BUT...NOT on frontend****
+
+// commentRouter.delete("/post/:commentId", (req, res, next)=> {
+   
+   
+//     Comment.findByIdAndDelete(
+//     { _id: req.params.commentId, _user: req.user._id },
+//     (err, deletedComment) => {
+//         if (err) {
+//             res.status(500);
+//             return next(err) 
+//         }
+     
+
+//     Issue.findByIdAndUpdate(
+//             {_id: req.body._issue, _user: req.user._id},
+//             { $pull: { "_comments": req.params.commentId}},
+//         (err, updatedIssue) => {
+//             if (err) {
+//                 console.log("Error");
+//                 res.status(500);
+//                 return next(err);
+//             }
+//             return res.send(updatedIssue);
+//     })
+// })
+// })
 
 //DELETE COMMENT from _comments array in issue model
 commentRouter.get("/deleteCommentFromIssue/:commentId", (req, res, next)=> {
