@@ -106,9 +106,13 @@ console.log("_post from getCommentsSpecifiedPost", postId)
         .catch(err=>console.log(err.response.data.errMsg))
     }
 
-    
+//COMBINED DELETE POST & ALL ASSOCIATED COMMENTS
+    // function combinedDeletePostAndComments (postId){
+    //     deleteAllPostComments(postId)
+    //     deletePost(postId) 
+    // }    
 
-
+//DELETE POST
 function deletePost(postId) {
         console.log("postId:", postId)
 ;
@@ -120,6 +124,21 @@ function deletePost(postId) {
         
             .catch(err=>console.log(err.response.data.errMsg))
     }
+
+
+//DELETE ALL ASSOCIATED COMMENTS WHEN DELETE A POST
+
+// function deleteAllPostComments(postId){
+//     console.log("delete all post comments hit")
+//         userAxios.delete(`api/comment/post${postId}`)
+//              .then(res => {
+//                 setPostState(prevState=> ({postComments: prevState.postComments.filter(postComment => postComment._id !== postId)}))
+//                 getPosts()
+//              })
+        
+//             .catch(err=>console.log(err.response.data.errMsg))
+
+// }
 
 
 //EDIT USER'S ISSUE

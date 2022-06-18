@@ -105,7 +105,7 @@ forumPostRouter.put("/:postId", (req, res, next) => {
 // })
 
 
-//DELETE A FORUM POST
+//DELETE A FORUM POST -- INCLUDING ITS ASSOCIATED COMMENTS
 forumPostRouter.delete("/:postId", (req, res, next)=> {
     Post.findByIdAndDelete(
     { _id: req.params.postId, _user: req.user._id },
@@ -114,9 +114,18 @@ forumPostRouter.delete("/:postId", (req, res, next)=> {
             res.status(500);
             return next(err);
         }
+
+    Comment.deleteMany({_post: req.params.postId}, (err, comments)=>{
+        if(err) {
+            res.status(500)
+            return next(err)
+        }
+
         return res.status(200).send(`Successfully deleted: ${deletedPost.title}`);
     })
 })
+})
+
 
 
 //DELETE all comments associated with Issue

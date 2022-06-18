@@ -39,6 +39,17 @@ commentRouter.get("/post/:postId", (req, res, next)=>{
     })
 })
 
+//DELETE ALL COMMENTS FOR A SPECIFIC POST
+commentRouter.delete("/post/:postId", (req, res, next)=>{
+    Comment.deleteMany({_post: req.params.postId}, (err, comments)=>{
+        if(err) {
+            res.status(500)
+            return next(err)
+        }
+        console.log("all comments for specified post id", comments)
+        return res.status(200).send(comments)
+    })
+})
 
 
 //COMBINES THE TWO ROUTES DIRECTLY ABOVE (THE ADD COMMENT & UPDATE COMMENTS ARRAY WITHIN ISSUES REQUESTS)***
@@ -88,6 +99,12 @@ commentRouter.delete("/:commentId", (req, res, next)=> {
     })
 })
 
+
+//DELETE ALL COMMENTS FOR A SPECIFIED POST ID (in comments database it will be an _post)
+
+
+
+
 //DELETE COMMENT from _comments array in post model-- not working
 // commentRouter.put("/deleteCommentFromPost/:commentId", (req, res, next)=> {
 //         // const issueId = req.body._issue
@@ -123,7 +140,6 @@ commentRouter.put("/:commentId", (req, res, next) => {
         })
 })
 
-//NEED DELETE ALL COMMENTS WITH SPECIFIED POST ID
 
 
 

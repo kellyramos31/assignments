@@ -44,7 +44,7 @@ export default function Profile() {
     getMyGameScores()
     getBadgeCount()
     // eslint-disable-next-line  
-  }, [postState])
+  }, [postState])  
 
 
 
