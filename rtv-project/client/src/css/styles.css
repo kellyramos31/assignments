@@ -744,7 +744,6 @@ a:hover {
 
 
 
-
 @media screen and (max-width: 1495px) {
     .all-issues-container {
         width: 25%;
@@ -975,44 +974,44 @@ a:hover {
     }
 
     .auth-container {
-        background-size: contain;
+        background-size: cover;
         background-repeat: no-repeat;
-        margin-top: -20%;
-        padding-bottom: 100%;
+        margin-left: -40%;
+
     }
 
     .app-title {
         color: rgb(253, 201, 31);
         background-color: #0F4C75;
-        width: 105%;
+        width: 107%;
         font-weight: bold;
         font-size: large;
-        margin-left: -5%;
+        margin-left: -7%;
         margin-bottom: 9%;
         margin-top: -5%;
-        padding: 5px;
+        padding: 5.5px;
         border-radius: 4px;
     }
 
     .auth-container>form {
-        width: 45%;
-        height: 20%;
-        background-color: rgba(209, 207, 207, 0.734);
-        margin-top: 144%;
-        margin-bottom: -2%;
+        width: 22%;
+        height: 18%;
+        background-color: rgba(209, 207, 207, 0.9);
+        transform: translate(90%, 77%);
+        padding-bottom: 12%;
     }
 
     .auth-container>form>input {
         font-size: small;
         width: 100%;
-        margin-left: -5%;
-        margin-top: -7%;
+        margin-left: -8%;
+        margin-top: -6%;
     }
 
     .auth-container>form>button {
         font-size: small;
-        width: 110%;
-        margin-left: -5%;
+        width: 114%;
+        margin-left: -7%;
         margin-top: -6%;
     }
 
@@ -1021,8 +1020,9 @@ a:hover {
         transform: translateY(60%);
     }
 
-    .member-or-not {
+    .auth-container>p {
         font-size: small;
-        margin-top: 2%;
+        transform: translate(127%, 800%);
+        color: black;
     }
 }
