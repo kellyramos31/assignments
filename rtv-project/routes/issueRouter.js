@@ -64,7 +64,6 @@ issueRouter.put("/sort/:issueId", (req, res, next) => {
 
 
 
-
 //GET ISSUES FOR INDIVIDUAL USER -- NOTE:  this sorts the issues, but doesn't give user specific issues now.
 
 issueRouter.get("/user", (req, res, next)=>{
@@ -149,41 +148,7 @@ issueRouter.put("/:issueId", (req, res, next) => {
         })
 })
 
-//DELETE ISSUE--this works but leaves comments with no issue
-// issueRouter.delete("/:issueId", (req, res, next)=> {
-//     Issue.findOneAndDelete(
-//     { _id: req.params.issueId, _user: req.user._id },
-//     (err, deletedIssue) => {
-//         if (err) {
-//             res.status(500);
-//             return next(err);
-//         }
-//         return res.status(200).send(`Successfully deleted: ${deletedIssue.title}`);
-//     })
-// })
 
-//DELETE ISSUE--this works but leaves comments with no issue
-
-
-// issueRouter.delete("/:issueId", (req, res, next)=> {
-//     Issue.findByIdAndDelete(
-//     { _id: req.params.issueId, _user: req.user._id },
-//     (err, deletedIssue) => {
-//         if (err) {
-//             res.status(500);
-//             return next(err);
-//         }
-//         return res.status(200).send(`Successfully deleted: ${deletedIssue.title}`);
-//     })
-// })
-
-// const Parent  = require("./parent"); 
-
-// router.delete('/delete/instance' , async (req,res) => {
-//   await Parent.updateOne({ childrens: '612cd0d8f9553c9f243db691' }, { $pull: { childrens: '612cd0d8f9553c9f243db691' }})
-//   const deletedInstance = await Children.findOneAndDelete({ _id: '612cd0d8f9553c9f243db691'})
-//   res.json(deletedInstance)
-// })
 
 //DELETE ISSUE ---AND ITS ASSOCIATED COMMENTS
 issueRouter.delete("/:issueId", (req, res, next)=> {
@@ -207,19 +172,6 @@ issueRouter.delete("/:issueId", (req, res, next)=> {
 })
 
 
-//DELETE all comments from associated with Issue
-// issueRouter.delete("/:issueId", (req, res, next)=> {
-//     Comment.findByIdAndDelete(
-//     { _issue: req.params.issueId, _user: req.user._id },
-//     { $pull: {_comments: req.body._id}},
-//     (err, deletedComment) => {
-//         if (err) {
-//             res.status(500);
-//             return next(err);
-//         }
-//         return res.status(200).send(`Successfully deleted: ${deletedComment.commentText}`);
-//     })
-// })
 
 //DELETE specified comment from _comment array
 issueRouter.put("/deleteCommentFromIssue/:issueId", (req, res, next)=> {
@@ -240,7 +192,6 @@ issueRouter.put("/deleteCommentFromIssue/:issueId", (req, res, next)=> {
     })
 
    
-
 
 
 
@@ -298,32 +249,7 @@ issueRouter.put("/downvote/:issueId", (req, res, next)=> {
 })	
 
 
-//MAYBE THIS IS JUST CANCEL A VOTE -- (removes from _voters array)
-//NOTES:  maybe use $pull (or is there an opposite to $addToSet??)
-// issueRouter.put("/voter/cancelvote/:issueId", (req, res, next)=> {		
 
-// Issue.updateOne(
-//     {_id: req.params.issueId}, 
-//     { $pull: { _voters: req.user._id} },
-
-
-// (err, issues)=> {
-//     if (err) {
-//             res.status(500);
-//             return next(err);
-//         }
-//         return res.status(201).send(issues);
-// })
-// })
-
-
-// policies.aggregate([
-//     { "$project": {
-//        "count": { "$size": "$exploits" }
-//     }}
-// ],function(err,doc) {
-
-// });
 
 //INCREMENT TOTAL # OF COMMENTS ON ISSUE
 issueRouter.put("/increment/:issueId", (req, res, next) => {

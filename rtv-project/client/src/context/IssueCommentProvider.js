@@ -119,20 +119,11 @@ function getComments(){
     }
 
     
-//DELETE USER'S ISSUE
-//NEED TO ADD SOMETHING TO DELETE RELATED COMMENTS ALSO -- they seem to persist even though issue deletes
 
-//do i actually need to chain .filter and .map (or similiar) in my setIssueState???
-
-//     Issue.pre('deleteIssue', function(next) {
-//     // Remove all the assignment docs that reference the removed person.
-//     this.Comment.remove({ _issue: this.issueId }, next);
-// });
 
 //DELETE ISSUE
 function deleteIssue(issueId) {
         console.log("issueId:", issueId)
-;
         userAxios.delete(`/api/issue/${issueId}`)
              .then(res => {
                 setIssueState(prevState=> ({userIssues: prevState.userIssues.filter(userIssue => userIssue._id !== issueId)}))
@@ -200,56 +191,53 @@ function addCommentTally (issueId) {
 } 
 
 
-//*** how delete the _comments refs from the issue for the deleted comment???? */
-//COMBINED DELETE COMMENT
-function combinedDeleteComment (commentId, issueId){
-  deleteComment(commentId)
-  minusCommentTally(issueId)
-  // deleteCommentFromIssueArray(issueId, commentId)
-}
 
-//DELETE USER'S COMMENT
-//NOTE******this filters it out of comments but does not clear id out of the issue in _comments array*****
+//DELETE USER'S COMMENT (this deletes the comment record, decrements the comment tally on the issue & deletes the _comments ref in the post record)
     function deleteComment(commentId, issueId) {
         console.log("issueId:", issueId)
         console.log("commentId:", commentId)
         userAxios.delete(`/api/comment/${commentId}`)
              .then(res => {
                 setIssueState(prevState=> ({issues: prevState.issues.filter(issue=> issue._comment !== commentId)}))
-                // getUserIssues()
-                // getIssues()
+                deleteCommentFromIssueArray(commentId, issueId)
+                minusCommentTally(issueId)
              })
         
             .catch(err=>console.log(err.response.data.errMsg))
     }
 
- 
- //DELETE COMMENT FROM ARRAY of comments ids (_comments) in the issue
-//  function deleteCommentFromIssueArray(issueId, commentId) {
-//     console.log("comment._id to delete:", commentId)
-//     console.log("issue to update the comments array in:", issueId)
-//     userAxios.put(`/api/issue/deleteCommentFromIssue/${issueId}`)
-//             // console.log("commentId:", commentId)
-//          .then(res => {
-//             setIssueState(prevState => prevState.issues.map(issue => issue._id !== issueId ? issue : res.data))
-//             // getUserIssues()
-//             // getIssues()
-//       })
+
+ //DELETE COMMENT FROM ARRAY of comments ids (_comments) in the issue -- route works in Postman by itself
+ function deleteCommentFromIssueArray(commentId, issueId) {
+
+     const _issue = {
+       _issue: issueId
+   }
+
+    console.log("comment._id to delete:", commentId)
+    console.log("issue to update the comments array in:", issueId)
+    userAxios.put(`/api/comment/deleteCommentFromIssue/${commentId}`, _issue)
+            // console.log("commentId:", commentId)
+         .then(res => {
+            console.log("getting rid of _comments id ref in issue collection")
+            // setPostState(prevState => prevState.posts.map(post => post._id !== postId ? post : res.data))
+      })
             
-//     .catch(err=>console.log(err.response.data.errMsg))
-// }
+    .catch(err=>console.log(err.response.data.errMsg))
+}
 
 
 //DECREMENT COMMENT TOTAL ON SPECIFIC ISSUE
 function minusCommentTally (issueId) {
     console.log("_issue from minusCommentTally:", issueId)
-    userAxios.put(`/api/issue/decrement/${issueId}`, issueId)
+    userAxios.put(`/api/issue/decrement/${issueId}`)
     .then(res => {
             console.log("minusComment res", res)
             setIssueState(prevState => ({
                 ...prevState,
                 issueState:  [...prevState.issues, res.data]
             })
+           
               )})
             
         .catch(err=>console.log(err.response.data.errMsg))
@@ -280,8 +268,7 @@ function calcNetVotes(upVotes, downVotes){
       .catch(err=>console.log(err.response.data.errMsg))
     }
 
-//GOING TO NEED TO WRITE OVERALL VOTING FUNCTIONS (1 for Upvote & 1 for Downvote) 
-//THAT COMBINE UPDATING _voters and either incrementing or decrementing total votecount
+
 
 
 //UPVOTE AN ISSUE
@@ -442,27 +429,20 @@ function downVoteComment(commentId){
 //CANCEL VOTE (using _voters) ==> However, how back this out if don't know if it was an up or down vote?
 //MAYBE -- Need to separate up and down votes in model and then calculate total??
 
-function removeVote(issueId){
-  console.log("issueId for remove vote:", issueId)
-  userAxios.put(`/api/issue/voter/cancelvote/${issueId}`)		
-    .then(res => {
-      console.log("upVote res:", res)
-          setIssueState(prevState => ({
-                ...prevState,
-                issueState:  [...prevState.userIssues, res.data]
-            }))
-    })
+// function removeVote(issueId){
+//   console.log("issueId for remove vote:", issueId)
+//   userAxios.put(`/api/issue/voter/cancelvote/${issueId}`)		
+//     .then(res => {
+//       console.log("upVote res:", res)
+//           setIssueState(prevState => ({
+//                 ...prevState,
+//                 issueState:  [...prevState.userIssues, res.data]
+//             }))
+//     })
    
-    .catch(err => console.log(err.response.data.errMsg))
-}
+//     .catch(err => console.log(err.response.data.errMsg))
+// }
 
-
-  //TOTAL NUMBER OF COMMENTS ON ISSUE
-  // function getTotalNumberComments(issueId) {
-  //       userAxios.get(`/api/issue/${issueId}`)
-  //           .then(res => setTotalComments(res.data._comments.length))       
-  //           .catch(err => console.log(err))
-  //   }
 
 
 
@@ -474,7 +454,6 @@ function removeVote(issueId){
             getUserIssues,
             voterUpVote,
             voterDownVote,
-            removeVote,
             calcNetVotes,
             addIssue,
             deleteIssue,
@@ -482,7 +461,7 @@ function removeVote(issueId){
             getComments,
             addComment,
             combinedAddComment,
-            combinedDeleteComment,
+            deleteComment,
             commentUpVote,
             commentDownVote,
             editComment,

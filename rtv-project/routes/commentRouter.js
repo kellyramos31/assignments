@@ -132,77 +132,8 @@ commentRouter.post("/", (req, res, next) => {
 
 
 
-
-//TRYING TO RECONFIGURE SO WORKS ON FRONTEND***
-// commentRouter.post("/", (req, res, next) => {
-//     const {commentText, _issue } = req.body
-//     console.log("req.body:", req.body)
-//     // req.body._user = req.user._id
-//     const comment = new Comment({
-//         commentText,
-//         _issue
-//     })
-
-//     comment.save().then((err, omment) => {
-//           if (err) {
-//             res.status(500)
-//             return next(err)
-//           }
-        
-//     })
-                 
-//     const issueId = req.body._issue
-    
-      
-//         Issue.findByIdAndUpdate(
-//             {_id: issueId, _user: req.user._id},
-//             { $push: { "_comments": newComment._id }},
-//             { new: true},
-//         (err, commentId) => {
-//             if (err) {
-//                 console.log("Error");
-//                 res.status(500);
-//                 return next(err);
-//             }
-//              return res.status(201).send(commentId, newComment)
-//         })
-//     })
-
-
-
-// import db from './../models';
-
-// const userController = {};
-
-// userController.post = (req, res) => {
-//   const { username, password } = req.body;
-//   console.log(req.body);
-//   // Validation
-
-//   const user = new db.User({
-//     username,
-//     password
-//   });
-
-//   user.save().then((newUser) => {
-//     res.status(200).json({
-//       success: true,
-//       data: newUser,
-//     });
-//   }).catch((err) => {
-//     res.status(500).json({
-//       message: err,
-//     });
-//   });
-// }
-
-// export default userController;
-
-
-
 //DELETE COMMENT (but leaves the REF in the associated issue)
 commentRouter.delete("/:commentId", (req, res, next)=> {
-   
    
 Comment.findByIdAndDelete(
     { _id: req.params.commentId, _user: req.user._id },
@@ -216,41 +147,15 @@ Comment.findByIdAndDelete(
   })
 })
 
-//DELETE COMMENT & ITS REF IN ISSUE 
-//****this works on backend with postman -- BUT...NOT on frontend****
 
-// commentRouter.delete("/post/:commentId", (req, res, next)=> {
-   
-   
-//     Comment.findByIdAndDelete(
-//     { _id: req.params.commentId, _user: req.user._id },
-//     (err, deletedComment) => {
-//         if (err) {
-//             res.status(500);
-//             return next(err) 
-//         }
-     
+//DELETE COMMENT ref id from _comments array in issue model
+commentRouter.put("/deleteCommentFromIssue/:commentId", (req, res, next)=> {
+  
+        req.body._user = req.user._id
+        const issueId = req.body._issue
 
-//     Issue.findByIdAndUpdate(
-//             {_id: req.body._issue, _user: req.user._id},
-//             { $pull: { "_comments": req.params.commentId}},
-//         (err, updatedIssue) => {
-//             if (err) {
-//                 console.log("Error");
-//                 res.status(500);
-//                 return next(err);
-//             }
-//             return res.send(updatedIssue);
-//     })
-// })
-// })
-
-//DELETE COMMENT from _comments array in issue model
-commentRouter.get("/deleteCommentFromIssue/:commentId", (req, res, next)=> {
-        // const issueId = req.body._issue
-        // const ObjectId = require('mongodb').ObjectId 
         Issue.findByIdAndUpdate(
-            {_id: req.body._issue, _user: req.user._id},
+            {_id: issueId, _user: req.user._id},
             { $pull: { "_comments": req.params.commentId}},
         (err, updatedIssue) => {
             if (err) {
@@ -279,6 +184,7 @@ commentRouter.put("/:commentId", (req, res, next) => {
         })
 })
 
+
 //UPVOTE A COMMENT-INCREMENT -- this one works to increment vote count --but can vote as many times as want to...
 commentRouter.put("/upvoteit/:commentId", (req, res, next)=> {			
   Comment.findByIdAndUpdate(			
@@ -294,6 +200,7 @@ commentRouter.put("/upvoteit/:commentId", (req, res, next)=> {
    }			
   )			
 })
+
 
 //VOTE ON AN ISSUE (adds to _voters array but only ONCE) -- NOTE:  seems to ??MAYBE?? work NOW -- BUT...how implement with rest on front-end??
 commentRouter.put("/voter/onlyonce/:commentId", (req, res, next)=> {		

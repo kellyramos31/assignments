@@ -16,7 +16,6 @@ import {BsPeopleFill} from 'react-icons/bs'
 
 
 
-
 export default function PublicIssueText(props){
 
 

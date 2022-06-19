@@ -13,8 +13,7 @@ export default function Public() {
         userIssues,
         comments,
         getUserIssues,
-        getIssues,
-        getComments
+        getIssues
     } = useContext(IssueCommentContext)
 
 
@@ -24,7 +23,6 @@ export default function Public() {
     console.log("useEffect triggered")
     getUserIssues()
     getIssues()
-    getComments()
     // eslint-disable-next-line  
   }, [issueState])
 
