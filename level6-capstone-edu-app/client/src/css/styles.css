@@ -816,6 +816,40 @@ select {
 
 
 @media only screen and (max-width: 912px) {
+  .auth-container {
+    width: 55%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 45%;
+    font-size: large;
+    margin-bottom: 55%;
+  }
+
+  .owl {
+    transform: translate(7%, 5%);
+  }
+
+  .app-title {
+    margin-left: -3.5%;
+  }
+
+  .app-sub-title {
+    margin-left: -3%;
+  }
+
+  .auth-form>input {
+    font-size: large;
+  }
+
+  .sign-up-btn {
+    margin-top: 2%;
+    width: 35%;
+    font-size: large;
+  }
+
+  .member-or-not {
+    margin-top: -2%;
+  }
 
   .my-top-three-scores,
   .my-badge-awards {
@@ -842,6 +876,46 @@ select {
 
 
 @media only screen and (max-width: 420px) {
+  body {
+    background-size: 230%;
+
+  }
+
+  .auth-container {
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 45%;
+    font-size: small;
+  }
+
+  .app-title {
+    margin-top: 25%;
+  }
+
+  .app-sub-title {
+    margin-left: 2%;
+    margin-top: 2%;
+  }
+
+  .owl {
+    margin-top: -15%;
+    transform: translate(10%, 75%);
+  }
+
+  .sign-up-btn {
+    width: 30%;
+    font-size: small;
+  }
+
+
+  .auth-form>input {
+    font-size: small;
+  }
+
+  .member-or-not {
+    margin-bottom: 3%;
+  }
 
   .my-top-three-scores {
     width: 41%;
