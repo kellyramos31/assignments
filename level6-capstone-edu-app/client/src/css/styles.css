@@ -326,14 +326,15 @@ h3 {
 
 .flashcard-category {
   font-size: 200%;
-  margin-top: -2%;
+  margin-top: 3%;
   background-color: yellowgreen;
   width: 15%;
   border-radius: .2rem;
 }
 
 .profession {
-  font-size: 125%;
+  font-size: 130%;
+  font-style: italic;
 }
 
 .name-flashcard {
@@ -453,7 +454,10 @@ span {
 .card-back {
   font-size: 75%;
   padding: .5rem;
+  margin-top: 42%;
+  border: 3.5px solid yellowgreen;
 }
+
 
 .game-score {
   display: flex;

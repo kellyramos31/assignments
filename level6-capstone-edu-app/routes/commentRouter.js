@@ -85,17 +85,16 @@ commentRouter.post("/", (req, res, next) => {
 
 
 
-
 //DELETE COMMENT -- this works but leaves comment ids still attached to parent issue in array
 commentRouter.delete("/:commentId", (req, res, next)=> {
-    Comment.findOneAndDelete(
+    Comment.findByIdAndDelete(
     { _id: req.params.commentId, _user: req.user._id },
-    (err, deletedComment) => {
+    (err, deleted) => {
         if (err) {
             res.status(500);
             return next(err) 
         }
-        return res.status(200).send(`Successfully deleted comment: ${deletedComment.commentText}`);
+        return res.status(200).send(`Successfully deleted comment: ${deleted}`);
     })
 })
 
@@ -105,22 +104,22 @@ commentRouter.delete("/:commentId", (req, res, next)=> {
 
 
 
-//DELETE COMMENT from _comments array in post model-- not working
-// commentRouter.put("/deleteCommentFromPost/:commentId", (req, res, next)=> {
-//         // const issueId = req.body._issue
-//         // const ObjectId = require('mongodb').ObjectId 
-//         Post.findByIdAndUpdate(
-//             {_id: req.body._post, _user: req.user._id},
-//             { $pull: { "_comments": req.params.commentId}},
-//         (err, updatedPost) => {
-//             if (err) {
-//                 console.log("Error");
-//                 res.status(500);
-//                 return next(err);
-//             }
-//             return res.send(updatedPost);
-//         })
-//     })
+//DELETE COMMENT from _comments array in post model-- this works on its own in Postman to delete an id from the _comments array for Post****
+commentRouter.put("/deleteCommentFromPost/:commentId", (req, res, next)=> {
+        const {postId} = req.body._post
+        // const ObjectId = require('mongodb').ObjectId 
+        Post.findByIdAndUpdate(
+            {_id: postId, _user: req.user._id},
+            { $pull: { "_comments": req.params.commentId}},
+        (err, updatedPost) => {
+            if (err) {
+                console.log("Error");
+                res.status(500);
+                return next(err);
+            }
+            return res.send(updatedPost);
+        })
+    })
 
 
 

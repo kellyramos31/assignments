@@ -106,16 +106,11 @@ console.log("_post from getCommentsSpecifiedPost", postId)
         .catch(err=>console.log(err.response.data.errMsg))
     }
 
-//COMBINED DELETE POST & ALL ASSOCIATED COMMENTS
-    // function combinedDeletePostAndComments (postId){
-    //     deleteAllPostComments(postId)
-    //     deletePost(postId) 
-    // }    
 
 //DELETE POST
 function deletePost(postId) {
         console.log("postId:", postId)
-;
+
         userAxios.delete(`/api/forumpost/${postId}`)
              .then(res => {
                 setPostState(prevState=> ({userPosts: prevState.userPosts.filter(userPost => userPost._id !== postId)}))
@@ -199,8 +194,10 @@ function addCommentTally (postId) {
 
 //COMBINED DELETE COMMENT
 function combinedDeleteComment (commentId, postId){
-  deleteComment(commentId)
-  minusCommentTally(postId)
+    minusCommentTally(postId)
+    // deleteCommentFromPostArray(commentId, postId)
+    deleteComment(commentId)
+  
 }
 
 //DELETE USER'S COMMENT
@@ -217,20 +214,20 @@ function combinedDeleteComment (commentId, postId){
             .catch(err=>console.log(err.response.data.errMsg))
     }
 
- //DELETE COMMENT FROM ARRAY of comments ids (_comments) in the issue
-//  function deleteCommentFromPostArray(postId, commentId) {
-//     console.log("comment._id to delete:", commentId)
-//     console.log("post to update the comments array in:", postId)
-//     userAxios.put(`/api/post/deleteCommentFromPost/${postId}`)
-//             // console.log("commentId:", commentId)
-//          .then(res => {
-//             setPostState(prevState => prevState.posts.map(post => post._id !== postId ? post : res.data))
-//             // getUserIssues()
-//             getPosts()
-//       })
+ //DELETE COMMENT FROM ARRAY of comments ids (_comments) in the issue -- route works in Postman by itself
+ function deleteCommentFromPostArray(commentId, postId) {
+    console.log("comment._id to delete:", commentId)
+    console.log("post to update the comments array in:", postId)
+    userAxios.put(`/api/comment/deleteCommentFromPost/${commentId}`, postId)
+            // console.log("commentId:", commentId)
+         .then(res => {
+            setPostState(prevState => prevState.posts.map(post => post._id !== postId ? post : res.data))
+            // getUserIssues()
+            getPosts()
+      })
             
-//     .catch(err=>console.log(err.response.data.errMsg))
-// }
+    .catch(err=>console.log(err.response.data.errMsg))
+}
 
 
 //DECREMENT COMMENT TOTAL ON SPECIFIC ISSUE
@@ -248,6 +245,22 @@ function minusCommentTally (postId) {
         .catch(err=>console.log(err.response.data.errMsg))
         
 } 
+
+//COMBINED -- DECREMENT TALLY & DELETE COMMENT REF FROM _comments ARRAY for POST
+// function minusCommentTallyAndDeleteRef(postId) {
+//     console.log("_post from minusCommentTally:", postId)
+//     userAxios.put(`api/forumpost/deleteCommentFromPost/${postId}`)
+//     .then(res => {
+//             console.log("minusComment & delete post ref res", res)
+//             setPostState(prevState => ({
+//                 ...prevState,
+//                 postState:  [...prevState.posts, res.data]
+//             })
+//               )})
+            
+//         .catch(err=>console.log(err.response.data.errMsg))
+        
+// } 
 
 
 //EDIT COMMENT
@@ -288,7 +301,6 @@ function handlePostSearch(e) {
         })
               .catch(err=>console.log(err.response.data.errMsg))  
     }
-
 
 
 

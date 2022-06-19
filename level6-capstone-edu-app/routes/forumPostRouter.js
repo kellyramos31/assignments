@@ -126,64 +126,6 @@ forumPostRouter.delete("/:postId", (req, res, next)=> {
 })
 })
 
-
-
-//DELETE all comments associated with Issue
-// issueRouter.delete("/:issueId", (req, res, next)=> {
-//     Issue.findById(
-//     { _issue: req.params.issueId, _user: req.user._id })=>{
-
-//     { $pull: {_comments: req.body._id}},
-//     (err, deletedComment) => {
-//         if (err) {
-//             res.status(500);
-//             return next(err);
-//         }
-//         return res.status(200).send(`Successfully deleted: ${deletedComment.commentText}`);
-//     })
-// })
-
-//stack overflow suggestion:
-// delete: function(req, res) {
-//    return Project.findById(req.params.id, function(err, project){
-//          return project.remove(function(err){
-//              if(!err) {
-//                  Assignment.update({_id: {$in: project.assingments}}, 
-//                       {$pull: {project: project._id}}, 
-//                            function (err, numberAffected) {
-//                             console.log(numberAffected);
-//                       } else {
-//                         console.log(err);                                      
-//                     }
-//                   });
-//             });
-//         });
-// }
-
-
-
-
-
-//DELETE specified comment from _comments array--this works
-forumPostRouter.put("/deleteCommentFromPost/:postId", (req, res, next)=> {
-        const commentId = req.body._id
-        // const ObjectId = require('mongodb').ObjectId 
-        Post.findByIdAndUpdate(
-            {_id: req.params.postId, _user: req.user._id},
-            { $pull: { "_comments": commentId}},
-        (err, updatedPost) => {
-            if (err) {
-                console.log("Error");
-                res.status(500);
-                return next(err);
-            }
-            return res.send(updatedPost);
-            //note:  appears to pull the commentId from the array in issues, but "updatedIssue res still shows comment id"  
-        })
-    })
-
-   
-
 //INCREMENT TOTAL # OF COMMENTS ON POST
 forumPostRouter.put("/increment/:postId", (req, res, next) => {
     req.body._user = req.user._id
@@ -204,6 +146,30 @@ forumPostRouter.put("/increment/:postId", (req, res, next) => {
         })
 })
 
+
+//DELETE specified comment from _comments array for specific post
+// forumPostRouter.put("/deleteCommentFromPost/:postId", (req, res, next)=> {
+//         const commentId = req.body._id
+//         const ObjectId = require('mongodb').ObjectId 
+//         Post.findByIdAndUpdate(
+//             {_id: req.params.postId, _user: req.user._id},
+//             { $pull: { "_comments": commentId}},
+        
+//         (err, updatedPost) => {
+//             if (err) {
+//                 console.log("Error");
+//                 res.status(500);
+//                 return next(err);
+//             }
+
+
+//             return res.send(updatedPost)
+
+//             //note:  appears to pull the commentId from the array in issues, but "updatedIssue res still shows comment id"  
+//         })
+//     })
+
+  
 //DECREMENT TOTAL # OF COMMENTS ON POST
 forumPostRouter.put("/decrement/:postId", (req, res, next) => {
     req.body._user = req.user._id

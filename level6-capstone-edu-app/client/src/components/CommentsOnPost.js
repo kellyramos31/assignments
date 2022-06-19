@@ -22,7 +22,7 @@ export default function CommentsOnPost(props){
     } = useContext(UserContext)
 
     const {
-      combinedDeleteComment
+    combinedDeleteComment
      } = useContext(PostCommentContext)
 
 
