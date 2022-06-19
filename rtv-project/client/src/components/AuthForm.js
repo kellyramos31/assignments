@@ -13,7 +13,8 @@ export default function AuthForm(props){
   } = props
   
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="auth-form" onSubmit={handleSubmit}>
+      <h1 className="app-title">RTV App</h1>
       <input 
         type="text" 
         value={username} 

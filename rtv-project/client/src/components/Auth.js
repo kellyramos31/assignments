@@ -36,7 +36,7 @@ export default function Auth(){
 
   return (
     <div className="auth-container">
-      <h1 className="app-title">RTV App</h1>
+
       { !toggle ?
         <>
           <AuthForm 
