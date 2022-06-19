@@ -16,6 +16,7 @@ export default function Forum() {
         userPosts,
         getUserPosts,
         getPosts,
+        getComments,
         handleMenuPosts,
         handlePostSearch
     } = useContext(PostCommentContext)
@@ -27,6 +28,7 @@ export default function Forum() {
     console.log("useEffect triggered")
     getUserPosts()
     getPosts()
+    getComments()
     // eslint-disable
     // eslint-disable-next-line  
   }, [postState])

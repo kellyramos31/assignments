@@ -104,9 +104,12 @@ commentRouter.delete("/:commentId", (req, res, next)=> {
 
 
 
-//DELETE COMMENT from _comments array in post model-- this works on its own in Postman to delete an id from the _comments array for Post****
+//DELETE COMMENT from _comments array in post model-- 
+//******this works on its own in Postman to delete an id from the _comments array for Post*******
 commentRouter.put("/deleteCommentFromPost/:commentId", (req, res, next)=> {
-        const {postId} = req.body._post
+        req.body._user = req.user._id
+        const postId = req.body._post
+       
         // const ObjectId = require('mongodb').ObjectId 
         Post.findByIdAndUpdate(
             {_id: postId, _user: req.user._id},

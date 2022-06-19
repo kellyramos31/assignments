@@ -22,7 +22,7 @@ export default function CommentsOnPost(props){
     } = useContext(UserContext)
 
     const {
-    combinedDeleteComment
+    deleteComment
      } = useContext(PostCommentContext)
 
 
@@ -59,7 +59,7 @@ return(
             <div key={index} id={_comment._id} className="edit-del-comment-btns">
 
                     <div className="edit-del-btns-group">
-                        <button className="delete-comment-btn" onClick={() => combinedDeleteComment(_comment._id, _comment._post)}><RiDeleteBin6Fill size={15} style={{ fill: "royalblue"}}/></button>
+                        <button className="delete-comment-btn" onClick={() => deleteComment(_comment._id, _comment._post)}><RiDeleteBin6Fill size={15} style={{ fill: "royalblue"}}/></button>
                         <button className="edit-comment-btn" onClick={()=>toggleToEdit(index, _comment._id, _comment._post)}><FaEdit size={15} style={{ fill: "royalblue"}}/></button> 
                     </div>
 
