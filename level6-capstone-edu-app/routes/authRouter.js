@@ -28,7 +28,7 @@ authRouter.post("/signup", (req, res, next)=>{
                     res.status(500)
                     return next(err)
                 }
-                                //payload  //secret
+                                        //payload                   //secret
                 const token = jwt.sign(savedUser.withoutPassword(), process.env.SECRET)
                 
                 return res.status(201).send({token, user: savedUser.withoutPassword()})

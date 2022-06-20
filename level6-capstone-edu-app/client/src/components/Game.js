@@ -14,6 +14,8 @@ export default function Game() {
     questions
 } = useContext(LearnGameContext)
 
+
+
 //USEEFFECT
 useEffect(() => {
     console.log("useEffect in Game Component to get Game Questions triggered")
