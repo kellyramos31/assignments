@@ -793,6 +793,16 @@ select {
   margin-bottom: 4%;
 }
 
+.searchbar-posts {
+  margin-top: -.25%;
+  margin-left: 44.5%;
+}
+
+.searchbar-cards {
+  transform: translateX(44.5%);
+  margin-top: -6.5%;
+  margin-bottom: 5%;
+}
 
 ::placeholder {
   color: whitesmoke;
@@ -1001,5 +1011,23 @@ select {
     margin-left: 29%;
     width: 29%;
   }
+
+  .dropdown-flashcards {
+    width: 48%;
+    padding: 4px;
+    transform: translateY(-82%);
+  }
+
+  .learn-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .searchbar-flashcards {
+    margin-top: -17%;
+    margin-bottom: 19%;
+    margin-left: -35%;
+  }
+
 
 }
