@@ -905,8 +905,21 @@ select {
 
   .searchbar-posts>input {
     font-size: large;
+  }
 
+  .dropdown-flashcards {
+    width: 32%;
+    padding-bottom: 2%;
+    margin-bottom: 8%;
+  }
 
+  .learn-container {
+    width: 89%;
+  }
+
+  .searchbar-flashcards {
+    margin-bottom: 10%;
+    margin-left: -10%;
   }
 
 }
@@ -1028,6 +1041,5 @@ select {
     margin-bottom: 19%;
     margin-left: -35%;
   }
-
 
 }
