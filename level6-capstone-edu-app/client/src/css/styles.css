@@ -84,7 +84,6 @@ body {
   font-size: 185%;
 }
 
-
 .add-post-header {
   color: rgba(0, 30, 78);
   text-align: center;
@@ -542,6 +541,11 @@ select {
   background-color: red;
 }
 
+.forum {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
 
 .forum-post-list {
   display: flex;
@@ -777,7 +781,6 @@ select {
 
 .searchbar-cards input,
 .searchbar-posts input {
-  float: top;
   color: white;
   background-color: #001E4E;
   font-family: Calibri;
@@ -785,13 +788,11 @@ select {
   border: 2px solid skyblue;
   border-radius: .3rem;
   padding: 5px;
-  transform: translate(407%, -310%);
+  justify-content: center;
+  /* margin-left: 28.5%; */
+  margin-bottom: 4%;
 }
 
-.searchbar-posts input {
-  transform: translate(425%, -25%);
-  margin-bottom: 1%;
-}
 
 ::placeholder {
   color: whitesmoke;
@@ -959,6 +960,23 @@ select {
   .profile-post-icon {
     background-color: yellowgreen;
     width: 2.6rem;
+  }
+
+  .all-post-container {
+    margin-left: 7%;
+    margin-right: 7%;
+    margin-bottom: 5%;
+  }
+
+  .dropdown-posts {
+    width: 48%;
+    margin-top: 3%;
+  }
+
+  .searchbar-posts {
+    float: left;
+    margin-left: 29%;
+    width: 29%;
   }
 
 }

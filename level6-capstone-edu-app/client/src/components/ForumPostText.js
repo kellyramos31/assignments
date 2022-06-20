@@ -24,8 +24,6 @@ const [toggleIsCommenting, setToggleIsCommenting] = useState(false)
 const [toggleIsViewingComments, setToggleIsViewingComments] = useState(false)
 
 
-
-
 function toggleViewComments(postId){
     console.log("view comments toggled")
     console.log("postId from toggleViewComments", postId)
@@ -113,4 +111,5 @@ return (
 
       </div>
   </div>
-)}
+)
+}
