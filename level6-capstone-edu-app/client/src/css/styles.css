@@ -873,13 +873,38 @@ select {
     margin-left: auto;
   }
 
+  .all-post-container {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3%;
+  }
+
+  .dropdown-posts {
+    width: 21%;
+    height: 30%;
+    padding-bottom: 1%;
+    font-size: large;
+    margin-top: 2%;
+  }
+
+  .searchbar-posts {
+    /* margin-left: 39.5%; */
+    margin-left: 40.25%;
+  }
+
+  .searchbar-posts>input {
+    font-size: large;
+
+
+  }
+
 }
 
 
 @media only screen and (max-width: 420px) {
   body {
     background-size: 230%;
-
   }
 
   .auth-container {
@@ -963,8 +988,6 @@ select {
   }
 
   .all-post-container {
-    margin-left: 7%;
-    margin-right: 7%;
     margin-bottom: 5%;
   }
 
