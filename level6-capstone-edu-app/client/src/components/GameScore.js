@@ -29,7 +29,7 @@ const {
             <h2>✨New Badges✨ {" "} {badgeReward} </h2>
 
             <button className="game-reset-btn" onClick={gameReset}>New Game</button>
-            <button className="game-reset-btn" onClick={()=>saveMyScore(gameScore)}>Save My Score</button>
+            <button className="save-game-btn" onClick={()=>saveMyScore(gameScore)}>Save My Score</button>
        
         </div>
     )
