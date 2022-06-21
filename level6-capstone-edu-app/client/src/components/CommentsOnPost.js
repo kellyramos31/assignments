@@ -16,7 +16,7 @@ export default function CommentsOnPost(props){
     const {
     user: {
         username,
-        // isAdmin
+        isAdmin
     },
         
     } = useContext(UserContext)
@@ -52,7 +52,7 @@ return(
                
          
 
-            {username === _comment._user.username  //NOTE: tried adding (or) "|| isAdmin" here=>which allowed admin to edit comment, but not delete it?
+            {username === _comment._user.username || isAdmin  
             
             ? 
 
