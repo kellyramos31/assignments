@@ -1,5 +1,3 @@
-//NEED TO EDIT BELOW TO ADAPT TO THIS PROJECT
-
 import React, { useContext } from "react"
 import { Route, Routes, Navigate } from "react-router-dom"
 import NavBar from "./components/NavBar.js"
