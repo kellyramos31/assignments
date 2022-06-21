@@ -12,8 +12,7 @@ export default function Profile() {
 
     const {
     user: {
-        username,
-        isAdmin
+        username
     }
     } = useContext(UserContext)
 
@@ -56,12 +55,7 @@ return (
 
                 <h1 className="welcome-msg">Hi @{username}!</h1>
 
-                {isAdmin === true
-                ?
-                <h3 className="admin-msg">Hey, you're an ADMIN</h3>
-                :
-                null
-                }  
+               
 
             </div>
     
