@@ -48,7 +48,7 @@ const userSchema = new Schema({
         })
     }
 
-    //method to remove user's password for token/sending the response
+    //method to remove user's password for token/sending the response to the frontend
     userSchema.methods.withoutPassword = function () {
         const user = this.toObject()
         delete user.password

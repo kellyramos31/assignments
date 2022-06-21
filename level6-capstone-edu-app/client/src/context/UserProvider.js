@@ -6,6 +6,8 @@ import axios from "axios"
 export const UserContext = React.createContext({})
 
 
+//this userAxios.interceptors code below  (lines 11-17) --> makes sure that the authorization header & token goes along with every request
+
 const userAxios = axios.create()
 
 userAxios.interceptors.request.use(config => {
