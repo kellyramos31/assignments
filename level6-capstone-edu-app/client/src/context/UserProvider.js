@@ -83,7 +83,7 @@ export default function UserProvider(props) {
         })
     }
 
-//HANDLE AUTH ERROR
+//HANDLE AUTH ERROR (this saves the errMsg in state so can display it on the Auth.js(Login Signup) Page)
     function handleAuthErr(errMsg){
         setUserState(prevState => ({
             ...prevState,

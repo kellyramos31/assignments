@@ -15,9 +15,11 @@ import { UserContext } from "./context/UserProvider.js"
 
 export default function App() {
 
-  // const { isAdmin, token, logout} = useContext(UserContext)
+    // const { user: {isAdmin}, token, logout} = useContext(UserContext)
 
-  const { token, logout} = useContext(UserContext)
+const { token, logout} = useContext(UserContext)
+
+
 
   console.log("token from App.js", token)
 
@@ -30,7 +32,8 @@ export default function App() {
       <Routes>
 
         <Route exact path="/" element={token ? <Navigate to="/profile"/> : <Auth/> }/>
-
+     
+       
         <Route element={<ProtectedRoute token={token}/>}>
               <Route
                 path="/profile"
@@ -56,13 +59,15 @@ export default function App() {
                 navigateTo="/"
               />
 
-                {/* <Route
+   
+             {/* <Route
                 path="/admin"
                 element={<AdminDashboard/>}
                 navigateTo="/"
-              /> */}
-
-        </Route>
+              />  */}
+              
+          </Route>   
+      
 
       </Routes>
 

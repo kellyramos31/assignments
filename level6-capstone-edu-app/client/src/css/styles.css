@@ -54,6 +54,7 @@ body {
 
 .auth-form>p {
   text-align: center;
+  font-weight: bolder;
 }
 
 .sign-up-btn {
@@ -1098,6 +1099,10 @@ select {
 
   .game-reset-btn {
     margin-left: 2%;
+  }
+
+  .save-game-btn {
+    margin-left: 3%;
   }
 
 }

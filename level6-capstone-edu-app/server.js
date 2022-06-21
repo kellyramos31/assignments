@@ -26,7 +26,7 @@ mongoose.connect(
 //NOTE: update to syntax for mongoose connect -- can take out the 4 deprecations object (lines16-21)
 
 app.use("/auth", require("./routes/authRouter.js"))
-app.use("/api", expressJwt({secret: process.env.SECRET, algorithms: ['HS256']}))  //creates req.user -- ALSO:  algorithms: for express-jwt v6.0.0 & higher: adding an algorithm parameter is now required in addition to the secret.
+app.use("/api", expressJwt({secret: process.env.SECRET, algorithms: ['HS256']}))  //creates req.user(now req.auth) -- ALSO:  algorithms: for express-jwt v6.0.0 & higher: adding an algorithm parameter is now required in addition to the secret.
 //note: expressJwt line above checks to see if token has SECRET that 
 //matches the one on the server => for any route beginning with /api;SO--the 3 routes below are protected
 app.use("/api/forumpost", require("./routes/forumPostRouter.js"))

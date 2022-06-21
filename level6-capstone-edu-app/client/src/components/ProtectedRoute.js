@@ -12,11 +12,18 @@ export default function ProtectedRoute(props){
     console.log("ProtectedRoute Component token", token)
 
 
-        return token ?
+        return (
+            
+            
+        token
+        
+        ?
         
             <Outlet />
             :
             <Auth />
+        
+        )
         
 }
 
