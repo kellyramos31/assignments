@@ -26,7 +26,9 @@ const { user: {isAdmin}, token, logout} = useContext(UserContext)
 
       <Routes>
 
-        <Route exact path="/" element={token ? <Navigate to="/profile"/> : <Auth/> }/>
+        {/* NOTE:  need to somehow adjust so admin starts on /admin page instead of /profile page */}
+
+        <Route exact path="/" element={token ? <Navigate to="/profile"/> : <Auth/> }/>  
      
        
         <Route element={<ProtectedRoute token={token}/>}>

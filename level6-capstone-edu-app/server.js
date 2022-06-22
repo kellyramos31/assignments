@@ -4,6 +4,7 @@ require("dotenv").config()
 const morgan = require("morgan")
 const mongoose = require("mongoose")
 const expressJwt = require("express-jwt")  //gatekeeper
+
 //note: updates to syntax for line above would be {expressjwt} so it's a named import
 //& then would need to change line 26 to match casing -- expressjwt. 
 // Also, on line 26, (already had it), have to add "algorithms: ['HS256'] in the object
