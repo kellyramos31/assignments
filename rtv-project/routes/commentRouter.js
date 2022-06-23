@@ -189,13 +189,16 @@ commentRouter.put("/:commentId", (req, res, next) => {
 commentRouter.put("/upvoteit/:commentId", (req, res, next)=> {			
   Comment.findByIdAndUpdate(			
   {_id: req.params.commentId, _user: req.user._id },	
-  { $inc: {upVotesComments: 1, totalVotersOnCommentCount: 1} },			
-  {new: true},			
+  { $inc: {upVotesComments: 1, totalVotersOnCommentCount: 1} }, 		
+  {new: true},
+			
   (err, updatedComment)=> {			
       if(err){			
           res.status(500)			
           return next(err)			
-      }			
+      }		
+      
+    
       return res.status(201).send(updatedComment)			
    }			
   )			
@@ -222,18 +225,25 @@ Comment.updateOne(
 
 
 //DOWNVOTE AN ISSUE--DECREMENT this works to decrement vote count === but can downVote as many times as want
-commentRouter.put("/downvoteit/:commentId", (req, res, next)=> {			
-  Comment.findByIdAndUpdate(			
+commentRouter.put("/downvoteit/:commentId", (req, res, next)=> {	
+
+Comment.findByIdAndUpdate(			
   {_id: req.params.commentId, _user: req.user._id },		//maybe don't need _user: req.user._id here??
-  { $inc: {downVotesComments: 1, totalVotersOnCommentCount: 1} },			
-  {new: true},			
+  { $inc: {downVotesComments: 1, totalVotersOnCommentCount: 1} },				
+  {new: true},
+ 	
   (err, updatedComment)=> {			
       if(err){			
           res.status(500)			
           return next(err)			
-      }			
-      return res.status(201).send(updatedComment)		
-   }			
+      }
+      
+ 
+    return res.status(201).send(updatedComment)		
+   }
+
+        
+
   )			
 })	
 

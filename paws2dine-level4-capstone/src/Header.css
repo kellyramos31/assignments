@@ -23,11 +23,12 @@ body {
 }
 
 .dog-header-images {
-  margin-left: 15%;
+  margin-left: 18%;
 }
 
 .logo-plus-dog-images {
   background-color: black;
+  padding-right: 45px;
 }
 
 .header-dog1 {
@@ -35,14 +36,15 @@ body {
   width: 26%;
   margin-top: 25px;
   margin-left: 4.9%;
-  margin-right: -22px;
+  margin-right: 14px;
   padding-right: 0;
   border-radius: 50%;
 }
 
 .header-dog2 {
   height: 74%;
-  width: 27%;
+  width: 29%;
+  margin-left: -45px;
   margin-top: 25px;
   border-radius: 50%;
 }
@@ -51,7 +53,6 @@ body {
   height: 74%;
   width: 26%;
   margin-left: -22px;
-  padding-right: 0;
   border-radius: 50%;
 }
 
@@ -102,6 +103,7 @@ body {
     height: 55%;
     width: 50%;
   }
+
   .header-dog3 {
     display: none;
   }

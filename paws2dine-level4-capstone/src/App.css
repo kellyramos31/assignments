@@ -27,6 +27,7 @@ nav {
   margin-left: 210px;
   z-index: 10;
 }
+
 @media only screen and (max-width: 400px) {
   nav {
     padding-top: 25px;

@@ -50,7 +50,7 @@ function Faves() {
                     {fave.myDoggieImage !== ""
                         ?
                         <div>
-                            <img className="doggie-image" key={index} id={fave.id} width="400px" height="300px" src={fave.myDoggieImage} alt=""/>
+                            <img className="doggie-image" key={index} id={fave.id} width="400px" height="300px" style={{borderRadius: "10px"}} src={fave.myDoggieImage} alt=""/>
                         </div>
                         :
                         null

@@ -87,39 +87,40 @@ while (player.isAlive === true) {
 
 
 
-const readline = require("readline-sync");
-const playerName = readline.question("What is your name? ");
-console.log("Welcome " + playerName + " You find yourself trapped in a locked room. It is your job to find a way to escape. When you are ready to play type one of these commands. put hand in hole, find key, or open the door")
+// const readline = require("readline-sync");
+// const playerName = readline.question("What is your name? ");
+// console.log("Welcome " + playerName + " You find yourself trapped in a locked room. It is your job to find a way to escape. When you are ready to play type one of these commands. put hand in hole, find key, or open the door")
 
-var person = {
-    name: playerName,
-    isAlive: true,
-    hasKey: false
-}
-var count = 0
+// var person = {
+//     name: playerName,
+//     isAlive: true,
+//     hasKey: false
+// }
+// var count = 0
 
-while (person.isALive) {
-    const play = readline.question("Pick first action")
-    if (play === "put hand in hole") {
-        isAlive = false,
-            console.log(playerName + " has died")
-    }
-    else if (play === "find key") {
-        if (count < 6) {
-            console.log("key not found. keep looking")
-            count++
-        }
-        else {
-            console.log(playerName + " has found the key")
-            hasKey = true
-        }
-    }
-    else if (play === "open door") {
-        if (hasKey = true) {
-            console.log(playerName + " has used the key to escape the room. Congradulations")
-        }
-        else {
-            console.log("need key to open door")
-        }
-    }
-}
+// while (person.isALive) {
+//     const play = readline.question("Pick first action")
+//     if (play === "put hand in hole") {
+//         isAlive = false,
+//             console.log(playerName + " has died")
+//     }
+//     else if (play === "find key") {
+//         if (count < 6) {
+//             console.log("key not found. keep looking")
+//             count++
+//         }
+//         else {
+//             console.log(playerName + " has found the key")
+//             hasKey = true
+//         }
+//     }
+//     else if (play === "open door") {
+//         if (hasKey = true) {
+//             console.log(playerName + " has used the key to escape the room. Congradulations")
+//         }
+//         else {
+//             console.log("need key to open door")
+//         }
+//     }
+// }
+

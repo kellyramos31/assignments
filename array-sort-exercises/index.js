@@ -152,9 +152,9 @@ console.log(characterArr)
 
 //inventoryRouter
 
-const express = require("express")
-const inventoryRouter = express.Router()
-const Inventory = require("../models/inventory.js")
+// const express = require("express")
+// const inventoryRouter = express.Router()
+// const Inventory = require("../models/inventory.js")
 
 
 
@@ -168,48 +168,36 @@ const Inventory = require("../models/inventory.js")
 
 
 //PUT Request - EDIT/UPDATE ONE
-inventoryRouter.put("/:inventoryID", (req, res, next) => {
-    Inventory.findOneAndUpdate(
-        { _id: req.params.inventoryID },
-        req.body,
-        { new: true },
-        (err, updatedInventory) => {
-            if (err) {
-                res.status(500)
-                return next(err)
-            }
-            return res.status(201).send(updatedInventory)
-        }
-    )
-})
+// inventoryRouter.put("/:inventoryID", (req, res, next) => {
+//     Inventory.findOneAndUpdate(
+//         { _id: req.params.inventoryID },
+//         req.body,
+//         { new: true },
+//         (err, updatedInventory) => {
+//             if (err) {
+//                 res.status(500)
+//                 return next(err)
+//             }
+//             return res.status(201).send(updatedInventory)
+//         }
+//     )
+// })
 
 //DELETE Request - ONE
-inventoryRouter.delete("/:inventoryID", (req, res, next) => {
-    Inventory.findOneAndDelete(
-        { _id: req.params.inventoryID },
-        (err, deletedInventory) => {
-            if (err) {
-                res.status(500)
-                return next(err)
-            }
-            return res.status(200).send(`Successfully deleted inventory item ${deletedInventory.title} with SKU ${deletedInventory.SKU}`)
-        })
-})
+// inventoryRouter.delete("/:inventoryID", (req, res, next) => {
+//     Inventory.findOneAndDelete(
+//         { _id: req.params.inventoryID },
+//         (err, deletedInventory) => {
+//             if (err) {
+//                 res.status(500)
+//                 return next(err)
+//             }
+//             return res.status(200).send(`Successfully deleted inventory item ${deletedInventory.title} with SKU ${deletedInventory.SKU}`)
+//         })
+// })
 
 //GET INVENTORY BY SEARCH TITLE TERM (use mongoDB method $regex)
 // "i" means case insensitive
-inventoryRouter.get("/search", (req, res, next) => {
-    const { title } = req.query
-    const pattern = new RegExp(title)
-    Inventory.find({ title: { $regex: pattern, $options: "i" } },
-        (err, titles) => {
-            if (err) {
-                res.status(500)
-                return next(err)
-            }
-            return res.status(200).send(titles)
-        })
-})
 
 
 //FILTER BY CATEGORY
@@ -219,18 +207,18 @@ inventoryRouter.get("/search", (req, res, next) => {
 //NOTE:  When have both above & below code:  it's returning ALL items, instead of filtered
 //NOTE:  HOWEVER, if I comment out the code above, then the below code works; does it need to be combined with above???  HOW COMBINE??
 
-inventoryRouter.get("/search", (req, res, next) => {
-    const { category } = req.query
-    const pattern = new RegExp(category)
-    Inventory.find({ category: { $regex: pattern, $options: "i" } },
-        (err, categories) => {
-            if (err) {
-                res.status(500)
-                return next(err)
-            }
-            return res.status(200).send(categories)
-        })
-})
+// inventoryRouter.get("/search", (req, res, next) => {
+//     const { category } = req.query
+//     const pattern = new RegExp(category)
+//     Inventory.find({ category: { $regex: pattern, $options: "i" } },
+//         (err, categories) => {
+//             if (err) {
+//                 res.status(500)
+//                 return next(err)
+//             }
+//             return res.status(200).send(categories)
+//         })
+// })
 
 
 //SORT BY CATEGORY
@@ -241,7 +229,7 @@ inventoryRouter.get("/search", (req, res, next) => {
 
 
 
-module.exports = inventoryRouter
+// module.exports = inventoryRouter
 
 //GET Request - Total value of the inventory
 // inventoryRouter.get("/total/value", (req, res, next) => {
@@ -258,3 +246,22 @@ module.exports = inventoryRouter
 //         }
 //     )
 // })
+
+
+
+var alphabet=["a","b","c","d","e"];
+function randomArrayShuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex;
+  while (0 !== currentIndex) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+  console.log(array)
+  return array;
+}
+
+randomArrayShuffle(alphabet);
+ 
