@@ -1,0 +1,12 @@
+body {
+    background-color: black;
+}
+
+.nav-links-container {
+    display: flex;
+}
+
+a {
+    color: aqua;
+    text-decoration: none;
+}
