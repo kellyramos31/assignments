@@ -63,7 +63,7 @@ header {
     /* transform: translateX(4%); */
     /* z-index: 3; */
     margin: 6.5% 0 0 -1%;
-    height: 32.5vh;
+    height: 31vh;
     width: 37vw;
     /* margin-right: 5%; */
     background: linear-gradient(to right, rgba(23, 32, 36, 0.7), rgba(0, 255, 255, 0.55)), url("./assets/even-smaller-square-louvre-pyramid-bottom.jpg") no-repeat;
@@ -71,7 +71,7 @@ header {
 }
 
 
-.about-info {
+.header-info {
     display: flex;
     flex-direction: column;
     margin: 6.5% 0 0 2%;
@@ -149,7 +149,7 @@ li {
 
 .project-and-descrip {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     margin-top: 2%;
 }
 
@@ -157,21 +157,36 @@ li {
     display: flex;
     flex-direction: column;
     align-content: right;
-    margin-top: 5%;
+    margin: 5% 0 10% 0;
 }
 
-#stem-edu-screenshot {
-    width: 33%;
-    height: auto;
-}
-
+#stem-edu-screenshot,
 #rtv-screenshot {
-    width: 33%;
+    width: 38%;
     height: auto;
-    margin-top: 2%;
+    border-radius: 7px;
+    margin-bottom: 5%;
 }
 
 
+#rtv-project-descrip,
+#stem-project-descrip {
+    background-color: black;
+    border: 2px solid cyan;
+    padding: 12px;
+    width: 45vh;
+    height: 25vh;
+    margin-top: 5%;
+    border-radius: 7px;
+}
+
+#stem-project-descrip {
+    transform: translate(12%, -17%)
+}
+
+#rtv-project-descrip {
+    transform: translate(-12%, -15%)
+}
 
 .sub-title-2 {
     display: flex;
@@ -183,18 +198,17 @@ li {
     display: flex;
     justify-content: flex-start;
     font-size: x-large;
-    margin: 10% 4% 0 3%;
+    margin: 1% 4% 0 3%;
 }
 
-#about-text {
-    margin-top: 3%;
-}
+#about-text {}
+
 
 #overlay-3 {
     opacity: 1;
     transform: translateY(95%);
     /* z-index: 3; */
-    margin: 9% 0 0 0;
+    margin: 0 0 0 0;
     height: 3vh;
     width: 28vw;
     /* margin-right: 5%; */
@@ -206,12 +220,12 @@ li {
 
 #get-in-touch {
     text-align: right;
-    margin: 1% 17.65% 1% 0;
+    margin: 1% 18.5% 1% 0;
     font-size: x-large;
 }
 
 #send-email-link {
-    margin: 1% 17.75% 5% 0;
+    margin: 1% 18.5% 10% 0;
     text-align: right;
 }
 
