@@ -60,30 +60,24 @@ header {
 
 #overlay {
     opacity: 1;
-    /* transform: translateX(4%); */
-    /* z-index: 3; */
     margin: 6.5% 0 0 -1%;
-    height: 31vh;
-    width: 37vw;
-    /* margin-right: 5%; */
+    height: 236px;
+    width: 38%;
     background: linear-gradient(to right, rgba(23, 32, 36, 0.7), rgba(0, 255, 255, 0.55)), url("./assets/even-smaller-square-louvre-pyramid-bottom.jpg") no-repeat;
-    /* animation: slideInLeft 5s; */
 }
 
 
 .header-info {
     display: flex;
     flex-direction: column;
-    margin: 6.5% 0 0 2%;
-    /* transform: translate(125%, -100%); */
-    width: 22vw;
+    margin: 6.5% 0 0 1.5%;
+    width: 22%;
     opacity: 1;
-    padding-top: 1px;
+    padding-top: 5px;
     font-size: x-large;
     border-top: 4px solid cyan;
-    /* animation: 2.5s ease-in 1s 1 slideInLeft; */
-
 }
+
 
 #name {
     padding-top: 9px;
@@ -102,7 +96,7 @@ p::after {
     background: cyan;
     height: 4px;
     font-size: 10px;
-    margin-top: 5px;
+    margin-top: 12px;
 }
 
 
@@ -111,6 +105,8 @@ p::after {
     justify-content: flex-start;
     margin-left: .5%;
 }
+
+
 
 #stack {
     font-size: medium;
@@ -138,19 +134,17 @@ li {
 .overlay-2 {
     opacity: 1;
     transform: translateY(95%);
-    /* z-index: 3; */
     margin: 0 0 0 -1%;
     height: 3vh;
     width: 28vw;
-    /* margin-right: 5%; */
     background: linear-gradient(to right, rgba(0, 255, 255, 0.55), rgba(23, 32, 36, 0.7)), url("./assets/even-smaller-square-louvre-pyramid-bottom.jpg") no-repeat;
-    /* animation: slideInLeft 5s; */
 }
 
 .project-and-descrip {
     display: flex;
     justify-content: center;
     margin-top: 2%;
+    margin-bottom: 5%;
 }
 
 #project-pics {
@@ -160,12 +154,29 @@ li {
     margin: 5% 0 10% 0;
 }
 
-#stem-edu-screenshot,
-#rtv-screenshot {
-    width: 38%;
-    height: auto;
+#stem-edu-screenshot-overlay {
+    height: 45vh;
+    width: 44vw;
     border-radius: 7px;
     margin-bottom: 5%;
+    background: linear-gradient(to right, rgba(21, 255, 255, 0.55), rgba(23, 32, 36, 0.65)), url("./assets/smaller-stem-edu-screenshot.png") no-repeat;
+}
+
+#stem-edu-screenshot-overlay:hover {
+    background: linear-gradient(to right, rgba(23, 32, 36, 0), rgba(0, 255, 255, 0)), url("./assets/smaller-stem-edu-screenshot.png") no-repeat;
+}
+
+
+#rtv-screenshot-overlay {
+    height: 45vh;
+    width: 44vw;
+    border-radius: 7px;
+    margin-bottom: 5%;
+    background: linear-gradient(to right, rgba(23, 32, 36, 0.7), rgba(21, 255, 255, 0.65)), url("./assets/smaller-rtv-screenshot.png") no-repeat;
+}
+
+#rtv-screenshot-overlay:hover {
+    background: linear-gradient(to right, rgba(23, 32, 36, 0), rgba(0, 255, 255, 0)), url("./assets/smaller-rtv-screenshot.png") no-repeat;
 }
 
 
@@ -173,19 +184,24 @@ li {
 #stem-project-descrip {
     background-color: black;
     border: 2px solid cyan;
-    padding: 12px;
-    width: 45vh;
+    padding: 20px;
+    width: 51vh;
     height: 25vh;
-    margin-top: 5%;
+    margin-top: 8%;
     border-radius: 7px;
+    text-align: center;
 }
 
 #stem-project-descrip {
-    transform: translate(12%, -17%)
+    transform: translate(29%, -18%)
 }
 
 #rtv-project-descrip {
-    transform: translate(-12%, -15%)
+    transform: translate(-15%, -15%)
+}
+
+.tech-stack {
+    text-align: center;
 }
 
 .sub-title-2 {
@@ -201,19 +217,17 @@ li {
     margin: 1% 4% 0 3%;
 }
 
-#about-text {}
+#about-text {
+    margin: 5% 0 5% 0;
+}
 
 
 #overlay-3 {
     opacity: 1;
     transform: translateY(95%);
-    /* z-index: 3; */
-    margin: 0 0 0 0;
     height: 3vh;
     width: 28vw;
-    /* margin-right: 5%; */
     background: linear-gradient(to right, rgba(23, 32, 36, 0.7), rgba(0, 255, 255, 0.55)), url("./assets/even-smaller-square-louvre-pyramid-bottom.jpg") no-repeat;
-    /* animation: slideInLeft 5s; */
 }
 
 
