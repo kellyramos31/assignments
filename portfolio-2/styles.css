@@ -201,7 +201,7 @@ li {
 #stem-project-descrip {
     background-color: black;
     border: 2px solid cyan;
-    padding: 20px;
+    padding: 20px 20px 45px 20px;
     width: 51vh;
     height: 25vh;
     margin-top: 8%;
@@ -215,6 +215,10 @@ li {
 
 #rtv-project-descrip {
     transform: translate(-15%, -15%)
+}
+
+.project-links{
+    padding-top: 10px;
 }
 
 .tech-stack {
