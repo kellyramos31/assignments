@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/866fd0d220.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="styles.css">
-    <title>Portfolio 2</title>
+    <title>👩🏻‍💻 k.ramos portfolio </title>
 </head>
 
 
@@ -16,7 +16,7 @@
 
     <nav class="nav-bar">
         <a href=index.html>home</a>
-        <a href="#projects">projects</a>
+        <a href="#scroll-to-projects">projects</a>
         <a href="#about">about</a>
         <div class="contact-li-git-icons-nav">
             <a href="#contact">contact</a>
@@ -32,7 +32,7 @@
     </nav>
 
     <header>
-        <div id="overlay"></div>
+        <div id="overlay-left"></div>
         <div class="header-info">
             <div id="name">kelly ramos</div>
             <ul>
@@ -50,10 +50,11 @@
 
             <p id="stack">MERN stack</p>
         </div>
+        <div id="overlay-right"></div>
     </header>
 
     <!-- <div class="vertical-line"></div> -->
-
+    <div id="scroll-to-projects"></div>
     <div class="sub-title">
         <div id="projects">projects</div>
         <div class="overlay-2"></div>
@@ -63,8 +64,10 @@
         <div class="project-and-descrip">
             <div id="stem-project-descrip">
                 <p>
-                    The WiSE (Women in STEM Education) app incorporates a flashcard-style study
-                    area with game and discussion forum components for learning about women's historical accomplishments
+                    <span class="project-name-bold">WiSE (Women in STEM Education)</span>, a full stack learn-play app,
+                    combines a
+                    flashcard-style study
+                    area with game and discussion forum components focusing on women's historical accomplishments
                     in the STEM fields.
                 </p>
 
@@ -82,15 +85,18 @@
 
         <div class="project-and-descrip">
             <!-- put in href for heroku app link here -->
-            <a>
+            <a href="https://rock-vote.herokuapp.com/">
                 <div id="rtv-screenshot-overlay"></div>
             </a>
             <div id="rtv-project-descrip">
+
+                <!-- maybe add separate github & website buttons here too -->
+
                 <p>
-                    Rock the Vote (RTV) is a full stack app that provides an issues forum where users can comment on
-                    other
-                    users
-                    issues as well as upvote and downvote issues and comments.
+                    <span class="project-name-bold">Rock the Vote (RTV)</span> is a full stack app that provides an
+                    issues forum where users can add their own
+                    issues, comment on
+                    other users' issues as well as upvote and downvote issues and comments.
                 </p>
 
                 <div class="tech-stack">react.js &nbsp&nbsp mongoDB &nbsp&nbsp mongoose &nbsp&nbsp express &nbsp&nbsp

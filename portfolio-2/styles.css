@@ -58,7 +58,7 @@ header {
 }
 
 
-#overlay {
+#overlay-left {
     opacity: 1;
     margin: 6.5% 0 0 -1%;
     height: 236px;
@@ -66,11 +66,19 @@ header {
     background: linear-gradient(to right, rgba(23, 32, 36, 0.7), rgba(0, 255, 255, 0.55)), url("./assets/even-smaller-square-louvre-pyramid-bottom.jpg") no-repeat;
 }
 
+#overlay-right {
+    opacity: 1;
+    margin: 6.5% 0 0 0;
+    height: 236px;
+    width: 38%;
+    background: linear-gradient(to right, rgba(0, 255, 255, 0.55), rgba(23, 32, 36, 0.7)), url("./assets/even-smaller-square-louvre-pyramid-bottom.jpg") no-repeat;
+}
+
 
 .header-info {
     display: flex;
     flex-direction: column;
-    margin: 6.5% 0 0 1.5%;
+    margin: 6.5% 2% 0 2%;
     width: 22%;
     opacity: 1;
     padding-top: 5px;
@@ -131,6 +139,15 @@ li {
     margin: 1% 4% 0 0;
 }
 
+#scroll-to-projects {
+    margin-bottom: 19%;
+}
+
+.project-name-bold {
+    font-weight: bold;
+    color: rgb(227, 250, 250);
+}
+
 .overlay-2 {
     opacity: 1;
     transform: translateY(95%);
@@ -144,14 +161,14 @@ li {
     display: flex;
     justify-content: center;
     margin-top: 2%;
-    margin-bottom: 5%;
+    margin-bottom: 1%;
 }
 
 #project-pics {
     display: flex;
     flex-direction: column;
     align-content: right;
-    margin: 5% 0 10% 0;
+    margin: 0 0 10% 0;
 }
 
 #stem-edu-screenshot-overlay {
@@ -221,7 +238,6 @@ li {
     margin: 5% 0 5% 0;
 }
 
-
 #overlay-3 {
     opacity: 1;
     transform: translateY(95%);
@@ -229,8 +245,6 @@ li {
     width: 28vw;
     background: linear-gradient(to right, rgba(23, 32, 36, 0.7), rgba(0, 255, 255, 0.55)), url("./assets/even-smaller-square-louvre-pyramid-bottom.jpg") no-repeat;
 }
-
-
 
 #get-in-touch {
     text-align: right;
