@@ -179,6 +179,7 @@ li {
 
 
 #rtv-screenshot-overlay {
+    margin-left: 14%;
     height: 45vh;
     width: 44vw;
     border-radius: 7px;
@@ -209,7 +210,7 @@ li {
 }
 
 #rtv-project-descrip {
-    /* transform: translate(-15%, -15%); */
+    transform: translateY(-15%)
 }
 
 .project-links{
