@@ -147,13 +147,39 @@
             <div class="overlay-2"></div>
         </div>
 
+
+        <div id="send-msg">
         <div id="get-in-touch">let's connect.</div>
 
-
         <!-- ****figure out how to use Netlify form for this*** -->
-        <div id="send-email-link">
-            <a id="email-link" href="mailto: ramoskel343@gmail.com"><i class="fa-solid fa-envelope"
-                    style="color: cyan"></i>&nbspclick to email.</a>
+        <div id="send-email-form">
+           <form action="POST" data-netlify="true">
+                <div>send me a message</div>
+                <div class="field">
+                    <input 
+                        type="text"
+                        name="name"
+                        placeholder="name"
+                    />
+                </div>
+                <div class="field">
+                    <input 
+                        type="email" 
+                        name="email" 
+                        placeholder="email"
+                        />
+                </div>
+                <div class="field">
+                    <textarea name="message" placeholder="message" rows="7"></textarea>
+                </div>
+                <div class="field">
+                    <div data-netlify-recaptcha="true"></div>
+                </div>
+
+                <button type="submit">submit message</button>
+
+           </form>
+        </div>
         </div>
     </div>
 
