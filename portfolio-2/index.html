@@ -17,9 +17,9 @@
     <nav class="nav-bar">
         <!-- <a href=index.html>home</a> -->
         <a href="#scroll-to-projects">projects</a>
-        <a href="#about">about</a>
+        <a href="#scroll-to-about">about</a>
         <div class="contact-li-git-icons-nav">
-            <a href="#contact">contact</a>
+            <a href="#scroll-to-contact">contact</a>
             <span class="li-git-icons">
                 <a href="https://www.linkedin.com/in/kelly-a-ramos/"><i class="fa-brands fa-linkedin"
                         style="font-size: 28px; margin-top: -7%"></i></a>
@@ -35,16 +35,30 @@
         <div id="overlay-left"></div>
         <div class="header-info">
             <div id="name">kelly ramos</div>
-            <ul>
-                <li>full-stack web developer</li>
-            </ul>
-
+            <div id="dev">full-stack web developer</div>
+    
             <div class="tech-icons-group">
-                <span style="font-size: 48px; color: cyan">
-                    <i class="fa-brands fa-react" title="react"></i>
-                    <i class="fa-brands fa-js-square" title="javascript"></i>
-                    <i class="fa-brands fa-html5" title="html5"></i>
-                    <i class="fa-brands fa-css3-alt" title="css3"></i>
+                <span class="about-icons">
+
+                    <div class="icons">
+                        <i class="fa-brands fa-react" style="align-self: center"></i>
+                        <div class="icons-text">react</div>
+                    </div>
+
+                    <div class="icons">
+                        <i class="fa-brands fa-js-square" style="align-self: center"></i>
+                        <div class="icons-text">javascript</div>
+                    </div>
+
+                    <div class="icons">
+                        <i class="fa-brands fa-html5" style="align-self: center" ></i>
+                        <div class="icons-text">html5</div>
+                    </div>
+
+                    <div class="icons">
+                        <i class="fa-brands fa-css3-alt"style="align-self: center" ></i>
+                        <div class="icons-text">css3</div>
+                    </div>
                 </span>
             </div>
 
@@ -58,10 +72,11 @@
     <div class="sub-title">
         <div id="projects">projects</div>
         <div class="overlay-2"></div>
+
     </div>
 
 
-        <div class="project-and-descrip">
+    <div class="project-and-descrip">
             <div id="stem-project-descrip">
                 <p>
                     <span class="project-name-bold">WiSE (Women in STEM Education)</span>, a full-stack learn-play app,
@@ -101,10 +116,10 @@
                 <!-- maybe add separate github & website buttons here too -->
 
                 <p>
-                    <span class="project-name-bold">Rock the Vote (RTV)</span> is a full-stack app that provides an
-                    issues forum where users can add their own
+                    <span class="project-name-bold">Rock the Vote (RTV)</span> is a full-stack app that provides a political
+                    issues forum where users can add/edit/delete their own
                     issues, comment on
-                    other users' issues as well as upvote and downvote issues and comments.
+                    other users' issues, as well as upvote and downvote all posted issues.
                 </p>
 
                 <div class="tech-stack">react.js &nbsp&nbsp mongoDB &nbsp&nbsp mongoose &nbsp&nbsp express &nbsp&nbsp
@@ -120,28 +135,29 @@
         </div>
     </div>
 
+    <div id="scroll-to-about"></div>
     <div class="sub-title-2">
         <div id="overlay-3"></div>
         <div id="about">about</div>
     </div>
 
+
     <div id="about-and-pic">
 
         <div id="about-me">
-            <p id="builder">builder, problem-solver, collaborator.</p>
+            <p id="builder">builder, problem-solver, collaborator</p>
             <div id="me-detail">
-                What I love about web development is the intersection of the analytical and the creative. 
-                I bring a strong appreciation for the user from my market research experience, and my 
-                business background keeps me focused on the "why".
+                What I love about building for the web is the intersection of logic and creativity.  
+                <!-- The process of developing skills to spin up interactive user experiences has been extremely rewarding -->
             </div>
         </div>
-        
-        <div id="overlay-4"></div>
+        <img id="pic" src="./assets/150-abt-pic.jpg" width="150px" height="100%" alt="pic"/>
+       
     
     </div>
 
 
-    <div>
+    <div id="scroll-to-contact">
         <div class="sub-title">
             <div id="contact">contact</div>
             <div class="overlay-2"></div>
@@ -154,7 +170,6 @@
         <!-- ****figure out how to use Netlify form for this*** -->
         <div id="send-email-form">
            <form action="POST" data-netlify="true">
-                <div>send me a message</div>
                 <div class="field">
                     <input 
                         type="text"

@@ -62,7 +62,7 @@ header {
     opacity: 1;
     margin: 6.5% 0 0 -1%;
     height: 236px;
-    width: 37%;
+    width: 38%;
     background: linear-gradient(to right, rgba(23, 32, 36, 0.7), rgba(0, 255, 255, 0.55)), url("./assets/even-smaller-square-louvre-pyramid-bottom.jpg") no-repeat;
 }
 
@@ -70,7 +70,7 @@ header {
     opacity: 1;
     margin: 6.5% 0 0 0;
     height: 236px;
-    width: 37%;
+    width: 38%;
     background: linear-gradient(to right, rgba(0, 255, 255, 0.55), rgba(23, 32, 36, 0.7)), url("./assets/even-smaller-square-louvre-pyramid-bottom.jpg") no-repeat;
 }
 
@@ -88,9 +88,16 @@ header {
 
 
 #name {
-    padding-top: 9px;
+    padding-top: 5%;
+    padding-bottom: 2%;
     font-size: x-large;
     color: cyan;
+    text-align: center;
+}
+
+#dev {
+    text-align: center;
+    color:rgb(227, 250, 250);
 }
 
 
@@ -107,21 +114,30 @@ p::after {
     margin-top: 12px;
 }
 
-
 .tech-icons-group {
-    display: flex;
-    justify-content: flex-start;
-    margin-left: .5%;
+    margin: 8% 16% 3% 16%;
 }
 
+.about-icons {
+    display: flex;
+    justify-content: space-between;
+    color: cyan;
+}
+
+.icons {
+    display: flex;
+    flex-direction: column;
+    font-size: 41px;
+}
+
+.icons-text {
+    font-size: small;
+    text-align: center;
+}
 
 #stack {
     font-size: medium;
-}
-
-li {
-    transform: translateX(-6.5%);
-    color: rgb(227, 250, 250);
+    text-align: center;
 }
 
 .sub-title {
@@ -139,8 +155,9 @@ li {
 }
 
 #scroll-to-projects {
-    margin-bottom: 19%;
+    /* margin-bottom: 19%; */
 }
+
 
 .project-name-bold {
     font-weight: bold;
@@ -164,17 +181,17 @@ li {
     margin-right: 12%;
 }
 
+
 #stem-edu-screenshot-overlay {
     height: 45vh;
     width: 44vw;
     border-radius: 7px;
     margin-bottom: 5%;
-    /* background: linear-gradient(to right, rgba(21, 255, 255, 0.55), rgba(23, 32, 36, 0.65)), url("./assets/smaller-stem-edu-screenshot.png") no-repeat; */
-    background: linear-gradient(to top, rgba(2, 251, 251, 0.522), rgba(2, 251, 251, 0.4)), url("./assets/smaller-stem-edu-screenshot.png") no-repeat;
+    background: url("./assets/smaller-stem-edu-screenshot.png") no-repeat;
 }
 
 #stem-edu-screenshot-overlay:hover {
-    background: linear-gradient(to right, rgba(23, 32, 36, 0), rgba(0, 255, 255, 0)), url("./assets/smaller-stem-edu-screenshot.png") no-repeat;
+    box-shadow: 0 0 20px cyan;
 }
 
 
@@ -184,11 +201,11 @@ li {
     width: 44vw;
     border-radius: 7px;
     margin-bottom: 5%;
-    background: linear-gradient(to top, rgba(2, 251, 251, 0.522), rgba(2, 251, 251, 0.4)), url("./assets/smaller-rtv-screenshot.png") no-repeat;
+    background: url("./assets/smaller-rtv-screenshot2.png") no-repeat;
 }
 
 #rtv-screenshot-overlay:hover {
-    background: linear-gradient(to right, rgba(23, 32, 36, 0), rgba(0, 255, 255, 0)), url("./assets/smaller-rtv-screenshot.png") no-repeat;
+    box-shadow: 0 0 20px cyan;
 }
 
 
@@ -225,6 +242,7 @@ li {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
+
 }
 
 #about {
@@ -241,8 +259,10 @@ li {
 }
 
 #about-me {
+    display: flex;
+    flex-direction: column;
     margin: 2% 0 5% 1%;
-    width: 30%;
+    width: 24%;
     text-align: center;
     font-size: medium;
 }
@@ -251,15 +271,17 @@ li {
     margin-top: -2.5%;
 }
 
-/* #avatar {
-    width: 15%;
-    height: auto;
-} */
-
-#about-and-pic {
-    display: flex;
-    margin-bottom: 5%;
+#pic {
+    margin: 2.5% 0 0 .75%;
+    border-radius: 50%;
 }
+
+#about-and-pic{
+    width: 130%;
+    display: flex;
+    margin-bottom: 6%;
+}
+
 
 #overlay-3 {
     opacity: 1;
@@ -290,6 +312,7 @@ li {
     text-align: right;
     margin: 3% 34.5% 1% 0;
     font-size: x-large;
+    color: rgb(227, 250, 250);
 }
 
 form {
@@ -300,14 +323,39 @@ form {
 
 form input {
     width: 30%;
-    background-color: cyan;
     font-family: "Montserrat";
+    font-weight: bold;
     font-size: medium;
+    border: none;
+    border-radius: 2px;
+    margin-bottom: .3%;
+    padding: 7px;
 }
+
+input:focus {
+    background-color: rgba(191, 248, 248, 0.938);
+}
+
 
 form textarea {
     width: 30%;
     font-family: "Montserrat";
     font-size: medium;
-    background-color: cyan;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+    padding: 7px;
+    margin-bottom: .5%;
+}
+
+textarea:focus {
+    background-color: rgba(191, 248, 248, 0.938);
+}
+
+form button {
+    padding: 6px;
+    border-radius: 4px;
+    font-size: medium;
+    background-color: rgba(5, 239, 239, 0.9);
+    margin-top: .5%;
 }
