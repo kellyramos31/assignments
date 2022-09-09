@@ -197,3 +197,30 @@ const welcomeMessage = (location, name) => (`\n\nHi ${name}!\n\nWelcome to ${loc
 
 console.log(welcomeMessage("Kauai", "Kelly"))
 
+
+// const dogsArr = ["wolf", "fox", "coyote", "jackal"]
+// const catsArr = ["puma", "bobcat", "lynx", "caracal", "tiger"]
+// function unshift(...arr) {
+//   return [...arr]
+// }
+// console.log(unshift(...arr, dogsArr))
+
+const dogsArr = ["wolf", "fox", "coyote", "jackal"]
+const catsArr = ["puma", "bobcat", "lynx", "caracal", "tiger"]
+// function unshift(array, ...catsArr) {
+//   return [...catsArr, array];
+// }
+// console.log(unshift(dogsArr, catsArr))
+
+// function unshift(array, ...second) {
+//   return [...second, ...array];
+// }
+
+// console.log()
+
+function unshift(array, ...second) {
+  return [...second, ...array];
+}
+
+console.log(unshift(dogsArr, ...catsArr))
+

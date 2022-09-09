@@ -1,13 +1,10 @@
-
 // //DONE -- 1) Given an array of numbers, return a new array that has only the numbers that are 5 or greater.
-
 
 // const numArray = [3, 6, 8, 2]
 
 // //practice again
 // const fiveOrMore = numArray.filter(num => num >= 5)
 // console.log(fiveOrMore)
-
 
 // /*
 // //code for exercise:
@@ -27,13 +24,11 @@
 // // test
 // //console.log(fiveAndGreaterOnly([3, 6, 8, 2])); /// [6, 8]
 
-
 // //DONE -- 2) Given an array of numbers, return a new array that only includes the even numbers.
 
 // //practice again
 // const evensOnly = numArray.filter(num => num % 2 === 0)
 // console.log(evensOnly)
-
 
 // //code for exercise:
 // /*
@@ -52,15 +47,12 @@
 // // test
 // //console.log(evensOnly([3, 6, 8, 2])); /// [6, 8, 2]
 
-
-
 // //DONE -- 3) Given an array of strings, return a new array that only includes those that are 5 characters or fewer in length
 // const stringsArr = ["dog", "wolf", "by", "family", "eaten", "camping"]
 
 // //practice again
 // const fiveCharsOrLess = stringsArr.filter(string => string.length <= 5)
 // console.log(fiveCharsOrLess)
-
 
 // //code for exercise:
 // /*
@@ -81,8 +73,6 @@
 // // test
 // //console.log(fiveCharactersOrFewerOnly(["dog", "wolf", "by", "family", "eaten", "camping"])); // ["by", "dog", "wolf", "eaten"]
 
-
-
 // //DONE -- 4) Given an array of people objects, return a new array that has filtered out all those who don't belong to the club.
 
 // const people = [
@@ -97,7 +87,6 @@
 
 // const clubMembers = people.filter(person => person.member)
 // console.log(clubMembers)
-
 
 // //code for exercise:
 // /*
@@ -120,8 +109,6 @@
 // //[ { name: 'Angelina Jolie', member: true },
 // //  { name: 'Paris Hilton', member: true },
 // //  { name: 'Bob Ziroll', member: true } ]
-
-
 
 // //DONE--5) Make a filtered list of all the people who are old enough to see The Matrix(older than 18)
 // const nameAge = [
@@ -156,14 +143,12 @@
 // //[ { name: 'Angelina Jolie', age: 80 },
 // //  { name: 'Bob Ziroll', age: 100 } ]
 
-
 // // FIBONACCI SEQUENCE:
 
 // // 0, 1, 1, 2, 3, 5, 8, 13, 21, 34
 
 // //Shane using:
 // //1, 1, 2, 3, 5, 8, 13, 21, 34
-
 
 // // CHALLENGE:
 // // Fibonacci numbers are a series of numbers, beginning with 1, 1 and continuing such that each number is the result of adding the two previous numbers together.For example, the first 6 Fibonacci numbers are calculated as follows:
@@ -184,20 +169,14 @@
 // //As a bonus, this function should be called recursively.
 // //     Example:
 // // // passing in 4 should return the 4th Fibonacci number, which is 3
-// // fibNum(4) // 3 
+// // fibNum(4) // 3
 // // fibNum(6) //8
-
-
-
 
 // // function fight() {
 // //     const { opponent } = enemies.splice(Math.floor(Math.random() * enemies.length), 1)
 // //     let target = new Enemy(opponent.name, opponent.health);
 // //     console.log(target) // => Enemy { name: { name: 'Karen', health: 30 }, health: undefined }
 // // }
-
-
-
 
 // // class Player {
 // //     constructor(name, totalCoins, status, hasStar, gameActive) {
@@ -274,7 +253,6 @@
 
 // // }
 
-
 // // let gameOver = false;
 
 // // const namePicked = whichName();
@@ -300,7 +278,6 @@
 
 // // const intervalId = setInterval(() => namePicked.randomStatus(), 1000);
 
-
 // const enemies = [
 //     {
 //         name: "Prison Mike",
@@ -314,7 +291,6 @@
 //         name: "Karen",
 //         health: 30
 //     }];
-
 
 // class Enemy {
 //     constructor(name, health) {
@@ -330,8 +306,6 @@
 // }
 
 // fight()
-
-
 
 // function squareOrSquareRoot(array) {
 //       const newArr = []
@@ -349,9 +323,6 @@
 // return newArr
 // }
 // squareOrSquareRoot([1,2,3])
-
-
-
 
 // function betterThanAverage(classPoints, yourPoints) {
 //   // Your code here
@@ -372,7 +343,6 @@
 // }
 
 // betterThanAverage([12, 23, 34, 45, 56, 67, 78, 89, 90], 9)
-
 
 // // A boomerang is a V-shaped sequence that is either upright or upside down. Specifically, a boomerang can be defined as: sub-array of length 3, with the first and last digits being the same and the middle digit being different.
 // // Some boomerang examples:
@@ -401,7 +371,6 @@
 // // Return only the number of boomerangs, not the list of boomerangs
 // // [5, 5, 5] (triple identical digits) is NOT considered a boomerang because the middle digit is identical to the first and last.
 
-
 // //note:  should add something to stop loop before end -- so i < array.length-2 (instead of i< array.length)
 // function boomerang(array){
 //     let boomCount = 0
@@ -426,18 +395,11 @@
 //     return boomCount
 // }
 
-
-
-
-
-
 // // const double = [2, 5, 100]
 //   function doubleNumbers(numArr){
 //       return numArr.map(num=>num*2)
 //   }
 // console.log(doubleNumbers([2,5,10]))
-
-
 
 // //   console.log(doubleNumbers([2, 5, 100])); // [4, 10, 200]
 // //   //2
@@ -447,7 +409,6 @@
 // //   }
 // //   console.log(stringItUp([2, 5, 100])); // ["2", "5", "100"]
 
-
 // //CODE CHALLENGE
 // // Create a function that determines whether a number is Oddish or Evenish.
 // // A number is Oddish if the sum of all of its digits is odd, and a number is
@@ -455,21 +416,20 @@
 // // return "Oddish". Otherwise, return "Evenish". You can assume that all input
 // // values will be positive whole numbers.
 
-
-// // Sample data for testing: 
-// // console.log(oddishOrEvenish(43)) 
+// // Sample data for testing:
+// // console.log(oddishOrEvenish(43))
 // // // 4 + 3 = 7
 // // // "Oddish"
 
-// // console.log(oddishOrEvenish(373)) 
+// // console.log(oddishOrEvenish(373))
 // // // 3 + 7 + 3 = 13
 // // // "Oddish"
 
-// // console.log(oddishOrEvenish(4433)) 
+// // console.log(oddishOrEvenish(4433))
 // // // 4 + 4 + 3 + 3 = 14
 // // // "Evenish"
 
-// // console.log(oddishOrEvenish(1020403)) 
+// // console.log(oddishOrEvenish(1020403))
 // // 1 + 0 + 2 + 0 + 4 + 0 + 3 = 10
 // // "Evenish"
 
@@ -489,7 +449,7 @@
 // //     let sum = numStringArr.reduce((final, curr) => {
 // // 			return final += parseInt(curr)
 // // 		}, 0)
-    
+
 // //     sum%2 === 0 ? "Evenish" : "Oddish"
 
 // // }
@@ -504,25 +464,107 @@
 //     } else {
 //         return "Oddish"
 // }}
-    
-// console.log(oddishOrEvenish(373)) 
 
+// console.log(oddishOrEvenish(373))
 
-
-
-
-function isPalendrome(str){
+function isPalendrome(str) {
   // break up string
-    const checkPalin = str.split("")
-    console.log(checkPalin)
+  const checkPalin = str.split("");
+  console.log(checkPalin);
   // reverse
-    checkPalin.reverse()
-    
-  // return put back together === str
-    const joinBack = checkPalin.join("")
-    console.log(joinBack)
+  checkPalin.reverse();
 
-    str === joinBack ? console.log("It's a palindrome") : console.log("It's not a palindrome")
+  // return put back together === str
+  const joinBack = checkPalin.join("");
+  console.log(joinBack);
+
+  str === joinBack
+    ? console.log("It's a palindrome")
+    : console.log("It's not a palindrome");
 }
 
-isPalendrome("kayak")
+isPalendrome("kayak");
+
+//Roy - code challenge on 7/13/22
+// Find Number of Digits in Number
+// Create a function that will return an integer number corresponding to the amount of digits in the given integer num.
+// Examples
+// num_of_digits(1000) ➞ 4
+
+// num_of_digits(12) ➞ 2
+
+// num_of_digits(1305981031) ➞ 10
+
+// num_of_digits(0) ➞ 1
+// Notes
+// Try to solve this challenge without using strings!
+
+// function numOfDigits(arg){
+//   const number = [...arg]
+//   return number
+// }
+
+// console.log(numOfDigits(1000))
+
+//Maira Code Challenge on 7/15/22
+// Find Subsequence of Length K With the Largest Sum
+// You are given an integer array nums and an integer k. You want to find a subsequence of nums of length k that has the largest sum.
+// Return any such subsequence as an integer array of length k.
+// A subsequence is an array that can be derived from another array by deleting some or no elements without changing the order of the remaining elements.
+// Example 1:
+// Input: nums = [2,1,3,3], k = 2
+// Output: [3,3]
+// Explanation:
+// The subsequence has the largest sum of 3 + 3 = 6.
+// Example 2:
+// Input: nums = [-1,-2,3,4], k = 3
+// Output: [-1,3,4]
+// Explanation:
+// The subsequence has the largest sum of -1 + 3 + 4 = 6.
+// Example 3:
+// Input: nums = [3,4,3,3], k = 2
+// Output: [3,4]
+// Explanation:
+// The subsequence has the largest sum of 3 + 4 = 7.
+// Another possible subsequence is [4, 3].
+// For Students in Levels 1 & 2
+// Find the largest subarray subsequence of a fixed number, 3. [k=3]
+// Level 3+
+// Do the challenge as described above
+// Tip
+// There's multiple ways you can solve this, but look into the sliding window technique. it's a common one that can be used to solve array problems to avoid having any nested loops.
+// ** I misread the question, it's a subsequence, so it can be any k numbers in the array, not a continuous subarray. So the sliding window technique is probably not the way to solve this. :woman-facepalming: If you're interested in looking at one potentially efficient solution, look into heaps (not necessary to solve this).
+// See you at 2mst! (edited)
+
+function checkString(str) {
+  if (str.trim().length === 0) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(checkString(""));
+
+//simple example that pushes the numbers 0-4 to the empty array
+
+// function fillUp() {
+
+// var emptyArr = [];
+// for (let i = 0; i < 5; i++) {
+//   emptyArr.unshift(i);
+//   console.log(emptyArr);
+// }
+// return emptyArr;
+
+// console.log(fillUp());
+
+var numbers = [1, 2, 3];
+function doubleNumbers(arr) {
+  arr.map((arr) => {
+    const result = arr[i] * 2;
+    console.log(result);
+  });
+}
+
+console.log(doubleNumbers(numbers));

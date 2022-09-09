@@ -85,8 +85,6 @@ while (player.isAlive === true) {
 }
 */
 
-
-
 // const readline = require("readline-sync");
 // const playerName = readline.question("What is your name? ");
 // console.log("Welcome " + playerName + " You find yourself trapped in a locked room. It is your job to find a way to escape. When you are ready to play type one of these commands. put hand in hole, find key, or open the door")
@@ -124,3 +122,54 @@ while (player.isAlive === true) {
 //     }
 // }
 
+//ALTERNATIVE WAY TO WRITE THIS WITH KEY AS BOOLEAN:
+
+// const readline = require("readline-sync");
+// const name = readline.question("What is your name?");
+
+// let count = false;
+// let key = false;
+
+// while (!count) {
+//   var answer = readline.question(`Hello ${name}.  3 options
+//     [h]. To put hand in hole.
+//     [k]. To find the key.
+//     [d]. open door
+//     Which option choose?`);
+
+//   if (answer === "h") {
+//     console.log("you are dead");
+//   } else if (answer === "k") {
+//     console.log("found key");
+//     key = true;
+//   } else if (answer === "d" && key === true) {
+//     console.log("you opened the door!!!");
+//   } else if (answer === "d") {
+//     console.log("opened the door, but locked");
+//   }
+// }
+
+// const readline = require("readline-sync");
+// const name = readline.question("What is your name?");
+
+// let count = false;
+// let lastAns;
+
+// while (!count) {
+//   var answer = readline.question(`Hello ${name}.  3 options
+//     [h]. To put hand in hole.
+//     [k]. To find the key.
+//     [d]. open door
+//     Which option choose?`);
+
+//   if (answer === "h") {
+//     console.log("you are dead");
+//   } else if (answer === "k") {
+//     console.log("found key");
+//     lastAns = answer;
+//   } else if (answer === "d" && lastAns === "k") {
+//     console.log("you opened the door!!!");
+//   } else if (answer === "d") {
+//     console.log("opened the door, but locked");
+//   }
+// }

@@ -11,39 +11,179 @@ for (var i = 0; i < officeItems.length; i++) {
 }
 */
 //DONE:  #2  Loop through the following array and log to the console "old enough" if they are 18 or older, and "not old enough" if thy aren't 18.
-/*
-var peopleWhoWantToSeeMadMaxFuryRoad = [
-    {
-        name: "Mike",
-        age: 12,
-        gender: "male"
-    }, {
-        name: "Madeline",
-        age: 80,
-        gender: "female"
-    }, {
-        name: "Cheryl",
-        age: 22,
-        gender: "female"
-    }, {
-        name: "Sam",
-        age: 30,
-        gender: "male"
-    }, {
-        name: "Suzy",
-        age: 4,
-        gender: "female"
-    }
-]
 
-for (var i = 0; i <= peopleWhoWantToSeeMadMaxFuryRoad.length; i++) {
-    if (peopleWhoWantToSeeMadMaxFuryRoad[i].age >= 18) {
-        console.log("old enough")
+var peopleWhoWantToSeeMadMaxFuryRoad = [
+  {
+    name: "Mike",
+    age: 12,
+    gender: "male",
+  },
+  {
+    name: "Madeline",
+    age: 80,
+    gender: "female",
+  },
+  {
+    name: "Cheryl",
+    age: 22,
+    gender: "female",
+  },
+  {
+    name: "Sam",
+    age: 30,
+    gender: "male",
+  },
+  {
+    name: "Suzy",
+    age: 4,
+    gender: "female",
+  },
+];
+
+// for (var i = 0; i <= peopleWhoWantToSeeMadMaxFuryRoad.length; i++) {
+//   if (peopleWhoWantToSeeMadMaxFuryRoad[i].age >= 18) {
+//     console.log("old enough");
+//   } else {
+//     console.log("not old enough");
+//   }
+// }
+
+// for (var i = 0; i <= peopleWhoWantToSeeMadMaxFuryRoad.length; i++) {
+//   if (peopleWhoWantToSeeMadMaxFuryRoad[i].gender === "female") {
+//     console.log("she");
+//   } else if (peopleWhoWantToSeeMadMaxFuryRoad[i].gender === "male") {
+//     console.log("he");
+//   }
+// }
+
+// for (var i = 0; i < peopleWhoWantToSeeMadMaxFuryRoad.length; i++) {
+//   var gender = "";
+
+//   if (peopleWhoWantToSeeMadMaxFuryRoad[i].age >= 18) {
+// console.log(peopleWhoWantToSeeMadMaxFuryRoad[i].name+' is old enough to see Mad Max. '+ pronoun
+
+var peopleWhoWantToSeeMadMaxFuryRoad = [
+  {
+    name: "Mike",
+    age: 12,
+    gender: "male",
+  },
+  {
+    name: "Madeline",
+    age: 80,
+    gender: "female",
+  },
+  {
+    name: "Cheryl",
+    age: 22,
+    gender: "female",
+  },
+  {
+    name: "Sam",
+    age: 30,
+    gender: "male",
+  },
+  {
+    name: "Suzy",
+    age: 4,
+    gender: "female",
+  },
+];
+
+pronoun = "";
+
+// if (peopleWhoWantToSeeMadMaxFuryRoad.gender === "male") {
+//   pronoun = "he";
+// } else {
+//   pronoun = "she";
+// }
+
+for (var i = 0; i < peopleWhoWantToSeeMadMaxFuryRoad.length; i++) {
+  var pronoun;
+
+  if (peopleWhoWantToSeeMadMaxFuryRoad[i].age >= 18) {
+    console.log(
+      peopleWhoWantToSeeMadMaxFuryRoad[i].name +
+        " is old enough to see Mad Max. "
+    );
+    if (peopleWhoWantToSeeMadMaxFuryRoad[i].gender === "male") {
+      pronoun = "he";
     } else {
-        console.log("not old enough")
+      pronoun = "she";
     }
+    console.log(`${pronoun} is super stoked`);
+  }
 }
-*/
+
+//       var peopleWhoWantToSeeMadMaxFuryRoad = [
+//     {
+//       name: "Mike",
+//       age: 12,
+//       gender: "male"
+//     },{
+//       name: "Madeline",
+//       age: 80,
+//       gender: "female"
+//     },{
+//       name: "Cheryl",
+//       age: 22,
+//       gender: "female"
+//     },{
+//       name: "Sam",
+//       age: 30,
+//       gender: "male"
+//     },{
+//       name: "Suzy",
+//       age: 4,
+//       gender: "female"
+//     }
+//   ]
+
+//   pronoun = ("")
+
+//   if(peopleWhoWantToSeeMadMaxFuryRoad.gender === 'male'){
+//     pronoun = "he"
+//   } else {
+//     pronoun = "she"
+//   }
+
+//   for(var i =0; i<peopleWhoWantToSeeMadMaxFuryRoad.length;i++){
+//     var gender = ""
+
+//         // for(var i=0; i<peopleWhoWantToSeeMadMaxFuryRoad.length;i++){
+//         //     if(peopleWhoWantToSeeMadMaxFuryRoad[i].gender === male){
+//         //     console.log('he')
+//         // } else {
+//         //     console.log('she')
+//         // }}
+
+//         +' is super stoked!!')
+
+//     } else {
+//         console.log(peopleWhoWantToSeeMadMaxFuryRoad[i].name +' is not old enough :/. '+ peopleWhoWantToSeeMadMaxFuryRoad[i].gender +' is super bummed')
+//     }
+//   }
+
+//         // for(var i=0; i<peopleWhoWantToSeeMadMaxFuryRoad.length;i++){
+//         //     if(peopleWhoWantToSeeMadMaxFuryRoad[i].gender === male){
+//         //     console.log('he')
+//         // } else {
+//         //     console.log('she')
+//         // }}
+
+//         " is super stoked!!"
+//     );
+//   } else {
+//     console.log(
+//       peopleWhoWantToSeeMadMaxFuryRoad[i].name +
+//         " is not old enough :/. " +
+//         peopleWhoWantToSeeMadMaxFuryRoad[i].gender +
+//         " is super bummed"
+//     );
+//   }
+// }
+
+// }
 
 // DONE:  Optional Bonus challenge (see direction details below)
 /*
@@ -72,8 +212,6 @@ for (var i = 0; i < lightBulbArray.length; i++) {
 //[2, 5, 435, 4, 3] // "The light is on"
 ////[1, 1, 1, 1, 3]   // "The light is on"
 //[9, 3, 4, 2]      // "The light is off"
-
-
 
 //DONE -- OTHER PRACTICE: #1 -- Loop through the following array, and log to the console "hooray" for every party there is.
 /*

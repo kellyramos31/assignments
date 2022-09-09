@@ -1,5 +1,4 @@
-
-//DONE -- 1.  Write a function that takes a string as a parameter and returns the same string in 
+//DONE -- 1.  Write a function that takes a string as a parameter and returns the same string in
 //all capital letters followed by all lowercase letters.
 //  capilizeAndLowercase("HelLo") // => "HELLOhello"
 
@@ -20,21 +19,24 @@ capitalizeAndLowercase();
 // Hint: You'll need to use Math.floor().
 //  findMiddleIndex("Hello") // => 2
 //  findMiddleIndex("Hello World") // => 5
-/*
-var startingString = "hey friends! practice practice practice!";
-var halfIndex
 
-function returnNumberHalfRound() {
-    var strLength = startingString.length;   //get length of string
-    var halfLength = strLength / 2; //divide length in half
-    var roundIt = Math.floor(halfLength)//round down
-    halfIndex = roundIt;
-    console.log(roundIt);//console log result
+// var startingString = "hey friends! practice practice practice!";
+// var halfIndex;
 
+// function returnNumberHalfRound() {
+//   var strLength = startingString.length; //get length of string
+//   var halfLength = strLength / 2; //divide length in half
+//   var roundIt = Math.floor(halfLength); //round down
+//   halfIndex = roundIt;
+//   console.log(roundIt); //console log result
+// }
+// returnNumberHalfRound(startingString);
+
+function round(str) {
+  const halfStringNum = Math.floor(str.length / 2);
+  return halfStringNum;
 }
-
-//returnNumberHalfRound();
-*/
+console.log(round("hello"));
 
 //3.  Write a function that uses slice() and the other functions you've written to return the first half of the given string.
 // returnFirstHalf("Hello") // => "He"
@@ -49,7 +51,7 @@ function returnHalfString() {
 returnHalfString();
 */
 
-//4.  Write a function that takes a string as a parameter and returns that string where the first half is capitalized, 
+//4.  Write a function that takes a string as a parameter and returns that string where the first half is capitalized,
 //and the second half is lowercase.
 // Hint: If your string length is odd, use Math.floor() to round down.
 //  capilizeAndLowercase("Hello") // => "HEllo"
@@ -67,13 +69,10 @@ function halfStringUpHalfStringDown() {
 halfStringUpHalfStringDown()
 */
 
-
 //--DONE -- OPTIONAL CODE CHALLENGE:
 //    (This one is a step up in difficulty and utilizes the.split() string method and.join() array method):
 //    Write a function that takes a string as a parameter and capitalizes any character that follows a space.
 //    capitalize("hey friends! practice practice practice!") // -> "Hey Friends! Practice Practice Practice!"
-
-
 
 //CHECK THIS LINK FOR HINT ABOUT HOW TO INDEX: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/charAt
 
@@ -111,7 +110,6 @@ function capsOnSpace() {
 capsOnSpace()
 */
 
-
 //CODE CHALLENGE:
 // function reverse(word) {
 //     const splitItUp = word.split("").reverse().join("")
@@ -119,27 +117,27 @@ capsOnSpace()
 // }
 // reverse("cat")
 
-  // console.log(splitItUp)
-    // const flipIt = splitItUp.reverse()
-    // console.log(flipIt)
-    // const joinItBack = flipIt.join()
-    // console.log(joinItBack)
+// console.log(splitItUp)
+// const flipIt = splitItUp.reverse()
+// console.log(flipIt)
+// const joinItBack = flipIt.join()
+// console.log(joinItBack)
 
 //CODE CHALLENGE Anagram:
 // function isAnagram(word1, word2) {
 //     const array1 = word1.split("")
 //     const array2 = word2.split("")
 //     const matchedLetters = []
- 
+
 //     if (array1.length !== array2.length){
 //         console.log("FALSE (outside of loop) -- not an anagram")
 //         return false
-    
+
 //     } else if (array1.length === array2.length){
 
 //     for (let i = 0; i < array1.length; i++){
 
-//         if (array2.includes(array1[i])){          
+//         if (array2.includes(array1[i])){
 //             matchedLetters.push(array1[i])
 //             console.log("it's a letter match!", array1[i])
 //             console.log("matchedLetters Array", matchedLetters)
@@ -156,19 +154,19 @@ capsOnSpace()
 //     const array1 = word1.split("")
 //     const array2 = word2.split("")
 //     // const matchedLetters = []  //this really just serves as a checkpoint
- 
+
 //     if (array1.length !== array2.length){
 //         console.log("FALSE --NOT an anagram :(")
 //         return false
-    
+
 //     } else if (array1.length === array2.length){
 
 //     for (let i = 0; i < array1.length; i++){
 
-//         if (array2.includes(array1[i])){          
+//         if (array2.includes(array1[i])){
 //             // matchedLetters.push(array1[i])
 //             console.log("it's a letter match!", array1[i])
-            
+
 //         } else if (!array2.includes(array1[i])) {
 //             console.log("FALSE --NOT an anagram :(")
 //             return false
@@ -179,20 +177,14 @@ capsOnSpace()
 //         return true
 // }
 
-
-
-
 // isAnagram("dusty", "study")
 //isAnagram("night", "thing")
 // isAnagram("listened", "silent")
 //isAnagram('triangle', 'integral')
 //isAnagram('arc', 'car')
 
+// CHECK ARRAY LENGTHS FIRST:
+// start off with if lengths are different -- not an anagram
+// if lengths are equal, then start matching/finding if letters are same
 
-
-    // CHECK ARRAY LENGTHS FIRST:
-    // start off with if lengths are different -- not an anagram
-    // if lengths are equal, then start matching/finding if letters are same
-
-    // THEN COMPARE LETTERS ACROSS THE TWO ARRAYS: 
-
+// THEN COMPARE LETTERS ACROSS THE TWO ARRAYS:
