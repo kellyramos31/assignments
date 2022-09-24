@@ -21,15 +21,14 @@ app.use(express.json())
 app.use(morgan("dev"))
 
 
+
 //attempt to connect to mongodb atlas:
 mongoose.connect(
-  "mongodb+srv://cluster1.b4gmnqz.mongodb.net/?retryWrites=true&w=majority/",
+  "mongodb+srv:/'+process.env.NAME+':'+process.env.PASSWORD+'/cluster1.b4gmnqz.mongodb.net/?retryWrites=true&w=majority/",
   {
     dbName: "wise",
-    user: "49-warm-Noodles",
-    pass: "Trademark-puppy-82",
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
   },
   () => console.log("Connected to the DB")
 );
