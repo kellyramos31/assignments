@@ -11,19 +11,41 @@ const expressJwt = require("express-jwt")  //gatekeeper
 
 //************OTHER UPDATE: req.user is now req.auth************
 
+
+
+//mongodb+srv://49-warm-Noodles:<password>@cluster1.b4gmnqz.mongodb.net/?retryWrites=true&w=majority
+//un:49-warm-Noodles
+//Trademark-puppy-82-xi (or withoud -xi?)
+
 app.use(express.json())
 app.use(morgan("dev"))
 
+
+//attempt to connect to mongodb atlas:
 mongoose.connect(
-    "mongodb://localhost:27017/user-authentication3",
-    {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useCreateIndex: true,
-        useFindAndModify: false
-    },
-    () => console.log("Connected to the DB")
-)
+  "mongodb+srv://cluster1.b4gmnqz.mongodb.net/?retryWrites=true&w=majority/",
+  {
+    dbName: "wise",
+    user: "49-warm-Noodles",
+    pass: "Trademark-puppy-82",
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  },
+  () => console.log("Connected to the DB")
+);
+
+
+//previous -- connect to mongodb compass
+// mongoose.connect(
+//     "mongodb://localhost:27017/user-authentication3",
+//     {
+//         useNewUrlParser: true,
+//         useUnifiedTopology: true,
+//         useCreateIndex: true,
+//         useFindAndModify: false
+//     },
+//     () => console.log("Connected to the DB")
+// )
 //NOTE: update to syntax for mongoose connect -- can take out the 4 deprecations object (lines16-21)
 
 app.use("/auth", require("./routes/authRouter.js"))
