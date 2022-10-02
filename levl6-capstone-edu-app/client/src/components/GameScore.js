@@ -19,18 +19,27 @@ const {
 
 
     return (
-        <div className="game-score">
-       
-            <h2>✨Points✨{" "}{gameScore}{" "}{" "}</h2>
-            <h2>🙋{" "}{questionsAnswered}</h2>
-            <h2>✅{" "}{questionsCorrect}</h2>
-
-     
-            <h2>✨New Badges✨ {" "} {badgeReward} </h2>
-
-            <button className="game-reset-btn" onClick={gameReset}>New Game</button>
-            <button className="save-game-btn" onClick={()=>saveMyScore(gameScore)}>Save My Score</button>
-       
-        </div>
-    )
+      <div className="game-score">
+          <div className="game-tally-scores">
+            <h2 className="score">✨Points✨ {gameScore} </h2>
+            <h2 className="score">🙋 {questionsAnswered}</h2>
+            <h2 className="score">✅ {questionsCorrect}</h2>
+            <h2 id="new-badges-title">
+              ✨New Badges✨ {badgeReward}{" "}
+            </h2>
+          </div>
+          <div className="game-btns">
+            <button className="game-reset-btn" onClick={gameReset}>
+              New Game
+            </button>
+            <button
+              className="save-game-btn"
+              onClick={() => saveMyScore(gameScore)}
+            >
+              Save My Score
+            </button>
+          </div>
+    
+      </div>
+    );
 }

@@ -9,19 +9,16 @@ import "./css/styles.css"
 
 
 
-const root = ReactDOM.createRoot(document.getElementById('root')); //React 18.0 change
-
-root.render(
-  <BrowserRouter>
+ReactDOM.createRoot(document.getElementById('root')).render( 
+<BrowserRouter>
       <PostCommentProvider>
-          <LearnGameProvider>
-              <UserProvider>
-                  <App />
-              </UserProvider>
-          </LearnGameProvider>
+        <LearnGameProvider>
+          <UserProvider>
+            <App />
+          </UserProvider>
+        </LearnGameProvider>
       </PostCommentProvider>
-  </BrowserRouter>,
-  document.getElementById('root')
-)
+    </BrowserRouter>
+  )
 
 

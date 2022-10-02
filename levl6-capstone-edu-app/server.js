@@ -16,16 +16,42 @@ app.use(morgan("dev"));
 
 //updated here OK
 
+//from stack overflow:
+// "mongodb+srv://" +
+//   process.env.NAME +
+//   ":" +
+//   process.env.PASSWORD +
+//   "@cluster0.ta9wa.mongodb.net/database?retryWrites=true&w=majority";
+
 //updated here to connect to mongodb atlas:
+// "mongodb+srv://" +
+//   process.env.NAME +
+//   ":" +
+//   process.env.PASSWORD +
+//   "@cluster0.ta9wa.mongodb.net/database?retryWrites=true&w=majority";
+
+
+
+//updated here to connect to mongodb atlas:
+// mongoose.connect(
+// "mongodb+srv://" +
+//   process.env.NAME +
+//   ":" +
+//   process.env.PASSWORD +
+//   "@cluster1.b4gmnqz.mongodb.net/?retryWrites=true&w=majority/",
+
+
+
 mongoose.connect(
-  "mongodb+srv:/'+process.env.NAME+':'+process.env.PASSWORD+'/cluster1.b4gmnqz.mongodb.net/?retryWrites=true&w=majority/",
+   "mongodb+srv://49-warm-Noodles:Trademark-puppy-82@cluster1.b4gmnqz.mongodb.net/?retryWrites=true&w=majority/",
   {
-    dbName: "process.env.DBNAME",
+    dbName: "wise",
     useNewUrlParser: true,
     useUnifiedTopology: true,
   },
   () => console.log("Connected to the DB")
 );
+
 
 //previous -- connect to mongodb compass
 // mongoose.connect(

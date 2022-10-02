@@ -36,7 +36,7 @@ const [badgesAwarded, setBadgesAwarded] = useState(0)
 
 const [gameScore, setGameScore] = useState(0)
 
-const [isModalOpen, setIsModalOpen] = useState(false)
+// const [isModalOpen, setIsModalOpen] = useState(false)
 
 const [myScores, setMyScores] = useState([])
 
@@ -103,6 +103,7 @@ function getGameQuestions(){
 
 
 
+
 //SAVE USER'S GAME SCORE
  function saveMyScore(gameScore) {
 
@@ -133,16 +134,11 @@ function getMyGameScores() {
     .catch(err=>console.log(err.response.data.errMsg))
 }
 
-//Toggle Modal
-
-// function areYouWorking(){
-//     console.log("MODAL!!!!")
-// }
 
 //TOGGLE MODAL
-function toggleModal(){
-    setIsModalOpen(!isModalOpen)
-}
+// function toggleModal(){
+//     setIsModalOpen(!isModalOpen)
+// }
 
 //HANDLE ANSWER CHOICE SELECTION
 function handleGameAnswerClick(_user, question, questionOption) {
@@ -275,8 +271,8 @@ function handleFlashcardSearch(e) {
             questionsCorrect,
             handleMenuFilter,
             gameReset,
-            toggleModal,
-            isModalOpen,
+            // toggleModal,
+            // isModalOpen,
             handleFlashcardSearch
           
             

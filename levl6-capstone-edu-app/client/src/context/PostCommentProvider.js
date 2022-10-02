@@ -113,10 +113,11 @@ function deletePost(postId) {
 
         userAxios.delete(`/api/forumpost/${postId}`)
              .then(res => {
+                console.log("delete post res", res)
                 setPostState(prevState=> ({userPosts: prevState.userPosts.filter(userPost => userPost._id !== postId)}))
                 getPosts()
              })
-        
+            
             .catch(err=>console.log(err.response.data.errMsg))
     }
 
@@ -203,7 +204,6 @@ function addCommentTally (postId) {
                 deleteCommentFromPostArray(commentId, postId)
                 minusCommentTally(postId)
              })
-        
             .catch(err=>console.log(err.response.data.errMsg))
     }
 
@@ -301,7 +301,6 @@ function handlePostSearch(e) {
             postComments,
             addComment,
             combinedAddComment,
-            deleteComment,
             deleteComment,
             editComment,
             handlePostSearch
