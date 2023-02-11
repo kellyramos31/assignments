@@ -9,6 +9,9 @@ import FavesOnlyMap from "./FavesOnlyMap"
 function Faves() {
    
     const {myFaves, handleFaveDelete, isChangingPhoto, handlePhotoFormToggle, isFaveMapView, handleFaveMapToggle} = useContext(PawsContext) 
+
+
+
     
     return( 
            

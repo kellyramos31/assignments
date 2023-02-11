@@ -24,52 +24,100 @@ class PawsContextProvider extends Component {
     myDoggieImage: "",
     isHearted: false,
     isChangingPhoto: false,
-    myFaves: [],
+    myFaves: JSON.parse(localStorage.getItem("myFaves")) || [],
     isFaveMapView: false,
   };
 
   //Two chained API calls b/c limited to 50 datapoints at a time:
+
   componentDidMount() {
+    const dogFriendlyRestaurants = {
+      method: "GET",
+      url: `http://localhost:8000/eateries`,
+    };
+
+    const moreDogFriendly = {
+      method: "GET",
+      url: `http://localhost:8000/moreeats`,
+    };
+
     axios
-      .get(
-        `${"https://cors-anywhere.herokuapp.com/"}https://api.yelp.com/v3/businesses/search?location=Salt Lake City&categories=restaurants&term=dogs allowed}`,
-        {
-          headers: {
-            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
-          },
-          params: {
-            limit: 50,
-          },
-        }
-      )
+      .request(dogFriendlyRestaurants)
+
       .then((response) => {
-        this.setState({ dogFriendlyRestaurants: response.data.businesses });
-        return axios.get(
-          `${"https://cors-anywhere.herokuapp.com/"}https://api.yelp.com/v3/businesses/search?location=Salt Lake City&categories=restaurants&term=dog friendly}`,
-          {
-            headers: {
-              Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
-            },
-            params: {
-              limit: 50,
-              offset: 51,
-            },
-          }
-        );
-      })
+        console.log("first response", response.data);
+        this.setState({ dogFriendlyRestaurants: response.data });
+        // this.addToggleProperty();
+      });
+
+    axios
+      .request(moreDogFriendly)
       .then((response) => {
+        console.log("second response", response.data);
         this.setState({
           dogFriendlyRestaurants: [
             ...this.state.dogFriendlyRestaurants,
-            ...response.data.businesses,
+            ...response.data,
           ],
         });
+
         this.addToggleProperty();
       })
-      .catch((err) => console.log(err));
+
+      .catch((error) => {
+        console.log("error", error);
+      });
   }
 
+  // componentDidMount() {
+  //       //  JSON.parse(localStorage.getItem("myFaves"))
+
+  //   axios
+  //     .get(
+  //       `https://api.yelp.com/v3/businesses/search?location=Salt Lake City&categories=restaurants&term="dog friendly"`,
+  //       // `${"https://cors-anywhere.herokuapp.com/"}https://api.yelp.com/v3/businesses/search?location=Salt Lake City&categories=restaurants&term="dog friendly"`,
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+  //         },
+  //         params: {
+  //           limit: 50,
+  //           // offset: 11
+  //         },
+  //       }
+  //     )
+  //     .then((response) => {
+  //       this.setState({ dogFriendlyRestaurants: response.data.businesses });
+  //       return axios.get(
+  //         `https://api.yelp.com/v3/businesses/search?location=Salt Lake City&categories=restaurants&term="dog friendly"`,
+  //         // `${"https://cors-anywhere.herokuapp.com/"}https://api.yelp.com/v3/businesses/search?location=Salt Lake City&categories=restaurants&term="dog friendly"`,
+  //         //     `${"https://cors-anywhere.herokuapp.com/"}https://api.yelp.com/v3/businesses/search?location=Salt Lake City&categories=restaurants&term="dog friendly"}`,
+  //         {
+  //           headers: {
+  //             Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`,
+  //           },
+  //           params: {
+  //             limit: 50,
+  //             offset: 51,
+  //           },
+  //         }
+  //       );
+  //     })
+  //     .then((response) => {
+  //       this.setState({
+  //         dogFriendlyRestaurants: [
+  //           ...this.state.dogFriendlyRestaurants,
+  //           ...response.data.businesses,
+  //         ],
+  //       });
+  //       this.addToggleProperty();
+  //       console.log("get request response", response);
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
+
   addToggleProperty = () => {
+    console.log("addToggleProperty called");
     let addedProperty = this.state.dogFriendlyRestaurants.map((restaurant) => {
       restaurant.isHearted = false;
       restaurant.myDoggieImage = "";
@@ -141,8 +189,11 @@ class PawsContextProvider extends Component {
             ...business,
             isHearted: !business.isHearted,
           };
+          localStorage.setItem("myFaves", JSON.stringify(this.state.myFaves));
           return updatedListing;
         }
+        localStorage.setItem("myFaves", JSON.stringify(this.state.myFaves));
+
         return business;
       }
     );
@@ -152,6 +203,8 @@ class PawsContextProvider extends Component {
       filteredSearchList: updatedDogFriendly,
       isHearted: !this.state.isHearted,
     });
+
+    localStorage.setItem("myFaves", JSON.stringify(this.state.myFaves));
   };
 
   handleFave = (id, restaurant, address, city, phone, isHearted) => {
@@ -179,9 +232,15 @@ class PawsContextProvider extends Component {
       this.setState((prevState) => ({
         myFaves: [...prevState.myFaves, newFave],
       }));
+      localStorage.setItem("myFaves", JSON.stringify(this.state.myFaves));
     } else if (newFave.isHearted === false) {
       this.handleFaveDelete(id);
+      localStorage.setItem("myFaves", JSON.stringify(this.state.myFaves));
+      // localStorage.setItem(
+      //   "myFaves",
+      //   JSON.stringify(this.state.myFaves)
     }
+    // );
   };
 
   handleFaveDelete = (id) => {
@@ -191,7 +250,16 @@ class PawsContextProvider extends Component {
       myFaves: prevState.myFaves.filter((fave) => fave.id !== id),
     }));
 
+    //  localStorage.setItem("myFaves", JSON.stringify(this.state.myFaves));
+
+    // localStorage.setItem(
+    //   "myFaves",
+    //       localStorage.setItem("myFaves", JSON.stringify(this.state.myFaves));
+    // );
+
     this.handleFaveToggle(id);
+
+    localStorage.setItem("myFaves", JSON.stringify(this.state.myFaves));
   };
 
   searchBarOnChange = (searchTerm) => {
@@ -315,6 +383,13 @@ class PawsContextProvider extends Component {
       myFaves: [...editedFavesWithPhoto],
       myDoggieImage: "",
     });
+
+    localStorage.setItem("myFaves", JSON.stringify(this.state.myFaves));
+
+    // localStorage.setItem(
+    //   "myFaves",
+    //   localStorage.setItem("myFaves", JSON.stringify(this.state.myFaves));
+    // );
 
     this.handlePhotoFormToggle(id);
   };

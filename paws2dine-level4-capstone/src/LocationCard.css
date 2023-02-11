@@ -3,6 +3,8 @@ body {
 }
 
 .flex-container {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
   column-count: 2;
   margin-left: 14%;
   margin-right: 10%;
